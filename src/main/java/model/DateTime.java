@@ -51,4 +51,12 @@ public class DateTime {
         increaseDay((amount + hour)/24);
         hour = (amount + hour)%24;
     }
+
+    public DateTime() {
+        this.year = 0;
+        this.month = 1;
+        this.day = 1;
+        this.hour = 9;
+        this.weekDay = WeekDay.Monday;
+    }
 }
