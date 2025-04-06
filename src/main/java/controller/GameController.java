@@ -9,6 +9,10 @@ public class GameController {
         return null;
     }
 
+    public Result deleteGame(){
+        return null;
+    }
+
     // TODO add functions for "force terminate"
 
     public void nextTurn() {

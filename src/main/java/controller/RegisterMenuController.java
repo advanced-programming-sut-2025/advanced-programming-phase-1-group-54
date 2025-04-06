@@ -14,7 +14,7 @@ public class RegisterMenuController implements CheckInputValid {
         return null;
     }
 
-    public ArrayList<String> getSecurityQuestions() {
+    public final ArrayList<String> getSecurityQuestions() {
         return null;
     }
 

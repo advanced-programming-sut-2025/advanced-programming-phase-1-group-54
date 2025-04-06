@@ -19,19 +19,19 @@ public class ProfileMenuController implements CheckInputValid {
         return null;
     }
 
-    public boolean isUsernameDifferent(String username) {
+    private boolean isUsernameDifferent(String username) {
         return false;
     }
 
-    public boolean isNicknameDifferent(String nickname) {
+    private boolean isNicknameDifferent(String nickname) {
         return false;
     }
 
-    public boolean isEmailDifferent(String email) {
+    private boolean isEmailDifferent(String email) {
         return false;
     }
 
-    public boolean isPasswordDifferent(String password) {
+    private boolean isPasswordDifferent(String password) {
         return false;
     }
 }

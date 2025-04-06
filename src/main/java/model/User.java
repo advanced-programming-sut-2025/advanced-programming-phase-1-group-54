@@ -8,6 +8,8 @@ public class User {
     private String nickname;
     private String email;
     private final Gender gender;
+    private long maximumScore;
+    private long numberOfPlayedGames;
 
     public User(String username, String password, String nickname, String email, Gender gender) {
         this.username = username;
@@ -15,6 +17,8 @@ public class User {
         this.nickname = nickname;
         this.email = email;
         this.gender = gender;
+        this.maximumScore = 0;
+        this.numberOfPlayedGames = 0;
     }
 
     public String getUsername() {
@@ -51,5 +55,21 @@ public class User {
 
     public Gender getGender() {
         return gender;
+    }
+
+    public long getMaximumScore() {
+        return maximumScore;
+    }
+
+    public void setMaximumScore(long maximumScore) {
+        this.maximumScore = maximumScore;
+    }
+
+    public long getNumberOfPlayedGames() {
+        return numberOfPlayedGames;
+    }
+
+    public void increaseNumberOfPlayedGames() {
+        this.numberOfPlayedGames++;
     }
 }

@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public class App {
     private static Menu currentMenu;
-    private static ArrayList<User> users;
+    private final static ArrayList<User> users = new ArrayList<>();
+    private static User currentUser;
 
     public static Menu getCurrentMenu() {
         return currentMenu;
@@ -19,5 +20,17 @@ public class App {
     public static String SHA256(String string) {
         // TODO
         return string;
+    }
+
+    public static ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        App.currentUser = currentUser;
     }
 }
