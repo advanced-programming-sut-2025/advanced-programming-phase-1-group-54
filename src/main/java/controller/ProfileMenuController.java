@@ -2,22 +2,7 @@ package controller;
 
 import model.Result;
 
-public class ProfileMenuController implements MenuController, CheckInputValid {
-    @Override
-    public Result enterMenu(String menuName) {
-        return null;
-    }
-
-    @Override
-    public Result exitMenu() {
-        return null;
-    }
-
-    @Override
-    public Result showCurrentMenu() {
-        return null;
-    }
-
+public class ProfileMenuController implements CheckInputValid {
     public Result changeUsername() {
         return null;
     }

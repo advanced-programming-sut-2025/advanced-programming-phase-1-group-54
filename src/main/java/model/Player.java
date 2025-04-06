@@ -11,4 +11,10 @@ public class Player {
     private ArrayList<Item> inventory;
 
     private int[] abilities = new int[AbilityType.values().length];
+
+    private Tool equippedTool;
+
+    public int getAbility(AbilityType abilityType) {
+        return abilities[abilityType.ordinal()];
+    }
 }

@@ -2,21 +2,7 @@ package controller;
 
 import model.Result;
 
-public class LoginMenuController implements MenuController, CheckInputValid {
-    @Override
-    public Result enterMenu(String menuName) {
-        return null;
-    }
-
-    @Override
-    public Result exitMenu() {
-        return null;
-    }
-
-    @Override
-    public Result showCurrentMenu() {
-        return null;
-    }
+public class LoginMenuController implements CheckInputValid {
 
     public Result login(String username, String password, boolean stayLoggedIn) {
         return new Result(true, null);
