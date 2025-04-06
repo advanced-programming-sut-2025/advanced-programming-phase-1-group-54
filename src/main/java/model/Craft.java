@@ -1,7 +1,5 @@
 package model;
 
-import model.enums.Seed;
-
 public class Craft {
 
     private String name;
