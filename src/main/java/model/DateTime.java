@@ -1,5 +1,6 @@
 package model;
 
+import model.enums.Season;
 import model.enums.WeekDay;
 
 public class DateTime {
@@ -8,6 +9,7 @@ public class DateTime {
     private int day;
     private int hour;
     private WeekDay weekDay;
+    private Season season;
 
     public int getYear() {
         return year;
@@ -29,12 +31,29 @@ public class DateTime {
         return weekDay;
     }
 
+    public Season getSeason() {
+        return season;
+    }
+
     public void increaseMonth(int amount) {
         weekDay = WeekDay.values()[(weekDay.ordinal() + amount * 30)%7];
         year += (amount + month)/12;
         month = (amount + month)%12;
         if(month == 0){
             month = 12;
+        }
+
+        if(month <= 3){
+            season = Season.SPRING;
+        }
+        else if(month <= 6){
+            season = Season.SUMMER;
+        }
+        else if(month <= 9){
+            season = Season.AUTUMN;
+        }
+        else {
+            season = Season.WINTER;
         }
     }
 
