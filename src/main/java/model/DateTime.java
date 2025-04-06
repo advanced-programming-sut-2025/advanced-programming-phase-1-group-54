@@ -5,7 +5,6 @@ import model.enums.WeekDay;
 
 public class DateTime {
     private int year;
-    private int month;
     private int day;
     private int hour;
     private WeekDay weekDay;
@@ -13,10 +12,6 @@ public class DateTime {
 
     public int getYear() {
         return year;
-    }
-
-    public int getMonth() {
-        return month;
     }
 
     public int getDay() {
@@ -35,34 +30,12 @@ public class DateTime {
         return season;
     }
 
-    public void increaseMonth(int amount) {
-        weekDay = WeekDay.values()[(weekDay.ordinal() + amount * 30)%7];
-        year += (amount + month)/12;
-        month = (amount + month)%12;
-        if(month == 0){
-            month = 12;
-        }
-
-        if(month <= 3){
-            season = Season.SPRING;
-        }
-        else if(month <= 6){
-            season = Season.SUMMER;
-        }
-        else if(month <= 9){
-            season = Season.AUTUMN;
-        }
-        else {
-            season = Season.WINTER;
-        }
-    }
-
     public void increaseDay(int amount) {
         weekDay = WeekDay.values()[(amount + day + weekDay.ordinal())%7];
-        increaseMonth((amount + day)/30);
-        day = (amount + day)%30;
+        season = Season.values()[(((amount + day)/28)+ season.ordinal())%4];
+        day = (amount + day)%28;
         if(day == 0){
-            day = 30;
+            day = 28;
         }
     }
 
@@ -73,7 +46,6 @@ public class DateTime {
 
     public DateTime() {
         this.year = 0;
-        this.month = 1;
         this.day = 1;
         this.hour = 9;
         this.weekDay = WeekDay.Monday;
