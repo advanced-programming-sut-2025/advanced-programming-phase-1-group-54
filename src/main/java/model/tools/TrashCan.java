@@ -1,4 +1,6 @@
 package model.tools;
 
-public class TrashCan {
+import model.Tool;
+
+public class TrashCan extends Tool {
 }

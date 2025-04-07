@@ -1,5 +1,27 @@
 package model.tools;
 
-public class FishingPole {
+import model.Result;
+import model.Tool;
+import model.enums.toolsLevel.FishingPoleLevel;
 
+public class FishingPole extends Tool {
+    private FishingPoleLevel level;
+
+    @Override
+    public Result use() {
+        return super.use();
+    }
+
+    @Override
+    public void upgrade() {
+        super.upgrade();
+    }
+
+    public FishingPoleLevel getLevel() {
+        return level;
+    }
+
+    public void setLevel(FishingPoleLevel level) {
+        this.level = level;
+    }
 }

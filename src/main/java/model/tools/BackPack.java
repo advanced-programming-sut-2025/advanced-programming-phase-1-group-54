@@ -1,4 +1,6 @@
 package model.tools;
 
-public class BackPack {
+import model.Tool;
+
+public class BackPack extends Tool {
 }

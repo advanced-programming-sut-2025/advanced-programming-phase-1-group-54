@@ -1,4 +1,6 @@
 package model.tools;
 
-public class Shear {
+import model.Tool;
+
+public class Shear extends Tool {
 }

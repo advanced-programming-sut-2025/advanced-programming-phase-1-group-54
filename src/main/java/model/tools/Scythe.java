@@ -1,4 +1,7 @@
 package model.tools;
 
-public class Scythe {
+import model.Tool;
+
+public class Scythe extends Tool {
+
 }

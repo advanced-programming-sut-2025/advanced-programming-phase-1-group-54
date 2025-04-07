@@ -1,4 +1,9 @@
 package model.tools;
 
-public class MilkPail {
+import model.Tool;
+
+public class MilkPail extends Tool {
+
+
+
 }

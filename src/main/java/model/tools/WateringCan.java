@@ -1,4 +1,6 @@
 package model.tools;
 
-public class WateringCan {
+import model.Tool;
+
+public class WateringCan extends Tool {
 }
