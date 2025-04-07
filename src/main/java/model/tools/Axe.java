@@ -14,7 +14,7 @@ public class Axe extends Tool {
     }
 
     @Override
-    public void upgrade() {
+    public Result upgrade() {
         super.upgrade();
     }
 }

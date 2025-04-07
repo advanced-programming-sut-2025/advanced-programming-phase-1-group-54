@@ -11,7 +11,7 @@ public abstract class Tool extends Item {
         return null;
     }
 
-    public void upgrade() {
-
+    public Result upgrade() {
+        return null;
     }
 }

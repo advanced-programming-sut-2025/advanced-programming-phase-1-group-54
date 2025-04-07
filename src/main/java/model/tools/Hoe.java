@@ -8,8 +8,9 @@ public class Hoe extends Tool {
     private HoeLevel level;
 
     @Override
-    public void upgrade() {
+    public Result upgrade() {
         super.upgrade();
+        return null;
     }
 
     @Override

@@ -13,8 +13,9 @@ public class Pickaxe extends Tool {
     }
 
     @Override
-    public void upgrade() {
+    public Result upgrade() {
         super.upgrade();
+        return null;
     }
 
 

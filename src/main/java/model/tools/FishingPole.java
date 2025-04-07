@@ -12,10 +12,6 @@ public class FishingPole extends Tool {
         return super.use();
     }
 
-    @Override
-    public void upgrade() {
-        super.upgrade();
-    }
 
     public FishingPoleLevel getLevel() {
         return level;
