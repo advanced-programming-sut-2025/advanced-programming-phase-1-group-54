@@ -15,6 +15,8 @@ public abstract class Animal {
 
     protected Location location;
 
+    private AnimalProduce produces;
+
     protected int cost;
 
     public String getName() {
@@ -63,5 +65,15 @@ public abstract class Animal {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public void makeProduce() {
+
+    }
+
+    public Result getProduce() {
+
+//        produces = null;
+        return new Result(false,"");
     }
 }

@@ -6,15 +6,18 @@ import model.Tool;
 import model.enums.toolsLevel.BackPackLevel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BackPack extends Tool {
     private BackPackLevel level;
     private ArrayList<Item> itemsInBackPack = new ArrayList<>();
+    private HashMap<Item,Integer> numberOfItemsInBackPack = new HashMap<>();
 
     public Result addItem(Item item) {
         if(itemsInBackPack.size() < level.getSize()){
             itemsInBackPack.add(item);
             return new Result(true,"Item added to backpack");
+
         }
         else {
             return new Result(false,"Backpack is Full");
