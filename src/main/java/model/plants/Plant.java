@@ -1,6 +1,6 @@
-package model;
+package model.plants;
 
-public class Craft {
+public abstract class Plant {
 
     private String name;
     private Seed source;
@@ -11,8 +11,6 @@ public class Craft {
     private int regrowthTime;
     private int baseSellPrice;
     private boolean isEdible;
-
     private int energy;
-
     private boolean canBecomeGiant;
 }

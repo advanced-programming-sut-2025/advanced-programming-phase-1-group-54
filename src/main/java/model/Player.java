@@ -1,19 +1,30 @@
 package model;
 
-import model.enums.AbilityType;
+import model.enums.SkillType;
+import model.recipes.Recipe;
 import model.tools.BackPack;
+import model.tools.Tool;
+
+import java.util.ArrayList;
 
 
-public class Player {
+public class Player extends Character {
+    private final int MAXIMUM_ENERGY = 100;
+
     private User controllingUser;
     private int energy;
     private BackPack backpack;
-    private final int[] abilitiesunit = new int[AbilityType.values().length];
-    private final int[] abilitiesLevel = new int[AbilityType.values().length];
+    
+    private ArrayList<Recipe> learnedRecipes;
+    
+    
+
+    private final Skill[] skills = new Skill[SkillType.values().length];
+
     private Tool equippedTool;
 
-    public int getAbility(AbilityType abilityType) {
-        return abilitiesunit[abilityType.ordinal()];
+    public Skill getSkill(SkillType skillType) {
+        return skills[skillType.ordinal()];
     }
 
     public User getControllingUser() {
@@ -24,20 +35,16 @@ public class Player {
         return energy;
     }
 
+    public boolean isGhash() {
+        return energy <= 0;
+    }
+
     public BackPack getBackpack() {
         return backpack;
     }
 
-    public int[] getAbilitiesunit() {
-        return abilitiesunit;
-    }
-
     public Tool getEquippedTool() {
         return equippedTool;
-    }
-
-    public int[] getAbilitiesLevel() {
-        return abilitiesLevel;
     }
 
     public void setControllingUser(User controllingUser) {
@@ -64,40 +71,7 @@ public class Player {
         this.equippedTool = equippedTool;
     }
 
-    public void increaseFarmingAbility(int amount) {
-        abilitiesunit[AbilityType.FARMING.ordinal()] += amount;
-        if(abilitiesLevel[AbilityType.FARMING.ordinal()] != 4
-                && abilitiesunit[AbilityType.FARMING.ordinal()] >
-                100 * abilitiesLevel[AbilityType.FARMING.ordinal()] + 50) {
-            abilitiesLevel[AbilityType.FARMING.ordinal()]++;
-        }
+    public void addSkillXP(SkillType skillType, int amount) {
+        skills[SkillType.FARMING.ordinal()].addXP(amount);
     }
-
-    public void increaseExtractionAbility(int amount) {
-        abilitiesunit[AbilityType.EXTRACTION.ordinal()] += amount;
-        if(abilitiesLevel[AbilityType.EXTRACTION.ordinal()] != 4
-                && abilitiesunit[AbilityType.EXTRACTION.ordinal()] >
-                100 * abilitiesLevel[AbilityType.EXTRACTION.ordinal()] + 50) {
-            abilitiesLevel[AbilityType.EXTRACTION.ordinal()]++;
-        }
-    }
-
-    public void increaseForagingAbility(int amount) {
-        abilitiesunit[AbilityType.FORAGING.ordinal()] += amount;
-        if(abilitiesLevel[AbilityType.FORAGING.ordinal()] != 4
-                && abilitiesunit[AbilityType.FORAGING.ordinal()] >
-                100 * abilitiesLevel[AbilityType.FORAGING.ordinal()] + 50) {
-            abilitiesLevel[AbilityType.FORAGING.ordinal()]++;
-        }
-    }
-
-    public void increaseFishingAbility(int amount) {
-        abilitiesunit[AbilityType.FISHING.ordinal()] += amount;
-        if(abilitiesLevel[AbilityType.FISHING.ordinal()] != 4
-                && abilitiesunit[AbilityType.FISHING.ordinal()] >
-                100 * abilitiesLevel[AbilityType.FISHING.ordinal()] + 50) {
-            abilitiesLevel[AbilityType.FISHING.ordinal()]++;
-        }
-    }
-
 }

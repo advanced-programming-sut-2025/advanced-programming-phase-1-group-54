@@ -5,7 +5,7 @@ import model.enums.ToolLevel;
 public enum BackPackLevel implements ToolLevel {
     NORMAL(12),
     BIG(24),
-    THELUX(-1);
+    THELUX(Integer.MAX_VALUE);
 
     private final int size;
 
@@ -15,5 +15,9 @@ public enum BackPackLevel implements ToolLevel {
 
     public int getSize() {
         return size;
+    }
+
+    public int getEnergyNeededPerUse() {
+        return 0;
     }
 }

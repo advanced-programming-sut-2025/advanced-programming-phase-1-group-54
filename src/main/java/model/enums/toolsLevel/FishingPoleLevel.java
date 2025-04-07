@@ -4,7 +4,7 @@ import model.enums.ToolLevel;
 
 public enum FishingPoleLevel implements ToolLevel {
     TRAINING(8),
-    BOMBO(8),
+    BAMBOO(8),
     FIBERGLASS(6),
     IRIDIUM(4);
 

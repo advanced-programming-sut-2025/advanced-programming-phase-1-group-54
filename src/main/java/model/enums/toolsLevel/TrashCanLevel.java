@@ -18,4 +18,8 @@ public enum TrashCanLevel implements ToolLevel {
     public int getPercentage() {
         return percentage;
     }
+
+    public int getEnergyNeededPerUse() {
+        return 0;
+    }
 }

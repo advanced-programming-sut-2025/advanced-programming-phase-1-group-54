@@ -1,8 +1,10 @@
-package model;
+package model.map;
 
 /*
     each player has a farm, at the start player selects one of predefined farms;
  */
+
+import model.Tile;
 
 public class Farm {
     private int numberOfRows;

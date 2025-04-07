@@ -1,6 +1,6 @@
 package model.enums;
 
-public enum AbilityType {
+public enum SkillType {
     FARMING,
     EXTRACTION,
     FORAGING,

@@ -1,5 +1,7 @@
 package model;
 
+import model.map.World;
+
 public class Game {
     private final int numberOfPlayer;
     private final World worldMap;
@@ -36,6 +38,12 @@ public class Game {
 
     public DateTime getDateTime() {
         return dateTime;
+    }
+
+    public void thunder() {}
+
+    public void newDay() {
+
     }
 
 }
