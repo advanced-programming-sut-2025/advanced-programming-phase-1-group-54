@@ -7,5 +7,5 @@ public interface AppMenu {
         System.out.println("invalid command");
     }
 
-    void check(Scanner scanner);
+    void run(Scanner scanner);
 }

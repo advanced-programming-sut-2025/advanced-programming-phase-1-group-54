@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class RegisterMenu implements AppMenu {
     @Override
-    public void check(Scanner scanner) {
+    public void run(Scanner scanner) {
 
     }
 }

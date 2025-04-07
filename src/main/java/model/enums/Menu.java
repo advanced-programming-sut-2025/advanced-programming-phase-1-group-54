@@ -18,8 +18,8 @@ public enum Menu {
         this.menu = menu;
     }
 
-    public void check(Scanner scanner) {
-        menu.check(scanner);
+    public void run(Scanner scanner) {
+        menu.run(scanner);
     }
 
 }
