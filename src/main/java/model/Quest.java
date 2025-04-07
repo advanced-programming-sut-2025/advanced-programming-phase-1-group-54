@@ -1,5 +1,8 @@
 package model;
 
+import model.alive.NPC;
+import model.items.Item;
+
 public class Quest {
     NPC questGiver;
 

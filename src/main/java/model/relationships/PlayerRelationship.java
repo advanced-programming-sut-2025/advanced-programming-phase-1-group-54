@@ -1,7 +1,6 @@
 package model.relationships;
 
-import model.Player;
-import model.Talk;
+import model.alive.Player;
 
 import java.util.ArrayList;
 

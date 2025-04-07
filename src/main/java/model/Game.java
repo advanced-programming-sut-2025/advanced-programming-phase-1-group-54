@@ -1,5 +1,6 @@
 package model;
 
+import model.alive.Player;
 import model.map.World;
 
 public class Game {
