@@ -2,7 +2,7 @@ package model;
 
 import model.enums.AnimalType;
 
-public abstract class Animal {
+public class Animal {
     protected String name;
 
     protected Player owner;

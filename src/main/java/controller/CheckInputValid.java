@@ -5,8 +5,7 @@ public interface CheckInputValid {
         return false;
     }
 
-    default boolean isUsernameVal
-    id(String username) {
+    default boolean isUsernameValid(String username) {
         return false;
     }
 
