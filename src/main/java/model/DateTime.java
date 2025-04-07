@@ -10,6 +10,14 @@ public class DateTime {
     private WeekDay weekDay;
     private Season season;
 
+    private static final int START_HOUR = 9;
+    private static final int END_HOUR = 22;
+    private static final int HOURS_IN_DAY = END_HOUR - START_HOUR;
+    private static final int DAYS_IN_WEEK = WeekDay.values().length;
+    private static final int DAYS_IN_SEASON = 28;
+    private static final int SEASONS_IN_YEAR = Season.values().length;
+
+
     public int getYear() {
         return year;
     }
@@ -31,17 +39,18 @@ public class DateTime {
     }
 
     public void increaseDay(int amount) {
-        weekDay = WeekDay.values()[(amount + day + weekDay.ordinal())%7];
-        season = Season.values()[(((amount + day)/28)+ season.ordinal())%4];
-        day = (amount + day)%28;
+        weekDay = WeekDay.values()[(amount + day + weekDay.ordinal())%DAYS_IN_WEEK];
+        year += (((amount + day)/DAYS_IN_SEASON)+ season.ordinal())/SEASONS_IN_YEAR;
+        season = Season.values()[(((amount + day)/DAYS_IN_SEASON)+ season.ordinal())%SEASONS_IN_YEAR];
+        day = (amount + day)%DAYS_IN_SEASON;
         if(day == 0){
-            day = 28;
+            day = DAYS_IN_SEASON;
         }
     }
 
     public void increaseHour(int amount) {
-        increaseDay((amount + hour)/24);
-        hour = (amount + hour)%24;
+        increaseDay((amount + hour - START_HOUR)/HOURS_IN_DAY);
+        hour = START_HOUR + (amount + hour - START_HOUR)%HOURS_IN_DAY;
     }
 
     public DateTime() {
