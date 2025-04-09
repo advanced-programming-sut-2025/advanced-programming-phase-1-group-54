@@ -2,7 +2,7 @@ package controller;
 
 import model.Result;
 
-public class LoginMenuController implements CheckInputValid {
+public class LoginMenuController {
 
     public Result login(String username, String password, boolean stayLoggedIn) {
         return new Result(true, null);

@@ -2,7 +2,7 @@ package controller;
 
 import model.Result;
 
-public class ProfileMenuController implements CheckInputValid {
+public class ProfileMenuController {
     public Result changeUsername() {
         return null;
     }

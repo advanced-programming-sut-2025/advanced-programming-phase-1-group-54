@@ -17,17 +17,22 @@ public interface AppMenu {
         // TODO add each menu description
     }
 
-    default void checkMenuCommand(String input) {
+    default boolean checkMenuCommand(String input) {
         if (MenuCommand.ENTER_MENU.matches(input)) {
             handleEnterMenu(input);
+            return true;
         } else if (MenuCommand.EXIT_MENU.matches(input)) {
             goToMenu(App.getCurrentMenu().getParent());
+            return true;
         } else if (MenuCommand.SHOW_CURRENT_MENU.matches(input)) {
             showCurrentMenu();
+            return true;
         }
+
+        return false;
     }
 
-    default void handleEnterMenu(String input) {
+    private void handleEnterMenu(String input) {
         String menuName = MenuCommand.ENTER_MENU.getGroup(input, "menuName");
         Menu menu = Menu.getMenu(menuName);
 

@@ -1,6 +1,8 @@
 package model.enums;
 
-public enum     RegisterMenuCommand implements Command {
+public enum RegisterMenuCommand implements Command {
+    REGISTER(""),
+    PICK_QUESTION(""),
     ; // TODO
 
     private final String regex;

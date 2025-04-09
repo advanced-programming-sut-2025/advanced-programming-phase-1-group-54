@@ -1,6 +1,7 @@
 package model.enums;
 
 public enum MainMenuCommand implements Command {
+    LOGOUT(""),
     ; // TODO
 
     private final String regex;

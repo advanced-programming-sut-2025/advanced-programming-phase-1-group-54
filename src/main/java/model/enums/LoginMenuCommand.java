@@ -1,6 +1,9 @@
 package model.enums;
 
 public enum LoginMenuCommand implements Command {
+    LOGIN(""),
+    FORGET_PASSWORD(""),
+    ANSWER(""),
     ; // TODO
 
     private final String regex;
