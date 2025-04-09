@@ -7,9 +7,18 @@ package model;
 import model.enums.Weather;
 
 public class World {
-    private int numberOfRows;
-    private int numberOfColumns;
-    private Tile[][] tiles = new Tile[numberOfRows][numberOfColumns];
+    private final static int NUMBER_OF_ROWS = 400;
+    private final static int NUMBER_OF_COLUMNS = 400;
+
+    private final Tile[][] tiles = new Tile[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
 
     private Weather currentWeather;
+
+    public Weather currentWeather() {
+        return currentWeather;
+    }
+
+    public void setCurrentWeather(Weather currentWeather) {
+        this.currentWeather = currentWeather;
+    }
 }
