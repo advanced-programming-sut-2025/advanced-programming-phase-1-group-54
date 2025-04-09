@@ -1,6 +1,6 @@
 package controller;
 
-import model.Location;
+import model.map.Location;
 import model.Result;
 
 public class CheatController {

@@ -1,6 +1,7 @@
 package model;
 
-import model.enums.Weather;
+import model.alive.Player;
+import model.map.World;
 
 public class Game {
     private final int numberOfPlayer;
@@ -9,17 +10,11 @@ public class Game {
     private User mainPlayer;
     private DateTime dateTime;
 
-    private Weather tomorrowWeather;
-
     public Game(World worldMap, int numberOfPlayer, Player[] players, User mainPlayer) {
         this.worldMap = worldMap;
         this.numberOfPlayer = numberOfPlayer;
         this.players = players;
         this.mainPlayer = mainPlayer;
-    }
-
-    public void thunder() {
-
     }
 
     public int getNumberOfPlayer() {
@@ -44,6 +39,12 @@ public class Game {
 
     public DateTime getDateTime() {
         return dateTime;
+    }
+
+    public void thunder() {}
+
+    public void newDay() {
+
     }
 
 }
