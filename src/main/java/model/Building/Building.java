@@ -1,4 +1,6 @@
 package model.Building;
 
-public class Building {
+import model.Placeable;
+
+public abstract class Building implements Placeable {
 }

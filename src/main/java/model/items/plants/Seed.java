@@ -1,5 +1,7 @@
 package model.items.plants;
 
-public class Seed {
+import model.items.Item;
+
+public class Seed extends Item {
 
 }

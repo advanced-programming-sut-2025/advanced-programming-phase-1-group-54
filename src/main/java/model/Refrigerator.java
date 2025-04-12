@@ -1,4 +1,4 @@
 package model;
 
-public class Refrigerator {
+public class Refrigerator implements Placeable {
 }

@@ -1,4 +1,4 @@
 package model.items;
 
-public class Fish {
+public class Fish extends Item {
 }

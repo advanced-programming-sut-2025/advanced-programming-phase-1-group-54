@@ -18,18 +18,17 @@ public class BackPack extends Tool {
         }
     }
 
-    public Result removeItem(Item item, Integer number) {
+    public void removeItem(Item item, Integer number) {
         if (itemsInBackPack.contains(item)) {
             if (number == null) {
                 itemsInBackPack.remove(item);
-                //TODo
-                return new Result(true, "Item removed from backpack");
+                //TODO
             } else {
 
             }
 
         } else {
-            return new Result(false, "Item not in backpack");
+
         }
     }
 

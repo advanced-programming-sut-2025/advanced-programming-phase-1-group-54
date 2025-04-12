@@ -6,7 +6,7 @@ package model.map;
 
 import model.enums.Weather;
 
-public class World {
+public class World extends Map {
     private final static int NUMBER_OF_ROWS = 400;
     private final static int NUMBER_OF_COLUMNS = 400;
 

@@ -1,10 +1,11 @@
 package model.alive;
 
+import model.enums.AnimalProduce;
 import model.map.Location;
 import model.Result;
 import model.enums.AnimalType;
 
-public class Animal {
+public class Animal extends Character {
     protected String name;
 
     protected Player owner;
@@ -73,9 +74,7 @@ public class Animal {
 
     }
 
-    public Result getProduce() {
-
-//        produces = null;
-        return new Result(false,"");
+    public AnimalProduce getProduce() {
+        return null;
     }
 }

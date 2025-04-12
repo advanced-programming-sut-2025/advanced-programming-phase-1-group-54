@@ -1,4 +1,7 @@
 package model.map;
 
-public class Map {
+public abstract class Map {
+    private int numberOfRows;
+    private int numberOfColumns;
+    private Tile[][] tiles;
 }

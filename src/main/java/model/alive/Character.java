@@ -1,5 +1,7 @@
 package model.alive;
 
-public class Character {
+import model.Placeable;
+
+public class Character implements Placeable {
     private String name;
 }

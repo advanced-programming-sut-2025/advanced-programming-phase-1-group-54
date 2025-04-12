@@ -1,4 +1,6 @@
 package model.items;
 
-public class Artisan {
+import model.Placeable;
+
+public class Artisan extends Item implements Placeable {
 }

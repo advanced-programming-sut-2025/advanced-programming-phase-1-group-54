@@ -1,4 +1,6 @@
 package model.items.plants.foraging;
 
-public class ForagingTree {
+import model.items.Item;
+
+public class ForagingTree extends Item {
 }

@@ -1,6 +1,9 @@
 package model.items.plants;
 
-public abstract class Plant {
+import model.Placeable;
+import model.items.Item;
+
+public abstract class Plant extends Item implements Placeable {
 
     private String name;
     private Seed source;
