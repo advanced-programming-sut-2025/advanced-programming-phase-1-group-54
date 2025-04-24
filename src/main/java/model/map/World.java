@@ -6,9 +6,9 @@ package model.map;
 
 import model.enums.Weather;
 
-public class World extends Map {
-    private final static int NUMBER_OF_ROWS = 400;
-    private final static int NUMBER_OF_COLUMNS = 400;
+public class World implements Map {
+    private static final int NUMBER_OF_ROWS = 100;
+    private static final int NUMBER_OF_COLUMNS = 100;
 
     private final Tile[][] tiles = new Tile[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
 
@@ -20,5 +20,10 @@ public class World extends Map {
 
     public void setCurrentWeather(Weather currentWeather) {
         this.currentWeather = currentWeather;
+    }
+
+    @Override
+    public Tile getTileAt(Location location) {
+        return tiles[location.row()][location.column()];
     }
 }
