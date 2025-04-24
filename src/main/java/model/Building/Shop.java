@@ -4,6 +4,6 @@ import model.items.Item;
 
 import java.util.HashMap;
 
-public class Shop {
+public class Shop extends Building {
     HashMap<Item, Integer> itemPriceMap;
 }

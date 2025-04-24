@@ -1,13 +1,17 @@
 package view;
 
 import controller.MainMenuController;
-import model.enums.MainMenuCommand;
+import model.Result;
+import model.enums.commands.MainMenuCommand;
 import model.enums.Menu;
 
 import java.util.Scanner;
 
 public class MainMenu implements AppMenu {
-    private final MainMenuController controller = new MainMenuController();
+    @Override
+    public void showCurrentMenu() {
+        System.out.println("Main menu");
+    }
 
     @Override
     public void run(Scanner scanner) {
@@ -24,7 +28,9 @@ public class MainMenu implements AppMenu {
     }
 
     private void handleLogout(String input) {
-        // TODO
-        goToMenu(Menu.LOGIN);
+        Result result = MainMenuController.logout();
+        showResult(result);
+        if (result.success())
+            goToMenu(Menu.LOGIN);
     }
 }

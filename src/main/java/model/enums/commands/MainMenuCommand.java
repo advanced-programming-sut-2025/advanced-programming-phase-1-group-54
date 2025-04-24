@@ -1,8 +1,8 @@
-package model.enums;
+package model.enums.commands;
 
 public enum MainMenuCommand implements Command {
-    LOGOUT(""),
-    ; // TODO
+    LOGOUT("user logout"),
+    ;
 
     private final String regex;
 

@@ -4,37 +4,21 @@ import model.alive.Player;
 import model.map.World;
 
 public class Game {
-    private final int numberOfPlayer;
-    private final World worldMap;
+    private final World world;
     private final Player[] players;
-    private User mainPlayer;
     private DateTime dateTime;
 
-    public Game(World worldMap, int numberOfPlayer, Player[] players, User mainPlayer) {
-        this.worldMap = worldMap;
-        this.numberOfPlayer = numberOfPlayer;
+    public Game(World world, Player[] players) {
+        this.world = world;
         this.players = players;
-        this.mainPlayer = mainPlayer;
     }
 
-    public int getNumberOfPlayer() {
-        return numberOfPlayer;
-    }
-
-    public World getWorldMap() {
-        return worldMap;
+    public World getWorld() {
+        return world;
     }
 
     public Player[] getPlayers() {
         return players;
-    }
-
-    public User getMainPlayer() {
-        return mainPlayer;
-    }
-
-    public void setMainPlayer(User mainPlayer) {
-        this.mainPlayer = mainPlayer;
     }
 
     public DateTime getDateTime() {

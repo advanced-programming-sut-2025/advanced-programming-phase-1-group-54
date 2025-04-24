@@ -1,4 +1,4 @@
-package model.enums;
+package model.enums.commands;
 
 public enum CheatCode implements Command {
     ; // TODO
