@@ -6,23 +6,34 @@ import model.items.Item;
 
 public abstract class Plant extends Item implements Placeable {
 
-    protected String name;
-    protected String source;
-    protected String fruit;
+    protected final String name;
+    protected final String source;
+    protected final String fruit;
 
-    protected int[] stages;
-    protected int maxStages;
+    protected final int[] stages;
+    protected final int maxStages;
     protected int currentStage;
     protected int daysInCurrentStage;
     protected int totalHarvestTime;
 
-    protected int regrowthTime;
-    protected Season[] seasons;
+    protected final int regrowthTime;
+    protected final Season[] seasons;
 
     protected boolean fruitIsRipen;
     protected boolean fertilized;
     protected boolean watered;
     protected int numberOfDaysWithoutWater;
+
+    public Plant(String name, String source, String fruit, int[] stages,
+                  int regrowthTime, Season[] seasons) {
+        this.name = name;
+        this.source = source;
+        this.fruit = fruit;
+        this.stages = stages;
+        this.maxStages = stages.length;
+        this.regrowthTime = regrowthTime;
+        this.seasons = seasons;
+    }
 
     public String getName() {
         return name;
@@ -80,25 +91,9 @@ public abstract class Plant extends Item implements Placeable {
         return numberOfDaysWithoutWater;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    public void setFruit(String fruit) {
-        this.fruit = fruit;
-    }
-
-    public void setStages(int[] stages) {
-        this.stages = stages;
-    }
-
-    public void setMaxStages(int maxStages) {
-        this.maxStages = maxStages;
-    }
+//    public void setMaxStages(int maxStages) {
+//        this.maxStages = maxStages;
+//    }
 
     public void setCurrentStage(int currentStage) {
         this.currentStage = currentStage;
@@ -110,14 +105,6 @@ public abstract class Plant extends Item implements Placeable {
 
     public void setTotalHarvestTime(int totalHarvestTime) {
         this.totalHarvestTime = totalHarvestTime;
-    }
-
-    public void setRegrowthTime(int regrowthTime) {
-        this.regrowthTime = regrowthTime;
-    }
-
-    public void setSeasons(Season[] seasons) {
-        this.seasons = seasons;
     }
 
     public void setFruitIsRipen(boolean fruitIsRipen) {
