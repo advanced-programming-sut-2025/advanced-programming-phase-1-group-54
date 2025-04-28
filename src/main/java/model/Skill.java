@@ -9,7 +9,7 @@ public class Skill {
 
     public void addXP(int amount) {
         this.xp += amount;
-        if (this.xp != 4 && this.xp > 100 * level + 50) {
+        while (this.level != 4 && this.xp > 100 * level + 50) {
             this.level++;
         }
     }

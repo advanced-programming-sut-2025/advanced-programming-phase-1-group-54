@@ -1,10 +1,10 @@
-package model.enums;
+package model.enums.commands;
 
 public enum GameMenuCommand implements Command {
-    NEW_GAME(""),
-    LOAD_GAME(""),
-    CHOOSE_MAP(""),
-    ; // TODO
+    NEW_GAME("game new -u (?<usernames>.+)"),
+    LOAD_GAME("load game"),
+    CHOOSE_MAP("game map (?<number>[-+]?\\d+)"),
+    ;
 
     private final String regex;
 

@@ -9,5 +9,6 @@ public class PlayerRelationship extends Friendship {
     Player player2;
 
     ArrayList<Talk> talkHistory;
+    ArrayList<Gift> giftHistory;
 
 }

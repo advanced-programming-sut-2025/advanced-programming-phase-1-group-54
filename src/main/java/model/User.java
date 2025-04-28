@@ -1,6 +1,10 @@
 package model;
 
+import com.google.gson.Gson;
 import model.enums.Gender;
+
+import java.io.*;
+import java.util.ArrayList;
 
 public class User {
     private String username;
@@ -11,14 +15,30 @@ public class User {
     private long maximumScore;
     private long numberOfPlayedGames;
 
-    public User(String username, String password, String nickname, String email, Gender gender) {
+    private final int securityQuestionNumber;
+    private final String answerHash;
+
+    public static String[] getSecurityQuestions() {
+        try (InputStream inputStream = User.class.getClassLoader().getResourceAsStream("securityQuestions.json");
+             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            Gson gson = new Gson();
+            return gson.fromJson(reader.readLine(), String[].class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public User(String username, String passwordHash, String nickname, String email,
+                Gender gender, int securityQuestionNumber, String answerHash) {
         this.username = username;
-        this.passwordHash = App.SHA256(password);
+        this.passwordHash = passwordHash;
         this.nickname = nickname;
         this.email = email;
         this.gender = gender;
         this.maximumScore = 0;
         this.numberOfPlayedGames = 0;
+        this.securityQuestionNumber = securityQuestionNumber;
+        this.answerHash = answerHash;
     }
 
     public String getUsername() {
@@ -33,8 +53,8 @@ public class User {
         return passwordHash;
     }
 
-    public void setPassword(String password) {
-        this.passwordHash = App.SHA256(password);
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public String getNickname() {
@@ -71,5 +91,13 @@ public class User {
 
     public void increaseNumberOfPlayedGames() {
         this.numberOfPlayedGames++;
+    }
+
+    public String getSecurityQuestion() {
+        return User.getSecurityQuestions()[securityQuestionNumber - 1];
+    }
+
+    public String getAnswerHash() {
+        return answerHash;
     }
 }

@@ -5,289 +5,289 @@ import model.Result;
 import model.enums.Direction;
 
 public class GameController {
-    public Result exitGame() {
+    public static Result exitGame() {
         return null;
     }
 
-    public Result deleteGame(){
+    public static Result deleteGame() {
         return null;
     }
 
     // TODO add functions for "force terminate"
 
-    public void nextTurn() {
+    public static void nextTurn() {
     }
 
-    public Result showTime() {
+    public static Result showTime() {
         return null;
     }
 
-    public Result showDate() {
+    public static Result showDate() {
         return null;
     }
 
-    public Result showDateTime() {
+    public static Result showDateTime() {
         return null;
     }
 
-    public Result showDayOfWeek() {
+    public static Result showDayOfWeek() {
         return null;
     }
 
-    public Result showSeason() {
+    public static Result showSeason() {
         return null;
     }
 
-    public Result showWeather() {
+    public static Result showWeather() {
         return null;
     }
 
-    public Result showWeatherForecast() {
+    public static Result showWeatherForecast() {
         return null;
     }
 
-    public Result buildGreenhouse() {
+    public static Result buildGreenhouse() {
         return null;
     }
 
-    public Result walk(Location location) {
+    public static Result walk(Location location) {
         return null;
     }
 
-    public Result printMap(Location location, int size) {
+    public static Result printMap(Location location, int size) {
         return null;
     }
 
-    public Result showEnergy() {
+    public static Result showEnergy() {
         return null;
     }
 
-    public Result showInventory() {
+    public static Result showInventory() {
         return null;
     }
 
-    public Result throwInTrash(String itemName, int number) {
+    public static Result throwInTrash(String itemName, int number) {
         return null;
     }
 
-    public Result showTrash() {
+    public static Result showTrash() {
         return null;
     }
 
-    public Result equipTool(String toolName) {
+    public static Result equipTool(String toolName) {
         return null;
     }
 
-    public Result upgradeTool(String toolName) {
+    public static Result upgradeTool(String toolName) {
         return null;
     }
 
-    public Result useTool(Direction direction) {
+    public static Result useTool(Direction direction) {
         return null;
     }
 
-    public Result plant(String seedName, Direction direction) {
+    public static Result plant(String seedName, Direction direction) {
         return null;
     }
 
-    public Result showPlant(Location location) {
+    public static Result showPlant(Location location) {
         return null;
     }
 
-    public Result fertilize(String fertilizerName, Direction direction) {
+    public static Result fertilize(String fertilizerName, Direction direction) {
         return null;
     }
 
-    public Result howMuchWater() {
+    public static Result howMuchWater() {
         return null;
     }
 
-    public Result showRecipesForCrafting() {
+    public static Result showRecipesForCrafting() {
         return null;
     }
 
-    public Result craft(String itemName) {
+    public static Result craft(String itemName) {
         return null;
     }
 
-    public Result placeItem(String itemName, Direction direction) {
+    public static Result placeItem(String itemName, Direction direction) {
         return null;
     }
 
-    public Result putInRefrigerator(String itemName) {
+    public static Result putInRefrigerator(String itemName) {
         return null;
     }
 
-    public Result pickInRefrigerator(String itemName) {
+    public static Result pickInRefrigerator(String itemName) {
         return null;
     }
 
-    public Result showRecipesForCooking() {
+    public static Result showRecipesForCooking() {
         return null;
     }
 
-    public Result cookingPrepare(String recipeName) {
+    public static Result cookingPrepare(String recipeName) {
         return null;
     }
 
-    public Result eatFood(String foodName) {
+    public static Result eatFood(String foodName) {
         return null;
     }
 
-    public Result eatFood(String foodName, int amount) {
+    public static Result eatFood(String foodName, int amount) {
         return null;
     }
 
-    public Result buildBuilding(String buildingName, Location location) {
+    public static Result buildBuilding(String buildingName, Location location) {
         return null;
     }
 
-    public Result buyAnimal(String animalType, String animalName) {
+    public static Result buyAnimal(String animalType, String animalName) {
         return null;
     }
 
-    public Result petAnimal(String animalName) {
+    public static Result petAnimal(String animalName) {
         return null;
     }
 
-    public Result showAnimals() {
+    public static Result showAnimals() {
         return null;
     }
 
-    public Result shepherdAnimals(String animalName, Location location) {
+    public static Result shepherdAnimals(String animalName, Location location) {
         return null;
     }
 
-    public Result feedHay(String animalName) {
+    public static Result feedHay(String animalName) {
         return null;
     }
 
-    public Result showProduces(String animalName) {
+    public static Result showProduces(String animalName) {
         return null;
     }
 
-    public Result collectProduce() {
+    public static Result collectProduce() {
         return null;
     }
 
-    public Result sellAnimal(String animalName) {
+    public static Result sellAnimal(String animalName) {
         return null;
     }
 
-    public Result startFishing(String finishingPoleName) {
+    public static Result startFishing(String finishingPoleName) {
         return null;
     }
 
-    public Result useArtisan(String artisanName, String itemName) {
+    public static Result useArtisan(String artisanName, String itemName) {
         return null;
     }
 
-    public Result getArtisan(String artisanName) {
+    public static Result getArtisan(String artisanName) {
         return null;
     }
 
-    public Result showAllShopProducts() {
+    public static Result showAllShopProducts() {
         return null;
     }
 
-    public Result showAllAvailableShopProducts() {
+    public static Result showAllAvailableShopProducts() {
         return null;
     }
 
-    public Result purchaseProduct(String productName, int count) {
+    public static Result purchaseProduct(String productName, int count) {
         return null;
     }
 
-    public Result sellProduct(String productName, int count) {
+    public static Result sellProduct(String productName, int count) {
         return null;
     }
 
-    public Result showFriendshipsWithPlayers() {
+    public static Result showFriendshipsWithPlayers() {
         return null;
     }
 
-    public Result talkToPlayer(String username) {
+    public static Result talkToPlayer(String username) {
         return null;
     }
 
-    public Result showTalkHistory(String username) {
+    public static Result showTalkHistory(String username) {
         return null;
     }
 
-    public Result giveGiftToPlayer(String username, String itemName, int amount) {
+    public static Result giveGiftToPlayer(String username, String itemName, int amount) {
         return null;
     }
 
-    public Result showGiftList() {
+    public static Result showGiftList() {
         return null;
     }
 
-    public Result rateGift(int giftNumber, int rate) {
+    public static Result rateGift(int giftNumber, int rate) {
         return null;
     }
 
-    public Result showGiftHistory(String username) {
+    public static Result showGiftHistory(String username) {
         return null;
     }
 
-    public Result hugPlayer(String username) {
+    public static Result hugPlayer(String username) {
         return null;
     }
 
-    public Result buyFlower(String username) {
+    public static Result buyFlower(String username) {
         return null;
     }
 
-    public Result askForMarriage(String username, String ringName) {
+    public static Result askForMarriage(String username, String ringName) {
         return null;
     }
 
-    public Result acceptMarriage(String username) {
+    public static Result acceptMarriage(String username) {
         return null;
     }
 
-    public Result rejectMarriage(String username) {
+    public static Result rejectMarriage(String username) {
         return null;
     }
 
-    public Result addTrade(String username, String tradeType, String itemName, int amount,
-                           int price, String targetItemName, int targetItemAmount) {
+    public static Result addTrade(String username, String tradeType, String itemName, int amount,
+                                  int price, String targetItemName, int targetItemAmount) {
         return null;
     }
 
-    public Result showTradeList() {
+    public static Result showTradeList() {
         return null;
     }
 
-    public Result acceptTrade(int tradeId) {
+    public static Result acceptTrade(int tradeId) {
         return null;
     }
 
-    public Result rejectTrade(int tradeId) {
+    public static Result rejectTrade(int tradeId) {
         return null;
     }
 
-    public Result showTradeHistory() {
+    public static Result showTradeHistory() {
         return null;
     }
 
-    public Result meetNPC(String npcName) {
+    public static Result meetNPC(String npcName) {
         return null;
     }
 
-    public Result giveGiftToNPC(String npcName) {
+    public static Result giveGiftToNPC(String npcName) {
         return null;
     }
 
-    public Result showFriendshipsWithNPCs() {
+    public static Result showFriendshipsWithNPCs() {
         return null;
     }
 
-    public Result showQuestsList() {
+    public static Result showQuestsList() {
         return null;
     }
 
-    public Result finishQuest(int questIndex) {
+    public static Result finishQuest(int questIndex) {
         return null;
     }
 }

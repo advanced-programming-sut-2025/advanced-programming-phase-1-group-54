@@ -1,9 +1,7 @@
-package model.enums;
-
-import model.enums.Command;
+package model.enums.commands;
 
 public enum MenuCommand implements Command {
-    ENTER_MENU("menu enter (?<menuName>.*)"),
+    ENTER_MENU("menu enter (?<menuName>\\S+)"),
     EXIT_MENU("menu exit"),
     SHOW_CURRENT_MENU("show current menu");
 

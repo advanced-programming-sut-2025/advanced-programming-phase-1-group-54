@@ -1,13 +1,11 @@
-package model.enums;
+package model.enums.commands;
 
-public enum RegisterMenuCommand implements Command {
-    REGISTER(""),
-    PICK_QUESTION(""),
+public enum GameCommand implements Command {
     ; // TODO
 
     private final String regex;
 
-    RegisterMenuCommand(String regex) {
+    GameCommand(String regex) {
         this.regex = regex;
     }
 
