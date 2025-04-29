@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="plants read from json by gson">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="read Trees from Json">
+      <change afterPath="$PROJECT_DIR$/tes.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Season.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Season.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trees.json" beforeDir="false" afterPath="$PROJECT_DIR$/tes.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +85,7 @@
       <updated>1745846392691</updated>
       <workItem from="1745846394023" duration="870000" />
       <workItem from="1745847292493" duration="8076000" />
-      <workItem from="1745908869194" duration="1699000" />
+      <workItem from="1745908869194" duration="5673000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
       <option name="closed" value="true" />
@@ -114,7 +111,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745873765397</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="read Trees from Json">
+      <option name="closed" value="true" />
+      <created>1745910643877</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1745910643877</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,6 +129,7 @@
     <MESSAGE value="maven dorost kardam" />
     <MESSAGE value="edit plants package" />
     <MESSAGE value="plants read from json by gson" />
-    <option name="LAST_COMMIT_MESSAGE" value="plants read from json by gson" />
+    <MESSAGE value="read Trees from Json" />
+    <option name="LAST_COMMIT_MESSAGE" value="read Trees from Json" />
   </component>
 </project>
