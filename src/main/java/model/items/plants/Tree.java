@@ -13,6 +13,8 @@ import java.util.HashMap;
 
 public class Tree extends Plant {
 
+    boolean isBurned;
+
     public Tree(String name, String source, String fruit, int[] stages, int totalHarvestTime,
                 int regrowthTime, Season[] seasons) {
         super(name, source, fruit, stages, totalHarvestTime, regrowthTime, seasons);

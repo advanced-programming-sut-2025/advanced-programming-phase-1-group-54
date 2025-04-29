@@ -1,0 +1,70 @@
+{
+  "Gold": {
+    "name": "Gold",
+    "sellPrice": 25
+  },
+  "Diamond": {
+    "name": "Diamond",
+    "sellPrice": 750
+  },
+  "Iron": {
+    "name": "Iron",
+    "sellPrice": 10
+  },
+  "Quartz": {
+    "name": "Quartz",
+    "sellPrice": 25
+  },
+  "Amethyst": {
+    "name": "Amethyst",
+    "sellPrice": 100
+  },
+  "Frozen Tear": {
+    "name": "Frozen Tear",
+    "sellPrice": 75
+  },
+  "Fire Quartz": {
+    "name": "Fire Quartz",
+    "sellPrice": 100
+  },
+  "Aquamarine": {
+    "name": "Aquamarine",
+    "sellPrice": 180
+  },
+  "Iriduim": {
+    "name": "Iriduim",
+    "sellPrice": 100
+  },
+  "Emerald": {
+    "name": "Emerald",
+    "sellPrice": 250
+  },
+  "Coal": {
+    "name": "Coal",
+    "sellPrice": 15
+  },
+  "Earth Crystal": {
+    "name": "Earth Crystal",
+    "sellPrice": 50
+  },
+  "Jade": {
+    "name": "Jade",
+    "sellPrice": 200
+  },
+  "Prismatic Shard": {
+    "name": "Prismatic Shard",
+    "sellPrice": 2000
+  },
+  "Copper": {
+    "name": "Copper",
+    "sellPrice": 5
+  },
+  "Ruby": {
+    "name": "Ruby",
+    "sellPrice": 250
+  },
+  "Topaz": {
+    "name": "Topaz",
+    "sellPrice": 80
+  }
+}

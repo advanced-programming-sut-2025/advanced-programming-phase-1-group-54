@@ -42,4 +42,14 @@ public class Seed extends Item {
         return plant;
     }
 
+    public static void writeToJson(){
+        HashMap<String ,Seed> seedTypes = new HashMap<String,Seed>();
+
+        Seed seed;
+
+        seed = new Seed("","");
+        seedTypes.put("",seed);
+
+    }
+
 }
