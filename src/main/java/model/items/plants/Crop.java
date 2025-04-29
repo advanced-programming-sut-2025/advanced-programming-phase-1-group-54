@@ -47,7 +47,7 @@ public class Crop extends Plant {
     }
 
     public static void writeToJson(){
-        HashMap<String ,Crop> cropsType = new HashMap<String,Crop>();
+        HashMap<String ,Crop> cropTypes = new HashMap<String,Crop>();
 
         Crop crop;
 
@@ -62,7 +62,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Blue Jazz Crop", crop);
+        cropTypes.put("Blue Jazz Crop", crop);
 
         crop = new Crop(
                 "Carrot Crop",
@@ -75,7 +75,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Carrot Crop", crop);
+        cropTypes.put("Carrot Crop", crop);
 
         crop = new Crop(
                 "Cauliflower Crop",
@@ -88,7 +88,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Cauliflower Crop", crop);
+        cropTypes.put("Cauliflower Crop", crop);
 
         crop = new Crop(
                 "Coffee Bean Crop",
@@ -101,7 +101,7 @@ public class Crop extends Plant {
                 false,
                 false
         );
-        cropsType.put("Coffee Bean Crop", crop);
+        cropTypes.put("Coffee Bean Crop", crop);
 
         crop = new Crop(
                 "Garlic Crop",
@@ -114,7 +114,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Garlic Crop", crop);
+        cropTypes.put("Garlic Crop", crop);
 
         crop = new Crop(
                 "Green Bean Crop",
@@ -127,7 +127,7 @@ public class Crop extends Plant {
                 false,
                 true
         );
-        cropsType.put("Green Bean Crop", crop);
+        cropTypes.put("Green Bean Crop", crop);
 
         crop = new Crop(
                 "Kale Crop",
@@ -140,7 +140,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Kale Crop", crop);
+        cropTypes.put("Kale Crop", crop);
 
         crop = new Crop(
                 "Parsnip Crop",
@@ -153,7 +153,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Parsnip Crop", crop);
+        cropTypes.put("Parsnip Crop", crop);
 
         crop = new Crop(
                 "Potato Crop",
@@ -166,7 +166,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Potato Crop", crop);
+        cropTypes.put("Potato Crop", crop);
 
         crop = new Crop(
                 "Rhubarb Crop",
@@ -179,7 +179,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Rhubarb Crop", crop);
+        cropTypes.put("Rhubarb Crop", crop);
 
         crop = new Crop(
                 "Strawberry Crop",
@@ -192,7 +192,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Strawberry Crop", crop);
+        cropTypes.put("Strawberry Crop", crop);
 
         crop = new Crop(
                 "Tulip Crop",
@@ -205,7 +205,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Tulip Crop", crop);
+        cropTypes.put("Tulip Crop", crop);
 
         crop = new Crop(
                 "Unmilled Rice Crop",
@@ -218,7 +218,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Unmilled Rice Crop", crop);
+        cropTypes.put("Unmilled Rice Crop", crop);
 
         crop = new Crop(
                 "Blueberry Crop",
@@ -231,7 +231,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Blueberry Crop", crop);
+        cropTypes.put("Blueberry Crop", crop);
 
         crop = new Crop(
                 "Corn Crop",
@@ -244,7 +244,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Corn Crop", crop);
+        cropTypes.put("Corn Crop", crop);
 
         crop = new Crop(
                 "Hops Crop",
@@ -257,7 +257,7 @@ public class Crop extends Plant {
                 false,
                 true
         );
-        cropsType.put("Hops Crop", crop);
+        cropTypes.put("Hops Crop", crop);
 
         crop = new Crop(
                 "Hot Pepper Crop",
@@ -270,7 +270,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Hot Pepper Crop", crop);
+        cropTypes.put("Hot Pepper Crop", crop);
 
         crop = new Crop(
                 "Melon Crop",
@@ -283,7 +283,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Melon Crop", crop);
+        cropTypes.put("Melon Crop", crop);
 
         crop = new Crop(
                 "Poppy Crop",
@@ -296,7 +296,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Poppy Crop", crop);
+        cropTypes.put("Poppy Crop", crop);
 
         crop = new Crop(
                 "Radish Crop",
@@ -309,7 +309,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Radish Crop", crop);
+        cropTypes.put("Radish Crop", crop);
 
         crop = new Crop(
                 "Red Cabbage Crop",
@@ -322,7 +322,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Red Cabbage Crop", crop);
+        cropTypes.put("Red Cabbage Crop", crop);
 
         crop = new Crop(
                 "Starfruit Crop",
@@ -335,7 +335,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Starfruit Crop", crop);
+        cropTypes.put("Starfruit Crop", crop);
 
         crop = new Crop(
                 "Spangle Crop",
@@ -348,7 +348,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Spangle Crop", crop);
+        cropTypes.put("Spangle Crop", crop);
 
         crop = new Crop(
                 "Summer Squash Crop",
@@ -361,7 +361,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Summer Squash Crop", crop);
+        cropTypes.put("Summer Squash Crop", crop);
 
         crop = new Crop(
                 "Sunflower Crop",
@@ -374,7 +374,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Sunflower Crop", crop);
+        cropTypes.put("Sunflower Crop", crop);
 
         crop = new Crop(
                 "Tomato Crop",
@@ -387,7 +387,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Tomato Crop", crop);
+        cropTypes.put("Tomato Crop", crop);
 
         crop = new Crop(
                 "Wheat Crop",
@@ -400,7 +400,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Wheat Crop", crop);
+        cropTypes.put("Wheat Crop", crop);
 
         crop = new Crop(
                 "Amaranth Crop",
@@ -413,7 +413,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Amaranth Crop", crop);
+        cropTypes.put("Amaranth Crop", crop);
 
         crop = new Crop(
                 "Artichoke Crop",
@@ -426,7 +426,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Artichoke Crop", crop);
+        cropTypes.put("Artichoke Crop", crop);
 
         crop = new Crop(
                 "Beet Crop",
@@ -439,7 +439,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Beet Crop", crop);
+        cropTypes.put("Beet Crop", crop);
 
         crop = new Crop(
                 "Bok Choy Crop",
@@ -452,7 +452,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Bok Choy Crop", crop);
+        cropTypes.put("Bok Choy Crop", crop);
 
         crop = new Crop(
                 "Broccoli Crop",
@@ -465,7 +465,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Broccoli Crop", crop);
+        cropTypes.put("Broccoli Crop", crop);
 
         crop = new Crop(
                 "Cranberries Crop",
@@ -478,7 +478,7 @@ public class Crop extends Plant {
                 false,
                 false
         );
-        cropsType.put("Cranberries Crop", crop);
+        cropTypes.put("Cranberries Crop", crop);
 
         crop = new Crop(
                 "Eggplant Crop",
@@ -491,7 +491,7 @@ public class Crop extends Plant {
                 false,
                 false
         );
-        cropsType.put("Eggplant Crop", crop);
+        cropTypes.put("Eggplant Crop", crop);
 
         crop = new Crop(
                 "Fairy Rose Crop",
@@ -504,7 +504,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Fairy Rose Crop", crop);
+        cropTypes.put("Fairy Rose Crop", crop);
 
         crop = new Crop(
                 "Grape Crop",
@@ -517,7 +517,7 @@ public class Crop extends Plant {
                 false,
                 true
         );
-        cropsType.put("Grape Crop", crop);
+        cropTypes.put("Grape Crop", crop);
 
         crop = new Crop(
                 "Pumpkin Crop",
@@ -530,7 +530,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Pumpkin Crop", crop);
+        cropTypes.put("Pumpkin Crop", crop);
 
         crop = new Crop(
                 "Yam Crop",
@@ -543,7 +543,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Yam Crop", crop);
+        cropTypes.put("Yam Crop", crop);
 
         crop = new Crop(
                 "Sweet Gem Crop",
@@ -556,7 +556,7 @@ public class Crop extends Plant {
                 true,
                 false
         );
-        cropsType.put("Sweet Gem Crop", crop);
+        cropTypes.put("Sweet Gem Crop", crop);
 
         crop = new Crop(
                 "Powdermelon Crop",
@@ -569,7 +569,7 @@ public class Crop extends Plant {
                 true,
                 true
         );
-        cropsType.put("Powdermelon Crop", crop);
+        cropTypes.put("Powdermelon Crop", crop);
 
         crop = new Crop(
                 "Ancient Fruit Crop",
@@ -582,12 +582,12 @@ public class Crop extends Plant {
                 false,
                 true
         );
-        cropsType.put("Ancient Fruit Crop", crop);
+        cropTypes.put("Ancient Fruit Crop", crop);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter file = new FileWriter("crops.json")){
-            gson.toJson(cropsType, file);
+            gson.toJson(cropTypes, file);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

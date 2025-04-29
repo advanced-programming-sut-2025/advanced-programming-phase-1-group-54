@@ -1,10 +1,13 @@
 package model.items.plants;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
@@ -51,5 +54,190 @@ public class Fruit {
 
     public int getEnergy() {
         return energy;
+    }
+
+    public static void writeToJson() {
+
+        HashMap<String,Fruit> fruitTypes = new HashMap<String,Fruit>();
+
+        Fruit fruit;
+
+        // Tree fruits
+
+        fruit = new Fruit("Apricot", 59, true, 38);
+        fruitTypes.put("Apricot", fruit);
+
+        fruit = new Fruit("Cherry", 80, true, 38);
+        fruitTypes.put("Cherry", fruit);
+
+        fruit = new Fruit("Banana", 150, true, 75);
+        fruitTypes.put("Banana", fruit);
+
+        fruit = new Fruit("Mango", 130, true, 100);
+        fruitTypes.put("Mango", fruit);
+
+        fruit = new Fruit("Orange", 100, true, 38);
+        fruitTypes.put("Orange", fruit);
+
+        fruit = new Fruit("Peach", 140, true, 38);
+        fruitTypes.put("Peach", fruit);
+
+        fruit = new Fruit("Apple", 100, true, 38);
+        fruitTypes.put("Apple", fruit);
+
+        fruit = new Fruit("Pomegranate", 140, true, 38);
+        fruitTypes.put("Pomegranate", fruit);
+
+        fruit = new Fruit("Oak Resin ", 150, false, 0);
+        fruitTypes.put("Oak Resin ", fruit);
+
+        fruit = new Fruit("Maple Syrup", 200, false, 0);
+        fruitTypes.put("Maple Syrup", fruit);
+
+        fruit = new Fruit("Pine Tar", 100, false, 0);
+        fruitTypes.put("Pine Tar", fruit);
+
+        fruit = new Fruit("Sap", 2, true, -2);
+        fruitTypes.put("Sap", fruit);
+
+        fruit = new Fruit("Common Mushroom", 40, false, 38);
+        fruitTypes.put("Common Mushroom", fruit);
+
+        fruit = new Fruit("Mystic Syrup", 1000, false, 500);
+        fruitTypes.put("Mystic Syrup", fruit);
+
+        // Crop fruits
+
+        fruit = new Fruit("Blue Jazz", 50, true, 45);
+        fruitTypes.put("Blue Jazz", fruit);
+
+        fruit = new Fruit("Carrot", 35, true, 75);
+        fruitTypes.put("Carrot", fruit);
+
+        fruit = new Fruit("Cauliflower", 175, true, 75);
+        fruitTypes.put("Cauliflower", fruit);
+
+        fruit = new Fruit("Coffee Bean", 15, false, 0);
+        fruitTypes.put("Coffee Bean", fruit);
+
+        fruit = new Fruit("Garlic", 60, true, 20);
+        fruitTypes.put("Garlic", fruit);
+
+        fruit = new Fruit("Green Bean", 40, true, 25);
+        fruitTypes.put("Green Bean", fruit);
+
+        fruit = new Fruit("Kale", 110, true, 50);
+        fruitTypes.put("Kale", fruit);
+
+        fruit = new Fruit("Parsnip", 35, true, 25);
+        fruitTypes.put("Parsnip", fruit);
+
+        fruit = new Fruit("Potato", 80, true, 25);
+        fruitTypes.put("Potato", fruit);
+
+        fruit = new Fruit("Rhubarb", 220, false, 0);
+        fruitTypes.put("Rhubarb", fruit);
+
+        fruit = new Fruit("Strawberry", 120, true, 50);
+        fruitTypes.put("Strawberry", fruit);
+
+        fruit = new Fruit("Tulip", 30, true, 45);
+        fruitTypes.put("Tulip", fruit);
+
+        fruit = new Fruit("Unmilled Rice", 30, true, 3);
+        fruitTypes.put("Unmilled Rice", fruit);
+
+        fruit = new Fruit("Blueberry", 50, true, 25);
+        fruitTypes.put("Blueberry", fruit);
+
+        fruit = new Fruit("Corn", 50, true, 25);
+        fruitTypes.put("Corn", fruit);
+
+        fruit = new Fruit("Hops", 25, true, 45);
+        fruitTypes.put("Hops", fruit);
+
+        fruit = new Fruit("Hot Pepper", 40, true, 13);
+        fruitTypes.put("Hot Pepper", fruit);
+
+        fruit = new Fruit("Melon", 250, true, 113);
+        fruitTypes.put("Melon", fruit);
+
+        fruit = new Fruit("Poppy", 140, true, 45);
+        fruitTypes.put("Poppy", fruit);
+
+        fruit = new Fruit("Radish", 90, true, 45);
+        fruitTypes.put("Radish", fruit);
+
+        fruit = new Fruit("Red Cabbage", 260, true, 75);
+        fruitTypes.put("Red Cabbage", fruit);
+
+        fruit = new Fruit("Starfruit", 750, true, 125);
+        fruitTypes.put("Starfruit", fruit);
+
+        fruit = new Fruit("Summer Spangle", 90, true, 45);
+        fruitTypes.put("Summer Spangle", fruit);
+
+        fruit = new Fruit("Summer Squash", 45, true, 63);
+        fruitTypes.put("Summer Squash", fruit);
+
+        fruit = new Fruit("Sunflower", 80, true, 45);
+        fruitTypes.put("Sunflower", fruit);
+
+        fruit = new Fruit("Tomato", 60, true, 20);
+        fruitTypes.put("Tomato", fruit);
+
+        fruit = new Fruit("Wheat", 25, false, 0);
+        fruitTypes.put("Wheat", fruit);
+
+        fruit = new Fruit("Amaranth", 150, true, 50);
+        fruitTypes.put("Amaranth", fruit);
+
+        fruit = new Fruit("Artichoke", 160, true, 30);
+        fruitTypes.put("Artichoke", fruit);
+
+        fruit = new Fruit("Beet", 100, true, 30);
+        fruitTypes.put("Beet", fruit);
+
+        fruit = new Fruit("Bok Choy", 80, true, 25);
+        fruitTypes.put("Bok Choy", fruit);
+
+        fruit = new Fruit("Broccoli", 70, true, 63);
+        fruitTypes.put("Broccoli", fruit);
+
+        fruit = new Fruit("Cranberries", 75, true, 38);
+        fruitTypes.put("Cranberries", fruit);
+
+        fruit = new Fruit("Eggplant", 60, true, 20);
+        fruitTypes.put("Eggplant", fruit);
+
+        fruit = new Fruit("Fairy Rose", 290, true, 45);
+        fruitTypes.put("Fairy Rose", fruit);
+
+        fruit = new Fruit("Grape", 80, true, 38);
+        fruitTypes.put("Grape", fruit);
+
+        fruit = new Fruit("Pumpkin", 320, false, 0);
+        fruitTypes.put("Pumpkin", fruit);
+
+        fruit = new Fruit("Yam", 160, true, 45);
+        fruitTypes.put("Yam", fruit);
+
+        fruit = new Fruit("Sweet Gem Berry", 3000, false, 0);
+        fruitTypes.put("Sweet Gem Berry", fruit);
+
+        fruit = new Fruit("Powdermelon", 60, true, 63);
+        fruitTypes.put("Powdermelon", fruit);
+
+        fruit = new Fruit("Ancient Fruit", 550, false, 0);
+        fruitTypes.put("Ancient Fruit", fruit);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        try (FileWriter file = new FileWriter("fruits.json")){
+            gson.toJson(fruitTypes, file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
