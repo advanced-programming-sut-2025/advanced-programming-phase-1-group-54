@@ -1,0 +1,1022 @@
+{
+  "Blue Jazz Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Blue Jazz Crop",
+    "source": "Jazz Seeds",
+    "fruit": "Blue Jazz",
+    "stages": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 7,
+    "regrowthTime": 0,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Hot Pepper Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Hot Pepper Crop",
+    "source": "Pepper Seeds",
+    "fruit": "Hot Pepper",
+    "stages": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 5,
+    "regrowthTime": 3,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Spangle Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Spangle Crop",
+    "source": "Spangle Seeds",
+    "fruit": "Summer Spangle",
+    "stages": [
+      1,
+      2,
+      3
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 8,
+    "regrowthTime": 0,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Wheat Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Wheat Crop",
+    "source": "Wheat Seeds",
+    "fruit": "Wheat",
+    "stages": [
+      1,
+      1,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 4,
+    "regrowthTime": 0,
+    "seasons": [
+      "SUMMER",
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Yam Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Yam Crop",
+    "source": "Yam Seeds",
+    "fruit": "Yam",
+    "stages": [
+      1,
+      2,
+      3,
+      2
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 10,
+    "regrowthTime": 0,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Eggplant Crop": {
+    "oneTime": false,
+    "canBecomeGiant": false,
+    "name": "Eggplant Crop",
+    "source": "Eggplant Seeds",
+    "fruit": "Eggplant",
+    "stages": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 5,
+    "regrowthTime": 3,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Fairy Rose Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Fairy Rose Crop",
+    "source": "Fairy Seeds",
+    "fruit": "Fairy Rose",
+    "stages": [
+      1,
+      2,
+      3,
+      3
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 12,
+    "regrowthTime": 0,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Rhubarb Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Rhubarb Crop",
+    "source": "Rhubarb Seeds",
+    "fruit": "Rhubarb",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 13,
+    "regrowthTime": 0,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Powdermelon Crop": {
+    "oneTime": true,
+    "canBecomeGiant": true,
+    "name": "Powdermelon Crop",
+    "source": "Powdermelon Seeds",
+    "fruit": "Powdermelon",
+    "stages": [
+      1,
+      2,
+      1,
+      2,
+      1
+    ],
+    "maxStages": 5,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 7,
+    "regrowthTime": 0,
+    "seasons": [
+      "WINTER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Red Cabbage Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Red Cabbage Crop",
+    "source": "Red Cabbage Seeds",
+    "fruit": "Red Cabbage",
+    "stages": [
+      1,
+      2,
+      3,
+      3
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 9,
+    "regrowthTime": 0,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Unmilled Rice Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Unmilled Rice Crop",
+    "source": "Rice Shoot",
+    "fruit": "Unmilled Rice",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 6,
+    "regrowthTime": 0,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Artichoke Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Artichoke Crop",
+    "source": "Artichoke Seeds",
+    "fruit": "Artichoke",
+    "stages": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 8,
+    "regrowthTime": 0,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Tomato Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Tomato Crop",
+    "source": "Tomato Seeds",
+    "fruit": "Tomato",
+    "stages": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 11,
+    "regrowthTime": 3,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Blueberry Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Blueberry Crop",
+    "source": "Blueberry Seeds",
+    "fruit": "Blueberry",
+    "stages": [
+      1,
+      2,
+      3,
+      3
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 13,
+    "regrowthTime": 0,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Amaranth Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Amaranth Crop",
+    "source": "Amaranth Seeds",
+    "fruit": "Amaranth",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 7,
+    "regrowthTime": 0,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Bok Choy Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Bok Choy Crop",
+    "source": "Bok Choy Seeds",
+    "fruit": "Bok Choy",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 4,
+    "regrowthTime": 0,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Carrot Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Carrot Crop",
+    "source": "Carrot Seeds",
+    "fruit": "Carrot",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 10,
+    "regrowthTime": 0,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Hops Crop": {
+    "oneTime": false,
+    "canBecomeGiant": true,
+    "name": "Hops Crop",
+    "source": "Hops Starter",
+    "fruit": "Hops",
+    "stages": [
+      1,
+      2,
+      3
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 11,
+    "regrowthTime": 3,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Beet Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Beet Crop",
+    "source": "Beet Seeds",
+    "fruit": "Beet",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 6,
+    "regrowthTime": 0,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Melon Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Melon Crop",
+    "source": "Melon Seeds",
+    "fruit": "Melon",
+    "stages": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 12,
+    "regrowthTime": 0,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Strawberry Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Strawberry Crop",
+    "source": "Strawberry Seeds",
+    "fruit": "Strawberry",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 8,
+    "regrowthTime": 0,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Parsnip Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Parsnip Crop",
+    "source": "Parsnip Seeds",
+    "fruit": "Parsnip",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 4,
+    "regrowthTime": 0,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Corn Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Corn Crop",
+    "source": "Corn Seeds",
+    "fruit": "Corn",
+    "stages": [
+      1,
+      2,
+      2,
+      3
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 14,
+    "regrowthTime": 0,
+    "seasons": [
+      "SUMMER",
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Cauliflower Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Cauliflower Crop",
+    "source": "Cauliflower Seeds",
+    "fruit": "Cauliflower",
+    "stages": [
+      1,
+      2,
+      4,
+      4,
+      1
+    ],
+    "maxStages": 5,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 12,
+    "regrowthTime": 2,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Grape Crop": {
+    "oneTime": false,
+    "canBecomeGiant": true,
+    "name": "Grape Crop",
+    "source": "Grape Starter",
+    "fruit": "Grape",
+    "stages": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 10,
+    "regrowthTime": 3,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Ancient Fruit Crop": {
+    "oneTime": false,
+    "canBecomeGiant": true,
+    "name": "Ancient Fruit Crop",
+    "source": "Ancient Seeds",
+    "fruit": "Ancient Fruit",
+    "stages": [
+      2,
+      2,
+      2,
+      2,
+      5
+    ],
+    "maxStages": 5,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 7,
+    "seasons": [
+      "SPRING",
+      "SUMMER",
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Green Bean Crop": {
+    "oneTime": false,
+    "canBecomeGiant": true,
+    "name": "Green Bean Crop",
+    "source": "Bean Starter",
+    "fruit": "Green Bean",
+    "stages": [
+      1,
+      1,
+      1,
+      3,
+      2
+    ],
+    "maxStages": 5,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 10,
+    "regrowthTime": 3,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Cranberries Crop": {
+    "oneTime": false,
+    "canBecomeGiant": false,
+    "name": "Cranberries Crop",
+    "source": "Cranberry Seeds",
+    "fruit": "Cranberries",
+    "stages": [
+      1,
+      2,
+      2,
+      1
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 7,
+    "regrowthTime": 5,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Pumpkin Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Pumpkin Crop",
+    "source": "Pumpkin Seeds",
+    "fruit": "Pumpkin",
+    "stages": [
+      1,
+      2,
+      3,
+      3
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 13,
+    "regrowthTime": 0,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Poppy Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Poppy Crop",
+    "source": "Poppy Seeds",
+    "fruit": "Poppy",
+    "stages": [
+      1,
+      2,
+      2,
+      3
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 7,
+    "regrowthTime": 0,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Potato Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Potato Crop",
+    "source": "Potato Seeds",
+    "fruit": "Potato",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 6,
+    "regrowthTime": 0,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Tulip Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Tulip Crop",
+    "source": "Tulip Bulb",
+    "fruit": "Tulip",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 6,
+    "regrowthTime": 0,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Sweet Gem Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Sweet Gem Crop",
+    "source": "Rare Seed",
+    "fruit": "Sweet Gem Berry",
+    "stages": [
+      1,
+      2,
+      4,
+      3
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 24,
+    "regrowthTime": 0,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Radish Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Radish Crop",
+    "source": "Radish Seeds",
+    "fruit": "Radish",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 6,
+    "regrowthTime": 0,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Summer Squash Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Summer Squash Crop",
+    "source": "Squash Seeds",
+    "fruit": "Summer Squash",
+    "stages": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 7,
+    "regrowthTime": 0,
+    "seasons": [
+      "SUMMER",
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Starfruit Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Starfruit Crop",
+    "source": "Starfruit Seeds",
+    "fruit": "Starfruit",
+    "stages": [
+      1,
+      2,
+      3,
+      3
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 13,
+    "regrowthTime": 0,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Garlic Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Garlic Crop",
+    "source": "Garlic Seeds",
+    "fruit": "Garlic",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 4,
+    "regrowthTime": 3,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Sunflower Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Sunflower Crop",
+    "source": "Sunflower Seeds",
+    "fruit": "Sunflower",
+    "stages": [
+      1,
+      2,
+      3
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 8,
+    "regrowthTime": 0,
+    "seasons": [
+      "SUMMER",
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Coffee Bean Crop": {
+    "oneTime": false,
+    "canBecomeGiant": false,
+    "name": "Coffee Bean Crop",
+    "source": "Coffee Bean",
+    "fruit": "Coffee Bean",
+    "stages": [
+      1,
+      2,
+      2,
+      3,
+      2
+    ],
+    "maxStages": 5,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 10,
+    "regrowthTime": 2,
+    "seasons": [
+      "SPRING",
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Kale Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Kale Crop",
+    "source": "Kale Seeds",
+    "fruit": "Kale",
+    "stages": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 6,
+    "regrowthTime": 3,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Broccoli Crop": {
+    "oneTime": true,
+    "canBecomeGiant": false,
+    "name": "Broccoli Crop",
+    "source": "Broccoli Seeds",
+    "fruit": "Broccoli",
+    "stages": [
+      1,
+      2,
+      2
+    ],
+    "maxStages": 3,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 6,
+    "regrowthTime": 0,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  }
+}
