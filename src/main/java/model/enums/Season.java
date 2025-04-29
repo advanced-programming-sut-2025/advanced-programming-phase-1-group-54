@@ -11,7 +11,7 @@ public enum Season {
                     Weather.SUNNY, Weather.RAIN, Weather.STORM
             }
     ),
-    AUTUMN(
+    FALL(
             new Weather[]{
                     Weather.SUNNY, Weather.RAIN, Weather.STORM
             }

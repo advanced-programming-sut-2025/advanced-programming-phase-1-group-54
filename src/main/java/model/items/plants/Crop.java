@@ -28,9 +28,9 @@ public class Crop extends Plant {
     private final boolean oneTime;
     private final boolean canBecomeGiant;
 
-    public Crop(String name, String source, String fruit, int[] stages, int regrowthTime, Season[] seasons,
-                boolean oneTime, boolean canBecomeGiant) {
-        super(name, source, fruit, stages, regrowthTime, seasons);
+    public Crop(String name, String source, String fruit, int[] stages, int totalHarvestTime, int regrowthTime,
+                Season[] seasons, boolean oneTime, boolean canBecomeGiant) {
+        super(name, source, fruit, stages, totalHarvestTime, regrowthTime, seasons);
         this.oneTime = oneTime;
         this.canBecomeGiant = canBecomeGiant;
     }

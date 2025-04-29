@@ -14,7 +14,7 @@ public abstract class Plant extends Item implements Placeable {
     protected final int maxStages;
     protected int currentStage;
     protected int daysInCurrentStage;
-    protected int totalHarvestTime;
+    protected final int totalHarvestTime;
 
     protected final int regrowthTime;
     protected final Season[] seasons;
@@ -24,13 +24,14 @@ public abstract class Plant extends Item implements Placeable {
     protected boolean watered;
     protected int numberOfDaysWithoutWater;
 
-    public Plant(String name, String source, String fruit, int[] stages,
-                  int regrowthTime, Season[] seasons) {
+    public Plant(String name, String source, String fruit, int[] stages, int totalHarvestTime,
+                 int regrowthTime, Season[] seasons) {
         this.name = name;
         this.source = source;
         this.fruit = fruit;
         this.stages = stages;
         this.maxStages = stages.length;
+        this.totalHarvestTime = totalHarvestTime;
         this.regrowthTime = regrowthTime;
         this.seasons = seasons;
     }
@@ -101,10 +102,6 @@ public abstract class Plant extends Item implements Placeable {
 
     public void setDaysInCurrentStage(int daysInCurrentStage) {
         this.daysInCurrentStage = daysInCurrentStage;
-    }
-
-    public void setTotalHarvestTime(int totalHarvestTime) {
-        this.totalHarvestTime = totalHarvestTime;
     }
 
     public void setFruitIsRipen(boolean fruitIsRipen) {

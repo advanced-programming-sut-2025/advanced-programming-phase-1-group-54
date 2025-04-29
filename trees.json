@@ -1,10 +1,342 @@
 {
-  "banana" : {
-    "name": "Oak",
-    "fruit": "bana"
+  "Mango Tree": {
+    "name": "Mango Tree",
+    "source": "Mango Sapling",
+    "fruit": "Mango",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 1,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
   },
-  "apple":{
-    "name" : "apple",
-    "fruit": "green"
+  "Mushroom Tree": {
+    "name": "Mushroom Tree",
+    "source": "Mushroom Spore",
+    "fruit": "Common Mushroom",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 1,
+    "seasons": [
+      "SPRING",
+      "SUMMER",
+      "FALL",
+      "WINTER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Pine Tree": {
+    "name": "Pine Tree",
+    "source": "Pine Cone",
+    "fruit": "Pine Tar",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 5,
+    "seasons": [
+      "SPRING",
+      "SUMMER",
+      "FALL",
+      "WINTER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Cherry Tree": {
+    "name": "Cherry Tree",
+    "source": "Cherry Sapling",
+    "fruit": "Cherry",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 1,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Maple Tree": {
+    "name": "Maple Tree",
+    "source": "Maple Seed",
+    "fruit": "Maple Syrup",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 9,
+    "seasons": [
+      "SPRING",
+      "SUMMER",
+      "FALL",
+      "WINTER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Apricot Tree": {
+    "name": "Apricot Tree",
+    "source": "Apricot Sapling",
+    "fruit": "Apricot",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 1,
+    "seasons": [
+      "SPRING"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Orange Tree": {
+    "name": "Orange Tree",
+    "source": "Orange Sapling",
+    "fruit": "Orange",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 1,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Pomegranate Tree": {
+    "name": "Pomegranate Tree",
+    "source": "Pomegranate Sapling",
+    "fruit": "Pomegranate",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 1,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Mystic Tree": {
+    "name": "Mystic Tree",
+    "source": "Mystic Seed",
+    "fruit": "Mystic Syrup",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 7,
+    "seasons": [
+      "SPRING",
+      "SUMMER",
+      "FALL",
+      "WINTER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Banana Tree": {
+    "name": "Banana Tree",
+    "source": "Banana Sapling",
+    "fruit": "Banana",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 1,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Apple Tree": {
+    "name": "Apple Tree",
+    "source": "Apple Sapling",
+    "fruit": "Apple",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 1,
+    "seasons": [
+      "FALL"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Sap Tree": {
+    "name": "Sap Tree",
+    "source": "Sap Source",
+    "fruit": "Sap",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 1,
+    "seasons": [
+      "SPRING",
+      "SUMMER",
+      "FALL",
+      "WINTER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Peach Tree": {
+    "name": "Peach Tree",
+    "source": "Peach Sapling",
+    "fruit": "Peach",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 1,
+    "seasons": [
+      "SUMMER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
+  },
+  "Oak Tree": {
+    "name": "Oak Tree",
+    "source": "Oak Seed",
+    "fruit": "Oak Resin",
+    "stages": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "maxStages": 4,
+    "currentStage": 0,
+    "daysInCurrentStage": 0,
+    "totalHarvestTime": 28,
+    "regrowthTime": 7,
+    "seasons": [
+      "SPRING",
+      "SUMMER",
+      "FALL",
+      "WINTER"
+    ],
+    "fruitIsRipen": false,
+    "fertilized": false,
+    "watered": false,
+    "numberOfDaysWithoutWater": 0
   }
 }
