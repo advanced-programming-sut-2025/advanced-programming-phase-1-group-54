@@ -32,16 +32,11 @@ public class ForagingMineral extends Item implements Placeable {
     }
 
 
-    private final String name;
     private final int sellPrice;
 
     public ForagingMineral(String name, int sellPrice) {
-        this.name = name;
+        super(name);
         this.sellPrice = sellPrice;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getSellPrice() {
