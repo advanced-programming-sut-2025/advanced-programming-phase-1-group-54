@@ -113,7 +113,6 @@ public class ForagingMineral extends Item implements Placeable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
 

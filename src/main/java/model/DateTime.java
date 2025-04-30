@@ -38,6 +38,30 @@ public class DateTime {
         return season;
     }
 
+    public static int getStartHour() {
+        return START_HOUR;
+    }
+
+    public static int getEndHour() {
+        return END_HOUR;
+    }
+
+    public static int getHoursInDay() {
+        return HOURS_IN_DAY;
+    }
+
+    public static int getDaysInWeek() {
+        return DAYS_IN_WEEK;
+    }
+
+    public static int getDaysInSeason() {
+        return DAYS_IN_SEASON;
+    }
+
+    public static int getSeasonsInYear() {
+        return SEASONS_IN_YEAR;
+    }
+
     public void increaseDay(int amount) {
         weekDay = WeekDay.values()[(amount + day + weekDay.ordinal())%DAYS_IN_WEEK];
         year += (((amount + day)/DAYS_IN_SEASON)+ season.ordinal())/SEASONS_IN_YEAR;

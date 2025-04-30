@@ -2,9 +2,8 @@ package model.items.plants;
 
 import model.Placeable;
 import model.enums.Season;
-import model.items.Item;
 
-public abstract class Plant extends Item implements Placeable {
+public abstract class Plant implements Placeable {
 
     protected final String name;
     protected final String source;

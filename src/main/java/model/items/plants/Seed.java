@@ -2,11 +2,13 @@ package model.items.plants;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import model.enums.Season;
 import model.items.Item;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Seed extends Item {
@@ -26,16 +28,11 @@ public class Seed extends Item {
         System.out.println(seeds.size());
     }
 
-    private final String name;
     private final String plant;
 
     public Seed(String name, String plant) {
-        this.name = name;
+        super(name);
         this.plant = plant;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getPlant() {
@@ -44,6 +41,13 @@ public class Seed extends Item {
 
     public static void writeToJson(){
         HashMap<String ,Seed> seedTypes = new HashMap<String,Seed>();
+
+        HashMap<Season, ArrayList<Seed>> foragingSeeds = new HashMap<Season, ArrayList<Seed>>();
+
+        ArrayList<Seed> springSeeds = new ArrayList<Seed>();
+        ArrayList<Seed> summerSeeds = new ArrayList<Seed>();
+        ArrayList<Seed> fallSeeds = new ArrayList<Seed>();
+        ArrayList<Seed> winterSeeds = new ArrayList<Seed>();
 
         Seed seed;
 

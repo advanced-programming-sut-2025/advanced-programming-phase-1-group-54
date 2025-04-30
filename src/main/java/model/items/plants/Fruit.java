@@ -3,6 +3,8 @@ package model.items.plants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import model.enums.ProduceQuality;
+import model.items.Item;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,7 +13,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-public class Fruit {
+public class Fruit extends Item {
 
     public static HashMap<String, Fruit> fruits;
 
@@ -28,13 +30,13 @@ public class Fruit {
         System.out.println(fruits.size());
     }
 
-    private final String name;
     private final int baseSellPrice;
     private final boolean isEdible;
     private final int energy;
+    private ProduceQuality quality;
 
     public Fruit(String name, int baseSellPrice, boolean isEdible, int energy) {
-        this.name = name;
+        super(name);
         this.baseSellPrice = baseSellPrice;
         this.isEdible = isEdible;
         this.energy = energy;
@@ -54,6 +56,14 @@ public class Fruit {
 
     public int getEnergy() {
         return energy;
+    }
+
+    public ProduceQuality getQuality() {
+        return quality;
+    }
+
+    public void setQuality(ProduceQuality quality) {
+        this.quality = quality;
     }
 
     public static void writeToJson() {
