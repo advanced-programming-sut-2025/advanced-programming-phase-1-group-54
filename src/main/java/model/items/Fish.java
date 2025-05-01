@@ -2,11 +2,16 @@ package model.items;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import model.enums.ProduceQuality;
 import model.enums.Season;
+import model.items.plants.Tree;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,9 +21,32 @@ public class Fish extends Item {
     static final HashMap<Season,ArrayList<Fish>> seasonLegendaryFishes ;
 
     static {
-        fishes = new HashMap<>();
-        seasonFishes  = new HashMap<>();
-        seasonLegendaryFishes  = new HashMap<>();
+        Gson gson = new Gson();
+        FileReader file = null;
+        try {
+            file = new FileReader("fishes.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        Type type = new TypeToken<HashMap<String, Fish>>(){}.getType();
+        fishes = gson.fromJson(file,type);
+
+        try {
+            file = new FileReader("seasonFishes.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        type = new TypeToken<HashMap<Season,ArrayList<Fish>>>(){}.getType();
+        seasonFishes = gson.fromJson(file,type);
+
+        try {
+            file = new FileReader("seasonLegendaryFishes.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        type = new TypeToken<HashMap<Season,ArrayList<Fish>>>(){}.getType();
+        seasonLegendaryFishes = gson.fromJson(file,type);
+
     }
 
     private final int baseSellPrice;

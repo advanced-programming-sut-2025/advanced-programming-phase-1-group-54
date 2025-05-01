@@ -32,7 +32,11 @@ public class BackPack extends Tool {
         }
     }
 
-//    @Override
+    public BackPack(String name) {
+        super(name);
+    }
+
+    //    @Override
 //    public Result use(Item item) {
 //        if(itemsInBackPack.size() < level.getSize()){
 //            itemsInBackPack.add(item);

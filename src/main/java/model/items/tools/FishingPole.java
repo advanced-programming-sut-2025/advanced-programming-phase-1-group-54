@@ -13,4 +13,8 @@ public class FishingPole extends Tool {
     public void setLevel(FishingPoleLevel level) {
         this.level = level;
     }
+
+    public FishingPole(String name) {
+        super(name);
+    }
 }

@@ -12,4 +12,8 @@ public class Hoe extends Tool {
     public void setLevel(HoeLevel level) {
         this.level = level;
     }
+
+    public Hoe(String name) {
+        super(name);
+    }
 }

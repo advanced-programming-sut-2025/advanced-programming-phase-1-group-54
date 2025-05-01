@@ -4,6 +4,10 @@ import model.items.Item;
 import model.enums.ToolLevel;
 
 public abstract class Tool extends Item {
+    public Tool(String name) {
+        super(name);
+    }
+
     protected ToolLevel level;
 
     public void use() {
