@@ -1,0 +1,74 @@
+{
+  "SUMMER": [
+    {
+      "baseSellPrice": 75,
+      "name": "Tilapia"
+    },
+    {
+      "baseSellPrice": 100,
+      "name": "Dorado"
+    },
+    {
+      "baseSellPrice": 30,
+      "name": "Sunfish"
+    },
+    {
+      "baseSellPrice": 65,
+      "name": "Rainbow Trout"
+    }
+  ],
+  "WINTER": [
+    {
+      "baseSellPrice": 150,
+      "name": "Midnight Carp"
+    },
+    {
+      "baseSellPrice": 80,
+      "name": "Squid"
+    },
+    {
+      "baseSellPrice": 100,
+      "name": "Tuna"
+    },
+    {
+      "baseSellPrice": 55,
+      "name": "Perch"
+    }
+  ],
+  "FALL": [
+    {
+      "baseSellPrice": 75,
+      "name": "Salmon"
+    },
+    {
+      "baseSellPrice": 40,
+      "name": "Sardine"
+    },
+    {
+      "baseSellPrice": 60,
+      "name": "Shad"
+    },
+    {
+      "baseSellPrice": 120,
+      "name": "Blue Discus"
+    }
+  ],
+  "SPRING": [
+    {
+      "baseSellPrice": 100,
+      "name": "Flounder"
+    },
+    {
+      "baseSellPrice": 100,
+      "name": "Lionfish"
+    },
+    {
+      "baseSellPrice": 30,
+      "name": "Herring"
+    },
+    {
+      "baseSellPrice": 45,
+      "name": "Ghostfish"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "Sardine": {
+    "baseSellPrice": 40,
+    "name": "Sardine"
+  },
+  "Legend": {
+    "baseSellPrice": 5000,
+    "name": "Legend"
+  },
+  "Crimsonfish": {
+    "baseSellPrice": 1500,
+    "name": "Crimsonfish"
+  },
+  "Blue Discus": {
+    "baseSellPrice": 120,
+    "name": "Blue Discus"
+  },
+  "Salmon": {
+    "baseSellPrice": 75,
+    "name": "Salmon"
+  },
+  "Rainbow Trout": {
+    "baseSellPrice": 65,
+    "name": "Rainbow Trout"
+  },
+  "Tilapia": {
+    "baseSellPrice": 75,
+    "name": "Tilapia"
+  },
+  "Flounder": {
+    "baseSellPrice": 100,
+    "name": "Flounder"
+  },
+  "Sunfish": {
+    "baseSellPrice": 30,
+    "name": "Sunfish"
+  },
+  "Glacierfish": {
+    "baseSellPrice": 1000,
+    "name": "Glacierfish"
+  },
+  "Herring": {
+    "baseSellPrice": 30,
+    "name": "Herring"
+  },
+  "Tuna": {
+    "baseSellPrice": 100,
+    "name": "Tuna"
+  },
+  "Squid": {
+    "baseSellPrice": 80,
+    "name": "Squid"
+  },
+  "Perch": {
+    "baseSellPrice": 55,
+    "name": "Perch"
+  },
+  "Angler": {
+    "baseSellPrice": 900,
+    "name": "Angler"
+  },
+  "Lionfish": {
+    "baseSellPrice": 100,
+    "name": "Lionfish"
+  },
+  "Midnight Carp": {
+    "baseSellPrice": 150,
+    "name": "Midnight Carp"
+  },
+  "Dorado": {
+    "baseSellPrice": 100,
+    "name": "Dorado"
+  },
+  "Ghostfish": {
+    "baseSellPrice": 45,
+    "name": "Ghostfish"
+  },
+  "Shad": {
+    "baseSellPrice": 60,
+    "name": "Shad"
+  }
+}

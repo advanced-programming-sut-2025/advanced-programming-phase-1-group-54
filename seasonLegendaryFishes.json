@@ -1,0 +1,26 @@
+{
+  "SUMMER": [
+    {
+      "baseSellPrice": 1500,
+      "name": "Crimsonfish"
+    }
+  ],
+  "WINTER": [
+    {
+      "baseSellPrice": 1000,
+      "name": "Glacierfish"
+    }
+  ],
+  "FALL": [
+    {
+      "baseSellPrice": 900,
+      "name": "Angler"
+    }
+  ],
+  "SPRING": [
+    {
+      "baseSellPrice": 5000,
+      "name": "Legend"
+    }
+  ]
+}
