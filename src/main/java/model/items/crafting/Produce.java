@@ -2031,13 +2031,1246 @@ public class Produce extends Item {
 
         // Mayonnaise
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Egg");
+        numberOfIngredients.put("Egg", 1);
+
+        produce = new Produce(
+                "Mayonnaise",
+                190,
+                true,
+                50,
+                3,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Large Egg");
+        numberOfIngredients.put("Large Egg", 1);
+
+        produce = new Produce(
+                "Large Mayonnaise",
+                237,
+                true,
+                50,
+                3,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Duck Egg");
+        numberOfIngredients.put("Duck Egg", 1);
+
+        produce = new Produce(
+                "Duck Mayonnaise",
+                37,
+                true,
+                75,
+                3,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Dinosaur Egg");
+        numberOfIngredients.put("Dinosaur Egg", 1);
+
+        produce = new Produce(
+                "Dinosaur Mayonnaise",
+                800,
+                true,
+                125,
+                3,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
         //Oil
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Truffle");
+        numberOfIngredients.put("Truffle", 1);
+
+        produce = new Produce(
+                "Truffle Oil",
+                1065,
+                true,
+                38,
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Corn");
+        numberOfIngredients.put("Corn", 1);
+
+        produce = new Produce(
+                "Corn Oil",
+                100,
+                true,
+                13,
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Sunflower Seed");
+        numberOfIngredients.put("Sunflower Seed", 1);
+
+        produce = new Produce(
+                "Sunflower Seed Oil",
+                1065,
+                true,
+                13,
+                2 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Sunflower");
+        numberOfIngredients.put("Sunflower", 1);
+
+        produce = new Produce(
+                "Sunflower Oil",
+                100,
+                true,
+                13,
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
 
         // Jelly And Pickles
 
+        // Pickles
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Amaranth");
+        numberOfIngredients.put("Amaranth", 1);
+        fruit = Fruit.fruits.get("Amaranth");
+
+        produce = new Produce(
+                "Amaranth Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Artichoke");
+        numberOfIngredients.put("Artichoke", 1);
+        fruit = Fruit.fruits.get("Artichoke");
+
+        produce = new Produce(
+                "Artichoke Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Beet");
+        numberOfIngredients.put("Beet", 1);
+        fruit = Fruit.fruits.get("Beet");
+
+        produce = new Produce(
+                "Beet Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Bok Choy");
+        numberOfIngredients.put("Bok Choy", 1);
+        fruit = Fruit.fruits.get("Bok Choy");
+
+        produce = new Produce(
+                "Bok Choy Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Broccoli");
+        numberOfIngredients.put("Broccoli", 1);
+        fruit = Fruit.fruits.get("Broccoli");
+
+        produce = new Produce(
+                "Broccoli Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Carrot");
+        numberOfIngredients.put("Carrot", 1);
+        fruit = Fruit.fruits.get("Carrot");
+
+        produce = new Produce(
+                "Carrot Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Cauliflower");
+        numberOfIngredients.put("Cauliflower", 1);
+        fruit = Fruit.fruits.get("Cauliflower");
+
+        produce = new Produce(
+                "Cauliflower Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Corn");
+        numberOfIngredients.put("Corn", 1);
+        fruit = Fruit.fruits.get("Corn");
+
+        produce = new Produce(
+                "Corn Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Eggplant");
+        numberOfIngredients.put("Eggplant", 1);
+        fruit = Fruit.fruits.get("Eggplant");
+
+        produce = new Produce(
+                "Eggplant Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Fiddlehead Fern");
+        numberOfIngredients.put("Fiddlehead Fern", 1);
+        fruit = Fruit.fruits.get("Fiddlehead Fern");
+
+        produce = new Produce(
+                "Fiddlehead Fern Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Garlic");
+        numberOfIngredients.put("Garlic", 1);
+        fruit = Fruit.fruits.get("Garlic");
+
+        produce = new Produce(
+                "Garlic Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Green Bean");
+        numberOfIngredients.put("Green Bean", 1);
+        fruit = Fruit.fruits.get("Green Bean");
+
+        produce = new Produce(
+                "Green Bean Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Hops");
+        numberOfIngredients.put("Hops", 1);
+        fruit = Fruit.fruits.get("Hops");
+
+        produce = new Produce(
+                "Hops Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Kale");
+        numberOfIngredients.put("Kale", 1);
+        fruit = Fruit.fruits.get("Kale");
+
+        produce = new Produce(
+                "Kale Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Parsnip");
+        numberOfIngredients.put("Parsnip", 1);
+        fruit = Fruit.fruits.get("Parsnip");
+
+        produce = new Produce(
+                "Parsnip Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Potato");
+        numberOfIngredients.put("Potato", 1);
+        fruit = Fruit.fruits.get("Potato");
+
+        produce = new Produce(
+                "Potato Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Pumpkin");
+        numberOfIngredients.put("Pumpkin", 1);
+        fruit = Fruit.fruits.get("Pumpkin");
+
+        produce = new Produce(
+                "Pumpkin Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Radish");
+        numberOfIngredients.put("Radish", 1);
+        fruit = Fruit.fruits.get("Radish");
+
+        produce = new Produce(
+                "Radish Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Red Cabbage");
+        numberOfIngredients.put("Red Cabbage", 1);
+        fruit = Fruit.fruits.get("Red Cabbage");
+
+        produce = new Produce(
+                "Red Cabbage Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Summer Squash");
+        numberOfIngredients.put("Summer Squash", 1);
+        fruit = Fruit.fruits.get("Summer Squash");
+
+        produce = new Produce(
+                "Summer Squash Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Taro Root");
+        numberOfIngredients.put("Taro Root", 1);
+        fruit = Fruit.fruits.get("Taro Root");
+
+        produce = new Produce(
+                "Taro Root Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Tea Leaves");
+        numberOfIngredients.put("Tea Leaves", 1);
+        fruit = Fruit.fruits.get("Tea Leaves");
+
+        produce = new Produce(
+                "Tea Leaves Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Tomato");
+        numberOfIngredients.put("Tomato", 1);
+        fruit = Fruit.fruits.get("Tomato");
+
+        produce = new Produce(
+                "Tomato Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Unmilled Rice");
+        numberOfIngredients.put("Unmilled Rice", 1);
+        fruit = Fruit.fruits.get("Unmilled Rice");
+
+        produce = new Produce(
+                "Unmilled Rice Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Wheat");
+        numberOfIngredients.put("Wheat", 1);
+        fruit = Fruit.fruits.get("Wheat");
+
+        produce = new Produce(
+                "Wheat Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Yam");
+        numberOfIngredients.put("Yam", 1);
+        fruit = Fruit.fruits.get("Yam");
+
+        produce = new Produce(
+                "Yam Pickles",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                (int)(1.75 * fruit.getEnergy()),
+                6,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+        // Jelly
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Ancient Fruit");
+        numberOfIngredients.put("Ancient Fruit", 1);
+        fruit = Fruit.fruits.get("Ancient Fruit");
+
+        produce = new Produce(
+                "Ancient Fruit Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Apple");
+        numberOfIngredients.put("Apple", 1);
+        fruit = Fruit.fruits.get("Apple");
+
+        produce = new Produce(
+                "Apple Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Apricot");
+        numberOfIngredients.put("Apricot", 1);
+        fruit = Fruit.fruits.get("Apricot");
+
+        produce = new Produce(
+                "Apricot Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Banana");
+        numberOfIngredients.put("Banana", 1);
+        fruit = Fruit.fruits.get("Banana");
+
+        produce = new Produce(
+                "Banana Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Blackberry");
+        numberOfIngredients.put("Blackberry", 1);
+        fruit = Fruit.fruits.get("Blackberry");
+
+        produce = new Produce(
+                "Blackberry Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Blueberry");
+        numberOfIngredients.put("Blueberry", 1);
+        fruit = Fruit.fruits.get("Blueberry");
+
+        produce = new Produce(
+                "Blueberry Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Cactus Fruit");
+        numberOfIngredients.put("Cactus Fruit", 1);
+        fruit = Fruit.fruits.get("Cactus Fruit");
+
+        produce = new Produce(
+                "Cactus Fruit Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Cherry");
+        numberOfIngredients.put("Cherry", 1);
+        fruit = Fruit.fruits.get("Cherry");
+
+        produce = new Produce(
+                "Cherry Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coconut");
+        numberOfIngredients.put("Coconut", 1);
+        fruit = Fruit.fruits.get("Coconut");
+
+        produce = new Produce(
+                "Coconut Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Cranberries");
+        numberOfIngredients.put("Cranberries", 1);
+        fruit = Fruit.fruits.get("Cranberries");
+
+        produce = new Produce(
+                "Cranberries Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Crystal Fruit");
+        numberOfIngredients.put("Crystal Fruit", 1);
+        fruit = Fruit.fruits.get("Crystal Fruit");
+
+        produce = new Produce(
+                "Crystal Fruit Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Grape");
+        numberOfIngredients.put("Grape", 1);
+        fruit = Fruit.fruits.get("Grape");
+
+        produce = new Produce(
+                "Grape Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Hot Pepper");
+        numberOfIngredients.put("Hot Pepper", 1);
+        fruit = Fruit.fruits.get("Hot Pepper");
+
+        produce = new Produce(
+                "Hot Pepper Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Mango");
+        numberOfIngredients.put("Mango", 1);
+        fruit = Fruit.fruits.get("Mango");
+
+        produce = new Produce(
+                "Mango Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Melon");
+        numberOfIngredients.put("Melon", 1);
+        fruit = Fruit.fruits.get("Melon");
+
+        produce = new Produce(
+                "Melon Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Orange");
+        numberOfIngredients.put("Orange", 1);
+        fruit = Fruit.fruits.get("Orange");
+
+        produce = new Produce(
+                "Orange Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Peach");
+        numberOfIngredients.put("Peach", 1);
+        fruit = Fruit.fruits.get("Peach");
+
+        produce = new Produce(
+                "Peach Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Pineapple");
+        numberOfIngredients.put("Pineapple", 1);
+        fruit = Fruit.fruits.get("Pineapple");
+
+        produce = new Produce(
+                "Pineapple Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Pomegranate");
+        numberOfIngredients.put("Pomegranate", 1);
+        fruit = Fruit.fruits.get("Pomegranate");
+
+        produce = new Produce(
+                "Pomegranate Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Powdermelon");
+        numberOfIngredients.put("Powdermelon", 1);
+        fruit = Fruit.fruits.get("Powdermelon");
+
+        produce = new Produce(
+                "Powdermelon Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Qi Fruit");
+        numberOfIngredients.put("Qi Fruit", 1);
+        fruit = Fruit.fruits.get("Qi Fruit");
+
+        produce = new Produce(
+                "Qi Fruit Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Rhubarb");
+        numberOfIngredients.put("Rhubarb", 1);
+        fruit = Fruit.fruits.get("Rhubarb");
+
+        produce = new Produce(
+                "Rhubarb Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Salmonberry");
+        numberOfIngredients.put("Salmonberry", 1);
+        fruit = Fruit.fruits.get("Salmonberry");
+
+        produce = new Produce(
+                "Salmonberry Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Spice Berry");
+        numberOfIngredients.put("Spice Berry", 1);
+        fruit = Fruit.fruits.get("Spice Berry");
+
+        produce = new Produce(
+                "Spice Berry Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Starfruit");
+        numberOfIngredients.put("Starfruit", 1);
+        fruit = Fruit.fruits.get("Starfruit");
+
+        produce = new Produce(
+                "Starfruit Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Strawberry");
+        numberOfIngredients.put("Strawberry", 1);
+        fruit = Fruit.fruits.get("Strawberry");
+
+        produce = new Produce(
+                "Strawberry Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Wild Plum");
+        numberOfIngredients.put("Wild Plum", 1);
+        fruit = Fruit.fruits.get("Wild Plum");
+
+        produce = new Produce(
+                "Wild Plum Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
         // Smoked Fish
 
+
+
         // Material Bar
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coconut");
+        numberOfIngredients.put("Coconut", 1);
+        fruit = Fruit.fruits.get("Coconut");
+
+        produce = new Produce(
+                "Coconut Jelly",
+                2 * fruit.getBaseSellPrice() + 50,
+                true,
+                2 * fruit.getEnergy(),
+                3 * dayHours,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
 
     }
 
