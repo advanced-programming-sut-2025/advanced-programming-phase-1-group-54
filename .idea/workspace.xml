@@ -4,24 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="read and write foragingMineral from Json">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit ForagingMineral Constructor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/DateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DateTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/AnimalProduceQuality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/ProduceQuality.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/items/CropType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/items/TreeType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Artisan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/foraging/ForagingMineral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/foraging/ForagingMineral.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/recipes/CraftingRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/recipes/CraftingRecipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/recipes/FoodRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/recipes/FoodRecipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +84,8 @@
       <workItem from="1745846394023" duration="870000" />
       <workItem from="1745847292493" duration="8076000" />
       <workItem from="1745908869194" duration="11288000" />
-      <workItem from="1745929754274" duration="35993000" />
+      <workItem from="1745929754274" duration="36323000" />
+      <workItem from="1746088901926" duration="2598000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
       <option name="closed" value="true" />
@@ -165,7 +151,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745930026994</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="edit model and write some part of writeToJson method of Produce Class">
+      <option name="closed" value="true" />
+      <created>1746055672822</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1746055672822</updated>
+    </task>
+    <task id="LOCAL-00010" summary="edit ForagingMineral Constructor">
+      <option name="closed" value="true" />
+      <created>1746055812887</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1746055812887</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,7 +181,9 @@
     <MESSAGE value="read and write Crops from Json" />
     <MESSAGE value="read and write fruits from Json" />
     <MESSAGE value="read and write foragingMineral from Json" />
-    <option name="LAST_COMMIT_MESSAGE" value="read and write foragingMineral from Json" />
+    <MESSAGE value="edit model and write some part of writeToJson method of Produce Class" />
+    <MESSAGE value="edit ForagingMineral Constructor" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit ForagingMineral Constructor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -247,11 +251,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
-          <line>910</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
           <line>958</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
@@ -259,6 +258,56 @@
           <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
           <line>944</line>
           <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
+          <line>1164</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
+          <line>1150</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
+          <line>1321</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
+          <line>1335</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
+          <line>1355</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
+          <line>1369</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
+          <line>1491</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
+          <line>1505</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
+          <line>1541</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
+          <line>1555</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

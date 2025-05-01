@@ -1111,8 +1111,567 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
         //Dehydrator
+        final int numberOfFruitsToDry = 5;
+        // Dried Mushrooms
+
+        ingredients.add("Chanterelle");
+        numberOfIngredients.put("Chanterelle", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Chanterelle");
+
+        produce = new Produce(
+                "Dried Chanterelle",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                50,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
 
 
+        ingredients.add("Common Mushroom");
+        numberOfIngredients.put("Common Mushroom", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Common Mushroom");
+
+        produce = new Produce(
+                "Dried Common Mushroom",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                50,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Magma Cap");
+        numberOfIngredients.put("Magma Cap", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Magma Cap");
+
+        produce = new Produce(
+                "Dried Magma Cap",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                50,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Morel");
+        numberOfIngredients.put("Morel", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Morel");
+
+        produce = new Produce(
+                "Dried Morel",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                50,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Purple Mushroom");
+        numberOfIngredients.put("Purple Mushroom", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Purple Mushroom");
+
+        produce = new Produce(
+                "Dried Purple Mushroom",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                50,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Red Mushroom");
+        numberOfIngredients.put("Red Mushroom", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Red Mushroom");
+
+        produce = new Produce(
+                "Dried Red Mushroom",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                50,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+        // Dried Fruits
+
+        ingredients.add("Ancient Fruit");
+        numberOfIngredients.put("Ancient Fruit", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Ancient Fruit");
+
+        produce = new Produce(
+                "Dried Ancient Fruit",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Apple");
+        numberOfIngredients.put("Apple", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Apple");
+
+        produce = new Produce(
+                "Dried Apple",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Apricot");
+        numberOfIngredients.put("Apricot", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Apricot");
+
+        produce = new Produce(
+                "Dried Apricot",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Banana");
+        numberOfIngredients.put("Banana", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Banana");
+
+        produce = new Produce(
+                "Dried Banana",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Blackberry");
+        numberOfIngredients.put("Blackberry", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Blackberry");
+
+        produce = new Produce(
+                "Dried Blackberry",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Blueberry");
+        numberOfIngredients.put("Blueberry", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Blueberry");
+
+        produce = new Produce(
+                "Dried Blueberry",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Cactus Fruit");
+        numberOfIngredients.put("Cactus Fruit", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Cactus Fruit");
+
+        produce = new Produce(
+                "Dried Cactus Fruit",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Cherry");
+        numberOfIngredients.put("Cherry", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Cherry");
+
+        produce = new Produce(
+                "Dried Cherry",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Coconut");
+        numberOfIngredients.put("Coconut", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Cocomut");
+
+        produce = new Produce(
+                "Dried Coconut",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Cranberries");
+        numberOfIngredients.put("Cranberries", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Cranberries");
+
+        produce = new Produce(
+                "Dried Cranberries",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Crystal Fruit");
+        numberOfIngredients.put("Crystal Fruit", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Crystal Fruit");
+
+        produce = new Produce(
+                "Dried Crystal Fruit",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Hot Pepper");
+        numberOfIngredients.put("Hot Pepper", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Hot Pepper");
+
+        produce = new Produce(
+                "Dried Hot Pepper",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Mango");
+        numberOfIngredients.put("Mango", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Mango");
+
+        produce = new Produce(
+                "Dried Mango",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Melon");
+        numberOfIngredients.put("Melon", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Melon");
+
+        produce = new Produce(
+                "Dried Melon",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Orange");
+        numberOfIngredients.put("Orange", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Orange");
+
+        produce = new Produce(
+                "Dried Orange",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Peach");
+        numberOfIngredients.put("Peach", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Peach");
+
+        produce = new Produce(
+                "Dried Peach",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Pineapple");
+        numberOfIngredients.put("Pineapple", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Pineapple");
+
+        produce = new Produce(
+                "Dried Pineapple",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("pomegranate");
+        numberOfIngredients.put("Pomegranate", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Pomegranate");
+
+        produce = new Produce(
+                "Dried pomegranate",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Powdermelon");
+        numberOfIngredients.put("Powdermelon", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Powdermelon");
+
+        produce = new Produce(
+                "Dried Powdermelon",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+        ingredients.add("Qi Fruit");
+        numberOfIngredients.put("Qi Fruit", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Qi Fruit");
+
+        produce = new Produce(
+                "Dried Qi Fruit",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Rhubarb");
+        numberOfIngredients.put("Rhubarb", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Rhubarb");
+
+        produce = new Produce(
+                "Dried Rhubarb",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Salmonberry");
+        numberOfIngredients.put("Salmonberry", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Salmonberry");
+
+        produce = new Produce(
+                "Dried Salmonberry",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Spice Berry");
+        numberOfIngredients.put("Spice Berry", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Spice Berry");
+
+        produce = new Produce(
+                "Dried Spice Berry",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Starfruit");
+        numberOfIngredients.put("Starfruit", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Starfruit");
+
+        produce = new Produce(
+                "Dried Starfruit",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Strawberry");
+        numberOfIngredients.put("Strawberry", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Strawberry");
+
+        produce = new Produce(
+                "Dried Strawberry",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Wild Plum");
+        numberOfIngredients.put("Wild Plum", numberOfFruitsToDry);
+        fruit = Fruit.fruits.get("Wild Plum");
+
+        produce = new Produce(
+                "Dried Wild Plum",
+                (int)(7.5 * fruit.getBaseSellPrice()),
+                true,
+                75,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients.add("Grapes");
+        numberOfIngredients.put("Grapes", numberOfFruitsToDry);
+
+        produce = new Produce(
+                "Raisins",
+                600,
+                true,
+                125,
+                0,
+                1,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
 
         // Coal
 
@@ -1147,6 +1706,16 @@ public class Produce extends Item {
                 numberOfIngredients
         );
         produceTypes.put(produce.getName(), produce);
+
+        // Mayonnaise
+
+        //Oil
+
+        // Jelly And Pickles
+
+        // Smoked Fish
+
+        // Material Bar
 
     }
 
