@@ -96,12 +96,69 @@ public class Produce extends Item {
         ingredients = new ArrayList<>();
         numberOfIngredients = new HashMap<>();
 
-        ingredients.add("milk");
-        numberOfIngredients.put("milk", 1);
+        ingredients.add("Milk");
+        numberOfIngredients.put("Milk", 1);
 
         produce = new Produce(
                 "Cheese",
                 230,
+                true,
+                100,
+                3,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Large Milk");
+        numberOfIngredients.put("Large Milk", 1);
+
+        produce = new Produce(
+                "Large Cheese",
+                345,
+                true,
+                100,
+                3,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Goat Milk");
+        numberOfIngredients.put("Goat Milk", 1);
+
+        produce = new Produce(
+                "Goat Cheese",
+                400,
+                true,
+                100,
+                3,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Large Goat Milk");
+        numberOfIngredients.put("Large Goat Milk", 1);
+
+        produce = new Produce(
+                "Large Goat Cheese",
+                600,
                 true,
                 100,
                 3,
@@ -209,6 +266,8 @@ public class Produce extends Item {
 
         // Juice
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Amaranth");
         numberOfIngredients.put("Amaranth", 1);
@@ -227,6 +286,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Artichoke");
         numberOfIngredients.put("Artichoke", 1);
         fruit = Fruit.fruits.get("Artichoke");
@@ -243,6 +305,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Beet");
         numberOfIngredients.put("Beet", 1);
@@ -261,6 +326,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Bok Choy");
         numberOfIngredients.put("Bok Choy", 1);
         fruit = Fruit.fruits.get("Bok Choy");
@@ -277,6 +345,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Broccoli");
         numberOfIngredients.put("Broccoli", 1);
@@ -295,6 +366,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Carrot");
         numberOfIngredients.put("Carrot", 1);
         fruit = Fruit.fruits.get("Carrot");
@@ -311,6 +385,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Cauliflower");
         numberOfIngredients.put("Cauliflower", 1);
@@ -329,6 +406,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Corn");
         numberOfIngredients.put("Corn", 1);
         fruit = Fruit.fruits.get("Corn");
@@ -345,6 +425,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Eggplant");
         numberOfIngredients.put("Eggplant", 1);
@@ -363,6 +446,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Fiddlehead Fern");
         numberOfIngredients.put("Fiddlehead Fern", 1);
         fruit = Fruit.fruits.get("Fiddlehead Fern");
@@ -379,6 +465,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Garlic");
         numberOfIngredients.put("Garlic", 1);
@@ -397,6 +486,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Green Bean");
         numberOfIngredients.put("Green Bean", 1);
         fruit = Fruit.fruits.get("Green Bean");
@@ -413,6 +505,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Hops");
         numberOfIngredients.put("Hops", 1);
@@ -431,6 +526,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Kale");
         numberOfIngredients.put("Kale", 1);
         fruit = Fruit.fruits.get("Kale");
@@ -447,6 +545,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Parsnip");
         numberOfIngredients.put("Parsnip", 1);
@@ -465,6 +566,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Potato");
         numberOfIngredients.put("Potato", 1);
         fruit = Fruit.fruits.get("Potato");
@@ -481,6 +585,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Pumpkin");
         numberOfIngredients.put("Pumpkin", 1);
@@ -499,6 +606,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Radish");
         numberOfIngredients.put("Radish", 1);
         fruit = Fruit.fruits.get("Radish");
@@ -515,6 +625,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Red Cabbage");
         numberOfIngredients.put("Red Cabbage", 1);
@@ -533,6 +646,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Summer Squash");
         numberOfIngredients.put("Summer Squash", 1);
         fruit = Fruit.fruits.get("Summer Squash");
@@ -549,6 +665,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Taro Root");
         numberOfIngredients.put("Taro Root", 1);
@@ -567,6 +686,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Tea Leaves");
         numberOfIngredients.put("Tea Leaves", 1);
         fruit = Fruit.fruits.get("Tea Leaves");
@@ -583,6 +705,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Tomato");
         numberOfIngredients.put("Tomato", 1);
@@ -601,6 +726,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Unmilled Rice");
         numberOfIngredients.put("Unmilled Rice", 1);
         fruit = Fruit.fruits.get("Unmilled Rice");
@@ -618,6 +746,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Wheat");
         numberOfIngredients.put("Wheat", 1);
         fruit = Fruit.fruits.get("Wheat");
@@ -634,6 +765,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Yam");
         numberOfIngredients.put("Yam", 1);
@@ -653,6 +787,9 @@ public class Produce extends Item {
 
         // Wine
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Ancient Fruit");
         numberOfIngredients.put("Ancient Fruit", 1);
         fruit = Fruit.fruits.get("Ancient Fruit");
@@ -669,6 +806,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Apple");
         numberOfIngredients.put("Apple", 1);
@@ -687,6 +827,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Apricot");
         numberOfIngredients.put("Apricot", 1);
         fruit = Fruit.fruits.get("Apricot");
@@ -703,6 +846,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Banana");
         numberOfIngredients.put("Banana", 1);
@@ -721,6 +867,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Blackberry");
         numberOfIngredients.put("Blackberry", 1);
         fruit = Fruit.fruits.get("Blackberry");
@@ -737,6 +886,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Blueberry");
         numberOfIngredients.put("Blueberry", 1);
@@ -755,6 +907,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Cactus Fruit");
         numberOfIngredients.put("Cactus Fruit", 1);
         fruit = Fruit.fruits.get("Cactus Fruit");
@@ -771,6 +926,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Cherry");
         numberOfIngredients.put("Cherry", 1);
@@ -789,6 +947,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Coconut");
         numberOfIngredients.put("Coconut", 1);
         fruit = Fruit.fruits.get("Coconut");
@@ -805,6 +966,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Cranberries");
         numberOfIngredients.put("Cranberries", 1);
@@ -823,6 +987,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Crystal Fruit");
         numberOfIngredients.put("Crystal Fruit", 1);
         fruit = Fruit.fruits.get("Crystal Fruit");
@@ -839,6 +1006,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Grape");
         numberOfIngredients.put("Grape", 1);
@@ -857,6 +1027,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Hot Pepper");
         numberOfIngredients.put("Hot Pepper", 1);
         fruit = Fruit.fruits.get("Hot Pepper");
@@ -873,6 +1046,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Mango");
         numberOfIngredients.put("Mango", 1);
@@ -891,6 +1067,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Melon");
         numberOfIngredients.put("Melon", 1);
         fruit = Fruit.fruits.get("Melon");
@@ -907,6 +1086,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Orange");
         numberOfIngredients.put("Orange", 1);
@@ -925,6 +1107,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Peach");
         numberOfIngredients.put("Peach", 1);
         fruit = Fruit.fruits.get("Peach");
@@ -941,6 +1126,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Pineapple");
         numberOfIngredients.put("Pineapple", 1);
@@ -959,6 +1147,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Pomegranate");
         numberOfIngredients.put("Pomegranate", 1);
         fruit = Fruit.fruits.get("Pomegranate");
@@ -975,6 +1166,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Powdermelon");
         numberOfIngredients.put("Powdermelon", 1);
@@ -993,6 +1187,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Qi Fruit");
         numberOfIngredients.put("Qi Fruit", 1);
         fruit = Fruit.fruits.get("Qi Fruit");
@@ -1009,6 +1206,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Rhubarb");
         numberOfIngredients.put("Rhubarb", 1);
@@ -1027,6 +1227,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Salmonberry");
         numberOfIngredients.put("Salmonberry", 1);
         fruit = Fruit.fruits.get("Salmonberry");
@@ -1042,6 +1245,10 @@ public class Produce extends Item {
                 numberOfIngredients
         );
         produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Spice Berry");
         numberOfIngredients.put("Spice Berry", 1);
@@ -1060,6 +1267,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Starfruit");
         numberOfIngredients.put("Starfruit", 1);
         fruit = Fruit.fruits.get("Starfruit");
@@ -1077,6 +1287,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Strawberry");
         numberOfIngredients.put("Strawberry", 1);
         fruit = Fruit.fruits.get("Strawberry");
@@ -1093,6 +1306,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Wild Plum");
         numberOfIngredients.put("Wild Plum", 1);
@@ -1114,6 +1330,9 @@ public class Produce extends Item {
         final int numberOfFruitsToDry = 5;
         // Dried Mushrooms
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Chanterelle");
         numberOfIngredients.put("Chanterelle", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Chanterelle");
@@ -1130,6 +1349,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Common Mushroom");
         numberOfIngredients.put("Common Mushroom", numberOfFruitsToDry);
@@ -1148,6 +1370,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Magma Cap");
         numberOfIngredients.put("Magma Cap", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Magma Cap");
@@ -1164,6 +1389,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Morel");
         numberOfIngredients.put("Morel", numberOfFruitsToDry);
@@ -1182,6 +1410,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Purple Mushroom");
         numberOfIngredients.put("Purple Mushroom", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Purple Mushroom");
@@ -1198,6 +1429,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Red Mushroom");
         numberOfIngredients.put("Red Mushroom", numberOfFruitsToDry);
@@ -1217,6 +1451,9 @@ public class Produce extends Item {
 
         // Dried Fruits
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Ancient Fruit");
         numberOfIngredients.put("Ancient Fruit", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Ancient Fruit");
@@ -1233,6 +1470,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Apple");
         numberOfIngredients.put("Apple", numberOfFruitsToDry);
@@ -1251,6 +1491,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Apricot");
         numberOfIngredients.put("Apricot", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Apricot");
@@ -1267,6 +1510,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Banana");
         numberOfIngredients.put("Banana", numberOfFruitsToDry);
@@ -1285,6 +1531,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Blackberry");
         numberOfIngredients.put("Blackberry", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Blackberry");
@@ -1301,6 +1550,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Blueberry");
         numberOfIngredients.put("Blueberry", numberOfFruitsToDry);
@@ -1319,6 +1571,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Cactus Fruit");
         numberOfIngredients.put("Cactus Fruit", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Cactus Fruit");
@@ -1335,6 +1590,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Cherry");
         numberOfIngredients.put("Cherry", numberOfFruitsToDry);
@@ -1353,6 +1611,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Coconut");
         numberOfIngredients.put("Coconut", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Cocomut");
@@ -1369,6 +1630,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Cranberries");
         numberOfIngredients.put("Cranberries", numberOfFruitsToDry);
@@ -1387,6 +1651,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Crystal Fruit");
         numberOfIngredients.put("Crystal Fruit", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Crystal Fruit");
@@ -1403,6 +1670,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Hot Pepper");
         numberOfIngredients.put("Hot Pepper", numberOfFruitsToDry);
@@ -1421,6 +1691,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Mango");
         numberOfIngredients.put("Mango", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Mango");
@@ -1437,6 +1710,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Melon");
         numberOfIngredients.put("Melon", numberOfFruitsToDry);
@@ -1455,6 +1731,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Orange");
         numberOfIngredients.put("Orange", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Orange");
@@ -1471,6 +1750,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Peach");
         numberOfIngredients.put("Peach", numberOfFruitsToDry);
@@ -1489,6 +1771,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Pineapple");
         numberOfIngredients.put("Pineapple", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Pineapple");
@@ -1505,6 +1790,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("pomegranate");
         numberOfIngredients.put("Pomegranate", numberOfFruitsToDry);
@@ -1523,6 +1811,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Powdermelon");
         numberOfIngredients.put("Powdermelon", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Powdermelon");
@@ -1538,6 +1829,10 @@ public class Produce extends Item {
                 numberOfIngredients
         );
         produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Qi Fruit");
         numberOfIngredients.put("Qi Fruit", numberOfFruitsToDry);
@@ -1556,6 +1851,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Rhubarb");
         numberOfIngredients.put("Rhubarb", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Rhubarb");
@@ -1572,6 +1870,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Salmonberry");
         numberOfIngredients.put("Salmonberry", numberOfFruitsToDry);
@@ -1590,6 +1891,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Spice Berry");
         numberOfIngredients.put("Spice Berry", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Spice Berry");
@@ -1606,6 +1910,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Starfruit");
         numberOfIngredients.put("Starfruit", numberOfFruitsToDry);
@@ -1624,6 +1931,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Strawberry");
         numberOfIngredients.put("Strawberry", numberOfFruitsToDry);
         fruit = Fruit.fruits.get("Strawberry");
@@ -1640,6 +1950,9 @@ public class Produce extends Item {
         );
         produceTypes.put(produce.getName(), produce);
 
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Wild Plum");
         numberOfIngredients.put("Wild Plum", numberOfFruitsToDry);
@@ -1658,6 +1971,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Grapes");
         numberOfIngredients.put("Grapes", numberOfFruitsToDry);
 
@@ -1675,6 +1991,9 @@ public class Produce extends Item {
 
         // Coal
 
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
         ingredients.add("Wood");
         numberOfIngredients.put("Wood", 10);
 
@@ -1691,6 +2010,9 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
         //Cloth
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
 
         ingredients.add("Wool");
         numberOfIngredients.put("Wool", 1);
