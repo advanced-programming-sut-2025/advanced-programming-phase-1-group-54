@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit write Produce until Loom Artisan">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit write Produce until Preservers Jar Artisan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +87,7 @@
       <workItem from="1745908869194" duration="11288000" />
       <workItem from="1745929754274" duration="36323000" />
       <workItem from="1746088901926" duration="4312000" />
-      <workItem from="1746116715626" duration="4308000" />
+      <workItem from="1746116715626" duration="7908000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
       <option name="closed" value="true" />
@@ -184,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746098142936</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="edit write Produce until Preservers Jar Artisan">
+      <option name="closed" value="true" />
+      <created>1746123476875</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1746123476875</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,7 +211,8 @@
     <MESSAGE value="edit ForagingMineral Constructor" />
     <MESSAGE value="write Produce until Loom Artisan" />
     <MESSAGE value="edit write Produce until Loom Artisan" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit write Produce until Loom Artisan" />
+    <MESSAGE value="edit write Produce until Preservers Jar Artisan" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit write Produce until Preservers Jar Artisan" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -227,6 +237,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
           <line>95</line>
           <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/Fish.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/Fish.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -42,10 +42,6 @@ public class Fruit extends Item {
         this.energy = energy;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public int getBaseSellPrice() {
         return baseSellPrice;
     }
