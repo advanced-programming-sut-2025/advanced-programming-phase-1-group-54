@@ -1,0 +1,26 @@
+{
+  "Gold Ore": {
+    "baseSellPrice": 0,
+    "name": "Gold Ore"
+  },
+  "Wood": {
+    "baseSellPrice": 0,
+    "name": "Wood"
+  },
+  "Iridium Ore": {
+    "baseSellPrice": 0,
+    "name": "Iridium Ore"
+  },
+  "Iron Ore": {
+    "baseSellPrice": 0,
+    "name": "Iron Ore"
+  },
+  "Copper Ore": {
+    "baseSellPrice": 0,
+    "name": "Copper Ore"
+  },
+  "Stone": {
+    "baseSellPrice": 0,
+    "name": "Stone"
+  }
+}

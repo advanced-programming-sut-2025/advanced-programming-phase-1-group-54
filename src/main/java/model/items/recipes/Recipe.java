@@ -125,8 +125,8 @@ public class Recipe extends Item {
         ingredients.add("Copper Bar");
         numberOfIngredients.put("Copper Bar", 2);
 
-        recipe = new Recipe("Charcoal Klin Recipe",ingredients,numberOfIngredients);
-        craftRecipesType.put("Charcoal Klin Recipe",recipe);
+        recipe = new Recipe("Charcoal Kiln Recipe",ingredients,numberOfIngredients);
+        craftRecipesType.put("Charcoal Kiln Recipe",recipe);
 
 
         ingredients = new ArrayList<>();
@@ -594,8 +594,8 @@ public class Recipe extends Item {
         ingredients = new ArrayList<>();
         numberOfIngredients = new HashMap<>();
 
-        ingredients.add("Sardines");
-        numberOfIngredients.put("Sardines", 2);
+        ingredients.add("Sardine");
+        numberOfIngredients.put("Sardine", 2);
         ingredients.add("Hash Browns");
         numberOfIngredients.put("Hash Browns", 1);
 

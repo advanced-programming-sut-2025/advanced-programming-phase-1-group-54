@@ -1,7 +1,8 @@
 package model.items.crafting;
 
-import model.DateTime;
+import model.items.Fish;
 import model.items.Item;
+import model.items.Material;
 import model.items.plants.Fruit;
 
 import java.util.ArrayList;
@@ -509,22 +510,6 @@ public class Produce extends Item {
         ingredients = new ArrayList<>();
         numberOfIngredients = new HashMap<>();
 
-        ingredients.add("Hops");
-        numberOfIngredients.put("Hops", 1);
-        fruit = Fruit.fruits.get("Hops");
-
-        produce = new Produce(
-                "Hops Juice",
-                (int)(2.25 * fruit.getBaseSellPrice()),
-                true,
-                2 * fruit.getEnergy(),
-                4 * dayHours,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
-
 
         ingredients = new ArrayList<>();
         numberOfIngredients = new HashMap<>();
@@ -749,26 +734,6 @@ public class Produce extends Item {
         ingredients = new ArrayList<>();
         numberOfIngredients = new HashMap<>();
 
-        ingredients.add("Wheat");
-        numberOfIngredients.put("Wheat", 1);
-        fruit = Fruit.fruits.get("Wheat");
-
-        produce = new Produce(
-                "Wheat Juice",
-                (int)(2.25 * fruit.getBaseSellPrice()),
-                true,
-                2 * fruit.getEnergy(),
-                4 * dayHours,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
-
-
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
         ingredients.add("Yam");
         numberOfIngredients.put("Yam", 1);
         fruit = Fruit.fruits.get("Yam");
@@ -915,7 +880,7 @@ public class Produce extends Item {
         fruit = Fruit.fruits.get("Cactus Fruit");
 
         produce = new Produce(
-                "Cactus Fruit JWine",
+                "Cactus Fruit Wine",
                 3 * fruit.getBaseSellPrice(),
                 true,
                 (int)(1.75 * fruit.getEnergy()),
@@ -1616,7 +1581,7 @@ public class Produce extends Item {
 
         ingredients.add("Coconut");
         numberOfIngredients.put("Coconut", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Cocomut");
+        fruit = Fruit.fruits.get("Coconut");
 
         produce = new Produce(
                 "Dried Coconut",
@@ -3248,24 +3213,554 @@ public class Produce extends Item {
         produceTypes.put(produce.getName(), produce);
 
         // Smoked Fish
-
-
-
-        // Material Bar
+        Fish fish;
 
         ingredients = new ArrayList<>();
         numberOfIngredients = new HashMap<>();
 
-        ingredients.add("Coconut");
-        numberOfIngredients.put("Coconut", 1);
-        fruit = Fruit.fruits.get("Coconut");
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Flounder");
+        numberOfIngredients.put("Flounder", 1);
+        fish = Fish.fishes.get("Flounder");
 
         produce = new Produce(
-                "Coconut Jelly",
-                2 * fruit.getBaseSellPrice() + 50,
+                "Smoked Flounder",
+                2 * fish.getBaseSellPrice(),
                 true,
-                2 * fruit.getEnergy(),
-                3 * dayHours,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Lionfish");
+        numberOfIngredients.put("Lionfish", 1);
+        fish = Fish.fishes.get("Lionfish");
+
+        produce = new Produce(
+                "Smoked Lionfish",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Herring");
+        numberOfIngredients.put("Herring", 1);
+        fish = Fish.fishes.get("Herring");
+
+        produce = new Produce(
+                "Smoked Herring",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Ghostfish");
+        numberOfIngredients.put("Ghostfish", 1);
+        fish = Fish.fishes.get("Ghostfish");
+
+        produce = new Produce(
+                "Smoked Ghostfish",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Tilapia");
+        numberOfIngredients.put("Tilapia", 1);
+        fish = Fish.fishes.get("Tilapia");
+
+        produce = new Produce(
+                "Smoked Tilapia",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Dorado");
+        numberOfIngredients.put("Dorado", 1);
+        fish = Fish.fishes.get("Dorado");
+
+        produce = new Produce(
+                "Smoked Dorado",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Sunfish");
+        numberOfIngredients.put("Sunfish", 1);
+        fish = Fish.fishes.get("Sunfish");
+
+        produce = new Produce(
+                "Smoked Sunfish",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Rainbow Trout");
+        numberOfIngredients.put("Rainbow Trout", 1);
+        fish = Fish.fishes.get("Rainbow Trout");
+
+        produce = new Produce(
+                "Smoked Rainbow Trout",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Salmon");
+        numberOfIngredients.put("Salmon", 1);
+        fish = Fish.fishes.get("Salmon");
+
+        produce = new Produce(
+                "Smoked Salmon",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Sardine");
+        numberOfIngredients.put("Sardine", 1);
+        fish = Fish.fishes.get("Sardine");
+
+        produce = new Produce(
+                "Smoked Sardine",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Sardine");
+        numberOfIngredients.put("Sardine", 1);
+        fish = Fish.fishes.get("Sardine");
+
+        produce = new Produce(
+                "Smoked Sardine",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Shad");
+        numberOfIngredients.put("Shad", 1);
+        fish = Fish.fishes.get("Shad");
+
+        produce = new Produce(
+                "Smoked Shad",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Blue Discus");
+        numberOfIngredients.put("Blue Discus", 1);
+        fish = Fish.fishes.get("Blue Discus");
+
+        produce = new Produce(
+                "Smoked Blue Discus",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Midnight Carp");
+        numberOfIngredients.put("Midnight Carp", 1);
+        fish = Fish.fishes.get("Midnight Carp");
+
+        produce = new Produce(
+                "Smoked Midnight Carp",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Squid");
+        numberOfIngredients.put("Squid", 1);
+        fish = Fish.fishes.get("Squid");
+
+        produce = new Produce(
+                "Smoked Squid",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Tuna");
+        numberOfIngredients.put("Tuna", 1);
+        fish = Fish.fishes.get("Tuna");
+
+        produce = new Produce(
+                "Smoked Tuna",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Perch");
+        numberOfIngredients.put("Perch", 1);
+        fish = Fish.fishes.get("Perch");
+
+        produce = new Produce(
+                "Smoked Perch",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Legend");
+        numberOfIngredients.put("Legend", 1);
+        fish = Fish.fishes.get("Legend");
+
+        produce = new Produce(
+                "Smoked Legend",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Glacierfish");
+        numberOfIngredients.put("Glacierfish", 1);
+        fish = Fish.fishes.get("Glacierfish");
+
+        produce = new Produce(
+                "Smoked Glacierfish",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Angler");
+        numberOfIngredients.put("Angler", 1);
+        fish = Fish.fishes.get("Angler");
+
+        produce = new Produce(
+                "Smoked Angler",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Crimsonfish");
+        numberOfIngredients.put("Crimsonfish", 1);
+        fish = Fish.fishes.get("Crimsonfish");
+
+        produce = new Produce(
+                "Smoked Crimsonfish",
+                2 * fish.getBaseSellPrice(),
+                true,
+                (int)(1.5 * fish.getEnergy()),
+                1,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+        // Material Bar
+        Material material;
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Copper Ore");
+        numberOfIngredients.put("Copper Ore", 5);
+        material = Material.materials.get("Copper Ore");
+
+        produce = new Produce(
+                "Copper Bar",
+                10 * material.getBaseSellPrice(),
+                false,
+                0,
+                4,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Iron Ore");
+        numberOfIngredients.put("Iron Ore", 5);
+        material = Material.materials.get("Iron Ore");
+
+        produce = new Produce(
+                "Iron Bar",
+                10 * material.getBaseSellPrice(),
+                false,
+                0,
+                4,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Gold Ore");
+        numberOfIngredients.put("Gold Ore", 5);
+        material = Material.materials.get("Gold Ore");
+
+        produce = new Produce(
+                "Gold Bar",
+                10 * material.getBaseSellPrice(),
+                false,
+                0,
+                4,
+                0,
+                ingredients,
+                numberOfIngredients
+        );
+        produceTypes.put(produce.getName(), produce);
+
+
+        ingredients = new ArrayList<>();
+        numberOfIngredients = new HashMap<>();
+
+        ingredients.add("Coal");
+        numberOfIngredients.put("Coal", 1);
+        ingredients.add("Iridium Ore");
+        numberOfIngredients.put("Iridium Ore", 5);
+        material = Material.materials.get("Iridium Ore");
+
+        produce = new Produce(
+                "Iridium Bar",
+                10 * material.getBaseSellPrice(),
+                false,
+                0,
+                4,
                 0,
                 ingredients,
                 numberOfIngredients

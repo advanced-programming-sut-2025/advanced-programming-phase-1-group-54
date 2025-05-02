@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Fish extends Item {
-    static final HashMap<String ,Fish> fishes;
+    public static final HashMap<String ,Fish> fishes;
     static final HashMap<Season,ArrayList<Fish>> seasonFishes ;
     static final HashMap<Season,ArrayList<Fish>> seasonLegendaryFishes ;
 
@@ -50,6 +50,7 @@ public class Fish extends Item {
     }
 
     private final int baseSellPrice;
+    private int energy;
     private ProduceQuality quality;
 
     public Fish(String name, int baseSellPrice) {
@@ -59,6 +60,14 @@ public class Fish extends Item {
 
     public int getBaseSellPrice() {
         return baseSellPrice;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public ProduceQuality getQuality() {
+        return quality;
     }
 
     public static void writeToJson(){
