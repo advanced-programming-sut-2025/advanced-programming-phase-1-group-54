@@ -15,12 +15,64 @@
     "baseSellPrice": 0,
     "name": "Iron Ore"
   },
+  "Diamond": {
+    "baseSellPrice": 750,
+    "name": "Diamond"
+  },
   "Copper Ore": {
     "baseSellPrice": 0,
     "name": "Copper Ore"
   },
+  "Quartz": {
+    "baseSellPrice": 25,
+    "name": "Quartz"
+  },
   "Stone": {
     "baseSellPrice": 0,
     "name": "Stone"
+  },
+  "Amethyst": {
+    "baseSellPrice": 100,
+    "name": "Amethyst"
+  },
+  "Frozen Tear": {
+    "baseSellPrice": 75,
+    "name": "Frozen Tear"
+  },
+  "Fire Quartz": {
+    "baseSellPrice": 100,
+    "name": "Fire Quartz"
+  },
+  "Aquamarine": {
+    "baseSellPrice": 180,
+    "name": "Aquamarine"
+  },
+  "Emerald": {
+    "baseSellPrice": 250,
+    "name": "Emerald"
+  },
+  "Coal": {
+    "baseSellPrice": 0,
+    "name": "Coal"
+  },
+  "Earth Crystal": {
+    "baseSellPrice": 50,
+    "name": "Earth Crystal"
+  },
+  "Jade": {
+    "baseSellPrice": 200,
+    "name": "Jade"
+  },
+  "Prismatic Shard": {
+    "baseSellPrice": 2000,
+    "name": "Prismatic Shard"
+  },
+  "Ruby": {
+    "baseSellPrice": 250,
+    "name": "Ruby"
+  },
+  "Topaz": {
+    "baseSellPrice": 80,
+    "name": "Topaz"
   }
 }

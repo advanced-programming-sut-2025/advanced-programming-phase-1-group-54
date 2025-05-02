@@ -62,6 +62,54 @@ public class Material extends Item implements Placeable {
         material = new Material("Stone", 0);
         materialsType.put(material.getName(), material);
 
+        material = new Material("Quartz", 25);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
+        material = new Material("Earth Crystal", 50);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
+        material = new Material("Frozen Tear", 75);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
+        material = new Material("Fire Quartz", 100);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
+        material = new Material("Emerald", 250);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
+        material = new Material("Aquamarine", 180);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
+        material = new Material("Ruby", 250);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
+        material = new Material("Amethyst", 100);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
+        material = new Material("Topaz", 80);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
+        material = new Material("Jade", 200);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
+        material = new Material("Diamond", 750);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
+        material = new Material("Prismatic Shard", 2000);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
         material = new Material("Copper Ore", 0);
         materialsType.put(material.getName(), material);
         foragingMaterialsType.add(material.getName());
@@ -75,6 +123,10 @@ public class Material extends Item implements Placeable {
         foragingMaterialsType.add(material.getName());
 
         material = new Material("Iridium Ore", 0);
+        materialsType.put(material.getName(), material);
+        foragingMaterialsType.add(material.getName());
+
+        material = new Material("Coal", 0);
         materialsType.put(material.getName(), material);
         foragingMaterialsType.add(material.getName());
 
