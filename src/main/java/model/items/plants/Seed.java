@@ -93,7 +93,7 @@ public class Seed extends Item {
 
         // spring Crop's Seeds
 
-        seed = new Seed("Jazz Seeds","Jazz Crop");
+        seed = new Seed("Jazz Seeds","Blue Jazz Crop");
         seedTypes.put("Jazz Seeds",seed);
         springSeeds.add(seed.getName());
         springMixedSeeds.add(seed.getName());

@@ -468,7 +468,7 @@ public class Crop extends Plant {
         cropTypes.put("Broccoli Crop", crop);
 
         crop = new Crop(
-                "Cranberries Crop",
+                "Cranberry Crop",
                 "Cranberry Seeds",
                 "Cranberries",
                 new int[] {1, 2, 2, 1},
