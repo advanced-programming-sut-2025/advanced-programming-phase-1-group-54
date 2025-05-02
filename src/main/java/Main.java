@@ -1,4 +1,5 @@
 import model.items.Material;
+import model.items.plants.Seed;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,5 +7,6 @@ public class Main {
 //        Fish.writeToJson();
 //        Tree.writeToJson();
         Material.writeToJson();
+        Seed.writeToJson();
     }
 }

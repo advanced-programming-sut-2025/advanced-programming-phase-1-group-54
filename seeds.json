@@ -1,0 +1,225 @@
+{
+  "Cauliflower Seeds": {
+    "plant": "Cauliflower Crop",
+    "name": "Cauliflower Seeds"
+  },
+  "Rhubarb Seeds": {
+    "plant": "Rhubarb Crop",
+    "name": "Rhubarb Seeds"
+  },
+  "Bean Starter": {
+    "plant": "Green Bean Crop",
+    "name": "Bean Starter"
+  },
+  "Parsnip Seeds": {
+    "plant": "Parsnip Crop",
+    "name": "Parsnip Seeds"
+  },
+  "Broccoli Seeds": {
+    "plant": "Broccoli Crop",
+    "name": "Broccoli Seeds"
+  },
+  "Summer Squash Seeds": {
+    "plant": "Summer Squash Crop",
+    "name": "Summer Squash Seeds"
+  },
+  "Yam Seeds": {
+    "plant": "Yam Crop",
+    "name": "Yam Seeds"
+  },
+  "Pine Cones": {
+    "plant": "Pine Tree",
+    "name": "Pine Cones"
+  },
+  "Rare Seed": {
+    "plant": "Sweet Gem Crop",
+    "name": "Rare Seed"
+  },
+  "Amaranth Seeds": {
+    "plant": "Amaranth Crop",
+    "name": "Amaranth Seeds"
+  },
+  "Pepper Seeds": {
+    "plant": "Hot Pepper Crop",
+    "name": "Pepper Seeds"
+  },
+  "Poppy Seeds": {
+    "plant": "Poppy Crop",
+    "name": "Poppy Seeds"
+  },
+  "Blueberry Seeds": {
+    "plant": "Blueberry Crop",
+    "name": "Blueberry Seeds"
+  },
+  "Kale Seeds": {
+    "plant": "Kale Crop",
+    "name": "Kale Seeds"
+  },
+  "Fairy Seeds": {
+    "plant": "Fairy Rose Crop",
+    "name": "Fairy Seeds"
+  },
+  "Strawberry Seeds": {
+    "plant": "Strawberry Crop",
+    "name": "Strawberry Seeds"
+  },
+  "Acorns": {
+    "plant": "Oak Tree",
+    "name": "Acorns"
+  },
+  "Bok Choy Seeds": {
+    "plant": "Bok Choy Crop",
+    "name": "Bok Choy Seeds"
+  },
+  "Melon Seeds": {
+    "plant": "Melon Crop",
+    "name": "Melon Seeds"
+  },
+  "Powdermelon Seeds": {
+    "plant": "Powdermelon Crop",
+    "name": "Powdermelon Seeds"
+  },
+  "Cherry Sapling": {
+    "plant": "Cherry Tree",
+    "name": "Cherry Sapling"
+  },
+  "Beet Seeds": {
+    "plant": "Beet Crop",
+    "name": "Beet Seeds"
+  },
+  "Coffee Bean": {
+    "plant": "Coffee Bean Crop",
+    "name": "Coffee Bean"
+  },
+  "Rice Shoot": {
+    "plant": "Unmilled Rice Crop",
+    "name": "Rice Shoot"
+  },
+  "Mushroom Tree Seeds": {
+    "plant": "Mushroom Tree",
+    "name": "Mushroom Tree Seeds"
+  },
+  "Pumpkin Seeds": {
+    "plant": "Pumpkin Crop",
+    "name": "Pumpkin Seeds"
+  },
+  "Starfruit Seeds": {
+    "plant": "Starfruit Crop",
+    "name": "Starfruit Seeds"
+  },
+  "Radish Seeds": {
+    "plant": "Radish Crop",
+    "name": "Radish Seeds"
+  },
+  "Tomato Seeds": {
+    "plant": "Tomato Crop",
+    "name": "Tomato Seeds"
+  },
+  "Red Cabbage Seeds": {
+    "plant": "Red Cabbage Crop",
+    "name": "Red Cabbage Seeds"
+  },
+  "Sunflower Seeds": {
+    "plant": "Sunflower Crop",
+    "name": "Sunflower Seeds"
+  },
+  "Artichoke Seeds": {
+    "plant": "Artichoke Seeds",
+    "name": "Artichoke Seeds"
+  },
+  "Mango Sapling": {
+    "plant": "Mango Tree",
+    "name": "Mango Sapling"
+  },
+  "Mahogany Seeds": {
+    "plant": "Mahogany Tree",
+    "name": "Mahogany Seeds"
+  },
+  "Corn Seeds": {
+    "plant": "Corn Crop",
+    "name": "Corn Seeds"
+  },
+  "Carrot Seeds": {
+    "plant": "Carrot Crop",
+    "name": "Carrot Seeds"
+  },
+  "Ancient Seeds": {
+    "plant": "Ancient Fruit Crop",
+    "name": "Ancient Seeds"
+  },
+  "Cranberry Seeds": {
+    "plant": "Cranberry Crop",
+    "name": "Cranberry Seeds"
+  },
+  "Mixed Seeds": {
+    "name": "Mixed Seeds"
+  },
+  "Mystic Tree Seeds": {
+    "plant": "Mystic Tree",
+    "name": "Mystic Tree Seeds"
+  },
+  "Wheat Seeds": {
+    "plant": "Wheat Crop",
+    "name": "Wheat Seeds"
+  },
+  "Apple Sapling": {
+    "plant": "Apple Tree",
+    "name": "Apple Sapling"
+  },
+  "Banana Sapling": {
+    "plant": "Banana Tree",
+    "name": "Banana Sapling"
+  },
+  "Eggplant Seeds": {
+    "plant": "Eggplant Crop",
+    "name": "Eggplant Seeds"
+  },
+  "Maple Seeds": {
+    "plant": "Maple Tree",
+    "name": "Maple Seeds"
+  },
+  "Garlic Seeds": {
+    "plant": "Garlic Crop",
+    "name": "Garlic Seeds"
+  },
+  "Hops Starter": {
+    "plant": "Hops Crop",
+    "name": "Hops Starter"
+  },
+  "Potato Seeds": {
+    "plant": "Potato Crop",
+    "name": "Potato Seeds"
+  },
+  "Jazz Seeds": {
+    "plant": "Jazz Crop",
+    "name": "Jazz Seeds"
+  },
+  "Apricot Sapling": {
+    "plant": "Apricot Tree",
+    "name": "Apricot Sapling"
+  },
+  "Peach Sapling": {
+    "plant": "Peach Tree",
+    "name": "Peach Sapling"
+  },
+  "Tulip Bulb": {
+    "plant": "Tulip Crop",
+    "name": "Tulip Bulb"
+  },
+  "Pomegranate Sapling": {
+    "plant": "Pomegranate Tree",
+    "name": "Pomegranate Sapling"
+  },
+  "Spangle Seeds": {
+    "plant": "Spangle Crop",
+    "name": "Spangle Seeds"
+  },
+  "Grape Starter": {
+    "plant": "Grape Crop",
+    "name": "Grape Starter"
+  },
+  "Orange Sapling": {
+    "plant": "Orange Tree",
+    "name": "Orange Sapling"
+  }
+}
