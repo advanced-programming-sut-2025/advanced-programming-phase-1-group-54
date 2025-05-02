@@ -19,6 +19,7 @@ public class Seed extends Item {
     public static HashMap<String,Seed> seeds;
     public static HashMap<Season,ArrayList<String>> foragingSeeds;
     public static HashMap<Season,ArrayList<String>> mixedSeeds;
+    public static ArrayList<String> foragingTrees;
 
     static{
         Gson gson = new Gson();
@@ -47,6 +48,15 @@ public class Seed extends Item {
         }
         type = new TypeToken<HashMap<Season,ArrayList<String>>>(){}.getType();
         mixedSeeds = gson.fromJson(file,type);
+
+        try {
+            file = new FileReader("foragingTrees.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        type = new TypeToken<ArrayList<String>>(){}.getType();
+        foragingTrees = gson.fromJson(file,type);
+
     }
 
     private final String plant;
@@ -76,6 +86,8 @@ public class Seed extends Item {
         ArrayList<String> summerMixedSeeds = new ArrayList<>();
         ArrayList<String> fallMixedSeeds = new ArrayList<>();
         ArrayList<String> winterMixedSeeds = new ArrayList<>();
+
+        ArrayList<String> foragingTreesType = new ArrayList<>();
 
         Seed seed;
 
@@ -304,18 +316,23 @@ public class Seed extends Item {
 
         seed = new Seed("Acorns","Oak Tree");
         seedTypes.put("Acorns",seed);
+        foragingTreesType.add(seed.getName());
 
         seed = new Seed("Maple Seeds","Maple Tree");
         seedTypes.put("Maple Seeds",seed);
+        foragingTreesType.add(seed.getName());
 
         seed = new Seed("Pine Cones","Pine Tree");
         seedTypes.put("Pine Cones",seed);
+        foragingTreesType.add(seed.getName());
 
         seed = new Seed("Mahogany Seeds","Mahogany Tree");
         seedTypes.put("Mahogany Seeds",seed);
+        foragingTreesType.add(seed.getName());
 
         seed = new Seed("Mushroom Tree Seeds","Mushroom Tree");
         seedTypes.put("Mushroom Tree Seeds",seed);
+        foragingTreesType.add(seed.getName());
 
         seed = new Seed("Mystic Tree Seeds","Mystic Tree");
         seedTypes.put("Mystic Tree Seeds",seed);
@@ -349,6 +366,12 @@ public class Seed extends Item {
 
         try (FileWriter file = new FileWriter("mixedSeeds.json")){
             gson.toJson(mixedSeedsType, file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try (FileWriter file = new FileWriter("foragingTrees.json")){
+            gson.toJson(foragingTreesType, file);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -1,4 +1,19 @@
 {
+  "FALL": [
+    "Amaranth Seeds",
+    "Artichoke Seeds",
+    "Beet Seeds",
+    "Bok Choy Seeds",
+    "Broccoli Seeds",
+    "Cranberry Seeds",
+    "Eggplant Seeds",
+    "Fairy Seeds",
+    "Grape Starter",
+    "Pumpkin Seeds",
+    "Yam Seeds",
+    "Rare Seed",
+    "Ancient Seeds"
+  ],
   "SPRING": [
     "Jazz Seeds",
     "Carrot Seeds",
@@ -13,6 +28,10 @@
     "Strawberry Seeds",
     "Tulip Bulb",
     "Rice Shoot",
+    "Ancient Seeds"
+  ],
+  "WINTER": [
+    "Powdermelon Seeds",
     "Ancient Seeds"
   ],
   "SUMMER": [
@@ -30,25 +49,6 @@
     "Sunflower Seeds",
     "Tomato Seeds",
     "Wheat Seeds",
-    "Ancient Seeds"
-  ],
-  "WINTER": [
-    "Powdermelon Seeds",
-    "Ancient Seeds"
-  ],
-  "FALL": [
-    "Amaranth Seeds",
-    "Artichoke Seeds",
-    "Beet Seeds",
-    "Bok Choy Seeds",
-    "Broccoli Seeds",
-    "Cranberry Seeds",
-    "Eggplant Seeds",
-    "Fairy Seeds",
-    "Grape Starter",
-    "Pumpkin Seeds",
-    "Yam Seeds",
-    "Rare Seed",
     "Ancient Seeds"
   ]
 }
