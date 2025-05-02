@@ -8,6 +8,7 @@ import view.AppView;
 public class Main {
     public static void main(String[] args) {
       //  (new AppView()).run();
-        Fish.writeToJson();
+//        Fish.writeToJson();
+//        Tree.writeToJson();
     }
 }
