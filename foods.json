@@ -1,0 +1,170 @@
+{
+  "Pumpkin Pie": {
+    "energy": 225,
+    "sellPrice": 385,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Pumpkin Pie"
+  },
+  "Cookie": {
+    "energy": 90,
+    "sellPrice": 140,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Cookie"
+  },
+  "Red Plate": {
+    "energy": 240,
+    "sellPrice": 400,
+    "energyBuff": 50,
+    "buffHours": 3,
+    "name": "Red Plate"
+  },
+  "Salmon Dinner": {
+    "energy": 125,
+    "sellPrice": 300,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Salmon Dinner"
+  },
+  "Dish O\u0027 The Sea": {
+    "energy": 150,
+    "sellPrice": 220,
+    "skillType": "FISHING",
+    "energyBuff": 0,
+    "buffHours": 5,
+    "name": "Dish O\u0027 The Sea"
+  },
+  "Tortilla": {
+    "energy": 50,
+    "sellPrice": 50,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Tortilla"
+  },
+  "Omelet": {
+    "energy": 100,
+    "sellPrice": 125,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Omelet"
+  },
+  "Survival Burger": {
+    "energy": 125,
+    "sellPrice": 180,
+    "skillType": "FORAGING",
+    "energyBuff": 0,
+    "buffHours": 5,
+    "name": "Survival Burger"
+  },
+  "Farmer\u0027s Lunch": {
+    "energy": 200,
+    "sellPrice": 150,
+    "skillType": "FARMING",
+    "energyBuff": 0,
+    "buffHours": 5,
+    "name": "Farmer\u0027s Lunch"
+  },
+  "Miner\u0027s Treat": {
+    "energy": 125,
+    "sellPrice": 200,
+    "skillType": "MINING",
+    "energyBuff": 0,
+    "buffHours": 5,
+    "name": "Miner\u0027s Treat"
+  },
+  "Pancakes": {
+    "energy": 90,
+    "sellPrice": 80,
+    "skillType": "FORAGING",
+    "energyBuff": 0,
+    "buffHours": 11,
+    "name": "Pancakes"
+  },
+  "Hash Browns": {
+    "energy": 90,
+    "sellPrice": 120,
+    "skillType": "FARMING",
+    "energyBuff": 0,
+    "buffHours": 5,
+    "name": "Hash Browns"
+  },
+  "Bread": {
+    "energy": 50,
+    "sellPrice": 60,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Bread"
+  },
+  "Pizza": {
+    "energy": 150,
+    "sellPrice": 300,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Pizza"
+  },
+  "Vegetable Medley": {
+    "energy": 165,
+    "sellPrice": 120,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Vegetable Medley"
+  },
+  "Seaform Pudding": {
+    "energy": 175,
+    "sellPrice": 300,
+    "skillType": "FISHING",
+    "energyBuff": 0,
+    "buffHours": 10,
+    "name": "Seaform Pudding"
+  },
+  "Triple Shot Espresso": {
+    "energy": 200,
+    "sellPrice": 450,
+    "energyBuff": 100,
+    "buffHours": 5,
+    "name": "Triple Shot Espresso"
+  },
+  "Maki Roll": {
+    "energy": 100,
+    "sellPrice": 220,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Maki Roll"
+  },
+  "Baked Fish": {
+    "energy": 75,
+    "sellPrice": 100,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Baked Fish"
+  },
+  "Fried Egg": {
+    "energy": 50,
+    "sellPrice": 35,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Fried Egg"
+  },
+  "Spaghetti": {
+    "energy": 75,
+    "sellPrice": 120,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Spaghetti"
+  },
+  "Fruit Salad": {
+    "energy": 263,
+    "sellPrice": 450,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Fruit Salad"
+  },
+  "Salad": {
+    "energy": 113,
+    "sellPrice": 110,
+    "energyBuff": 0,
+    "buffHours": 0,
+    "name": "Salad"
+  }
+}

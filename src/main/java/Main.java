@@ -1,3 +1,4 @@
+import model.items.Food;
 import model.items.Material;
 import model.items.plants.Fruit;
 import model.items.plants.Seed;
@@ -9,6 +10,7 @@ public class Main {
 //        Tree.writeToJson();
 //        Material.writeToJson();
 //        Seed.writeToJson();
-        Fruit.writeToJson();
+//        Fruit.writeToJson();
+        Food.writeToJson();
     }
 }
