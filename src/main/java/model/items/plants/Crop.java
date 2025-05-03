@@ -3,6 +3,7 @@ package model.items.plants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import model.enums.Direction;
 import model.enums.Season;
 
 import java.io.FileNotFoundException;
@@ -10,9 +11,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.HashMap;
 
-public class Crop extends Plant {
+public class Crop extends Plant implements Cloneable{
     public static HashMap<String,Crop> crops;
 
     static{
@@ -30,6 +32,7 @@ public class Crop extends Plant {
 
     private final boolean oneTime;
     private final boolean canBecomeGiant;
+    private Direction giantDirection;
 
     public Crop(String name, String source, String fruit, int[] stages, int totalHarvestTime, int regrowthTime,
                 Season[] seasons, boolean oneTime, boolean canBecomeGiant) {
@@ -44,6 +47,23 @@ public class Crop extends Plant {
 
     public boolean isCanBecomeGiant() {
         return canBecomeGiant;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name +"\nSource: " + source + "\nFruit: " + fruit + "\nStages: " + Arrays.toString(stages) +
+                "\nTotal Harvest Time: " + totalHarvestTime + "\nOne Time: " + oneTime +  "\nRegrowth Time: " +
+                regrowthTime + "\nSeason: " + Arrays.toString(seasons) + "\nCan Become Giant: " + canBecomeGiant ;
+    }
+
+    @Override
+    public Crop clone() {
+        try{
+            return (Crop) super.clone();
+        } catch (CloneNotSupportedException e){
+            throw new AssertionError();
+        }
+
     }
 
     public static void writeToJson(){

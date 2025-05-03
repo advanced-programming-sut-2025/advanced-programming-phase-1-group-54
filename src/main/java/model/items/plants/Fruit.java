@@ -76,6 +76,14 @@ public class Fruit extends Item {
         this.quality = quality;
     }
 
+    @Override
+    public String toString() {
+        return "Name : " + name +
+                "\nbaseSellPrice : " + baseSellPrice +
+                "\nisEdible : " + isEdible +
+                "\nenergy : " + energy ;
+    }
+
     public static void writeToJson() {
 
         HashMap<String,Fruit> fruitTypes = new HashMap<String,Fruit>();

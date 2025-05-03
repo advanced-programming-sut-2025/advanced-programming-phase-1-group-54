@@ -8,12 +8,11 @@ import model.enums.Season;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.HashMap;
 
 
-public class Tree extends Plant {
-
-    boolean isBurned;
+public class Tree extends Plant implements Cloneable{
 
     public Tree(String name, String source, String fruit, int[] stages, int totalHarvestTime,
                 int regrowthTime, Season[] seasons) {
@@ -32,6 +31,28 @@ public class Tree extends Plant {
         }
         Type type = new TypeToken<HashMap<String,Tree>>(){}.getType();
         trees = gson.fromJson(file,type);
+    }
+
+    @Override
+    public String toString() {
+        return
+                "name : " + name +
+                "\nsource : " + source +
+                "\nfruit : " + fruit  +
+                "\nstages : " + Arrays.toString(stages) +
+                "\ntotalHarvestTime : " + totalHarvestTime +
+                "\nregrowthTime : " + regrowthTime +
+                "\nseasons : " + Arrays.toString(seasons);
+    }
+
+    @Override
+    public Tree clone()  {
+        try {
+            return (Tree) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+
     }
 
     public static void writeToJson(){

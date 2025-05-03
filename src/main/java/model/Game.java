@@ -7,6 +7,7 @@ public class Game {
     private final World world;
     private final Player[] players;
     private DateTime dateTime;
+    private int turn;
 
     public Game(World world, Player[] players) {
         this.world = world;

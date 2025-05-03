@@ -6,6 +6,7 @@ import model.enums.SkillType;
 import model.items.recipes.Recipe;
 import model.items.tools.BackPack;
 import model.items.tools.Tool;
+import model.map.Tile;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ public class Player extends Character {
     private User controllingUser;
     private int energy;
     private BackPack backpack;
+    private Tile currentTile;
     
     private ArrayList<Recipe> learnedRecipes;
     
@@ -47,6 +49,10 @@ public class Player extends Character {
 
     public Tool getEquippedTool() {
         return equippedTool;
+    }
+
+    public Tile getCurrentTile() {
+        return currentTile;
     }
 
     public void setControllingUser(User controllingUser) {

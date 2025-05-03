@@ -70,6 +70,12 @@ public class Seed extends Item {
         return plant;
     }
 
+    @Override
+    public String toString() {
+        return "plant : " + plant +
+                "\nname : " + name ;
+    }
+
     public static void writeToJson(){
         HashMap<String ,Seed> seedTypes = new HashMap<String,Seed>();
 

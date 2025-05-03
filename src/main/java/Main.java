@@ -1,3 +1,4 @@
+import controller.Game.PlantsController;
 import model.items.Food;
 import model.items.Material;
 import model.items.plants.Fruit;
@@ -11,6 +12,9 @@ public class Main {
 //        Material.writeToJson();
 //        Seed.writeToJson();
 //        Fruit.writeToJson();
-        Food.writeToJson();
+//        Food.writeToJson();
+        System.out.println(
+                (new PlantsController().showInfo("Coffee Bean Crop"))
+        );
     }
 }
