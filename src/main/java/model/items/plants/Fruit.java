@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.enums.ProduceQuality;
+import model.enums.Season;
 import model.items.Item;
 
 import java.io.FileNotFoundException;
@@ -11,11 +12,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Fruit extends Item {
 
     public static HashMap<String, Fruit> fruits;
+    public static HashMap<Season, ArrayList<String>> foragingCrops;
+
 
     static{
         Gson gson = new Gson();
@@ -28,6 +32,16 @@ public class Fruit extends Item {
         Type type = new TypeToken<HashMap<String,Fruit>>(){}.getType();
         fruits = gson.fromJson(file,type);
         System.out.println(fruits.size());
+
+        try {
+            file = new FileReader("foragingCrops.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        type = new TypeToken<HashMap<Season,ArrayList<String>>>(){}.getType();
+        foragingCrops = gson.fromJson(file,type);
+        System.out.println(foragingCrops.size());
+
     }
 
     private final int baseSellPrice;
@@ -65,6 +79,13 @@ public class Fruit extends Item {
     public static void writeToJson() {
 
         HashMap<String,Fruit> fruitTypes = new HashMap<String,Fruit>();
+
+        HashMap<Season,ArrayList<String>> foragingCropsType = new HashMap<>();
+
+        ArrayList<String> springForagingCrops = new ArrayList<>();
+        ArrayList<String> summerForagingCrops = new ArrayList<>();
+        ArrayList<String> fallForagingCrops = new ArrayList<>();
+        ArrayList<String> winterForagingCrops = new ArrayList<>();
 
         Fruit fruit;
 
@@ -108,6 +129,7 @@ public class Fruit extends Item {
 
         fruit = new Fruit("Common Mushroom", 40, false, 38);
         fruitTypes.put("Common Mushroom", fruit);
+        summerForagingCrops.add(fruit.getName());
 
         fruit = new Fruit("Mystic Syrup", 1000, false, 500);
         fruitTypes.put("Mystic Syrup", fruit);
@@ -221,6 +243,7 @@ public class Fruit extends Item {
 
         fruit = new Fruit("Grape", 80, true, 38);
         fruitTypes.put("Grape", fruit);
+        summerForagingCrops.add(fruit.getName());
 
         fruit = new Fruit("Pumpkin", 320, false, 0);
         fruitTypes.put("Pumpkin", fruit);
@@ -237,10 +260,107 @@ public class Fruit extends Item {
         fruit = new Fruit("Ancient Fruit", 550, false, 0);
         fruitTypes.put("Ancient Fruit", fruit);
 
+        // foraging Crops
+
+        fruit = new Fruit("Daffodil", 40, false, 0);
+        fruitTypes.put(fruit.getName(), fruit);
+        springForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Dandelion", 40, true, 25);
+        fruitTypes.put(fruit.getName(), fruit);
+        springForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Leek", 60, true, 40);
+        fruitTypes.put(fruit.getName(), fruit);
+        springForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Morel", 150, true,20);
+        fruitTypes.put(fruit.getName(), fruit);
+        springForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Salmonberry", 5, true, 25);
+        fruitTypes.put(fruit.getName(), fruit);
+        springForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Spring Onion", 8, true, 13);
+        fruitTypes.put(fruit.getName(), fruit);
+        springForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Wild Horseradish", 50, true, 13);
+        fruitTypes.put(fruit.getName(), fruit);
+        springForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Fiddlehead Fern", 90, true, 25);
+        fruitTypes.put(fruit.getName(), fruit);
+        summerForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Red Mushroom", 75, false, -50);
+        fruitTypes.put(fruit.getName(), fruit);
+        summerForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Spice Berry", 80, true, 25);
+        fruitTypes.put(fruit.getName(), fruit);
+        summerForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Sweet Pea", 50, false, 0);
+        fruitTypes.put(fruit.getName(), fruit);
+        summerForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Blackberry", 25, true, 25);
+        fruitTypes.put(fruit.getName(), fruit);
+        fallForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Chanterelle", 160, true, 75);
+        fruitTypes.put(fruit.getName(), fruit);
+        fallForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Hazelnut", 40, true, 38);
+        fruitTypes.put(fruit.getName(), fruit);
+        fallForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Purple Mushroom", 90, true, 30);
+        fruitTypes.put(fruit.getName(), fruit);
+        fallForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Wild Plum", 80, true, 25);
+        fruitTypes.put(fruit.getName(), fruit);
+        fallForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Crocus", 60, false, 0);
+        fruitTypes.put(fruit.getName(), fruit);
+        winterForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Crystal Fruit", 150, true, 63);
+        fruitTypes.put(fruit.getName(), fruit);
+        winterForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Holly", 80, true, -37);
+        fruitTypes.put(fruit.getName(), fruit);
+        winterForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Snow Yam", 100, true, 30);
+        fruitTypes.put(fruit.getName(), fruit);
+        winterForagingCrops.add(fruit.getName());
+
+        fruit = new Fruit("Winter Root", 70, true, 25);
+        fruitTypes.put(fruit.getName(), fruit);
+        winterForagingCrops.add(fruit.getName());
+
+        foragingCropsType.put(Season.SPRING,springForagingCrops);
+        foragingCropsType.put(Season.SUMMER,summerForagingCrops);
+        foragingCropsType.put(Season.FALL,fallForagingCrops);
+        foragingCropsType.put(Season.WINTER,winterForagingCrops);
+
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter file = new FileWriter("fruits.json")){
             gson.toJson(fruitTypes, file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try (FileWriter file = new FileWriter("foragingCrops.json")){
+            gson.toJson(foragingCropsType, file);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
