@@ -12,10 +12,10 @@ import java.util.HashMap;
 
 public class Artisan extends Item implements Placeable {
 
-    static HashMap<String,Artisan> Artisans ;
+    public static HashMap<String,Artisan> artisans ;
 
     static {
-        Artisans = new HashMap<>();
+        artisans = new HashMap<>();
     }
 
     private final String recipeName;

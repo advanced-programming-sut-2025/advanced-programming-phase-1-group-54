@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class Produce extends Item {
 
-    static final HashMap<String, Produce> produces;
+    public static final HashMap<String, Produce> produces;
 
     static final int dayHours = 24;
 

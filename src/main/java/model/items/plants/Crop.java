@@ -49,6 +49,14 @@ public class Crop extends Plant implements Cloneable{
         return canBecomeGiant;
     }
 
+    public Direction getGiantDirection() {
+        return giantDirection;
+    }
+
+    public void setGiantDirection(Direction giantDirection) {
+        this.giantDirection = giantDirection;
+    }
+
     @Override
     public String toString() {
         return "Name: " + name +"\nSource: " + source + "\nFruit: " + fruit + "\nStages: " + Arrays.toString(stages) +

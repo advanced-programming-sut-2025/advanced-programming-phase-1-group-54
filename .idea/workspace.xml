@@ -4,31 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment=" edit some things">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="complete refigerator and backpack">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Refrigerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Refrigerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/recipes/CraftingRecipe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/recipes/FoodRecipe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Axe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Axe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/FishingPole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/FishingPole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Hoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Hoe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/MilkPail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/MilkPail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Pickaxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Pickaxe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Scythe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Scythe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Shear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Shear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Tool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/TrashCan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/TrashCan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/WateringCan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/WateringCan.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +98,7 @@
       <workItem from="1746116715626" duration="12777000" />
       <workItem from="1746173735502" duration="26815000" />
       <workItem from="1746250809896" duration="9195000" />
-      <workItem from="1746265109849" duration="5251000" />
+      <workItem from="1746265109849" duration="15499000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
       <option name="closed" value="true" />
@@ -314,7 +300,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746261370313</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="complete refigerator and backpack">
+      <option name="closed" value="true" />
+      <created>1746272943059</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1746272943059</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +349,8 @@
     <MESSAGE value=" write to json foragingCrops" />
     <MESSAGE value=" write to json Foods" />
     <MESSAGE value=" edit some things" />
-    <option name="LAST_COMMIT_MESSAGE" value=" edit some things" />
+    <MESSAGE value="complete refigerator and backpack" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete refigerator and backpack" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -389,6 +384,15 @@
           <url>file://$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java</url>
           <line>446</line>
           <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java</url>
+          <line>152</line>
+          <properties class="controller.Game.PlantsController" method="compareCropsGrowth">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

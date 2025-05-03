@@ -8,6 +8,7 @@ public class Game {
     private final Player[] players;
     private DateTime dateTime;
     private int turn;
+    private Player currentPlayer;
 
     public Game(World world, Player[] players) {
         this.world = world;
@@ -24,6 +25,14 @@ public class Game {
 
     public DateTime getDateTime() {
         return dateTime;
+    }
+
+    public int getTurn() {
+        return turn;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 
     public void thunder() {}

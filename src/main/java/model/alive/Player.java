@@ -1,5 +1,6 @@
 package model.alive;
 
+import model.Refrigerator;
 import model.Skill;
 import model.User;
 import model.enums.SkillType;
@@ -16,8 +17,9 @@ public class Player extends Character {
 
     private User controllingUser;
     private int energy;
-    private BackPack backpack;
+    private BackPack backpack = new BackPack();
     private Tile currentTile;
+    private Refrigerator refrigerator = new Refrigerator();
     
     private ArrayList<Recipe> learnedRecipes;
     
@@ -55,6 +57,10 @@ public class Player extends Character {
         return currentTile;
     }
 
+    public Refrigerator getRefrigerator() {
+        return refrigerator;
+    }
+
     public void setControllingUser(User controllingUser) {
         this.controllingUser = controllingUser;
     }
@@ -81,5 +87,9 @@ public class Player extends Character {
 
     public void addSkillXP(SkillType skillType, int amount) {
         skills[SkillType.FARMING.ordinal()].addXP(amount);
+    }
+
+    public void setRefrigerator(Refrigerator refrigerator) {
+        this.refrigerator = refrigerator;
     }
 }
