@@ -9,32 +9,57 @@ import java.util.HashMap;
 
 public class BackPack extends Tool {
     private BackPackLevel level;
-    private ArrayList<Item> itemsInBackPack = new ArrayList<>();
-    private HashMap<Item, Integer> numberOfItemsInBackPack = new HashMap<>();
+    private final ArrayList<Item> itemsInBackPack = new ArrayList<>();
+    private final HashMap<Item, Integer> numberOfItemInBackPack = new HashMap<>();
 
-    public void addItem(Item item) {
-        if (itemsInBackPack.size() < level.getSize()) {
-            itemsInBackPack.add(item);
+    public Result addItem(Item item,Integer number) {
+        if(itemsInBackPack.contains(item)){
+            int numberOfItem = numberOfItemInBackPack.get(item);
+            numberOfItemInBackPack.put(item, numberOfItem + number);
         }
+        else if (itemsInBackPack.size() < level.getSize()) {
+            itemsInBackPack.add(item);
+            numberOfItemInBackPack.put(item, number);
+        }
+        else{
+            return new Result(-1,"Backpack is Full");
+        }
+        return new Result(1,"Item Added to backpack");
     }
 
-    public void removeItem(Item item, Integer number) {
+    public Result removeItem(Item item, Integer number) {
         if (itemsInBackPack.contains(item)) {
-            if (number == null) {
+            int numberOfItem = numberOfItemInBackPack.get(item);
+            if (number == numberOfItem) {
                 itemsInBackPack.remove(item);
-                //TODO
-            } else {
-
+                numberOfItemInBackPack.put(item,0);
+                return new Result(1,number + item.getName() + "Removed completely from backpack");
+            }
+            else if(numberOfItem > number){
+                numberOfItemInBackPack.put(item,numberOfItem - number);
+                return new Result(1,number + item.getName() + " Removed from backpack");
+            }
+            else {
+                return new Result(-1,"You do not have enough " + item.getName() + " to remove from backpack");
             }
 
-        } else {
-
+        }
+        else {
+            return new Result(-1,"You do not have " + item.getName() + " in your backpack");
         }
     }
 
-    public BackPack(String name) {
-        super(name);
+    public boolean ContainItem(Item item,Integer number) {
+        if(itemsInBackPack.contains(item)){
+            return number <= numberOfItemInBackPack.get(item);
+        }
+        return false;
     }
+
+
+
+
+
 
     //    @Override
 //    public Result use(Item item) {

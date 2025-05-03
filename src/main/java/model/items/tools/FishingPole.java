@@ -14,7 +14,4 @@ public class FishingPole extends Tool {
         this.level = level;
     }
 
-    public FishingPole(String name) {
-        super(name);
-    }
 }

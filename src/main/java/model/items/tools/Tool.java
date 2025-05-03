@@ -3,10 +3,8 @@ package model.items.tools;
 import model.items.Item;
 import model.enums.ToolLevel;
 
-public abstract class Tool extends Item {
-    public Tool(String name) {
-        super(name);
-    }
+public abstract class Tool {
+
 
     protected ToolLevel level;
 

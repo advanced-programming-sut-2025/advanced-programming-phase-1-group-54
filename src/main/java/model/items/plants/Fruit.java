@@ -45,14 +45,12 @@ public class Fruit extends Item {
     }
 
     private final int baseSellPrice;
-    private final boolean isEdible;
     private final int energy;
     private ProduceQuality quality;
 
     public Fruit(String name, int baseSellPrice, boolean isEdible, int energy) {
-        super(name);
+        super(name,isEdible);
         this.baseSellPrice = baseSellPrice;
-        this.isEdible = isEdible;
         this.energy = energy;
     }
 

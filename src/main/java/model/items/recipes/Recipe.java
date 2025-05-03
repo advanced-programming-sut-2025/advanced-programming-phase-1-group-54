@@ -24,7 +24,7 @@ public class Recipe extends Item {
     private final HashMap<String,Integer> ingredientsNumber;
 
     public Recipe(String name, ArrayList<String> ingredientsNames, HashMap<String, Integer> ingredientsNumber) {
-        super(name);
+        super(name,false);
         this.ingredientsNames = ingredientsNames;
         this.ingredientsNumber = ingredientsNumber;
     }

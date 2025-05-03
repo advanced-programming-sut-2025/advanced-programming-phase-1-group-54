@@ -62,7 +62,7 @@ public class Seed extends Item {
     private final String plant;
 
     public Seed(String name, String plant) {
-        super(name);
+        super(name,false);
         this.plant = plant;
     }
 

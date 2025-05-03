@@ -54,7 +54,7 @@ public class Fish extends Item {
     private ProduceQuality quality;
 
     public Fish(String name, int baseSellPrice) {
-        super(name);
+        super(name,true);
         this.baseSellPrice = baseSellPrice;
     }
 

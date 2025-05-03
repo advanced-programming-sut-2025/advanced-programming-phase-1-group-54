@@ -37,7 +37,7 @@ public class Food extends Item {
     private final int buffHours;
 
     public Food(String name, int energy, int sellPrice, SkillType skillType, int energyBuff, int buffHours) {
-        super(name);
+        super(name,true);
         this.energy = energy;
         this.sellPrice = sellPrice;
         this.skillType = skillType;

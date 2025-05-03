@@ -13,7 +13,4 @@ public class Hoe extends Tool {
         this.level = level;
     }
 
-    public Hoe(String name) {
-        super(name);
-    }
 }

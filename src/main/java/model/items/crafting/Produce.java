@@ -28,7 +28,7 @@ public class Produce extends Item {
 
     public Produce(String name, int sellPrice, boolean edible, int energy, int processingHours, int processingMornings,
                    ArrayList<String> ingredientsNames, HashMap<String, Integer> ingredientsNumber) {
-        super(name);
+        super(name,true);
         this.sellPrice = sellPrice;
         this.edible = edible;
         this.energy = energy;

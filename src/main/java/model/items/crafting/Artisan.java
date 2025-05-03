@@ -26,7 +26,7 @@ public class Artisan extends Item implements Placeable {
     private boolean produceIsReady;
 
     public Artisan(String name, int sellPrice, String recipeName, ArrayList<String> producesNames) {
-        super(name);
+        super(name,false);
         this.sellPrice = sellPrice;
         this.recipeName = recipeName;
         this.producesNames = producesNames;

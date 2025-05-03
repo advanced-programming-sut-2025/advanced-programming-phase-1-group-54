@@ -41,7 +41,7 @@ public class Material extends Item implements Placeable {
     private final int baseSellPrice;
 
     public Material(String name, int baseSellPrice) {
-        super(name);
+        super(name,false);
         this.baseSellPrice = baseSellPrice;
     }
 
