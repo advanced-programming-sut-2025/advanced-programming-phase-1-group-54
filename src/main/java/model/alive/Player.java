@@ -4,9 +4,12 @@ import model.Refrigerator;
 import model.Skill;
 import model.User;
 import model.enums.SkillType;
+import model.items.plants.Plant;
+import model.items.plants.Tree;
 import model.items.recipes.Recipe;
 import model.items.tools.BackPack;
 import model.items.tools.Tool;
+import model.map.Location;
 import model.map.Tile;
 
 import java.util.ArrayList;
@@ -18,12 +21,13 @@ public class Player extends Character {
     private User controllingUser;
     private int energy;
     private BackPack backpack = new BackPack();
-    private Tile currentTile;
     private Refrigerator refrigerator = new Refrigerator();
+    private Location currentLocation;
+
+    private ArrayList<Plant> Plants;
     
-    private ArrayList<Recipe> learnedRecipes;
-    
-    
+    private ArrayList<Recipe> learnedFoodRecipes;
+    private ArrayList<Recipe> learnedCraftingRecipes;
 
     private final Skill[] skills = new Skill[SkillType.values().length];
 
@@ -49,16 +53,28 @@ public class Player extends Character {
         return backpack;
     }
 
+    public Refrigerator getRefrigerator() {
+        return refrigerator;
+    }
+
     public Tool getEquippedTool() {
         return equippedTool;
     }
 
-    public Tile getCurrentTile() {
-        return currentTile;
+    public Location getCurrentLocation() {
+        return currentLocation;
     }
 
-    public Refrigerator getRefrigerator() {
-        return refrigerator;
+    public ArrayList<Plant> getPlants() {
+        return Plants;
+    }
+
+    public ArrayList<Recipe> getLearnedFoodRecipes() {
+        return learnedFoodRecipes;
+    }
+
+    public ArrayList<Recipe> getLearnedCraftingRecipes() {
+        return learnedCraftingRecipes;
     }
 
     public void setControllingUser(User controllingUser) {
@@ -91,5 +107,9 @@ public class Player extends Character {
 
     public void setRefrigerator(Refrigerator refrigerator) {
         this.refrigerator = refrigerator;
+    }
+
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
     }
 }
