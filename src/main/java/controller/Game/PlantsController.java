@@ -156,14 +156,10 @@ public class PlantsController {
                     crop.setFruitIsRipen(false);
                     crop = (Crop) game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
                     crop.setFruitIsRipen(false);
-
-
-
                 }
                 else{
-
-
-
+                    game.getCurrentPlayer().getBackpack().addItem(Fruit.fruits.get(crop.getFruit()),1);
+                    crop.setFruitIsRipen(false);
                 }
             }
             return new Result(1,"fruit has not ripen");
@@ -171,8 +167,9 @@ public class PlantsController {
         else{
             return new Result(-1,"Does not exist any plant on the tile");
         }
-
     }
+
+
 
 
 
