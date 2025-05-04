@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="creating farms and farm templates">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="crate new game">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Walkable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/map/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/FarmBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/FarmBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/GameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/GameBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/WorldBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building/Cabin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Building/Cabin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Placeable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Placeable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Wall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Building/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Quarry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Quarry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/map/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -323,7 +319,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746305055320</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="crate new game">
+      <option name="closed" value="true" />
+      <created>1746362739029</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1746362739029</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +345,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edit plants package" />
     <MESSAGE value="plants read from json by gson" />
     <MESSAGE value="read Trees from Json" />
     <MESSAGE value="read and write Crops from Json" />
@@ -366,7 +369,8 @@
     <MESSAGE value="complete refigerator and backpack" />
     <MESSAGE value="complete planting method" />
     <MESSAGE value="creating farms and farm templates" />
-    <option name="LAST_COMMIT_MESSAGE" value="creating farms and farm templates" />
+    <MESSAGE value="crate new game" />
+    <option name="LAST_COMMIT_MESSAGE" value="crate new game" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
