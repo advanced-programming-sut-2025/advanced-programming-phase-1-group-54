@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="complete planting method">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit planting method&#10;write crowAttack method &#10;write showPlant method&#10;write grow method for plants">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +93,7 @@
       <workItem from="1746250809896" duration="9195000" />
       <workItem from="1746265109849" duration="15499000" />
       <workItem from="1746295931234" duration="4646000" />
-      <workItem from="1746334097002" duration="5929000" />
+      <workItem from="1746334097002" duration="9714000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
       <option name="closed" value="true" />
@@ -313,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746305055320</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="edit planting method&#10;write crowAttack method &#10;write showPlant method&#10;write grow method for plants">
+      <option name="closed" value="true" />
+      <created>1746344431428</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1746344431428</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +337,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="maven dorost kardam" />
     <MESSAGE value="edit plants package" />
     <MESSAGE value="plants read from json by gson" />
     <MESSAGE value="read Trees from Json" />
@@ -356,7 +361,8 @@
     <MESSAGE value=" edit some things" />
     <MESSAGE value="complete refigerator and backpack" />
     <MESSAGE value="complete planting method" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete planting method" />
+    <MESSAGE value="edit planting method&#10;write crowAttack method &#10;write showPlant method&#10;write grow method for plants" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit planting method&#10;write crowAttack method &#10;write showPlant method&#10;write grow method for plants" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

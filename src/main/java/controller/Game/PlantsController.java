@@ -1,6 +1,7 @@
 package controller.Game;
 
 import model.App;
+import model.Game;
 import model.Placeable;
 import model.Result;
 import model.alive.Player;
@@ -121,6 +122,57 @@ public class PlantsController {
 
     }
 
+    public Result harvestPlant(String directionString){
+
+        Direction direction;
+        try{
+            direction = Direction.valueOf(directionString);
+        }catch (IllegalArgumentException e){
+            return new Result(-1,"invalid direction");
+        }
+
+        Game game = App.getCurrentGame();
+        Location location = game.getCurrentPlayer().getCurrentLocation().getLocationAt(direction);
+        Tile tile = game.getWorld().getTileAt(location);
+
+        Placeable placeable = tile.getThingOnTile();
+        if(placeable instanceof Tree tree){
+            if(tree.isFruitIsRipen()){
+                game.getCurrentPlayer().getBackpack().addItem(Fruit.fruits.get(tree.getFruit()),1);
+                tree.setFruitIsRipen(false);
+                return new Result(1,"You get 1 " + tree.getFruit());
+            }
+            return new Result(-1,"fruit has not ripen");
+
+        }
+        else if(placeable instanceof Crop crop){
+            if(crop.isFruitIsRipen()){
+                if(crop.getGiantDirection() != null){
+                    game.getCurrentPlayer().getBackpack().addItem(Fruit.fruits.get(crop.getFruit()),10);
+                    crop.setFruitIsRipen(false);
+                    crop = (Crop) game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
+                    crop.setFruitIsRipen(false);
+                    crop = (Crop) game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
+                    crop.setFruitIsRipen(false);
+                    crop = (Crop) game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
+                    crop.setFruitIsRipen(false);
+
+
+
+                }
+                else{
+
+
+
+                }
+            }
+            return new Result(1,"fruit has not ripen");
+        }
+        else{
+            return new Result(-1,"Does not exist any plant on the tile");
+        }
+
+    }
 
 
 
