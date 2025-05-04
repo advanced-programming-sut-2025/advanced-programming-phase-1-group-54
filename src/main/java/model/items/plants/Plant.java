@@ -95,12 +95,12 @@ public abstract class Plant implements Placeable {
 //        this.maxStages = maxStages;
 //    }
 
-    public void setCurrentStage(int currentStage) {
-        this.currentStage = currentStage;
+    public void increaseCurrentStage(int currentStage) {
+        this.currentStage += currentStage;
     }
 
-    public void setDaysInCurrentStage(int daysInCurrentStage) {
-        this.daysInCurrentStage = daysInCurrentStage;
+    public void increaseDaysInCurrentStage(int daysInCurrentStage) {
+        this.daysInCurrentStage += daysInCurrentStage;
     }
 
     public void setFruitIsRipen(boolean fruitIsRipen) {
@@ -118,5 +118,28 @@ public abstract class Plant implements Placeable {
     public void setNumberOfDaysWithoutWater(int numberOfDaysWithoutWater) {
         this.numberOfDaysWithoutWater = numberOfDaysWithoutWater;
     }
+
+    public void grow(){
+
+        if(this.currentStage <= this.maxStages){
+            this.daysInCurrentStage++;
+            this.daysInCurrentStage = this.daysInCurrentStage % this.stages[this.currentStage];
+            if(this.daysInCurrentStage == 0){
+                this.currentStage++;
+                if(this.currentStage > this.maxStages){
+                    this.fruitIsRipen = true;
+                }
+            }
+        }
+        else if(!this.fruitIsRipen){
+            this.daysInCurrentStage++;
+            this.daysInCurrentStage = this.daysInCurrentStage % regrowthTime;
+            if(this.daysInCurrentStage == 0){
+                this.fruitIsRipen = true;
+            }
+        }
+
+    }
+
 
 }

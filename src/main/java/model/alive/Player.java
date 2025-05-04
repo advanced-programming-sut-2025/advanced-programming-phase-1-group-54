@@ -13,6 +13,7 @@ import model.map.Location;
 import model.map.Tile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Player extends Character {
@@ -24,7 +25,7 @@ public class Player extends Character {
     private Refrigerator refrigerator = new Refrigerator();
     private Location currentLocation;
 
-    private ArrayList<Plant> Plants;
+    private HashMap<Plant,Tile> Plants;
     
     private ArrayList<Recipe> learnedFoodRecipes;
     private ArrayList<Recipe> learnedCraftingRecipes;
@@ -65,7 +66,7 @@ public class Player extends Character {
         return currentLocation;
     }
 
-    public ArrayList<Plant> getPlants() {
+    public HashMap<Plant, Tile> getPlants() {
         return Plants;
     }
 
