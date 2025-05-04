@@ -4,8 +4,9 @@ import model.App;
 import model.alive.Player;
 import model.enums.ProduceQuality;
 import model.items.*;
-import model.items.crafting.Artisan;
 import model.items.crafting.Produce;
+import model.items.crafting.ProducerArtisan;
+import model.items.crafting.UnProducerArtisan;
 import model.items.plants.Fruit;
 import model.items.plants.Seed;
 import model.items.tools.BackPack;
@@ -29,6 +30,16 @@ public class CommonGameController {
 //        if(artisan != null){
 //            return artisan;
 //        }
+
+        ProducerArtisan producerArtisan = ProducerArtisan.getProducerArtisan(ItemName);
+        if(producerArtisan != null){
+            return producerArtisan;
+        }
+
+        UnProducerArtisan unProducerArtisan = UnProducerArtisan.getUnProducerArtisan(ItemName);
+        if(unProducerArtisan != null){
+            return unProducerArtisan;
+        }
 
         Fish fish = Fish.getFish(ItemName);
         if(fish != null){
@@ -75,7 +86,10 @@ public class CommonGameController {
         }
         else {
             Item item = findItem(ItemName);
-            if(item instanceof Fish fish){
+            if(item == null){
+                return 0;
+            }
+            else if(item instanceof Fish fish){
                 for(ProduceQuality quality : ProduceQuality.values()){
                     fish.setQuality(quality);
                     number += player.getBackpack().getNumberOfItemInBackPack().get(fish);
