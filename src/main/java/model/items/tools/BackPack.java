@@ -23,7 +23,6 @@ public class BackPack extends Tool {
         }
         numberOfItemInBackPack.put(item, numberOfItem + number);
         return new Result(1,"Item Added to backpack");
-
     }
 
     public Result removeItem(Item item, Integer number) {

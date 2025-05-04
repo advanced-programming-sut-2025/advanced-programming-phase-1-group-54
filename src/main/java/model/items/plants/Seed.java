@@ -13,13 +13,14 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
-public class Seed extends Item {
+public class Seed extends Item implements Cloneable{
 
-    public static HashMap<String,Seed> seeds;
-    public static HashMap<Season,ArrayList<String>> foragingSeeds;
-    public static HashMap<Season,ArrayList<String>> mixedSeeds;
-    public static ArrayList<String> foragingTrees;
+    private final static HashMap<String,Seed> seeds;
+    private final static HashMap<Season,ArrayList<String>> foragingSeeds;
+    private final static HashMap<Season,ArrayList<String>> mixedSeeds;
+    private final static ArrayList<String> foragingTrees;
 
     static{
         Gson gson = new Gson();
@@ -59,6 +60,36 @@ public class Seed extends Item {
 
     }
 
+    public static Seed getSeed(String seedName){
+        Seed seed = seeds.get(seedName);
+        if(seed == null){
+            return null;
+        }
+        else {
+            return seed.clone();
+        }
+    }
+
+    public static Seed getForagingSeed(Season season){
+        ArrayList<String> foragingSeed = foragingSeeds.get(season);
+        Random rand = new Random();
+        String foragingSeedName = foragingSeed.get(rand.nextInt(foragingSeed.size()));
+        return getSeed(foragingSeedName);
+    }
+
+    public static Seed getMixedSeed(Season season){
+        ArrayList<String> mixedSeed = mixedSeeds.get(season);
+        Random rand = new Random();
+        String mixedSeedName = mixedSeed.get(rand.nextInt(mixedSeed.size()));
+        return getSeed(mixedSeedName);
+    }
+
+    public static Seed getForagingTree(){
+        Random rand = new Random();
+        String foragingTreeName = foragingTrees.get(rand.nextInt(foragingTrees.size()));
+        return getSeed(foragingTreeName);
+    }
+
     private final String plant;
 
     public Seed(String name, String plant) {
@@ -74,6 +105,15 @@ public class Seed extends Item {
     public String toString() {
         return "plant : " + plant +
                 "\nname : " + name ;
+    }
+
+    @Override
+    protected Seed clone() {
+        try {
+            return (Seed) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     public static void writeToJson(){

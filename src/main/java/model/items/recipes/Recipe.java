@@ -12,12 +12,12 @@ import java.util.LinkedHashMap;
 
 public class Recipe extends Item {
 
-    static final ArrayList<Recipe> craftRecipes;
-    static final ArrayList<Recipe> foodRecipes ;
+    public static final LinkedHashMap<String,Recipe> craftRecipes;
+    public static final LinkedHashMap<String,Recipe> foodRecipes ;
 
     static {
-        craftRecipes = new ArrayList<Recipe>();
-        foodRecipes = new ArrayList<Recipe>();
+        craftRecipes = new LinkedHashMap<>();
+        foodRecipes = new LinkedHashMap<>();
     }
 
     private final ArrayList<String> ingredientsNames;

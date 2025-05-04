@@ -19,7 +19,7 @@ public class Tree extends Plant implements Cloneable{
         super(name, source, fruit, stages, totalHarvestTime, regrowthTime, seasons);
     }
 
-    public static HashMap<String,Tree> trees;
+    private final static HashMap<String,Tree> trees;
 
     static{
         Gson gson = new Gson();
@@ -32,6 +32,18 @@ public class Tree extends Plant implements Cloneable{
         Type type = new TypeToken<HashMap<String,Tree>>(){}.getType();
         trees = gson.fromJson(file,type);
     }
+
+    public static Tree getTree(String treeName){
+        Tree tree = trees.get(treeName);
+        if(tree == null){
+            return null;
+        }
+        else {
+            return tree.clone();
+        }
+    }
+
+
 
     @Override
     public String toString() {
@@ -46,7 +58,7 @@ public class Tree extends Plant implements Cloneable{
     }
 
     @Override
-    public Tree clone()  {
+    protected Tree clone()  {
         try {
             return (Tree) super.clone();
         } catch (CloneNotSupportedException e) {
@@ -228,14 +240,5 @@ public class Tree extends Plant implements Cloneable{
 
     }
 
-//    public Tree clone() {
-//        Tree newTree = new Tree();
-//
-//        //newTree.name = this.name;
-//        newTree.source = this.source;
-//        newTree.stages = this.stages;
-//        newTree.totalHarvestTime = this.totalHarvestTime;
-//
-//        return newTree;
-//    }
+
 }

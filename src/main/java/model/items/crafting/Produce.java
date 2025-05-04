@@ -8,14 +8,24 @@ import model.items.plants.Fruit;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Produce extends Item {
+public class Produce extends Item implements Cloneable{
 
-    public static final HashMap<String, Produce> produces;
+    private static final HashMap<String, Produce> produces;
 
     static final int dayHours = 24;
 
     static {
         produces = new HashMap<String, Produce>();
+    }
+
+    public static Produce getProduce(String name) {
+        Produce produce = produces.get(name);
+        if(produce == null){
+            return null;
+        }
+        else{
+            return produce.clone();
+        }
     }
 
     private final int sellPrice;
@@ -64,6 +74,15 @@ public class Produce extends Item {
 
     public ArrayList<String> getIngredientsNames() {
         return ingredientsNames;
+    }
+
+    @Override
+    protected Produce clone() {
+        try {
+            return (Produce) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     public static void writeToJson(){
@@ -272,7 +291,7 @@ public class Produce extends Item {
 
         ingredients.add("Amaranth");
         numberOfIngredients.put("Amaranth", 1);
-        fruit = Fruit.fruits.get("Amaranth");
+        fruit = Fruit.getFruit("Amaranth");
 
         produce = new Produce(
                 "Amaranth Juice",
@@ -292,7 +311,7 @@ public class Produce extends Item {
 
         ingredients.add("Artichoke");
         numberOfIngredients.put("Artichoke", 1);
-        fruit = Fruit.fruits.get("Artichoke");
+        fruit = Fruit.getFruit("Artichoke");
 
         produce = new Produce(
                 "Artichoke Juice",
@@ -312,7 +331,7 @@ public class Produce extends Item {
 
         ingredients.add("Beet");
         numberOfIngredients.put("Beet", 1);
-        fruit = Fruit.fruits.get("Beet");
+        fruit = Fruit.getFruit("Beet");
 
         produce = new Produce(
                 "Beet Juice",
@@ -332,7 +351,7 @@ public class Produce extends Item {
 
         ingredients.add("Bok Choy");
         numberOfIngredients.put("Bok Choy", 1);
-        fruit = Fruit.fruits.get("Bok Choy");
+        fruit = Fruit.getFruit("Bok Choy");
 
         produce = new Produce(
                 "Bok Choy Juice",
@@ -352,7 +371,7 @@ public class Produce extends Item {
 
         ingredients.add("Broccoli");
         numberOfIngredients.put("Broccoli", 1);
-        fruit = Fruit.fruits.get("Broccoli");
+        fruit = Fruit.getFruit("Broccoli");
 
         produce = new Produce(
                 "Broccoli Juice",
@@ -372,7 +391,7 @@ public class Produce extends Item {
 
         ingredients.add("Carrot");
         numberOfIngredients.put("Carrot", 1);
-        fruit = Fruit.fruits.get("Carrot");
+        fruit = Fruit.getFruit("Carrot");
 
         produce = new Produce(
                 "Carrot Juice",
@@ -392,7 +411,7 @@ public class Produce extends Item {
 
         ingredients.add("Cauliflower");
         numberOfIngredients.put("Cauliflower", 1);
-        fruit = Fruit.fruits.get("Cauliflower");
+        fruit = Fruit.getFruit("Cauliflower");
 
         produce = new Produce(
                 "Cauliflower Juice",
@@ -412,7 +431,7 @@ public class Produce extends Item {
 
         ingredients.add("Corn");
         numberOfIngredients.put("Corn", 1);
-        fruit = Fruit.fruits.get("Corn");
+        fruit = Fruit.getFruit("Corn");
 
         produce = new Produce(
                 "Corn Juice",
@@ -432,7 +451,7 @@ public class Produce extends Item {
 
         ingredients.add("Eggplant");
         numberOfIngredients.put("Eggplant", 1);
-        fruit = Fruit.fruits.get("Eggplant");
+        fruit = Fruit.getFruit("Eggplant");
 
         produce = new Produce(
                 "Eggplant Juice",
@@ -452,7 +471,7 @@ public class Produce extends Item {
 
         ingredients.add("Fiddlehead Fern");
         numberOfIngredients.put("Fiddlehead Fern", 1);
-        fruit = Fruit.fruits.get("Fiddlehead Fern");
+        fruit = Fruit.getFruit("Fiddlehead Fern");
 
         produce = new Produce(
                 "Fiddlehead Fern Juice",
@@ -472,7 +491,7 @@ public class Produce extends Item {
 
         ingredients.add("Garlic");
         numberOfIngredients.put("Garlic", 1);
-        fruit = Fruit.fruits.get("Garlic");
+        fruit = Fruit.getFruit("Garlic");
 
         produce = new Produce(
                 "Garlic Juice",
@@ -492,7 +511,7 @@ public class Produce extends Item {
 
         ingredients.add("Green Bean");
         numberOfIngredients.put("Green Bean", 1);
-        fruit = Fruit.fruits.get("Green Bean");
+        fruit = Fruit.getFruit("Green Bean");
 
         produce = new Produce(
                 "Green Bean Juice",
@@ -516,7 +535,7 @@ public class Produce extends Item {
 
         ingredients.add("Kale");
         numberOfIngredients.put("Kale", 1);
-        fruit = Fruit.fruits.get("Kale");
+        fruit = Fruit.getFruit("Kale");
 
         produce = new Produce(
                 "Kale Juice",
@@ -536,7 +555,7 @@ public class Produce extends Item {
 
         ingredients.add("Parsnip");
         numberOfIngredients.put("Parsnip", 1);
-        fruit = Fruit.fruits.get("Parsnip");
+        fruit = Fruit.getFruit("Parsnip");
 
         produce = new Produce(
                 "Parsnip Juice",
@@ -556,7 +575,7 @@ public class Produce extends Item {
 
         ingredients.add("Potato");
         numberOfIngredients.put("Potato", 1);
-        fruit = Fruit.fruits.get("Potato");
+        fruit = Fruit.getFruit("Potato");
 
         produce = new Produce(
                 "Potato Juice",
@@ -576,7 +595,7 @@ public class Produce extends Item {
 
         ingredients.add("Pumpkin");
         numberOfIngredients.put("Pumpkin", 1);
-        fruit = Fruit.fruits.get("Pumpkin");
+        fruit = Fruit.getFruit("Pumpkin");
 
         produce = new Produce(
                 "Pumpkin Juice",
@@ -596,7 +615,7 @@ public class Produce extends Item {
 
         ingredients.add("Radish");
         numberOfIngredients.put("Radish", 1);
-        fruit = Fruit.fruits.get("Radish");
+        fruit = Fruit.getFruit("Radish");
 
         produce = new Produce(
                 "Radish Juice",
@@ -616,7 +635,7 @@ public class Produce extends Item {
 
         ingredients.add("Red Cabbage");
         numberOfIngredients.put("Red Cabbage", 1);
-        fruit = Fruit.fruits.get("Red Cabbage");
+        fruit = Fruit.getFruit("Red Cabbage");
 
         produce = new Produce(
                 "Red Cabbage Juice",
@@ -636,7 +655,7 @@ public class Produce extends Item {
 
         ingredients.add("Summer Squash");
         numberOfIngredients.put("Summer Squash", 1);
-        fruit = Fruit.fruits.get("Summer Squash");
+        fruit = Fruit.getFruit("Summer Squash");
 
         produce = new Produce(
                 "Summer Squash Juice",
@@ -656,7 +675,7 @@ public class Produce extends Item {
 
         ingredients.add("Taro Root");
         numberOfIngredients.put("Taro Root", 1);
-        fruit = Fruit.fruits.get("Taro Root");
+        fruit = Fruit.getFruit("Taro Root");
 
         produce = new Produce(
                 "Taro Root Juice",
@@ -676,7 +695,7 @@ public class Produce extends Item {
 
         ingredients.add("Tea Leaves");
         numberOfIngredients.put("Tea Leaves", 1);
-        fruit = Fruit.fruits.get("Tea Leaves");
+        fruit = Fruit.getFruit("Tea Leaves");
 
         produce = new Produce(
                 "Tea Leaves Juice",
@@ -696,7 +715,7 @@ public class Produce extends Item {
 
         ingredients.add("Tomato");
         numberOfIngredients.put("Tomato", 1);
-        fruit = Fruit.fruits.get("Tomato");
+        fruit = Fruit.getFruit("Tomato");
 
         produce = new Produce(
                 "Tomato Juice",
@@ -716,7 +735,7 @@ public class Produce extends Item {
 
         ingredients.add("Unmilled Rice");
         numberOfIngredients.put("Unmilled Rice", 1);
-        fruit = Fruit.fruits.get("Unmilled Rice");
+        fruit = Fruit.getFruit("Unmilled Rice");
 
         produce = new Produce(
                 "Unmilled Rice Juice",
@@ -736,7 +755,7 @@ public class Produce extends Item {
 
         ingredients.add("Yam");
         numberOfIngredients.put("Yam", 1);
-        fruit = Fruit.fruits.get("Yam");
+        fruit = Fruit.getFruit("Yam");
 
         produce = new Produce(
                 "Yam Juice",
@@ -757,7 +776,7 @@ public class Produce extends Item {
 
         ingredients.add("Ancient Fruit");
         numberOfIngredients.put("Ancient Fruit", 1);
-        fruit = Fruit.fruits.get("Ancient Fruit");
+        fruit = Fruit.getFruit("Ancient Fruit");
 
         produce = new Produce(
                 "Ancient Fruit Wine",
@@ -777,7 +796,7 @@ public class Produce extends Item {
 
         ingredients.add("Apple");
         numberOfIngredients.put("Apple", 1);
-        fruit = Fruit.fruits.get("Apple");
+        fruit = Fruit.getFruit("Apple");
 
         produce = new Produce(
                 "Apple Wine",
@@ -797,7 +816,7 @@ public class Produce extends Item {
 
         ingredients.add("Apricot");
         numberOfIngredients.put("Apricot", 1);
-        fruit = Fruit.fruits.get("Apricot");
+        fruit = Fruit.getFruit("Apricot");
 
         produce = new Produce(
                 "Apricot Wine",
@@ -817,7 +836,7 @@ public class Produce extends Item {
 
         ingredients.add("Banana");
         numberOfIngredients.put("Banana", 1);
-        fruit = Fruit.fruits.get("Banana");
+        fruit = Fruit.getFruit("Banana");
 
         produce = new Produce(
                 "Banana Wine",
@@ -837,7 +856,7 @@ public class Produce extends Item {
 
         ingredients.add("Blackberry");
         numberOfIngredients.put("Blackberry", 1);
-        fruit = Fruit.fruits.get("Blackberry");
+        fruit = Fruit.getFruit("Blackberry");
 
         produce = new Produce(
                 "Blackberry Wine",
@@ -857,7 +876,7 @@ public class Produce extends Item {
 
         ingredients.add("Blueberry");
         numberOfIngredients.put("Blueberry", 1);
-        fruit = Fruit.fruits.get("Blueberry");
+        fruit = Fruit.getFruit("Blueberry");
 
         produce = new Produce(
                 "Blueberry Wine",
@@ -877,7 +896,7 @@ public class Produce extends Item {
 
         ingredients.add("Cactus Fruit");
         numberOfIngredients.put("Cactus Fruit", 1);
-        fruit = Fruit.fruits.get("Cactus Fruit");
+        fruit = Fruit.getFruit("Cactus Fruit");
 
         produce = new Produce(
                 "Cactus Fruit Wine",
@@ -897,7 +916,7 @@ public class Produce extends Item {
 
         ingredients.add("Cherry");
         numberOfIngredients.put("Cherry", 1);
-        fruit = Fruit.fruits.get("Cherry");
+        fruit = Fruit.getFruit("Cherry");
 
         produce = new Produce(
                 "Cherry Wine",
@@ -917,7 +936,7 @@ public class Produce extends Item {
 
         ingredients.add("Coconut");
         numberOfIngredients.put("Coconut", 1);
-        fruit = Fruit.fruits.get("Coconut");
+        fruit = Fruit.getFruit("Coconut");
 
         produce = new Produce(
                 "Coconut Wine",
@@ -937,7 +956,7 @@ public class Produce extends Item {
 
         ingredients.add("Cranberries");
         numberOfIngredients.put("Cranberries", 1);
-        fruit = Fruit.fruits.get("Cranberries");
+        fruit = Fruit.getFruit("Cranberries");
 
         produce = new Produce(
                 "Cranberries Wine",
@@ -957,7 +976,7 @@ public class Produce extends Item {
 
         ingredients.add("Crystal Fruit");
         numberOfIngredients.put("Crystal Fruit", 1);
-        fruit = Fruit.fruits.get("Crystal Fruit");
+        fruit = Fruit.getFruit("Crystal Fruit");
 
         produce = new Produce(
                 "Crystal Fruit Wine",
@@ -977,7 +996,7 @@ public class Produce extends Item {
 
         ingredients.add("Grape");
         numberOfIngredients.put("Grape", 1);
-        fruit = Fruit.fruits.get("Grape");
+        fruit = Fruit.getFruit("Grape");
 
         produce = new Produce(
                 "Grape Wine",
@@ -997,7 +1016,7 @@ public class Produce extends Item {
 
         ingredients.add("Hot Pepper");
         numberOfIngredients.put("Hot Pepper", 1);
-        fruit = Fruit.fruits.get("Hot Pepper");
+        fruit = Fruit.getFruit("Hot Pepper");
 
         produce = new Produce(
                 "Hot Pepper Wine",
@@ -1017,7 +1036,7 @@ public class Produce extends Item {
 
         ingredients.add("Mango");
         numberOfIngredients.put("Mango", 1);
-        fruit = Fruit.fruits.get("Mango");
+        fruit = Fruit.getFruit("Mango");
 
         produce = new Produce(
                 "Mango Wine",
@@ -1037,7 +1056,7 @@ public class Produce extends Item {
 
         ingredients.add("Melon");
         numberOfIngredients.put("Melon", 1);
-        fruit = Fruit.fruits.get("Melon");
+        fruit = Fruit.getFruit("Melon");
 
         produce = new Produce(
                 "Melon Wine",
@@ -1057,7 +1076,7 @@ public class Produce extends Item {
 
         ingredients.add("Orange");
         numberOfIngredients.put("Orange", 1);
-        fruit = Fruit.fruits.get("Orange");
+        fruit = Fruit.getFruit("Orange");
 
         produce = new Produce(
                 "Orange Wine",
@@ -1077,7 +1096,7 @@ public class Produce extends Item {
 
         ingredients.add("Peach");
         numberOfIngredients.put("Peach", 1);
-        fruit = Fruit.fruits.get("Peach");
+        fruit = Fruit.getFruit("Peach");
 
         produce = new Produce(
                 "Peach Wine",
@@ -1097,7 +1116,7 @@ public class Produce extends Item {
 
         ingredients.add("Pineapple");
         numberOfIngredients.put("Pineapple", 1);
-        fruit = Fruit.fruits.get("Pineapple");
+        fruit = Fruit.getFruit("Pineapple");
 
         produce = new Produce(
                 "Pineapple Wine",
@@ -1117,7 +1136,7 @@ public class Produce extends Item {
 
         ingredients.add("Pomegranate");
         numberOfIngredients.put("Pomegranate", 1);
-        fruit = Fruit.fruits.get("Pomegranate");
+        fruit = Fruit.getFruit("Pomegranate");
 
         produce = new Produce(
                 "Pomegranate Wine",
@@ -1137,7 +1156,7 @@ public class Produce extends Item {
 
         ingredients.add("Powdermelon");
         numberOfIngredients.put("Powdermelon", 1);
-        fruit = Fruit.fruits.get("Powdermelon");
+        fruit = Fruit.getFruit("Powdermelon");
 
         produce = new Produce(
                 "Powdermelon Wine",
@@ -1157,7 +1176,7 @@ public class Produce extends Item {
 
         ingredients.add("Qi Fruit");
         numberOfIngredients.put("Qi Fruit", 1);
-        fruit = Fruit.fruits.get("Qi Fruit");
+        fruit = Fruit.getFruit("Qi Fruit");
 
         produce = new Produce(
                 "Qi Fruit Wine",
@@ -1177,7 +1196,7 @@ public class Produce extends Item {
 
         ingredients.add("Rhubarb");
         numberOfIngredients.put("Rhubarb", 1);
-        fruit = Fruit.fruits.get("Rhubarb");
+        fruit = Fruit.getFruit("Rhubarb");
 
         produce = new Produce(
                 "Rhubarb Wine",
@@ -1197,7 +1216,7 @@ public class Produce extends Item {
 
         ingredients.add("Salmonberry");
         numberOfIngredients.put("Salmonberry", 1);
-        fruit = Fruit.fruits.get("Salmonberry");
+        fruit = Fruit.getFruit("Salmonberry");
 
         produce = new Produce(
                 "Salmonberry Wine",
@@ -1217,7 +1236,7 @@ public class Produce extends Item {
 
         ingredients.add("Spice Berry");
         numberOfIngredients.put("Spice Berry", 1);
-        fruit = Fruit.fruits.get("Spice Berry");
+        fruit = Fruit.getFruit("Spice Berry");
 
         produce = new Produce(
                 "Spice Berry Wine",
@@ -1237,7 +1256,7 @@ public class Produce extends Item {
 
         ingredients.add("Starfruit");
         numberOfIngredients.put("Starfruit", 1);
-        fruit = Fruit.fruits.get("Starfruit");
+        fruit = Fruit.getFruit("Starfruit");
 
         produce = new Produce(
                 "Starfruit Wine",
@@ -1257,7 +1276,7 @@ public class Produce extends Item {
 
         ingredients.add("Strawberry");
         numberOfIngredients.put("Strawberry", 1);
-        fruit = Fruit.fruits.get("Strawberry");
+        fruit = Fruit.getFruit("Strawberry");
 
         produce = new Produce(
                 "Strawberry Wine",
@@ -1277,7 +1296,7 @@ public class Produce extends Item {
 
         ingredients.add("Wild Plum");
         numberOfIngredients.put("Wild Plum", 1);
-        fruit = Fruit.fruits.get("Wild Plum");
+        fruit = Fruit.getFruit("Wild Plum");
 
         produce = new Produce(
                 "Wild Plum Wine",
@@ -1300,7 +1319,7 @@ public class Produce extends Item {
 
         ingredients.add("Chanterelle");
         numberOfIngredients.put("Chanterelle", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Chanterelle");
+        fruit = Fruit.getFruit("Chanterelle");
 
         produce = new Produce(
                 "Dried Chanterelle",
@@ -1320,7 +1339,7 @@ public class Produce extends Item {
 
         ingredients.add("Common Mushroom");
         numberOfIngredients.put("Common Mushroom", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Common Mushroom");
+        fruit = Fruit.getFruit("Common Mushroom");
 
         produce = new Produce(
                 "Dried Common Mushroom",
@@ -1340,7 +1359,7 @@ public class Produce extends Item {
 
         ingredients.add("Magma Cap");
         numberOfIngredients.put("Magma Cap", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Magma Cap");
+        fruit = Fruit.getFruit("Magma Cap");
 
         produce = new Produce(
                 "Dried Magma Cap",
@@ -1360,7 +1379,7 @@ public class Produce extends Item {
 
         ingredients.add("Morel");
         numberOfIngredients.put("Morel", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Morel");
+        fruit = Fruit.getFruit("Morel");
 
         produce = new Produce(
                 "Dried Morel",
@@ -1380,7 +1399,7 @@ public class Produce extends Item {
 
         ingredients.add("Purple Mushroom");
         numberOfIngredients.put("Purple Mushroom", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Purple Mushroom");
+        fruit = Fruit.getFruit("Purple Mushroom");
 
         produce = new Produce(
                 "Dried Purple Mushroom",
@@ -1400,7 +1419,7 @@ public class Produce extends Item {
 
         ingredients.add("Red Mushroom");
         numberOfIngredients.put("Red Mushroom", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Red Mushroom");
+        fruit = Fruit.getFruit("Red Mushroom");
 
         produce = new Produce(
                 "Dried Red Mushroom",
@@ -1421,7 +1440,7 @@ public class Produce extends Item {
 
         ingredients.add("Ancient Fruit");
         numberOfIngredients.put("Ancient Fruit", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Ancient Fruit");
+        fruit = Fruit.getFruit("Ancient Fruit");
 
         produce = new Produce(
                 "Dried Ancient Fruit",
@@ -1441,7 +1460,7 @@ public class Produce extends Item {
 
         ingredients.add("Apple");
         numberOfIngredients.put("Apple", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Apple");
+        fruit = Fruit.getFruit("Apple");
 
         produce = new Produce(
                 "Dried Apple",
@@ -1461,7 +1480,7 @@ public class Produce extends Item {
 
         ingredients.add("Apricot");
         numberOfIngredients.put("Apricot", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Apricot");
+        fruit = Fruit.getFruit("Apricot");
 
         produce = new Produce(
                 "Dried Apricot",
@@ -1481,7 +1500,7 @@ public class Produce extends Item {
 
         ingredients.add("Banana");
         numberOfIngredients.put("Banana", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Banana");
+        fruit = Fruit.getFruit("Banana");
 
         produce = new Produce(
                 "Dried Banana",
@@ -1501,7 +1520,7 @@ public class Produce extends Item {
 
         ingredients.add("Blackberry");
         numberOfIngredients.put("Blackberry", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Blackberry");
+        fruit = Fruit.getFruit("Blackberry");
 
         produce = new Produce(
                 "Dried Blackberry",
@@ -1521,7 +1540,7 @@ public class Produce extends Item {
 
         ingredients.add("Blueberry");
         numberOfIngredients.put("Blueberry", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Blueberry");
+        fruit = Fruit.getFruit("Blueberry");
 
         produce = new Produce(
                 "Dried Blueberry",
@@ -1541,7 +1560,7 @@ public class Produce extends Item {
 
         ingredients.add("Cactus Fruit");
         numberOfIngredients.put("Cactus Fruit", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Cactus Fruit");
+        fruit = Fruit.getFruit("Cactus Fruit");
 
         produce = new Produce(
                 "Dried Cactus Fruit",
@@ -1561,7 +1580,7 @@ public class Produce extends Item {
 
         ingredients.add("Cherry");
         numberOfIngredients.put("Cherry", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Cherry");
+        fruit = Fruit.getFruit("Cherry");
 
         produce = new Produce(
                 "Dried Cherry",
@@ -1581,7 +1600,7 @@ public class Produce extends Item {
 
         ingredients.add("Coconut");
         numberOfIngredients.put("Coconut", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Coconut");
+        fruit = Fruit.getFruit("Coconut");
 
         produce = new Produce(
                 "Dried Coconut",
@@ -1601,7 +1620,7 @@ public class Produce extends Item {
 
         ingredients.add("Cranberries");
         numberOfIngredients.put("Cranberries", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Cranberries");
+        fruit = Fruit.getFruit("Cranberries");
 
         produce = new Produce(
                 "Dried Cranberries",
@@ -1621,7 +1640,7 @@ public class Produce extends Item {
 
         ingredients.add("Crystal Fruit");
         numberOfIngredients.put("Crystal Fruit", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Crystal Fruit");
+        fruit = Fruit.getFruit("Crystal Fruit");
 
         produce = new Produce(
                 "Dried Crystal Fruit",
@@ -1641,7 +1660,7 @@ public class Produce extends Item {
 
         ingredients.add("Hot Pepper");
         numberOfIngredients.put("Hot Pepper", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Hot Pepper");
+        fruit = Fruit.getFruit("Hot Pepper");
 
         produce = new Produce(
                 "Dried Hot Pepper",
@@ -1661,7 +1680,7 @@ public class Produce extends Item {
 
         ingredients.add("Mango");
         numberOfIngredients.put("Mango", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Mango");
+        fruit = Fruit.getFruit("Mango");
 
         produce = new Produce(
                 "Dried Mango",
@@ -1681,7 +1700,7 @@ public class Produce extends Item {
 
         ingredients.add("Melon");
         numberOfIngredients.put("Melon", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Melon");
+        fruit = Fruit.getFruit("Melon");
 
         produce = new Produce(
                 "Dried Melon",
@@ -1701,7 +1720,7 @@ public class Produce extends Item {
 
         ingredients.add("Orange");
         numberOfIngredients.put("Orange", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Orange");
+        fruit = Fruit.getFruit("Orange");
 
         produce = new Produce(
                 "Dried Orange",
@@ -1721,7 +1740,7 @@ public class Produce extends Item {
 
         ingredients.add("Peach");
         numberOfIngredients.put("Peach", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Peach");
+        fruit = Fruit.getFruit("Peach");
 
         produce = new Produce(
                 "Dried Peach",
@@ -1741,7 +1760,7 @@ public class Produce extends Item {
 
         ingredients.add("Pineapple");
         numberOfIngredients.put("Pineapple", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Pineapple");
+        fruit = Fruit.getFruit("Pineapple");
 
         produce = new Produce(
                 "Dried Pineapple",
@@ -1761,7 +1780,7 @@ public class Produce extends Item {
 
         ingredients.add("pomegranate");
         numberOfIngredients.put("Pomegranate", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Pomegranate");
+        fruit = Fruit.getFruit("Pomegranate");
 
         produce = new Produce(
                 "Dried pomegranate",
@@ -1781,7 +1800,7 @@ public class Produce extends Item {
 
         ingredients.add("Powdermelon");
         numberOfIngredients.put("Powdermelon", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Powdermelon");
+        fruit = Fruit.getFruit("Powdermelon");
 
         produce = new Produce(
                 "Dried Powdermelon",
@@ -1801,7 +1820,7 @@ public class Produce extends Item {
 
         ingredients.add("Qi Fruit");
         numberOfIngredients.put("Qi Fruit", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Qi Fruit");
+        fruit = Fruit.getFruit("Qi Fruit");
 
         produce = new Produce(
                 "Dried Qi Fruit",
@@ -1821,7 +1840,7 @@ public class Produce extends Item {
 
         ingredients.add("Rhubarb");
         numberOfIngredients.put("Rhubarb", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Rhubarb");
+        fruit = Fruit.getFruit("Rhubarb");
 
         produce = new Produce(
                 "Dried Rhubarb",
@@ -1841,7 +1860,7 @@ public class Produce extends Item {
 
         ingredients.add("Salmonberry");
         numberOfIngredients.put("Salmonberry", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Salmonberry");
+        fruit = Fruit.getFruit("Salmonberry");
 
         produce = new Produce(
                 "Dried Salmonberry",
@@ -1861,7 +1880,7 @@ public class Produce extends Item {
 
         ingredients.add("Spice Berry");
         numberOfIngredients.put("Spice Berry", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Spice Berry");
+        fruit = Fruit.getFruit("Spice Berry");
 
         produce = new Produce(
                 "Dried Spice Berry",
@@ -1881,7 +1900,7 @@ public class Produce extends Item {
 
         ingredients.add("Starfruit");
         numberOfIngredients.put("Starfruit", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Starfruit");
+        fruit = Fruit.getFruit("Starfruit");
 
         produce = new Produce(
                 "Dried Starfruit",
@@ -1901,7 +1920,7 @@ public class Produce extends Item {
 
         ingredients.add("Strawberry");
         numberOfIngredients.put("Strawberry", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Strawberry");
+        fruit = Fruit.getFruit("Strawberry");
 
         produce = new Produce(
                 "Dried Strawberry",
@@ -1921,7 +1940,7 @@ public class Produce extends Item {
 
         ingredients.add("Wild Plum");
         numberOfIngredients.put("Wild Plum", numberOfFruitsToDry);
-        fruit = Fruit.fruits.get("Wild Plum");
+        fruit = Fruit.getFruit("Wild Plum");
 
         produce = new Produce(
                 "Dried Wild Plum",
@@ -2157,7 +2176,7 @@ public class Produce extends Item {
 
         ingredients.add("Amaranth");
         numberOfIngredients.put("Amaranth", 1);
-        fruit = Fruit.fruits.get("Amaranth");
+        fruit = Fruit.getFruit("Amaranth");
 
         produce = new Produce(
                 "Amaranth Pickles",
@@ -2177,7 +2196,7 @@ public class Produce extends Item {
 
         ingredients.add("Artichoke");
         numberOfIngredients.put("Artichoke", 1);
-        fruit = Fruit.fruits.get("Artichoke");
+        fruit = Fruit.getFruit("Artichoke");
 
         produce = new Produce(
                 "Artichoke Pickles",
@@ -2197,7 +2216,7 @@ public class Produce extends Item {
 
         ingredients.add("Beet");
         numberOfIngredients.put("Beet", 1);
-        fruit = Fruit.fruits.get("Beet");
+        fruit = Fruit.getFruit("Beet");
 
         produce = new Produce(
                 "Beet Pickles",
@@ -2217,7 +2236,7 @@ public class Produce extends Item {
 
         ingredients.add("Bok Choy");
         numberOfIngredients.put("Bok Choy", 1);
-        fruit = Fruit.fruits.get("Bok Choy");
+        fruit = Fruit.getFruit("Bok Choy");
 
         produce = new Produce(
                 "Bok Choy Pickles",
@@ -2237,7 +2256,7 @@ public class Produce extends Item {
 
         ingredients.add("Broccoli");
         numberOfIngredients.put("Broccoli", 1);
-        fruit = Fruit.fruits.get("Broccoli");
+        fruit = Fruit.getFruit("Broccoli");
 
         produce = new Produce(
                 "Broccoli Pickles",
@@ -2257,7 +2276,7 @@ public class Produce extends Item {
 
         ingredients.add("Carrot");
         numberOfIngredients.put("Carrot", 1);
-        fruit = Fruit.fruits.get("Carrot");
+        fruit = Fruit.getFruit("Carrot");
 
         produce = new Produce(
                 "Carrot Pickles",
@@ -2277,7 +2296,7 @@ public class Produce extends Item {
 
         ingredients.add("Cauliflower");
         numberOfIngredients.put("Cauliflower", 1);
-        fruit = Fruit.fruits.get("Cauliflower");
+        fruit = Fruit.getFruit("Cauliflower");
 
         produce = new Produce(
                 "Cauliflower Pickles",
@@ -2297,7 +2316,7 @@ public class Produce extends Item {
 
         ingredients.add("Corn");
         numberOfIngredients.put("Corn", 1);
-        fruit = Fruit.fruits.get("Corn");
+        fruit = Fruit.getFruit("Corn");
 
         produce = new Produce(
                 "Corn Pickles",
@@ -2317,7 +2336,7 @@ public class Produce extends Item {
 
         ingredients.add("Eggplant");
         numberOfIngredients.put("Eggplant", 1);
-        fruit = Fruit.fruits.get("Eggplant");
+        fruit = Fruit.getFruit("Eggplant");
 
         produce = new Produce(
                 "Eggplant Pickles",
@@ -2337,7 +2356,7 @@ public class Produce extends Item {
 
         ingredients.add("Fiddlehead Fern");
         numberOfIngredients.put("Fiddlehead Fern", 1);
-        fruit = Fruit.fruits.get("Fiddlehead Fern");
+        fruit = Fruit.getFruit("Fiddlehead Fern");
 
         produce = new Produce(
                 "Fiddlehead Fern Pickles",
@@ -2357,7 +2376,7 @@ public class Produce extends Item {
 
         ingredients.add("Garlic");
         numberOfIngredients.put("Garlic", 1);
-        fruit = Fruit.fruits.get("Garlic");
+        fruit = Fruit.getFruit("Garlic");
 
         produce = new Produce(
                 "Garlic Pickles",
@@ -2377,7 +2396,7 @@ public class Produce extends Item {
 
         ingredients.add("Green Bean");
         numberOfIngredients.put("Green Bean", 1);
-        fruit = Fruit.fruits.get("Green Bean");
+        fruit = Fruit.getFruit("Green Bean");
 
         produce = new Produce(
                 "Green Bean Pickles",
@@ -2397,7 +2416,7 @@ public class Produce extends Item {
 
         ingredients.add("Hops");
         numberOfIngredients.put("Hops", 1);
-        fruit = Fruit.fruits.get("Hops");
+        fruit = Fruit.getFruit("Hops");
 
         produce = new Produce(
                 "Hops Pickles",
@@ -2417,7 +2436,7 @@ public class Produce extends Item {
 
         ingredients.add("Kale");
         numberOfIngredients.put("Kale", 1);
-        fruit = Fruit.fruits.get("Kale");
+        fruit = Fruit.getFruit("Kale");
 
         produce = new Produce(
                 "Kale Pickles",
@@ -2437,7 +2456,7 @@ public class Produce extends Item {
 
         ingredients.add("Parsnip");
         numberOfIngredients.put("Parsnip", 1);
-        fruit = Fruit.fruits.get("Parsnip");
+        fruit = Fruit.getFruit("Parsnip");
 
         produce = new Produce(
                 "Parsnip Pickles",
@@ -2457,7 +2476,7 @@ public class Produce extends Item {
 
         ingredients.add("Potato");
         numberOfIngredients.put("Potato", 1);
-        fruit = Fruit.fruits.get("Potato");
+        fruit = Fruit.getFruit("Potato");
 
         produce = new Produce(
                 "Potato Pickles",
@@ -2477,7 +2496,7 @@ public class Produce extends Item {
 
         ingredients.add("Pumpkin");
         numberOfIngredients.put("Pumpkin", 1);
-        fruit = Fruit.fruits.get("Pumpkin");
+        fruit = Fruit.getFruit("Pumpkin");
 
         produce = new Produce(
                 "Pumpkin Pickles",
@@ -2497,7 +2516,7 @@ public class Produce extends Item {
 
         ingredients.add("Radish");
         numberOfIngredients.put("Radish", 1);
-        fruit = Fruit.fruits.get("Radish");
+        fruit = Fruit.getFruit("Radish");
 
         produce = new Produce(
                 "Radish Pickles",
@@ -2517,7 +2536,7 @@ public class Produce extends Item {
 
         ingredients.add("Red Cabbage");
         numberOfIngredients.put("Red Cabbage", 1);
-        fruit = Fruit.fruits.get("Red Cabbage");
+        fruit = Fruit.getFruit("Red Cabbage");
 
         produce = new Produce(
                 "Red Cabbage Pickles",
@@ -2537,7 +2556,7 @@ public class Produce extends Item {
 
         ingredients.add("Summer Squash");
         numberOfIngredients.put("Summer Squash", 1);
-        fruit = Fruit.fruits.get("Summer Squash");
+        fruit = Fruit.getFruit("Summer Squash");
 
         produce = new Produce(
                 "Summer Squash Pickles",
@@ -2557,7 +2576,7 @@ public class Produce extends Item {
 
         ingredients.add("Taro Root");
         numberOfIngredients.put("Taro Root", 1);
-        fruit = Fruit.fruits.get("Taro Root");
+        fruit = Fruit.getFruit("Taro Root");
 
         produce = new Produce(
                 "Taro Root Pickles",
@@ -2577,7 +2596,7 @@ public class Produce extends Item {
 
         ingredients.add("Tea Leaves");
         numberOfIngredients.put("Tea Leaves", 1);
-        fruit = Fruit.fruits.get("Tea Leaves");
+        fruit = Fruit.getFruit("Tea Leaves");
 
         produce = new Produce(
                 "Tea Leaves Pickles",
@@ -2597,7 +2616,7 @@ public class Produce extends Item {
 
         ingredients.add("Tomato");
         numberOfIngredients.put("Tomato", 1);
-        fruit = Fruit.fruits.get("Tomato");
+        fruit = Fruit.getFruit("Tomato");
 
         produce = new Produce(
                 "Tomato Pickles",
@@ -2617,7 +2636,7 @@ public class Produce extends Item {
 
         ingredients.add("Unmilled Rice");
         numberOfIngredients.put("Unmilled Rice", 1);
-        fruit = Fruit.fruits.get("Unmilled Rice");
+        fruit = Fruit.getFruit("Unmilled Rice");
 
         produce = new Produce(
                 "Unmilled Rice Pickles",
@@ -2637,7 +2656,7 @@ public class Produce extends Item {
 
         ingredients.add("Wheat");
         numberOfIngredients.put("Wheat", 1);
-        fruit = Fruit.fruits.get("Wheat");
+        fruit = Fruit.getFruit("Wheat");
 
         produce = new Produce(
                 "Wheat Pickles",
@@ -2657,7 +2676,7 @@ public class Produce extends Item {
 
         ingredients.add("Yam");
         numberOfIngredients.put("Yam", 1);
-        fruit = Fruit.fruits.get("Yam");
+        fruit = Fruit.getFruit("Yam");
 
         produce = new Produce(
                 "Yam Pickles",
@@ -2678,7 +2697,7 @@ public class Produce extends Item {
 
         ingredients.add("Ancient Fruit");
         numberOfIngredients.put("Ancient Fruit", 1);
-        fruit = Fruit.fruits.get("Ancient Fruit");
+        fruit = Fruit.getFruit("Ancient Fruit");
 
         produce = new Produce(
                 "Ancient Fruit Jelly",
@@ -2698,7 +2717,7 @@ public class Produce extends Item {
 
         ingredients.add("Apple");
         numberOfIngredients.put("Apple", 1);
-        fruit = Fruit.fruits.get("Apple");
+        fruit = Fruit.getFruit("Apple");
 
         produce = new Produce(
                 "Apple Jelly",
@@ -2718,7 +2737,7 @@ public class Produce extends Item {
 
         ingredients.add("Apricot");
         numberOfIngredients.put("Apricot", 1);
-        fruit = Fruit.fruits.get("Apricot");
+        fruit = Fruit.getFruit("Apricot");
 
         produce = new Produce(
                 "Apricot Jelly",
@@ -2738,7 +2757,7 @@ public class Produce extends Item {
 
         ingredients.add("Banana");
         numberOfIngredients.put("Banana", 1);
-        fruit = Fruit.fruits.get("Banana");
+        fruit = Fruit.getFruit("Banana");
 
         produce = new Produce(
                 "Banana Jelly",
@@ -2758,7 +2777,7 @@ public class Produce extends Item {
 
         ingredients.add("Blackberry");
         numberOfIngredients.put("Blackberry", 1);
-        fruit = Fruit.fruits.get("Blackberry");
+        fruit = Fruit.getFruit("Blackberry");
 
         produce = new Produce(
                 "Blackberry Jelly",
@@ -2778,7 +2797,7 @@ public class Produce extends Item {
 
         ingredients.add("Blueberry");
         numberOfIngredients.put("Blueberry", 1);
-        fruit = Fruit.fruits.get("Blueberry");
+        fruit = Fruit.getFruit("Blueberry");
 
         produce = new Produce(
                 "Blueberry Jelly",
@@ -2798,7 +2817,7 @@ public class Produce extends Item {
 
         ingredients.add("Cactus Fruit");
         numberOfIngredients.put("Cactus Fruit", 1);
-        fruit = Fruit.fruits.get("Cactus Fruit");
+        fruit = Fruit.getFruit("Cactus Fruit");
 
         produce = new Produce(
                 "Cactus Fruit Jelly",
@@ -2818,7 +2837,7 @@ public class Produce extends Item {
 
         ingredients.add("Cherry");
         numberOfIngredients.put("Cherry", 1);
-        fruit = Fruit.fruits.get("Cherry");
+        fruit = Fruit.getFruit("Cherry");
 
         produce = new Produce(
                 "Cherry Jelly",
@@ -2838,7 +2857,7 @@ public class Produce extends Item {
 
         ingredients.add("Coconut");
         numberOfIngredients.put("Coconut", 1);
-        fruit = Fruit.fruits.get("Coconut");
+        fruit = Fruit.getFruit("Coconut");
 
         produce = new Produce(
                 "Coconut Jelly",
@@ -2858,7 +2877,7 @@ public class Produce extends Item {
 
         ingredients.add("Cranberries");
         numberOfIngredients.put("Cranberries", 1);
-        fruit = Fruit.fruits.get("Cranberries");
+        fruit = Fruit.getFruit("Cranberries");
 
         produce = new Produce(
                 "Cranberries Jelly",
@@ -2878,7 +2897,7 @@ public class Produce extends Item {
 
         ingredients.add("Crystal Fruit");
         numberOfIngredients.put("Crystal Fruit", 1);
-        fruit = Fruit.fruits.get("Crystal Fruit");
+        fruit = Fruit.getFruit("Crystal Fruit");
 
         produce = new Produce(
                 "Crystal Fruit Jelly",
@@ -2898,7 +2917,7 @@ public class Produce extends Item {
 
         ingredients.add("Grape");
         numberOfIngredients.put("Grape", 1);
-        fruit = Fruit.fruits.get("Grape");
+        fruit = Fruit.getFruit("Grape");
 
         produce = new Produce(
                 "Grape Jelly",
@@ -2918,7 +2937,7 @@ public class Produce extends Item {
 
         ingredients.add("Hot Pepper");
         numberOfIngredients.put("Hot Pepper", 1);
-        fruit = Fruit.fruits.get("Hot Pepper");
+        fruit = Fruit.getFruit("Hot Pepper");
 
         produce = new Produce(
                 "Hot Pepper Jelly",
@@ -2938,7 +2957,7 @@ public class Produce extends Item {
 
         ingredients.add("Mango");
         numberOfIngredients.put("Mango", 1);
-        fruit = Fruit.fruits.get("Mango");
+        fruit = Fruit.getFruit("Mango");
 
         produce = new Produce(
                 "Mango Jelly",
@@ -2958,7 +2977,7 @@ public class Produce extends Item {
 
         ingredients.add("Melon");
         numberOfIngredients.put("Melon", 1);
-        fruit = Fruit.fruits.get("Melon");
+        fruit = Fruit.getFruit("Melon");
 
         produce = new Produce(
                 "Melon Jelly",
@@ -2978,7 +2997,7 @@ public class Produce extends Item {
 
         ingredients.add("Orange");
         numberOfIngredients.put("Orange", 1);
-        fruit = Fruit.fruits.get("Orange");
+        fruit = Fruit.getFruit("Orange");
 
         produce = new Produce(
                 "Orange Jelly",
@@ -2998,7 +3017,7 @@ public class Produce extends Item {
 
         ingredients.add("Peach");
         numberOfIngredients.put("Peach", 1);
-        fruit = Fruit.fruits.get("Peach");
+        fruit = Fruit.getFruit("Peach");
 
         produce = new Produce(
                 "Peach Jelly",
@@ -3018,7 +3037,7 @@ public class Produce extends Item {
 
         ingredients.add("Pineapple");
         numberOfIngredients.put("Pineapple", 1);
-        fruit = Fruit.fruits.get("Pineapple");
+        fruit = Fruit.getFruit("Pineapple");
 
         produce = new Produce(
                 "Pineapple Jelly",
@@ -3038,7 +3057,7 @@ public class Produce extends Item {
 
         ingredients.add("Pomegranate");
         numberOfIngredients.put("Pomegranate", 1);
-        fruit = Fruit.fruits.get("Pomegranate");
+        fruit = Fruit.getFruit("Pomegranate");
 
         produce = new Produce(
                 "Pomegranate Jelly",
@@ -3058,7 +3077,7 @@ public class Produce extends Item {
 
         ingredients.add("Powdermelon");
         numberOfIngredients.put("Powdermelon", 1);
-        fruit = Fruit.fruits.get("Powdermelon");
+        fruit = Fruit.getFruit("Powdermelon");
 
         produce = new Produce(
                 "Powdermelon Jelly",
@@ -3078,7 +3097,7 @@ public class Produce extends Item {
 
         ingredients.add("Qi Fruit");
         numberOfIngredients.put("Qi Fruit", 1);
-        fruit = Fruit.fruits.get("Qi Fruit");
+        fruit = Fruit.getFruit("Qi Fruit");
 
         produce = new Produce(
                 "Qi Fruit Jelly",
@@ -3098,7 +3117,7 @@ public class Produce extends Item {
 
         ingredients.add("Rhubarb");
         numberOfIngredients.put("Rhubarb", 1);
-        fruit = Fruit.fruits.get("Rhubarb");
+        fruit = Fruit.getFruit("Rhubarb");
 
         produce = new Produce(
                 "Rhubarb Jelly",
@@ -3118,7 +3137,7 @@ public class Produce extends Item {
 
         ingredients.add("Salmonberry");
         numberOfIngredients.put("Salmonberry", 1);
-        fruit = Fruit.fruits.get("Salmonberry");
+        fruit = Fruit.getFruit("Salmonberry");
 
         produce = new Produce(
                 "Salmonberry Jelly",
@@ -3138,7 +3157,7 @@ public class Produce extends Item {
 
         ingredients.add("Spice Berry");
         numberOfIngredients.put("Spice Berry", 1);
-        fruit = Fruit.fruits.get("Spice Berry");
+        fruit = Fruit.getFruit("Spice Berry");
 
         produce = new Produce(
                 "Spice Berry Jelly",
@@ -3158,7 +3177,7 @@ public class Produce extends Item {
 
         ingredients.add("Starfruit");
         numberOfIngredients.put("Starfruit", 1);
-        fruit = Fruit.fruits.get("Starfruit");
+        fruit = Fruit.getFruit("Starfruit");
 
         produce = new Produce(
                 "Starfruit Jelly",
@@ -3178,7 +3197,7 @@ public class Produce extends Item {
 
         ingredients.add("Strawberry");
         numberOfIngredients.put("Strawberry", 1);
-        fruit = Fruit.fruits.get("Strawberry");
+        fruit = Fruit.getFruit("Strawberry");
 
         produce = new Produce(
                 "Strawberry Jelly",
@@ -3198,7 +3217,7 @@ public class Produce extends Item {
 
         ingredients.add("Wild Plum");
         numberOfIngredients.put("Wild Plum", 1);
-        fruit = Fruit.fruits.get("Wild Plum");
+        fruit = Fruit.getFruit("Wild Plum");
 
         produce = new Produce(
                 "Wild Plum Jelly",
@@ -3222,7 +3241,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Flounder");
         numberOfIngredients.put("Flounder", 1);
-        fish = Fish.fishes.get("Flounder");
+        fish = Fish.getFish("Flounder");
 
         produce = new Produce(
                 "Smoked Flounder",
@@ -3244,7 +3263,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Lionfish");
         numberOfIngredients.put("Lionfish", 1);
-        fish = Fish.fishes.get("Lionfish");
+        fish = Fish.getFish("Lionfish");
 
         produce = new Produce(
                 "Smoked Lionfish",
@@ -3266,7 +3285,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Herring");
         numberOfIngredients.put("Herring", 1);
-        fish = Fish.fishes.get("Herring");
+        fish = Fish.getFish("Herring");
 
         produce = new Produce(
                 "Smoked Herring",
@@ -3288,7 +3307,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Ghostfish");
         numberOfIngredients.put("Ghostfish", 1);
-        fish = Fish.fishes.get("Ghostfish");
+        fish = Fish.getFish("Ghostfish");
 
         produce = new Produce(
                 "Smoked Ghostfish",
@@ -3310,7 +3329,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Tilapia");
         numberOfIngredients.put("Tilapia", 1);
-        fish = Fish.fishes.get("Tilapia");
+        fish = Fish.getFish("Tilapia");
 
         produce = new Produce(
                 "Smoked Tilapia",
@@ -3332,7 +3351,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Dorado");
         numberOfIngredients.put("Dorado", 1);
-        fish = Fish.fishes.get("Dorado");
+        fish = Fish.getFish("Dorado");
 
         produce = new Produce(
                 "Smoked Dorado",
@@ -3354,7 +3373,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Sunfish");
         numberOfIngredients.put("Sunfish", 1);
-        fish = Fish.fishes.get("Sunfish");
+        fish = Fish.getFish("Sunfish");
 
         produce = new Produce(
                 "Smoked Sunfish",
@@ -3377,7 +3396,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Rainbow Trout");
         numberOfIngredients.put("Rainbow Trout", 1);
-        fish = Fish.fishes.get("Rainbow Trout");
+        fish = Fish.getFish("Rainbow Trout");
 
         produce = new Produce(
                 "Smoked Rainbow Trout",
@@ -3399,7 +3418,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Salmon");
         numberOfIngredients.put("Salmon", 1);
-        fish = Fish.fishes.get("Salmon");
+        fish = Fish.getFish("Salmon");
 
         produce = new Produce(
                 "Smoked Salmon",
@@ -3421,7 +3440,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Sardine");
         numberOfIngredients.put("Sardine", 1);
-        fish = Fish.fishes.get("Sardine");
+        fish = Fish.getFish("Sardine");
 
         produce = new Produce(
                 "Smoked Sardine",
@@ -3443,7 +3462,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Sardine");
         numberOfIngredients.put("Sardine", 1);
-        fish = Fish.fishes.get("Sardine");
+        fish = Fish.getFish("Sardine");
 
         produce = new Produce(
                 "Smoked Sardine",
@@ -3465,7 +3484,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Shad");
         numberOfIngredients.put("Shad", 1);
-        fish = Fish.fishes.get("Shad");
+        fish = Fish.getFish("Shad");
 
         produce = new Produce(
                 "Smoked Shad",
@@ -3487,7 +3506,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Blue Discus");
         numberOfIngredients.put("Blue Discus", 1);
-        fish = Fish.fishes.get("Blue Discus");
+        fish = Fish.getFish("Blue Discus");
 
         produce = new Produce(
                 "Smoked Blue Discus",
@@ -3509,7 +3528,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Midnight Carp");
         numberOfIngredients.put("Midnight Carp", 1);
-        fish = Fish.fishes.get("Midnight Carp");
+        fish = Fish.getFish("Midnight Carp");
 
         produce = new Produce(
                 "Smoked Midnight Carp",
@@ -3531,7 +3550,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Squid");
         numberOfIngredients.put("Squid", 1);
-        fish = Fish.fishes.get("Squid");
+        fish = Fish.getFish("Squid");
 
         produce = new Produce(
                 "Smoked Squid",
@@ -3553,7 +3572,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Tuna");
         numberOfIngredients.put("Tuna", 1);
-        fish = Fish.fishes.get("Tuna");
+        fish = Fish.getFish("Tuna");
 
         produce = new Produce(
                 "Smoked Tuna",
@@ -3575,7 +3594,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Perch");
         numberOfIngredients.put("Perch", 1);
-        fish = Fish.fishes.get("Perch");
+        fish = Fish.getFish("Perch");
 
         produce = new Produce(
                 "Smoked Perch",
@@ -3597,7 +3616,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Legend");
         numberOfIngredients.put("Legend", 1);
-        fish = Fish.fishes.get("Legend");
+        fish = Fish.getFish("Legend");
 
         produce = new Produce(
                 "Smoked Legend",
@@ -3619,7 +3638,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Glacierfish");
         numberOfIngredients.put("Glacierfish", 1);
-        fish = Fish.fishes.get("Glacierfish");
+        fish = Fish.getFish("Glacierfish");
 
         produce = new Produce(
                 "Smoked Glacierfish",
@@ -3641,7 +3660,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Angler");
         numberOfIngredients.put("Angler", 1);
-        fish = Fish.fishes.get("Angler");
+        fish = Fish.getFish("Angler");
 
         produce = new Produce(
                 "Smoked Angler",
@@ -3663,7 +3682,7 @@ public class Produce extends Item {
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Crimsonfish");
         numberOfIngredients.put("Crimsonfish", 1);
-        fish = Fish.fishes.get("Crimsonfish");
+        fish = Fish.getFish("Crimsonfish");
 
         produce = new Produce(
                 "Smoked Crimsonfish",

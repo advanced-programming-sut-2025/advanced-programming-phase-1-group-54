@@ -10,13 +10,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Artisan extends Item implements Placeable {
+public class Artisan extends Item implements Placeable,Cloneable{
 
-    public static HashMap<String,Artisan> artisans ;
+    private final static HashMap<String,Artisan> artisans ;
 
     static {
         artisans = new HashMap<>();
     }
+
+    public static Artisan getArtisan(String Name) {
+        return artisans.get(Name).clone();
+    }
+
+
 
     private final String recipeName;
     private final int sellPrice;
@@ -56,6 +62,14 @@ public class Artisan extends Item implements Placeable {
         return produceIsReady;
     }
 
+    @Override
+    protected Artisan clone() {
+        try {
+            return (Artisan) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 
     public static void writeToJson(){
 
