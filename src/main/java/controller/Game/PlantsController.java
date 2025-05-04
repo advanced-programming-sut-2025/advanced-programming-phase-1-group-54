@@ -19,22 +19,22 @@ public class PlantsController {
 
     public String showInfo(String plantName) {
 
-        Crop crop = Crop.crops.get(plantName);
+        Crop crop = Crop.getCrop(plantName);
         if(crop != null){
             return crop.toString();
         }
 
-        Tree tree = Tree.trees.get(plantName);
+        Tree tree = Tree.getTree(plantName);
         if(tree != null){
             return tree.toString();
         }
 
-        Fruit fruit = Fruit.fruits.get(plantName);
+        Fruit fruit = Fruit.getFruit(plantName);
         if(fruit != null){
             return fruit.toString();
         }
 
-        Seed seed = Seed.seeds.get(plantName);
+        Seed seed = Seed.getSeed(plantName);
         if(seed != null){
             return seed.toString();
         }
@@ -54,13 +54,10 @@ public class PlantsController {
 
         Seed seed;
         if(seedName.equals("Mixed Seeds")){
-            Random rand = new Random();
-            ArrayList<String> mixedSeeds = Seed.mixedSeeds.get(App.getCurrentGame().getDateTime().getSeason());
-            seed = Seed.seeds.get(mixedSeeds.get(rand.nextInt(mixedSeeds.size())));
-            return plantingSeeds(seed,direction);
+            return plantingSeeds(Seed.getMixedSeed(App.getCurrentGame().getDateTime().getSeason()),direction);
         }
         else{
-            seed = Seed.seeds.get(seedName);
+            seed = Seed.getSeed(seedName);
             if(seed == null){
                 return new Result(-1,"seed does not exist");
             }
@@ -138,7 +135,7 @@ public class PlantsController {
         Placeable placeable = tile.getThingOnTile();
         if(placeable instanceof Tree tree){
             if(tree.isFruitIsRipen()){
-                game.getCurrentPlayer().getBackpack().addItem(Fruit.fruits.get(tree.getFruit()),1);
+                game.getCurrentPlayer().getBackpack().addItem(Fruit.getFruit(tree.getFruit()),1);
                 tree.setFruitIsRipen(false);
                 return new Result(1,"You get 1 " + tree.getFruit());
             }
@@ -148,7 +145,7 @@ public class PlantsController {
         else if(placeable instanceof Crop crop){
             if(crop.isFruitIsRipen()){
                 if(crop.getGiantDirection() != null){
-                    game.getCurrentPlayer().getBackpack().addItem(Fruit.fruits.get(crop.getFruit()),10);
+                    game.getCurrentPlayer().getBackpack().addItem(Fruit.getFruit(crop.getFruit()),10);
                     crop.setFruitIsRipen(false);
                     crop = (Crop) game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
                     crop.setFruitIsRipen(false);
@@ -158,7 +155,7 @@ public class PlantsController {
                     crop.setFruitIsRipen(false);
                 }
                 else{
-                    game.getCurrentPlayer().getBackpack().addItem(Fruit.fruits.get(crop.getFruit()),1);
+                    game.getCurrentPlayer().getBackpack().addItem(Fruit.getFruit(crop.getFruit()),1);
                     crop.setFruitIsRipen(false);
                 }
             }
@@ -192,16 +189,14 @@ public class PlantsController {
 
         currentPlayer.getBackpack().removeItem(seed,1);
 
-        Tree tree = Tree.trees.get(seed.getPlant());
+        Tree tree = Tree.getTree(seed.getPlant());
         if(tree != null){
-            tree = tree.clone();
             currentPlayer.getPlants().put(tree,tile);
             tile.setThingOnTile(tree);
         }
 
-        Crop crop = Crop.crops.get(seed.getPlant());
+        Crop crop = Crop.getCrop(seed.getPlant());
         if(crop != null){
-            crop = crop.clone();
             if(!cropCanBeGiant(crop,location)){
                 currentPlayer.getPlants().put(crop,tile);
                 tile.setThingOnTile(crop);

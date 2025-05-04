@@ -58,7 +58,7 @@ public class Tree extends Plant implements Cloneable{
     }
 
     @Override
-    protected Tree clone()  {
+    public Tree clone()  {
         try {
             return (Tree) super.clone();
         } catch (CloneNotSupportedException e) {

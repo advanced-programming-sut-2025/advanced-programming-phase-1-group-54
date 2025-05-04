@@ -10,23 +10,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-public class Recipe extends Item {
+public class Recipe {
 
     public static final LinkedHashMap<String,Recipe> craftRecipes;
-    public static final LinkedHashMap<String,Recipe> foodRecipes ;
+    public static final LinkedHashMap<String,Recipe> foodRecipes;
 
     static {
         craftRecipes = new LinkedHashMap<>();
         foodRecipes = new LinkedHashMap<>();
     }
 
+    private final String name;
     private final ArrayList<String> ingredientsNames;
     private final HashMap<String,Integer> ingredientsNumber;
 
     public Recipe(String name, ArrayList<String> ingredientsNames, HashMap<String, Integer> ingredientsNumber) {
-        super(name,false);
+        this.name = name;
         this.ingredientsNames = ingredientsNames;
         this.ingredientsNumber = ingredientsNumber;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public ArrayList<String> getIngredientsNames() {
@@ -319,8 +324,8 @@ public class Recipe extends Item {
         ingredients.add("Mahogany Seed");
         numberOfIngredients.put("Mahogany Seed", 5);
 
-        recipe = new Recipe("Mystic Tree Seed Recipe",ingredients,numberOfIngredients);
-        craftRecipesType.put("Mystic Tree Seed Recipe",recipe);
+        recipe = new Recipe("Mystic Tree Seeds Recipe",ingredients,numberOfIngredients);
+        craftRecipesType.put("Mystic Tree Seeds Recipe",recipe);
 
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();

@@ -84,7 +84,6 @@ public class Produce extends Item implements Cloneable{
             throw new AssertionError();
         }
     }
-
     public static void writeToJson(){
 
         HashMap<String, Produce> produceTypes = new HashMap<String, Produce>();
@@ -3706,7 +3705,7 @@ public class Produce extends Item implements Cloneable{
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Copper Ore");
         numberOfIngredients.put("Copper Ore", 5);
-        material = Material.materials.get("Copper Ore");
+        material = Material.getMaterial("Copper Ore");
 
         produce = new Produce(
                 "Copper Bar",
@@ -3728,7 +3727,7 @@ public class Produce extends Item implements Cloneable{
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Iron Ore");
         numberOfIngredients.put("Iron Ore", 5);
-        material = Material.materials.get("Iron Ore");
+        material = Material.getMaterial("Iron Ore");
 
         produce = new Produce(
                 "Iron Bar",
@@ -3750,7 +3749,7 @@ public class Produce extends Item implements Cloneable{
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Gold Ore");
         numberOfIngredients.put("Gold Ore", 5);
-        material = Material.materials.get("Gold Ore");
+        material = Material.getMaterial("Gold Ore");
 
         produce = new Produce(
                 "Gold Bar",
@@ -3772,7 +3771,7 @@ public class Produce extends Item implements Cloneable{
         numberOfIngredients.put("Coal", 1);
         ingredients.add("Iridium Ore");
         numberOfIngredients.put("Iridium Ore", 5);
-        material = Material.materials.get("Iridium Ore");
+        material = Material.getMaterial("Iridium Ore");
 
         produce = new Produce(
                 "Iridium Bar",

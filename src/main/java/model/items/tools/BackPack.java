@@ -12,17 +12,17 @@ public class BackPack extends Tool {
     private BackPackLevel level;
     private final HashMap<Item, Integer> numberOfItemInBackPack = new HashMap<>();
 
-    public Result addItem(Item item,Integer number) {
+    public boolean addItem(Item item,Integer number) {
         Integer numberOfItem = numberOfItemInBackPack.get(item);
         if(numberOfItem == null) {
             if(numberOfItemInBackPack.size() < level.getSize()) {
                 numberOfItemInBackPack.put(item, number);
-                return new Result(1,"Item Added to backpack");
+                return true;
             }
-            return new Result(-1,"Backpack is Full");
+            return false;
         }
         numberOfItemInBackPack.put(item, numberOfItem + number);
-        return new Result(1,"Item Added to backpack");
+        return true;
     }
 
     public Result removeItem(Item item, Integer number) {
@@ -42,7 +42,6 @@ public class BackPack extends Tool {
         else {
             return new Result(-1,"You do not have enough " + item.getName() + " to remove from backpack");
         }
-
     }
 
     public BackPackLevel getLevel() {

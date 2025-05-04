@@ -24,11 +24,11 @@ public class CommonGameController {
         if(fruit != null){
             return fruit;
         }
-
-        Artisan artisan = Artisan.getArtisan(ItemName);
-        if(artisan != null){
-            return artisan;
-        }
+// Todo
+//        Artisan artisan = Artisan.getArtisan(ItemName);
+//        if(artisan != null){
+//            return artisan;
+//        }
 
         Fish fish = Fish.getFish(ItemName);
         if(fish != null){
@@ -60,7 +60,7 @@ public class CommonGameController {
 
     public static int numberOfItemInBackPack(String ItemName){
         Player player = App.getCurrentGame().getCurrentPlayer();
-        int number = 0;
+        Integer number = 0;
         if(ItemName.equals("fish")){
             for(Fish fish : Fish.getFishesValues()){
                 for(ProduceQuality quality : ProduceQuality.values()){
@@ -68,6 +68,10 @@ public class CommonGameController {
                     number += player.getBackpack().getNumberOfItemInBackPack().get(fish);
                 }
             }
+        }
+        else if(ItemName.equals("Cheese") || ItemName.equals("Goat Cheese") || ItemName.equals("Mayonnaise") ){
+            number += player.getBackpack().getNumberOfItemInBackPack().get(Produce.getProduce(ItemName));
+            number += player.getBackpack().getNumberOfItemInBackPack().get(Produce.getProduce("Large " +ItemName));
         }
         else {
             Item item = findItem(ItemName);
