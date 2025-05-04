@@ -30,6 +30,11 @@ public class Player extends Character {
     private ArrayList<Recipe> learnedFoodRecipes;
     private ArrayList<Recipe> learnedCraftingRecipes;
 
+    public Player(User controllingUser) {
+        this.controllingUser = controllingUser;
+        // TODO
+    }
+
     private final Skill[] skills = new Skill[SkillType.values().length];
 
     private Tool equippedTool;

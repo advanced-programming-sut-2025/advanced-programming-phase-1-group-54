@@ -10,7 +10,20 @@ public class World implements Map {
     private static final int NUMBER_OF_ROWS = 100;
     private static final int NUMBER_OF_COLUMNS = 100;
 
-    private final Tile[][] tiles = new Tile[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
+    private final Tile[][] tiles;
+
+    public static int getNumberOfRows() {
+        return NUMBER_OF_ROWS;
+    }
+
+    public static int getNumberOfColumns() {
+        return NUMBER_OF_COLUMNS;
+    }
+
+    public World(Tile[][] tiles) {
+        this.tiles = tiles;
+    }
+
 
     private Weather currentWeather;
 
