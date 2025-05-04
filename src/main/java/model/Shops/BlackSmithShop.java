@@ -19,8 +19,8 @@ public class BlackSmithShop extends Shop {
         return upgradeTools;
     }
 
-    public void setUpgradeTools(ArrayList<upgradesToolsBlacsmithShop> upgradeTools) {
-        upgradeTools = upgradeTools;
+    public void setUpgradeTools(ArrayList<upgradesToolsBlacsmithShop> upgradeTool) {
+        upgradeTools = upgradeTool;
     }
 
     public ArrayList<ItemsInShops> getStock() {
@@ -31,7 +31,7 @@ public class BlackSmithShop extends Shop {
         Stock = stock;
     }
 
-    private class upgradesToolsBlacsmithShop extends ItemsInShops {
+    public static class upgradesToolsBlacsmithShop extends ItemsInShops {
         private static HashMap<String,Integer> ingredients;
         public upgradesToolsBlacsmithShop(String name, int price) {
             super(name,false,1, price,null);
