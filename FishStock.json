@@ -1,0 +1,44 @@
+[
+  {
+    "Name": "Fish Smoker (Recipe)",
+    "Description": "A recipe to make Fish Smoker",
+    "Price": 10000,
+    "FishingSkillRequired": 0,
+    "Count": 1
+  },
+  {
+    "Name": "Trout Soup",
+    "Description": "Pretty salty.",
+    "Price": 250,
+    "FishingSkillRequired": 0,
+    "Count": 1
+  },
+  {
+    "Name": "Bamboo Pole",
+    "Description": "Use in the water to catch fish.",
+    "Price": 500,
+    "FishingSkillRequired": 0,
+    "Count": 1
+  },
+  {
+    "Name": "Training Rod",
+    "Description": "It's a lot easier to use than other rods, but can only catch basic fish.",
+    "Price": 25,
+    "FishingSkillRequired": 0,
+    "Count": 1
+  },
+  {
+    "Name": "Fiberglass Rod",
+    "Description": "Use in the water to catch fish.",
+    "Price": 1800,
+    "FishingSkillRequired": 2,
+    "Count": 1
+  },
+  {
+    "Name": "Iridium Rod",
+    "Description": "Use in the water to catch fish.",
+    "Price": 7500,
+    "FishingSkillRequired": 4,
+    "Count": 1
+  }
+]
