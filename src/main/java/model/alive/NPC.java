@@ -6,7 +6,7 @@ import model.items.Item;
 
 import java.util.ArrayList;
 
-public class NPC extends Character {
+public class NPC extends Human {
     private String job;
     private House house;
     
