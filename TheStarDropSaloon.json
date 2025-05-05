@@ -1,0 +1,92 @@
+[
+  {
+    "Name": "Beer",
+    "Description": "Drink in moderation.",
+    "Price": 400,
+    "Count": -1
+  },
+  {
+    "Name": "Salad",
+    "Description": "A healthy garden salad.",
+    "Price": 220,
+    "Count": -1
+  },
+  {
+    "Name": "Bread",
+    "Description": "A crusty baguette.",
+    "Price": 120,
+    "Count": -1
+  },
+  {
+    "Name": "Spaghetti",
+    "Description": "An old favorite.",
+    "Price": 240,
+    "Count": -1
+  },
+  {
+    "Name": "Pizza",
+    "Description": "It's popular for all the right reasons.",
+    "Price": 600,
+    "Count": -1
+  },
+  {
+    "Name": "Coffee",
+    "Description": "It smells delicious. This is sure to give you a boost.",
+    "Price": 300,
+    "Count": -1
+  },
+  {
+    "Name": "Hashbrowns Recipe",
+    "Description": "A recipe to make Hashbrowns",
+    "Price": 50,
+    "Count": 1
+  },
+  {
+    "Name": "Omelet Recipe",
+    "Description": "A recipe to make Omelet",
+    "Price": 100,
+    "Count": 1
+  },
+  {
+    "Name": "Pancakes Recipe",
+    "Description": "A recipe to make Pancakes",
+    "Price": 100,
+    "Count": 1
+  },
+  {
+    "Name": "Bread Recipe",
+    "Description": "A recipe to make Bread",
+    "Price": 100,
+    "Count": 1
+  },
+  {
+    "Name": "Tortilla Recipe",
+    "Description": "A recipe to make Tortilla",
+    "Price": 100,
+    "Count": 1
+  },
+  {
+    "Name": "Pizza Recipe",
+    "Description": "A recipe to make Pizza",
+    "Price": 150,
+    "Count": 1
+  },
+  {
+    "Name": "Maki Roll Recipe",
+    "Description": "A recipe to make Maki Roll",
+    "Price": 300,
+    "Count": 1
+  },
+  {
+    "Name": "Triple Shot Espresso Recipe",
+    "Description": "A recipe to make Triple Shot Espresso",
+    "Price": 5000,
+    "Count": 1
+  },
+  {
+    "Name": "Cookie Recipe",
+    "Description": "A recipe to make Cookie",
+    "Price": 300,
+    "Count": 1
+  }
+]
