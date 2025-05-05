@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class Crop extends Plant implements Cloneable{
-    public static HashMap<String,Crop> crops;
+    private static final HashMap<String,Crop> crops;
 
     static{
         Gson gson = new Gson();
@@ -29,6 +29,18 @@ public class Crop extends Plant implements Cloneable{
         crops = gson.fromJson(file,type);
         System.out.println(crops.size());
     }
+
+    public static Crop getCrop(String name){
+        Crop crop = crops.get(name);
+        if(crop == null){
+            return null;
+        }
+        else {
+            return crop.clone();
+        }
+    }
+
+
 
     private final boolean oneTime;
     private final boolean canBecomeGiant;

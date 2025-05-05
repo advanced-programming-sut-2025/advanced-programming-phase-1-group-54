@@ -5,10 +5,7 @@ import controller.builders.GameBuilder;
 import model.alive.Player;
 import model.enums.Menu;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,7 +20,7 @@ public class App {
 
     private static final File gamesFile = new File(savesDir, "games.json");
 
-    private static ArrayList<Game> games; // TODO : remove
+    private static final ArrayList<Game> games = new ArrayList<>(); // TODO : remove
     private static Game currentGame;
 
     static {

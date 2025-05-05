@@ -9,8 +9,7 @@ public enum Gender {
                 return Gender.MALE;
             case "female", "F", "f":
                 return Gender.FEMALE;
-            default:
-                return null;
         }
+        return null;
     }
 }

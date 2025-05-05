@@ -3,6 +3,7 @@ package controller.builders;
 import model.Game;
 import model.User;
 import model.alive.Player;
+import model.map.Farm;
 import model.map.World;
 
 public class GameBuilder {
@@ -36,10 +37,23 @@ public class GameBuilder {
     }
 
     public static Game getResult() {
-        World world = new World();
-        Player[] players = new Player[users.length];
+        Farm[] playerFarms = new Farm[users.length];
 
-        // TODO
+        for (int i = 0; i < users.length; i++) {
+            FarmBuilder.reset();
+            FarmBuilder.setFarmNumber(playerFarmNumbers[i]);
+            playerFarms[i] = FarmBuilder.getResult();
+        }
+
+        WorldBuilder.reset();
+        WorldBuilder.setPlayerFarms(playerFarms);
+        World world = WorldBuilder.getResult();
+
+        Player[] players = new Player[users.length];
+        for (int i = 0; i < users.length; i++) {
+            players[i] = new Player(users[i]);
+        }
+
         Game game = new Game(world, players);
         GameBuilder.reset();
         return game;

@@ -2,174 +2,102 @@ package model.items.crafting;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import model.Placeable;
-import model.enums.Feature;
-import model.items.Item;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Artisan extends Item implements Placeable,Cloneable{
+public class ProducerArtisan extends Artisan implements Cloneable {
 
-//    private final static HashMap<String,Artisan> artisans;
-//
-//    static {
-//        artisans = new HashMap<>();
-//        Gson gson = new Gson();
-//        FileReader file = null;
-//        try {
-//            file = new FileReader("artisans.json");
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
-//        Type type = new TypeToken<HashMap<String, Artisan>>(){}.getType();
-//        artisans = gson.fromJson(file,type);
-//        System.out.println(artisans.size());
-//    }
-//
-//    public static Artisan getArtisan(String Name) {
-//        return artisans.get(Name).clone();
-//    }
+    private final static HashMap<String,ProducerArtisan> producerArtisans;
 
-
-
-    private final String recipeName;
-
-
-
-    public Artisan(String name, String recipeName) {
-        super(name,false);
-        this.recipeName = recipeName;
+    static {
+        Gson gson = new Gson();
+        FileReader file = null;
+        try {
+            file = new FileReader("ProducerArtisans.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        Type type = new TypeToken<HashMap<String, ProducerArtisan>>(){}.getType();
+        producerArtisans = gson.fromJson(file,type);
     }
 
-    public String getRecipeName() {
-        return recipeName;
+    public static ProducerArtisan getProducerArtisan(String artisan){
+        ProducerArtisan producerArtisan = producerArtisans.get(artisan);
+        if(producerArtisan == null){
+            return null;
+        }
+        else{
+            return producerArtisan.clone();
+        }
+    }
+
+    private final ArrayList<String> producesNames;
+    private Produce processingProduce;
+    private int remainingHours;
+    private boolean produceIsReady;
+
+    public ProducerArtisan(String name, String recipeName, ArrayList<String> producesNames) {
+        super(name, recipeName);
+        this.producesNames = producesNames;
+    }
+
+    public ArrayList<String> getProducesNames() {
+        return producesNames;
+    }
+
+    public Produce getProcessingProduce() {
+        return processingProduce;
+    }
+
+    public int getRemainingHours() {
+        return remainingHours;
+    }
+
+    public boolean isProduceIsReady() {
+        return produceIsReady;
+    }
+
+    public void setProcessingProduce(Produce processingProduce) {
+        this.processingProduce = processingProduce;
+    }
+
+    public void setRemainingHours(int remainingHours) {
+        this.remainingHours = remainingHours;
+    }
+
+    public void setProduceIsReady(boolean produceIsReady) {
+        this.produceIsReady = produceIsReady;
     }
 
     @Override
-    protected Artisan clone() {
-        try {
-            return (Artisan) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
+    protected ProducerArtisan clone() {
+        return (ProducerArtisan) super.clone();
     }
 
     public static void writeToJson(){
 
-        HashMap<String,Artisan> artisansType = new HashMap<>();
+        HashMap<String,ProducerArtisan> producerArtisanType = new HashMap<>();
 
-        Artisan artisan;
+        ProducerArtisan producerArtisan;
         ArrayList<String> produces;
-
-
-        artisan = new UnProducerArtisan(
-                "Cherry Bomb",
-                "Cherry Bomb Recipe",
-                50,
-                3,
-                Feature.DESTROYED
-        );
-        artisansType.put(artisan.getName(), artisan);
-
-
-        artisan = new UnProducerArtisan(
-                "Bomb",
-                "Bomb Recipe",
-                50,
-                5,
-                Feature.DESTROYED
-        );
-        artisansType.put(artisan.getName(), artisan);
-
-
-        artisan = new UnProducerArtisan(
-                "Mega Bomb",
-                "Mega Bomb Recipe",
-                50,
-                7,
-                Feature.DESTROYED
-        );
-        artisansType.put(artisan.getName(), artisan);
-
-
-        artisan = new UnProducerArtisan(
-                "Sprinkler",
-                "Sprinkler Recipe",
-                0,
-                4,
-                Feature.WATERED
-        );
-        artisansType.put(artisan.getName(), artisan);
-
-
-        artisan = new UnProducerArtisan(
-                "Quality Sprinkler",
-                "Quality Sprinkler Recipe",
-                0,
-                8,
-                Feature.WATERED
-        );
-        artisansType.put(artisan.getName(), artisan);
-
-
-        artisan = new UnProducerArtisan(
-                "Iridium Sprinkler",
-                "Iridium Sprinkler Recipe",
-                0,
-                24,
-                Feature.WATERED
-        );
-        artisansType.put(artisan.getName(), artisan);
-
-
-        produces = new ArrayList<>();
-
-        artisan = new UnProducerArtisan(
-                "Scarecrow",
-                "Scarecrow Recipe",
-                0,
-                8,
-                Feature.PROTECTED
-        );
-        artisansType.put(artisan.getName(), artisan);
-
-
-        produces = new ArrayList<>();
-
-        artisan = new UnProducerArtisan(
-                "Deluxe Scarecrow",
-                "Deluxe Scarecrow Recipe",
-                0,
-                12,
-                Feature.PROTECTED
-        );
-        artisansType.put(artisan.getName(), artisan);
-
-
-        artisan = new UnProducerArtisan(
-                "Grass Starter",
-                "Grass Starter Recipe",
-                0,
-                0,
-                Feature.GRASS
-        );
-        artisansType.put(artisan.getName(), artisan);
-
-        // Producer Artisans
 
         produces = new ArrayList<>();
 
         produces.add("Coal");
 
-        artisan = new ProducerArtisan(
+        producerArtisan = new ProducerArtisan(
                 "Charcoal Kiln",
                 "Charcoal Kiln Recipe",
                 produces
         );
-        artisansType.put(artisan.getName(), artisan);
+        producerArtisanType.put(producerArtisan.getName(), producerArtisan);
 
 
         produces = new ArrayList<>();
@@ -179,24 +107,24 @@ public class Artisan extends Item implements Placeable,Cloneable{
         produces.add("Gold Bar");
         produces.add("Iridium Bar");
 
-        artisan = new ProducerArtisan(
+        producerArtisan = new ProducerArtisan(
                 "Furnace",
                 "Furnace Recipe",
                 produces
         );
-        artisansType.put(artisan.getName(), artisan);
+        producerArtisanType.put(producerArtisan.getName(), producerArtisan);
 
 
         produces = new ArrayList<>();
 
         produces.add("Honey");
 
-        artisan = new ProducerArtisan(
+        producerArtisan = new ProducerArtisan(
                 "Bee House",
                 "Bee House Recipe",
                 produces
         );
-        artisansType.put(artisan.getName(), artisan);
+        producerArtisanType.put(producerArtisan.getName(), producerArtisan);
 
 
         produces = new ArrayList<>();
@@ -206,12 +134,12 @@ public class Artisan extends Item implements Placeable,Cloneable{
         produces.add("Goat Cheese");
         produces.add("Large Goat Cheese");
 
-        artisan = new ProducerArtisan(
+        producerArtisan = new ProducerArtisan(
                 "Cheese Press",
                 "Cheese Press Recipe",
                 produces
         );
-        artisansType.put(artisan.getName(), artisan);
+        producerArtisanType.put(producerArtisan.getName(), producerArtisan);
 
 
         produces = new ArrayList<>();
@@ -275,24 +203,24 @@ public class Artisan extends Item implements Placeable,Cloneable{
         produces.add("Strawberry Wine");
         produces.add("Wild Plum Wine");
 
-        artisan = new ProducerArtisan(
+        producerArtisan = new ProducerArtisan(
                 "Keg",
                 "Keg Recipe",
                 produces
         );
-        artisansType.put(artisan.getName(), artisan);
+        producerArtisanType.put(producerArtisan.getName(), producerArtisan);
 
 
         produces = new ArrayList<>();
 
         produces.add("Cloth");
 
-        artisan = new ProducerArtisan(
+        producerArtisan = new ProducerArtisan(
                 "Loom",
                 "Loom Recipe",
                 produces
         );
-        artisansType.put(artisan.getName(), artisan);
+        producerArtisanType.put(producerArtisan.getName(), producerArtisan);
 
 
         produces = new ArrayList<>();
@@ -302,12 +230,12 @@ public class Artisan extends Item implements Placeable,Cloneable{
         produces.add("Duck Mayonnaise");
         produces.add("Dinosaur Mayonnaise");
 
-        artisan = new ProducerArtisan(
+        producerArtisan = new ProducerArtisan(
                 "Mayonnaise Machine",
                 "Mayonnaise Machine Recipe",
                 produces
         );
-        artisansType.put(artisan.getName(), artisan);
+        producerArtisanType.put(producerArtisan.getName(), producerArtisan);
 
 
         produces = new ArrayList<>();
@@ -317,12 +245,12 @@ public class Artisan extends Item implements Placeable,Cloneable{
         produces.add("Sunflower Seed Oil");
         produces.add("Sunflower Oil");
 
-        artisan = new ProducerArtisan(
+        producerArtisan = new ProducerArtisan(
                 "Oil Maker",
                 "Oil Maker Recipe",
                 produces
         );
-        artisansType.put(artisan.getName(), artisan);
+        producerArtisanType.put(producerArtisan.getName(), producerArtisan);
 
 
         produces = new ArrayList<>();
@@ -382,12 +310,12 @@ public class Artisan extends Item implements Placeable,Cloneable{
         produces.add("Strawberry Jelly");
         produces.add("Wild Plum Jelly");
 
-        artisan = new ProducerArtisan(
+        producerArtisan = new ProducerArtisan(
                 "Preserves Jar",
                 "Preserves Jar Recipe",
                 produces
         );
-        artisansType.put(artisan.getName(), artisan);
+        producerArtisanType.put(producerArtisan.getName(), producerArtisan);
 
 
         produces = new ArrayList<>();
@@ -428,12 +356,12 @@ public class Artisan extends Item implements Placeable,Cloneable{
 
         produces.add("Raisins");
 
-        artisan = new ProducerArtisan(
+        producerArtisan = new ProducerArtisan(
                 "Dehydrator",
                 "Dehydrator Recipe",
                 produces
         );
-        artisansType.put(artisan.getName(), artisan);
+        producerArtisanType.put(producerArtisan.getName(), producerArtisan);
 
 
         produces = new ArrayList<>();
@@ -461,33 +389,22 @@ public class Artisan extends Item implements Placeable,Cloneable{
         produces.add("Smoked Crimsonfish");
 
 
-        artisan = new ProducerArtisan(
+        producerArtisan = new ProducerArtisan(
                 "Fish Smoker",
                 "Fish Smoker Recipe",
                 produces
         );
-        artisansType.put(artisan.getName(), artisan);
+        producerArtisanType.put(producerArtisan.getName(), producerArtisan);
 
-
-
-        artisan = new UnProducerArtisan(
-                "Mystic Tree Seeds",
-                "Mystic Tree Seeds Recipe",
-                0,
-                0,
-                null
-        );
-        artisansType.put(artisan.getName(), artisan);
 
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        try (FileWriter file = new FileWriter("artisans.json")){
-            gson.toJson(artisansType, file);
+        try (FileWriter file = new FileWriter("producerArtisans.json")){
+            gson.toJson(producerArtisanType, file);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
-
 }

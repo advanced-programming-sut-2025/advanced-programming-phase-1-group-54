@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.enums.ProduceQuality;
 import model.enums.Season;
+import model.items.Fish;
 import model.items.Item;
 
 import java.io.FileNotFoundException;
@@ -15,10 +16,10 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Fruit extends Item {
+public class Fruit extends Item implements Cloneable{
 
-    public static HashMap<String, Fruit> fruits;
-    public static HashMap<Season, ArrayList<String>> foragingCrops;
+    private final static HashMap<String, Fruit> fruits;
+    private final static HashMap<Season, ArrayList<String>> foragingCrops;
 
 
     static{
@@ -43,6 +44,18 @@ public class Fruit extends Item {
         System.out.println(foragingCrops.size());
 
     }
+
+    public static Fruit getFruit(String name){
+        Fruit fruit = fruits.get(name);
+        if(fruit == null){
+            return null;
+        }
+        else{
+            return fruit.clone();
+        }
+    }
+
+
 
     private final int baseSellPrice;
     private final int energy;
@@ -80,6 +93,15 @@ public class Fruit extends Item {
                 "\nbaseSellPrice : " + baseSellPrice +
                 "\nisEdible : " + isEdible +
                 "\nenergy : " + energy ;
+    }
+
+    @Override
+    protected Fruit clone() {
+        try {
+            return (Fruit) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     public static void writeToJson() {

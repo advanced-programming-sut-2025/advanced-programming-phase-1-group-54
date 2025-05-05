@@ -1,8 +1,10 @@
-package view;
+package view.app;
 
 import controller.GameMenuController;
 import model.Result;
 import model.enums.commands.GameMenuCommand;
+import view.GenericMenu;
+import view.GameView;
 
 import java.util.Scanner;
 
@@ -50,9 +52,10 @@ public class GameMenu implements AppMenu {
             Result result = new Result(false, null);
             do {
                 String input = scanner.nextLine();
-                if (!command.matches(input))
+                if (!command.matches(input)) {
+                    invalidCommand();
                     continue;
-
+                }
                 int number = Integer.parseInt(command.getGroup(input, "number"));
                 result = GameMenuController.chooseMap(number);
                 showResult(result);

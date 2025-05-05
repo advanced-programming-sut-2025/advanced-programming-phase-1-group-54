@@ -1,8 +1,9 @@
-package view;
+package view.app;
 
 import controller.ProfileMenuController;
 import model.Result;
 import model.enums.commands.ProfileMenuCommand;
+import view.GenericMenu;
 
 import java.util.Scanner;
 

@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-public class Food extends Item {
+public class Food extends Item implements Cloneable{
 
-    public static HashMap<String,Food> foods;
+    private static HashMap<String,Food> foods;
 
     static {
         Gson gson = new Gson();
@@ -28,6 +28,16 @@ public class Food extends Item {
         Type type = new TypeToken<HashMap<String, Food>>(){}.getType();
         foods = gson.fromJson(file,type);
         System.out.println(foods.size());
+    }
+
+    public static Food getFood(String ItemName){
+        Food food = foods.get(ItemName);
+        if(food == null){
+            return null;
+        }
+        else{
+            return food.clone();
+        }
     }
 
     private final int energy;
@@ -63,6 +73,16 @@ public class Food extends Item {
 
     public int getBuffHours() {
         return buffHours;
+    }
+
+
+    @Override
+    protected Food clone() {
+        try {
+            return (Food) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     public static void writeToJson(){

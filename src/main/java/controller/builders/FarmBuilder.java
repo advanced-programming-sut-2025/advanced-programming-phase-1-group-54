@@ -94,10 +94,7 @@ public class FarmBuilder {
                 boolean onBorder = x == -1 || y == -1 || x == 4 || y == 4;
 
                 Location location = new Location(cabinLocation.row() + x, cabinLocation.column() + y);
-                if (onBorder)
-                    tiles[location.row() - 1][location.column() - 1].setThingOnTile(new Wall());
-                else
-                    tiles[location.row() - 1][location.column() - 1].setThingOnTile(cabin);
+                tiles[location.row() - 1][location.column() - 1].setThingOnTile(cabin);
             }
         }
 
@@ -106,12 +103,7 @@ public class FarmBuilder {
             for (int y = -1; y <= 6; y++) {
                 boolean onBorder = x == -1 || y == -1 || x == 5 || y == 6;
                 Location location = new Location(greenHouseLocation.row() + x, greenHouseLocation.column() + y);
-
-                if (onBorder)
-                    tiles[location.row() - 1][location.column() - 1].setThingOnTile(new Wall());
-
-                else
-                    tiles[location.row() - 1][location.column() - 1].setThingOnTile(greenHouse);
+                tiles[location.row() - 1][location.column() - 1].setThingOnTile(greenHouse);
             }
         }
 
