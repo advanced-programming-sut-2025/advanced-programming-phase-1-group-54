@@ -14,7 +14,12 @@ public enum GameCommand implements Command {
 
     // Farm commands
     GREENHOUSE_BUILD("greenhouse build"),
-    
+
+    // Map Commands
+    WALK("walk -l (?<x>\\d+) (?<y>\\d+)"),
+    PRINT_MAP("print map -l (?<x>\\d+) (?<y>\\d+) -s (?<size>\\d+)"),
+    HELP_READ_MAP("help reading map"),
+
     ;
 
     private final String regex;

@@ -1,8 +1,10 @@
-package view;
+package view.app;
 
 import controller.GameMenuController;
 import model.Result;
 import model.enums.commands.GameMenuCommand;
+import view.GenericMenu;
+import view.GameView;
 
 import java.util.Scanner;
 

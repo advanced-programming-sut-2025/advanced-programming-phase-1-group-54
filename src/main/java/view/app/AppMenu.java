@@ -1,18 +1,11 @@
-package view;
+package view.app;
 
 import model.App;
-import model.Result;
 import model.enums.Menu;
 import model.enums.commands.MenuCommand;
+import view.GenericMenu;
 
-import java.util.Scanner;
-
-public interface AppMenu {
-    default void invalidCommand() {
-        System.out.println("invalid command");
-    }
-
-    void run(Scanner scanner);
+public interface AppMenu extends GenericMenu {
 
     void showCurrentMenu();
 
@@ -52,17 +45,4 @@ public interface AppMenu {
             System.out.printf("you are now in %s menu\n", menu.toString().toLowerCase());
     }
 
-    default void showResult(Result result) {
-        if (result.message() != null)
-            System.out.println(result.message());
-    }
-
-    default boolean askForConfirmation(Scanner scanner) {
-        String input;
-        do {
-            System.out.println("[y/n]:");
-            input = scanner.nextLine();
-        } while (!input.equalsIgnoreCase("y") || !input.equalsIgnoreCase("n"));
-        return input.equalsIgnoreCase("y");
-    }
 }

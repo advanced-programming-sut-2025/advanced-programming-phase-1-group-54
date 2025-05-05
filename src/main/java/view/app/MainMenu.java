@@ -1,9 +1,10 @@
-package view;
+package view.app;
 
 import controller.MainMenuController;
 import model.Result;
 import model.enums.commands.MainMenuCommand;
 import model.enums.Menu;
+import view.GenericMenu;
 
 import java.util.Scanner;
 
