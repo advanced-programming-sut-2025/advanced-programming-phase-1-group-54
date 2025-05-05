@@ -1,10 +1,9 @@
 package model.alive;
 
 import model.map.Location;
-import model.Result;
 import model.enums.AnimalType;
 
-public class Animal extends Character {
+public class Animal extends Human {
     protected String name;
 
     protected Player owner;

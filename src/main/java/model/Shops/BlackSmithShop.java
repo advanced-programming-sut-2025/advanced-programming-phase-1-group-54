@@ -1,0 +1,46 @@
+package model.Shops;
+
+import model.alive.Human;
+import model.items.ItemsInShops;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class BlackSmithShop extends Shop {
+    private ArrayList<upgradesToolsBlacsmithShop> upgradeTools;
+    private ArrayList<ItemsInShops> stock;
+    public BlackSmithShop(Human owner) {
+        super(owner,9,16);
+        upgradeTools = new ArrayList<>();
+        stock = new ArrayList<>();
+    }
+    public ArrayList<upgradesToolsBlacsmithShop> getUpgradeTools() {
+        return upgradeTools;
+    }
+
+    public void setUpgradeTools(ArrayList<upgradesToolsBlacsmithShop> upgradeTool) {
+        this.upgradeTools = upgradeTool;
+    }
+
+    public ArrayList<ItemsInShops> getStock() {
+        return stock;
+    }
+
+    public void setStock(ArrayList<ItemsInShops> stock) {
+        this.stock = stock;
+    }
+
+    public class upgradesToolsBlacsmithShop extends ItemsInShops {
+        private HashMap<String,Integer> ingredients;
+        public upgradesToolsBlacsmithShop(String name, int price) {
+            super(name,false,1, price,"no description");
+            ingredients = new HashMap<>();
+        }
+        public HashMap<String, Integer> getIngredients() {
+            return ingredients;
+        }
+        public void setIngredients(HashMap<String, Integer> ingredient) {
+            ingredients = ingredient;
+        }
+    }
+}

@@ -4,6 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="black smith changed">
+      <change afterPath="$PROJECT_DIR$/BlacksmithStock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BlacksmithUpgradeTools.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarPanterFarmBuilding.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarpenterPermanent.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JojoMartFall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JojoMartPermanent.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JojomartSpring.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JojomartSummer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JojomartWinter.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarnieRanchInventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarnieRanchLivesStock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PierreBackpacks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PierreSpring.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PierreSummer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PierreYearRound.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TheStarDropSaloon.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Shops/FishShop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Shops/JojoMartShop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Shops/MarnieRanch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Shops/PierreGeneralShop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Shops/TheStardropSaloonShop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/items/ItemsInShops.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building/Shop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/BlackSmithShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/BlackSmithShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/CarpenterShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/CarpenterShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/NPC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
     <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit model and some controller">
       <change afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" afterDir="false" />
@@ -31,11 +63,32 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="package.json" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;goodguy-not&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54.git&quot;,
+    &quot;accountId&quot;: &quot;c59022d6-305f-4e82-b1ba-a11f215082e8&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -50,7 +103,7 @@
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ehsanBranch&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Asus/IdeaProjects/advanced-programming-phase-1-group-54&quot;,
@@ -106,6 +159,9 @@
       <workItem from="1746250809896" duration="9195000" />
       <workItem from="1746265109849" duration="15499000" />
       <workItem from="1746295931234" duration="4646000" />
+      <workItem from="1746334097002" duration="10900000" />
+      <workItem from="1746364367693" duration="26034000" />
+      <workItem from="1746449939267" duration="3298000" />
       <workItem from="1746334097002" duration="35246000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
@@ -340,6 +396,49 @@
       <option name="project" value="LOCAL" />
       <updated>1746353125738</updated>
     </task>
+
+    <task id="LOCAL-00030" summary="Changing Shop Class">
+      <option name="closed" value="true" />
+      <created>1746367168529</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1746367168529</updated>
+    </task>
+    <task id="LOCAL-00031" summary="BlackSmithShop created">
+      <option name="closed" value="true" />
+      <created>1746388667026</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1746388667026</updated>
+    </task>
+    <task id="LOCAL-00032" summary="BlackSmithShop created (errors hendeled)">
+      <option name="closed" value="true" />
+      <created>1746389158702</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1746389158702</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Character changes to humen">
+      <option name="closed" value="true" />
+      <created>1746389235885</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1746389235885</updated>
+    </task>
+    <task id="LOCAL-00034" summary="black smith changed">
+      <option name="closed" value="true" />
+      <created>1746389294045</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1746389294045</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
+
     <task id="LOCAL-00030" summary="harvest method">
       <option name="closed" value="true" />
       <created>1746354237231</created>
@@ -357,6 +456,7 @@
       <updated>1746374228049</updated>
     </task>
     <option name="localTasksCounter" value="32" />
+
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,7 +496,13 @@
     <MESSAGE value=" edit some things" />
     <MESSAGE value="complete refigerator and backpack" />
     <MESSAGE value="complete planting method" />
+    <MESSAGE value="Changing Shop Class" />
     <MESSAGE value="edit planting method&#10;write crowAttack method &#10;write showPlant method&#10;write grow method for plants" />
+    <MESSAGE value="BlackSmithShop created" />
+    <MESSAGE value="BlackSmithShop created (errors hendeled)" />
+    <MESSAGE value="Character changes to humen" />
+    <MESSAGE value="black smith changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="black smith changed" />
     <MESSAGE value="harvest method" />
     <MESSAGE value="edit model and some controller" />
     <option name="LAST_COMMIT_MESSAGE" value="edit model and some controller" />

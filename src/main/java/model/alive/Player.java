@@ -6,7 +6,6 @@ import model.User;
 import model.enums.SkillType;
 import model.items.crafting.Artisan;
 import model.items.plants.Plant;
-import model.items.plants.Tree;
 import model.items.recipes.Recipe;
 import model.items.tools.BackPack;
 import model.items.tools.Tool;
@@ -17,9 +16,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Player extends Character {
-    private final int MAXIMUM_ENERGY = 200;
 
+public class Player extends Human {
+    private final int MAXIMUM_ENERGY = 200;
     private User controllingUser;
     private int energy;
     private BackPack backpack = new BackPack();

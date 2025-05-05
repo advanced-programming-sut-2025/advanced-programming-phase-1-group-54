@@ -1,0 +1,122 @@
+[
+  {
+    "Name": "Rice",
+    "Description": "A basic grain often served under vegetables.",
+    "Price": 200,
+    "Count": -1
+  },
+  {
+    "Name": "Wheat Flour",
+    "Description": "A common cooking ingredient made from crushed wheat seeds.",
+    "Price": 100,
+    "Count": -1
+  },
+  {
+    "Name": "Bouquet",
+    "Description": "A gift that shows your romantic interest. (Unlocked after reaching level 2 friendship with a player)",
+    "Price": 1000,
+    "Count": 2
+  },
+  {
+    "Name": "Wedding Ring",
+    "Description": "It's used to ask for another farmer's hand in marriage. (Unlocked after reaching level 3 friendship with a player)",
+    "Price": 10000,
+    "Count": 2
+  },
+  {
+    "Name": "Dehydrator (Recipe)",
+    "Description": "A recipe to make Dehydrator",
+    "Price": 10000,
+    "Count": 1
+  },
+  {
+    "Name": "Grass Starter (Recipe)",
+    "Description": "A recipe to make Grass Starter",
+    "Price": 1000,
+    "Count": 1
+  },
+  {
+    "Name": "Sugar",
+    "Description": "Adds sweetness to pastries and candies. Too much can be unhealthy.",
+    "Price": 100,
+    "Count": -1
+  },
+  {
+    "Name": "Oil",
+    "Description": "All purpose cooking oil.",
+    "Price": 200,
+    "Count": -1
+  },
+  {
+    "Name": "Vinegar",
+    "Description": "An aged fermented liquid used in many cooking recipes.",
+    "Price": 200,
+    "Count": -1
+  },
+  {
+    "Name": "Deluxe Retaining Soil",
+    "Description": "This soil has a 100% chance of staying watered overnight. Mix into tilled soil.",
+    "Price": 150,
+    "Count": -1
+  },
+  {
+    "Name": "Grass Starter",
+    "Description": "Place this on your farm to start a new patch of grass.",
+    "Price": 100,
+    "Count": -1
+  },
+  {
+    "Name": "Speed-Gro",
+    "Description": "Makes the plants grow 1 day earlier.",
+    "Price": 100,
+    "Count": -1
+  },
+  {
+    "Name": "Apple Sapling",
+    "Description": "Takes 28 days to produce a mature Apple tree. Bears fruit in the fall. Only grows if the 8 surrounding \"tiles\" are empty.",
+    "Price": 4000,
+    "Count": -1
+  },
+  {
+    "Name": "Apricot Sapling",
+    "Description": "Takes 28 days to produce a mature Apricot tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
+    "Price": 2000,
+    "Count": -1
+  },
+  {
+    "Name": "Cherry Sapling",
+    "Description": "Takes 28 days to produce a mature Cherry tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
+    "Price": 3400,
+    "Count": -1
+  },
+  {
+    "Name": "Orange Sapling",
+    "Description": "Takes 28 days to produce a mature Orange tree. Bears fruit in the summer. Only grows if the 8 surrounding \"tiles\" are empty.",
+    "Price": 4000,
+    "Count": -1
+  },
+  {
+    "Name": "Peach Sapling",
+    "Description": "Takes 28 days to produce a mature Peach tree. Bears fruit in the summer. Only grows if the 8 surrounding \"tiles\" are empty.",
+    "Price": 6000,
+    "Count": -1
+  },
+  {
+    "Name": "Pomegranate Sapling",
+    "Description": "Takes 28 days to produce a mature Pomegranate tree. Bears fruit in the fall. Only grows if the 8 surrounding \"tiles\" are empty.",
+    "Price": 6000,
+    "Count": -1
+  },
+  {
+    "Name": "Basic Retaining Soil",
+    "Description": "This soil has a chance of staying watered overnight. Mix into tilled soil.",
+    "Price": 100,
+    "Count": -1
+  },
+  {
+    "Name": "Quality Retaining Soil",
+    "Description": "This soil has a good chance of staying watered overnight. Mix into tilled soil.",
+    "Price": 150,
+    "Count": -1
+  }
+]
