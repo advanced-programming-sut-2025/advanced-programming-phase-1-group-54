@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "Copper Ore",
+    "Description": "A common ore that can be smelted into bars.",
+    "Price": 75,
+    "Count": -1
+  },
+  {
+    "Name": "Iron Ore",
+    "Description": "A fairly common ore that can be smelted into bars.",
+    "Price": 150,
+    "Count": -1
+  },
+  {
+    "Name": "Coal",
+    "Description": "A combustible rock that is useful for crafting and smelting.",
+    "Price": 150,
+    "Count": -1
+  },
+  {
+    "Name": "Gold Ore",
+    "Description": "A precious ore that can be smelted into bars.",
+    "Price": 400,
+    "Count": -1
+  }
+]
