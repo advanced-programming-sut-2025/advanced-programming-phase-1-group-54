@@ -4,31 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="add walk">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/enums/SubMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/app/AppMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/game/GameSubMenu.java" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit model and some controller">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/UnProducerArtisan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Gender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Gender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/AppMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GenericMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/ExitMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/app/ExitMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/app/GameMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/app/LoginMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/app/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/ProfileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/app/ProfileMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/RegisterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/app/RegisterMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/gameSubMenus/NPCHouseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/NPCHouseMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/gameSubMenus/ShopMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/ShopMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/gameSubMenus/TradeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/TradeMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Feature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,10 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Record" />
-        <option value="Class" />
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -52,7 +41,6 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2wMLFZ23YNjTcvNH6ffw1FUkYPT" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -118,7 +106,7 @@
       <workItem from="1746250809896" duration="9195000" />
       <workItem from="1746265109849" duration="15499000" />
       <workItem from="1746295931234" duration="4646000" />
-      <workItem from="1746334097002" duration="5929000" />
+      <workItem from="1746334097002" duration="35246000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
       <option name="closed" value="true" />
@@ -336,23 +324,39 @@
       <option name="project" value="LOCAL" />
       <updated>1746305055320</updated>
     </task>
-    <task id="LOCAL-00028" summary="crate new game">
+    <task id="LOCAL-00028" summary="edit planting method&#10;write crowAttack method &#10;write showPlant method&#10;write grow method for plants">
       <option name="closed" value="true" />
-      <created>1746362739029</created>
+      <created>1746344431428</created>
       <option name="number" value="00028" />
       <option name="presentableId" value="LOCAL-00028" />
       <option name="project" value="LOCAL" />
-      <updated>1746362739029</updated>
+      <updated>1746344431428</updated>
     </task>
-    <task id="LOCAL-00029" summary="add walk">
+    <task id="LOCAL-00029" summary="edit planting method&#10;write crowAttack method &#10;write showPlant method&#10;write grow method for plants">
       <option name="closed" value="true" />
-      <created>1746365933655</created>
+      <created>1746353125738</created>
       <option name="number" value="00029" />
       <option name="presentableId" value="LOCAL-00029" />
       <option name="project" value="LOCAL" />
-      <updated>1746365933655</updated>
+      <updated>1746353125738</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="harvest method">
+      <option name="closed" value="true" />
+      <created>1746354237231</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1746354237231</updated>
+    </task>
+    <task id="LOCAL-00031" summary="edit model and some controller">
+      <option name="closed" value="true" />
+      <created>1746374228049</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1746374228049</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,43 +396,43 @@
     <MESSAGE value=" edit some things" />
     <MESSAGE value="complete refigerator and backpack" />
     <MESSAGE value="complete planting method" />
-    <MESSAGE value="creating farms and farm templates" />
-    <MESSAGE value="crate new game" />
-    <MESSAGE value="add walk" />
-    <option name="LAST_COMMIT_MESSAGE" value="add walk" />
+    <MESSAGE value="edit planting method&#10;write crowAttack method &#10;write showPlant method&#10;write grow method for plants" />
+    <MESSAGE value="harvest method" />
+    <MESSAGE value="edit model and some controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit model and some controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
-          <line>269</line>
+          <line>287</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
-          <line>78</line>
+          <line>96</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
-          <line>96</line>
+          <line>114</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java</url>
-          <line>447</line>
+          <line>452</line>
           <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java</url>
-          <line>446</line>
+          <line>451</line>
           <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

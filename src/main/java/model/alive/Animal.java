@@ -1,6 +1,5 @@
 package model.alive;
 
-import model.enums.AnimalProduce;
 import model.map.Location;
 import model.Result;
 import model.enums.AnimalType;
@@ -17,8 +16,6 @@ public class Animal extends Character {
     protected boolean hungry;
 
     protected Location location;
-
-    private AnimalProduce produces;
 
     protected int cost;
 
@@ -74,7 +71,4 @@ public class Animal extends Character {
 
     }
 
-    public AnimalProduce getProduce() {
-        return null;
-    }
 }

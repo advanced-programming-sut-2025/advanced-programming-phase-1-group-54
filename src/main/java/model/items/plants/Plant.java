@@ -1,7 +1,10 @@
 package model.items.plants;
 
+import model.App;
 import model.Placeable;
+import model.alive.Player;
 import model.enums.Season;
+import model.map.Tile;
 
 public abstract class Plant implements Placeable {
 
@@ -119,7 +122,13 @@ public abstract class Plant implements Placeable {
         this.numberOfDaysWithoutWater = numberOfDaysWithoutWater;
     }
 
-    public void grow(){
+    public void grow(Player player){
+
+        if(!watered && !fertilized && numberOfDaysWithoutWater > 0){
+            Tile tile = player.getPlants().get(this);
+            tile.setThingOnTile(null);
+            player.getPlants().remove(this);
+        }
 
         if(this.currentStage <= this.maxStages){
             this.daysInCurrentStage++;
@@ -139,7 +148,10 @@ public abstract class Plant implements Placeable {
             }
         }
 
+        watered = false;
+
     }
+
 
 
 }

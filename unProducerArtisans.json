@@ -1,0 +1,81 @@
+{
+  "Cherry Bomb": {
+    "sellPrice": 50,
+    "radius": 3,
+    "feature": "DESTROYED",
+    "recipeName": "Cherry Bomb Recipe",
+    "name": "Cherry Bomb",
+    "isEdible": false
+  },
+  "Mystic Tree Seeds": {
+    "sellPrice": 0,
+    "radius": 0,
+    "recipeName": "Mystic Tree Seeds Recipe",
+    "name": "Mystic Tree Seeds",
+    "isEdible": false
+  },
+  "Mega Bomb": {
+    "sellPrice": 50,
+    "radius": 7,
+    "feature": "DESTROYED",
+    "recipeName": "Mega Bomb Recipe",
+    "name": "Mega Bomb",
+    "isEdible": false
+  },
+  "Deluxe Scarecrow": {
+    "sellPrice": 0,
+    "radius": 12,
+    "feature": "PROTECTED",
+    "recipeName": "Deluxe Scarecrow Recipe",
+    "name": "Deluxe Scarecrow",
+    "isEdible": false
+  },
+  "Grass Starter": {
+    "sellPrice": 0,
+    "radius": 0,
+    "feature": "GRASS",
+    "recipeName": "Grass Starter Recipe",
+    "name": "Grass Starter",
+    "isEdible": false
+  },
+  "Scarecrow": {
+    "sellPrice": 0,
+    "radius": 8,
+    "feature": "PROTECTED",
+    "recipeName": "Scarecrow Recipe",
+    "name": "Scarecrow",
+    "isEdible": false
+  },
+  "Bomb": {
+    "sellPrice": 50,
+    "radius": 5,
+    "feature": "DESTROYED",
+    "recipeName": "Bomb Recipe",
+    "name": "Bomb",
+    "isEdible": false
+  },
+  "Sprinkler": {
+    "sellPrice": 0,
+    "radius": 4,
+    "feature": "WATERED",
+    "recipeName": "Sprinkler Recipe",
+    "name": "Sprinkler",
+    "isEdible": false
+  },
+  "Quality Sprinkler": {
+    "sellPrice": 0,
+    "radius": 8,
+    "feature": "WATERED",
+    "recipeName": "Quality Sprinkler Recipe",
+    "name": "Quality Sprinkler",
+    "isEdible": false
+  },
+  "Iridium Sprinkler": {
+    "sellPrice": 0,
+    "radius": 24,
+    "feature": "WATERED",
+    "recipeName": "Iridium Sprinkler Recipe",
+    "name": "Iridium Sprinkler",
+    "isEdible": false
+  }
+}

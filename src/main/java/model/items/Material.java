@@ -12,11 +12,12 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
-public class Material extends Item implements Placeable {
+public class Material extends Item implements Placeable,Cloneable {
 
-    public static HashMap<String, Material> materials;
-    public static ArrayList<String> foragingMaterials;
+    private final static HashMap<String, Material> materials;
+    private final static ArrayList<String> foragingMaterials;
 
     static {
         Gson gson = new Gson();
@@ -38,6 +39,23 @@ public class Material extends Item implements Placeable {
         foragingMaterials = gson.fromJson(file,type);
     }
 
+    public static Material getMaterial(String name) {
+        Material material = materials.get(name);
+        if(material == null) {
+            return null;
+        }
+        else{
+            return material.clone();
+        }
+    }
+
+    private static Material getForagingMaterial() {
+        Random rand = new Random();
+        String foragingMaterialName = foragingMaterials.get(rand.nextInt(foragingMaterials.size()));
+        return getMaterial(foragingMaterialName);
+    }
+
+
     private final int baseSellPrice;
 
     public Material(String name, int baseSellPrice) {
@@ -47,6 +65,15 @@ public class Material extends Item implements Placeable {
 
     public int getBaseSellPrice() {
         return baseSellPrice;
+    }
+
+    @Override
+    protected Material clone() {
+        try {
+            return (Material) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     public static void writeToJson(){

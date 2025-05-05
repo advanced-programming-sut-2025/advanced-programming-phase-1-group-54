@@ -12,13 +12,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
-public class Fish extends Item {
-    public static final HashMap<String ,Fish> fishes;
-    static final HashMap<Season,ArrayList<Fish>> seasonFishes ;
-    static final HashMap<Season,ArrayList<Fish>> seasonLegendaryFishes ;
+public class Fish extends Item implements Cloneable{
+    private static final HashMap<String ,Fish> fishes;
+    private static final HashMap<Season,ArrayList<Fish>> seasonFishes ;
+    private static final HashMap<Season,ArrayList<Fish>> seasonLegendaryFishes ;
 
     static {
         Gson gson = new Gson();
@@ -49,6 +48,34 @@ public class Fish extends Item {
 
     }
 
+    public static HashSet<Fish> getFishesValues(){
+        HashSet<Fish> fishesSet = new HashSet<Fish>();
+        for(Fish fish : fishes.values()){
+            fishesSet.add(fish.clone());
+        }
+        return fishesSet;
+    }
+
+    public static Fish getFish(String name){
+        Fish fish = fishes.get(name);
+        if(fish == null){
+            return null;
+        }
+        else{
+            return fish.clone();
+        }
+    }
+
+    // Todo get season Fish random
+
+//    public static Fish getSeasonFish(Season season){
+//        ArrayList<Fish> fishes = seasonFishes.get(season);
+//        if(fishes == null{}
+//        Random rand = new Random();
+//        return fishes.get(rand.nextInt(fishes.size()));
+//    }
+
+
     private final int baseSellPrice;
     private int energy;
     private ProduceQuality quality;
@@ -68,6 +95,19 @@ public class Fish extends Item {
 
     public ProduceQuality getQuality() {
         return quality;
+    }
+
+    public void setQuality(ProduceQuality quality) {
+        this.quality = quality;
+    }
+
+    @Override
+    protected Fish clone() {
+        try {
+            return (Fish) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     public static void writeToJson(){

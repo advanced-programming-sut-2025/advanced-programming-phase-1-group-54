@@ -4,6 +4,7 @@ import model.Refrigerator;
 import model.Skill;
 import model.User;
 import model.enums.SkillType;
+import model.items.crafting.Artisan;
 import model.items.plants.Plant;
 import model.items.plants.Tree;
 import model.items.recipes.Recipe;
@@ -29,6 +30,7 @@ public class Player extends Character {
     
     private ArrayList<Recipe> learnedFoodRecipes;
     private ArrayList<Recipe> learnedCraftingRecipes;
+    private ArrayList<Artisan> placedArtisans;
 
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
