@@ -1,0 +1,65 @@
+[
+  {
+    "Name": "Parsnip Seeds",
+    "Description": "Plant these in the spring. Takes 4 days to mature.",
+    "PriceInSeason": 20,
+    "PriceOutOfSeason": 30,
+    "Count": 5
+  },
+  {
+    "Name": "Bean Starter",
+    "Description": "Plant these in the spring. Takes 10 days to mature, but keeps producing after that. Grows on a trellis.",
+    "PriceInSeason": 60,
+    "PriceOutOfSeason": 90,
+    "Count": 5
+  },
+  {
+    "Name": "Cauliflower Seeds",
+    "Description": "Plant these in the spring. Takes 12 days to produce a large cauliflower.",
+    "PriceInSeason": 80,
+    "PriceOutOfSeason": 120,
+    "Count": 5
+  },
+  {
+    "Name": "Potato Seeds",
+    "Description": "Plant these in the spring. Takes 6 days to mature, and has a chance of yielding multiple potatoes at harvest.",
+    "PriceInSeason": 50,
+    "PriceOutOfSeason": 75,
+    "Count": 5
+  },
+  {
+    "Name": "Tulip Bulb",
+    "Description": "Plant in spring. Takes 6 days to produce a colorful flower. Assorted colors.",
+    "PriceInSeason": 20,
+    "PriceOutOfSeason": 30,
+    "Count": 5
+  },
+  {
+    "Name": "Kale Seeds",
+    "Description": "Plant these in the spring. Takes 6 days to mature. Harvest with the scythe.",
+    "PriceInSeason": 70,
+    "PriceOutOfSeason": 105,
+    "Count": 5
+  },
+  {
+    "Name": "Jazz Seeds",
+    "Description": "Plant in spring. Takes 7 days to produce a blue puffball flower.",
+    "PriceInSeason": 30,
+    "PriceOutOfSeason": 45,
+    "Count": 5
+  },
+  {
+    "Name": "Garlic Seeds",
+    "Description": "Plant these in the spring. Takes 4 days to mature.",
+    "PriceInSeason": 40,
+    "PriceOutOfSeason": 60,
+    "Count": 5
+  },
+  {
+    "Name": "Rice Shoot",
+    "Description": "Plant these in the spring. Takes 8 days to mature. Grows faster if planted near a body of water. Harvest with the scythe.",
+    "PriceInSeason": 40,
+    "PriceOutOfSeason": 60,
+    "Count": 5
+  }
+]

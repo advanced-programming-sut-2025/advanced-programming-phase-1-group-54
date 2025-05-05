@@ -1,0 +1,86 @@
+[
+  {
+    "Name": "Melon Seeds",
+    "Description": "Plant these in the summer. Takes 12 days to mature.",
+    "PriceInSeason": 80,
+    "PriceOutOfSeason": 120,
+    "Count": 5
+  },
+  {
+    "Name": "Tomato Seeds",
+    "Description": "Plant these in the summer. Takes 11 days to mature, and continues to produce after first harvest.",
+    "PriceInSeason": 50,
+    "PriceOutOfSeason": 75,
+    "Count": 5
+  },
+  {
+    "Name": "Blueberry Seeds",
+    "Description": "Plant these in the summer. Takes 13 days to mature, and continues to produce after first harvest.",
+    "PriceInSeason": 80,
+    "PriceOutOfSeason": 120,
+    "Count": 5
+  },
+  {
+    "Name": "Pepper Seeds",
+    "Description": "Plant these in the summer. Takes 5 days to mature, and continues to produce after first harvest.",
+    "PriceInSeason": 40,
+    "PriceOutOfSeason": 60,
+    "Count": 5
+  },
+  {
+    "Name": "Wheat Seeds",
+    "Description": "Plant these in the summer or fall. Takes 4 days to mature. Harvest with the scythe.",
+    "PriceInSeason": 10,
+    "PriceOutOfSeason": 15,
+    "Count": 5
+  },
+  {
+    "Name": "Radish Seeds",
+    "Description": "Plant these in the summer. Takes 6 days to mature.",
+    "PriceInSeason": 40,
+    "PriceOutOfSeason": 60,
+    "Count": 5
+  },
+  {
+    "Name": "Poppy Seeds",
+    "Description": "Plant in summer. Produces a bright red flower in 7 days.",
+    "PriceInSeason": 100,
+    "PriceOutOfSeason": 150,
+    "Count": 5
+  },
+  {
+    "Name": "Spangle Seeds",
+    "Description": "Plant in summer. Takes 8 days to produce a vibrant tropical flower. Assorted colors.",
+    "PriceInSeason": 50,
+    "PriceOutOfSeason": 75,
+    "Count": 5
+  },
+  {
+    "Name": "Hops Starter",
+    "Description": "Plant these in the summer. Takes 11 days to grow, but keeps producing after that. Grows on a trellis.",
+    "PriceInSeason": 60,
+    "PriceOutOfSeason": 90,
+    "Count": 5
+  },
+  {
+    "Name": "Corn Seeds",
+    "Description": "Plant these in the summer or fall. Takes 14 days to mature, and continues to produce after first harvest.",
+    "PriceInSeason": 150,
+    "PriceOutOfSeason": 225,
+    "Count": 5
+  },
+  {
+    "Name": "Sunflower Seeds",
+    "Description": "Plant in summer or fall. Takes 8 days to produce a large sunflower. Yields more seeds at harvest.",
+    "PriceInSeason": 200,
+    "PriceOutOfSeason": 300,
+    "Count": 5
+  },
+  {
+    "Name": "Red Cabbage Seeds",
+    "Description": "Plant these in the summer. Takes 9 days to mature.",
+    "PriceInSeason": 100,
+    "PriceOutOfSeason": 150,
+    "Count": 5
+  }
+]
