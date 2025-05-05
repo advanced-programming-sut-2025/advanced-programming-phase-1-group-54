@@ -1,12 +1,20 @@
 package controller;
 
+import model.App;
+import model.Game;
+import model.alive.Player;
+import model.items.tools.BackPack;
 import model.map.Location;
 import model.Result;
 import model.enums.Direction;
 
+import java.sql.Driver;
+import java.util.ArrayList;
+
 public class GameController {
     public static Result exitGame() {
-        return null;
+        App.setCurrentGame(null);
+        return new Result(true, "exited game");
     }
 
     public static Result deleteGame() {
@@ -15,54 +23,111 @@ public class GameController {
 
     // TODO add functions for "force terminate"
 
-    public static void nextTurn() {
+    public static Result nextTurn() {
+        // TODO
+        return null;
     }
 
     public static Result showTime() {
-        return null;
+        Game game = App.getCurrentGame();
+        return new Result(true, String.format("%d o'clock", game.getDateTime().getHour()));
     }
 
     public static Result showDate() {
-        return null;
+        Game game = App.getCurrentGame();
+        return new Result(true, String.format("%d/%s/%d",
+                game.getDateTime().getYear(), game.getDateTime().getSeason().toString().toLowerCase(), game.getDateTime().getDay()));
     }
 
     public static Result showDateTime() {
-        return null;
+        return new Result(true, showDate().message() + ' ' + showTime().message());
+
     }
 
     public static Result showDayOfWeek() {
-        return null;
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getDateTime().getWeekDay().toString().toLowerCase());
     }
 
     public static Result showSeason() {
-        return null;
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getDateTime().getSeason().toString().toLowerCase());
     }
 
     public static Result showWeather() {
-        return null;
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getCurrentWeather().toString().toLowerCase());
     }
 
     public static Result showWeatherForecast() {
-        return null;
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getTomorrowWeather().toString().toLowerCase());
     }
 
     public static Result buildGreenhouse() {
+        // TODO
         return null;
+    }
+
+    public static Result checkForWalking(Location location) {
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+
+        int distance = game.getWorld().getDistance(player.getCurrentLocation(), location);
+        if (distance == Integer.MAX_VALUE)
+            return new Result(false, "Location unreachable from here!");
+
+        return new Result(true, "Location reachable, energy needed is: " + distance / 20);
     }
 
     public static Result walk(Location location) {
-        return null;
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+
+        ArrayList<Direction> shortestPath = game.getWorld().getShortestPath(player.getCurrentLocation(), location);
+        if (shortestPath == null)
+            return new Result(false, "Location unreachable from here!");
+
+        int energyNeeded = 0;
+
+        Direction lastDirection = null;
+        for (Direction direction : shortestPath) {
+            energyNeeded += 1 + (lastDirection != null && direction == lastDirection? 10 : 0);
+            if (energyNeeded >= player.getEnergy() * 20) {
+                player.setEnergy(0);
+                return new Result(true, String.format("Player has fallen at location (%d, %d)!",
+                        player.getCurrentLocation().row(), player.getCurrentLocation().column()));
+            }
+
+            player.setCurrentLocation(player.getCurrentLocation().getLocationAt(direction));
+            lastDirection = direction;
+        }
+
+        player.decreaseEnergy(energyNeeded / 20);
+        // Energy is integer, it is possible for user to move nearby without using any energy
+
+        return new Result(true, "You walked successfully!");
     }
 
     public static Result printMap(Location location, int size) {
+        // TODO
         return null;
     }
 
     public static Result showEnergy() {
-        return null;
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+
+        return new Result(true, String.format("you have %d energy left.", player.getEnergy()));
     }
 
     public static Result showInventory() {
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+
+        BackPack backPack = player.getBackpack();
+
+        // TODO
         return null;
     }
 

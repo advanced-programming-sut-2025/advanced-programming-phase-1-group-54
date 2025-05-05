@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 
 public class Player extends Character {
-    private final int MAXIMUM_ENERGY = 100;
+    private final int MAXIMUM_ENERGY = 200;
 
     private User controllingUser;
     private int energy;

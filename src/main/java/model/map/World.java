@@ -4,13 +4,10 @@ package model.map;
     There is a global map in game, each player has a farm in one of four corners of map;
  */
 
-import model.Walkable;
 import model.enums.Direction;
-import model.enums.Weather;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.TreeSet;
 
 public class World implements Map {
@@ -31,12 +28,16 @@ public class World implements Map {
         this.tiles = tiles;
     }
 
-    public int getEnergyToWalk(Location A, Location B) {
+    public int[][][] getDistancesFrom(Location A) {
         int[][][] distances = new int[getNumberOfRows()][getNumberOfColumns()][Direction.values().length];
         for (int[][] row : distances) {
             for (int[] cell : row) {
-                Arrays.fill(cell, 1_000_000_000);
+                Arrays.fill(cell, Integer.MAX_VALUE);
             }
+        }
+
+        for (Direction direction : Direction.values()) {
+            distances[A.row() - 1][A.column() - 1][direction.ordinal()] = 0;
         }
 
         TreeSet<Node> nodes = new TreeSet<>();
@@ -57,28 +58,58 @@ public class World implements Map {
                 if (newDistance < distances[newLocation.row() - 1][newLocation.column() - 1][direction.ordinal()]) {
                     nodes.remove(new Node(distances[newLocation.row() - 1][newLocation.column() - 1][direction.ordinal()], newLocation, direction));
                     distances[newLocation.row() - 1][newLocation.column() - 1][direction.ordinal()] = newDistance;
-                    nodes.remove(new Node(distances[newLocation.row() - 1][newLocation.column() - 1][direction.ordinal()], newLocation, direction));
+                    nodes.add(new Node(distances[newLocation.row() - 1][newLocation.column() - 1][direction.ordinal()], newLocation, direction));
                 }
             }
         }
 
+        return distances;
+    }
+
+    public ArrayList<Direction> getShortestPath(Location A, Location B) {
+        int[][][] distances = getDistancesFrom(A);
+
+        Direction lastDirection = null;
         int distance = Integer.MAX_VALUE;
-        for (int value : distances[B.row() - 1][B.column() - 1]) {
-            distance = Math.min(distance, value);
+        for (Direction direction : Direction.values()) {
+            if (distances[B.row() - 1][B.column() - 1][direction.ordinal()] < distance) {
+                distance = distances[B.row() - 1][B.column()][direction.ordinal()];
+                lastDirection = direction;
+            }
         }
 
-        return distance / 20;
+        if (distance == Integer.MAX_VALUE)
+            return null;
+
+        ArrayList<Direction> shortestPath = new ArrayList<>();
+        Location lastLocation = B;
+
+        while (lastLocation != A) {
+            shortestPath.add(lastDirection);
+            lastLocation = lastLocation.getLocationAt(lastDirection.opposite());
+
+            for (Direction direction : Direction.values()) {
+                if (distance == distances[lastLocation.row() - 1][lastLocation.column() - 1][direction.ordinal()] + 1 +
+                        (lastDirection != direction ? 10 : 0)) {
+                    distance = distances[lastLocation.row() - 1][lastLocation.column() - 1][direction.ordinal()];
+                    lastDirection = direction;
+                }
+            }
+        }
+
+        return new ArrayList<>(shortestPath.reversed());
     }
 
+    public int getDistance(Location A, Location B) {
+        int[][][] distances = getDistancesFrom(A);
 
-    private Weather currentWeather;
+        int distance = Integer.MAX_VALUE;
+        for (Direction direction : Direction.values()) {
+            if (distances[B.row() - 1][B.column() - 1][direction.ordinal()] < distance)
+                distance = distances[B.row() - 1][B.column()][direction.ordinal()];
+        }
 
-    public Weather currentWeather() {
-        return currentWeather;
-    }
-
-    public void setCurrentWeather(Weather currentWeather) {
-        this.currentWeather = currentWeather;
+        return distance;
     }
 
     @Override
