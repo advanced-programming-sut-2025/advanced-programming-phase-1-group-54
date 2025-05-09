@@ -1,0 +1,50 @@
+[
+  {
+    "Name": "Copper Tool",
+    "HashmapString": "Copper Bar",
+    "HashmapInt": 5,
+    "price": 2000
+  },
+  {
+    "Name": "Steel Tool",
+    "HashmapString": "Iron Bar",
+    "HashmapInt": 5,
+    "price": 5000
+  },
+  {
+    "Name": "Gold Tool",
+    "HashmapString": "Gold Bar",
+    "HashmapInt": 5,
+    "price": 10000
+  },
+  {
+    "Name": "Iridium Tool",
+    "HashmapString": "Iridium Bar",
+    "HashmapInt": 5,
+    "price": 25000
+  },
+  {
+    "Name": "Copper Trash Can",
+    "HashmapString": "Copper Bar",
+    "HashmapInt": 5,
+    "price": 1000
+  },
+  {
+    "Name": "Steel Trash Can",
+    "HashmapString": "Iron Bar",
+    "HashmapInt": 5,
+    "price": 2500
+  },
+  {
+    "Name": "Gold Trash Can",
+    "HashmapString": "Gold Bar",
+    "HashmapInt": 5,
+    "price": 5000
+  },
+  {
+    "Name": "Iridium Trash Can",
+    "HashmapString": "Iridium Bar",
+    "HashmapInt": 5,
+    "price": 12500
+  }
+]

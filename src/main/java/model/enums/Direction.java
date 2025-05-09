@@ -4,7 +4,7 @@ public enum Direction {
     UP(-1, 0),
     DOWN(1, 0),
     LEFT(0, -1),
-    RIGHT(0,1),
+    RIGHT(0, 1),
     UP_LEFT(-1, -1),
     DOWN_LEFT(1, -1),
     UP_RIGHT(-1, 1),
@@ -24,5 +24,27 @@ public enum Direction {
 
     public int dColumn() {
         return dColumn;
+    }
+
+    public Direction opposite() {
+        switch (this) {
+            case UP:
+                return DOWN;
+            case DOWN:
+                return UP;
+            case LEFT:
+                return RIGHT;
+            case RIGHT:
+                return LEFT;
+            case UP_LEFT:
+                return DOWN_RIGHT;
+            case DOWN_LEFT:
+                return UP_RIGHT;
+            case UP_RIGHT:
+                return DOWN_LEFT;
+            case DOWN_RIGHT:
+                return UP_LEFT;
+        }
+        return null;
     }
 }

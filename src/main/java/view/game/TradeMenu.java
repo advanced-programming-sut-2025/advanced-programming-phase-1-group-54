@@ -1,4 +1,4 @@
-package view.gameSubMenus;
+package view.game;
 
 public class TradeMenu {
 }

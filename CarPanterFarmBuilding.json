@@ -1,0 +1,82 @@
+[
+  {
+    "Name": "Barn",
+    "Description": "Houses 4 barn-dwelling animals.",
+    "Price": 6000,
+    "Wood": 350,
+    "Stone": 150,
+    "XSize": 7,
+    "YSize": 4,
+    "Count": 1
+  },
+  {
+    "Name": "Big Barn",
+    "Description": "Houses 8 barn-dwelling animals. Unlocks goats.",
+    "Price": 12000,
+    "Wood": 450,
+    "Stone": 200,
+    "XSize": 7,
+    "YSize": 4,
+    "Count": 1
+  },
+  {
+    "Name": "Deluxe Barn",
+    "Description": "Houses 12 barn-dwelling animals. Unlocks sheep and pigs.",
+    "Price": 25000,
+    "Wood": 550,
+    "Stone": 300,
+    "XSize": 7,
+    "YSize": 4,
+    "Count": 1
+  },
+  {
+    "Name": "Coop",
+    "Description": "Houses 4 coop-dwelling animals.",
+    "Price": 4000,
+    "Wood": 300,
+    "Stone": 100,
+    "XSize": 6,
+    "YSize": 3,
+    "Count": 1
+  },
+  {
+    "Name": "Big Coop",
+    "Description": "Houses 8 coop-dwelling animals. Unlocks ducks.",
+    "Price": 10000,
+    "Wood": 400,
+    "Stone": 150,
+    "XSize": 6,
+    "YSize": 3,
+    "Count": 1
+  },
+  {
+    "Name": "Deluxe Coop",
+    "Description": "Houses 12 coop-dwelling animals. Unlocks rabbits.",
+    "Price": 20000,
+    "Wood": 500,
+    "Stone": 200,
+    "XSize": 6,
+    "YSize": 3,
+    "Count": 1
+  },
+  {
+    "Name": "Well",
+    "Description": "Provides a place for you to refill your watering can.",
+    "Price": 1000,
+    "Wood": 0,
+    "Stone": 75,
+    "XSize": 3,
+    "YSize": 3,
+    "Count": 1
+  },
+  {
+    "Name": "Shipping Bin",
+    "Description": "Items placed in it will be included in the nightly shipment.",
+    "Price": 250,
+    "Wood": 150,
+    "Stone": 0,
+    "XSize": 1,
+    "YSize": 1,
+    "Count": -1
+  }
+]
