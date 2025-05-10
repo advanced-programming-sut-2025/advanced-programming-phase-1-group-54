@@ -19,6 +19,7 @@ import java.util.HashMap;
 
 public class Player extends Human {
     private final int MAXIMUM_ENERGY = 200;
+    private int money;
     private User controllingUser;
     private int energy;
     private BackPack backpack = new BackPack();
@@ -33,7 +34,16 @@ public class Player extends Human {
 
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
+        this.money = 0;
         // TODO
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     private final Skill[] skills = new Skill[SkillType.values().length];
