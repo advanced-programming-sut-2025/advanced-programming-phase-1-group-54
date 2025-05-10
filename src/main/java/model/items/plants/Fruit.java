@@ -7,6 +7,7 @@ import model.enums.ProduceQuality;
 import model.enums.Season;
 import model.items.Fish;
 import model.items.Item;
+import model.items.crafting.UnProducerArtisan;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -65,6 +66,7 @@ public class Fruit extends Item implements Cloneable{
         super(name,isEdible);
         this.baseSellPrice = baseSellPrice;
         this.energy = energy;
+        this.quality = ProduceQuality.NORMAL;
     }
 
     public int getBaseSellPrice() {
@@ -102,6 +104,14 @@ public class Fruit extends Item implements Cloneable{
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Fruit fruit) {
+            return this.getName().equals(fruit.getName()) && this.getQuality().equals(fruit.getQuality());
+        }
+        return false;
     }
 
     public static void writeToJson() {

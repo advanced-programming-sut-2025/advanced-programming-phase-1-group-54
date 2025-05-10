@@ -85,6 +85,14 @@ public class Food extends Item implements Cloneable{
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Food food){
+            return this.getName().equals(food.getName());
+        }
+        return false;
+    }
+
     public static void writeToJson(){
 
         HashMap<String,Food> foodsType = new HashMap<>();

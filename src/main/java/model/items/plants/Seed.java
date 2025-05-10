@@ -116,6 +116,14 @@ public class Seed extends Item implements Cloneable{
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Seed seed) {
+            return this.getName().equals(seed.getName());
+        }
+        return false;
+    }
+
     public static void writeToJson(){
         HashMap<String ,Seed> seedTypes = new HashMap<String,Seed>();
 

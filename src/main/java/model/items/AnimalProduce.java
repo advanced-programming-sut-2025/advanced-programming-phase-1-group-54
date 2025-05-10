@@ -47,4 +47,17 @@ public class AnimalProduce extends Item implements Cloneable{
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof AnimalProduce animalProduce){
+            return this.getName().equals(animalProduce.getName()) && this.getQuality().equals(animalProduce.getQuality());
+        }
+        return false;
+    }
+
+    public static void writeToJson(){
+        // Todo
+    }
+
+
 }

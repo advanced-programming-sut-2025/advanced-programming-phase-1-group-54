@@ -83,6 +83,7 @@ public class Fish extends Item implements Cloneable{
     public Fish(String name, int baseSellPrice) {
         super(name,true);
         this.baseSellPrice = baseSellPrice;
+        this.quality = ProduceQuality.NORMAL;
     }
 
     public int getBaseSellPrice() {
@@ -108,6 +109,14 @@ public class Fish extends Item implements Cloneable{
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Fish fish){
+            return this.getName().equals(fish.getName()) && this.getQuality().equals(fish.getQuality());
+        }
+        return false;
     }
 
     public static void writeToJson(){

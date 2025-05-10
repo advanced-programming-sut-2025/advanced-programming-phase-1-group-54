@@ -76,6 +76,14 @@ public class Material extends Item implements Placeable,Cloneable {
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Material material) {
+            return this.getName().equals(material.getName());
+        }
+        return false;
+    }
+
     public static void writeToJson(){
 
         HashMap<String, Material> materialsType = new HashMap<String, Material>();
