@@ -31,7 +31,7 @@ public class CarpenterShop extends Shop {
         this.farmBuildings = farmBuildings;
     }
 
-    public class ItemsinCarpenterShop extends ItemsInShops {
+    public static class ItemsinCarpenterShop extends ItemsInShops {
         int xSize;
         int ySize;
         HashMap<String,Integer> Cost;

@@ -30,11 +30,12 @@ public class BlackSmithShop extends Shop {
         this.stock = stock;
     }
 
-    public class upgradesToolsBlacsmithShop extends ItemsInShops {
+    public static class upgradesToolsBlacsmithShop extends ItemsInShops {
         private HashMap<String,Integer> ingredients;
-        public upgradesToolsBlacsmithShop(String name, int price) {
+        public upgradesToolsBlacsmithShop(String name, int price, String hashmapString, int hashmapInt) {
             super(name,false,1, price,"no description");
             ingredients = new HashMap<>();
+            ingredients.put(hashmapString, hashmapInt);
         }
         public HashMap<String, Integer> getIngredients() {
             return ingredients;

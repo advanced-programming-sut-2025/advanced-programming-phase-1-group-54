@@ -28,7 +28,7 @@ public class MarnieRanch extends Shop {
     public void setLivesTock(ArrayList <ItemsInMarineRanch> livesTock) {
         this.livesTock = livesTock;
     }
-    public class ItemsInMarineRanch extends ItemsInShops {
+    public static class ItemsInMarineRanch extends ItemsInShops {
         private String buildingRequired;
         public ItemsInMarineRanch(String buildingRequierd,int count,String name, int price,String descriptionString) {
             super(name,false,count,price,descriptionString);
