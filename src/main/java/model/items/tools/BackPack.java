@@ -80,7 +80,7 @@ public class BackPack extends Tool {
 
     @Override
     public void upgrade() {
-        if (level != BackPackLevel.THELUX) {
+        if (level != BackPackLevel.DELUX) {
             level = BackPackLevel.values()[level.ordinal() + 1];
         }
     }

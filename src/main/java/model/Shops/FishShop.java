@@ -20,19 +20,19 @@ public class FishShop extends Shop {
         this.stockInShop = stockInShop;
     }
 
-    public class StockInShop extends ItemsInShops {
-        private Boolean isPurchaseable;
-        public StockInShop(Boolean isPurchaseable,String name,boolean isEdible, int price,String description) {
+    public static class StockInShop extends ItemsInShops {
+        private int fishingSkillRequired;
+        public StockInShop(int fishingSkillRequired,String name,boolean isEdible, int price,String description) {
             super(name, isEdible, 1, price, description);
-            this.isPurchaseable = isPurchaseable;
+            this.fishingSkillRequired = fishingSkillRequired;
         }
 
-        public Boolean getPurchaseable() {
-            return isPurchaseable;
+        public int getPurchaseable() {
+            return fishingSkillRequired;
         }
 
-        public void setPurchaseable(Boolean purchaseable) {
-            isPurchaseable = purchaseable;
+        public void setPurchaseable(int fishingSkillRequire) {
+            fishingSkillRequired = fishingSkillRequire;
         }
     }
 }
