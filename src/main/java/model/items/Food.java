@@ -27,7 +27,6 @@ public class Food extends Item implements Cloneable{
         }
         Type type = new TypeToken<HashMap<String, Food>>(){}.getType();
         foods = gson.fromJson(file,type);
-        System.out.println(foods.size());
     }
 
     public static Food getFood(String ItemName){

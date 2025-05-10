@@ -29,9 +29,16 @@ public class Player extends Human {
 
     private HashMap<Plant,Tile> Plants;
     
-    private ArrayList<Recipe> learnedFoodRecipes;
-    private ArrayList<Recipe> learnedCraftingRecipes;
-    private ArrayList<ProducerArtisan> placedArtisans;
+    private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>(){{
+        add(Recipe.foodRecipes.get("Fried Egg Recipe"));
+    }};
+
+    private final ArrayList<Recipe> learnedCraftingRecipes = new ArrayList<>(){{
+//        add(Recipe.craftRecipes.get(""));
+    }};
+
+
+    private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;

@@ -1,4 +1,11 @@
 {
+  "FALL": [
+    "Blackberry",
+    "Chanterelle",
+    "Hazelnut",
+    "Purple Mushroom",
+    "Wild Plum"
+  ],
   "WINTER": [
     "Crocus",
     "Crystal Fruit",
@@ -14,13 +21,6 @@
     "Salmonberry",
     "Spring Onion",
     "Wild Horseradish"
-  ],
-  "FALL": [
-    "Blackberry",
-    "Chanterelle",
-    "Hazelnut",
-    "Purple Mushroom",
-    "Wild Plum"
   ],
   "SUMMER": [
     "Common Mushroom",

@@ -4,25 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="make code runaAble">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fishes.json" beforeDir="false" afterPath="$PROJECT_DIR$/fishes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foragingCrops.json" beforeDir="false" afterPath="$PROJECT_DIR$/foragingCrops.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fruits.json" beforeDir="false" afterPath="$PROJECT_DIR$/fruits.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seasonFishes.json" beforeDir="false" afterPath="$PROJECT_DIR$/seasonFishes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seasonLegendaryFishes.json" beforeDir="false" afterPath="$PROJECT_DIR$/seasonLegendaryFishes.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Refrigerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Refrigerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Material.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/UnProducerArtisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/UnProducerArtisan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +130,7 @@
       <workItem from="1746364367693" duration="26034000" />
       <workItem from="1746449939267" duration="3298000" />
       <workItem from="1746334097002" duration="35246000" />
+      <workItem from="1746869325194" duration="3056000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
       <option name="closed" value="true" />
@@ -426,7 +420,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746790266266</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="make produces json and write some controller">
+      <option name="closed" value="true" />
+      <created>1746866002812</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1746866002812</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,7 +446,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="read and write foragingMineral from Json" />
     <MESSAGE value="edit model and write some part of writeToJson method of Produce Class" />
     <MESSAGE value="edit ForagingMineral Constructor" />
     <MESSAGE value="write Produce until Loom Artisan" />
@@ -475,7 +476,8 @@
     <MESSAGE value="edit model and some controller" />
     <MESSAGE value="merge branches" />
     <MESSAGE value="make code runaAble" />
-    <option name="LAST_COMMIT_MESSAGE" value="make code runaAble" />
+    <MESSAGE value="make produces json and write some controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="make produces json and write some controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -518,6 +520,33 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java</url>
+          <line>174</line>
+          <properties class="controller.Game.PlantsController" method="foragingCrop">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java</url>
+          <line>180</line>
+          <properties class="controller.Game.PlantsController" method="foragingMaterial">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java</url>
+          <line>186</line>
+          <properties class="controller.Game.PlantsController" method="foragingSeed">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

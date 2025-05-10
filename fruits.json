@@ -2,456 +2,532 @@
   "Spring Onion": {
     "baseSellPrice": 8,
     "energy": 13,
+    "quality": "NORMAL",
     "name": "Spring Onion",
     "isEdible": true
   },
   "Cherry": {
     "baseSellPrice": 80,
     "energy": 38,
+    "quality": "NORMAL",
     "name": "Cherry",
     "isEdible": true
   },
   "Tulip": {
     "baseSellPrice": 30,
     "energy": 45,
+    "quality": "NORMAL",
     "name": "Tulip",
     "isEdible": true
   },
   "Ancient Fruit": {
     "baseSellPrice": 550,
     "energy": 0,
+    "quality": "NORMAL",
     "name": "Ancient Fruit",
     "isEdible": false
   },
   "Pumpkin": {
     "baseSellPrice": 320,
     "energy": 0,
+    "quality": "NORMAL",
     "name": "Pumpkin",
     "isEdible": false
   },
   "Common Mushroom": {
     "baseSellPrice": 40,
     "energy": 38,
+    "quality": "NORMAL",
     "name": "Common Mushroom",
     "isEdible": false
   },
   "Apricot": {
     "baseSellPrice": 59,
     "energy": 38,
+    "quality": "NORMAL",
     "name": "Apricot",
     "isEdible": true
   },
   "Tomato": {
     "baseSellPrice": 60,
     "energy": 20,
+    "quality": "NORMAL",
     "name": "Tomato",
     "isEdible": true
   },
   "Orange": {
     "baseSellPrice": 100,
     "energy": 38,
+    "quality": "NORMAL",
     "name": "Orange",
     "isEdible": true
   },
   "Cranberries": {
     "baseSellPrice": 75,
     "energy": 38,
+    "quality": "NORMAL",
     "name": "Cranberries",
     "isEdible": true
   },
   "Potato": {
     "baseSellPrice": 80,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Potato",
     "isEdible": true
   },
   "Summer Spangle": {
     "baseSellPrice": 90,
     "energy": 45,
+    "quality": "NORMAL",
     "name": "Summer Spangle",
     "isEdible": true
   },
   "Strawberry": {
     "baseSellPrice": 120,
     "energy": 50,
+    "quality": "NORMAL",
     "name": "Strawberry",
     "isEdible": true
   },
   "Blueberry": {
     "baseSellPrice": 50,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Blueberry",
     "isEdible": true
   },
   "Radish": {
     "baseSellPrice": 90,
     "energy": 45,
+    "quality": "NORMAL",
     "name": "Radish",
     "isEdible": true
   },
   "Pomegranate": {
     "baseSellPrice": 140,
     "energy": 38,
+    "quality": "NORMAL",
     "name": "Pomegranate",
     "isEdible": true
   },
   "Dandelion": {
     "baseSellPrice": 40,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Dandelion",
     "isEdible": true
   },
   "Salmonberry": {
     "baseSellPrice": 5,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Salmonberry",
     "isEdible": true
   },
   "Purple Mushroom": {
     "baseSellPrice": 90,
     "energy": 30,
+    "quality": "NORMAL",
     "name": "Purple Mushroom",
     "isEdible": true
   },
   "Blue Jazz": {
     "baseSellPrice": 50,
     "energy": 45,
+    "quality": "NORMAL",
     "name": "Blue Jazz",
     "isEdible": true
   },
   "Wild Horseradish": {
     "baseSellPrice": 50,
     "energy": 13,
+    "quality": "NORMAL",
     "name": "Wild Horseradish",
     "isEdible": true
   },
   "Red Cabbage": {
     "baseSellPrice": 260,
     "energy": 75,
+    "quality": "NORMAL",
     "name": "Red Cabbage",
     "isEdible": true
   },
   "Hazelnut": {
     "baseSellPrice": 40,
     "energy": 38,
+    "quality": "NORMAL",
     "name": "Hazelnut",
     "isEdible": true
   },
   "Bok Choy": {
     "baseSellPrice": 80,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Bok Choy",
     "isEdible": true
   },
   "Banana": {
     "baseSellPrice": 150,
     "energy": 75,
+    "quality": "NORMAL",
     "name": "Banana",
     "isEdible": true
   },
   "Starfruit": {
     "baseSellPrice": 750,
     "energy": 125,
+    "quality": "NORMAL",
     "name": "Starfruit",
     "isEdible": true
   },
   "Broccoli": {
     "baseSellPrice": 70,
     "energy": 63,
+    "quality": "NORMAL",
     "name": "Broccoli",
     "isEdible": true
   },
   "Fairy Rose": {
     "baseSellPrice": 290,
     "energy": 45,
+    "quality": "NORMAL",
     "name": "Fairy Rose",
     "isEdible": true
   },
   "Parsnip": {
     "baseSellPrice": 35,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Parsnip",
     "isEdible": true
   },
   "Grape": {
     "baseSellPrice": 80,
     "energy": 38,
+    "quality": "NORMAL",
     "name": "Grape",
     "isEdible": true
   },
   "Red Mushroom": {
     "baseSellPrice": 75,
     "energy": -50,
+    "quality": "NORMAL",
     "name": "Red Mushroom",
     "isEdible": false
   },
   "Daffodil": {
     "baseSellPrice": 40,
     "energy": 0,
+    "quality": "NORMAL",
     "name": "Daffodil",
     "isEdible": false
   },
   "Sunflower": {
     "baseSellPrice": 80,
     "energy": 45,
+    "quality": "NORMAL",
     "name": "Sunflower",
     "isEdible": true
   },
   "Wheat": {
     "baseSellPrice": 25,
     "energy": 0,
+    "quality": "NORMAL",
     "name": "Wheat",
     "isEdible": false
   },
   "Snow Yam": {
     "baseSellPrice": 100,
     "energy": 30,
+    "quality": "NORMAL",
     "name": "Snow Yam",
     "isEdible": true
   },
   "Mystic Syrup": {
     "baseSellPrice": 1000,
     "energy": 500,
+    "quality": "NORMAL",
     "name": "Mystic Syrup",
     "isEdible": false
   },
   "Summer Squash": {
     "baseSellPrice": 45,
     "energy": 63,
+    "quality": "NORMAL",
     "name": "Summer Squash",
     "isEdible": true
   },
   "Carrot": {
     "baseSellPrice": 35,
     "energy": 75,
+    "quality": "NORMAL",
     "name": "Carrot",
     "isEdible": true
   },
   "Sap": {
     "baseSellPrice": 2,
     "energy": -2,
+    "quality": "NORMAL",
     "name": "Sap",
     "isEdible": true
   },
   "Blackberry": {
     "baseSellPrice": 25,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Blackberry",
     "isEdible": true
   },
   "Coffee Bean": {
     "baseSellPrice": 15,
     "energy": 0,
+    "quality": "NORMAL",
     "name": "Coffee Bean",
     "isEdible": false
   },
   "Yam": {
     "baseSellPrice": 160,
     "energy": 45,
+    "quality": "NORMAL",
     "name": "Yam",
     "isEdible": true
   },
   "Peach": {
     "baseSellPrice": 140,
     "energy": 38,
+    "quality": "NORMAL",
     "name": "Peach",
     "isEdible": true
   },
   "Mango": {
     "baseSellPrice": 130,
     "energy": 100,
+    "quality": "NORMAL",
     "name": "Mango",
     "isEdible": true
   },
   "Hops": {
     "baseSellPrice": 25,
     "energy": 45,
+    "quality": "NORMAL",
     "name": "Hops",
     "isEdible": true
   },
   "Kale": {
     "baseSellPrice": 110,
     "energy": 50,
+    "quality": "NORMAL",
     "name": "Kale",
     "isEdible": true
   },
   "Oak Resin ": {
     "baseSellPrice": 150,
     "energy": 0,
+    "quality": "NORMAL",
     "name": "Oak Resin ",
     "isEdible": false
   },
   "Beet": {
     "baseSellPrice": 100,
     "energy": 30,
+    "quality": "NORMAL",
     "name": "Beet",
     "isEdible": true
   },
   "Chanterelle": {
     "baseSellPrice": 160,
     "energy": 75,
+    "quality": "NORMAL",
     "name": "Chanterelle",
     "isEdible": true
   },
   "Crocus": {
     "baseSellPrice": 60,
     "energy": 0,
+    "quality": "NORMAL",
     "name": "Crocus",
     "isEdible": false
   },
   "Winter Root": {
     "baseSellPrice": 70,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Winter Root",
     "isEdible": true
   },
   "Eggplant": {
     "baseSellPrice": 60,
     "energy": 20,
+    "quality": "NORMAL",
     "name": "Eggplant",
     "isEdible": true
   },
   "Pine Tar": {
     "baseSellPrice": 100,
     "energy": 0,
+    "quality": "NORMAL",
     "name": "Pine Tar",
     "isEdible": false
   },
   "Fiddlehead Fern": {
     "baseSellPrice": 90,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Fiddlehead Fern",
     "isEdible": true
   },
   "Cauliflower": {
     "baseSellPrice": 175,
     "energy": 75,
+    "quality": "NORMAL",
     "name": "Cauliflower",
     "isEdible": true
   },
   "Powdermelon": {
     "baseSellPrice": 60,
     "energy": 63,
+    "quality": "NORMAL",
     "name": "Powdermelon",
     "isEdible": true
   },
   "Holly": {
     "baseSellPrice": 80,
     "energy": -37,
+    "quality": "NORMAL",
     "name": "Holly",
     "isEdible": true
   },
   "Maple Syrup": {
     "baseSellPrice": 200,
     "energy": 0,
+    "quality": "NORMAL",
     "name": "Maple Syrup",
     "isEdible": false
   },
   "Rhubarb": {
     "baseSellPrice": 220,
     "energy": 0,
+    "quality": "NORMAL",
     "name": "Rhubarb",
     "isEdible": false
   },
   "Leek": {
     "baseSellPrice": 60,
     "energy": 40,
+    "quality": "NORMAL",
     "name": "Leek",
     "isEdible": true
   },
   "Poppy": {
     "baseSellPrice": 140,
     "energy": 45,
+    "quality": "NORMAL",
     "name": "Poppy",
     "isEdible": true
   },
   "Sweet Pea": {
     "baseSellPrice": 50,
     "energy": 0,
+    "quality": "NORMAL",
     "name": "Sweet Pea",
     "isEdible": false
   },
   "Wild Plum": {
     "baseSellPrice": 80,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Wild Plum",
     "isEdible": true
   },
   "Morel": {
     "baseSellPrice": 150,
     "energy": 20,
+    "quality": "NORMAL",
     "name": "Morel",
     "isEdible": true
   },
   "Corn": {
     "baseSellPrice": 50,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Corn",
     "isEdible": true
   },
   "Spice Berry": {
     "baseSellPrice": 80,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Spice Berry",
     "isEdible": true
   },
   "Sweet Gem Berry": {
     "baseSellPrice": 3000,
     "energy": 0,
+    "quality": "NORMAL",
     "name": "Sweet Gem Berry",
     "isEdible": false
   },
   "Apple": {
     "baseSellPrice": 100,
     "energy": 38,
+    "quality": "NORMAL",
     "name": "Apple",
     "isEdible": true
   },
   "Unmilled Rice": {
     "baseSellPrice": 30,
     "energy": 3,
+    "quality": "NORMAL",
     "name": "Unmilled Rice",
     "isEdible": true
   },
   "Amaranth": {
     "baseSellPrice": 150,
     "energy": 50,
+    "quality": "NORMAL",
     "name": "Amaranth",
     "isEdible": true
   },
   "Green Bean": {
     "baseSellPrice": 40,
     "energy": 25,
+    "quality": "NORMAL",
     "name": "Green Bean",
     "isEdible": true
   },
   "Artichoke": {
     "baseSellPrice": 160,
     "energy": 30,
+    "quality": "NORMAL",
     "name": "Artichoke",
     "isEdible": true
   },
   "Crystal Fruit": {
     "baseSellPrice": 150,
     "energy": 63,
+    "quality": "NORMAL",
     "name": "Crystal Fruit",
     "isEdible": true
   },
   "Garlic": {
     "baseSellPrice": 60,
     "energy": 20,
+    "quality": "NORMAL",
     "name": "Garlic",
     "isEdible": true
   },
   "Hot Pepper": {
     "baseSellPrice": 40,
     "energy": 13,
+    "quality": "NORMAL",
     "name": "Hot Pepper",
     "isEdible": true
   },
   "Melon": {
     "baseSellPrice": 250,
     "energy": 113,
+    "quality": "NORMAL",
     "name": "Melon",
     "isEdible": true
   }

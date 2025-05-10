@@ -6,7 +6,9 @@ import model.Placeable;
 import model.Result;
 import model.alive.Player;
 import model.enums.Direction;
+import model.enums.Feature;
 import model.items.plants.*;
+import model.map.Farm;
 import model.map.Location;
 import model.map.Tile;
 import model.map.World;
@@ -45,6 +47,8 @@ public class PlantsController {
 
     public Result planting(String seedName,String directionString){
 
+        // Todo check energy
+
         Direction direction;
         try{
             direction = Direction.valueOf(directionString);
@@ -78,7 +82,7 @@ public class PlantsController {
                 List<Plant> keys = new ArrayList<>(player.getPlants().keySet());
                 Plant plant = keys.get(rand.nextInt(keys.size()));
                 Tile tile = player.getPlants().get(plant);
-                if(!tile.isProtected()) {
+                if(! tile.getFeatures().contains(Feature.PROTECTED)) {
                     player.getPlants().remove(plant);
                     tile.setThingOnTile(null);
                 }
@@ -120,6 +124,8 @@ public class PlantsController {
     }
 
     public Result harvestPlant(String directionString){
+
+        // Todo check energy
 
         Direction direction;
         try{
@@ -164,6 +170,24 @@ public class PlantsController {
         else{
             return new Result(-1,"Does not exist any plant on the tile");
         }
+    }
+
+    public Result foragingCrop(){
+
+
+        return null;
+    }
+
+    public Result foragingMaterial(){
+
+
+        return null;
+    }
+
+    public Result foragingSeed(){
+
+
+        return null;
     }
 
 
