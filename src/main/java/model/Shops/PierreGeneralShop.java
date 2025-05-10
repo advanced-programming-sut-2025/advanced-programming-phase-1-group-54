@@ -83,5 +83,21 @@ public class PierreGeneralShop extends Shop {
             this.priceInSeason = priceInSeason;
             this.priceOutOfSeason = priceOutOfSeason;
         }
+
+        public int getPriceInSeason() {
+            return priceInSeason;
+        }
+
+        public void setPriceInSeason(int priceInSeason) {
+            this.priceInSeason = priceInSeason;
+        }
+
+        public int getPriceOutOfSeason() {
+            return priceOutOfSeason;
+        }
+
+        public void setPriceOutOfSeason(int priceOutOfSeason) {
+            this.priceOutOfSeason = priceOutOfSeason;
+        }
     }
 }
