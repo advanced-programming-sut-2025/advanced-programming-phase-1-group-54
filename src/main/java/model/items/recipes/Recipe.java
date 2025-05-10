@@ -42,6 +42,14 @@ public class Recipe {
         return ingredientsNumber;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Recipe recipe){
+            return this.getName().equals(recipe.getName());
+        }
+        return false;
+    }
+
     public static void craftRecipeWriteToJson(){
 
         LinkedHashMap<String,Recipe> craftRecipesType = new LinkedHashMap<String,Recipe>();

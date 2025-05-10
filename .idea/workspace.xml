@@ -4,54 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="black smith changed">
-      <change afterPath="$PROJECT_DIR$/BlacksmithStock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BlacksmithUpgradeTools.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarPanterFarmBuilding.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarpenterPermanent.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JojoMartFall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JojoMartPermanent.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JojomartSpring.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JojomartSummer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JojomartWinter.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarnieRanchInventory.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarnieRanchLivesStock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PierreBackpacks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PierreSpring.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PierreSummer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PierreYearRound.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TheStarDropSaloon.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Shops/FishShop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Shops/JojoMartShop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Shops/MarnieRanch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Shops/PierreGeneralShop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Shops/TheStardropSaloonShop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/items/ItemsInShops.java" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit quality in some models and write animalProduces in to json">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FishingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building/Shop.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/BlackSmithShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/BlackSmithShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/CarpenterShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/CarpenterShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Skill.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/NPC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit model and some controller">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/UnProducerArtisan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Feature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/SkillType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/SkillType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Weather.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="package.json" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -103,7 +64,7 @@
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ehsanBranch&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Asus/IdeaProjects/advanced-programming-phase-1-group-54&quot;,
@@ -159,10 +120,14 @@
       <workItem from="1746250809896" duration="9195000" />
       <workItem from="1746265109849" duration="15499000" />
       <workItem from="1746295931234" duration="4646000" />
+      <workItem from="1746334097002" duration="36593000" />
+      <workItem from="1746531048435" duration="601000" />
+      <workItem from="1746532534901" duration="777000" />
       <workItem from="1746334097002" duration="10900000" />
       <workItem from="1746364367693" duration="26034000" />
       <workItem from="1746449939267" duration="3298000" />
       <workItem from="1746334097002" duration="35246000" />
+      <workItem from="1746869325194" duration="10682000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
       <option name="closed" value="true" />
@@ -396,49 +361,6 @@
       <option name="project" value="LOCAL" />
       <updated>1746353125738</updated>
     </task>
-
-    <task id="LOCAL-00030" summary="Changing Shop Class">
-      <option name="closed" value="true" />
-      <created>1746367168529</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1746367168529</updated>
-    </task>
-    <task id="LOCAL-00031" summary="BlackSmithShop created">
-      <option name="closed" value="true" />
-      <created>1746388667026</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1746388667026</updated>
-    </task>
-    <task id="LOCAL-00032" summary="BlackSmithShop created (errors hendeled)">
-      <option name="closed" value="true" />
-      <created>1746389158702</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1746389158702</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Character changes to humen">
-      <option name="closed" value="true" />
-      <created>1746389235885</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1746389235885</updated>
-    </task>
-    <task id="LOCAL-00034" summary="black smith changed">
-      <option name="closed" value="true" />
-      <created>1746389294045</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1746389294045</updated>
-    </task>
-    <option name="localTasksCounter" value="35" />
-
     <task id="LOCAL-00030" summary="harvest method">
       <option name="closed" value="true" />
       <created>1746354237231</created>
@@ -455,8 +377,63 @@
       <option name="project" value="LOCAL" />
       <updated>1746374228049</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
-
+    <task id="LOCAL-00032" summary="edit Artisan Types">
+      <option name="closed" value="true" />
+      <created>1746394756330</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1746394756330</updated>
+    </task>
+    <task id="LOCAL-00033" summary="edit controller">
+      <option name="closed" value="true" />
+      <created>1746395966172</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1746395966172</updated>
+    </task>
+    <task id="LOCAL-00034" summary="black smith changed">
+      <option name="closed" value="true" />
+      <created>1746389294045</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1746389294045</updated>
+    </task>
+    <task id="LOCAL-00035" summary="merge branches">
+      <option name="closed" value="true" />
+      <created>1746790051234</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1746790051234</updated>
+    </task>
+    <task id="LOCAL-00036" summary="make code runaAble">
+      <option name="closed" value="true" />
+      <created>1746790266266</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1746790266266</updated>
+    </task>
+    <task id="LOCAL-00037" summary="make produces json and write some controller">
+      <option name="closed" value="true" />
+      <created>1746866002812</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1746866002812</updated>
+    </task>
+    <task id="LOCAL-00038" summary="edit quality in some models and write animalProduces in to json">
+      <option name="closed" value="true" />
+      <created>1746872749866</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1746872749866</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,11 +451,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="read Trees from Json" />
-    <MESSAGE value="read and write Crops from Json" />
-    <MESSAGE value="read and write fruits from Json" />
-    <MESSAGE value="read and write foragingMineral from Json" />
-    <MESSAGE value="edit model and write some part of writeToJson method of Produce Class" />
     <MESSAGE value="edit ForagingMineral Constructor" />
     <MESSAGE value="write Produce until Loom Artisan" />
     <MESSAGE value="edit write Produce until Loom Artisan" />
@@ -502,43 +474,84 @@
     <MESSAGE value="BlackSmithShop created (errors hendeled)" />
     <MESSAGE value="Character changes to humen" />
     <MESSAGE value="black smith changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="black smith changed" />
     <MESSAGE value="harvest method" />
+    <MESSAGE value="edit Artisan Types" />
+    <MESSAGE value="edit controller" />
     <MESSAGE value="edit model and some controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit model and some controller" />
+    <MESSAGE value="merge branches" />
+    <MESSAGE value="make code runaAble" />
+    <MESSAGE value="make produces json and write some controller" />
+    <MESSAGE value="edit quality in some models and write animalProduces in to json" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit quality in some models and write animalProduces in to json" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
-          <line>287</line>
+          <line>312</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
-          <line>96</line>
+          <line>121</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
-          <line>114</line>
+          <line>139</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java</url>
-          <line>452</line>
+          <line>460</line>
           <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java</url>
-          <line>451</line>
+          <line>459</line>
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java</url>
           <line>18</line>
           <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java</url>
+          <line>63</line>
+          <properties class="controller.Game.FoodController" method="eatFood">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java</url>
+          <line>174</line>
+          <properties class="controller.Game.PlantsController" method="foragingCrop">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java</url>
+          <line>180</line>
+          <properties class="controller.Game.PlantsController" method="foragingMaterial">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java</url>
+          <line>186</line>
+          <properties class="controller.Game.PlantsController" method="foragingSeed">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -2,10 +2,13 @@ package model.map;
 
 import model.Placeable;
 import model.Walkable;
+import model.enums.Feature;
+
+import java.util.ArrayList;
 
 public class Tile {
     private Placeable thingOnTile;
-    private boolean isProtected = false;
+    private ArrayList<Feature> features;
 
     public boolean isWalkable() {
         return thingOnTile == null || thingOnTile instanceof Walkable;
@@ -15,15 +18,12 @@ public class Tile {
         return thingOnTile;
     }
 
-    public boolean isProtected() {
-        return isProtected;
+    public ArrayList<Feature> getFeatures() {
+        return features;
     }
 
     public void setThingOnTile(Placeable thingOnTile) {
         this.thingOnTile = thingOnTile;
     }
 
-    public void setProtected(boolean aProtected) {
-        isProtected = aProtected;
-    }
 }

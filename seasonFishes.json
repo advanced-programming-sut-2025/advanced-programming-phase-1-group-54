@@ -1,74 +1,122 @@
 {
-  "SUMMER": [
+  "FALL": [
     {
       "baseSellPrice": 75,
-      "name": "Tilapia"
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Salmon",
+      "isEdible": true
     },
     {
-      "baseSellPrice": 100,
-      "name": "Dorado"
+      "baseSellPrice": 40,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Sardine",
+      "isEdible": true
     },
     {
-      "baseSellPrice": 30,
-      "name": "Sunfish"
+      "baseSellPrice": 60,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Shad",
+      "isEdible": true
     },
     {
-      "baseSellPrice": 65,
-      "name": "Rainbow Trout"
+      "baseSellPrice": 120,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Blue Discus",
+      "isEdible": true
     }
   ],
   "WINTER": [
     {
       "baseSellPrice": 150,
-      "name": "Midnight Carp"
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Midnight Carp",
+      "isEdible": true
     },
     {
       "baseSellPrice": 80,
-      "name": "Squid"
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Squid",
+      "isEdible": true
     },
     {
       "baseSellPrice": 100,
-      "name": "Tuna"
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Tuna",
+      "isEdible": true
     },
     {
       "baseSellPrice": 55,
-      "name": "Perch"
-    }
-  ],
-  "FALL": [
-    {
-      "baseSellPrice": 75,
-      "name": "Salmon"
-    },
-    {
-      "baseSellPrice": 40,
-      "name": "Sardine"
-    },
-    {
-      "baseSellPrice": 60,
-      "name": "Shad"
-    },
-    {
-      "baseSellPrice": 120,
-      "name": "Blue Discus"
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Perch",
+      "isEdible": true
     }
   ],
   "SPRING": [
     {
       "baseSellPrice": 100,
-      "name": "Flounder"
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Flounder",
+      "isEdible": true
     },
     {
       "baseSellPrice": 100,
-      "name": "Lionfish"
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Lionfish",
+      "isEdible": true
     },
     {
       "baseSellPrice": 30,
-      "name": "Herring"
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Herring",
+      "isEdible": true
     },
     {
       "baseSellPrice": 45,
-      "name": "Ghostfish"
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Ghostfish",
+      "isEdible": true
+    }
+  ],
+  "SUMMER": [
+    {
+      "baseSellPrice": 75,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Tilapia",
+      "isEdible": true
+    },
+    {
+      "baseSellPrice": 100,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Dorado",
+      "isEdible": true
+    },
+    {
+      "baseSellPrice": 30,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Sunfish",
+      "isEdible": true
+    },
+    {
+      "baseSellPrice": 65,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Rainbow Trout",
+      "isEdible": true
     }
   ]
 }

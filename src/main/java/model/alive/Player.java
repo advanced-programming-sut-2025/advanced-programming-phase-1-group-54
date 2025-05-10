@@ -5,6 +5,7 @@ import model.Skill;
 import model.User;
 import model.enums.SkillType;
 import model.items.crafting.Artisan;
+import model.items.crafting.ProducerArtisan;
 import model.items.plants.Plant;
 import model.items.recipes.Recipe;
 import model.items.tools.BackPack;
@@ -18,8 +19,8 @@ import java.util.HashMap;
 
 
 public class Player extends Human {
-    private final int MAXIMUM_ENERGY = 200;
     private int money;
+    private static final int MAXIMUM_ENERGY = 200;
     private User controllingUser;
     private int energy;
     private BackPack backpack = new BackPack();
@@ -28,15 +29,20 @@ public class Player extends Human {
 
     private HashMap<Plant,Tile> Plants;
     
-    private ArrayList<Recipe> learnedFoodRecipes;
-    private ArrayList<Recipe> learnedCraftingRecipes;
-    private ArrayList<Artisan> placedArtisans;
+    private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>(){{
+        add(Recipe.foodRecipes.get("Fried Egg Recipe"));
+    }};
 
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
         this.money = 0;
-        // TODO
     }
+    private final ArrayList<Recipe> learnedCraftingRecipes = new ArrayList<>(){{
+//        add(Recipe.craftRecipes.get(""));
+    }};
+
+
+    private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
     public int getMoney() {
         return money;
@@ -49,6 +55,11 @@ public class Player extends Human {
     private final Skill[] skills = new Skill[SkillType.values().length];
 
     private Tool equippedTool;
+
+    public Player(User controllingUser) {
+        this.controllingUser = controllingUser;
+        // TODO
+    }
 
     public Skill getSkill(SkillType skillType) {
         return skills[skillType.ordinal()];
@@ -92,6 +103,10 @@ public class Player extends Human {
 
     public ArrayList<Recipe> getLearnedCraftingRecipes() {
         return learnedCraftingRecipes;
+    }
+
+    public ArrayList<ProducerArtisan> getPlacedArtisans() {
+        return placedArtisans;
     }
 
     public void setControllingUser(User controllingUser) {

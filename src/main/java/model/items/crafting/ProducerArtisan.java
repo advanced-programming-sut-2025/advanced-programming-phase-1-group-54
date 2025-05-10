@@ -81,6 +81,14 @@ public class ProducerArtisan extends Artisan implements Cloneable {
         return (ProducerArtisan) super.clone();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof ProducerArtisan producerArtisan) {
+            return this.getName().equals(producerArtisan.getName());
+        }
+        return false;
+    }
+
     public static void writeToJson(){
 
         HashMap<String,ProducerArtisan> producerArtisanType = new HashMap<>();
