@@ -3,6 +3,8 @@ package model.items;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import model.App;
+import model.alive.Player;
 import model.enums.ProduceQuality;
 import model.enums.Season;
 import model.items.plants.Tree;
@@ -68,12 +70,16 @@ public class Fish extends Item implements Cloneable{
 
     // Todo get season Fish random
 
-//    public static Fish getSeasonFish(Season season){
-//        ArrayList<Fish> fishes = seasonFishes.get(season);
-//        if(fishes == null{}
-//        Random rand = new Random();
-//        return fishes.get(rand.nextInt(fishes.size()));
-//    }
+    public static Fish getSeasonFish(Season season){
+
+        Player player = App.getCurrentGame().getCurrentPlayer();
+
+        ArrayList<Fish> fishes = seasonFishes.get(season);
+
+        if(player.get)
+        Random rand = new Random();
+        return fishes.get(rand.nextInt(fishes.size()));
+    }
 
 
     private final int baseSellPrice;

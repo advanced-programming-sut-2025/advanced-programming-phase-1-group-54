@@ -40,14 +40,14 @@ public class Player extends Human {
 
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
+    private final Skill[] skills = new Skill[SkillType.values().length];
+
+    private Tool equippedTool;
+
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
         // TODO
     }
-
-    private final Skill[] skills = new Skill[SkillType.values().length];
-
-    private Tool equippedTool;
 
     public Skill getSkill(SkillType skillType) {
         return skills[skillType.ordinal()];

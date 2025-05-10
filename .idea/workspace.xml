@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit quality in some models and write animalProduces in to json">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FishingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fishes.json" beforeDir="false" afterPath="$PROJECT_DIR$/fishes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foragingCrops.json" beforeDir="false" afterPath="$PROJECT_DIR$/foragingCrops.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fruits.json" beforeDir="false" afterPath="$PROJECT_DIR$/fruits.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seasonFishes.json" beforeDir="false" afterPath="$PROJECT_DIR$/seasonFishes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seasonLegendaryFishes.json" beforeDir="false" afterPath="$PROJECT_DIR$/seasonLegendaryFishes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Skill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Animal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/SkillType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/SkillType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Weather.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="package.json" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -130,7 +127,7 @@
       <workItem from="1746364367693" duration="26034000" />
       <workItem from="1746449939267" duration="3298000" />
       <workItem from="1746334097002" duration="35246000" />
-      <workItem from="1746869325194" duration="3056000" />
+      <workItem from="1746869325194" duration="10682000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
       <option name="closed" value="true" />
@@ -428,7 +425,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746866002812</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="edit quality in some models and write animalProduces in to json">
+      <option name="closed" value="true" />
+      <created>1746872749866</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1746872749866</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,7 +451,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edit model and write some part of writeToJson method of Produce Class" />
     <MESSAGE value="edit ForagingMineral Constructor" />
     <MESSAGE value="write Produce until Loom Artisan" />
     <MESSAGE value="edit write Produce until Loom Artisan" />
@@ -477,7 +481,8 @@
     <MESSAGE value="merge branches" />
     <MESSAGE value="make code runaAble" />
     <MESSAGE value="make produces json and write some controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="make produces json and write some controller" />
+    <MESSAGE value="edit quality in some models and write animalProduces in to json" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit quality in some models and write animalProduces in to json" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
