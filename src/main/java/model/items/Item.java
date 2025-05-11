@@ -3,6 +3,14 @@ package model.items;
 public abstract class Item{
     protected final String name;
     protected final boolean isEdible;
+//    protected final boolean sellable;
+
+//    public Item(String name, boolean isEdible, boolean sellable) {
+//        this.name = name;
+//        this.isEdible = isEdible;
+//        this.sellable = sellable;
+//    }
+
 
     public Item(String name, boolean isEdible) {
         this.name = name;
