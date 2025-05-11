@@ -3,7 +3,6 @@ package controller;
 import controller.builders.FarmBuilder;
 import controller.builders.GameBuilder;
 import model.*;
-import model.map.Farm;
 
 public class GameMenuController {
     public static Result newGame(String[] usernames) {
@@ -28,6 +27,9 @@ public class GameMenuController {
         for (int i = 0; i < users.length; i++) {
             if (App.getGameByUser(users[i]) != null)
                 return new Result(false, "User " + usernames[i] + " is already in a game. you can't play with them");
+
+            if (users[i].equals(loggedInUser))
+                return new Result(false, "Don't play with yourself.");
         }
 
         User[] players = new User[users.length + 1];
@@ -52,7 +54,7 @@ public class GameMenuController {
         // TODO
         Game game = GameBuilder.getResult();
         App.addGame(game);
-        return new Result(true, "Sucessfully created game!");
+        return new Result(true, "Successfully created game!");
     }
 
     public static Result loadGame() {

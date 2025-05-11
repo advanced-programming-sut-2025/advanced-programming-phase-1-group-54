@@ -5,6 +5,7 @@ import model.enums.Gender;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class User {
     private String username;
@@ -99,5 +100,12 @@ public class User {
 
     public String getAnswerHash() {
         return answerHash;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(username, user.username);
     }
 }

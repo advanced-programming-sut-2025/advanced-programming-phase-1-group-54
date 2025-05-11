@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.TreeSet;
 
 public class World implements Map {
-    private static final int NUMBER_OF_ROWS = 100;
+    private static final int NUMBER_OF_ROWS = 52;
     private static final int NUMBER_OF_COLUMNS = 100;
 
     private final Tile[][] tiles;
@@ -114,6 +114,6 @@ public class World implements Map {
 
     @Override
     public Tile getTileAt(Location location) {
-        return tiles[location.row()][location.column()];
+        return tiles[location.row() - 1][location.column() - 1];
     }
 }

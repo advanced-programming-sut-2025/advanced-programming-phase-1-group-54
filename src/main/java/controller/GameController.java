@@ -3,12 +3,14 @@ package controller;
 import model.App;
 import model.Game;
 import model.alive.Player;
+import model.enums.Symbol;
 import model.items.tools.BackPack;
 import model.map.Location;
 import model.Result;
 import model.enums.Direction;
+import model.map.Tile;
+import model.map.World;
 
-import java.sql.Driver;
 import java.util.ArrayList;
 
 public class GameController {
@@ -73,6 +75,9 @@ public class GameController {
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
 
+        if (location.row() < 1 || location.column() < 1 || location.row() > World.getNumberOfRows() || location.column() > World.getNumberOfColumns())
+            return new Result(false, "invalid location");
+
         int distance = game.getWorld().getDistance(player.getCurrentLocation(), location);
         if (distance == Integer.MAX_VALUE)
             return new Result(false, "Location unreachable from here!");
@@ -84,10 +89,11 @@ public class GameController {
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
 
-        ArrayList<Direction> shortestPath = game.getWorld().getShortestPath(player.getCurrentLocation(), location);
-        if (shortestPath == null)
-            return new Result(false, "Location unreachable from here!");
+        Result result = checkForWalking(location);
+        if (!result.success())
+            return result;
 
+        ArrayList<Direction> shortestPath = game.getWorld().getShortestPath(player.getCurrentLocation(), location);
         int energyNeeded = 0;
 
         Direction lastDirection = null;
@@ -110,8 +116,25 @@ public class GameController {
     }
 
     public static Result printMap(Location location, int size) {
-        // TODO
-        return null;
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+        World world = game.getWorld();
+
+        if (location.row() < 1 || location.column() < 1 ||
+                location.row() + size - 1 > World.getNumberOfRows() || location.column() + size - 1 > World.getNumberOfColumns())
+            return new Result(false, "invalid location and size");
+
+        StringBuilder message = new StringBuilder();
+        for (int dRow = 0; dRow < size; dRow++) {
+            for (int dColumn = 0; dColumn < size; dColumn++) {
+                Location tileLocation = new Location(location.row() + dRow, location.column() + dColumn);
+                Tile tile = world.getTileAt(tileLocation);
+
+                message.append(tile.toString());
+            }
+            message.append("\n");
+        }
+        return new Result(true, message.toString());
     }
 
     public static Result showEnergy() {
@@ -132,6 +155,7 @@ public class GameController {
     }
 
     public static Result throwInTrash(String itemName, int number) {
+        // TODO
         return null;
     }
 

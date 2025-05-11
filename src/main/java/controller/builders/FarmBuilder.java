@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import model.Building.Cabin;
 import model.Building.GreenHouse;
+import model.enums.Symbol;
 import model.map.*;
 
 import java.io.BufferedReader;
@@ -89,28 +90,29 @@ public class FarmBuilder {
         }
 
         Cabin cabin = new Cabin();
-        for (int x = -1; x <= 4; x++) {
-            for (int y = -1; y <= 4; y++) {
-                boolean onBorder = x == -1 || y == -1 || x == 4 || y == 4;
+        for (int x = 0; x < 4; x++) {
+            for (int y = 0; y < 4; y++) {
 
                 Location location = new Location(cabinLocation.row() + x, cabinLocation.column() + y);
                 tiles[location.row() - 1][location.column() - 1].setThingOnTile(cabin);
+                tiles[location.row() - 1][location.column() - 1].setSymbol(Symbol.HOUSE);
             }
         }
 
         GreenHouse greenHouse = new GreenHouse();
-        for (int x = -1; x <= 5; x++) {
-            for (int y = -1; y <= 6; y++) {
-                boolean onBorder = x == -1 || y == -1 || x == 5 || y == 6;
+        for (int x = 0; x < 5; x++) {
+            for (int y = 0; y < 6; y++) {
                 Location location = new Location(greenHouseLocation.row() + x, greenHouseLocation.column() + y);
                 tiles[location.row() - 1][location.column() - 1].setThingOnTile(greenHouse);
+                tiles[location.row() - 1][location.column() - 1].setSymbol(Symbol.GREENHOUSE);
             }
         }
 
         Lake lake = new Lake();
-        for (int row = lakeUpperLeftLocation.row() - 1; row <= lakeLowerRightLocation.row(); row++) {
+        for (int row = lakeUpperLeftLocation.row(); row <= lakeLowerRightLocation.row(); row++) {
             for (int column = lakeUpperLeftLocation.column(); column <= lakeLowerRightLocation.column(); column++) {
                 tiles[row - 1][column - 1].setThingOnTile(lake);
+                tiles[row - 1][column - 1].setSymbol(Symbol.LAKE);
             }
         }
 
@@ -118,6 +120,7 @@ public class FarmBuilder {
         for (int row = quarryUpperLeftLocation.row(); row <= quarryLowerRightLocation.row(); row++) {
             for (int column = quarryUpperLeftLocation.column(); column <= quarryLowerRightLocation.column(); column++) {
                 tiles[row - 1][column - 1].setThingOnTile(quarry);
+                tiles[row - 1][column - 1].setSymbol(Symbol.QUARRY);
             }
         }
 
