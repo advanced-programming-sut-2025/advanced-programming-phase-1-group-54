@@ -37,7 +37,6 @@ public class Player extends Human {
 //        add(Recipe.craftRecipes.get(""));
     }};
 
-
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
     private final HashMap<String,Animal> animals = new HashMap<>();
