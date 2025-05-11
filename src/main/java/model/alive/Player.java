@@ -33,10 +33,6 @@ public class Player extends Human {
         add(Recipe.foodRecipes.get("Fried Egg Recipe"));
     }};
 
-    public Player(User controllingUser) {
-        this.controllingUser = controllingUser;
-        this.money = 0;
-    }
     private final ArrayList<Recipe> learnedCraftingRecipes = new ArrayList<>(){{
 //        add(Recipe.craftRecipes.get(""));
     }};
@@ -58,6 +54,7 @@ public class Player extends Human {
 
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
+        this.money = 0;
         // TODO
     }
 

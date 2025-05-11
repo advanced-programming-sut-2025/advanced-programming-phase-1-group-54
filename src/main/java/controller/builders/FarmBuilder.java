@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import model.Building.Cabin;
 import model.Building.GreenHouse;
+import model.alive.Player;
 import model.enums.Symbol;
 import model.map.*;
 
@@ -14,6 +15,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class FarmBuilder {
+    private static Location location;
+    private static Player owner;
+
     private static Location cabinLocation;
     private static Location greenHouseLocation;
     private static Location lakeUpperLeftLocation;
@@ -22,12 +26,22 @@ public class FarmBuilder {
     private static Location quarryLowerRightLocation;
 
     public static void reset() {
+        location = null;
+        owner = null;
         cabinLocation = null;
         greenHouseLocation = null;
         lakeUpperLeftLocation = null;
         lakeLowerRightLocation = null;
         quarryUpperLeftLocation = null;
         quarryLowerRightLocation = null;
+    }
+
+    public static void setLocation(Location location) {
+        FarmBuilder.location = location;
+    }
+
+    public static void setOwner(Player owner) {
+        FarmBuilder.owner = owner;
     }
 
     public static void setCabinLocation(Location cabinLocation) {
@@ -89,44 +103,44 @@ public class FarmBuilder {
             }
         }
 
-        Cabin cabin = new Cabin();
+        Cabin cabin = new Cabin(cabinLocation);
         for (int x = 0; x < 4; x++) {
             for (int y = 0; y < 4; y++) {
 
                 Location location = new Location(cabinLocation.row() + x, cabinLocation.column() + y);
-                tiles[location.row() - 1][location.column() - 1].setThingOnTile(cabin);
-                tiles[location.row() - 1][location.column() - 1].setSymbol(Symbol.HOUSE);
+                tiles[location.row()][location.column()].setThingOnTile(cabin);
+                tiles[location.row()][location.column()].setSymbol(Symbol.HOUSE);
             }
         }
 
-        GreenHouse greenHouse = new GreenHouse();
+        GreenHouse greenHouse = new GreenHouse(greenHouseLocation);
         for (int x = 0; x < 5; x++) {
             for (int y = 0; y < 6; y++) {
                 Location location = new Location(greenHouseLocation.row() + x, greenHouseLocation.column() + y);
-                tiles[location.row() - 1][location.column() - 1].setThingOnTile(greenHouse);
-                tiles[location.row() - 1][location.column() - 1].setSymbol(Symbol.GREENHOUSE);
+                tiles[location.row()][location.column()].setThingOnTile(greenHouse);
+                tiles[location.row()][location.column()].setSymbol(Symbol.GREENHOUSE);
             }
         }
 
-        Lake lake = new Lake();
+        Lake lake = new Lake(lakeUpperLeftLocation, lakeLowerRightLocation);
         for (int row = lakeUpperLeftLocation.row(); row <= lakeLowerRightLocation.row(); row++) {
             for (int column = lakeUpperLeftLocation.column(); column <= lakeLowerRightLocation.column(); column++) {
-                tiles[row - 1][column - 1].setThingOnTile(lake);
-                tiles[row - 1][column - 1].setSymbol(Symbol.LAKE);
+                tiles[row][column].setThingOnTile(lake);
+                tiles[row][column].setSymbol(Symbol.LAKE);
             }
         }
 
-        Quarry quarry = new Quarry();
+        Quarry quarry = new Quarry(quarryUpperLeftLocation, quarryLowerRightLocation);
         for (int row = quarryUpperLeftLocation.row(); row <= quarryLowerRightLocation.row(); row++) {
             for (int column = quarryUpperLeftLocation.column(); column <= quarryLowerRightLocation.column(); column++) {
-                tiles[row - 1][column - 1].setThingOnTile(quarry);
-                tiles[row - 1][column - 1].setSymbol(Symbol.QUARRY);
+                tiles[row][column].setThingOnTile(quarry);
+                tiles[row][column].setSymbol(Symbol.QUARRY);
             }
         }
 
         // TODO tree, foraging, random stuff
 
-        Farm farm = new Farm(tiles);
+        Farm farm = new Farm(owner, location, greenHouse, cabin, quarry, lake, new Map(Farm.getNumberOfRows(), Farm.getNumberOfColumns(), tiles));
         FarmBuilder.reset();
         return farm;
     }

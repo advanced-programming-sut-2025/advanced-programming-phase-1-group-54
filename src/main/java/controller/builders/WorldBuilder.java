@@ -1,16 +1,13 @@
 package controller.builders;
 
-import model.map.Farm;
-import model.map.Location;
-import model.map.Tile;
-import model.map.World;
+import model.map.*;
 
 public class WorldBuilder {
     static final Location[] farmLocation = {
-            new Location(1, 1),
-            new Location(World.getNumberOfRows() - Farm.getNumberOfRows() + 1, 1),
-            new Location(World.getNumberOfRows() - Farm.getNumberOfRows() + 1, World.getNumberOfColumns() - Farm.getNumberOfColumns() + 1),
-            new Location(1, World.getNumberOfColumns() - Farm.getNumberOfColumns() + 1)
+            new Location(0, 0),
+            new Location(World.getNumberOfRows() - Farm.getNumberOfRows(), 0),
+            new Location(World.getNumberOfRows() - Farm.getNumberOfRows(), World.getNumberOfColumns() - Farm.getNumberOfColumns()),
+            new Location(0, World.getNumberOfColumns() - Farm.getNumberOfColumns())
     };
 
     private static Farm[] playerFarms = new Farm[4];
@@ -32,25 +29,25 @@ public class WorldBuilder {
             if (playerFarms[t] != null) {
                 for (int i = 0; i < Farm.getNumberOfRows(); i++) {
                     for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
-                        Location location = new Location(1 + i, 1 + j);
-                        tiles[farmLocation[t].row() + i - 1][farmLocation[t].column() + j - 1] = playerFarms[t].getTileAt(location);
+                        Location location = new Location(i, j);
+                        tiles[farmLocation[t].row() + i][farmLocation[t].column() + j] = playerFarms[t].getTileAt(location);
                     }
                 }
             }
         }
 
         // All Other Tiles
-        for (int i = 1; i <= World.getNumberOfRows(); i++) {
-            for (int j = 1; j <= World.getNumberOfColumns(); j++) {
-                if (tiles[i - 1][j - 1] == null) {
-                    tiles[i - 1][j - 1] = new Tile();
+        for (int i = 0; i < World.getNumberOfRows(); i++) {
+            for (int j = 0; j < World.getNumberOfColumns(); j++) {
+                if (tiles[i][j] == null) {
+                    tiles[i][j] = new Tile();
                 }
             }
         }
 
         // TODO World is empty, add village
 
-        World world = new World(tiles);
+        World world = new World(playerFarms, new Map(World.getNumberOfRows(), World.getNumberOfColumns(), tiles));
         WorldBuilder.reset();
         return world;
     }

@@ -15,7 +15,6 @@ public class Game {
     private final Player[] players;
     private DateTime dateTime;
     private int turn;
-    private Player currentPlayer;
     private ArrayList<Shop> npcShops;
     private Weather currentWeather;
     private Weather tommorrowWeather;
@@ -57,7 +56,7 @@ public class Game {
     }
 
     public Player getCurrentPlayer() {
-        return currentPlayer;
+        return players[turn];
     }
 
     public void thunder() {}

@@ -1,5 +1,6 @@
 package controller.builders;
 
+import model.Building.Cabin;
 import model.Game;
 import model.User;
 import model.alive.Player;
@@ -45,6 +46,7 @@ public class GameBuilder {
 
         for (int i = 0; i < users.length; i++) {
             FarmBuilder.reset();
+            FarmBuilder.setLocation(WorldBuilder.farmLocation[i]);
             FarmBuilder.setFarmNumber(playerFarmNumbers[i]);
             playerFarms[i] = FarmBuilder.getResult();
         }
@@ -57,15 +59,21 @@ public class GameBuilder {
         for (int i = 0; i < users.length; i++) {
             players[i] = new Player(users[i]);
 
-            Location location;
-            do {
-                location = new Location((int) (Math.random() * Farm.getNumberOfRows()) + 1,
-                        (int) (Math.random() * Farm.getNumberOfColumns()) + 1);
-            } while (!playerFarms[i].getTileAt(location).isWalkable());
+            Cabin cabin = playerFarms[i].getCabin();
 
-            location = new Location(location.row() + WorldBuilder.farmLocation[i].row() - 1, location.column() + WorldBuilder.farmLocation[i].column());
-            world.getTileAt(location).setThingOnTile(players[i]);
-            world.getTileAt(location).setSymbol(Symbol.PLAYER);
+            Location locationInCabin = new Location(
+                    Cabin.getNumberOfRows() / 2,
+                    Cabin.getNumberOfColumns() / 2);
+
+            Location location = new Location(
+                    playerFarms[i].getLocation().row() + cabin.getLocation().row() + locationInCabin.row(),
+                    playerFarms[i].getLocation().column() + cabin.getLocation().column() + locationInCabin.column()
+            );
+
+            cabin.getTileAt(locationInCabin).setThingOnTile(players[i]);
+            cabin.getTileAt(locationInCabin).setSymbol(Symbol.PLAYER);
+
+            players[i].setCurrentLocation(location);
         }
 
         Game game = new Game(world, players);

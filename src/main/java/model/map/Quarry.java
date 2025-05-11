@@ -1,7 +1,11 @@
 package model.map;
 
-import model.Placeable;
-import model.Walkable;
+import model.Building.Building;
 
-public class Quarry implements Placeable, Walkable {
+public class Quarry extends Building {
+
+    public Quarry(Location upperLeft, Location lowerRight) {
+        super(upperLeft, new Map(lowerRight.row() - upperLeft.row(),
+                lowerRight.column() - upperLeft.column()));
+    }
 }
