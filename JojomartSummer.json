@@ -1,0 +1,74 @@
+[
+  {
+    "Name": "Tomato Seeds",
+    "Description": "Plant these in the summer. Takes 11 days to mature, and continues to produce after first harvest.",
+    "Price": 62,
+    "Count": 5
+  },
+  {
+    "Name": "Pepper Seeds",
+    "Description": "Plant these in the summer. Takes 5 days to mature, and continues to produce after first harvest.",
+    "Price": 50,
+    "Count": 5
+  },
+  {
+    "Name": "Wheat Seeds",
+    "Description": "Plant these in the summer or fall. Takes 4 days to mature. Harvest with the scythe.",
+    "Price": 12,
+    "Count": 10
+  },
+  {
+    "Name": "Summer Squash Seeds",
+    "Description": "Plant in the summer. Takes 6 days to grow, and continues to produce after first harvest.",
+    "Price": 10,
+    "Count": 10
+  },
+  {
+    "Name": "Radish Seeds",
+    "Description": "Plant these in the summer. Takes 6 days to mature.",
+    "Price": 50,
+    "Count": 5
+  },
+  {
+    "Name": "Melon Seeds",
+    "Description": "Plant these in the summer. Takes 12 days to mature.",
+    "Price": 100,
+    "Count": 5
+  },
+  {
+    "Name": "Hops Starter",
+    "Description": "Plant these in the summer. Takes 11 days to grow, but keeps producing after that. Grows on a trellis.",
+    "Price": 75,
+    "Count": 5
+  },
+  {
+    "Name": "Poppy Seeds",
+    "Description": "Plant in summer. Produces a bright red flower in 7 days.",
+    "Price": 125,
+    "Count": 5
+  },
+  {
+    "Name": "Spangle Seeds",
+    "Description": "Plant in summer. Takes 8 days to produce a vibrant tropical flower. Assorted colors.",
+    "Price": 62,
+    "Count": 5
+  },
+  {
+    "Name": "Starfruit Seeds",
+    "Description": "Plant these in the summer. Takes 13 days to mature.",
+    "Price": 400,
+    "Count": 5
+  },
+  {
+    "Name": "Coffee Beans",
+    "Description": "Plant in summer or spring. Takes 10 days to grow, Then produces coffee Beans every other day.",
+    "Price": 200,
+    "Count": 1
+  },
+  {
+    "Name": "Sunflower Seeds",
+    "Description": "Plant in summer or fall. Takes 8 days to produce a large sunflower. Yields more seeds at harvest.",
+    "Price": 125,
+    "Count": 5
+  }
+]

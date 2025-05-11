@@ -1,10 +1,18 @@
 package model.items.crafting;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import model.items.Fish;
 import model.items.Item;
 import model.items.Material;
 import model.items.plants.Fruit;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,7 +23,15 @@ public class Produce extends Item implements Cloneable{
     static final int dayHours = 24;
 
     static {
-        produces = new HashMap<String, Produce>();
+        Gson gson = new Gson();
+        FileReader file = null;
+        try {
+            file = new FileReader("Produces.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        Type type = new TypeToken<HashMap<String, Produce>>(){}.getType();
+        produces = gson.fromJson(file,type);
     }
 
     public static Produce getProduce(String name) {
@@ -84,6 +100,15 @@ public class Produce extends Item implements Cloneable{
             throw new AssertionError();
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Produce produce) {
+            return produce.getName().equals(this.getName());
+        }
+        return false;
+    }
+
     public static void writeToJson(){
 
         HashMap<String, Produce> produceTypes = new HashMap<String, Produce>();
@@ -669,44 +694,44 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Taro Root");
-        numberOfIngredients.put("Taro Root", 1);
-        fruit = Fruit.getFruit("Taro Root");
-
-        produce = new Produce(
-                "Taro Root Juice",
-                (int)(2.25 * fruit.getBaseSellPrice()),
-                true,
-                2 * fruit.getEnergy(),
-                4 * dayHours,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
-
-
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Tea Leaves");
-        numberOfIngredients.put("Tea Leaves", 1);
-        fruit = Fruit.getFruit("Tea Leaves");
-
-        produce = new Produce(
-                "Tea Leaves Juice",
-                (int)(2.25 * fruit.getBaseSellPrice()),
-                true,
-                2 * fruit.getEnergy(),
-                4 * dayHours,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Taro Root");
+//        numberOfIngredients.put("Taro Root", 1);
+//        fruit = Fruit.getFruit("Taro Root");
+//
+//        produce = new Produce(
+//                "Taro Root Juice",
+//                (int)(2.25 * fruit.getBaseSellPrice()),
+//                true,
+//                2 * fruit.getEnergy(),
+//                4 * dayHours,
+//                0,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
+//
+//
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Tea Leaves");
+//        numberOfIngredients.put("Tea Leaves", 1);
+//        fruit = Fruit.getFruit("Tea Leaves");
+//
+//        produce = new Produce(
+//                "Tea Leaves Juice",
+//                (int)(2.25 * fruit.getBaseSellPrice()),
+//                true,
+//                2 * fruit.getEnergy(),
+//                4 * dayHours,
+//                0,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -890,24 +915,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Cactus Fruit");
-        numberOfIngredients.put("Cactus Fruit", 1);
-        fruit = Fruit.getFruit("Cactus Fruit");
-
-        produce = new Produce(
-                "Cactus Fruit Wine",
-                3 * fruit.getBaseSellPrice(),
-                true,
-                (int)(1.75 * fruit.getEnergy()),
-                7 * dayHours,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Cactus Fruit");
+//        numberOfIngredients.put("Cactus Fruit", 1);
+//        fruit = Fruit.getFruit("Cactus Fruit");
+//
+//        produce = new Produce(
+//                "Cactus Fruit Wine",
+//                3 * fruit.getBaseSellPrice(),
+//                true,
+//                (int)(1.75 * fruit.getEnergy()),
+//                7 * dayHours,
+//                0,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -930,24 +955,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Coconut");
-        numberOfIngredients.put("Coconut", 1);
-        fruit = Fruit.getFruit("Coconut");
-
-        produce = new Produce(
-                "Coconut Wine",
-                3 * fruit.getBaseSellPrice(),
-                true,
-                (int)(1.75 * fruit.getEnergy()),
-                7 * dayHours,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Coconut");
+//        numberOfIngredients.put("Coconut", 1);
+//        fruit = Fruit.getFruit("Coconut");
+//
+//        produce = new Produce(
+//                "Coconut Wine",
+//                3 * fruit.getBaseSellPrice(),
+//                true,
+//                (int)(1.75 * fruit.getEnergy()),
+//                7 * dayHours,
+//                0,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -1110,24 +1135,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Pineapple");
-        numberOfIngredients.put("Pineapple", 1);
-        fruit = Fruit.getFruit("Pineapple");
-
-        produce = new Produce(
-                "Pineapple Wine",
-                3 * fruit.getBaseSellPrice(),
-                true,
-                (int)(1.75 * fruit.getEnergy()),
-                7 * dayHours,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Pineapple");
+//        numberOfIngredients.put("Pineapple", 1);
+//        fruit = Fruit.getFruit("Pineapple");
+//
+//        produce = new Produce(
+//                "Pineapple Wine",
+//                3 * fruit.getBaseSellPrice(),
+//                true,
+//                (int)(1.75 * fruit.getEnergy()),
+//                7 * dayHours,
+//                0,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -1170,24 +1195,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Qi Fruit");
-        numberOfIngredients.put("Qi Fruit", 1);
-        fruit = Fruit.getFruit("Qi Fruit");
-
-        produce = new Produce(
-                "Qi Fruit Wine",
-                3 * fruit.getBaseSellPrice(),
-                true,
-                (int)(1.75 * fruit.getEnergy()),
-                7 * dayHours,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Qi Fruit");
+//        numberOfIngredients.put("Qi Fruit", 1);
+//        fruit = Fruit.getFruit("Qi Fruit");
+//
+//        produce = new Produce(
+//                "Qi Fruit Wine",
+//                3 * fruit.getBaseSellPrice(),
+//                true,
+//                (int)(1.75 * fruit.getEnergy()),
+//                7 * dayHours,
+//                0,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -1353,24 +1378,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Magma Cap");
-        numberOfIngredients.put("Magma Cap", numberOfFruitsToDry);
-        fruit = Fruit.getFruit("Magma Cap");
-
-        produce = new Produce(
-                "Dried Magma Cap",
-                (int)(7.5 * fruit.getBaseSellPrice()),
-                true,
-                50,
-                0,
-                1,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Magma Cap");
+//        numberOfIngredients.put("Magma Cap", numberOfFruitsToDry);
+//        fruit = Fruit.getFruit("Magma Cap");
+//
+//        produce = new Produce(
+//                "Dried Magma Cap",
+//                (int)(7.5 * fruit.getBaseSellPrice()),
+//                true,
+//                50,
+//                0,
+//                1,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -1554,24 +1579,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Cactus Fruit");
-        numberOfIngredients.put("Cactus Fruit", numberOfFruitsToDry);
-        fruit = Fruit.getFruit("Cactus Fruit");
-
-        produce = new Produce(
-                "Dried Cactus Fruit",
-                (int)(7.5 * fruit.getBaseSellPrice()),
-                true,
-                75,
-                0,
-                1,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Cactus Fruit");
+//        numberOfIngredients.put("Cactus Fruit", numberOfFruitsToDry);
+//        fruit = Fruit.getFruit("Cactus Fruit");
+//
+//        produce = new Produce(
+//                "Dried Cactus Fruit",
+//                (int)(7.5 * fruit.getBaseSellPrice()),
+//                true,
+//                75,
+//                0,
+//                1,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -1594,24 +1619,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Coconut");
-        numberOfIngredients.put("Coconut", numberOfFruitsToDry);
-        fruit = Fruit.getFruit("Coconut");
-
-        produce = new Produce(
-                "Dried Coconut",
-                (int)(7.5 * fruit.getBaseSellPrice()),
-                true,
-                75,
-                0,
-                1,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Coconut");
+//        numberOfIngredients.put("Coconut", numberOfFruitsToDry);
+//        fruit = Fruit.getFruit("Coconut");
+//
+//        produce = new Produce(
+//                "Dried Coconut",
+//                (int)(7.5 * fruit.getBaseSellPrice()),
+//                true,
+//                75,
+//                0,
+//                1,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -1754,24 +1779,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Pineapple");
-        numberOfIngredients.put("Pineapple", numberOfFruitsToDry);
-        fruit = Fruit.getFruit("Pineapple");
-
-        produce = new Produce(
-                "Dried Pineapple",
-                (int)(7.5 * fruit.getBaseSellPrice()),
-                true,
-                75,
-                0,
-                1,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Pineapple");
+//        numberOfIngredients.put("Pineapple", numberOfFruitsToDry);
+//        fruit = Fruit.getFruit("Pineapple");
+//
+//        produce = new Produce(
+//                "Dried Pineapple",
+//                (int)(7.5 * fruit.getBaseSellPrice()),
+//                true,
+//                75,
+//                0,
+//                1,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -1814,24 +1839,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Qi Fruit");
-        numberOfIngredients.put("Qi Fruit", numberOfFruitsToDry);
-        fruit = Fruit.getFruit("Qi Fruit");
-
-        produce = new Produce(
-                "Dried Qi Fruit",
-                (int)(7.5 * fruit.getBaseSellPrice()),
-                true,
-                75,
-                0,
-                1,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Qi Fruit");
+//        numberOfIngredients.put("Qi Fruit", numberOfFruitsToDry);
+//        fruit = Fruit.getFruit("Qi Fruit");
+//
+//        produce = new Produce(
+//                "Dried Qi Fruit",
+//                (int)(7.5 * fruit.getBaseSellPrice()),
+//                true,
+//                75,
+//                0,
+//                1,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -2570,44 +2595,44 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Taro Root");
+//        numberOfIngredients.put("Taro Root", 1);
+//        fruit = Fruit.getFruit("Taro Root");
+//
+//        produce = new Produce(
+//                "Taro Root Pickles",
+//                2 * fruit.getBaseSellPrice() + 50,
+//                true,
+//                (int)(1.75 * fruit.getEnergy()),
+//                6,
+//                0,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
-        ingredients.add("Taro Root");
-        numberOfIngredients.put("Taro Root", 1);
-        fruit = Fruit.getFruit("Taro Root");
-
-        produce = new Produce(
-                "Taro Root Pickles",
-                2 * fruit.getBaseSellPrice() + 50,
-                true,
-                (int)(1.75 * fruit.getEnergy()),
-                6,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
-
-
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Tea Leaves");
-        numberOfIngredients.put("Tea Leaves", 1);
-        fruit = Fruit.getFruit("Tea Leaves");
-
-        produce = new Produce(
-                "Tea Leaves Pickles",
-                2 * fruit.getBaseSellPrice() + 50,
-                true,
-                (int)(1.75 * fruit.getEnergy()),
-                6,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Tea Leaves");
+//        numberOfIngredients.put("Tea Leaves", 1);
+//        fruit = Fruit.getFruit("Tea Leaves");
+//
+//        produce = new Produce(
+//                "Tea Leaves Pickles",
+//                2 * fruit.getBaseSellPrice() + 50,
+//                true,
+//                (int)(1.75 * fruit.getEnergy()),
+//                6,
+//                0,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -2811,24 +2836,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Cactus Fruit");
-        numberOfIngredients.put("Cactus Fruit", 1);
-        fruit = Fruit.getFruit("Cactus Fruit");
-
-        produce = new Produce(
-                "Cactus Fruit Jelly",
-                2 * fruit.getBaseSellPrice() + 50,
-                true,
-                2 * fruit.getEnergy(),
-                3 * dayHours,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Cactus Fruit");
+//        numberOfIngredients.put("Cactus Fruit", 1);
+//        fruit = Fruit.getFruit("Cactus Fruit");
+//
+//        produce = new Produce(
+//                "Cactus Fruit Jelly",
+//                2 * fruit.getBaseSellPrice() + 50,
+//                true,
+//                2 * fruit.getEnergy(),
+//                3 * dayHours,
+//                0,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -2851,24 +2876,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Coconut");
-        numberOfIngredients.put("Coconut", 1);
-        fruit = Fruit.getFruit("Coconut");
-
-        produce = new Produce(
-                "Coconut Jelly",
-                2 * fruit.getBaseSellPrice() + 50,
-                true,
-                2 * fruit.getEnergy(),
-                3 * dayHours,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Coconut");
+//        numberOfIngredients.put("Coconut", 1);
+//        fruit = Fruit.getFruit("Coconut");
+//
+//        produce = new Produce(
+//                "Coconut Jelly",
+//                2 * fruit.getBaseSellPrice() + 50,
+//                true,
+//                2 * fruit.getEnergy(),
+//                3 * dayHours,
+//                0,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -3031,24 +3056,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Pineapple");
-        numberOfIngredients.put("Pineapple", 1);
-        fruit = Fruit.getFruit("Pineapple");
-
-        produce = new Produce(
-                "Pineapple Jelly",
-                2 * fruit.getBaseSellPrice() + 50,
-                true,
-                2 * fruit.getEnergy(),
-                3 * dayHours,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Pineapple");
+//        numberOfIngredients.put("Pineapple", 1);
+//        fruit = Fruit.getFruit("Pineapple");
+//
+//        produce = new Produce(
+//                "Pineapple Jelly",
+//                2 * fruit.getBaseSellPrice() + 50,
+//                true,
+//                2 * fruit.getEnergy(),
+//                3 * dayHours,
+//                0,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -3091,24 +3116,24 @@ public class Produce extends Item implements Cloneable{
         produceTypes.put(produce.getName(), produce);
 
 
-        ingredients = new ArrayList<>();
-        numberOfIngredients = new HashMap<>();
-
-        ingredients.add("Qi Fruit");
-        numberOfIngredients.put("Qi Fruit", 1);
-        fruit = Fruit.getFruit("Qi Fruit");
-
-        produce = new Produce(
-                "Qi Fruit Jelly",
-                2 * fruit.getBaseSellPrice() + 50,
-                true,
-                2 * fruit.getEnergy(),
-                3 * dayHours,
-                0,
-                ingredients,
-                numberOfIngredients
-        );
-        produceTypes.put(produce.getName(), produce);
+//        ingredients = new ArrayList<>();
+//        numberOfIngredients = new HashMap<>();
+//
+//        ingredients.add("Qi Fruit");
+//        numberOfIngredients.put("Qi Fruit", 1);
+//        fruit = Fruit.getFruit("Qi Fruit");
+//
+//        produce = new Produce(
+//                "Qi Fruit Jelly",
+//                2 * fruit.getBaseSellPrice() + 50,
+//                true,
+//                2 * fruit.getEnergy(),
+//                3 * dayHours,
+//                0,
+//                ingredients,
+//                numberOfIngredients
+//        );
+//        produceTypes.put(produce.getName(), produce);
 
 
         ingredients = new ArrayList<>();
@@ -3784,6 +3809,16 @@ public class Produce extends Item implements Cloneable{
                 numberOfIngredients
         );
         produceTypes.put(produce.getName(), produce);
+
+
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        try (FileWriter file = new FileWriter("produces.json")){
+            gson.toJson(produceTypes, file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

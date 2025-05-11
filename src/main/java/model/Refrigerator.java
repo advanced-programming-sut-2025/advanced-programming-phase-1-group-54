@@ -2,27 +2,25 @@ package model;
 
 import model.items.Item;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Refrigerator implements Placeable {
 
-    private final HashMap<Item,Integer> itemsNumber = new HashMap<>();
+    private final HashMap<Item,Integer> numberOfItemInRefrigerator = new HashMap<>();
 
-    public HashMap<Item, Integer> getItemsNumber() {
-        return itemsNumber;
+    public HashMap<Item, Integer> getNumberOfItemInRefrigerator() {
+        return numberOfItemInRefrigerator;
     }
 
     public Result addItem(Item item,Integer number) {
 
-
-        Integer numberOfItem = itemsNumber.get(item);
+        Integer numberOfItem = numberOfItemInRefrigerator.get(item);
         if(numberOfItem != null) {
-            itemsNumber.put(item, numberOfItem + number);
+            numberOfItemInRefrigerator.put(item, numberOfItem + number);
             return new Result(1, number + " " + item.getName() + " added to Refrigerator");
         }
         else if(item.isEdible()){
-            itemsNumber.put(item,number);
+            numberOfItemInRefrigerator.put(item,number);
             return new Result(1,number + " " + item.getName() + " added to Refrigerator");
         }
         else {
@@ -32,17 +30,17 @@ public class Refrigerator implements Placeable {
 
     public Result removeItem(Item item,Integer number) {
 
-        Integer numberOfItem = itemsNumber.get(item);
+        Integer numberOfItem = numberOfItemInRefrigerator.get(item);
 
         if(numberOfItem == null){
             return new Result(-1,"You do not have " + item.getName() + " in your refrigerator");
         }
         if(numberOfItem.equals(number)){
-            itemsNumber.remove(item);
+            numberOfItemInRefrigerator.remove(item);
             return new Result(1,number + " " + item.getName() + " removed from Refrigerator completely");
         }
         else if(numberOfItem > number){
-            itemsNumber.put(item,numberOfItem - number);
+            numberOfItemInRefrigerator.put(item,numberOfItem - number);
             return new Result(1,number + " " + item.getName() + " removed from Refrigerator");
         }
         else {

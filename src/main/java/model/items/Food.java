@@ -27,7 +27,6 @@ public class Food extends Item implements Cloneable{
         }
         Type type = new TypeToken<HashMap<String, Food>>(){}.getType();
         foods = gson.fromJson(file,type);
-        System.out.println(foods.size());
     }
 
     public static Food getFood(String ItemName){
@@ -83,6 +82,14 @@ public class Food extends Item implements Cloneable{
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Food food){
+            return this.getName().equals(food.getName());
+        }
+        return false;
     }
 
     public static void writeToJson(){

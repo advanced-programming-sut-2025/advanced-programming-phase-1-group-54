@@ -25,22 +25,26 @@ public class BackPack extends Tool {
         return true;
     }
 
-    public Result removeItem(Item item, Integer number) {
+    public boolean removeItem(Item item, Integer number) {
 
         Integer numberOfItem = numberOfItemInBackPack.get(item);
         if(numberOfItem == null){
-            return new Result(-1,"You do not have " + item.getName() + " in your backpack");
+            return false;
+//            return new Result(-1,"You do not have " + item.getName() + " in your backpack");
         }
         else if (Objects.equals(number, numberOfItem)) {
             numberOfItemInBackPack.remove(item);
-            return new Result(1,number + item.getName() + "Removed completely from backpack");
+            return true;
+//            return new Result(1,number + item.getName() + "Removed completely from backpack");
         }
         else if(numberOfItem > number){
             numberOfItemInBackPack.put(item,numberOfItem - number);
-            return new Result(1,number + item.getName() + " Removed from backpack");
+            return true;
+//            return new Result(1,number + item.getName() + " Removed from backpack");
         }
         else {
-            return new Result(-1,"You do not have enough " + item.getName() + " to remove from backpack");
+            return false;
+//            return new Result(-1,"You do not have enough " + item.getName() + " to remove from backpack");
         }
     }
 
@@ -51,6 +55,17 @@ public class BackPack extends Tool {
     public HashMap<Item, Integer> getNumberOfItemInBackPack() {
         return numberOfItemInBackPack;
     }
+
+    public boolean haveSpace(Item item){
+        if(numberOfItemInBackPack.containsKey(item)){
+            return true;
+        }
+        else{
+            return numberOfItemInBackPack.size() < level.getSize();
+        }
+    }
+
+
 
     //    @Override
 //    public Result use(Item item) {
@@ -65,7 +80,7 @@ public class BackPack extends Tool {
 
     @Override
     public void upgrade() {
-        if (level != BackPackLevel.THELUX) {
+        if (level != BackPackLevel.DELUX) {
             level = BackPackLevel.values()[level.ordinal() + 1];
         }
     }

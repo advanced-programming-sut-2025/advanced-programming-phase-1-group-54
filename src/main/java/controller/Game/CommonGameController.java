@@ -1,6 +1,7 @@
 package controller.Game;
 
 import model.App;
+import model.Refrigerator;
 import model.alive.Player;
 import model.enums.ProduceQuality;
 import model.items.*;
@@ -25,7 +26,7 @@ public class CommonGameController {
         if(fruit != null){
             return fruit;
         }
-// Todo
+
 //        Artisan artisan = Artisan.getArtisan(ItemName);
 //        if(artisan != null){
 //            return artisan;
@@ -76,13 +77,34 @@ public class CommonGameController {
             for(Fish fish : Fish.getFishesValues()){
                 for(ProduceQuality quality : ProduceQuality.values()){
                     fish.setQuality(quality);
-                    number += player.getBackpack().getNumberOfItemInBackPack().get(fish);
+                    number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(fish,0);
+                    number += player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(fish,0);
                 }
             }
         }
         else if(ItemName.equals("Cheese") || ItemName.equals("Goat Cheese") || ItemName.equals("Mayonnaise") ){
-            number += player.getBackpack().getNumberOfItemInBackPack().get(Produce.getProduce(ItemName));
-            number += player.getBackpack().getNumberOfItemInBackPack().get(Produce.getProduce("Large " +ItemName));
+            number += player.getBackpack().getNumberOfItemInBackPack().
+                    getOrDefault(Produce.getProduce(ItemName),0);
+            number += player.getRefrigerator().getNumberOfItemInRefrigerator().
+                    getOrDefault(Produce.getProduce(ItemName),0);
+            number += player.getBackpack().getNumberOfItemInBackPack().
+                    getOrDefault(Produce.getProduce("Large " +ItemName),0);
+            number += player.getRefrigerator().getNumberOfItemInRefrigerator().
+                    getOrDefault(Produce.getProduce("Large " +ItemName),0);
+        }
+        else if(ItemName.equals("Oil")){
+            number += player.getBackpack().getNumberOfItemInBackPack().
+                    getOrDefault(Produce.getProduce("Corn " + ItemName),0);
+            number += player.getRefrigerator().getNumberOfItemInRefrigerator().
+                    getOrDefault(Produce.getProduce("Corn " + ItemName),0);
+            number += player.getBackpack().getNumberOfItemInBackPack().
+                    getOrDefault(Produce.getProduce("Sunflower Seed " + ItemName),0);
+            number += player.getRefrigerator().getNumberOfItemInRefrigerator().
+                    getOrDefault(Produce.getProduce("Sunflower Seed " + ItemName),0);
+            number += player.getBackpack().getNumberOfItemInBackPack().
+                    getOrDefault(Produce.getProduce("Sunflower " + ItemName),0);
+            number += player.getRefrigerator().getNumberOfItemInRefrigerator().
+                    getOrDefault( Produce.getProduce("Sunflower " + ItemName),0);
         }
         else {
             Item item = findItem(ItemName);
@@ -92,23 +114,28 @@ public class CommonGameController {
             else if(item instanceof Fish fish){
                 for(ProduceQuality quality : ProduceQuality.values()){
                     fish.setQuality(quality);
-                    number += player.getBackpack().getNumberOfItemInBackPack().get(fish);
+                    number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(fish,0);
+                    number += player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(fish,0);
                 }
             }
             else if(item instanceof Fruit fruit){
                 for(ProduceQuality quality : ProduceQuality.values()){
                     fruit.setQuality(quality);
-                    number += player.getBackpack().getNumberOfItemInBackPack().get(fruit);
+                    number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(fruit,0);
+                    number += player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(fruit,0);
                 }
             }
             else if(item instanceof AnimalProduce animalProduce){
                 for(ProduceQuality quality : ProduceQuality.values()){
                     animalProduce.setQuality(quality);
-                    number += player.getBackpack().getNumberOfItemInBackPack().get(animalProduce);
+                    number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(animalProduce,0);
+                    number += player.getRefrigerator().getNumberOfItemInRefrigerator().
+                            getOrDefault(animalProduce,0);
                 }
             }
             else {
-                number = player.getBackpack().getNumberOfItemInBackPack().get(item);
+                number = player.getBackpack().getNumberOfItemInBackPack().getOrDefault(item,0);
+                number += player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(item,0);
             }
 
         }
@@ -120,6 +147,7 @@ public class CommonGameController {
     public static void removeItemFromBackPack(String ItemName, int number){
         Player player = App.getCurrentGame().getCurrentPlayer();
         BackPack backPack = player.getBackpack();
+        Refrigerator refrigerator = player.getRefrigerator();
 
         int amount ;
         if(ItemName.equals("fish")){
@@ -127,7 +155,8 @@ public class CommonGameController {
             for(Fish fish : Fish.getFishesValues()){
                 for(ProduceQuality quality : ProduceQuality.values()){
                     fish.setQuality(quality);
-                    amount = backPack.getNumberOfItemInBackPack().get(fish);
+
+                    amount = backPack.getNumberOfItemInBackPack().getOrDefault(fish,0);
                     if(amount <= number){
                         backPack.removeItem(fish,amount);
                         number -= amount;
@@ -140,10 +169,61 @@ public class CommonGameController {
                         isDone = true;
                         break;
                     }
+
+                    amount = refrigerator.getNumberOfItemInRefrigerator().getOrDefault(fish,0);
+                    if(amount <= number){
+                        refrigerator.removeItem(fish,amount);
+                        number -= amount;
+                    }
+                    else {
+                        refrigerator.removeItem(fish,number);
+                        number = 0;
+                    }
+                    if(number == 0){
+                        isDone = true;
+                        break;
+                    }
                 }
                 if(isDone){
                     break;
                 }
+            }
+        }
+        else if(ItemName.equals("Cheese") || ItemName.equals("Goat Cheese") || ItemName.equals("Mayonnaise")){
+            Produce produce = Produce.getProduce(ItemName);
+            amount = backPack.getNumberOfItemInBackPack().getOrDefault(produce,0);
+            amount += refrigerator.getNumberOfItemInRefrigerator().getOrDefault(produce,0);
+
+            if(number > amount){
+                removeItemFromInventory(produce,amount);
+                number -= amount;
+                removeItemFromInventory(Produce.getProduce("Large " + ItemName),number);
+            }
+            else {
+                removeItemFromInventory(produce,number);
+            }
+        }
+        else if(ItemName.equals("Oil")){
+            Produce produce = Produce.getProduce("Corn " + ItemName);
+            amount = backPack.getNumberOfItemInBackPack().getOrDefault(produce,0);
+            amount += refrigerator.getNumberOfItemInRefrigerator().getOrDefault(produce,0);
+            if(number > amount){
+                removeItemFromInventory(produce,amount);
+                number -= amount;
+                produce = Produce.getProduce("Sunflower Seed " + ItemName);
+                amount = backPack.getNumberOfItemInBackPack().getOrDefault(produce,0);
+                amount += refrigerator.getNumberOfItemInRefrigerator().getOrDefault(produce,0);
+                if(number > amount){
+                    removeItemFromInventory(produce,amount);
+                    number -= amount;
+                    removeItemFromInventory(Produce.getProduce("Sunflower " + ItemName),number);
+                }
+                else {
+                    removeItemFromInventory(produce,number);
+                }
+            }
+            else{
+                removeItemFromInventory(produce,number);
             }
         }
         else {
@@ -151,7 +231,7 @@ public class CommonGameController {
             if(item instanceof Fish fish){
                 for(ProduceQuality quality : ProduceQuality.values()){
                     fish.setQuality(quality);
-                    amount = backPack.getNumberOfItemInBackPack().get(fish);
+                    amount = backPack.getNumberOfItemInBackPack().getOrDefault(fish,0);
                     if(amount <= number){
                         backPack.removeItem(fish,amount);
                         number -= amount;
@@ -164,12 +244,26 @@ public class CommonGameController {
                     if(number == 0){
                         break;
                     }
+
+                    amount = refrigerator.getNumberOfItemInRefrigerator().getOrDefault(fish,0);
+                    if(amount <= number){
+                        refrigerator.removeItem(fish,amount);
+                        number -= amount;
+                    }
+                    else {
+                        refrigerator.removeItem(fish,number);
+                        number = 0;
+                    }
+
+                    if(number == 0){
+                        break;
+                    }
                 }
             }
             else if(item instanceof Fruit fruit){
                 for(ProduceQuality quality : ProduceQuality.values()){
                     fruit.setQuality(quality);
-                    amount = backPack.getNumberOfItemInBackPack().get(fruit);
+                    amount = backPack.getNumberOfItemInBackPack().getOrDefault(fruit,0);
                     if(amount <= number){
                         backPack.removeItem(fruit,amount);
                         number -= amount;
@@ -182,12 +276,26 @@ public class CommonGameController {
                     if(number == 0){
                         break;
                     }
+
+                    amount = refrigerator.getNumberOfItemInRefrigerator().getOrDefault(fruit,0);
+                    if(amount <= number){
+                        refrigerator.removeItem(fruit,amount);
+                        number -= amount;
+                    }
+                    else {
+                        refrigerator.removeItem(fruit,number);
+                        number = 0;
+                    }
+
+                    if(number == 0){
+                        break;
+                    }
                 }
             }
             else if(item instanceof AnimalProduce animalProduce){
                 for(ProduceQuality quality : ProduceQuality.values()){
                     animalProduce.setQuality(quality);
-                    amount = backPack.getNumberOfItemInBackPack().get(animalProduce);
+                    amount = backPack.getNumberOfItemInBackPack().getOrDefault(animalProduce,0);
                     if(amount <= number){
                         backPack.removeItem(animalProduce,amount);
                         number -= amount;
@@ -200,12 +308,49 @@ public class CommonGameController {
                     if(number == 0){
                         break;
                     }
+
+                    amount = refrigerator.getNumberOfItemInRefrigerator().getOrDefault(animalProduce,0);
+                    if (amount <= number){
+                        refrigerator.removeItem(animalProduce,amount);
+                        number -= amount;
+                    }
+                    else {
+                        refrigerator.removeItem(animalProduce,number);
+                        number = 0;
+                    }
+
+                    if(number == 0){
+                        break;
+                    }
                 }
             }
             else{
+                amount = backPack.getNumberOfItemInBackPack().getOrDefault(item,0);
+                if(amount <= number){
+                    backPack.removeItem(item,amount);
+                    number -= amount;
+                    refrigerator.removeItem(item,number);
+                }
                 backPack.removeItem(item,number);
             }
         }
+    }
+
+    public static boolean removeItemFromInventory(Item item, int number){
+
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        int amount = player.getBackpack().getNumberOfItemInBackPack().getOrDefault(item,0);
+        if(number - amount > player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(item,0)){
+            return false;
+        }
+        else if(amount < number){
+            player.getBackpack().removeItem(item,amount);
+            number -= amount;
+            player.getRefrigerator().removeItem(item,number);
+        }
+        player.getBackpack().removeItem(item,number);
+        return true;
+
     }
 
 

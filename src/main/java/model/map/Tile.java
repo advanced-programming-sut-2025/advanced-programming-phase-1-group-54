@@ -3,13 +3,16 @@ package model.map;
 import model.Placeable;
 import model.Walkable;
 import model.enums.Symbol;
+import model.enums.Feature;
+
+import java.util.ArrayList;
 
 public class Tile {
     private Symbol symbol = Symbol.EMPTY;
     private final Character owner;
 
     private Placeable thingOnTile;
-    private boolean isProtected = false;
+    private ArrayList<Feature> features;
 
     public Tile() {
         owner = null;
@@ -31,8 +34,8 @@ public class Tile {
         return thingOnTile;
     }
 
-    public boolean isProtected() {
-        return isProtected;
+    public ArrayList<Feature> getFeatures() {
+        return features;
     }
 
     public void setThingOnTile(Placeable thingOnTile) {

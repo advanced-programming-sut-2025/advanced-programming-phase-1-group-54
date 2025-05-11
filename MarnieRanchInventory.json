@@ -1,0 +1,20 @@
+[
+  {
+    "Name": "Hay",
+    "Description": "Dried grass used as animal food.",
+    "Price": 50,
+    "Count": -1
+  },
+  {
+    "Name": "Milk Pail",
+    "Description": "Gather milk from your animals.",
+    "Price": 1000,
+    "Count": 1
+  },
+  {
+    "Name": "Shears",
+    "Description": "Use this to collect wool from sheep.",
+    "Price": 1000,
+    "Count": 1
+  }
+]
