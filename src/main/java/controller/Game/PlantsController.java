@@ -45,6 +45,7 @@ public class PlantsController {
 
     }
 
+    //TODO
     public Result planting(String seedName,String directionString){
 
         // Todo check energy
@@ -88,7 +89,6 @@ public class PlantsController {
                 }
             }
         }
-
     }
 
     public Result showPlant(int x, int y){
@@ -123,6 +123,7 @@ public class PlantsController {
 
     }
 
+    //TODO
     public Result harvestPlant(String directionString){
 
         // Todo check energy
@@ -417,6 +418,5 @@ public class PlantsController {
         return null;
 
     }
-
 
 }

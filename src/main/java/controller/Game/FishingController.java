@@ -8,7 +8,7 @@ import model.enums.SkillType;
 import model.items.Fish;
 
 public class FishingController {
-
+    // TODO
     public static Result fishing(){
         Player player = App.getCurrentGame().getCurrentPlayer();
 

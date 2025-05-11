@@ -6,7 +6,7 @@ import model.enums.ToolLevel;
 public abstract class Tool {
 
 
-    protected ToolLevel level;
+//    protected ToolLevel level;
 
     public void use() {
     }
@@ -14,7 +14,7 @@ public abstract class Tool {
     public void upgrade() {
     }
 
-    public int getEnergyNeededPerUse() {
-        return level.getEnergyNeededPerUse();
-    }
+//    public int getEnergyNeededPerUse() {
+//        return level.getEnergyNeededPerUse();
+//    }
 }
