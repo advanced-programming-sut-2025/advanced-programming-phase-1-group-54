@@ -12,6 +12,8 @@ import model.items.tools.BackPack;
 import model.items.tools.Tool;
 import model.map.Location;
 import model.map.Tile;
+import model.relationships.Gift;
+import model.relationships.PlayerRelationship;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,9 +28,8 @@ public class Player extends Human {
     private BackPack backpack = new BackPack();
     private Refrigerator refrigerator = new Refrigerator();
     private Location currentLocation;
-
     private HashMap<Plant,Tile> Plants;
-    
+    private ArrayList<Gift> recivedGifts;
     private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>(){{
         add(Recipe.foodRecipes.get("Fried Egg Recipe"));
     }};
@@ -36,6 +37,8 @@ public class Player extends Human {
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
         this.money = 0;
+
+        //TODO
     }
     private final ArrayList<Recipe> learnedCraftingRecipes = new ArrayList<>(){{
 //        add(Recipe.craftRecipes.get(""));
@@ -48,19 +51,15 @@ public class Player extends Human {
         return money;
     }
 
-    public void setMoney(int money) {
+    /*public void setMoney(int money) {
         this.money = money;
+    }*/
+    public void spentMoney(int spent){
+        money -= spent;
     }
-
     private final Skill[] skills = new Skill[SkillType.values().length];
 
     private Tool equippedTool;
-
-    public Player(User controllingUser) {
-        this.controllingUser = controllingUser;
-        // TODO
-    }
-
     public Skill getSkill(SkillType skillType) {
         return skills[skillType.ordinal()];
     }
@@ -131,6 +130,14 @@ public class Player extends Human {
 
     public void setEquippedTool(Tool equippedTool) {
         this.equippedTool = equippedTool;
+    }
+
+    public ArrayList<Gift> getRecivedGifts() {
+        return recivedGifts;
+    }
+
+    public void setRecivedGifts(ArrayList<Gift> recivedGifts) {
+        this.recivedGifts = recivedGifts;
     }
 
     public void addSkillXP(SkillType skillType, int amount) {
