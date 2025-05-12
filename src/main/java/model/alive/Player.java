@@ -5,6 +5,7 @@ import model.Refrigerator;
 import model.Skill;
 import model.User;
 import model.enums.SkillType;
+import model.enums.Symbol;
 import model.items.crafting.Artisan;
 import model.items.crafting.ProducerArtisan;
 import model.items.plants.Plant;
@@ -288,4 +289,8 @@ public class Player extends Human implements DailyUpdate {
     }
 
 
+    @Override
+    public Symbol getSymbol() {
+        return Symbol.PLAYER;
+    }
 }

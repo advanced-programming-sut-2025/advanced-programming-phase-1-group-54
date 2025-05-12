@@ -8,7 +8,8 @@ import model.Result;
 import model.Shops.*;
 import model.alive.Animal;
 import model.alive.Human;
-import model.enums.toolsLevel.BackPackLevel;
+import model.alive.NPC;
+import model.enums.BackPackLevel;
 import model.items.Item;
 import model.items.ItemsInShops;
 import model.items.recipes.Recipe;
@@ -24,9 +25,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NPCShopsController {
+    // TODO add upperleft and lowerright locations of buildings to each shop
+
     static {
         //creating blacksmith shop
-        Human human = new Human();
+        Human human = new NPC();
         human.setName("Clint");
         BlackSmithShop blackSmithShop = new BlackSmithShop(human);
         App.getCurrentGame().getNpcShops().add(blackSmithShop);
@@ -53,7 +56,7 @@ public class NPCShopsController {
 
 
         //creating JojoMart shop
-        Human human1 = new Human();
+        Human human1 = new NPC();
         human1.setName("Morris");
         JojoMartShop jojoMartShop = new JojoMartShop(human);
         App.getCurrentGame().getNpcShops().add(blackSmithShop);
@@ -109,7 +112,7 @@ public class NPCShopsController {
 
 
         //creating Pierre General Shop
-        Human human2 = new Human();
+        Human human2 = new NPC();
         human2.setName("Pierre");
         PierreGeneralShop pierreGeneralShop = new PierreGeneralShop(human);
         App.getCurrentGame().getNpcShops().add(pierreGeneralShop);
@@ -168,7 +171,7 @@ public class NPCShopsController {
 
 
         //creating Carpenter’s Shop
-        Human human3 = new Human();
+        Human human3 = new NPC();
         human3.setName("Robin");
         CarpenterShop carpenterShop = new CarpenterShop(human);
         App.getCurrentGame().getNpcShops().add(carpenterShop);
@@ -198,7 +201,7 @@ public class NPCShopsController {
 
 
         //creating Fish Shop
-        Human human4 = new Human();
+        Human human4 = new NPC();
         human4.setName("Willy");
         FishShop fishShop = new FishShop(human);
         App.getCurrentGame().getNpcShops().add(fishShop);
@@ -217,7 +220,7 @@ public class NPCShopsController {
 
 
         //crating Marnie’s Ranch
-        Human human5 = new Human();
+        Human human5 = new NPC();
         human5.setName("Marnie");
         MarnieRanch marnieRanch = new MarnieRanch(human);
         App.getCurrentGame().getNpcShops().add(marnieRanch);
@@ -245,7 +248,7 @@ public class NPCShopsController {
 
 
         //creating :The Stardrop Saloon
-        Human human6 = new Human();
+        Human human6 = new NPC();
         human6.setName("Gus");
         TheStardropSaloonShop theStardropSaloonShop = new TheStardropSaloonShop(human);
         App.getCurrentGame().getNpcShops().add(theStardropSaloonShop);

@@ -1,6 +1,7 @@
 package model.alive;
 
 import model.Quest;
+import model.enums.Symbol;
 import model.items.Item;
 
 import java.util.ArrayList;
@@ -22,5 +23,10 @@ public class NPC extends Human {
         if (allQuests.contains(quest)) {
             activeQuests.add(quest);
         }
+    }
+
+    @Override
+    public Symbol getSymbol() {
+        return Symbol.NPC;
     }
 }

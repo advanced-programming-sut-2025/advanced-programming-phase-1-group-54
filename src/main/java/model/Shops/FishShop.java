@@ -2,13 +2,14 @@ package model.Shops;
 
 import model.alive.Human;
 import model.items.ItemsInShops;
+import model.map.Location;
 
 import java.util.ArrayList;
 
 public class FishShop extends Shop {
     private ArrayList<StockInShop> stockInShop;
-    public FishShop(Human human) {
-        super(human,9,17);
+    public FishShop(Human human, Location upperLeftLocation, Location lowerRightLocation) {
+        super(human,9,17, upperLeftLocation, lowerRightLocation);
         stockInShop = new ArrayList<>();
     }
 

@@ -22,6 +22,9 @@ public enum Symbol {
     WOOD(Color.RED_FONT + "|" + Color.DEFAULT),
 
     SHOP(Color.RED_FONT + "S" + Color.DEFAULT),
+    NPC(Color.RED_FONT + "N" + Color.DEFAULT),
+    REFRIGERATOR(Color.BLUE_FONT + "0" + Color.DEFAULT),
+    ARTISAN(Color.CYAN_FONT + "A" + Color.DEFAULT)
     ;
 
 
