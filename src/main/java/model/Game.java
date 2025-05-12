@@ -8,17 +8,21 @@ import model.map.World;
 
 import java.util.ArrayList;
 
-public class Game {
+public class Game implements DailyUpdate {
     private SubMenu subMenu = SubMenu.DEFAULT;
 
     private final World world;
     private final Player[] players;
+
     private DateTime dateTime;
     private int turn;
-    private Player currentPlayer;
+
     private ArrayList<Shop> npcShops;
+
+
     private Weather currentWeather;
     private Weather tommorrowWeather;
+
     public Game(World world, Player[] players) {
         this.world = world;
         this.players = players;
@@ -57,13 +61,27 @@ public class Game {
     }
 
     public Player getCurrentPlayer() {
-        return currentPlayer;
+        return players[turn];
     }
 
     public void thunder() {}
 
-    public void newDay() {
+    @Override
+    public void nextDayUpdate() {
+        currentWeather = tommorrowWeather;
+        tommorrowWeather = Weather.getRandom(dateTime.getSeason());
 
+        for (Player player : players) {
+            player.nextDayUpdate();
+        }
+        dateTime.increaseDay(1);
+    }
+
+    public void nextTurn() {
+        turn++;
+        if (turn >= players.length) {
+            turn = 0;
+        }
     }
 
     public Weather getCurrentWeather() {
@@ -73,5 +91,4 @@ public class Game {
     public Weather getTomorrowWeather() {
         return tommorrowWeather;
     }
-
 }

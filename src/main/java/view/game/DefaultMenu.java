@@ -1,7 +1,10 @@
 package view.game;
 
 import controller.GameController;
+import model.Result;
+import model.enums.commands.Command;
 import model.enums.commands.GameCommand;
+import model.map.Location;
 
 import java.util.Scanner;
 
@@ -32,7 +35,18 @@ public class DefaultMenu implements GameSubMenu {
         else if (GameCommand.GREENHOUSE_BUILD.matches(input))
             handleGreenHouseBuild();
 
-//      todo  else if (GameComman
+        else if (GameCommand.WALK.matches(input))
+            handleWalk(input, scanner);
+        else if (GameCommand.PRINT_MAP.matches(input))
+            handlePrintMap(input);
+
+//        else if (GameCommand.SHOW_ENERGY.matches(input))
+//            handleShowEnergy();
+//
+//        else if (GameCommand.SHOW_INVENTORY.matches(input))
+//            handleShowInventory();
+//        else if (GameCommand.TRASH.matches(input))
+//            handleTrash(input);
     }
 
     private void handleExitGame() {
@@ -73,5 +87,31 @@ public class DefaultMenu implements GameSubMenu {
 
     private void handleGreenHouseBuild() {
 
+    }
+
+    private void handleWalk(String input, Scanner scanner) {
+        GameCommand command = GameCommand.WALK;
+        Location location = new Location(Integer.parseInt(command.getGroup(input, "x")),
+                Integer.parseInt(command.getGroup(input, "y")));
+
+        Result checkForWalkingResult = GameController.checkForWalking(location);
+        showResult(checkForWalkingResult);
+
+        if (!checkForWalkingResult.success())
+            return;
+
+        boolean confirmation = askForConfirmation(scanner);
+        if (confirmation)
+            showResult(GameController.walk(location));
+    }
+
+    private void handlePrintMap(String input) {
+        Command command = GameCommand.PRINT_MAP;
+        Location location = new Location(Integer.parseInt(command.getGroup(input, "x")),
+                Integer.parseInt(command.getGroup(input, "y")));
+
+        int size = Integer.parseInt(command.getGroup(input, "size"));
+
+        showResult(GameController.printMap(location, size));
     }
 }

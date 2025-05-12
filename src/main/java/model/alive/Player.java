@@ -1,5 +1,6 @@
 package model.alive;
 
+import model.DailyUpdate;
 import model.Refrigerator;
 import model.Skill;
 import model.User;
@@ -10,6 +11,7 @@ import model.items.plants.Plant;
 import model.items.recipes.Recipe;
 import model.items.tools.BackPack;
 import model.items.tools.Tool;
+import model.items.tools.TrashCan;
 import model.map.Location;
 import model.map.Tile;
 
@@ -18,17 +20,24 @@ import java.util.HashMap;
 
 
 
-public class Player extends Human {
+public class Player extends Human implements DailyUpdate {
     private static final int MAXIMUM_ENERGY = 200;
 
     public static int getMaximumEnergy() {
         return MAXIMUM_ENERGY;
     }
 
-    private User controllingUser;
-    private int energy;
     private int money;
+
+    private User controllingUser;
+
+    private int energy;
+    private boolean unlimitedEnergy;
+
     private BackPack backpack = new BackPack();
+    private TrashCan trashCan = new TrashCan();
+
+
     private Refrigerator refrigerator = new Refrigerator();
     private Location currentLocation;
     private final HashMap<Plant,Tile> Plants = new HashMap<>();
@@ -54,6 +63,7 @@ public class Player extends Human {
 
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
+        this.money = 0;
         this.skills = new HashMap<>();
         skills.put(SkillType.FARMING,new Skill(SkillType.FARMING));
         skills.put(SkillType.FORAGING,new Skill(SkillType.FORAGING));
@@ -71,6 +81,8 @@ public class Player extends Human {
     }
 
     public int getEnergy() {
+        if (isUnlimitedEnergy())
+            return MAXIMUM_ENERGY;
         return energy;
     }
 
@@ -78,7 +90,7 @@ public class Player extends Human {
         return money;
     }
 
-    public boolean isGhash() {
+    public boolean isFallen() {
         return energy <= 0;
     }
 
@@ -153,11 +165,23 @@ public class Player extends Human {
     }
 
     public void decreaseEnergy(int amount) {
-        energy -= amount;
+        if (!unlimitedEnergy)
+            energy -= amount;
     }
 
     public void increaseEnergy(int amount) {
-        energy += amount;
+        if (unlimitedEnergy)
+            energy += amount;
+    }
+
+    public boolean isUnlimitedEnergy() {
+        return unlimitedEnergy;
+    }
+
+    public void setUnlimitedEnergy(boolean unlimitedEnergy) {
+        this.unlimitedEnergy = unlimitedEnergy;
+        if (unlimitedEnergy)
+            setEnergy(MAXIMUM_ENERGY);
     }
 
     public void setBackpack(BackPack backpack) {
@@ -186,6 +210,14 @@ public class Player extends Human {
 
     public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
+    }
+
+    @Override
+    public void nextDayUpdate() {
+        if (this.isFallen())
+            energy = 75 * MAXIMUM_ENERGY / 100;
+        else
+            energy = MAXIMUM_ENERGY;
     }
 
 
