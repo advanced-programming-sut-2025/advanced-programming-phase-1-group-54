@@ -4,10 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import controller.Game.CommonGameController;
+import model.AnimalHouse;
+import model.App;
 import model.enums.ProduceQuality;
 import model.items.AnimalProduce;
 import model.items.Food;
 import model.items.Item;
+import model.map.Farm;
 import model.map.Location;
 
 import java.io.FileNotFoundException;
@@ -172,7 +175,7 @@ public class Animal {
 
 
 
-    public void update(){
+    public void update(Player player){
         if(this.isGoneOut()){
             this.setHungry(false);
             this.increaseFriendshipLevel(8);
@@ -182,7 +185,14 @@ public class Animal {
             this.decreaseFriendshipLevel(10);
         }
 
-        // TODO is out at night -20
+        Farm farm = App.getCurrentGame().getWorld().getFarm(player);
+        Location location = this.getLocation();
+        if(location == null){
+            this.decreaseFriendshipLevel(20);
+        }
+        else if(! (farm.getTileAt(location.delta(farm.getLocation())).getThingOnTile() instanceof AnimalHouse)){
+            this.decreaseFriendshipLevel(20);
+        }
 
         if(this.isHungry()){
             this.decreaseFriendshipLevel(20);

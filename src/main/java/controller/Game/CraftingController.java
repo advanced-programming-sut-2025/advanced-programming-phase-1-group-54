@@ -12,6 +12,7 @@ import model.items.crafting.ProducerArtisan;
 import model.items.crafting.UnProducerArtisan;
 import model.items.plants.Seed;
 import model.items.recipes.Recipe;
+import model.map.Farm;
 import model.map.Tile;
 
 import java.util.ArrayList;
@@ -93,6 +94,7 @@ public class CraftingController {
 
     }
 
+    // TODO
     public static Result placeArtisan(String artisanName,String directionString){
 
         Direction direction;
@@ -103,26 +105,39 @@ public class CraftingController {
         }
 
         Player player = App.getCurrentGame().getCurrentPlayer();
-        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation().getLocationAt(direction));
+        Farm farm = App.getCurrentGame().getWorld().getFarm(player);
+        Tile tile = farm.getTileAt(player.getCurrentLocation().getLocationAt(direction).delta(farm.getLocation()));
 
         if(tile.getThingOnTile() != null){
             return new Result(-1,"Tile is already placed");
         }
 
         ProducerArtisan producerArtisan = ProducerArtisan.getProducerArtisan(artisanName);
-        if(producerArtisan == null){
+        if(producerArtisan != null){
+            if(! player.getBackpack().removeItem(producerArtisan,1)){
+                return new Result(-1,"You don't have the artisan");
+            }
+
+            tile.setThingOnTile(producerArtisan);
+            player.getPlacedArtisans().add(producerArtisan);
+
+            return new Result(1,"Artisan placed successfully");
+        }
+        UnProducerArtisan unProducerArtisan = UnProducerArtisan.getUnProducerArtisan(artisanName);
+        if(unProducerArtisan == null){
             return new Result(-1,"Artisan dose not exist");
         }
 
-        if(! player.getBackpack().removeItem(producerArtisan,1)){
-            return new Result(-1,"You don't have the artisan");
-        }
 
-        tile.setThingOnTile(producerArtisan);
-        player.getPlacedArtisans().add(producerArtisan);
+        // TODO add  feature
+//        for(int i = 0;i < 0;i++){
+//            for(int j = 0; j < 0;j++){
+//
+//            }
+//        }
 
-        return null;
 
+        return new Result(-1,"Artisan placed successfully");
     }
 
     public static Result cheatCodeAddItem(String itemName,String numberString){
