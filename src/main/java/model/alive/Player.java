@@ -35,6 +35,7 @@ public class Player extends Human implements DailyUpdate {
 
     private int energy;
     private boolean unlimitedEnergy;
+    private int heartBroken;
 
     private BackPack backpack = new BackPack();
     private TrashCan trashCan = new TrashCan();
@@ -42,7 +43,6 @@ public class Player extends Human implements DailyUpdate {
 
     private Refrigerator refrigerator = new Refrigerator();
     private Location currentLocation;
-    private ArrayList<Gift> recivedGifts;
     private final HashMap<Plant,Tile> Plants = new HashMap<>();
 
     private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>(){{
@@ -56,23 +56,29 @@ public class Player extends Human implements DailyUpdate {
         add(Recipe.craftRecipes.get("Mayonnaise Machine Recipe"));
     }};
 
+    private ArrayList<Gift> recivedGifts;
+    private ArrayList<Player> askedForMarriage = new ArrayList<>();
+    private Player partner = null;
 
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
     private final HashMap<String,Animal> animals = new HashMap<>();
     private final HashMap<SkillType,Skill> skills;
 
+
     private SkillType buffSkill;
     private int buffHours;
 
 
     private Tool equippedTool;
-
+    private boolean isInGiftList;
 
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
         this.money = 0;
+        this.isInGiftList = false;
         this.skills = new HashMap<>();
+        this.heartBroken = 0;
         skills.put(SkillType.FARMING,new Skill(SkillType.FARMING));
         skills.put(SkillType.FORAGING,new Skill(SkillType.FORAGING));
         skills.put(SkillType.MINING,new Skill(SkillType.MINING));
@@ -85,6 +91,9 @@ public class Player extends Human implements DailyUpdate {
     }
     public void spentMoney(int spent){
         money -= spent;
+        if(partner != null) {
+            partner.setMoney(money);
+        }
     }
 
 
@@ -153,17 +162,27 @@ public class Player extends Human implements DailyUpdate {
         return animals;
     }
 
+    public Player getPartner() {
+        return partner;
+    }
 
+    public void setPartner(Player partner) {
+        this.partner = partner;
+    }
 
     public void setControllingUser(User controllingUser) {
         this.controllingUser = controllingUser;
     }
 
     public void setEnergy(int energy) {
-        this.energy = energy;
+        if (energy <= MAXIMUM_ENERGY)
+            this.energy = energy;
     }
 
     public void increaseMoney(int money) {
+        if(partner != null) {
+            partner.increaseMoney(money);
+        }
         this.money += money;
     }
 
@@ -172,10 +191,16 @@ public class Player extends Human implements DailyUpdate {
             return false;
         }
         this.money -= money;
+        if(partner != null) {
+            partner.decreaseMoney(money);
+        }
         return true;
     }
 
     public void setMoney(int money) {
+        if(partner != null) {
+            partner.setMoney(money);
+        }
         this.money = money;
     }
 
@@ -203,6 +228,16 @@ public class Player extends Human implements DailyUpdate {
         this.backpack = backpack;
     }
 
+    public int getHeartBroken() {
+        return heartBroken;
+    }
+
+    public void setHeartBroken(int heartBroken) {
+        this.heartBroken = heartBroken;
+    }
+    public void decreaseHeartBroken() {
+        heartBroken--;
+    }
     public void setBuffSkill(SkillType buffSkill) {
         this.buffSkill = buffSkill;
     }
@@ -223,6 +258,11 @@ public class Player extends Human implements DailyUpdate {
         return recivedGifts;
     }
 
+
+    public ArrayList<Player> getAskedForMarriage() {
+        return askedForMarriage;
+    }
+
     public void setRecivedGifts(ArrayList<Gift> recivedGifts) {
         this.recivedGifts = recivedGifts;
     }
@@ -234,12 +274,26 @@ public class Player extends Human implements DailyUpdate {
         this.currentLocation = currentLocation;
     }
 
+    public boolean isInGiftList() {
+        return isInGiftList;
+    }
+
+    public void setInGiftList(boolean inGiftList) {
+        isInGiftList = inGiftList;
+    }
+
     @Override
     public void nextDayUpdate() {
         if (this.isFallen())
             energy = 75 * MAXIMUM_ENERGY / 100;
-        else
-            energy = MAXIMUM_ENERGY;
+        else {
+            if(this.heartBroken > 0){
+                energy = MAXIMUM_ENERGY / 2;
+            }
+            else {
+                energy = MAXIMUM_ENERGY;
+            }
+        }
     }
 
 
