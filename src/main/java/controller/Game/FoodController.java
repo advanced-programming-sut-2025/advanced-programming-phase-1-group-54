@@ -1,6 +1,7 @@
 package controller.Game;
 
 import model.App;
+import model.Building.Cabin;
 import model.Refrigerator;
 import model.Result;
 import model.alive.Player;
@@ -8,6 +9,7 @@ import model.items.Food;
 import model.items.Item;
 import model.items.recipes.Recipe;
 import model.items.tools.BackPack;
+import model.map.Tile;
 
 import java.util.ArrayList;
 
@@ -15,7 +17,12 @@ public class FoodController {
 
     public static Result showFoodRecipes(){
 
-        // Todo is in the House?
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
+
+        if(! (tile.getThingOnTile() instanceof Cabin)){
+            return new Result(-1,"You are not in Cabin");
+        }
 
         ArrayList<Recipe> foodRecipes = App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes();
         StringBuilder output = new StringBuilder();
@@ -27,10 +34,16 @@ public class FoodController {
 
     public static Result cooking(String foodName){
 
-        // Todo is in the House? and check energy
-
         Player player = App.getCurrentGame().getCurrentPlayer();
         Food food = Food.getFood(foodName);
+        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
+        if(! (tile.getThingOnTile() instanceof Cabin)){
+            return new Result(-1,"You are not in Cabin");
+        }
+
+        if(! player.checkEnergy(3, null)){
+            return new Result(-1,"You don't have enough energy to cook");
+        }
 
         if(food == null){
             return new Result(-1,foodName + " doesn't exist");
@@ -55,14 +68,13 @@ public class FoodController {
             CommonGameController.removeItemFromBackPack(ingredient,recipe.getIngredientsNumber().get(ingredient));
         }
 
+        player.decreaseEnergy(3,null);
         player.getBackpack().addItem(food, 1);
-
 
         return new Result(1,foodName + " cooked successfully");
     }
 
     public static Result eatFood(String foodName){
-
 
         Player player = App.getCurrentGame().getCurrentPlayer();
         Food food = Food.getFood(foodName);
@@ -74,9 +86,17 @@ public class FoodController {
             return new Result(-1, "You don't have food");
         }
 
-        // todo add energy and buff
+        player.increaseEnergy(food.getEnergy());
 
-        return null;
+        if(food.getEnergyBuff() > 0){
+            player.setEnergy(Player.getMaximumEnergy() + food.getEnergyBuff());
+        }
+        else if(food.getSkillType() != null){
+            player.setBuffSkill(food.getSkillType());
+            player.setBuffHours(food.getBuffHours());
+        }
+
+        return new Result(1,foodName + " eaten");
     }
 
     public static Result moveToRefrigerator(String itemName ,int number){
@@ -121,7 +141,6 @@ public class FoodController {
             backPack.removeItem(item,number);
             return new Result(-1 ,"you don't have enough " + itemName + " in your refrigerator");
         }
-
 
 
         return new Result(1,number + " of " + itemName + " moved successfully");

@@ -1,6 +1,7 @@
 package controller.Game;
 
 import model.App;
+import model.Building.Cabin;
 import model.Result;
 import model.alive.Player;
 import model.enums.Direction;
@@ -17,10 +18,13 @@ import java.util.ArrayList;
 
 public class CraftingController {
 
-
     public static Result showCraftingRecipe(){
 
-        // Todo is in the House?
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
+        if(! (tile.getThingOnTile() instanceof Cabin)){
+            return new Result(-1,"You are not in the Cabin");
+        }
 
         ArrayList<Recipe> craftingRecipes = App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes();
         StringBuilder output = new StringBuilder();
@@ -33,13 +37,19 @@ public class CraftingController {
 
     }
 
-    // Todo
     public static Result Crafting(String artisanName){
 
-        // Todo is in the House? and check energy
-
-
         Player player = App.getCurrentGame().getCurrentPlayer();
+        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
+        if(! (tile.getThingOnTile() instanceof Cabin)){
+            return new Result(-1,"You are not in the Cabin");
+        }
+
+
+
+        if(! player.checkEnergy(2,null)){
+            return new Result(-1,"you don't have enough energy");
+        }
 
         Artisan artisan = ProducerArtisan.getProducerArtisan(artisanName);
         if(artisan == null){
@@ -76,6 +86,8 @@ public class CraftingController {
                 return new Result(-1,"Backpack is full");
             }
         }
+
+        player.decreaseEnergy(2,null);
 
        return new Result(1,artisanName + " crafted successfully");
 

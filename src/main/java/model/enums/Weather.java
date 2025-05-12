@@ -15,4 +15,15 @@ public enum Weather {
     public double getFishingFactor() {
         return fishingFactor;
     }
+
+    public static Weather getRandom(Season season) {
+        switch (season) {
+            case SPRING, SUMMER, FALL:
+                return Weather.values()[(int) (Math.random() * 3)];
+            case WINTER:
+                return Weather.values()[((int) (Math.random() * 2)) * 3];
+            default:
+                return null;
+        }
+    }
 }

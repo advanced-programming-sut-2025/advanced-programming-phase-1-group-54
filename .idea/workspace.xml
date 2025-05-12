@@ -4,6 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="updated map, print map, buildings, ...">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/TurnUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CheatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CheatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/DailyUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DailyUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Weather.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Quarry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Quarry.java" afterDir="false" />
+    </list>
     <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="Commands added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +30,7 @@
       <list>
         <option value="Enum" />
         <option value="package.json" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -46,6 +62,7 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2wMLFZ23YNjTcvNH6ffw1FUkYPT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -508,6 +525,15 @@
       <updated>1747055460708</updated>
     </task>
     <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00039" summary="updated map, print map, buildings, ...">
+      <option name="closed" value="true" />
+      <created>1746998808173</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1746998808173</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,6 +551,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="edit write Produce until Loom Artisan" />
+    <MESSAGE value="edit write Produce until Preservers Jar Artisan" />
+    <MESSAGE value="write writeToJson method of Fish class" />
+    <MESSAGE value="read and write Fishes Json And add constructor to Item Class Babies :)" />
+    <MESSAGE value="write writeToJson method Of Recipe Class" />
+    <MESSAGE value="write writeToJson method Of Artisan Class and Produce Class" />
+    <MESSAGE value="write writeToJson method Of Material Class" />
+    <MESSAGE value="write writeToJson method Of Seed Class" />
     <MESSAGE value="write foraging Trees" />
     <MESSAGE value="edit writeToJson method of Seed Class" />
     <MESSAGE value=" write to json foragingCrops" />
@@ -557,6 +591,9 @@
     <MESSAGE value="Game file player relainships added to Game" />
     <MESSAGE value="Commands added" />
     <option name="LAST_COMMIT_MESSAGE" value="Commands added" />
+    <MESSAGE value="Map" />
+    <MESSAGE value="updated map, print map, buildings, ..." />
+    <option name="LAST_COMMIT_MESSAGE" value="updated map, print map, buildings, ..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

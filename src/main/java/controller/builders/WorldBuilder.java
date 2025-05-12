@@ -1,11 +1,15 @@
 package controller.builders;
 
-import model.map.Farm;
-import model.map.Location;
-import model.map.Tile;
-import model.map.World;
+import model.map.*;
 
 public class WorldBuilder {
+    static final Location[] farmLocation = {
+            new Location(0, 0),
+            new Location(World.getNumberOfRows() - Farm.getNumberOfRows(), 0),
+            new Location(World.getNumberOfRows() - Farm.getNumberOfRows(), World.getNumberOfColumns() - Farm.getNumberOfColumns()),
+            new Location(0, World.getNumberOfColumns() - Farm.getNumberOfColumns())
+    };
+
     private static Farm[] playerFarms = new Farm[4];
 
     public static void reset() {
@@ -17,60 +21,33 @@ public class WorldBuilder {
     }
 
     public static World getResult() {
-        Tile[][] tiles = new Tile[World.getNumberOfRows()][World.getNumberOfRows()];
+        Tile[][] tiles = new Tile[World.getNumberOfRows()][World.getNumberOfColumns()];
 
-        // Upper Left Farm
-        if (playerFarms[0] != null) {
-            for (int i = 1; i <= Farm.getNumberOfRows(); i++) {
-                for (int j = 1; j <= Farm.getNumberOfColumns(); j++) {
-                    Location location = new Location(i, j);
-                    tiles[i - 1][j - 1] = playerFarms[0].getTileAt(location);
-                }
-            }
-        }
+        // put farms in corners\
 
-        // Lower Left Farm
-        if (playerFarms[2] != null) {
-            for (int i = World.getNumberOfRows() - Farm.getNumberOfRows() + 1; i <= World.getNumberOfRows(); i++) {
-                for (int j = 1; j <= Farm.getNumberOfColumns(); j++) {
-                    Location location = new Location(i, j);
-                    tiles[i - 1][j - 1] = playerFarms[2].getTileAt(location);
-                }
-            }
-        }
-
-        // Upper Right Farm
-        if (playerFarms[3] != null) {
-            for (int i = 1; i <= Farm.getNumberOfRows(); i++) {
-                for (int j = World.getNumberOfColumns() - Farm.getNumberOfColumns() + 1; j <= World.getNumberOfColumns(); j++) {
-                    Location location = new Location(i, j);
-                    tiles[i - 1][j - 1] = playerFarms[3].getTileAt(location);
-                }
-            }
-        }
-
-        // Lower Right Farm
-        if (playerFarms[1] == null) {
-            for (int i = World.getNumberOfRows() - Farm.getNumberOfRows() + 1; i <= World.getNumberOfRows(); i++) {
-                for (int j = World.getNumberOfColumns() - Farm.getNumberOfColumns() + 1; j <= World.getNumberOfColumns(); j++) {
-                    Location location = new Location(i, j);
-                    tiles[i - 1][j - 1] = playerFarms[1].getTileAt(location);
+        for (int t = 0; t < 4; t++) {
+            if (playerFarms[t] != null) {
+                for (int i = 0; i < Farm.getNumberOfRows(); i++) {
+                    for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
+                        Location location = new Location(i, j);
+                        tiles[farmLocation[t].row() + i][farmLocation[t].column() + j] = playerFarms[t].getTileAt(location);
+                    }
                 }
             }
         }
 
         // All Other Tiles
-        for (int i = 1; i <= World.getNumberOfRows(); i++) {
-            for (int j = 1; j <= World.getNumberOfColumns(); j++) {
-                if (tiles[i - 1][j - 1] == null) {
-                    tiles[i - 1][j - 1] = new Tile();
+        for (int i = 0; i < World.getNumberOfRows(); i++) {
+            for (int j = 0; j < World.getNumberOfColumns(); j++) {
+                if (tiles[i][j] == null) {
+                    tiles[i][j] = new Tile();
                 }
             }
         }
 
         // TODO World is empty, add village
 
-        World world = new World(tiles);
+        World world = new World(playerFarms, new Map(World.getNumberOfRows(), World.getNumberOfColumns(), tiles));
         WorldBuilder.reset();
         return world;
     }

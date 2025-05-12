@@ -1,6 +1,7 @@
 package controller.Game;
 
 import model.App;
+import model.Building.GreenHouse;
 import model.Game;
 import model.Placeable;
 import model.Result;
@@ -8,7 +9,7 @@ import model.alive.Player;
 import model.enums.Direction;
 import model.enums.Feature;
 import model.items.plants.*;
-import model.map.Farm;
+import model.items.tools.Scythe;
 import model.map.Location;
 import model.map.Tile;
 import model.map.World;
@@ -46,8 +47,6 @@ public class PlantsController {
     }
 
     public Result planting(String seedName,String directionString){
-
-        // Todo check energy
 
         Direction direction;
         try{
@@ -88,13 +87,17 @@ public class PlantsController {
                 }
             }
         }
-
     }
 
     public Result showPlant(int x, int y){
 
         Location location = new Location(x, y);
-        Tile tile = App.getCurrentGame().getWorld().getTileAt(location);
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        Tile tile = App.getCurrentGame().getWorld().getFarm(player).getTileAt(location);
+
+        if(tile == null){
+            return new Result(-1,"tile is not in your farm");
+        }
 
         Placeable placeable = tile.getThingOnTile();
         if(placeable instanceof Plant plant){
@@ -123,9 +126,15 @@ public class PlantsController {
 
     }
 
+    //TODO
     public Result harvestPlant(String directionString){
 
         // Todo check energy
+
+        if(! (App.getCurrentGame().getCurrentPlayer().getEquippedTool() instanceof Scythe)){
+            return new Result(-1,"You don't have scythe in your hand");
+        }
+
 
         Direction direction;
         try{
@@ -206,8 +215,11 @@ public class PlantsController {
             return new Result(-1,"You do not have Seed");
         }
 
-
-        if(tile.getThingOnTile() != null){
+        if(tile.getThingOnTile() instanceof GreenHouse greenHouse){
+            // TODO
+       //     tile = greenHouse.
+        }
+        else if(tile.getThingOnTile() != null){
             return new Result(-1,"tile already is full");
         }
 
@@ -417,6 +429,5 @@ public class PlantsController {
         return null;
 
     }
-
 
 }

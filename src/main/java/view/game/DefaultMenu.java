@@ -3,10 +3,13 @@ package view.game;
 import controller.Game.FriendShipController;
 import controller.Game.NPCShopsController;
 import controller.GameController;
+import model.Result;
+import model.enums.commands.Command;
 import model.App;
 import model.Result;
 import model.alive.Player;
 import model.enums.commands.GameCommand;
+import model.map.Location;
 import model.relationships.Gift;
 import model.relationships.PlayerRelationship;
 
@@ -37,6 +40,7 @@ public class DefaultMenu implements GameSubMenu {
             handleShowWeather();
         else if (GameCommand.WEATHER_FORECAST.matches(input))
             handleShowWeatherForecast();
+
         else if (GameCommand.GREENHOUSE_BUILD.matches(input))
             handleGreenHouseBuild();
         else if (GameCommand.FRIENDSHIP.matches(input))
@@ -47,6 +51,10 @@ public class DefaultMenu implements GameSubMenu {
             talkHistory(GameCommand.TALK_HISTORY.getMatcher(input));
         else if(GameCommand.GIFT.getMatcher(input) != null)
             gift(GameCommand.GIFT.getMatcher(input));
+        else if (GameCommand.WALK.matches(input))
+            handleWalk(input, scanner);
+        else if (GameCommand.PRINT_MAP.matches(input))
+            handlePrintMap(input);
 
 
 
@@ -57,6 +65,14 @@ public class DefaultMenu implements GameSubMenu {
         */
 //      todo  else if (GameComman
 
+
+//        else if (GameCommand.SHOW_ENERGY.matches(input))
+//            handleShowEnergy();
+//
+//        else if (GameCommand.SHOW_INVENTORY.matches(input))
+//            handleShowInventory();
+//        else if (GameCommand.TRASH.matches(input))
+//            handleTrash(input);
     }
 
     private void handleExitGame() {
@@ -97,6 +113,32 @@ public class DefaultMenu implements GameSubMenu {
 
     private void handleGreenHouseBuild() {
 
+    }
+
+    private void handleWalk(String input, Scanner scanner) {
+        GameCommand command = GameCommand.WALK;
+        Location location = new Location(Integer.parseInt(command.getGroup(input, "x")),
+                Integer.parseInt(command.getGroup(input, "y")));
+
+        Result checkForWalkingResult = GameController.checkForWalking(location);
+        showResult(checkForWalkingResult);
+
+        if (!checkForWalkingResult.success())
+            return;
+
+        boolean confirmation = askForConfirmation(scanner);
+        if (confirmation)
+            showResult(GameController.walk(location));
+    }
+
+    private void handlePrintMap(String input) {
+        Command command = GameCommand.PRINT_MAP;
+        Location location = new Location(Integer.parseInt(command.getGroup(input, "x")),
+                Integer.parseInt(command.getGroup(input, "y")));
+
+        int size = Integer.parseInt(command.getGroup(input, "size"));
+
+        showResult(GameController.printMap(location, size));
     }
     private void friendShips(){
         ArrayList<PlayerRelationship> relationships = FriendShipController.showFriendShip(App.getCurrentGame().getCurrentPlayer());

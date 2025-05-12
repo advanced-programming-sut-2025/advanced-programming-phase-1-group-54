@@ -1,64 +1,4 @@
 {
-  "FALL": [
-    {
-      "baseSellPrice": 75,
-      "energy": 0,
-      "quality": "NORMAL",
-      "name": "Salmon",
-      "isEdible": true
-    },
-    {
-      "baseSellPrice": 40,
-      "energy": 0,
-      "quality": "NORMAL",
-      "name": "Sardine",
-      "isEdible": true
-    },
-    {
-      "baseSellPrice": 60,
-      "energy": 0,
-      "quality": "NORMAL",
-      "name": "Shad",
-      "isEdible": true
-    },
-    {
-      "baseSellPrice": 120,
-      "energy": 0,
-      "quality": "NORMAL",
-      "name": "Blue Discus",
-      "isEdible": true
-    }
-  ],
-  "WINTER": [
-    {
-      "baseSellPrice": 150,
-      "energy": 0,
-      "quality": "NORMAL",
-      "name": "Midnight Carp",
-      "isEdible": true
-    },
-    {
-      "baseSellPrice": 80,
-      "energy": 0,
-      "quality": "NORMAL",
-      "name": "Squid",
-      "isEdible": true
-    },
-    {
-      "baseSellPrice": 100,
-      "energy": 0,
-      "quality": "NORMAL",
-      "name": "Tuna",
-      "isEdible": true
-    },
-    {
-      "baseSellPrice": 55,
-      "energy": 0,
-      "quality": "NORMAL",
-      "name": "Perch",
-      "isEdible": true
-    }
-  ],
   "SPRING": [
     {
       "baseSellPrice": 100,
@@ -89,6 +29,36 @@
       "isEdible": true
     }
   ],
+  "FALL": [
+    {
+      "baseSellPrice": 75,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Salmon",
+      "isEdible": true
+    },
+    {
+      "baseSellPrice": 40,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Sardine",
+      "isEdible": true
+    },
+    {
+      "baseSellPrice": 60,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Shad",
+      "isEdible": true
+    },
+    {
+      "baseSellPrice": 120,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Blue Discus",
+      "isEdible": true
+    }
+  ],
   "SUMMER": [
     {
       "baseSellPrice": 75,
@@ -116,6 +86,36 @@
       "energy": 0,
       "quality": "NORMAL",
       "name": "Rainbow Trout",
+      "isEdible": true
+    }
+  ],
+  "WINTER": [
+    {
+      "baseSellPrice": 150,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Midnight Carp",
+      "isEdible": true
+    },
+    {
+      "baseSellPrice": 80,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Squid",
+      "isEdible": true
+    },
+    {
+      "baseSellPrice": 100,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Tuna",
+      "isEdible": true
+    },
+    {
+      "baseSellPrice": 55,
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Perch",
       "isEdible": true
     }
   ]
