@@ -5,6 +5,7 @@ import model.alive.Player;
 import model.enums.SubMenu;
 import model.enums.Weather;
 import model.map.World;
+import model.relationships.PlayerRelationship;
 
 import java.util.ArrayList;
 
@@ -21,13 +22,25 @@ public class Game implements DailyUpdate {
 
 
     private Weather currentWeather;
+    private ArrayList<PlayerRelationship> playerRelationships;
     private Weather tomorrowWeather;
 
     public Game(World world, Player[] players) {
         this.world = world;
         this.players = players;
+        this.playerRelationships = new ArrayList<>();
+        for (int i = 0; i < players.length; i++) {
+            for (int j = i+1; j < players.length; j++) {
+                playerRelationships.add(new PlayerRelationship(players[i], players[j]));
+            }
+        }
     }
-
+    public ArrayList<PlayerRelationship> getPlayerRelationships() {
+        return playerRelationships;
+    }
+    public void setPlayerRelationships(ArrayList<PlayerRelationship> playerRelationships) {
+        this.playerRelationships = playerRelationships;
+    }
     public SubMenu getSubMenu() {
         return subMenu;
     }
@@ -94,5 +107,13 @@ public class Game implements DailyUpdate {
 
     public void setTomorrowWeather(Weather tomorrowWeather) {
         this.tomorrowWeather = tomorrowWeather;
+    }
+    public Player getPlayerByUsername(String username) {
+        for (Player player : players) {
+            if(player.getName().equals(username)) {
+                return player;
+            }
+        }
+        return null;
     }
 }

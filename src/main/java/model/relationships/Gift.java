@@ -1,5 +1,6 @@
 package model.relationships;
 
+import model.App;
 import model.DateTime;
 import model.alive.Player;
 
@@ -7,12 +8,12 @@ public class Gift {
     private final Player payer;
     private final String itemName;
     private final DateTime timeStamp;
-    private int rate;
-
-    public Gift(Player payer, String itemName, DateTime timeStamp) {
+    private final int amount;
+    public Gift(Player payer, String itemName, int amount) {
         this.payer = payer;
         this.itemName = itemName;
-        this.timeStamp = timeStamp;
+        this.amount = amount;
+        this.timeStamp = App.getCurrentGame().getDateTime();
     }
 
     public Player getPayer() {
@@ -27,11 +28,7 @@ public class Gift {
         return timeStamp;
     }
 
-    public int getRate() {
-        return rate;
-    }
-
-    public void setRate(int rate) {
-        this.rate = rate;
+    public int getAmount() {
+        return amount;
     }
 }

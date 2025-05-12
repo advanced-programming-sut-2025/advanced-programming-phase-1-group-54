@@ -4,49 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="update weather, energy, turn, ...">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/enums/BackPackLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/FarmBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/FarmBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Building/Building.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building/Cabin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Building/Cabin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building/GreenHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Building/GreenHouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building/House.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Placeable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Placeable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/NPC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Feature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Feature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Symbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/ToolLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/ToolLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/toolsLevel/AxeLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/toolsLevel/BackPackLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/toolsLevel/FishingPoleLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/toolsLevel/HoeLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/toolsLevel/PickAxeLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/toolsLevel/TrashCanLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/toolsLevel/WateringCanLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Material.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Axe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Axe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/FishingPole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/FishingPole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Hoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Hoe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/MilkPail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/MilkPail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Pickaxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Pickaxe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Scythe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Scythe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Shear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Shear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Tool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/TrashCan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/TrashCan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/WateringCan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/WateringCan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Farm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Farm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Lake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Lake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Quarry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Quarry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" afterDir="false" />
-    </list>
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="make code run able ://///////////////" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,9 +13,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="package.json" />
         <option value="Interface" />
-        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -94,27 +52,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Asus/IdeaProjects/advanced-programming-phase-1-group-54",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Asus/IdeaProjects/advanced-programming-phase-1-group-54&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -163,14 +121,10 @@
       <workItem from="1746449939267" duration="3298000" />
       <workItem from="1746334097002" duration="35246000" />
       <workItem from="1746869325194" duration="10682000" />
-    </task>
-    <task id="LOCAL-00001" summary="maven dorost kardam">
-      <option name="closed" value="true" />
-      <created>1745847495302</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1745847495302</updated>
+      <workItem from="1746899524862" duration="16543000" />
+      <workItem from="1746969796674" duration="15898000" />
+      <workItem from="1747054765525" duration="708000" />
+      <workItem from="1747056717632" duration="490000" />
     </task>
     <task id="LOCAL-00002" summary="edit plants package">
       <option name="closed" value="true" />
@@ -476,7 +430,95 @@
       <option name="project" value="LOCAL" />
       <updated>1746998808173</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="buy item(some peoduct are not completed) and show item">
+      <option name="closed" value="true" />
+      <created>1747055061193</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055061193</updated>
+    </task>
+    <task id="LOCAL-00041" summary="String available added">
+      <option name="closed" value="true" />
+      <created>1747055096916</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055096916</updated>
+    </task>
+    <task id="LOCAL-00042" summary="gifts added to player">
+      <option name="closed" value="true" />
+      <created>1747055152072</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055152072</updated>
+    </task>
+    <task id="LOCAL-00043" summary="xml changes">
+      <option name="closed" value="true" />
+      <created>1747055175244</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055175244</updated>
+    </task>
+    <task id="LOCAL-00044" summary="method get player relainship added">
+      <option name="closed" value="true" />
+      <created>1747055245251</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055245251</updated>
+    </task>
+    <task id="LOCAL-00045" summary="gift menu added and gift class changed">
+      <option name="closed" value="true" />
+      <created>1747055293837</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055293837</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Friendship between players handled">
+      <option name="closed" value="true" />
+      <created>1747055357687</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055357687</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Game file player relainships added to Game">
+      <option name="closed" value="true" />
+      <created>1747055424654</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055424654</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Commands added">
+      <option name="closed" value="true" />
+      <created>1747055460708</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055460708</updated>
+    </task>
+    <task id="LOCAL-00049" summary="merge">
+      <option name="closed" value="true" />
+      <created>1747057960555</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1747057960555</updated>
+    </task>
+    <task id="LOCAL-00050" summary="make code run able ://///////////////">
+      <option name="closed" value="true" />
+      <created>1747058052354</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1747058052354</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,14 +529,25 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edit write Produce until Preservers Jar Artisan" />
     <MESSAGE value="write writeToJson method of Fish class" />
     <MESSAGE value="read and write Fishes Json And add constructor to Item Class Babies :)" />
     <MESSAGE value="write writeToJson method Of Recipe Class" />
@@ -522,10 +575,21 @@
     <MESSAGE value="make code runaAble" />
     <MESSAGE value="make produces json and write some controller" />
     <MESSAGE value="edit quality in some models and write animalProduces in to json" />
+    <MESSAGE value="shops updated" />
+    <MESSAGE value="buy item(some peoduct are not completed) and show item" />
+    <MESSAGE value="String available added" />
+    <MESSAGE value="gifts added to player" />
+    <MESSAGE value="xml changes" />
+    <MESSAGE value="method get player relainship added" />
+    <MESSAGE value="gift menu added and gift class changed" />
+    <MESSAGE value="Friendship between players handled" />
+    <MESSAGE value="Game file player relainships added to Game" />
+    <MESSAGE value="Commands added" />
     <MESSAGE value="Map" />
     <MESSAGE value="updated map, print map, buildings, ..." />
-    <MESSAGE value="update weather, energy, turn, ..." />
-    <option name="LAST_COMMIT_MESSAGE" value="update weather, energy, turn, ..." />
+    <MESSAGE value="merge" />
+    <MESSAGE value="make code run able ://///////////////" />
+    <option name="LAST_COMMIT_MESSAGE" value="make code run able ://///////////////" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -562,39 +626,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java</url>
-          <line>63</line>
-          <properties class="controller.Game.FoodController" method="eatFood">
+          <line>69</line>
+          <properties class="controller.Game.FoodController">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java</url>
-          <line>174</line>
-          <properties class="controller.Game.PlantsController">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java</url>
-          <line>180</line>
-          <properties class="controller.Game.PlantsController">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java</url>
-          <line>186</line>
-          <properties class="controller.Game.PlantsController">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="79" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

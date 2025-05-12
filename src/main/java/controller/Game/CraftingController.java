@@ -1,6 +1,7 @@
 package controller.Game;
 
 import model.App;
+import model.Building.Cabin;
 import model.Result;
 import model.alive.Player;
 import model.enums.Direction;
@@ -11,16 +12,20 @@ import model.items.crafting.ProducerArtisan;
 import model.items.crafting.UnProducerArtisan;
 import model.items.plants.Seed;
 import model.items.recipes.Recipe;
+import model.map.Farm;
 import model.map.Tile;
 
 import java.util.ArrayList;
 
 public class CraftingController {
 
-    // TODO
     public static Result showCraftingRecipe(){
 
-        // Todo is in the House?
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
+        if(! (tile.getThingOnTile() instanceof Cabin)){
+            return new Result(-1,"You are not in the Cabin");
+        }
 
         ArrayList<Recipe> craftingRecipes = App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes();
         StringBuilder output = new StringBuilder();
@@ -33,13 +38,19 @@ public class CraftingController {
 
     }
 
-    // Todo
     public static Result Crafting(String artisanName){
 
-        // Todo is in the House? and check energy
-
-
         Player player = App.getCurrentGame().getCurrentPlayer();
+        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
+        if(! (tile.getThingOnTile() instanceof Cabin)){
+            return new Result(-1,"You are not in the Cabin");
+        }
+
+
+
+        if(! player.checkEnergy(2,null)){
+            return new Result(-1,"you don't have enough energy");
+        }
 
         Artisan artisan = ProducerArtisan.getProducerArtisan(artisanName);
         if(artisan == null){
@@ -77,10 +88,13 @@ public class CraftingController {
             }
         }
 
+        player.decreaseEnergy(2,null);
+
        return new Result(1,artisanName + " crafted successfully");
 
     }
 
+    // TODO
     public static Result placeArtisan(String artisanName,String directionString){
 
         Direction direction;
@@ -91,26 +105,39 @@ public class CraftingController {
         }
 
         Player player = App.getCurrentGame().getCurrentPlayer();
-        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation().getLocationAt(direction));
+        Farm farm = App.getCurrentGame().getWorld().getFarm(player);
+        Tile tile = farm.getTileAt(player.getCurrentLocation().getLocationAt(direction).delta(farm.getLocation()));
 
         if(tile.getThingOnTile() != null){
             return new Result(-1,"Tile is already placed");
         }
 
         ProducerArtisan producerArtisan = ProducerArtisan.getProducerArtisan(artisanName);
-        if(producerArtisan == null){
+        if(producerArtisan != null){
+            if(! player.getBackpack().removeItem(producerArtisan,1)){
+                return new Result(-1,"You don't have the artisan");
+            }
+
+            tile.setThingOnTile(producerArtisan);
+            player.getPlacedArtisans().add(producerArtisan);
+
+            return new Result(1,"Artisan placed successfully");
+        }
+        UnProducerArtisan unProducerArtisan = UnProducerArtisan.getUnProducerArtisan(artisanName);
+        if(unProducerArtisan == null){
             return new Result(-1,"Artisan dose not exist");
         }
 
-        if(! player.getBackpack().removeItem(producerArtisan,1)){
-            return new Result(-1,"You don't have the artisan");
-        }
 
-        tile.setThingOnTile(producerArtisan);
-        player.getPlacedArtisans().add(producerArtisan);
+        // TODO add  feature
+//        for(int i = 0;i < 0;i++){
+//            for(int j = 0; j < 0;j++){
+//
+//            }
+//        }
 
-        return null;
 
+        return new Result(-1,"Artisan placed successfully");
     }
 
     public static Result cheatCodeAddItem(String itemName,String numberString){

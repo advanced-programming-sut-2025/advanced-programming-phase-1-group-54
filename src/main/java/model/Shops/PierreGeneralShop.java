@@ -62,9 +62,19 @@ public class PierreGeneralShop extends Shop {
 
     public static class BackPacksItems extends ItemsInShops {
         private boolean isPurchaseAble;
-        public BackPacksItems(boolean isPurchaseAble,String name, int price,String description) {
+        private String isAvailable;
+        public BackPacksItems(boolean isPurchaseAble,String name, int price,String description, String isAvailable) {
             super(name, false, 1, price, description);
             this.isPurchaseAble = isPurchaseAble;
+            this.isAvailable = isAvailable;
+        }
+
+        public String getIsAvailable() {
+            return isAvailable;
+        }
+
+        public void setIsAvailable(String isAvailable) {
+            this.isAvailable = isAvailable;
         }
 
         public boolean isPurchaseAble() {

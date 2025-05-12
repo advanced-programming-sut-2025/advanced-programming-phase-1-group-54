@@ -4,7 +4,6 @@ import model.alive.Human;
 import model.items.ItemsInShops;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BlackSmithShop extends Shop {
     private ArrayList<upgradesToolsBlacsmithShop> upgradeTools;
@@ -31,17 +30,28 @@ public class BlackSmithShop extends Shop {
     }
 
     public static class upgradesToolsBlacsmithShop extends ItemsInShops {
-        private HashMap<String,Integer> ingredients;
+        private String ingridientsString;
+        private int ingredientsInt;
         public upgradesToolsBlacsmithShop(String name, int price, String hashmapString, int hashmapInt) {
             super(name,false,1, price,"no description");
-            ingredients = new HashMap<>();
-            ingredients.put(hashmapString, hashmapInt);
+            this.ingredientsInt = hashmapInt;
+            this.ingridientsString = hashmapString;
         }
-        public HashMap<String, Integer> getIngredients() {
-            return ingredients;
+
+        public String getIngridientsString() {
+            return ingridientsString;
         }
-        public void setIngredients(HashMap<String, Integer> ingredient) {
-            ingredients = ingredient;
+
+        public void setIngridientsString(String ingridientsString) {
+            this.ingridientsString = ingridientsString;
+        }
+
+        public int getIngredientsInt() {
+            return ingredientsInt;
+        }
+
+        public void setIngredientsInt(int ingredientsInt) {
+            this.ingredientsInt = ingredientsInt;
         }
     }
 }

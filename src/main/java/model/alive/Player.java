@@ -5,6 +5,7 @@ import model.Refrigerator;
 import model.Skill;
 import model.User;
 import model.enums.SkillType;
+import model.items.crafting.Artisan;
 import model.items.crafting.ProducerArtisan;
 import model.items.plants.Plant;
 import model.items.recipes.Recipe;
@@ -13,6 +14,8 @@ import model.items.tools.Tool;
 import model.items.tools.TrashCan;
 import model.map.Location;
 import model.map.Tile;
+import model.relationships.Gift;
+import model.relationships.PlayerRelationship;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +24,10 @@ import java.util.HashMap;
 
 public class Player extends Human implements DailyUpdate {
     private static final int MAXIMUM_ENERGY = 200;
+
+    public static int getMaximumEnergy() {
+        return MAXIMUM_ENERGY;
+    }
 
     private int money;
 
@@ -35,27 +42,32 @@ public class Player extends Human implements DailyUpdate {
 
     private Refrigerator refrigerator = new Refrigerator();
     private Location currentLocation;
+    private ArrayList<Gift> recivedGifts;
     private final HashMap<Plant,Tile> Plants = new HashMap<>();
-    
+
     private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>(){{
         add(Recipe.foodRecipes.get("Fried Egg Recipe"));
     }};
 
+
     private final ArrayList<Recipe> learnedCraftingRecipes = new ArrayList<>(){{
-//        add(Recipe.craftRecipes.get(""));
+        add(Recipe.craftRecipes.get("Furnace Recipe"));
+        add(Recipe.craftRecipes.get("Scarecrow Recipe"));
+        add(Recipe.craftRecipes.get("Mayonnaise Machine Recipe"));
     }};
+
 
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
     private final HashMap<String,Animal> animals = new HashMap<>();
     private final HashMap<SkillType,Skill> skills;
 
-    public void setMoney(int money) {
-        this.money = money;
-    }
+    private SkillType buffSkill;
+    private int buffHours;
 
 
     private Tool equippedTool;
+
 
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
@@ -67,6 +79,16 @@ public class Player extends Human implements DailyUpdate {
         skills.put(SkillType.FISHING,new Skill(SkillType.FISHING));
         // TODO
     }
+
+    public int getMoney() {
+        return money;
+    }
+    public void spentMoney(int spent){
+        money -= spent;
+    }
+
+
+
 
     public HashMap<SkillType, Skill> getSkills() {
         return skills;
@@ -82,9 +104,6 @@ public class Player extends Human implements DailyUpdate {
         return energy;
     }
 
-    public int getMoney() {
-        return money;
-    }
 
     public boolean isFallen() {
         return energy <= 0;
@@ -96,6 +115,14 @@ public class Player extends Human implements DailyUpdate {
 
     public Refrigerator getRefrigerator() {
         return refrigerator;
+    }
+
+    public SkillType getBuffSkill() {
+        return buffSkill;
+    }
+
+    public int getBuffHours() {
+        return buffHours;
     }
 
     public Tool getEquippedTool() {
@@ -136,6 +163,22 @@ public class Player extends Human implements DailyUpdate {
         this.energy = energy;
     }
 
+    public void increaseMoney(int money) {
+        this.money += money;
+    }
+
+    public boolean decreaseMoney(int money) {
+        if(this.money < money) {
+            return false;
+        }
+        this.money -= money;
+        return true;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
     public void decreaseEnergy(int amount) {
         if (!unlimitedEnergy)
             energy -= amount;
@@ -160,10 +203,29 @@ public class Player extends Human implements DailyUpdate {
         this.backpack = backpack;
     }
 
+    public void setBuffSkill(SkillType buffSkill) {
+        this.buffSkill = buffSkill;
+    }
+
+    public void decreaseBuffHours(int buffHours) {
+        this.buffHours -= buffHours;
+    }
+
+    public void setBuffHours(int buffHours) {
+        this.buffHours = buffHours;
+    }
+
     public void setEquippedTool(Tool equippedTool) {
         this.equippedTool = equippedTool;
     }
 
+    public ArrayList<Gift> getRecivedGifts() {
+        return recivedGifts;
+    }
+
+    public void setRecivedGifts(ArrayList<Gift> recivedGifts) {
+        this.recivedGifts = recivedGifts;
+    }
     public void setRefrigerator(Refrigerator refrigerator) {
         this.refrigerator = refrigerator;
     }
@@ -179,4 +241,51 @@ public class Player extends Human implements DailyUpdate {
         else
             energy = MAXIMUM_ENERGY;
     }
+
+
+    public boolean checkEnergy(int energyAmount,SkillType skillType) {
+        if(this.unlimitedEnergy){
+            return true;
+        }
+        else if(skillType == null){
+            return this.energy >= energyAmount;
+        }
+        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
+                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+            return this.energy >= energyAmount - 2;
+        }
+        else if(this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+            return this.energy >= energyAmount - 1;
+        }
+        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
+            return this.energy >= energyAmount - 1;
+        }
+        else{
+            return this.energy >= energyAmount;
+        }
+    }
+
+    public void decreaseEnergy(int energyAmount,SkillType skillType) {
+        if(this.unlimitedEnergy){
+            return;
+        }
+        else if(skillType == null){
+            this.energy -= energyAmount;
+        }
+        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
+                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+            this.energy -= energyAmount - 2;
+        }
+        else if(this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+            this.energy -= energyAmount - 1;
+        }
+        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
+            this.energy -= energyAmount - 1;
+        }
+        else{
+            this.energy -= energyAmount;
+        }
+    }
+
+
 }
