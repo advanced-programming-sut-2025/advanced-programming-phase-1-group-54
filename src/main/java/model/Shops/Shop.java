@@ -8,7 +8,7 @@ public abstract class Shop extends Building {
     protected int openingHours;
     protected int closingHours;
     public Shop(Human owner, int openingHours, int closingHours,) {
-        super()
+        super();
         this.owner = owner;
         this.openingHours = openingHours;
         this.closingHours = closingHours;
