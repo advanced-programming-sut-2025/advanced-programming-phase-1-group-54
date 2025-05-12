@@ -11,4 +11,8 @@ public record Location(int row, int column) {
     public Location delta(Location that) {
         return new Location(this.row - that.row(), this.column - that.column());
     }
+
+    public Location add(Location that) {
+        return new Location(this.row + that.row(), this.column + that.column());
+    }
 }

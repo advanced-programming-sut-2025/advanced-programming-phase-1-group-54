@@ -14,12 +14,15 @@ public class Scythe extends Tool {
             return false;
 
         if (tile.getThingOnTile() instanceof Plant plant) {
-            backPack.addItem(Fruit.getFruit(plant.getFruit()), 1);
+            if (plant.isFruitIsRipen()) {
+                backPack.addItem(Fruit.getFruit(plant.getFruit()), 1);
 
-            if (plant instanceof Crop crop && crop.isOneTime())
-                tile.setThingOnTile(null);
+                if (plant instanceof Crop crop && crop.getGiantDirection() != null) {
+                    backPack.addItem(Fruit.getFruit(plant.getFruit()), 9);
+                }
 
-            return true;
+                return true;
+            }
         }
 
         return false;
