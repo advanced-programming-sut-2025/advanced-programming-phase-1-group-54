@@ -5,6 +5,7 @@ import model.Building.Cabin;
 import model.Result;
 import model.alive.Player;
 import model.enums.Direction;
+import model.enums.Feature;
 import model.items.Item;
 import model.items.crafting.Artisan;
 import model.items.crafting.Produce;
@@ -13,6 +14,7 @@ import model.items.crafting.UnProducerArtisan;
 import model.items.plants.Seed;
 import model.items.recipes.Recipe;
 import model.map.Farm;
+import model.map.Location;
 import model.map.Tile;
 
 import java.util.ArrayList;
@@ -128,14 +130,21 @@ public class CraftingController {
             return new Result(-1,"Artisan dose not exist");
         }
 
+        Location location = player.getCurrentLocation().delta(farm.getLocation());
 
-        // TODO add  feature
-//        for(int i = 0;i < 0;i++){
-//            for(int j = 0; j < 0;j++){
-//
-//            }
-//        }
+        if(unProducerArtisan.getFeature().equals(Feature.DESTROYED)){
 
+            // TODO Destroy
+
+        }
+        else{
+            for(int i = -unProducerArtisan.getRadius();i < unProducerArtisan.getRadius();i++){
+                for(int j = -unProducerArtisan.getRadius(); j < unProducerArtisan.getRadius();j++){
+                    Location location1 = location.delta(new Location(location.row() + i,location.column() + j));
+                    farm.getTileAt(location1).getFeatures().add(unProducerArtisan.getFeature());
+                }
+            }
+        }
 
         return new Result(-1,"Artisan placed successfully");
     }

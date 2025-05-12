@@ -3,7 +3,6 @@ package model;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import model.alive.Animal;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -31,13 +30,15 @@ public class AnimalHouse {
 
     private final String Name;
     private final ArrayList<String> animals;
-    private final int numberOfAnimals;
+    private final int size;
+    private int numberOfAnimals;
 
 
-    public AnimalHouse(String name, ArrayList<String> animals, int numberOfAnimals) {
+    public AnimalHouse(String name, ArrayList<String> animals, int size) {
         Name = name;
         this.animals = animals;
-        this.numberOfAnimals = numberOfAnimals;
+        this.size = size;
+        this.numberOfAnimals = 0;
     }
 
     public String getName() {
@@ -48,11 +49,21 @@ public class AnimalHouse {
         return animals;
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public int getNumberOfAnimals() {
         return numberOfAnimals;
     }
 
+    public void increaseNumberOfAnimals(int numberOfAnimals) {
+        this.numberOfAnimals += numberOfAnimals;
+    }
 
+    public void decreaseNumberOfAnimals(int numberOfAnimals) {
+        this.numberOfAnimals -= numberOfAnimals;
+    }
 
     public static void writeToJson(){
 
