@@ -59,7 +59,7 @@ public class AnimalController {
     }
 
     //TODO
-    public static Result  feedAnimal(String animalName) {
+    public static Result feedAnimal(String animalName) {
         //todo
 
         return null;
@@ -95,6 +95,7 @@ public class AnimalController {
         }
 
         animal.setProduce(null);
+        animal.increaseFriendshipLevel(5);
         return new Result(1,"You got produce from " + animalName);
     }
 
