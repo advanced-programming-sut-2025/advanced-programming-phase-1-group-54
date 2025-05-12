@@ -2,6 +2,7 @@ package model.Shops;
 
 import model.alive.Human;
 import model.items.ItemsInShops;
+import model.map.Location;
 
 import java.util.ArrayList;
 
@@ -11,8 +12,8 @@ public class PierreGeneralShop extends Shop {
     private ArrayList<SeasonalStockItems> springStock;
     private ArrayList<SeasonalStockItems> summerStock;
     private ArrayList<SeasonalStockItems> fallStock;
-    public PierreGeneralShop(Human owner) {
-        super(owner,9,17);
+    public PierreGeneralShop(Human owner, Location upperLeftLocation, Location lowerRightLocation) {
+        super(owner,9,17, upperLeftLocation, lowerRightLocation);
         this.yearRoundStock = new ArrayList<>();
         this.backPacks = new ArrayList<>();
         this.springStock = new ArrayList<>();

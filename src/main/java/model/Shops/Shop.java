@@ -6,7 +6,10 @@ import model.enums.Symbol;
 import model.map.Location;
 import model.map.Map;
 
-public abstract class Shop extends Building {
+public class Shop extends Building {
+    /* TODO shops don't need subclasses
+        save each shop to files
+    */
     protected Human owner;
     protected int openingHours;
     protected int closingHours;

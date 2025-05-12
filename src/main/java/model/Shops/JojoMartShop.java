@@ -2,6 +2,7 @@ package model.Shops;
 
 import model.alive.Human;
 import model.items.ItemsInShops;
+import model.map.Location;
 
 import java.util.ArrayList;
 
@@ -11,8 +12,8 @@ public class JojoMartShop extends Shop {
     private ArrayList<ItemsInShops> summerStock;
     private ArrayList<ItemsInShops> fallStock;
     private ArrayList<ItemsInShops> winterStock;
-    public JojoMartShop(Human human) {
-        super(human,9,23);
+    public JojoMartShop(Human human, Location upperLeftLocation, Location lowerRightLocation) {
+        super(human,9,23, upperLeftLocation, lowerRightLocation);
         permanentStock = new ArrayList<>();
         springStock = new ArrayList<>();
         summerStock = new ArrayList<>();

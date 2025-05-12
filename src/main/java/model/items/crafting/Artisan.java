@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import model.Placeable;
 import model.enums.Feature;
+import model.enums.Symbol;
 import model.items.Item;
 
 import java.io.FileWriter;
@@ -490,4 +491,8 @@ public class Artisan extends Item implements Placeable,Cloneable{
 
     }
 
+    @Override
+    public Symbol getSymbol() {
+        return Symbol.ARTISAN;
+    }
 }

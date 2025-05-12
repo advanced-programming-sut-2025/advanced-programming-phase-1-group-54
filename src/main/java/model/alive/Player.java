@@ -291,6 +291,6 @@ public class Player extends Human implements DailyUpdate {
 
     @Override
     public Symbol getSymbol() {
-        return null;
+        return Symbol.PLAYER;
     }
 }

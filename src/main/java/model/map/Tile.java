@@ -12,7 +12,9 @@ public class Tile {
     private Location location;
 
     private Placeable thingOnTile = null;
-    private ArrayList<Feature> features;
+    private final ArrayList<Feature> features = new ArrayList<>();
+
+
 
     public boolean isWalkable() {
         if (thingOnTile == null)
