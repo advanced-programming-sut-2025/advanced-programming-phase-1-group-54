@@ -222,7 +222,10 @@ public class Player extends Human implements DailyUpdate {
 
 
     public boolean checkEnergy(int energyAmount,SkillType skillType) {
-        if(skillType == null){
+        if(this.unlimitedEnergy){
+            return true;
+        }
+        else if(skillType == null){
             return this.energy >= energyAmount;
         }
         else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
@@ -241,7 +244,10 @@ public class Player extends Human implements DailyUpdate {
     }
 
     public void decreaseEnergy(int energyAmount,SkillType skillType) {
-        if(skillType == null){
+        if(this.unlimitedEnergy){
+            return;
+        }
+        else if(skillType == null){
             this.energy -= energyAmount;
         }
         else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&

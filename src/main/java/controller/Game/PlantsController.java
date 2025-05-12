@@ -92,7 +92,12 @@ public class PlantsController {
     public Result showPlant(int x, int y){
 
         Location location = new Location(x, y);
-        Tile tile = App.getCurrentGame().getWorld().getTileAt(location);
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        Tile tile = App.getCurrentGame().getWorld().getFarm(player).getTileAt(location);
+
+        if(tile == null){
+            return new Result(-1,"tile is not in your farm");
+        }
 
         Placeable placeable = tile.getThingOnTile();
         if(placeable instanceof Plant plant){

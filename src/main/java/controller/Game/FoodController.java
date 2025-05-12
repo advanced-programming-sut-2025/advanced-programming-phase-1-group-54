@@ -1,23 +1,28 @@
 package controller.Game;
 
 import model.App;
+import model.Building.Cabin;
 import model.Refrigerator;
 import model.Result;
 import model.alive.Player;
-import model.enums.SkillType;
 import model.items.Food;
 import model.items.Item;
 import model.items.recipes.Recipe;
 import model.items.tools.BackPack;
+import model.map.Tile;
 
 import java.util.ArrayList;
 
 public class FoodController {
 
-    // TODO
     public static Result showFoodRecipes(){
 
-        // Todo is in the House?
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
+
+        if(! (tile.getThingOnTile() instanceof Cabin)){
+            return new Result(-1,"You are not in Cabin");
+        }
 
         ArrayList<Recipe> foodRecipes = App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes();
         StringBuilder output = new StringBuilder();
@@ -27,13 +32,14 @@ public class FoodController {
         return new Result(1,output.toString());
     }
 
-    //TODO
     public static Result cooking(String foodName){
-
-        // Todo is in the House?
 
         Player player = App.getCurrentGame().getCurrentPlayer();
         Food food = Food.getFood(foodName);
+        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
+        if(! (tile.getThingOnTile() instanceof Cabin)){
+            return new Result(-1,"You are not in Cabin");
+        }
 
         if(! player.checkEnergy(3, null)){
             return new Result(-1,"You don't have enough energy to cook");
