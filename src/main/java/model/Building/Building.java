@@ -5,7 +5,7 @@ import model.map.Location;
 import model.map.Map;
 import model.map.Tile;
 
-public class Building implements Placeable {
+public abstract class Building implements Placeable {
     private final Location location;
     private final Map map;
 

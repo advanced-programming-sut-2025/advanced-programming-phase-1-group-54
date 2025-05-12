@@ -1,14 +1,13 @@
 package model.items.tools;
 
+import model.enums.BackPackLevel;
 import model.items.Item;
 import model.Result;
-import model.enums.toolsLevel.BackPackLevel;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class BackPack extends Tool {
+public class BackPack {
     private BackPackLevel level;
     private final HashMap<Item, Integer> numberOfItemInBackPack = new HashMap<>();
 
@@ -78,7 +77,7 @@ public class BackPack extends Tool {
 //        }
 //    }
 
-    @Override
+
     public void upgrade() {
         if (level != BackPackLevel.DELUX) {
             level = BackPackLevel.values()[level.ordinal() + 1];

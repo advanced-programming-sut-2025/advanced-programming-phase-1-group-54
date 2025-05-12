@@ -1,6 +1,7 @@
 package model.Building;
 
 import model.Refrigerator;
+import model.enums.Symbol;
 import model.map.Location;
 import model.map.Map;
 
@@ -26,5 +27,8 @@ public class Cabin extends Building {
         return refrigerator;
     }
 
-
+    @Override
+    public Symbol getSymbol() {
+        return Symbol.HOUSE;
+    }
 }

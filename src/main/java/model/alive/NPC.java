@@ -1,6 +1,5 @@
 package model.alive;
 
-import model.Building.House;
 import model.Quest;
 import model.items.Item;
 
@@ -8,7 +7,6 @@ import java.util.ArrayList;
 
 public class NPC extends Human {
     private String job;
-    private House house;
     
     private ArrayList<String> dialogs;
     

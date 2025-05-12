@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import model.Building.Cabin;
 import model.Building.GreenHouse;
 import model.alive.Player;
+import model.enums.Feature;
 import model.enums.Symbol;
 import model.map.*;
 
@@ -109,7 +110,6 @@ public class FarmBuilder {
 
                 Location location = new Location(cabinLocation.row() + x, cabinLocation.column() + y);
                 tiles[location.row()][location.column()].setThingOnTile(cabin);
-                tiles[location.row()][location.column()].setSymbol(Symbol.HOUSE);
             }
         }
 
@@ -118,7 +118,8 @@ public class FarmBuilder {
             for (int y = 0; y < 6; y++) {
                 Location location = new Location(greenHouseLocation.row() + x, greenHouseLocation.column() + y);
                 tiles[location.row()][location.column()].setThingOnTile(greenHouse);
-                tiles[location.row()][location.column()].setSymbol(Symbol.GREENHOUSE);
+
+                greenHouse.getTileAt(new Location(x, y)).addFeature(Feature.PROTECTED);
             }
         }
 
@@ -126,7 +127,6 @@ public class FarmBuilder {
         for (int row = lakeUpperLeftLocation.row(); row <= lakeLowerRightLocation.row(); row++) {
             for (int column = lakeUpperLeftLocation.column(); column <= lakeLowerRightLocation.column(); column++) {
                 tiles[row][column].setThingOnTile(lake);
-                tiles[row][column].setSymbol(Symbol.LAKE);
             }
         }
 
@@ -134,7 +134,6 @@ public class FarmBuilder {
         for (int row = quarryUpperLeftLocation.row(); row <= quarryLowerRightLocation.row(); row++) {
             for (int column = quarryUpperLeftLocation.column(); column <= quarryLowerRightLocation.column(); column++) {
                 tiles[row][column].setThingOnTile(quarry);
-                tiles[row][column].setSymbol(Symbol.QUARRY);
             }
         }
 

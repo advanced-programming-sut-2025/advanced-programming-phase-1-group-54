@@ -3,7 +3,9 @@ package model.items.plants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import model.Placeable;
 import model.enums.Season;
+import model.enums.Symbol;
 import model.items.Item;
 
 import java.io.FileNotFoundException;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-public class Seed extends Item implements Cloneable{
+public class Seed extends Item implements Placeable, Cloneable{
 
     private final static HashMap<String,Seed> seeds;
     private final static HashMap<Season,ArrayList<String>> foragingSeeds;
@@ -432,4 +434,8 @@ public class Seed extends Item implements Cloneable{
 
     }
 
+    @Override
+    public Symbol getSymbol() {
+        return Symbol.SEED;
+    }
 }

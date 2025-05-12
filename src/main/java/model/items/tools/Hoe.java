@@ -1,16 +1,21 @@
 package model.items.tools;
 
-import model.enums.toolsLevel.HoeLevel;
+import model.enums.Feature;
+import model.map.Tile;
 
 public class Hoe extends Tool {
-    private HoeLevel level;
 
-    public HoeLevel getLevel() {
-        return level;
+    @Override
+    public boolean use(BackPack backPack, Tile tile) {
+        if (tile.getThingOnTile() != null) {
+            return false;
+        }
+
+        if (tile.hasFeature(Feature.PLOWED)) {
+            return false;
+        }
+
+        tile.addFeature(Feature.PLOWED);
+        return true;
     }
-
-    public void setLevel(HoeLevel level) {
-        this.level = level;
-    }
-
 }

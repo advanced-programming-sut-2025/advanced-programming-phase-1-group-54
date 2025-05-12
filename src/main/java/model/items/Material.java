@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.Placeable;
+import model.enums.Symbol;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -178,6 +179,15 @@ public class Material extends Item implements Placeable,Cloneable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    @Override
+    public Symbol getSymbol() {
+        if (this.getName().equals("Wood")) {
+            return Symbol.WOOD;
+        }
+        else {
+            return Symbol.ROCK;
+        }
     }
 }

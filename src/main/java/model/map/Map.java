@@ -30,6 +30,10 @@ public class Map {
     }
 
     public Tile getTileAt(Location location) {
+        if (location == null ||
+                location.row() < 0 || location.row() >= numberOfRows
+                || location.column() < 0 || location.column() >= numberOfColumns)
+            return null;
         return tiles[location.row()][location.column()];
     }
 
@@ -124,5 +128,4 @@ public class Map {
 
         return distance;
     }
-
 }

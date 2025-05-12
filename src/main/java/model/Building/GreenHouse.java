@@ -1,5 +1,7 @@
 package model.Building;
 
+import model.enums.Feature;
+import model.enums.Symbol;
 import model.map.Location;
 import model.map.Map;
 
@@ -19,6 +21,12 @@ public class GreenHouse extends Building {
 
     public GreenHouse(Location location) {
         super(location, new Map(numberOfRows, numberOfColumns));
+
+        for (int i = 0; i < numberOfRows; i++) {
+            for (int j = 0; j < numberOfColumns; j++) {
+                this.getTileAt(new Location(i, j)).addFeature(Feature.PROTECTED);
+            }
+        }
     }
 
     public boolean isBuilt() {
@@ -32,5 +40,10 @@ public class GreenHouse extends Building {
     @Override
     public boolean canEnter() {
         return isBuilt();
+    }
+
+    @Override
+    public Symbol getSymbol() {
+        return Symbol.GREENHOUSE;
     }
 }
