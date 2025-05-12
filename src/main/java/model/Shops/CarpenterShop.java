@@ -34,12 +34,14 @@ public class CarpenterShop extends Shop {
     public static class ItemsinCarpenterShop extends ItemsInShops {
         int xSize;
         int ySize;
-        HashMap<String,Integer> Cost;
-        public ItemsinCarpenterShop(int xSize,int ySize,String name, int count, int price,String description) {
+        int wood;
+        int stone;
+        public ItemsinCarpenterShop(int xSize,int ySize,String name, int count, int price,String description, int wood, int stone) {
             super( name,false,  count,  price, description);
             this.xSize = xSize;
             this.ySize = ySize;
-            this.Cost = new HashMap<>();
+            this.wood = wood;
+            this.stone = stone;
         }
 
         public int getySize() {
@@ -50,12 +52,20 @@ public class CarpenterShop extends Shop {
             this.ySize = ySize;
         }
 
-        public HashMap<String, Integer> getCost() {
-            return Cost;
+        public int getWood() {
+            return wood;
         }
 
-        public void setCost(HashMap<String, Integer> cost) {
-            Cost = cost;
+        public void setWood(int wood) {
+            this.wood = wood;
+        }
+
+        public int getStone() {
+            return stone;
+        }
+
+        public void setStone(int stone) {
+            this.stone = stone;
         }
 
         public int getxSize() {

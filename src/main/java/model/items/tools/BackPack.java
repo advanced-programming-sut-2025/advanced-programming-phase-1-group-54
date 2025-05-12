@@ -11,7 +11,6 @@ import java.util.Objects;
 public class BackPack extends Tool {
     private BackPackLevel level;
     private final HashMap<Item, Integer> numberOfItemInBackPack = new HashMap<>();
-
     public boolean addItem(Item item,Integer number) {
         Integer numberOfItem = numberOfItemInBackPack.get(item);
         if(numberOfItem == null) {
