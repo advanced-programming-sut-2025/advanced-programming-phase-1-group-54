@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="write animalHouse class">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/AnimalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/AnimalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Animal.java" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="merging">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +124,7 @@
       <workItem from="1746334097002" duration="35246000" />
       <workItem from="1746869325194" duration="10682000" />
       <workItem from="1746893895734" duration="20603000" />
-      <workItem from="1746990668186" duration="540000" />
+      <workItem from="1746990668186" duration="3739000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
       <option name="closed" value="true" />
@@ -446,7 +446,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746967938119</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="write animals update method">
+      <option name="closed" value="true" />
+      <created>1747030270121</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1747030270121</updated>
+    </task>
+    <task id="LOCAL-00042" summary="merging">
+      <option name="closed" value="true" />
+      <created>1747030616270</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1747030616270</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -464,8 +480,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edit write Produce until Loom Artisan" />
-    <MESSAGE value="edit write Produce until Preservers Jar Artisan" />
     <MESSAGE value="write writeToJson method of Fish class" />
     <MESSAGE value="read and write Fishes Json And add constructor to Item Class Babies :)" />
     <MESSAGE value="write writeToJson method Of Recipe Class" />
@@ -495,7 +509,9 @@
     <MESSAGE value="edit quality in some models and write animalProduces in to json" />
     <MESSAGE value="write animal class completely except update method and write fishing method and edit Skill in player and make it useable" />
     <MESSAGE value="write animalHouse class" />
-    <option name="LAST_COMMIT_MESSAGE" value="write animalHouse class" />
+    <MESSAGE value="write animals update method" />
+    <MESSAGE value="merging" />
+    <option name="LAST_COMMIT_MESSAGE" value="merging" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
