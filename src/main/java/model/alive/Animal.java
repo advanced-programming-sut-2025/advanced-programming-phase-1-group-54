@@ -3,6 +3,8 @@ package model.alive;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import controller.Game.CommonGameController;
+import model.enums.ProduceQuality;
 import model.items.AnimalProduce;
 import model.items.Food;
 import model.items.Item;
@@ -15,6 +17,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Animal {
 
@@ -48,6 +51,7 @@ public class Animal {
     private int friendshipLevel;
     private boolean hungry;
     private boolean caressed;
+    private boolean goneOut;
     private AnimalProduce produce;
     protected Location location;
 
@@ -98,6 +102,10 @@ public class Animal {
         return caressed;
     }
 
+    public boolean isGoneOut() {
+        return goneOut;
+    }
+
     public AnimalProduce getProduce() {
         return produce;
     }
@@ -112,6 +120,14 @@ public class Animal {
         this.animalName = animalName;
     }
 
+    public void increaseDaysAfterProducing(int daysAfterProducing) {
+        this.daysAfterProducing += daysAfterProducing;
+    }
+
+    public void setDaysAfterProducing(int daysAfterProducing) {
+        this.daysAfterProducing = daysAfterProducing;
+    }
+
     public void setOwner(Player owner) {
         this.owner = owner;
     }
@@ -122,6 +138,16 @@ public class Animal {
 
     public void increaseFriendshipLevel(int friendshipLevel) {
         this.friendshipLevel += friendshipLevel;
+        if(this.friendshipLevel > maxFriendship){
+            this.friendshipLevel = maxFriendship;
+        }
+    }
+
+    public void decreaseFriendshipLevel(int friendshipLevel) {
+        this.friendshipLevel -= friendshipLevel;
+        if(this.friendshipLevel < 0){
+            this.friendshipLevel = 0;
+        }
     }
 
     public void setHungry(boolean hungry) {
@@ -130,6 +156,10 @@ public class Animal {
 
     public void setCaressed(boolean caressed) {
         this.caressed = caressed;
+    }
+
+    public void setGoneOut(boolean goneOut) {
+        this.goneOut = goneOut;
     }
 
     public void setProduce(AnimalProduce produce) {
@@ -142,6 +172,66 @@ public class Animal {
 
 
 
+    public void update(){
+        if(this.isGoneOut()){
+            this.setHungry(false);
+            this.increaseFriendshipLevel(8);
+        }
+
+        if(! this.isCaressed() && this.getFriendshipLevel() > 200){
+            this.decreaseFriendshipLevel(10);
+        }
+
+        // TODO is out at night -20
+
+        if(this.isHungry()){
+            this.decreaseFriendshipLevel(20);
+            this.setDaysAfterProducing(0);
+        }
+        else {
+            this.increaseDaysAfterProducing(1);
+        }
+
+        if(this.getName().equals("Pig")){
+            if(this.isGoneOut()){
+                AnimalProduce animalProduce = producing();
+                setProduceQuality(animalProduce);
+                this.setProduce(animalProduce);
+            }
+        }
+        else if(this.getDaysAfterProducing() == this.getNumberOfProducingDays()){
+            this.setDaysAfterProducing(0);
+
+            AnimalProduce animalProduce = producing();
+            setProduceQuality(animalProduce);
+            this.setProduce(animalProduce);
+        }
+    }
+
+    private AnimalProduce producing(){
+
+        int friendship = this.getFriendshipLevel();
+        if(this.getAnimalProducesNames().size() > 1 && friendship > 100){
+            double probability = (this.getFriendshipLevel() + (150  * (Math.random() + 0.5)))/1500;
+            if(Math.random() <= probability){
+                return AnimalProduce.getAnimalProduce(this.getAnimalProducesNames().get(1));
+            }
+            else {
+                return AnimalProduce.getAnimalProduce(this.getAnimalProducesNames().getFirst());
+            }
+        }
+        else {
+            return AnimalProduce.getAnimalProduce(this.getAnimalProducesNames().getFirst());
+        }
+
+    }
+
+    private void setProduceQuality(AnimalProduce produce){
+        double qualityNumber = ((double) this.getFriendshipLevel() / 1000) * (0.5 + 0.5 * Math.random());
+        ProduceQuality quality = CommonGameController.giveQuality(qualityNumber);
+        produce.setQuality(quality);
+    }
+
 
     public static void writeToJson(){
 
@@ -149,7 +239,6 @@ public class Animal {
 
         Animal animal;
 
-        // TODO
 
         animal = new Animal("Hen",800,1,new ArrayList<>(){{
             add("Egg");

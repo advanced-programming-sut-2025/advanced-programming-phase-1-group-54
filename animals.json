@@ -1,0 +1,102 @@
+{
+  "Hen": {
+    "name": "Hen",
+    "sellPrice": 800,
+    "numberOfProducingDays": 1,
+    "daysAfterProducing": 0,
+    "animalProducesNames": [
+      "Egg",
+      "Large Egg"
+    ],
+    "friendshipLevel": 0,
+    "hungry": false,
+    "caressed": false
+  },
+  "Dinosaur": {
+    "name": "Dinosaur",
+    "sellPrice": 14000,
+    "numberOfProducingDays": 7,
+    "daysAfterProducing": 0,
+    "animalProducesNames": [
+      "Dinosaur Egg"
+    ],
+    "friendshipLevel": 0,
+    "hungry": false,
+    "caressed": false
+  },
+  "Rabbit": {
+    "name": "Rabbit",
+    "sellPrice": 8000,
+    "numberOfProducingDays": 4,
+    "daysAfterProducing": 0,
+    "animalProducesNames": [
+      "Wool",
+      "Rabbit Leg"
+    ],
+    "friendshipLevel": 0,
+    "hungry": false,
+    "caressed": false
+  },
+  "Duck": {
+    "name": "Duck",
+    "sellPrice": 1200,
+    "numberOfProducingDays": 2,
+    "daysAfterProducing": 0,
+    "animalProducesNames": [
+      "Duck Egg"
+    ],
+    "friendshipLevel": 0,
+    "hungry": false,
+    "caressed": false
+  },
+  "Sheep": {
+    "name": "Sheep",
+    "sellPrice": 8000,
+    "numberOfProducingDays": 3,
+    "daysAfterProducing": 0,
+    "animalProducesNames": [
+      "Wool"
+    ],
+    "friendshipLevel": 0,
+    "hungry": false,
+    "caressed": false
+  },
+  "Cow": {
+    "name": "Cow",
+    "sellPrice": 1500,
+    "numberOfProducingDays": 1,
+    "daysAfterProducing": 0,
+    "animalProducesNames": [
+      "Milk",
+      "Large Milk"
+    ],
+    "friendshipLevel": 0,
+    "hungry": false,
+    "caressed": false
+  },
+  "Goat": {
+    "name": "Goat",
+    "sellPrice": 4000,
+    "numberOfProducingDays": 2,
+    "daysAfterProducing": 0,
+    "animalProducesNames": [
+      "Goat Milk",
+      "Large Goat Milk"
+    ],
+    "friendshipLevel": 0,
+    "hungry": false,
+    "caressed": false
+  },
+  "Pig": {
+    "name": "Pig",
+    "sellPrice": 16000,
+    "numberOfProducingDays": -1,
+    "daysAfterProducing": 0,
+    "animalProducesNames": [
+      "Truffle"
+    ],
+    "friendshipLevel": 0,
+    "hungry": false,
+    "caressed": false
+  }
+}
