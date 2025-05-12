@@ -2,17 +2,21 @@ package model.Shops;
 
 import model.Building.Building;
 import model.alive.Human;
+import model.map.Location;
+import model.map.Map;
 
 public abstract class Shop extends Building {
     protected Human owner;
     protected int openingHours;
     protected int closingHours;
-    public Shop(Human owner, int openingHours, int closingHours,) {
-        super();
+
+    public Shop(Location location, Map map, Human owner, int openingHours, int closingHours) {
+        super(location, map);
         this.owner = owner;
         this.openingHours = openingHours;
         this.closingHours = closingHours;
     }
+
     public Human getOwner() {
         return owner;
     }
