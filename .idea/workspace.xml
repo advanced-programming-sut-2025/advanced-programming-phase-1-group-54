@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="updated map, print map, buildings, ...">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/TurnUpdate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CheatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CheatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/DailyUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DailyUpdate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Weather.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Quarry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Quarry.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +125,10 @@
       <workItem from="1746449939267" duration="3298000" />
       <workItem from="1746334097002" duration="35246000" />
       <workItem from="1746869325194" duration="10682000" />
+      <workItem from="1746899524862" duration="16543000" />
+      <workItem from="1746969796674" duration="15898000" />
+      <workItem from="1747054765525" duration="708000" />
+      <workItem from="1747056717632" duration="490000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
       <option name="closed" value="true" />
@@ -448,7 +442,79 @@
       <option name="project" value="LOCAL" />
       <updated>1746998808173</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="buy item(some peoduct are not completed) and show item">
+      <option name="closed" value="true" />
+      <created>1747055061193</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055061193</updated>
+    </task>
+    <task id="LOCAL-00041" summary="String available added">
+      <option name="closed" value="true" />
+      <created>1747055096916</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055096916</updated>
+    </task>
+    <task id="LOCAL-00042" summary="gifts added to player">
+      <option name="closed" value="true" />
+      <created>1747055152072</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055152072</updated>
+    </task>
+    <task id="LOCAL-00043" summary="xml changes">
+      <option name="closed" value="true" />
+      <created>1747055175244</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055175244</updated>
+    </task>
+    <task id="LOCAL-00044" summary="method get player relainship added">
+      <option name="closed" value="true" />
+      <created>1747055245251</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055245251</updated>
+    </task>
+    <task id="LOCAL-00045" summary="gift menu added and gift class changed">
+      <option name="closed" value="true" />
+      <created>1747055293837</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055293837</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Friendship between players handled">
+      <option name="closed" value="true" />
+      <created>1747055357687</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055357687</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Game file player relainships added to Game">
+      <option name="closed" value="true" />
+      <created>1747055424654</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055424654</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Commands added">
+      <option name="closed" value="true" />
+      <created>1747055460708</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055460708</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,9 +561,19 @@
     <MESSAGE value="make code runaAble" />
     <MESSAGE value="make produces json and write some controller" />
     <MESSAGE value="edit quality in some models and write animalProduces in to json" />
+    <MESSAGE value="shops updated" />
+    <MESSAGE value="buy item(some peoduct are not completed) and show item" />
+    <MESSAGE value="String available added" />
+    <MESSAGE value="gifts added to player" />
+    <MESSAGE value="xml changes" />
+    <MESSAGE value="method get player relainship added" />
+    <MESSAGE value="gift menu added and gift class changed" />
+    <MESSAGE value="Friendship between players handled" />
+    <MESSAGE value="Game file player relainships added to Game" />
+    <MESSAGE value="Commands added" />
     <MESSAGE value="Map" />
     <MESSAGE value="updated map, print map, buildings, ..." />
-    <option name="LAST_COMMIT_MESSAGE" value="updated map, print map, buildings, ..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commands added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -14,6 +14,8 @@ import model.items.tools.Tool;
 import model.items.tools.TrashCan;
 import model.map.Location;
 import model.map.Tile;
+import model.relationships.Gift;
+import model.relationships.PlayerRelationship;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,17 +42,20 @@ public class Player extends Human implements DailyUpdate {
 
     private Refrigerator refrigerator = new Refrigerator();
     private Location currentLocation;
+    private ArrayList<Gift> recivedGifts;
     private final HashMap<Plant,Tile> Plants = new HashMap<>();
-    
+
     private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>(){{
         add(Recipe.foodRecipes.get("Fried Egg Recipe"));
     }};
+
 
     private final ArrayList<Recipe> learnedCraftingRecipes = new ArrayList<>(){{
         add(Recipe.craftRecipes.get("Furnace Recipe"));
         add(Recipe.craftRecipes.get("Scarecrow Recipe"));
         add(Recipe.craftRecipes.get("Mayonnaise Machine Recipe"));
     }};
+
 
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
@@ -59,7 +64,10 @@ public class Player extends Human implements DailyUpdate {
 
     private SkillType buffSkill;
     private int buffHours;
+
+
     private Tool equippedTool;
+
 
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
@@ -71,6 +79,16 @@ public class Player extends Human implements DailyUpdate {
         skills.put(SkillType.FISHING,new Skill(SkillType.FISHING));
         // TODO
     }
+
+    public int getMoney() {
+        return money;
+    }
+    public void spentMoney(int spent){
+        money -= spent;
+    }
+
+
+
 
     public HashMap<SkillType, Skill> getSkills() {
         return skills;
@@ -86,9 +104,6 @@ public class Player extends Human implements DailyUpdate {
         return energy;
     }
 
-    public int getMoney() {
-        return money;
-    }
 
     public boolean isFallen() {
         return energy <= 0;
@@ -204,6 +219,13 @@ public class Player extends Human implements DailyUpdate {
         this.equippedTool = equippedTool;
     }
 
+    public ArrayList<Gift> getRecivedGifts() {
+        return recivedGifts;
+    }
+
+    public void setRecivedGifts(ArrayList<Gift> recivedGifts) {
+        this.recivedGifts = recivedGifts;
+    }
     public void setRefrigerator(Refrigerator refrigerator) {
         this.refrigerator = refrigerator;
     }
