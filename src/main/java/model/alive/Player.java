@@ -137,6 +137,10 @@ public class Player extends Human {
         return true;
     }
 
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
     public void decreaseEnergy(int amount) {
         energy -= amount;
     }
