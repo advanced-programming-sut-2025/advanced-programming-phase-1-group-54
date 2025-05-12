@@ -6,7 +6,9 @@ import com.google.gson.reflect.TypeToken;
 import controller.Game.CommonGameController;
 import model.AnimalHouse;
 import model.App;
+import model.Placeable;
 import model.enums.ProduceQuality;
+import model.enums.Symbol;
 import model.items.AnimalProduce;
 import model.items.Food;
 import model.items.Item;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-public class Animal {
+public class Animal implements Placeable {
 
     static final HashMap<String,Animal> animals;
 
@@ -308,4 +310,8 @@ public class Animal {
     }
 
 
+    @Override
+    public Symbol getSymbol() {
+        return null;
+    }
 }
