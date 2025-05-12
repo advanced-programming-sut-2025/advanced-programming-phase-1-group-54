@@ -449,8 +449,9 @@ public class NPCShopsController {
         if(item.isPurchaseAble() == false && App.getCurrentGame().getCurrentPlayer().getBackpack().equals(BackPackLevel.NORMAL)){
             return new Result(false,"You should buy Large Backpack first.");
         }
-        App.getCurrentGame().getCurrentPlayer().setMoney(App.getCurrentGame().getCurrentPlayer().getMoney() - count * item.getPrice());
+//        App.getCurrentGame().getCurrentPlayer().setMoney(App.getCurrentGame().getCurrentPlayer().getMoney() - count * item.getPrice());
         App.getCurrentGame().getCurrentPlayer().getBackpack().upgrade();
+
         //TODO
         return null;
     }
