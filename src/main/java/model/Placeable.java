@@ -1,5 +1,7 @@
 package model;
 
-public interface Placeable {
+import model.enums.Symbol;
 
+public interface Placeable {
+    Symbol getSymbol();
 }

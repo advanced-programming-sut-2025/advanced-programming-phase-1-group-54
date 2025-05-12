@@ -6,7 +6,9 @@ import model.Building.GreenHouse;
 import model.Game;
 import model.alive.Player;
 import model.enums.Symbol;
+import model.items.Item;
 import model.items.tools.BackPack;
+import model.items.tools.TrashCan;
 import model.map.Farm;
 import model.map.Location;
 import model.Result;
@@ -173,16 +175,25 @@ public class GameController {
 
         BackPack backPack = player.getBackpack();
 
-        // TODO
-        return null;
+        StringBuilder message = new StringBuilder();
+        for (Item item : backPack.getNumberOfItemInBackPack().keySet()) {
+            message.append(item.getName())
+                    .append(": ")
+                    .append(backPack.getNumberOfItemInBackPack().get(item))
+                    .append('\n');
+        }
+
+        return new Result(true, message.toString());
     }
 
     public static Result throwInTrash(String itemName, int number) {
-        // TODO
-        return null;
-    }
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
 
-    public static Result showTrash() {
+        BackPack backPack = player.getBackpack();
+        // TODO TrashCan trashCan = player.getTrashCan();
+
+
         return null;
     }
 

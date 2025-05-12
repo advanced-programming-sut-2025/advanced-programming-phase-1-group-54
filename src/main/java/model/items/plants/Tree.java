@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.enums.Season;
+import model.enums.Symbol;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -240,5 +241,9 @@ public class Tree extends Plant implements Cloneable{
 
     }
 
+    @Override
+    public Symbol getSymbol() {
+        return Symbol.TREE;
+    }
 
 }

@@ -4,5 +4,6 @@ public enum Feature {
     PROTECTED,
     WATERED,
     DESTROYED,
-    GRASS
+    GRASS,
+    PLOWED,
 }

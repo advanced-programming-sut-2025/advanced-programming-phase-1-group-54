@@ -30,6 +30,10 @@ public class Map {
     }
 
     public Tile getTileAt(Location location) {
+        if (location == null ||
+                location.row() < 0 || location.row() >= numberOfRows
+                || location.column() < 0 || location.column() >= numberOfColumns)
+            return null;
         return tiles[location.row()][location.column()];
     }
 
@@ -42,6 +46,9 @@ public class Map {
     }
 
     public int[][][] getDistancesFrom(Location A) {
+        if (getTileAt(A) == null)
+            return null;
+
         int[][][] distances = new int[getNumberOfRows()][getNumberOfColumns()][Direction.values().length];
         for (int[][] row : distances) {
             for (int[] cell : row) {
@@ -63,7 +70,7 @@ public class Map {
             for (Direction direction : Direction.values()) {
                 Location newLocation = node.location().getLocationAt(direction);
 
-                if (!(this.getTileAt(newLocation).isWalkable()))
+                if (this.getTileAt(newLocation) == null || !(this.getTileAt(newLocation).isWalkable()))
                     continue;
 
                 int newDistance = node.distance() + 1 + (direction != node.direction() ? 10 : 0);
@@ -80,6 +87,9 @@ public class Map {
     }
 
     public ArrayList<Direction> getShortestPath(Location A, Location B) {
+        if (getTileAt(A) == null || getTileAt(B) == null)
+            return null;
+
         int[][][] distances = getDistancesFrom(A);
 
         Direction lastDirection = null;
@@ -101,6 +111,9 @@ public class Map {
             shortestPath.add(lastDirection);
             lastLocation = lastLocation.getLocationAt(lastDirection.opposite());
 
+            if (getTileAt(lastLocation) == null)
+                continue;
+
             for (Direction direction : Direction.values()) {
                 if (distance == distances[lastLocation.row()][lastLocation.column()][direction.ordinal()] + 1 +
                         (lastDirection != direction ? 10 : 0)) {
@@ -114,6 +127,9 @@ public class Map {
     }
 
     public int getDistance(Location A, Location B) {
+        if (getTileAt(A) == null || getTileAt(B) == null)
+            return Integer.MAX_VALUE;
+
         int[][][] distances = getDistancesFrom(A);
 
         int distance = Integer.MAX_VALUE;
@@ -124,5 +140,4 @@ public class Map {
 
         return distance;
     }
-
 }

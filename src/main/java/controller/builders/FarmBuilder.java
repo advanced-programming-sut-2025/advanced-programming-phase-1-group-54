@@ -1,13 +1,15 @@
 package controller.builders;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import model.Building.Cabin;
 import model.Building.GreenHouse;
 import model.alive.Player;
-import model.enums.Symbol;
+import model.enums.Feature;
 import model.map.*;
+import org.json.JSONArray;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,20 +22,20 @@ public class FarmBuilder {
 
     private static Location cabinLocation;
     private static Location greenHouseLocation;
-    private static Location lakeUpperLeftLocation;
-    private static Location lakeLowerRightLocation;
-    private static Location quarryUpperLeftLocation;
-    private static Location quarryLowerRightLocation;
+    private static Area[] lakeAreas;
+    private static Area quarryArea;
+
+    private static Tile[][] tiles = new Tile[Farm.getNumberOfRows()][Farm.getNumberOfColumns()];
 
     public static void reset() {
         location = null;
         owner = null;
         cabinLocation = null;
         greenHouseLocation = null;
-        lakeUpperLeftLocation = null;
-        lakeLowerRightLocation = null;
-        quarryUpperLeftLocation = null;
-        quarryLowerRightLocation = null;
+        lakeAreas = null;
+        quarryArea = null;
+
+        tiles = new Tile[Farm.getNumberOfRows()][Farm.getNumberOfColumns()];
     }
 
     public static void setLocation(Location location) {
@@ -52,34 +54,24 @@ public class FarmBuilder {
         FarmBuilder.greenHouseLocation = greenHouseLocation;
     }
 
-    public static void setLakeUpperLeftLocation(Location lakeUpperLeftLocation) {
-        FarmBuilder.lakeUpperLeftLocation = lakeUpperLeftLocation;
+    public static void setLakeAreas(Area[] lakeAreas) {
+        FarmBuilder.lakeAreas = lakeAreas;
     }
 
-    public static void setLakeLowerRightLocation(Location lakeLowerRightLocation) {
-        FarmBuilder.lakeLowerRightLocation = lakeLowerRightLocation;
+    public static void setQuarryArea(Area quarryArea) {
+        FarmBuilder.quarryArea = quarryArea;
     }
 
-    public static void setQuarryUpperLeftLocation(Location quarryUpperLeftLocation) {
-        FarmBuilder.quarryUpperLeftLocation = quarryUpperLeftLocation;
-    }
-
-    public static void setQuarryLowerRightLocation(Location quarryLowerRightLocation) {
-        FarmBuilder.quarryLowerRightLocation = quarryLowerRightLocation;
-    }
 
     public static void setFarmNumber(int number) {
-        try (InputStream inputStream = FarmBuilder.class.getClassLoader().getResourceAsStream("farms.json");
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-            Gson gson = new Gson();
+        try (InputStream inputStream = FarmBuilder.class.getClassLoader().getResourceAsStream("farms.json"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
             JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonArray().get(number - 1).getAsJsonObject();
             setCabinLocation(gson.fromJson(jsonObject.get("cabinLocation"), Location.class));
             setGreenHouseLocation(gson.fromJson(jsonObject.get("greenHouseLocation"), Location.class));
-            setLakeUpperLeftLocation(gson.fromJson(jsonObject.get("lakeUpperLeftLocation"), Location.class));
-            setLakeLowerRightLocation(gson.fromJson(jsonObject.get("lakeLowerRightLocation"), Location.class));
-            setQuarryUpperLeftLocation(gson.fromJson(jsonObject.get("quarryUpperLeftLocation"), Location.class));
-            setQuarryLowerRightLocation(gson.fromJson(jsonObject.get("quarryLowerRightLocation"), Location.class));
+            setLakeAreas(gson.fromJson(jsonObject.get("lakeAreas"), Area[].class));
+            setQuarryArea(gson.fromJson(jsonObject.get("quarryArea"), Area.class));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -87,60 +79,76 @@ public class FarmBuilder {
     }
 
     public static int getNumberOfFarms() {
-        try (InputStream inputStream = FarmBuilder.class.getClassLoader().getResourceAsStream("farms.json");
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+        try (InputStream inputStream = FarmBuilder.class.getClassLoader().getResourceAsStream("farms.json"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             return JsonParser.parseReader(reader).getAsJsonArray().size();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
+    public static Cabin buildCabin() {
+        Cabin cabin = new Cabin(cabinLocation);
+        for (int x = 0; x < Cabin.getNumberOfRows(); x++) {
+            for (int y = 0; y < Cabin.getNumberOfColumns(); y++) {
+                Location location = cabinLocation.add(new Location(x, y));
+                tiles[location.row()][location.column()].setThingOnTile(cabin);
+            }
+        }
+        return cabin;
+    }
+
+    private static GreenHouse buildGreenHouse() {
+        GreenHouse greenHouse = new GreenHouse(greenHouseLocation);
+        for (int x = 0; x < GreenHouse.getNumberOfRows(); x++) {
+            for (int y = 0; y < GreenHouse.getNumberOfColumns(); y++) {
+                Location location = greenHouseLocation.add(new Location(x, y));
+                tiles[location.row()][location.column()].setThingOnTile(greenHouse);
+            }
+        }
+        return greenHouse;
+    }
+
+    private static Lake[] buildLakes() {
+        Lake[] lakes = new Lake[lakeAreas.length];
+        for (int t = 0; t < lakeAreas.length; t++) {
+            lakes[t] = new Lake(lakeAreas[t]);
+            for (int row = lakeAreas[t].upperLeftLocation().row(); row <= lakeAreas[t].lowerRightLocation().row(); row++) {
+                for (int column = lakeAreas[t].upperLeftLocation().column(); column <= lakeAreas[t].lowerRightLocation().column(); column++) {
+                    tiles[row][column].setThingOnTile(lakes[t]);
+                    tiles[row][column].addFeature(Feature.WATERED);
+                }
+            }
+        }
+        return lakes;
+    }
+
+
+    private static Quarry buildQuarry() {
+        Quarry quarry = new Quarry(quarryArea);
+        for (int row = quarryArea.upperLeftLocation().row(); row <= quarryArea.lowerRightLocation().row(); row++) {
+            for (int column = quarryArea.upperLeftLocation().column(); column <= quarryArea.lowerRightLocation().column(); column++) {
+                tiles[row][column].setThingOnTile(quarry);
+            }
+        }
+
+        return quarry;
+    }
+
     public static Farm getResult() {
-        Tile[][] tiles = new Tile[Farm.getNumberOfRows()][Farm.getNumberOfColumns()];
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
                 tiles[i][j] = new Tile();
             }
         }
 
-        Cabin cabin = new Cabin(cabinLocation);
-        for (int x = 0; x < 4; x++) {
-            for (int y = 0; y < 4; y++) {
-
-                Location location = new Location(cabinLocation.row() + x, cabinLocation.column() + y);
-                tiles[location.row()][location.column()].setThingOnTile(cabin);
-                tiles[location.row()][location.column()].setSymbol(Symbol.HOUSE);
-            }
-        }
-
-        GreenHouse greenHouse = new GreenHouse(greenHouseLocation);
-        for (int x = 0; x < 5; x++) {
-            for (int y = 0; y < 6; y++) {
-                Location location = new Location(greenHouseLocation.row() + x, greenHouseLocation.column() + y);
-                tiles[location.row()][location.column()].setThingOnTile(greenHouse);
-                tiles[location.row()][location.column()].setSymbol(Symbol.GREENHOUSE);
-            }
-        }
-
-        Lake lake = new Lake(lakeUpperLeftLocation, lakeLowerRightLocation);
-        for (int row = lakeUpperLeftLocation.row(); row <= lakeLowerRightLocation.row(); row++) {
-            for (int column = lakeUpperLeftLocation.column(); column <= lakeLowerRightLocation.column(); column++) {
-                tiles[row][column].setThingOnTile(lake);
-                tiles[row][column].setSymbol(Symbol.LAKE);
-            }
-        }
-
-        Quarry quarry = new Quarry(quarryUpperLeftLocation, quarryLowerRightLocation);
-        for (int row = quarryUpperLeftLocation.row(); row <= quarryLowerRightLocation.row(); row++) {
-            for (int column = quarryUpperLeftLocation.column(); column <= quarryLowerRightLocation.column(); column++) {
-                tiles[row][column].setThingOnTile(quarry);
-                tiles[row][column].setSymbol(Symbol.QUARRY);
-            }
-        }
+        Cabin cabin = buildCabin();
+        GreenHouse greenHouse = buildGreenHouse();
+        Lake[] lakes = buildLakes();
+        Quarry quarry = buildQuarry();
 
         // TODO tree, foraging, random stuff
 
-        Farm farm = new Farm(owner, location, greenHouse, cabin, quarry, lake, new Map(Farm.getNumberOfRows(), Farm.getNumberOfColumns(), tiles));
+        Farm farm = new Farm(owner, location, greenHouse, cabin, quarry, lakes, new Map(Farm.getNumberOfRows(), Farm.getNumberOfColumns(), tiles));
         FarmBuilder.reset();
         return farm;
     }

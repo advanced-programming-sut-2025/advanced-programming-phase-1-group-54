@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.enums.Direction;
 import model.enums.Season;
+import model.enums.Symbol;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -634,4 +635,8 @@ public class Crop extends Plant implements Cloneable{
 
     }
 
+    @Override
+    public Symbol getSymbol() {
+        return Symbol.CROP;
+    }
 }

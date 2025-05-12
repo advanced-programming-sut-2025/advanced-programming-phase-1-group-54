@@ -2,14 +2,15 @@ package model.Shops;
 
 import model.alive.Human;
 import model.items.ItemsInShops;
+import model.map.Location;
 
 import java.util.ArrayList;
 
 public class MarnieRanch extends Shop {
     ArrayList<ItemsInShops> shopInventory;
     ArrayList<ItemsInMarineRanch> livesTock;
-    public MarnieRanch(Human owner) {
-        super(owner,9,16);
+    public MarnieRanch(Human owner, Location upperLeftLocation, Location lowerRightLocation) {
+        super(owner,9,16, upperLeftLocation, lowerRightLocation);
         shopInventory = new ArrayList<>();
         livesTock = new ArrayList<>();
     }

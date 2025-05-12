@@ -23,8 +23,8 @@ public class Game implements DailyUpdate {
 
 
     private Weather currentWeather;
-    private Weather tommorrowWeather;
     private ArrayList<PlayerRelationship> playerRelationships;
+    private Weather tomorrowWeather;
 
     public Game(World world, Player[] players) {
         this.world = world;
@@ -82,8 +82,8 @@ public class Game implements DailyUpdate {
 
     @Override
     public void nextDayUpdate() {
-        currentWeather = tommorrowWeather;
-        tommorrowWeather = Weather.getRandom(dateTime.getSeason());
+        currentWeather = tomorrowWeather;
+        tomorrowWeather = Weather.getRandom(dateTime.getSeason());
 
         for (Player player : players) {
             player.nextDayUpdate();
@@ -107,7 +107,11 @@ public class Game implements DailyUpdate {
     }
 
     public Weather getTomorrowWeather() {
-        return tommorrowWeather;
+        return tomorrowWeather;
+    }
+
+    public void setTomorrowWeather(Weather tomorrowWeather) {
+        this.tomorrowWeather = tomorrowWeather;
     }
     public Player getPlayerByUsername(String username) {
         for (Player player : players) {

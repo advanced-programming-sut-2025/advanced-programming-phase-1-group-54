@@ -2,6 +2,7 @@ package model.Shops;
 
 import model.alive.Human;
 import model.items.ItemsInShops;
+import model.map.Location;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,8 +10,8 @@ import java.util.HashMap;
 public class CarpenterShop extends Shop {
     private ArrayList<ItemsInShops> permanentStock;
     private ArrayList<ItemsinCarpenterShop> farmBuildings;
-    public CarpenterShop(Human owner) {
-        super(owner,8,20);
+    public CarpenterShop(Human owner, Location upperLeftLocation, Location lowerRightLocation) {
+        super(owner,8,20, upperLeftLocation, lowerRightLocation);
         this.permanentStock = new ArrayList<>();
         this.farmBuildings = new ArrayList<>();
     }

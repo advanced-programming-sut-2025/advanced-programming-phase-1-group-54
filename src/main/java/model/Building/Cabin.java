@@ -1,6 +1,7 @@
 package model.Building;
 
 import model.Refrigerator;
+import model.enums.Symbol;
 import model.map.Location;
 import model.map.Map;
 
@@ -20,11 +21,16 @@ public class Cabin extends Building {
 
     public Cabin(Location location) {
         super(location, new Map(NUMBER_OF_ROWS, NUMBER_OF_COLUMNS));
+
+        this.getTileAt(new Location(0, 0)).setThingOnTile(refrigerator);
     }
 
     public Refrigerator getRefrigerator() {
         return refrigerator;
     }
 
-
+    @Override
+    public Symbol getSymbol() {
+        return Symbol.HOUSE;
+    }
 }

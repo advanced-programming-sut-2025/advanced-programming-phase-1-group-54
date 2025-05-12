@@ -1,5 +1,6 @@
 package model;
 
+import model.enums.Symbol;
 import model.items.Item;
 
 import java.util.HashMap;
@@ -51,6 +52,8 @@ public class Refrigerator implements Placeable {
     }
 
 
-
-
+    @Override
+    public Symbol getSymbol() {
+        return Symbol.REFRIGERATOR;
+    }
 }

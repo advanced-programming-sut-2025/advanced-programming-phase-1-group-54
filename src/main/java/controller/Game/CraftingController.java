@@ -5,6 +5,7 @@ import model.Building.Cabin;
 import model.Result;
 import model.alive.Player;
 import model.enums.Direction;
+import model.enums.Feature;
 import model.items.Item;
 import model.items.crafting.Artisan;
 import model.items.crafting.Produce;
@@ -12,6 +13,8 @@ import model.items.crafting.ProducerArtisan;
 import model.items.crafting.UnProducerArtisan;
 import model.items.plants.Seed;
 import model.items.recipes.Recipe;
+import model.map.Farm;
+import model.map.Location;
 import model.map.Tile;
 
 import java.util.ArrayList;
@@ -93,6 +96,7 @@ public class CraftingController {
 
     }
 
+    // TODO
     public static Result placeArtisan(String artisanName,String directionString){
 
         Direction direction;
@@ -103,26 +107,46 @@ public class CraftingController {
         }
 
         Player player = App.getCurrentGame().getCurrentPlayer();
-        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation().getLocationAt(direction));
+        Farm farm = App.getCurrentGame().getWorld().getFarm(player);
+        Tile tile = farm.getTileAt(player.getCurrentLocation().getLocationAt(direction).delta(farm.getLocation()));
 
         if(tile.getThingOnTile() != null){
             return new Result(-1,"Tile is already placed");
         }
 
         ProducerArtisan producerArtisan = ProducerArtisan.getProducerArtisan(artisanName);
-        if(producerArtisan == null){
+        if(producerArtisan != null){
+            if(! player.getBackpack().removeItem(producerArtisan,1)){
+                return new Result(-1,"You don't have the artisan");
+            }
+
+            tile.setThingOnTile(producerArtisan);
+            player.getPlacedArtisans().add(producerArtisan);
+
+            return new Result(1,"Artisan placed successfully");
+        }
+        UnProducerArtisan unProducerArtisan = UnProducerArtisan.getUnProducerArtisan(artisanName);
+        if(unProducerArtisan == null){
             return new Result(-1,"Artisan dose not exist");
         }
 
-        if(! player.getBackpack().removeItem(producerArtisan,1)){
-            return new Result(-1,"You don't have the artisan");
+        Location location = player.getCurrentLocation().delta(farm.getLocation());
+
+        if(unProducerArtisan.getFeature().equals(Feature.DESTROYED)){
+
+            // TODO Destroy
+
+        }
+        else{
+            for(int i = -unProducerArtisan.getRadius();i < unProducerArtisan.getRadius();i++){
+                for(int j = -unProducerArtisan.getRadius(); j < unProducerArtisan.getRadius();j++){
+                    Location location1 = location.delta(new Location(location.row() + i,location.column() + j));
+                    farm.getTileAt(location1).getFeatures().add(unProducerArtisan.getFeature());
+                }
+            }
         }
 
-        tile.setThingOnTile(producerArtisan);
-        player.getPlacedArtisans().add(producerArtisan);
-
-        return null;
-
+        return new Result(-1,"Artisan placed successfully");
     }
 
     public static Result cheatCodeAddItem(String itemName,String numberString){

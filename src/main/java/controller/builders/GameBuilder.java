@@ -71,7 +71,6 @@ public class GameBuilder {
             );
 
             cabin.getTileAt(locationInCabin).setThingOnTile(players[i]);
-            cabin.getTileAt(locationInCabin).setSymbol(Symbol.PLAYER);
 
             players[i].setCurrentLocation(location);
         }

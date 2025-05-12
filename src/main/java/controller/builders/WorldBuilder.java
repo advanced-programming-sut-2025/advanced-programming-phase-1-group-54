@@ -45,6 +45,12 @@ public class WorldBuilder {
             }
         }
 
+        for (int i = 0; i < World.getNumberOfRows(); i++) {
+            for (int j = 0; j < World.getNumberOfColumns(); j++) {
+                tiles[i][j].setLocation(new Location(i, j));
+            }
+        }
+
         // TODO World is empty, add village
 
         World world = new World(playerFarms, new Map(World.getNumberOfRows(), World.getNumberOfColumns(), tiles));

@@ -2,6 +2,7 @@ package model.enums;
 
 public enum Symbol {
     EMPTY("."),
+    PLOWED("#"),
     PLAYER(Color.BLUE_FONT + "P" + Color.DEFAULT),
     HOUSE(Color.YELLOW_FONT + "H" + Color.DEFAULT),
     GREENHOUSE(Color.GREEN_FONT + "G" + Color.DEFAULT),
@@ -10,13 +11,21 @@ public enum Symbol {
     BARN(Color.CYAN_FONT + "B" + Color.DEFAULT),
     COOP(Color.CYAN_FONT + "C" + Color.DEFAULT),
 
-    LAKE(Color.BLUE_BACKGROUND + "~" + Color.DEFAULT),
+    LAKE(Color.GRAY_FONT + "~" + Color.DEFAULT),
+    WATER_TANK(Color.BLUE_FONT + "W" + Color.DEFAULT),
     TREE(Color.GREEN_FONT + "T" + Color.DEFAULT),
+    ANIMAL(Color.RED_FONT + "A" + Color.DEFAULT),
 
     FORAGING(Color.YELLOW_FONT + "!" + Color.DEFAULT),
     SEED(Color.GREEN_FONT + "*" + Color.DEFAULT),
     CROP(Color.GREEN_FONT + "&" + Color.DEFAULT),
     ROCK(Color.MAGENTA_FONT + "@" + Color.DEFAULT),
+    WOOD(Color.RED_FONT + "|" + Color.DEFAULT),
+
+    SHOP(Color.RED_FONT + "S" + Color.DEFAULT),
+    NPC(Color.RED_FONT + "N" + Color.DEFAULT),
+    REFRIGERATOR(Color.CYAN_FONT + "R" + Color.DEFAULT),
+    ARTISAN(Color.CYAN_FONT + "A" + Color.DEFAULT)
     ;
 
 

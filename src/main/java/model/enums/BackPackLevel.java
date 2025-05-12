@@ -1,11 +1,10 @@
-package model.enums.toolsLevel;
+package model.enums;
 
-import model.enums.ToolLevel;
-
-public enum BackPackLevel implements ToolLevel {
+public enum BackPackLevel {
     NORMAL(12),
     LARGE(24),
     DELUX(Integer.MAX_VALUE);
+
     private final int size;
 
     BackPackLevel(int size) {
@@ -14,9 +13,5 @@ public enum BackPackLevel implements ToolLevel {
 
     public int getSize() {
         return size;
-    }
-
-    public int getEnergyNeededPerUse() {
-        return 0;
     }
 }

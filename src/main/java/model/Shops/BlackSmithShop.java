@@ -2,14 +2,16 @@ package model.Shops;
 
 import model.alive.Human;
 import model.items.ItemsInShops;
+import model.map.Location;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BlackSmithShop extends Shop {
     private ArrayList<upgradesToolsBlacsmithShop> upgradeTools;
     private ArrayList<ItemsInShops> stock;
-    public BlackSmithShop(Human owner) {
-        super(owner,9,16);
+    public BlackSmithShop(Human owner, Location upperLeftLocation, Location lowerRightLocation) {
+        super(owner,9,16, upperLeftLocation, lowerRightLocation);
         upgradeTools = new ArrayList<>();
         stock = new ArrayList<>();
     }
@@ -30,28 +32,17 @@ public class BlackSmithShop extends Shop {
     }
 
     public static class upgradesToolsBlacsmithShop extends ItemsInShops {
-        private String ingridientsString;
-        private int ingredientsInt;
+        private HashMap<String,Integer> ingredients;
         public upgradesToolsBlacsmithShop(String name, int price, String hashmapString, int hashmapInt) {
             super(name,false,1, price,"no description");
-            this.ingredientsInt = hashmapInt;
-            this.ingridientsString = hashmapString;
+            ingredients = new HashMap<>();
+            ingredients.put(hashmapString, hashmapInt);
         }
-
-        public String getIngridientsString() {
-            return ingridientsString;
+        public HashMap<String, Integer> getIngredients() {
+            return ingredients;
         }
-
-        public void setIngridientsString(String ingridientsString) {
-            this.ingridientsString = ingridientsString;
-        }
-
-        public int getIngredientsInt() {
-            return ingredientsInt;
-        }
-
-        public void setIngredientsInt(int ingredientsInt) {
-            this.ingredientsInt = ingredientsInt;
+        public void setIngredients(HashMap<String, Integer> ingredient) {
+            ingredients = ingredient;
         }
     }
 }
