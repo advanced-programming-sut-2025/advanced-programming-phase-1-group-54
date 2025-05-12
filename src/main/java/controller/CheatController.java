@@ -20,6 +20,14 @@ public class CheatController {
         return null;
     }
 
+    public static Result setEnergy(int value) {
+        return null;
+    }
+
+    public static Result setUnlimitedEnergy() {
+        return null;
+    }
+
     public static Result addItem(String itemName, int count) {
         return null;
     }

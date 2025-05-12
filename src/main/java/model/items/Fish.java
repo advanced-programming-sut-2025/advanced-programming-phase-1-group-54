@@ -76,7 +76,7 @@ public class Fish extends Item implements Cloneable{
 
         ArrayList<Fish> fishes = seasonFishes.get(season);
 
-        if(player.get)
+//        if(player.get)
         Random rand = new Random();
         return fishes.get(rand.nextInt(fishes.size()));
     }
