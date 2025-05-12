@@ -9,7 +9,7 @@ import model.alive.Player;
 import model.enums.Direction;
 import model.enums.Feature;
 import model.items.plants.*;
-import model.map.Farm;
+import model.items.tools.Scythe;
 import model.map.Location;
 import model.map.Tile;
 import model.map.World;
@@ -46,10 +46,7 @@ public class PlantsController {
 
     }
 
-    //TODO
     public Result planting(String seedName,String directionString){
-
-        // Todo check energy
 
         Direction direction;
         try{
@@ -128,6 +125,11 @@ public class PlantsController {
     public Result harvestPlant(String directionString){
 
         // Todo check energy
+
+        if(! (App.getCurrentGame().getCurrentPlayer().getEquippedTool() instanceof Scythe)){
+            return new Result(-1,"You don't have scythe in your hand");
+        }
+
 
         Direction direction;
         try{

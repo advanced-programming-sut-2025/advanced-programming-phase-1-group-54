@@ -21,6 +21,10 @@ import java.util.HashMap;
 public class Player extends Human {
     private static final int MAXIMUM_ENERGY = 200;
 
+    public static int getMaximumEnergy() {
+        return MAXIMUM_ENERGY;
+    }
+
     private User controllingUser;
     private int energy;
     private int money;
@@ -34,7 +38,9 @@ public class Player extends Human {
     }};
 
     private final ArrayList<Recipe> learnedCraftingRecipes = new ArrayList<>(){{
-//        add(Recipe.craftRecipes.get(""));
+        add(Recipe.craftRecipes.get("Furnace Recipe"));
+        add(Recipe.craftRecipes.get("Scarecrow Recipe"));
+        add(Recipe.craftRecipes.get("Mayonnaise Machine Recipe"));
     }};
 
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
@@ -42,11 +48,8 @@ public class Player extends Human {
     private final HashMap<String,Animal> animals = new HashMap<>();
     private final HashMap<SkillType,Skill> skills;
 
-    public void setMoney(int money) {
-        this.money = money;
-    }
-
-
+    private SkillType buffSkill;
+    private int buffHours;
     private Tool equippedTool;
 
     public Player(User controllingUser) {
@@ -85,6 +88,14 @@ public class Player extends Human {
 
     public Refrigerator getRefrigerator() {
         return refrigerator;
+    }
+
+    public SkillType getBuffSkill() {
+        return buffSkill;
+    }
+
+    public int getBuffHours() {
+        return buffHours;
     }
 
     public Tool getEquippedTool() {
@@ -153,6 +164,18 @@ public class Player extends Human {
         this.backpack = backpack;
     }
 
+    public void setBuffSkill(SkillType buffSkill) {
+        this.buffSkill = buffSkill;
+    }
+
+    public void decreaseBuffHours(int buffHours) {
+        this.buffHours -= buffHours;
+    }
+
+    public void setBuffHours(int buffHours) {
+        this.buffHours = buffHours;
+    }
+
     public void setEquippedTool(Tool equippedTool) {
         this.equippedTool = equippedTool;
     }
@@ -164,4 +187,45 @@ public class Player extends Human {
     public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
     }
+
+
+    public boolean checkEnergy(int energyAmount,SkillType skillType) {
+        if(skillType == null){
+            return this.energy >= energyAmount;
+        }
+        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
+                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+            return this.energy >= energyAmount - 2;
+        }
+        else if(this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+            return this.energy >= energyAmount - 1;
+        }
+        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
+            return this.energy >= energyAmount - 1;
+        }
+        else{
+            return this.energy >= energyAmount;
+        }
+    }
+
+    public void decreaseEnergy(int energyAmount,SkillType skillType) {
+        if(skillType == null){
+            this.energy -= energyAmount;
+        }
+        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
+                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+            this.energy -= energyAmount - 2;
+        }
+        else if(this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+            this.energy -= energyAmount - 1;
+        }
+        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
+            this.energy -= energyAmount - 1;
+        }
+        else{
+            this.energy -= energyAmount;
+        }
+    }
+
+
 }

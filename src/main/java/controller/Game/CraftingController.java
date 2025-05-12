@@ -36,10 +36,14 @@ public class CraftingController {
     // Todo
     public static Result Crafting(String artisanName){
 
-        // Todo is in the House? and check energy
+        // Todo is in the House?
 
 
         Player player = App.getCurrentGame().getCurrentPlayer();
+
+        if(! player.checkEnergy(2,null)){
+            return new Result(-1,"you don't have enough energy");
+        }
 
         Artisan artisan = ProducerArtisan.getProducerArtisan(artisanName);
         if(artisan == null){
@@ -76,6 +80,8 @@ public class CraftingController {
                 return new Result(-1,"Backpack is full");
             }
         }
+
+        player.decreaseEnergy(2,null);
 
        return new Result(1,artisanName + " crafted successfully");
 
