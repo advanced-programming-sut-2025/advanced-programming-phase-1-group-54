@@ -85,6 +85,11 @@ public class PlantsController {
                 if(! tile.getFeatures().contains(Feature.PROTECTED)) {
                     player.getPlants().remove(plant);
                     tile.setThingOnTile(null);
+                    if (plant instanceof Crop crop && crop.getGiantDirection() != null){
+                        for (int k = 0 ; k < 4;k++){
+//                            crop = (Crop) App.getCurrentGame().getWorld().getFarm(player).getTileAt(tile.get)
+                        }
+                    }
                 }
             }
         }
@@ -154,8 +159,7 @@ public class PlantsController {
         }
 
         if(tile.getThingOnTile() != null && tile.getThingOnTile() instanceof GreenHouse){
-            //TODO
-//            tile = tile.
+            tile = tile.getTop();
         }
 
         Placeable placeable = tile.getThingOnTile();
@@ -203,7 +207,6 @@ public class PlantsController {
 
     //TODO
     public Result foragingCrop(){
-
 
         return null;
     }
