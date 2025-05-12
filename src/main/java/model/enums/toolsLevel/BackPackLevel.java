@@ -4,9 +4,8 @@ import model.enums.ToolLevel;
 
 public enum BackPackLevel implements ToolLevel {
     NORMAL(12),
-    BIG(24),
-    THELUX(Integer.MAX_VALUE);
-
+    LARGE(24),
+    DELUX(Integer.MAX_VALUE);
     private final int size;
 
     BackPackLevel(int size) {

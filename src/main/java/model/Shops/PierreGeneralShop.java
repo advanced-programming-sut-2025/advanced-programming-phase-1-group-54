@@ -19,7 +19,48 @@ public class PierreGeneralShop extends Shop {
         this.summerStock = new ArrayList<>();
         this.fallStock = new ArrayList<>();
     }
-    public class BackPacksItems extends ItemsInShops {
+
+    public ArrayList<ItemsInShops> getYearRoundStock() {
+        return yearRoundStock;
+    }
+
+    public void setYearRoundStock(ArrayList<ItemsInShops> yearRoundStock) {
+        this.yearRoundStock = yearRoundStock;
+    }
+
+    public ArrayList<BackPacksItems> getBackPacks() {
+        return backPacks;
+    }
+
+    public void setBackPacks(ArrayList<BackPacksItems> backPacks) {
+        this.backPacks = backPacks;
+    }
+
+    public ArrayList<SeasonalStockItems> getSpringStock() {
+        return springStock;
+    }
+
+    public void setSpringStock(ArrayList<SeasonalStockItems> springStock) {
+        this.springStock = springStock;
+    }
+
+    public ArrayList<SeasonalStockItems> getSummerStock() {
+        return summerStock;
+    }
+
+    public void setSummerStock(ArrayList<SeasonalStockItems> summerStock) {
+        this.summerStock = summerStock;
+    }
+
+    public ArrayList<SeasonalStockItems> getFallStock() {
+        return fallStock;
+    }
+
+    public void setFallStock(ArrayList<SeasonalStockItems> fallStock) {
+        this.fallStock = fallStock;
+    }
+
+    public static class BackPacksItems extends ItemsInShops {
         private boolean isPurchaseAble;
         public BackPacksItems(boolean isPurchaseAble,String name, int price,String description) {
             super(name, false, 1, price, description);
@@ -34,12 +75,28 @@ public class PierreGeneralShop extends Shop {
             isPurchaseAble = purchaseAble;
         }
     }
-    public class SeasonalStockItems extends ItemsInShops {
+    public static class SeasonalStockItems extends ItemsInShops {
         private int priceInSeason;
         private int priceOutOfSeason;
         public SeasonalStockItems (String name, int price,String description,int priceInSeason,int priceOutOfSeason) {
             super(name, false, 5, price, description);
             this.priceInSeason = priceInSeason;
+            this.priceOutOfSeason = priceOutOfSeason;
+        }
+
+        public int getPriceInSeason() {
+            return priceInSeason;
+        }
+
+        public void setPriceInSeason(int priceInSeason) {
+            this.priceInSeason = priceInSeason;
+        }
+
+        public int getPriceOutOfSeason() {
+            return priceOutOfSeason;
+        }
+
+        public void setPriceOutOfSeason(int priceOutOfSeason) {
             this.priceOutOfSeason = priceOutOfSeason;
         }
     }
