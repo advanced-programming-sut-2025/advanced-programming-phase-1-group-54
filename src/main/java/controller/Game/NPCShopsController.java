@@ -297,7 +297,6 @@ public class NPCShopsController {
 
         //TODO
         return null;
-        return null;
     }
     public static Result buySomthingFromBlacksmith(String itemName, int count) {
         for(ItemsInShops item : ((BlackSmithShop)(App.getCurrentGame().getNpcShops().get(0))).getStock()){
@@ -456,6 +455,7 @@ public class NPCShopsController {
         Item product = CommonGameController.findItem(item.getName());
         // what is Copper Tool??
         //TODO
+        return null;
     }
     public static Result buyBackPacs(PierreGeneralShop.BackPacksItems item, int count){
         if (count > item.getCount() && item.getCount() != -1){
@@ -536,6 +536,6 @@ public class NPCShopsController {
         return null;
     }
     public static  Result buyLivesStockInMarine(MarnieRanch.ItemsInMarineRanch item, int count){
-
+        return null;
     }
 }

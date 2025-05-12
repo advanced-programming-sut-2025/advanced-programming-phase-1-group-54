@@ -64,19 +64,10 @@ public class Player extends Human implements DailyUpdate {
 
     private SkillType buffSkill;
     private int buffHours;
-    public int getMoney() {
-        return money;
-    }
 
-    /*public void setMoney(int money) {
-        this.money = money;
-    }*/
-    public void spentMoney(int spent){
-        money -= spent;
-    }
-    private final Skill[] skills = new Skill[SkillType.values().length];
 
     private Tool equippedTool;
+
 
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
@@ -88,6 +79,16 @@ public class Player extends Human implements DailyUpdate {
         skills.put(SkillType.FISHING,new Skill(SkillType.FISHING));
         // TODO
     }
+
+    public int getMoney() {
+        return money;
+    }
+    public void spentMoney(int spent){
+        money -= spent;
+    }
+
+
+
 
     public HashMap<SkillType, Skill> getSkills() {
         return skills;
@@ -225,11 +226,6 @@ public class Player extends Human implements DailyUpdate {
     public void setRecivedGifts(ArrayList<Gift> recivedGifts) {
         this.recivedGifts = recivedGifts;
     }
-
-    public void addSkillXP(SkillType skillType, int amount) {
-        skills[SkillType.FARMING.ordinal()].addXP(amount);
-    }
-
     public void setRefrigerator(Refrigerator refrigerator) {
         this.refrigerator = refrigerator;
     }
