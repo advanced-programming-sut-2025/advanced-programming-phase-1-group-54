@@ -61,6 +61,7 @@ public class FoodController {
         return new Result(1,foodName + " cooked successfully");
     }
 
+    //TODO
     public static Result eatFood(String foodName){
 
 
@@ -74,7 +75,7 @@ public class FoodController {
             return new Result(-1, "You don't have food");
         }
 
-        // todo add energy and buff
+        // Todo add energy and buff
 
         return null;
     }

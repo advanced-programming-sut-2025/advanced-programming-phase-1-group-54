@@ -35,8 +35,7 @@ public class Player extends Human implements DailyUpdate {
 
     private Refrigerator refrigerator = new Refrigerator();
     private Location currentLocation;
-
-    private HashMap<Plant,Tile> Plants;
+    private final HashMap<Plant,Tile> Plants = new HashMap<>();
     
     private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>(){{
         add(Recipe.foodRecipes.get("Fried Egg Recipe"));
@@ -46,29 +45,31 @@ public class Player extends Human implements DailyUpdate {
 //        add(Recipe.craftRecipes.get(""));
     }};
 
-
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
-    public int getMoney() {
-        return money;
-    }
+    private final HashMap<String,Animal> animals = new HashMap<>();
+    private final HashMap<SkillType,Skill> skills;
 
     public void setMoney(int money) {
         this.money = money;
     }
 
-    private final Skill[] skills = new Skill[SkillType.values().length];
 
     private Tool equippedTool;
 
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
         this.money = 0;
+        this.skills = new HashMap<>();
+        skills.put(SkillType.FARMING,new Skill(SkillType.FARMING));
+        skills.put(SkillType.FORAGING,new Skill(SkillType.FORAGING));
+        skills.put(SkillType.MINING,new Skill(SkillType.MINING));
+        skills.put(SkillType.FISHING,new Skill(SkillType.FISHING));
         // TODO
     }
 
-    public Skill getSkill(SkillType skillType) {
-        return skills[skillType.ordinal()];
+    public HashMap<SkillType, Skill> getSkills() {
+        return skills;
     }
 
     public User getControllingUser() {
@@ -79,6 +80,10 @@ public class Player extends Human implements DailyUpdate {
         if (isUnlimitedEnergy())
             return MAXIMUM_ENERGY;
         return energy;
+    }
+
+    public int getMoney() {
+        return money;
     }
 
     public boolean isFallen() {
@@ -117,6 +122,12 @@ public class Player extends Human implements DailyUpdate {
         return placedArtisans;
     }
 
+    public HashMap<String, Animal> getAnimals() {
+        return animals;
+    }
+
+
+
     public void setControllingUser(User controllingUser) {
         this.controllingUser = controllingUser;
     }
@@ -151,10 +162,6 @@ public class Player extends Human implements DailyUpdate {
 
     public void setEquippedTool(Tool equippedTool) {
         this.equippedTool = equippedTool;
-    }
-
-    public void addSkillXP(SkillType skillType, int amount) {
-        skills[SkillType.FARMING.ordinal()].addXP(amount);
     }
 
     public void setRefrigerator(Refrigerator refrigerator) {

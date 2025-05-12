@@ -1,5 +1,7 @@
 import controller.Game.CraftingController;
 import controller.Game.PlantsController;
+import model.AnimalHouse;
+import model.alive.Animal;
 import model.items.AnimalProduce;
 import model.items.Fish;
 import model.items.Food;
@@ -11,11 +13,6 @@ import view.AppView;
 
 public class Main {
     public static void main(String[] args) {
-      (new AppView()).run();
-
-//        Fruit.writeToJson();
-//        Fish.writeToJson();
-//        AnimalProduce.writeToJson();
-
-    }
+//        (new AppView()).run();
+    } // fake comment
 }

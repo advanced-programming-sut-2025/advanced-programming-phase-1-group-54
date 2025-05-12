@@ -184,7 +184,7 @@ public class NPCShopsController {
             int ysize = jsonArray.getJSONObject(i).getInt("YSize");
             int wood = jsonArray.getJSONObject(i).getInt("Wood");
             int stoon = jsonArray.getJSONObject(i).getInt("Stoon");
-            CarpenterShop.ItemsinCarpenterShop itemsinCarpenterShop = new CarpenterShop.ItemsinCarpenterShop(xsize,ysize,name,count,price,description)
+            CarpenterShop.ItemsinCarpenterShop itemsinCarpenterShop = new CarpenterShop.ItemsinCarpenterShop(xsize,ysize,name,count,price,description);
             carpenterShop.getFarmBuildings().add(itemsinCarpenterShop);
         }
 
@@ -202,7 +202,7 @@ public class NPCShopsController {
             String description = jsonArray.getJSONObject(i).getString("Description");
             int count = jsonArray.getJSONObject(i).getInt("Count");
             int fishinglevel = jsonArray.getJSONObject(i).getInt("FishingSkillRequired");
-            FishShop.StockInShop stockInShop = new FishShop.StockInShop(fishinglevel,name,false,price,description)
+            FishShop.StockInShop stockInShop = new FishShop.StockInShop(fishinglevel,name,false,price,description);
             fishShop.getStockInShop().add(stockInShop);
         }
 
@@ -230,7 +230,7 @@ public class NPCShopsController {
             String description = jsonArray.getJSONObject(i).getString("Description");
             int count = jsonArray.getJSONObject(i).getInt("Count");
             String buildingRequired = jsonArray.getJSONObject(i).getString("BuildingRequired");
-            MarnieRanch.ItemsInMarineRanch itemsInShops = new MarnieRanch.ItemsInMarineRanch(buildingRequired,count,name,price,description)
+            MarnieRanch.ItemsInMarineRanch itemsInShops = new MarnieRanch.ItemsInMarineRanch(buildingRequired,count,name,price,description);
             marnieRanch.getLivesTock().add(itemsInShops);
         }
 
@@ -287,6 +287,9 @@ public class NPCShopsController {
         if(shop.getOwner().getName().equals("Gus")){
             return buySomthingFromStardrop(itemName,count);
         }
+
+        //TODO
+        return null;
     }
     public static Result buySomthingFromBlacksmith(String itemName, int count) {
         for(ItemsInShops item : ((BlackSmithShop)(App.getCurrentGame().getNpcShops().get(0))).getStock()){
@@ -414,6 +417,7 @@ public class NPCShopsController {
             return new Result(false,"Not enough money.");
         }
         //TODO
+        return null;
 
     }
     public static Result buyUpgradeToolsInBlackSmith(BlackSmithShop.upgradesToolsBlacsmithShop item, int count){
@@ -423,10 +427,11 @@ public class NPCShopsController {
         if(count * item.getPrice() > App.getCurrentGame().getCurrentPlayer().getMoney()){
             return new Result(false,"Not enough money.");
         }
-        if (Ingridnts chack){
-
-        }
+//        if (Ingridnts chack){
+//
+//        }
         //TODO
+        return null;
     }
     public static Result buyBackPacs(PierreGeneralShop.BackPacksItems item, int count){
         if (count > item.getCount() && item.getCount() != -1){
@@ -444,20 +449,22 @@ public class NPCShopsController {
         if(item.isPurchaseAble() == false && App.getCurrentGame().getCurrentPlayer().getBackpack().equals(BackPackLevel.NORMAL)){
             return new Result(false,"You should buy Large Backpack first.");
         }
-        App.getCurrentGame().getCurrentPlayer().setMoney(App.getCurrentGame().getCurrentPlayer().getMoney() - count * item.getPrice());
+//        App.getCurrentGame().getCurrentPlayer().setMoney(App.getCurrentGame().getCurrentPlayer().getMoney() - count * item.getPrice());
         App.getCurrentGame().getCurrentPlayer().getBackpack().upgrade();
-        if
+
+        //TODO
+        return null;
     }
     public static Result buySeasonalItems(PierreGeneralShop.SeasonalStockItems item, int count){
-
+        return null;
     }
     public static Result buyFarmBuilding(CarpenterShop.ItemsinCarpenterShop item, int count){
-
+        return null;
     }
     public static Result buyStockFromFishShop(FishShop.StockInShop item, int count){
-
+        return null;
     }
     public static  Result buyLivesStockInMarine(MarnieRanch.ItemsInMarineRanch item, int count){
-
+        return null;
     }
 }

@@ -4,9 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.App;
+import model.Skill;
 import model.alive.Player;
 import model.enums.ProduceQuality;
 import model.enums.Season;
+import model.enums.SkillType;
 import model.items.plants.Tree;
 
 import java.io.FileNotFoundException;
@@ -70,26 +72,30 @@ public class Fish extends Item implements Cloneable{
 
     // Todo get season Fish random
 
-    public static Fish getSeasonFish(Season season){
+    public static Fish getSeasonFish(){
 
         Player player = App.getCurrentGame().getCurrentPlayer();
-
+        Season season = App.getCurrentGame().getDateTime().getSeason();
         ArrayList<Fish> fishes = seasonFishes.get(season);
 
-//        if(player.get)
+        if(player.getSkills().get(SkillType.FISHING).getLevel() == Skill.getMaxSkillLevel()){
+            fishes.addAll(seasonLegendaryFishes.get(season));
+        }
+
         Random rand = new Random();
         return fishes.get(rand.nextInt(fishes.size()));
     }
 
 
     private final int baseSellPrice;
-    private int energy;
+    private final int energy;
     private ProduceQuality quality;
 
     public Fish(String name, int baseSellPrice) {
         super(name,true);
         this.baseSellPrice = baseSellPrice;
         this.quality = ProduceQuality.NORMAL;
+        this.energy = 0;
     }
 
     public int getBaseSellPrice() {
