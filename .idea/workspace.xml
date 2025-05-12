@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit quality in some models and write animalProduces in to json">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FriendShipController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/game/GiftMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PierreBackpacks.json" beforeDir="false" afterPath="$PROJECT_DIR$/PierreBackpacks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/BlackSmithShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/BlackSmithShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/CarpenterShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/CarpenterShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/PierreGeneralShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/PierreGeneralShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/relationships/Friendship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/relationships/Friendship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/relationships/Gift.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/relationships/Gift.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/relationships/PlayerRelationship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/relationships/PlayerRelationship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" afterDir="false" />
-    </list>
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="Commands added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -138,6 +121,7 @@
       <workItem from="1746869325194" duration="10682000" />
       <workItem from="1746899524862" duration="16543000" />
       <workItem from="1746969796674" duration="15898000" />
+      <workItem from="1747054765525" duration="708000" />
     </task>
     <task id="LOCAL-00001" summary="maven dorost kardam">
       <option name="closed" value="true" />
@@ -443,7 +427,87 @@
       <option name="project" value="LOCAL" />
       <updated>1746872749866</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="shops updated">
+      <option name="closed" value="true" />
+      <created>1747054892703</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1747054892703</updated>
+    </task>
+    <task id="LOCAL-00040" summary="buy item(some peoduct are not completed) and show item">
+      <option name="closed" value="true" />
+      <created>1747055061193</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055061193</updated>
+    </task>
+    <task id="LOCAL-00041" summary="String available added">
+      <option name="closed" value="true" />
+      <created>1747055096916</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055096916</updated>
+    </task>
+    <task id="LOCAL-00042" summary="gifts added to player">
+      <option name="closed" value="true" />
+      <created>1747055152072</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055152072</updated>
+    </task>
+    <task id="LOCAL-00043" summary="xml changes">
+      <option name="closed" value="true" />
+      <created>1747055175244</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055175244</updated>
+    </task>
+    <task id="LOCAL-00044" summary="method get player relainship added">
+      <option name="closed" value="true" />
+      <created>1747055245251</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055245251</updated>
+    </task>
+    <task id="LOCAL-00045" summary="gift menu added and gift class changed">
+      <option name="closed" value="true" />
+      <created>1747055293837</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055293837</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Friendship between players handled">
+      <option name="closed" value="true" />
+      <created>1747055357687</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055357687</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Game file player relainships added to Game">
+      <option name="closed" value="true" />
+      <created>1747055424654</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055424654</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Commands added">
+      <option name="closed" value="true" />
+      <created>1747055460708</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1747055460708</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,16 +525,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edit ForagingMineral Constructor" />
-    <MESSAGE value="write Produce until Loom Artisan" />
-    <MESSAGE value="edit write Produce until Loom Artisan" />
-    <MESSAGE value="edit write Produce until Preservers Jar Artisan" />
-    <MESSAGE value="write writeToJson method of Fish class" />
-    <MESSAGE value="read and write Fishes Json And add constructor to Item Class Babies :)" />
-    <MESSAGE value="write writeToJson method Of Recipe Class" />
-    <MESSAGE value="write writeToJson method Of Artisan Class and Produce Class" />
-    <MESSAGE value="write writeToJson method Of Material Class" />
-    <MESSAGE value="write writeToJson method Of Seed Class" />
     <MESSAGE value="write foraging Trees" />
     <MESSAGE value="edit writeToJson method of Seed Class" />
     <MESSAGE value=" write to json foragingCrops" />
@@ -492,7 +546,17 @@
     <MESSAGE value="make code runaAble" />
     <MESSAGE value="make produces json and write some controller" />
     <MESSAGE value="edit quality in some models and write animalProduces in to json" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit quality in some models and write animalProduces in to json" />
+    <MESSAGE value="shops updated" />
+    <MESSAGE value="buy item(some peoduct are not completed) and show item" />
+    <MESSAGE value="String available added" />
+    <MESSAGE value="gifts added to player" />
+    <MESSAGE value="xml changes" />
+    <MESSAGE value="method get player relainship added" />
+    <MESSAGE value="gift menu added and gift class changed" />
+    <MESSAGE value="Friendship between players handled" />
+    <MESSAGE value="Game file player relainships added to Game" />
+    <MESSAGE value="Commands added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commands added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
