@@ -1,6 +1,7 @@
 package controller.Game;
 
 import model.App;
+import model.Building.GreenHouse;
 import model.Game;
 import model.Placeable;
 import model.Result;
@@ -207,8 +208,11 @@ public class PlantsController {
             return new Result(-1,"You do not have Seed");
         }
 
-
-        if(tile.getThingOnTile() != null){
+        if(tile.getThingOnTile() instanceof GreenHouse greenHouse){
+            // TODO
+       //     tile = greenHouse.
+        }
+        else if(tile.getThingOnTile() != null){
             return new Result(-1,"tile already is full");
         }
 
