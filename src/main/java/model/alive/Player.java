@@ -1,6 +1,7 @@
 package model.alive;
 
 import model.DailyUpdate;
+import model.Refrigerator;
 import model.Skill;
 import model.User;
 import model.enums.FishingPoleLevel;
@@ -14,6 +15,7 @@ import model.items.tools.BackPack;
 import model.items.tools.FishingPole;
 import model.items.tools.Tool;
 import model.items.tools.TrashCan;
+import model.map.Farm;
 import model.map.Location;
 import model.map.Tile;
 import model.relationships.Gift;
@@ -33,6 +35,7 @@ public class Player extends Human implements DailyUpdate {
     private int money;
 
     private final User controllingUser;
+    private final Farm farm;
 
     private int energy;
     private boolean unlimitedEnergy;
@@ -75,8 +78,9 @@ public class Player extends Human implements DailyUpdate {
 
     private boolean isInGiftList;
 
-    public Player(User controllingUser) {
+    public Player(User controllingUser, Farm farm) {
         this.controllingUser = controllingUser;
+        this.farm = farm;
         this.money = 0;
         this.isInGiftList = false;
         this.skills = new HashMap<>();
@@ -86,6 +90,10 @@ public class Player extends Human implements DailyUpdate {
         skills.put(SkillType.MINING,new Skill(SkillType.MINING));
         skills.put(SkillType.FISHING,new Skill(SkillType.FISHING));
         // TODO
+    }
+
+    public Farm getFarm() {
+        return farm;
     }
 
     public Tool getTool(ToolType toolType) {
@@ -260,6 +268,10 @@ public class Player extends Human implements DailyUpdate {
 
     public void setEquippedTool(Tool equippedTool) {
         this.equippedTool = equippedTool;
+    }
+
+    public Refrigerator getRefrigerator() {
+        return getFarm().getCabin().getRefrigerator();
     }
 
     public ArrayList<Gift> getReceivedGifts() {

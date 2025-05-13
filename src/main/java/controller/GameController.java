@@ -7,7 +7,6 @@ import model.Building.GreenHouse;
 import model.Game;
 import model.alive.Player;
 import model.enums.ToolType;
-import model.items.Food;
 import model.items.Item;
 import model.items.Material;
 import model.items.tools.*;
@@ -35,7 +34,7 @@ public class GameController {
     public static Result nextTurn() {
         Game game = App.getCurrentGame();
         game.nextTurn();
-        return new Result (true, String.format("it is %s's turn", game.getCurrentPlayer()));
+        return new Result(true, String.format("it is %s's turn", game.getCurrentPlayer()));
     }
 
     public static Result showTime() {
@@ -111,7 +110,23 @@ public class GameController {
             return new Result(false, "invalid location");
 
         int distance = game.getWorld().getDistance(player.getCurrentLocation(), location);
-        if (distance == Integer.MAX_VALUE)
+
+        boolean inOthersFarm = false;
+        for (Player otherPlayer : game.getPlayers()) {
+            if (otherPlayer.equals(player))
+                continue;
+
+            if (otherPlayer.equals(player.getPartner()))
+                continue;
+
+            Location locationInOtherFarm = location.delta(otherPlayer.getFarm().getLocation());
+            if (otherPlayer.getFarm().getTileAt(locationInOtherFarm) != null) {
+                inOthersFarm = true;
+                break;
+            }
+        }
+
+        if (distance == Integer.MAX_VALUE || inOthersFarm)
             return new Result(false, "Location unreachable from here!");
 
         return new Result(true, "Location reachable, energy needed is: " + distance / 20);
@@ -208,6 +223,8 @@ public class GameController {
         BackPack backPack = player.getBackpack();
         TrashCan trashCan = player.getTrashCan();
 
+        Item item = CommonGameController.findItem(itemName);
+
         return null;
     }
 
@@ -244,7 +261,7 @@ public class GameController {
         Player player = game.getCurrentPlayer();
         Farm farm = game.getWorld().getFarm(player);
 
-        // TODO check if other person farm ...
+        // partner farm ??
 
         Location location = player.getCurrentLocation().getLocationAt(direction).delta(farm.getLocation());
         Tile tile = farm.getTileAt(location);
@@ -261,9 +278,27 @@ public class GameController {
         boolean successfulUse = equippedTool.checkSuccess(tile);
         int energyNeeded = equippedTool.getEnergyNeededPerUse();
 
-        if (!successfulUse && equippedTool instanceof Pickaxe) {}
+        if (!successfulUse && (equippedTool instanceof Pickaxe || equippedTool instanceof Axe)) {
+            energyNeeded--;
+        }
 
-        return null;
+        boolean enoughEnergy = player.checkEnergy(energyNeeded, equippedTool.getSkillType());
+
+        if (!enoughEnergy)
+            player.setEnergy(0);
+        else {
+            player.decreaseEnergy(energyNeeded, equippedTool.getSkillType());
+            equippedTool.use(player.getBackpack(), tile);
+        }
+
+        if (enoughEnergy) {
+            if (!successfulUse)
+                return new Result(true, "tool was used, and you failed.");
+
+            return new Result(true, "tool was used, and you succeeded.");
+        }
+
+        return new Result(true, "you did not have enough energy, you passed out!");
     }
 
     public static Result plant(String seedName, String directionString) {

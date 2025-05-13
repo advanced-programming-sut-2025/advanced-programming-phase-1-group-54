@@ -38,11 +38,7 @@ public class World {
     }
 
     public Farm getFarm(Player player) {
-        for (Farm farm : playerFarms) {
-            if (farm.getOwner().equals(player))
-                return farm;
-        }
-        return null;
+        return player.getFarm();
     }
 
     public void thunder() {

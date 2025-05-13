@@ -17,8 +17,6 @@ public class Farm implements DailyUpdate {
     private final Location location;
     private final Map map;
 
-    private final Player owner;
-
     private final GreenHouse greenhouse;
     private final Cabin cabin;
     private final Quarry quarry;
@@ -32,8 +30,7 @@ public class Farm implements DailyUpdate {
         return NUMBER_OF_COLUMNS;
     }
 
-    public Farm(Player owner, Location location, GreenHouse greenhouse, Cabin cabin, Quarry quarry, Lake[] lakes, Map map) {
-        this.owner = owner;
+    public Farm(Location location, GreenHouse greenhouse, Cabin cabin, Quarry quarry, Lake[] lakes, Map map) {
         this.location = location;
         this.map = map;
 
@@ -41,10 +38,6 @@ public class Farm implements DailyUpdate {
         this.cabin = cabin;
         this.quarry = quarry;
         this.lakes = lakes;
-    }
-
-    public Player getOwner() {
-        return owner;
     }
 
     public Location getLocation() {

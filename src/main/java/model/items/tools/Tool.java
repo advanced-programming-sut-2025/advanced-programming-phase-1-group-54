@@ -22,6 +22,8 @@ public abstract class Tool {
 
     abstract public void use(BackPack backPack, Tile tile);
 
+    abstract public SkillType getSkillType();
+
     public int getEnergyNeededPerUse() {
         switch (toolLevel) {
             case NORMAL:

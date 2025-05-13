@@ -75,7 +75,7 @@ public class FriendShipController {
             return new Result(false,"not enough in " + player.getName() + " back pack");
         }
         Gift gift = new Gift(App.getCurrentGame().getCurrentPlayer(),item,count);
-        player.getRecivedGifts().add(gift);
+        player.getReceivedGifts().add(gift);
         relationship.getGiftHistory().add(gift);
         return new Result(true,"gift sent");
     }
@@ -110,7 +110,7 @@ public class FriendShipController {
     }
     public static  ArrayList<String> giftList(){
         ArrayList<String> giftHistory = new ArrayList<>();
-        for (Gift gift : App.getCurrentGame().getCurrentPlayer().getRecivedGifts()){
+        for (Gift gift : App.getCurrentGame().getCurrentPlayer().getReceivedGifts()){
             String st = gift.getPayer().getName() + " gave you " + gift.getAmount() + gift.getItemName() + " as gift.";
             giftHistory.add(st);
         }
@@ -121,10 +121,10 @@ public class FriendShipController {
         if (rate > 5 || rate < 1){
             return new Result(false,"rate between 1 to 5");
         }
-        if (number < 1 || number > (App.getCurrentGame().getCurrentPlayer().getRecivedGifts().size())){
+        if (number < 1 || number > (App.getCurrentGame().getCurrentPlayer().getReceivedGifts().size())){
             return new Result(false,"number not in list");
         }
-        Gift gift = App.getCurrentGame().getCurrentPlayer().getRecivedGifts().get(number-1);
+        Gift gift = App.getCurrentGame().getCurrentPlayer().getReceivedGifts().get(number-1);
         Player player = gift.getPayer();
         PlayerRelationship relationship = FriendShipController.getPlayerRelationship(App.getCurrentGame().getCurrentPlayer(), player);
         if (relationship.getGiftDailyCount() == 0) {
@@ -139,7 +139,7 @@ public class FriendShipController {
                         App.getCurrentGame().getCurrentPlayer().getEnergy());
             }
         }
-        App.getCurrentGame().getCurrentPlayer().getRecivedGifts().remove(number-1);
+        App.getCurrentGame().getCurrentPlayer().getReceivedGifts().remove(number-1);
         gift.setRate(rate);
         return new Result(true,"done successfully");
     }
