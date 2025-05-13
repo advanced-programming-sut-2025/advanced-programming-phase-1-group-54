@@ -464,6 +464,7 @@ public class NPCShopsController {
             }
             return new Result(true, "Item purchased");
         }
+        return null;
     }
     public static Result buyUpgradeToolsInBlackSmith(BlackSmithShop.upgradesToolsBlacsmithShop item, int count){
         if (count > item.getCount() && item.getCount() != -1){
@@ -649,9 +650,9 @@ public class NPCShopsController {
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }
-        Animal temp = Animal.animals.get(item.getName());
-        Animal animal = temp.clone();
+        //Animal temp = Animal.animals.get(item.getName());
+        //Animal animal = temp.clone();
         //TODO App.getplayer.AnimalHouses.add animal
-        return new Result(true,"animal perchased");
+        return new Result(true,"animal purchased");
     }
 }
