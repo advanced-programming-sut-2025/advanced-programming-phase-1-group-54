@@ -27,7 +27,7 @@ public class Fruit extends Item implements Cloneable, Placeable {
     private final static HashMap<Season, ArrayList<String>> foragingCrops;
 
 
-    static{
+    static {
         Gson gson = new Gson();
         FileReader file = null;
         try {
@@ -35,8 +35,9 @@ public class Fruit extends Item implements Cloneable, Placeable {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        Type type = new TypeToken<HashMap<String,Fruit>>(){}.getType();
-        fruits = gson.fromJson(file,type);
+        Type type = new TypeToken<HashMap<String, Fruit>>() {
+        }.getType();
+        fruits = gson.fromJson(file, type);
         System.out.println(fruits.size());
 
         try {
@@ -44,23 +45,23 @@ public class Fruit extends Item implements Cloneable, Placeable {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        type = new TypeToken<HashMap<Season,ArrayList<String>>>(){}.getType();
-        foragingCrops = gson.fromJson(file,type);
+        type = new TypeToken<HashMap<Season, ArrayList<String>>>() {
+        }.getType();
+        foragingCrops = gson.fromJson(file, type);
         System.out.println(foragingCrops.size());
 
     }
 
-    public static Fruit getFruit(String name){
+    public static Fruit getFruit(String name) {
         Fruit fruit = fruits.get(name);
-        if(fruit == null){
+        if (fruit == null) {
             return null;
-        }
-        else{
+        } else {
             return fruit.clone();
         }
     }
 
-    public static Fruit getForagingCrop(){
+    public static Fruit getForagingCrop() {
         Season season = App.getCurrentGame().getDateTime().getSeason();
         Random rand = new Random();
         String foragingCropName = foragingCrops.get(season).get(rand.nextInt(foragingCrops.size()));
@@ -68,20 +69,13 @@ public class Fruit extends Item implements Cloneable, Placeable {
     }
 
 
-
-    private final int baseSellPrice;
     private final int energy;
     private ProduceQuality quality;
 
-    public Fruit(String name, int baseSellPrice, boolean isEdible, int energy) {
-        super(name,isEdible);
-        this.baseSellPrice = baseSellPrice;
+    public Fruit(String name, int sellPrice, boolean isEdible, int energy) {
+        super(name, isEdible, sellPrice);
         this.energy = energy;
         this.quality = ProduceQuality.NORMAL;
-    }
-
-    public int getBaseSellPrice() {
-        return baseSellPrice;
     }
 
     public boolean isEdible() {
@@ -105,7 +99,7 @@ public class Fruit extends Item implements Cloneable, Placeable {
         return "Name : " + name +
                 "\nbaseSellPrice : " + baseSellPrice +
                 "\nisEdible : " + isEdible +
-                "\nenergy : " + energy ;
+                "\nenergy : " + energy;
     }
 
     @Override
@@ -127,9 +121,9 @@ public class Fruit extends Item implements Cloneable, Placeable {
 
     public static void writeToJson() {
 
-        HashMap<String,Fruit> fruitTypes = new HashMap<String,Fruit>();
+        HashMap<String, Fruit> fruitTypes = new HashMap<String, Fruit>();
 
-        HashMap<Season,ArrayList<String>> foragingCropsType = new HashMap<>();
+        HashMap<Season, ArrayList<String>> foragingCropsType = new HashMap<>();
 
         ArrayList<String> springForagingCrops = new ArrayList<>();
         ArrayList<String> summerForagingCrops = new ArrayList<>();
@@ -323,7 +317,7 @@ public class Fruit extends Item implements Cloneable, Placeable {
         fruitTypes.put(fruit.getName(), fruit);
         springForagingCrops.add(fruit.getName());
 
-        fruit = new Fruit("Morel", 150, true,20);
+        fruit = new Fruit("Morel", 150, true, 20);
         fruitTypes.put(fruit.getName(), fruit);
         springForagingCrops.add(fruit.getName());
 
@@ -395,20 +389,20 @@ public class Fruit extends Item implements Cloneable, Placeable {
         fruitTypes.put(fruit.getName(), fruit);
         winterForagingCrops.add(fruit.getName());
 
-        foragingCropsType.put(Season.SPRING,springForagingCrops);
-        foragingCropsType.put(Season.SUMMER,summerForagingCrops);
-        foragingCropsType.put(Season.FALL,fallForagingCrops);
-        foragingCropsType.put(Season.WINTER,winterForagingCrops);
+        foragingCropsType.put(Season.SPRING, springForagingCrops);
+        foragingCropsType.put(Season.SUMMER, summerForagingCrops);
+        foragingCropsType.put(Season.FALL, fallForagingCrops);
+        foragingCropsType.put(Season.WINTER, winterForagingCrops);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        try (FileWriter file = new FileWriter("fruits.json")){
+        try (FileWriter file = new FileWriter("fruits.json")) {
             gson.toJson(fruitTypes, file);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        try (FileWriter file = new FileWriter("foragingCrops.json")){
+        try (FileWriter file = new FileWriter("foragingCrops.json")) {
             gson.toJson(foragingCropsType, file);
         } catch (IOException e) {
             throw new RuntimeException(e);

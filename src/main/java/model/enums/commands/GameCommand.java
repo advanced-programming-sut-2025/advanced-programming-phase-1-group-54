@@ -24,12 +24,19 @@ public enum GameCommand implements Command {
     HELP_READ_MAP("help reading map"),
     SHOW_ALL_PRODUCTS("show all products"),
     SHOW_ALL_AVAILABLE_PRODUCTS("show all available products"),
+    PURCHASE_ITEM("purchase (?<product_name>\\S) -n (?<count>\\d)"),
+    PURCHASE_ANIMAL("purchase animal (?<product_name>\\S) -n (?<count>\\d) -name (?<name>\\S)"),
     FRIENDSHIP("friendships"),
     TALK(" talk -u (?<username>\\S) -m (?<message>\\S)"),
     TALK_HISTORY("talk history (?<username>\\S)"),
     GIFT("gift -u (?<username>\\S) -i (?<item>\\S) -a (?<amount>\\d)"),
-    CHOOSE_GIFT("gift number (?<number>\\d+)"),
-    GIFT_RATE("\\d"),
+    GIFT_LIST("gift list"),
+    GIFT_RATE("gift rate -i (?<number>\\d) -r (?<rate>\\d)"),
+    GIFT_HISTORY("gift history -u (?<username>\\S)"),
+    HUG("hug -u (?<username>\\S)"),
+    FLOWER("flower -u (?<username>\\S)"),
+    ASK_MARRIAGE("ask marriage -u (?<username>\\S) -r (?<ring>\\S)"),
+    RESPOND_MARRIAGE("respond (?<bool>(–accept|–reject)) -u (?<username>\\S)"),
     EXIT("exit")
     ;
     private final String regex;

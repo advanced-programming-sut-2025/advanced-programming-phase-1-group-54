@@ -32,17 +32,28 @@ public class BlackSmithShop extends Shop {
     }
 
     public static class upgradesToolsBlacsmithShop extends ItemsInShops {
-        private HashMap<String,Integer> ingredients;
+        private String ingredientString;
+        private int ingredientsInt;
         public upgradesToolsBlacsmithShop(String name, int price, String hashmapString, int hashmapInt) {
             super(name,false,1, price,"no description");
-            ingredients = new HashMap<>();
-            ingredients.put(hashmapString, hashmapInt);
+            this.ingredientsInt = hashmapInt;
+            this.ingredientString = hashmapString;
         }
-        public HashMap<String, Integer> getIngredients() {
-            return ingredients;
+
+        public String getIngredientString() {
+            return ingredientString;
         }
-        public void setIngredients(HashMap<String, Integer> ingredient) {
-            ingredients = ingredient;
+
+        public void setIngredientString(String ingredientString) {
+            this.ingredientString = ingredientString;
+        }
+
+        public int getIngredientsInt() {
+            return ingredientsInt;
+        }
+
+        public void setIngredientsInt(int ingredientsInt) {
+            this.ingredientsInt = ingredientsInt;
         }
     }
 }

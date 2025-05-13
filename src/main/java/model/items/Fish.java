@@ -87,19 +87,13 @@ public class Fish extends Item implements Cloneable{
     }
 
 
-    private final int baseSellPrice;
     private final int energy;
     private ProduceQuality quality;
 
-    public Fish(String name, int baseSellPrice) {
-        super(name,true);
-        this.baseSellPrice = baseSellPrice;
+    public Fish(String name, int sellPrice) {
+        super(name,true,sellPrice);
         this.quality = ProduceQuality.NORMAL;
         this.energy = 0;
-    }
-
-    public int getBaseSellPrice() {
-        return baseSellPrice;
     }
 
     public int getEnergy() {

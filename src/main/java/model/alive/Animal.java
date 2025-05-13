@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-public class Animal implements Placeable {
+public class Animal implements Placeable,Cloneable {
 
     static final HashMap<String,Animal> animals;
 
@@ -42,6 +42,17 @@ public class Animal implements Placeable {
     }
 
     static final int maxFriendship = 1000;
+
+    public static Animal getAnimal(String name) {
+        Animal animal = animals.get(name);
+        if(animal == null){
+            return null;
+        }
+        else{
+            return animal.clone();
+        }
+    }
+
 
     private final String name;
     private String animalName;
@@ -309,6 +320,15 @@ public class Animal implements Placeable {
 
     }
 
+
+    @Override
+    protected Animal clone() {
+        try {
+            return (Animal) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 
     @Override
     public Symbol getSymbol() {

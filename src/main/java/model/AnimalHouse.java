@@ -12,7 +12,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class AnimalHouse {
+public class AnimalHouse implements Cloneable{
 
     private static final HashMap<String, AnimalHouse> animalHouses;
 
@@ -26,6 +26,16 @@ public class AnimalHouse {
         }
         Type type = new TypeToken<HashMap<String, AnimalHouse>>(){}.getType();
         animalHouses = gson.fromJson(file,type);
+    }
+
+    public static AnimalHouse getAnimalHouse(String ItemName){
+        AnimalHouse animalHouse = animalHouses.get(ItemName);
+        if(animalHouse == null){
+            return null;
+        }
+        else{
+            return animalHouse.clone();
+        }
     }
 
     private final String Name;
@@ -63,6 +73,15 @@ public class AnimalHouse {
 
     public void decreaseNumberOfAnimals(int numberOfAnimals) {
         this.numberOfAnimals -= numberOfAnimals;
+    }
+
+    @Override
+    protected AnimalHouse clone(){
+        try {
+            return (AnimalHouse) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     public static void writeToJson(){

@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.Placeable;
 import model.enums.Symbol;
+import model.items.plants.Fruit;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -50,22 +51,16 @@ public class Material extends Item implements Placeable,Cloneable {
         }
     }
 
-    private static Material getForagingMaterial() {
+    public static Material getForagingMaterial() {
         Random rand = new Random();
         String foragingMaterialName = foragingMaterials.get(rand.nextInt(foragingMaterials.size()));
         return getMaterial(foragingMaterialName);
     }
 
 
-    private final int baseSellPrice;
 
-    public Material(String name, int baseSellPrice) {
-        super(name,false);
-        this.baseSellPrice = baseSellPrice;
-    }
-
-    public int getBaseSellPrice() {
-        return baseSellPrice;
+    public Material(String name, int sellPrice) {
+        super(name,false,sellPrice);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package model.alive;
 
 import model.DailyUpdate;
-import model.Refrigerator;
 import model.Skill;
 import model.User;
 import model.enums.FishingPoleLevel;
@@ -37,6 +36,7 @@ public class Player extends Human implements DailyUpdate {
 
     private int energy;
     private boolean unlimitedEnergy;
+    private int heartBroken;
 
     private final BackPack backpack = new BackPack();
     private final TrashCan trashCan = new TrashCan();
@@ -47,7 +47,6 @@ public class Player extends Human implements DailyUpdate {
     private Tool equippedTool;
 
     private Location currentLocation;
-    private ArrayList<Gift> recivedGifts;
     private final HashMap<Plant,Tile> Plants = new HashMap<>();
 
     private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>(){{
@@ -61,6 +60,9 @@ public class Player extends Human implements DailyUpdate {
         add(Recipe.craftRecipes.get("Mayonnaise Machine Recipe"));
     }};
 
+    private final ArrayList<Gift> receivedGifts = new ArrayList<>();
+    private final ArrayList<Player> askedForMarriage = new ArrayList<>();
+    private Player partner = null;
 
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
@@ -71,10 +73,14 @@ public class Player extends Human implements DailyUpdate {
     private int buffHours;
 
 
+    private boolean isInGiftList;
+
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
         this.money = 0;
+        this.isInGiftList = false;
         this.skills = new HashMap<>();
+        this.heartBroken = 0;
         skills.put(SkillType.FARMING,new Skill(SkillType.FARMING));
         skills.put(SkillType.FORAGING,new Skill(SkillType.FORAGING));
         skills.put(SkillType.MINING,new Skill(SkillType.MINING));
@@ -104,6 +110,9 @@ public class Player extends Human implements DailyUpdate {
 
     public void spentMoney(int spent){
         money -= spent;
+        if(partner != null) {
+            partner.setMoney(money);
+        }
     }
 
     public HashMap<SkillType, Skill> getSkills() {
@@ -169,11 +178,23 @@ public class Player extends Human implements DailyUpdate {
         return animals;
     }
 
+    public Player getPartner() {
+        return partner;
+    }
+
+    public void setPartner(Player partner) {
+        this.partner = partner;
+    }
+
     public void setEnergy(int energy) {
-        this.energy = energy;
+        if (energy <= MAXIMUM_ENERGY)
+            this.energy = energy;
     }
 
     public void increaseMoney(int money) {
+        if(partner != null) {
+            partner.increaseMoney(money);
+        }
         this.money += money;
     }
 
@@ -182,10 +203,16 @@ public class Player extends Human implements DailyUpdate {
             return false;
         }
         this.money -= money;
+        if(partner != null) {
+            partner.decreaseMoney(money);
+        }
         return true;
     }
 
     public void setMoney(int money) {
+        if(partner != null) {
+            partner.setMoney(money);
+        }
         this.money = money;
     }
 
@@ -209,6 +236,16 @@ public class Player extends Human implements DailyUpdate {
             setEnergy(MAXIMUM_ENERGY);
     }
 
+    public int getHeartBroken() {
+        return heartBroken;
+    }
+
+    public void setHeartBroken(int heartBroken) {
+        this.heartBroken = heartBroken;
+    }
+    public void decreaseHeartBroken() {
+        heartBroken--;
+    }
     public void setBuffSkill(SkillType buffSkill) {
         this.buffSkill = buffSkill;
     }
@@ -225,24 +262,39 @@ public class Player extends Human implements DailyUpdate {
         this.equippedTool = equippedTool;
     }
 
-    public ArrayList<Gift> getRecivedGifts() {
-        return recivedGifts;
+    public ArrayList<Gift> getReceivedGifts() {
+        return receivedGifts;
     }
 
-    public void setRecivedGifts(ArrayList<Gift> recivedGifts) {
-        this.recivedGifts = recivedGifts;
+
+    public ArrayList<Player> getAskedForMarriage() {
+        return askedForMarriage;
     }
 
     public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
     }
 
+    public boolean isInGiftList() {
+        return isInGiftList;
+    }
+
+    public void setInGiftList(boolean inGiftList) {
+        isInGiftList = inGiftList;
+    }
+
     @Override
     public void nextDayUpdate() {
         if (this.isFallen())
             energy = 75 * MAXIMUM_ENERGY / 100;
-        else
-            energy = MAXIMUM_ENERGY;
+        else {
+            if(this.heartBroken > 0){
+                energy = MAXIMUM_ENERGY / 2;
+            }
+            else {
+                energy = MAXIMUM_ENERGY;
+            }
+        }
     }
 
 

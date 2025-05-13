@@ -40,19 +40,13 @@ public class AnimalProduce extends Item implements Cloneable{
     }
 
     public AnimalProduce(String name, boolean isEdible, int sellPrice) {
-        super(name, isEdible);
-        this.sellPrice = sellPrice;
+        super(name, isEdible, sellPrice);
     }
 
-    private final int sellPrice;
     private ProduceQuality quality;
 
     public ProduceQuality getQuality() {
         return quality;
-    }
-
-    public int getSellPrice() {
-        return sellPrice;
     }
 
     public void setQuality(ProduceQuality quality) {

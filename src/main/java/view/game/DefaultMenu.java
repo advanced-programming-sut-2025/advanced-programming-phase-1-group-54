@@ -1,8 +1,10 @@
 package view.game;
 
+import controller.Game.CommonGameController;
 import controller.Game.FriendShipController;
 import controller.Game.NPCShopsController;
 import controller.GameController;
+import model.Game;
 import model.Result;
 import model.enums.commands.Command;
 import model.App;
@@ -51,6 +53,28 @@ public class DefaultMenu implements GameSubMenu {
             talkHistory(GameCommand.TALK_HISTORY.getMatcher(input));
         else if(GameCommand.GIFT.getMatcher(input) != null)
             gift(GameCommand.GIFT.getMatcher(input));
+        else if(GameCommand.GIFT_LIST.getMatcher(input) != null){
+            giftList();
+            App.getCurrentGame().getCurrentPlayer().setInGiftList(true);}
+        else if(GameCommand.GIFT_RATE.getMatcher(input) != null ) {
+            if(App.getCurrentGame().getCurrentPlayer().isInGiftList()){
+                giftRate(GameCommand.GIFT_RATE.getMatcher(input));
+            }
+            else{
+                System.out.println("go to gift list first");
+            }
+        }
+        else if(GameCommand.GIFT_HISTORY.getMatcher(input) != null){
+            giftHistory(GameCommand.GIFT_HISTORY.getMatcher(input));
+        }
+        else if(GameCommand.HUG.getMatcher(input) != null)
+            hug(GameCommand.HUG.getMatcher(input));
+        else if(GameCommand.FLOWER.getMatcher(input) != null)
+            flower(GameCommand.FLOWER.getMatcher(input));
+        else if(GameCommand.ASK_MARRIAGE.getMatcher(input) != null)
+            askMarriage(GameCommand.ASK_MARRIAGE.getMatcher(input));
+        else if (GameCommand.RESPOND_MARRIAGE.getMatcher(input) != null)
+            respondForMarriage(GameCommand.RESPOND_MARRIAGE.getMatcher(input));
         else if (GameCommand.WALK.matches(input))
             handleWalk(input, scanner);
         else if (GameCommand.PRINT_MAP.matches(input))
@@ -73,6 +97,80 @@ public class DefaultMenu implements GameSubMenu {
 //            handleShowInventory();
 //        else if (GameCommand.TRASH.matches(input))
 //            handleTrash(input);
+    }
+
+    private void respondForMarriage(Matcher matcher) {
+        String username = matcher.group("username");
+        Player player = App.getCurrentGame().getPlayerByUsername(username);
+        String temp = matcher.group("bool");
+        boolean marriage = false;
+        if(temp.equals("–accept")){
+            marriage = true;
+        }
+        if(player == null){
+            System.out.println("player not found");
+            return;
+        }
+        Result result = FriendShipController.respondForMarriage(player,marriage);
+    }
+
+    private void askMarriage(Matcher matcher) {
+        String username = matcher.group("username");
+        String ring = matcher.group("ring");
+        Player player = App.getCurrentGame().getPlayerByUsername(username);
+        if (player == null) {
+            System.out.println("Player not found");
+        }
+        //TODO check ring name
+        Result result = FriendShipController.askMarriage(player,ring);
+    }
+
+    private void flower(Matcher matcher) {
+        String username = matcher.group("username");
+        Player player = App.getCurrentGame().getPlayerByUsername(username);
+        if(player == null){
+            System.out.println("player not found");
+            return;
+        }
+        FriendShipController.flower(player);
+    }
+
+    private void hug(Matcher matcher) {
+        String username = matcher.group("username");
+        Player player = App.getCurrentGame().getPlayerByUsername(username);
+        if(player == null){
+            System.out.println("Player not found");
+            return;
+        }
+        Result result = FriendShipController.hug(player);
+        System.out.println(result.message());
+    }
+
+    private void giftHistory(Matcher matcher) {
+        String username = matcher.group("username");
+        Player player = App.getCurrentGame().getPlayerByUsername(username);
+        if (player == null){
+            System.out.println("user not found");
+            return;
+        }
+        else{
+            ArrayList<String> gifts = FriendShipController.giftHistory(player);
+            for (String st : gifts){
+                System.out.println(st);
+            }
+        }
+    }
+    private void giftList() {
+        ArrayList<String> gifts = FriendShipController.giftList();
+        for(int i = 0; i < gifts.size(); i++){
+            System.out.println(i + ". " + gifts.get(i));
+        }
+        if (gifts.size() > 0){
+            App.getCurrentGame().getCurrentPlayer().setInGiftList(true);
+        }
+        else{
+            System.out.println("gift list empty");
+        }
     }
 
     private void handleExitGame() {
@@ -157,6 +255,7 @@ public class DefaultMenu implements GameSubMenu {
         String username = mathcer.group("username");
         String message = mathcer.group("message");
         Result result = FriendShipController.talk(username, message);
+        System.out.println(result.message());
     }
     private void talkHistory(Matcher mathcer){
         String username = mathcer.group("username");
@@ -178,6 +277,14 @@ public class DefaultMenu implements GameSubMenu {
         Result result = FriendShipController.gift(username,item,amount);
         System.out.println(result.message());
     }
-
+    private void giftRate(Matcher mathcer){
+        String temp1 = mathcer.group("number");
+        String temp2 = mathcer.group("rate");
+        int number = Integer.parseInt(temp1);
+        int rate = Integer.parseInt(temp2);
+        Result result = FriendShipController.giftRate(number,rate);
+        System.out.println(result.message());
+        App.getCurrentGame().getCurrentPlayer().setInGiftList(false);
+    }
 
 }

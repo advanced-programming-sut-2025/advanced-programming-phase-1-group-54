@@ -67,6 +67,13 @@ public class CommonGameController {
             return animalProduce;
         }
 
+        Fertilize fertilize = Fertilize.getFertilizer(ItemName);
+        if(fertilize != null){
+            return fertilize;
+        }
+
+
+
         return null;
     }
 
@@ -367,6 +374,11 @@ public class CommonGameController {
             return ProduceQuality.IRIDIUM;
         }
     }
-
+    public static void getregectedInMarriage(Player player){
+        player.setHeartBroken(7);
+    }
+    public static void acceptMarriage(Player player){
+        //TODO zaminashono ok kon @korosh
+    }
 
 }

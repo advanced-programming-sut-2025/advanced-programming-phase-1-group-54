@@ -25,5 +25,9 @@ public class Friendship {
             this.xp = 0;
             this.level++;
         }
+        if (this.xp < 0){
+            this.xp += this.level * 100;
+            this.level--;
+        }
     }
 }
