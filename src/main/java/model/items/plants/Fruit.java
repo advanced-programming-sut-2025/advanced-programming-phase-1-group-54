@@ -3,8 +3,11 @@ package model.items.plants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import model.App;
+import model.Placeable;
 import model.enums.ProduceQuality;
 import model.enums.Season;
+import model.enums.Symbol;
 import model.items.Fish;
 import model.items.Item;
 import model.items.crafting.UnProducerArtisan;
@@ -16,8 +19,9 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
-public class Fruit extends Item implements Cloneable{
+public class Fruit extends Item implements Cloneable, Placeable {
 
     private final static HashMap<String, Fruit> fruits;
     private final static HashMap<Season, ArrayList<String>> foragingCrops;
@@ -54,6 +58,13 @@ public class Fruit extends Item implements Cloneable{
         else{
             return fruit.clone();
         }
+    }
+
+    public static Fruit getForagingCrop(){
+        Season season = App.getCurrentGame().getDateTime().getSeason();
+        Random rand = new Random();
+        String foragingCropName = foragingCrops.get(season).get(rand.nextInt(foragingCrops.size()));
+        return Fruit.getFruit(foragingCropName);
     }
 
 
@@ -403,5 +414,10 @@ public class Fruit extends Item implements Cloneable{
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Override
+    public Symbol getSymbol() {
+        return null;
     }
 }

@@ -6,4 +6,6 @@ public enum Feature {
     DESTROYED,
     GRASS,
     PLOWED,
+    SPEEDFERTILIZE,
+    WATERFERTILIZE
 }

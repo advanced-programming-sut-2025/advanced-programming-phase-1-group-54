@@ -205,22 +205,39 @@ public class PlantsController {
         return null;
     }
 
-    //TODO
-    public Result foragingCrop(){
+    public Result foragingCrop(Player player){
 
-        return null;
+        for (int i = 0 ; i < Farm.getNumberOfRows();i++){
+            for(int j = 0;j < Farm.getNumberOfColumns();j++){
+                Tile tile = App.getCurrentGame().getWorld().getFarm(player).getTileAt(new Location(i,j));
+                if(Math.random() <= 0.01 && tile.getThingOnTile() == null){
+                    tile.setThingOnTile(Fruit.getForagingCrop());
+                }
+            }
+        }
+
+        return new Result(1,"foragingCrop finished");
     }
+
     //TODO
     public Result foragingMaterial(){
 
 
         return null;
     }
-    //TODO
-    public Result foragingSeed(){
 
+    public Result foragingSeed(Player player){
 
-        return null;
+        for (int i = 0 ; i < Farm.getNumberOfRows();i++){
+            for(int j = 0;j < Farm.getNumberOfColumns();j++){
+                Tile tile = App.getCurrentGame().getWorld().getFarm(player).getTileAt(new Location(i,j));
+                if(Math.random() <= 0.01 && tile.getThingOnTile() == null && tile.getFeatures().contains(Feature.PLOWED)){
+                    tile.setThingOnTile(Crop.getCrop(Seed.getForagingSeed().getPlant()));
+                }
+            }
+        }
+
+        return new Result(1,"foragingSeed finished");
     }
 
 
