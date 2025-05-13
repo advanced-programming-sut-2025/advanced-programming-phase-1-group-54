@@ -435,12 +435,12 @@ public class NPCShopsController {
 
         if(item.getName().equals("Milk Pail")){
             MilkPail milkPail = new MilkPail();
-            //TODO player.tools.add
+            App.getCurrentGame().getCurrentPlayer().getTools().put("MilkPail", milkPail);
         }
 
         else if(item.getName().equals("Shears")){
             Shear shear = new Shear();
-            App.getCurrentGame().getCurrentPlayer().getTools().put("shear",shear);
+            App.getCurrentGame().getCurrentPlayer().getTools().put("Shear",shear);
         }
         else if(item.getName().contains(" (Recipe)")){
             String temp = item.getName().split("(Recipe)")[0];
@@ -580,7 +580,8 @@ public class NPCShopsController {
         if (item.getCount() != -1){
             item.setCount(item.getCount()-1);
         }
-        //TODO ADD to player.getAnimnalHouse
+        AnimalHouse animalHouse = AnimalHouse.getAnimalHouse(item.getName());
+        App.getCurrentGame().getCurrentPlayer().getAnimalHouses().add(animalHouse);
         return null;
     }
     public static Result buyStockFromFishShop(FishShop.StockInShop item, int count){
@@ -658,8 +659,8 @@ public class NPCShopsController {
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }
-        //TODO animal get animal
-        App.getCurrentGame().getCurrentPlayer().getAnimals().put(name,)
+        Animal animal = Animal.getAnimal(item.getName());
+        App.getCurrentGame().getCurrentPlayer().getAnimals().put(name,animal);
         return new Result(true,"animal purchased");
     }
 }

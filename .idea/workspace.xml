@@ -6,19 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="complete foraging minerals method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/AnimalHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/AnimalHouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fertilize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fertilize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/ItemsInShops.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/ItemsInShops.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Material.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +40,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54",
-    "accountId": "71d33bb1-166c-4fdb-8d69-d035d6644229"
+    "url": "https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54.git",
+    "accountId": "c59022d6-305f-4e82-b1ba-a11f215082e8"
   }
 }]]></component>
   <component name="ProblemsViewState">
@@ -142,6 +130,7 @@
       <workItem from="1747054765525" duration="708000" />
       <workItem from="1747056717632" duration="490000" />
       <workItem from="1747161513398" duration="2176000" />
+      <workItem from="1747165191149" duration="377000" />
     </task>
     <task id="LOCAL-00008" summary="read and write foragingMineral from Json">
       <option name="closed" value="true" />
