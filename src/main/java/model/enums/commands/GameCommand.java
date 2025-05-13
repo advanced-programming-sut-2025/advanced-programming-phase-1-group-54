@@ -24,6 +24,8 @@ public enum GameCommand implements Command {
     HELP_READ_MAP("help reading map"),
     SHOW_ALL_PRODUCTS("show all products"),
     SHOW_ALL_AVAILABLE_PRODUCTS("show all available products"),
+    PURCHASE_ITEM("purchase (?<product_name>\\S) -n (?<count>\\d)"),
+    PURCHASE_ANIMAL("purchase animal (?<product_name>\\S) -n (?<count>\\d) -name (?<name>\\S)"),
     FRIENDSHIP("friendships"),
     TALK(" talk -u (?<username>\\S) -m (?<message>\\S)"),
     TALK_HISTORY("talk history (?<username>\\S)"),
