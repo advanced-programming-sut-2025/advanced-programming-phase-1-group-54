@@ -38,6 +38,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Quarry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Quarry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/farms.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/farms.json" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="write some TODO in controller methods and write fertilize Class">
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +51,9 @@
       <list>
         <option value="package.json" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Record" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -171,22 +173,6 @@
       <option name="project" value="LOCAL" />
       <updated>1745873765397</updated>
       <workItem from="1747056717632" duration="490000" />
-    </task>
-    <task id="LOCAL-00004" summary="read Trees from Json">
-      <option name="closed" value="true" />
-      <created>1745910643877</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1745910643877</updated>
-    </task>
-    <task id="LOCAL-00005" summary="read and write Crops from Json">
-      <option name="closed" value="true" />
-      <created>1745915225471</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1745915225471</updated>
     </task>
     <task id="LOCAL-00006" summary="read and write Crops from Json">
       <option name="closed" value="true" />
@@ -589,7 +575,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747062024933</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="merge">
+      <option name="closed" value="true" />
+      <created>1747120149822</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1747120149822</updated>
+    </task>
+    <task id="LOCAL-00054" summary="write some TODO in controller methods and write fertilize Class">
+      <option name="closed" value="true" />
+      <created>1747122622425</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1747122622426</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +621,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-
     <MESSAGE value="read and write Fishes Json And add constructor to Item Class Babies :)" />
     <MESSAGE value="write writeToJson method Of Recipe Class" />
     <MESSAGE value="write writeToJson method Of Artisan Class and Produce Class" />
@@ -666,7 +667,9 @@
     <MESSAGE value="update map &amp; tools" />
     <MESSAGE value="some fixes" />
     <MESSAGE value="added features arraylist" />
-    <option name="LAST_COMMIT_MESSAGE" value="added features arraylist" />
+    <MESSAGE value="merge" />
+    <MESSAGE value="write some TODO in controller methods and write fertilize Class" />
+    <option name="LAST_COMMIT_MESSAGE" value="write some TODO in controller methods and write fertilize Class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -695,11 +698,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java</url>
           <line>459</line>
           <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java</url>

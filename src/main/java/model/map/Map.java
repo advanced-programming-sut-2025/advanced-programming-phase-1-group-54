@@ -140,4 +140,8 @@ public class Map {
 
         return distance;
     }
+
+    public Location getRandomLocation() {
+        return new Location((int) (Math.random() * getNumberOfRows()), (int) (Math.random() * getNumberOfColumns()));
+    }
 }

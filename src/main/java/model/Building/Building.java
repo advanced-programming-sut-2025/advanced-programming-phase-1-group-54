@@ -22,6 +22,10 @@ public abstract class Building implements Placeable {
         return map.getTileAt(location);
     }
 
+    public Location getRandomLocation() {
+        return map.getRandomLocation();
+    }
+
     public boolean canEnter() {
         return true;
     }
