@@ -66,7 +66,13 @@ public class Animal implements Placeable {
         this.numberOfProducingDays = numberOfProducingDays;
         this.animalProducesNames = animalProducesNames;
     }
-
+    public Animal clone()  {
+        try {
+            return (Animal) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
     public String getName() {
         return name;
     }
