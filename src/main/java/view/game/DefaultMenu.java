@@ -6,7 +6,7 @@ import controller.Game.NPCShopsController;
 import controller.GameController;
 import model.Game;
 import model.Result;
-import model.Shops.MarnieRanch;
+import model.Shops.*;
 import model.enums.commands.Command;
 import model.App;
 import model.Result;
@@ -110,6 +110,11 @@ public class DefaultMenu implements GameSubMenu {
     }
 
     private void purchaseAnimal(Matcher matcher) {
+        if(!(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof MarnieRanch)){
+            System.out.println("you are not in shop");
+            return;
+        }
         String animalName = matcher.group("name");
         String product = matcher.group("product_name");
         String temp = matcher.group("count");
@@ -125,32 +130,72 @@ public class DefaultMenu implements GameSubMenu {
     }
 
     private void showAllAvailableItems() {
-
-        /*if(){
-        //  ArrayList<String> temp = NPCShopsController.showPrductsinBlackSmith(true);
-        // }
-        // if(){
-        //
-        //
-        ArrayList<String> temp = NPCShopsController.showproductsMarinesRench(true);
-        ArrayList<String> temp = NPCShopsController.showCarpenterShop(true);
-        ArrayList<String> temp = NPCShopsController.showJojaMart(true);
-        ArrayList<String> temp = NPCShopsController.showPierreGeneralShop(true);
-        ArrayList<String> temp = NPCShopsController.showFishShop(true);
-        */
-        ArrayList<String> temp = NPCShopsController.showProductsStardropSaloon(true);
+        ArrayList<String> temp = null;
+        if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof BlackSmithShop){
+            temp = NPCShopsController.showPrductsinBlackSmith(true);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof MarnieRanch){
+            temp = NPCShopsController.showproductsMarinesRench(true);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof CarpenterShop){
+            temp = NPCShopsController.showCarpenterShop(true);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof JojoMartShop){
+            temp = NPCShopsController.showJojaMart(true);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof PierreGeneralShop){
+            temp = NPCShopsController.showPierreGeneralShop(true);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof FishShop){
+            temp = NPCShopsController.showFishShop(true);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof TheStardropSaloonShop){
+            temp = NPCShopsController.showProductsStardropSaloon(true);
+        }
+        for(String st : temp){
+            System.out.println(st);
+        }
     }
-
     private void showAllItems() {
-        /*
-        ArrayList<String> temp = NPCShopsController.showPrductsinBlackSmith(false);
-        ArrayList<String> temp = NPCShopsController.showproductsMarinesRench(false);
-        ArrayList<String> temp = NPCShopsController.showCarpenterShop(false);
-        ArrayList<String> temp = NPCShopsController.showJojaMart(false);
-        ArrayList<String> temp = NPCShopsController.showPierreGeneralShop(false);
-        ArrayList<String> temp = NPCShopsController.showFishShop(false);
-        ArrayList<String> temp = NPCShopsController.showProductsStardropSaloon(false);
-        */
+        ArrayList<String> temp = null;
+        if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof BlackSmithShop){
+            temp = NPCShopsController.showPrductsinBlackSmith(false);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof MarnieRanch){
+            temp = NPCShopsController.showproductsMarinesRench(false);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof CarpenterShop){
+            temp = NPCShopsController.showCarpenterShop(false);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof JojoMartShop){
+            temp = NPCShopsController.showJojaMart(false);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof PierreGeneralShop){
+            temp = NPCShopsController.showPierreGeneralShop(false);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof FishShop){
+            temp = NPCShopsController.showFishShop(false);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof TheStardropSaloonShop){
+            temp = NPCShopsController.showProductsStardropSaloon(false);
+        }
+        for(String st : temp){
+            System.out.println(st);
+        }
     }
 
     private void respondForMarriage(Matcher matcher) {
@@ -341,6 +386,38 @@ public class DefaultMenu implements GameSubMenu {
         App.getCurrentGame().getCurrentPlayer().setInGiftList(false);
     }
     private void purchaseItem(Matcher matcher){
-
+        String product = matcher.group("product_name");
+        String temp = matcher.group("count");
+        int number = Integer.parseInt(temp);
+        Result result = null;
+        if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof BlackSmithShop){
+             result = NPCShopsController.buySomthingFromBlacksmith(product, number);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof MarnieRanch){
+             result = NPCShopsController.buySomthingFromMarnie(product, number);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof CarpenterShop){
+             result = NPCShopsController.buySomthingFromCarpenter(product, number);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof JojoMartShop){
+             result = NPCShopsController.buySomthingFromJojaMart(product, number);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof PierreGeneralShop){
+             result = NPCShopsController.buySomthingFromPierre(product, number);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof FishShop){
+             result = NPCShopsController.buySomthingFromFishShop(product,number);
+        }
+        if(App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+                .getThingOnTile() instanceof TheStardropSaloonShop){
+             result = NPCShopsController.buySomthingFromStardrop(product,number);
+        }
+        System.out.println(result.message());
     }
 }
