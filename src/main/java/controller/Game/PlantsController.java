@@ -8,6 +8,7 @@ import model.Result;
 import model.alive.Player;
 import model.enums.Direction;
 import model.enums.Feature;
+import model.items.Fertilize;
 import model.items.plants.*;
 import model.items.tools.Scythe;
 import model.map.Farm;
@@ -69,7 +70,6 @@ public class PlantsController {
 
     }
 
-    //TODO giant Crop
     public void crowAttack(){
 
         Player player = App.getCurrentGame().getCurrentPlayer();
@@ -85,6 +85,15 @@ public class PlantsController {
                 if(! tile.getFeatures().contains(Feature.PROTECTED)) {
                     player.getPlants().remove(plant);
                     tile.setThingOnTile(null);
+                    if (plant instanceof Crop crop && crop.getGiantDirection() != null){
+                        for (int k = 0 ; k < 3;k++){
+                            tile = App.getCurrentGame().getWorld().getFarm(player).getTileAt(tile.getLocation().
+                                    getLocationAt(crop.getGiantDirection()));
+                            crop = (Crop) tile.getThingOnTile();
+                            player.getPlants().remove(crop);
+                            tile.setThingOnTile(null);
+                        }
+                    }
                 }
             }
         }
@@ -154,8 +163,7 @@ public class PlantsController {
         }
 
         if(tile.getThingOnTile() != null && tile.getThingOnTile() instanceof GreenHouse){
-            //TODO
-//            tile = tile.
+            tile = tile.getTop();
         }
 
         Placeable placeable = tile.getThingOnTile();
@@ -195,29 +203,79 @@ public class PlantsController {
         }
     }
 
-    //TODO
-    public Result fertilizePlant(String directionString){
+    public Result fertilizePlant(String fertilizeName,String directionString){
 
-        return null;
+        Direction direction;
+        try{
+            direction = Direction.valueOf(directionString);
+        } catch (IllegalArgumentException e){
+            return new Result(-1,"invalid direction");
+        }
+
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        Farm farm = App.getCurrentGame().getWorld().getFarm(player);
+        Tile tile = farm.getTileAt(player.getCurrentLocation().delta(farm.getLocation()).getLocationAt(direction));
+        if(tile == null){
+            return new Result(-1,"tile is not in your farm");
+        }
+
+        if(tile.getThingOnTile() instanceof GreenHouse){
+            tile = tile.getTop();
+        }
+
+        if(tile.getThingOnTile() != null){
+            return new Result(-1,"tile is full");
+        }
+
+        if(! tile.getFeatures().contains(Feature.PLOWED)){
+            return new Result(-1,"tile has not plowed");
+        }
+
+        Fertilize fertilize = Fertilize.getFertilizer(fertilizeName);
+        if(fertilize == null){
+            return new Result(-1,"fertilize does not exist");
+        }
+
+        return new Result(1,"Tile fertilized successfully");
     }
 
-    //TODO
-    public Result foragingCrop(){
+    public Result foragingCrop(Player player){
 
+        for (int i = 0 ; i < Farm.getNumberOfRows();i++){
+            for(int j = 0;j < Farm.getNumberOfColumns();j++){
+                Tile tile = App.getCurrentGame().getWorld().getFarm(player).getTileAt(new Location(i,j));
+                if(Math.random() <= 0.01 && tile.getThingOnTile() == null){
+                    tile.setThingOnTile(Fruit.getForagingCrop());
+                }
+            }
+        }
 
-        return null;
+        return new Result(1,"foragingCrop finished");
     }
+
     //TODO
     public Result foragingMaterial(){
 
 
         return null;
     }
-    //TODO
-    public Result foragingSeed(){
 
+    public Result foragingSeed(Player player){
 
-        return null;
+        for (int i = 0 ; i < Farm.getNumberOfRows();i++){
+            for(int j = 0;j < Farm.getNumberOfColumns();j++){
+                Tile tile = App.getCurrentGame().getWorld().getFarm(player).getTileAt(new Location(i,j));
+                if(Math.random() <= 0.01 && tile.getThingOnTile() == null && tile.getFeatures().contains(Feature.PLOWED)){
+                    Crop crop = Crop.getCrop(Seed.getForagingSeed().getPlant());
+                    if(!cropCanBeGiant(crop,tile.getLocation())){
+                        player.getPlants().put(crop,tile);
+                        tile.setThingOnTile(crop);
+                    }
+                }
+            }
+        }
+
+        return new Result(1,"foragingSeed finished");
     }
 
 
@@ -242,14 +300,12 @@ public class PlantsController {
         }
 
         if(tile.getThingOnTile() instanceof GreenHouse greenHouse){
-            // TODO
-       //     tile = greenHouse.
+         tile = tile.getTop();
         }
 
-        // TODO is bill khorde
-//        if(){
-//
-//        }
+        if(! tile.getFeatures().contains(Feature.PLOWED)){
+            return new Result(-1,"tile has not plowed");
+        }
 
         if(tile.getThingOnTile() != null){
             return new Result(-1,"tile already is full");

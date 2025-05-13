@@ -3,6 +3,7 @@ package model.items.plants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import model.App;
 import model.Placeable;
 import model.enums.Season;
 import model.enums.Symbol;
@@ -72,7 +73,8 @@ public class Seed extends Item implements Placeable, Cloneable{
         }
     }
 
-    public static Seed getForagingSeed(Season season){
+    public static Seed getForagingSeed(){
+        Season season = App.getCurrentGame().getDateTime().getSeason();
         ArrayList<String> foragingSeed = foragingSeeds.get(season);
         Random rand = new Random();
         String foragingSeedName = foragingSeed.get(rand.nextInt(foragingSeed.size()));
