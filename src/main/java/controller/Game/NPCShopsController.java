@@ -66,8 +66,8 @@ public class NPCShopsController {
         //creating JojoMart shop
         Human human1 = new NPC();
         human1.setName("Morris");
-        JojoMartShop jojoMartShop = new JojoMartShop(human);
-        App.getCurrentGame().getNpcShops().add(blackSmithShop);
+        JojoMartShop jojoMartShop = new JojoMartShop(human1);
+        App.getCurrentGame().getNpcShops().add(jojoMartShop);
         jsonArray = loadJsonArray("JojoMartPermanent.json");
         for(int i = 0; i < jsonArray.length(); i++){
             String name = jsonArray.getJSONObject(i).getString("Name");
@@ -122,7 +122,7 @@ public class NPCShopsController {
         //creating Pierre General Shop
         Human human2 = new NPC();
         human2.setName("Pierre");
-        PierreGeneralShop pierreGeneralShop = new PierreGeneralShop(human);
+        PierreGeneralShop pierreGeneralShop = new PierreGeneralShop(human2);
         App.getCurrentGame().getNpcShops().add(pierreGeneralShop);
         jsonArray = loadJsonArray("PierreYearRound.json");
         for(int i = 0; i < jsonArray.length(); i++){
@@ -181,7 +181,7 @@ public class NPCShopsController {
         //creating Carpenter’s Shop
         Human human3 = new NPC();
         human3.setName("Robin");
-        CarpenterShop carpenterShop = new CarpenterShop(human);
+        CarpenterShop carpenterShop = new CarpenterShop(human3);
         App.getCurrentGame().getNpcShops().add(carpenterShop);
         jsonArray = loadJsonArray("CarpanterPermanent.json");
         for(int i = 0; i < jsonArray.length(); i++){
@@ -211,7 +211,7 @@ public class NPCShopsController {
         //creating Fish Shop
         Human human4 = new NPC();
         human4.setName("Willy");
-        FishShop fishShop = new FishShop(human);
+        FishShop fishShop = new FishShop(human4);
         App.getCurrentGame().getNpcShops().add(fishShop);
         jsonArray = loadJsonArray("FishStock.json");
         for(int i = 0; i < jsonArray.length(); i++){
@@ -230,7 +230,7 @@ public class NPCShopsController {
         //crating Marnie’s Ranch
         Human human5 = new NPC();
         human5.setName("Marnie");
-        MarnieRanch marnieRanch = new MarnieRanch(human);
+        MarnieRanch marnieRanch = new MarnieRanch(human5);
         App.getCurrentGame().getNpcShops().add(marnieRanch);
         jsonArray = loadJsonArray("MarnieRanchInventory.json");
         for(int i = 0; i < jsonArray.length(); i++){
@@ -258,7 +258,7 @@ public class NPCShopsController {
         //creating :The Stardrop Saloon
         Human human6 = new NPC();
         human6.setName("Gus");
-        TheStardropSaloonShop theStardropSaloonShop = new TheStardropSaloonShop(human);
+        TheStardropSaloonShop theStardropSaloonShop = new TheStardropSaloonShop(human6);
         App.getCurrentGame().getNpcShops().add(theStardropSaloonShop);
         jsonArray = loadJsonArray("TheStarDropSaloon.json");
         for(int i = 0; i < jsonArray.length(); i++){
@@ -1026,5 +1026,135 @@ public class NPCShopsController {
             }
         }
         return products;
+    }
+
+    public static void refillShps() {
+        BlackSmithShop blackSmithShop = (BlackSmithShop)App.getCurrentGame().getNpcShops().get(0);
+        JSONArray jsonArray = loadJsonArray("BlacksmithStock.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            blackSmithShop.getStock().get(i).setCount(count);
+        }
+        jsonArray = loadJsonArray("BlacksmithUpgradeTools.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            blackSmithShop.getUpgradeTools().get(i).setCount(1);
+        }
+
+
+
+
+        //creating JojoMart shop
+        JojoMartShop jojoMartShop =(JojoMartShop)App.getCurrentGame().getNpcShops().get(1);
+        jsonArray = loadJsonArray("JojoMartPermanent.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            jojoMartShop.getPermanentStock().get(i).setCount(count);
+        }
+        jsonArray = loadJsonArray("JojoMartFall.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            jojoMartShop.getFallStock().get(i).setCount(count);
+        }
+        jsonArray = loadJsonArray("JojomartSpring.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            jojoMartShop.getSpringStock().get(i).setCount(count);
+        }
+
+        jsonArray = loadJsonArray("JojomartSummer.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            jojoMartShop.getSummerStock().get(i).setCount(count);
+        }
+
+        jsonArray = loadJsonArray("JojoMartWinter.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            jojoMartShop.getWinterStock().get(i).setCount(count);
+        }
+
+
+
+
+        //creating Pierre General Shop
+        PierreGeneralShop pierreGeneralShop = (PierreGeneralShop)App.getCurrentGame().getNpcShops().get(2);
+        jsonArray = loadJsonArray("PierreYearRound.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            pierreGeneralShop.getYearRoundStock().get(i).setCount(count);
+        }
+        jsonArray = loadJsonArray("PierreBackpacks.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            pierreGeneralShop.getBackPacks().get(i).setCount(count);
+        }
+        jsonArray = loadJsonArray("PierreSpring.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            pierreGeneralShop.getSpringStock().get(i).setCount(count);
+        }
+        jsonArray = loadJsonArray("PierreSummer.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            pierreGeneralShop.getSummerStock().get(i).setCount(count);
+        }
+        jsonArray = loadJsonArray("PierreFall.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            pierreGeneralShop.getFallStock().get(i).setCount(count);
+        }
+
+
+
+
+        //creating Carpenter’s Shop
+        CarpenterShop carpenterShop = (CarpenterShop)App.getCurrentGame().getNpcShops().get(3);
+        jsonArray = loadJsonArray("CarpanterPermanent.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            carpenterShop.getPermanentStock().get(i).setCount(count);
+        }
+        jsonArray = loadJsonArray("CarpanterFarmBuilding.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            carpenterShop.getFarmBuildings().get(i).setCount(count);
+        }
+
+
+
+        //creating Fish Shop
+        FishShop fishShop = (FishShop) (App.getCurrentGame().getNpcShops().get(4));
+        jsonArray = loadJsonArray("FishStock.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            fishShop.getStockInShop().get(i).setCount(count);
+        }
+
+
+
+
+        //crating Marnie’s Ranch
+        MarnieRanch marnieRanch = (MarnieRanch)App.getCurrentGame().getNpcShops().get(5);
+        jsonArray = loadJsonArray("MarnieRanchInventory.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            marnieRanch.getShopInventory().get(i).setCount(count);
+        }
+        jsonArray = loadJsonArray("MarnieRanchLivesStock.json");
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            marnieRanch.getLivesTock().get(i).setCount(count);
+        }
+
+
+
+
+        //creating :The Stardrop Saloon
+        jsonArray = loadJsonArray("TheStarDropSaloon.json");
+        TheStardropSaloonShop stardropSaloonShop = (TheStardropSaloonShop)App.getCurrentGame().getNpcShops().get(6);
+        for(int i = 0; i < jsonArray.length(); i++){
+            int count = jsonArray.getJSONObject(i).getInt("Count");
+            stardropSaloonShop.getPermanentStock().get(i).setCount(count);
+        }
     }
 }
