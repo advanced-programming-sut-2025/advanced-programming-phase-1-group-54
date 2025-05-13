@@ -2,6 +2,7 @@ package controller.Game;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import model.AnimalHouse;
 import model.App;
 import model.Game;
 import model.Result;
@@ -9,11 +10,17 @@ import model.Shops.*;
 import model.alive.Animal;
 import model.alive.Human;
 import model.alive.NPC;
+import model.alive.Player;
 import model.enums.BackPackLevel;
+import model.enums.SkillType;
+import model.enums.ToolLevel;
 import model.items.Item;
 import model.items.ItemsInShops;
 import model.items.recipes.Recipe;
 import model.items.tools.BackPack;
+import model.items.tools.FishingPole;
+import model.items.tools.MilkPail;
+import model.items.tools.Shear;
 import org.json.JSONArray;
 import org.json.JSONTokener;
 
@@ -265,7 +272,6 @@ public class NPCShopsController {
     }
     public static JSONArray loadJsonArray(String filename) {
         try {
-            // Assuming file is at project root, next to src/
             String fullPath = Paths.get("").toAbsolutePath().resolve(filename).toString();
             try (InputStream inputStream = new FileInputStream(fullPath)) {
                 return new JSONArray(new JSONTokener(inputStream));
@@ -397,7 +403,7 @@ public class NPCShopsController {
         return new Result(false,"No product with this name was found.");
     }
 
-    public static Result buySomthingFromMarnie(String itemName, int count) {
+    public static Result buySomthingFromMarnie(String itemName, int count,String name) {
         for (ItemsInShops item : ((MarnieRanch)(App.getCurrentGame().getNpcShops().get(5))).getShopInventory()){
             if (item.getName().equals(itemName)){
                 return buyItemsInShopsProduct(item,count);
@@ -405,7 +411,7 @@ public class NPCShopsController {
         }
         for (MarnieRanch.ItemsInMarineRanch item : ((MarnieRanch)(App.getCurrentGame().getNpcShops().get(5))).getLivesTock()){
             if (item.getName().equals(itemName)){
-                return buyLivesStockInMarine(item,count);
+                return buyLivesStockInMarine(item,count,name);
             }
         }
         return new Result(false,"No product with this name was found.");
@@ -426,13 +432,27 @@ public class NPCShopsController {
         if(count * item.getPrice() > App.getCurrentGame().getCurrentPlayer().getMoney()){
             return new Result(false,"Not enough money.");
         }
-        if (item.getName().contains("Recipe")){
-            //App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes().add(Recipe)
-            if (item.getCount() != -1) {
-                item.setCount(item.getCount() - 1);
-            }
-            return new Result(true,"Item purchased");
+
+        if(item.getName().equals("Milk Pail")){
+            MilkPail milkPail = new MilkPail();
+            //TODO player.tools.add
         }
+
+        else if(item.getName().equals("Shears")){
+            Shear shear = new Shear();
+            //TODO player.tools.add
+        }
+        else if(item.getName().contains(" (Recipe)")){
+            String temp = item.getName().split("(Recipe)")[0];
+            Recipe temp1 = Recipe.craftRecipes.get(temp);
+            App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes().add(temp1);
+        }
+        else if (item.getName().contains("Recipe")){
+            String temp = item.getName().split("Recipe")[0];
+            Recipe temp1 = Recipe.foodRecipes.get(temp);
+            App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes().add(temp1);
+        }
+
         else {
             Item temp = CommonGameController.findItem(item.getName());
             if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, count) == false) {
@@ -452,13 +472,48 @@ public class NPCShopsController {
         if(count * item.getPrice() > App.getCurrentGame().getCurrentPlayer().getMoney()){
             return new Result(false,"Not enough money.");
         }
-        if (CommonGameController.numberOfItemInBackPack(item.getIngridientsString()) < item.getIngredientsInt()){
-            return new Result(false,"Not enough " + item.getIngridientsString());
+        if (CommonGameController.numberOfItemInBackPack(item.getIngredientString()) < item.getIngredientsInt()){
+            return new Result(false,"Not enough " + item.getIngredientString());
         }
-        Item product = CommonGameController.findItem(item.getName());
-        // what is Copper Tool??
-        //TODO
-        return null;
+        Item temp = CommonGameController.findItem(item.getIngredientString());
+        if (App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(temp, count) == false) {
+            return new Result(false, "Not enough " + item.getIngredientString());
+        }
+        App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+        //trashcan handle
+        if (item.getName().contains("Trash")){
+            if(item.getName().contains("Copper")){
+                App.getCurrentGame().getCurrentPlayer().getTrashCan().setToolLevel(ToolLevel.COPPER);
+            }
+            if(item.getName().contains("Steel")){
+                App.getCurrentGame().getCurrentPlayer().getTrashCan().setToolLevel(ToolLevel.IRON);
+            }
+            if(item.getName().contains("Gold")){
+                App.getCurrentGame().getCurrentPlayer().getTrashCan().setToolLevel(ToolLevel.GOLD);
+            }
+            if(item.getName().contains("Iridium")){
+                App.getCurrentGame().getCurrentPlayer().getTrashCan().setToolLevel(ToolLevel.IRIDIUM);
+            }
+        }
+        //handle Tool
+        if (item.getName().contains("Tool")){
+            if(item.getName().contains("Copper")){
+                App.getCurrentGame().getCurrentPlayer().getEquippedTool().setToolLevel(ToolLevel.COPPER);
+            }
+            if(item.getName().contains("Steel")){
+                App.getCurrentGame().getCurrentPlayer().getEquippedTool().setToolLevel(ToolLevel.IRON);
+            }
+            if(item.getName().contains("Gold")){
+                App.getCurrentGame().getCurrentPlayer().getEquippedTool().setToolLevel(ToolLevel.GOLD);
+            }
+            if(item.getName().contains("Iridium")){
+                App.getCurrentGame().getCurrentPlayer().getEquippedTool().setToolLevel(ToolLevel.IRIDIUM);
+            }
+        }
+        if (item.getCount() != -1){
+            item.setCount(item.getCount()-1);
+        }
+        return new Result(true,"item purchased");
     }
     public static Result buyBackPacs(PierreGeneralShop.BackPacksItems item, int count){
         if (count > item.getCount() && item.getCount() != -1){
@@ -506,7 +561,25 @@ public class NPCShopsController {
         return new Result(true, "Item purchased");
     }
     public static Result buyFarmBuilding(CarpenterShop.ItemsinCarpenterShop item, int count){
-        //waiting to farmbuildings get finishd
+        Item wood = CommonGameController.findItem("Wood");
+        Item stone = CommonGameController.findItem("Stone");
+        if(item.getCount() < count){
+            return new Result(false,"Not enough product.");
+        }
+        if(App.getCurrentGame().getCurrentPlayer().getMoney() < item.getPrice() * count){
+            return new Result(false,"Not enough money.");
+        }
+        if(CommonGameController.numberOfItemInBackPack("Wood") < item.getWood() ){
+            return new Result(false,"not enough wood");
+        }
+        if(CommonGameController.numberOfItemInBackPack("Stone") < item.getStone()){
+            return new Result(false,"not enough stone");
+        }
+        App.getCurrentGame().getCurrentPlayer().spentMoney(count * item.getPrice());
+        if (item.getCount() != -1){
+            item.setCount(item.getCount()-1);
+        }
+        //TODO ADD to player.getAnimnalHouse
         return null;
     }
     public static Result buyStockFromFishShop(FishShop.StockInShop item, int count){
@@ -516,14 +589,38 @@ public class NPCShopsController {
         if(count * item.getPrice() > App.getCurrentGame().getCurrentPlayer().getMoney()){
             return new Result(false,"Not enough money.");
         }
-
+        if (App.getCurrentGame().getCurrentPlayer().getSkills().get(SkillType.FISHING).getLevel() < item.getPurchaseable()){
+            return new Result(false, "fishing skill required");
+        }
         if (item.getName().contains("Recipe")){
-            //App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes().add(Recipe)
+            Recipe recipe = Recipe.craftRecipes.get("Fish Smoker");
+            App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes().add(recipe);
+            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            if (item.getCount() != -1) {
+                item.setCount(item.getCount() - 1);
+            }
             return new Result(true,"Item purchased");
         }
-        if (item.getName().contains("Rod") || item.getName().contains("Pole")){
-            // how to get fishing skill?
-            // these are some tools that i didn't found in any place
+        else if (item.getName().contains("Rod") || item.getName().contains("Pole")){
+            FishingPole pole = new FishingPole();
+            if(item.getName().contains("Bamboo")){
+                pole.setToolLevel(ToolLevel.BAMBOO);
+            }
+            if(item.getName().contains("Training")){
+                pole.setToolLevel(ToolLevel.TRAINING);
+            }
+            if(item.getName().contains("Fiberglass")){
+                pole.setToolLevel(ToolLevel.FIBERGLASS);
+            }
+            if(item.getName().contains("Iridium")){
+                pole.setToolLevel(ToolLevel.IRIDIUM);
+            }
+            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            if (item.getCount() != -1) {
+                item.setCount(item.getCount() - 1);
+            }
+            return new Result(true, "Item purchased");
+            //TODO player.tools.add
         }
         else {
             Item temp = CommonGameController.findItem(item.getName());
@@ -536,9 +633,25 @@ public class NPCShopsController {
             }
             return new Result(true, "Item purchased");
         }
-        return null;
     }
-    public static  Result buyLivesStockInMarine(MarnieRanch.ItemsInMarineRanch item, int count){
-        return null;
+    public static  Result buyLivesStockInMarine(MarnieRanch.ItemsInMarineRanch item, int count,String name){
+        if (count > item.getCount() && item.getCount() != -1){
+            return new Result(false,"Not enough product.");
+        }
+        if(count * item.getPrice() > App.getCurrentGame().getCurrentPlayer().getMoney()){
+            return new Result(false,"Not enough money.");
+        }
+        if(App.getCurrentGame().getCurrentPlayer().getAnimals().get(name) != null){
+            return new Result(false,"this name is for another animal");
+        }
+        //TODO check Animal house exist
+        App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+        if (item.getCount() != -1) {
+            item.setCount(item.getCount() - 1);
+        }
+        Animal temp = Animal.animals.get(item.getName());
+        Animal animal = temp.clone();
+        //TODO App.getplayer.AnimalHouses.add animal
+        return new Result(true,"animal perchased");
     }
 }
