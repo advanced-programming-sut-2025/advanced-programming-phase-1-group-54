@@ -320,7 +320,15 @@ public class Player extends Human implements DailyUpdate {
         }
     }
 
-    public void decreaseEnergy(int energyAmount,SkillType skillType) {
+    public TrashCan getTrashCan() {
+        return trashCan;
+    }
+
+    public void setTrashCan(TrashCan trashCan) {
+        this.trashCan = trashCan;
+    }
+
+    public void decreaseEnergy(int energyAmount, SkillType skillType) {
         if(this.unlimitedEnergy){
             return;
         }
