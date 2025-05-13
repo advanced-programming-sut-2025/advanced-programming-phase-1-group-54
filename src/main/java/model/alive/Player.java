@@ -4,19 +4,20 @@ import model.DailyUpdate;
 import model.Refrigerator;
 import model.Skill;
 import model.User;
+import model.enums.FishingPoleLevel;
 import model.enums.SkillType;
 import model.enums.Symbol;
-import model.items.crafting.Artisan;
+import model.enums.ToolType;
 import model.items.crafting.ProducerArtisan;
 import model.items.plants.Plant;
 import model.items.recipes.Recipe;
 import model.items.tools.BackPack;
+import model.items.tools.FishingPole;
 import model.items.tools.Tool;
 import model.items.tools.TrashCan;
 import model.map.Location;
 import model.map.Tile;
 import model.relationships.Gift;
-import model.relationships.PlayerRelationship;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,16 +33,19 @@ public class Player extends Human implements DailyUpdate {
 
     private int money;
 
-    private User controllingUser;
+    private final User controllingUser;
 
     private int energy;
     private boolean unlimitedEnergy;
 
-    private BackPack backpack = new BackPack();
-    private TrashCan trashCan = new TrashCan();
+    private final BackPack backpack = new BackPack();
+    private final TrashCan trashCan = new TrashCan();
 
+    private final Tool[] tools = new Tool[ToolType.values().length];
+    private final FishingPole[] fishingPoles = new FishingPole[FishingPoleLevel.values().length];
 
-    private Refrigerator refrigerator = new Refrigerator();
+    private Tool equippedTool;
+
     private Location currentLocation;
     private ArrayList<Gift> recivedGifts;
     private final HashMap<Plant,Tile> Plants = new HashMap<>();
@@ -67,9 +71,6 @@ public class Player extends Human implements DailyUpdate {
     private int buffHours;
 
 
-    private Tool equippedTool;
-
-
     public Player(User controllingUser) {
         this.controllingUser = controllingUser;
         this.money = 0;
@@ -81,15 +82,29 @@ public class Player extends Human implements DailyUpdate {
         // TODO
     }
 
+    public Tool getTool(ToolType toolType) {
+        return tools[toolType.ordinal()];
+    }
+
+    public void setTool(ToolType toolType, Tool tool) {
+        tools[toolType.ordinal()] = tool;
+    }
+
+    public FishingPole getFishingPole(FishingPoleLevel fishingPoleLevel) {
+        return fishingPoles[fishingPoleLevel.ordinal()];
+    }
+
+    public void setFishingPole(FishingPoleLevel fishingPoleLevel, FishingPole fishingPole) {
+        fishingPoles[fishingPoleLevel.ordinal()] = fishingPole;
+    }
+
     public int getMoney() {
         return money;
     }
+
     public void spentMoney(int spent){
         money -= spent;
     }
-
-
-
 
     public HashMap<SkillType, Skill> getSkills() {
         return skills;
@@ -114,8 +129,8 @@ public class Player extends Human implements DailyUpdate {
         return backpack;
     }
 
-    public Refrigerator getRefrigerator() {
-        return refrigerator;
+    public TrashCan getTrashCan() {
+        return trashCan;
     }
 
     public SkillType getBuffSkill() {
@@ -152,12 +167,6 @@ public class Player extends Human implements DailyUpdate {
 
     public HashMap<String, Animal> getAnimals() {
         return animals;
-    }
-
-
-
-    public void setControllingUser(User controllingUser) {
-        this.controllingUser = controllingUser;
     }
 
     public void setEnergy(int energy) {
@@ -200,10 +209,6 @@ public class Player extends Human implements DailyUpdate {
             setEnergy(MAXIMUM_ENERGY);
     }
 
-    public void setBackpack(BackPack backpack) {
-        this.backpack = backpack;
-    }
-
     public void setBuffSkill(SkillType buffSkill) {
         this.buffSkill = buffSkill;
     }
@@ -226,9 +231,6 @@ public class Player extends Human implements DailyUpdate {
 
     public void setRecivedGifts(ArrayList<Gift> recivedGifts) {
         this.recivedGifts = recivedGifts;
-    }
-    public void setRefrigerator(Refrigerator refrigerator) {
-        this.refrigerator = refrigerator;
     }
 
     public void setCurrentLocation(Location currentLocation) {

@@ -21,7 +21,7 @@ import java.util.Random;
 
 public class PlantsController {
 
-    public String showInfo(String plantName) {
+    public static String showInfo(String plantName) {
 
         Crop crop = Crop.getCrop(plantName);
         if(crop != null){
@@ -47,7 +47,7 @@ public class PlantsController {
 
     }
 
-    public Result planting(String seedName,String directionString){
+    public static Result planting(String seedName,String directionString){
 
         Direction direction;
         try{
@@ -70,7 +70,7 @@ public class PlantsController {
 
     }
 
-    public void crowAttack(){
+    public static void crowAttack(){
 
         Player player = App.getCurrentGame().getCurrentPlayer();
 
@@ -99,9 +99,7 @@ public class PlantsController {
         }
     }
 
-    public Result showPlant(int x, int y){
-
-        Location location = new Location(x, y);
+    public static Result showPlant(Location location){
         Player player = App.getCurrentGame().getCurrentPlayer();
         Tile tile = App.getCurrentGame().getWorld().getFarm(player).getTileAt(location);
 
@@ -137,7 +135,7 @@ public class PlantsController {
     }
 
     //TODO
-    public Result harvestPlant(String directionString){
+    public static Result harvestPlant(String directionString){
 
         // Todo check energy
 
@@ -203,7 +201,7 @@ public class PlantsController {
         }
     }
 
-    public Result fertilizePlant(String fertilizeName,String directionString){
+    public static Result fertilizePlant(String fertilizeName,String directionString){
 
         Direction direction;
         try{
@@ -239,7 +237,7 @@ public class PlantsController {
         return new Result(1,"Tile fertilized successfully");
     }
 
-    public Result foragingCrop(Player player){
+    public static Result foragingCrop(Player player){
 
         for (int i = 0 ; i < Farm.getNumberOfRows();i++){
             for(int j = 0;j < Farm.getNumberOfColumns();j++){
@@ -254,13 +252,13 @@ public class PlantsController {
     }
 
     //TODO
-    public Result foragingMaterial(){
+    public static Result foragingMaterial(){
 
 
         return null;
     }
 
-    public Result foragingSeed(Player player){
+    public static Result foragingSeed(Player player){
 
         for (int i = 0 ; i < Farm.getNumberOfRows();i++){
             for(int j = 0;j < Farm.getNumberOfColumns();j++){
@@ -282,7 +280,7 @@ public class PlantsController {
 
 
 
-    private Result plantingSeeds(Seed seed,Direction direction){
+    private static Result plantingSeeds(Seed seed,Direction direction){
 
         Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarm(currentPlayer);
@@ -331,7 +329,7 @@ public class PlantsController {
         return null;
     }
 
-    private boolean cropCanBeGiant(Crop crop, Location location){
+    private static boolean cropCanBeGiant(Crop crop, Location location){
 
         Player player = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarm(player);
@@ -496,7 +494,7 @@ public class PlantsController {
 
     }
 
-    private Crop checkCropOnTile(Crop crop, Tile tile){
+    private static Crop checkCropOnTile(Crop crop, Tile tile){
         if( tile != null && tile.getThingOnTile() != null &&
                 tile.getThingOnTile() instanceof Crop upCrop && upCrop.getName().equals(crop.getName())){
             return upCrop;
@@ -504,7 +502,7 @@ public class PlantsController {
         return null;
     }
 
-    private Crop compareCropsGrowth(Crop crop1, Crop crop2,Crop crop3,Crop crop4) {
+    private static Crop compareCropsGrowth(Crop crop1, Crop crop2,Crop crop3,Crop crop4) {
 
         Crop [] crops = {crop1, crop2, crop3, crop4};
         int[] growth = {0,0,0,0};

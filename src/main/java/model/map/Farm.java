@@ -13,7 +13,6 @@ import model.alive.Player;
 public class Farm implements DailyUpdate {
     private static final int NUMBER_OF_ROWS = 25;
     private static final int NUMBER_OF_COLUMNS = 25;
-    private static final int NUMBER_OF_THUNDER = 3;
 
     private final Location location;
     private final Map map;
@@ -76,7 +75,7 @@ public class Farm implements DailyUpdate {
         return map.getRandomLocation();
     }
 
-    public void destroy(Location location) {
+    public void thunderStrike(Location location) {
         Tile tile = getTileAt(location);
         if (tile == null || (tile.getThingOnTile() != null && tile.getThingOnTile() instanceof Building))
             return;
@@ -86,8 +85,6 @@ public class Farm implements DailyUpdate {
 
     @Override
     public void nextDayUpdate() {
-        for (int i = 0; i < NUMBER_OF_THUNDER; i++) {
-            destroy(location);
-        }
+
     }
 }

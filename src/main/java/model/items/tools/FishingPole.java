@@ -1,37 +1,34 @@
 package model.items.tools;
 
+import model.enums.FishingPoleLevel;
 import model.enums.ToolLevel;
 import model.items.Fish;
 import model.items.Item;
 import model.map.Lake;
 import model.map.Tile;
 
-public class FishingPole extends Tool {
+public class FishingPole {
+    FishingPoleLevel toolLevel = FishingPoleLevel.TRAINING;
 
-    public FishingPole() {
-        setToolLevel(ToolLevel.TRAINING);
+    public FishingPoleLevel getToolLevel() {
+        return toolLevel;
     }
 
-    @Override
-    public boolean use(BackPack backPack, Tile tile) {
-        if (tile.getThingOnTile() == null)
-            return false;
-
-        if (tile.getThingOnTile() instanceof Lake) {
-           if (getToolLevel() == ToolLevel.TRAINING)
-               backPack.addItem(Fish.getSeasonFish(), 1);
-           // TODO get cheapest season fish
-
-           else
-               backPack.addItem(Fish.getSeasonFish(), 1);
-
-           return true;
+    public double getPoleFactor() {
+        switch (getToolLevel()) {
+            case TRAINING:
+                return 0.1;
+            case BAMBOO:
+                return 0.5;
+            case FIBERGLASS:
+                return 0.9;
+            case IRIDIUM:
+                return 1.2;
+            default:
+                return 0;
         }
-
-        return false;
     }
 
-    @Override
     public int getEnergyNeededPerUse() {
         switch (getToolLevel()) {
             case TRAINING, BAMBOO:

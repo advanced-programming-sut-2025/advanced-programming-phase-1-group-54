@@ -82,7 +82,7 @@ public class Game implements DailyUpdate {
     @Override
     public void nextDayUpdate() {
         currentWeather = tomorrowWeather;
-        tomorrowWeather = Weather.getRandom(dateTime.getSeason());
+        setTomorrowWeather(Weather.getRandom(dateTime.getSeason()));
 
         for (Player player : players) {
             player.nextDayUpdate();
@@ -94,6 +94,7 @@ public class Game implements DailyUpdate {
         turn++;
         if (turn >= players.length) {
             turn = 0;
+            dateTime.increaseHour(1);
         }
     }
 
@@ -108,6 +109,7 @@ public class Game implements DailyUpdate {
     public void setTomorrowWeather(Weather tomorrowWeather) {
         this.tomorrowWeather = tomorrowWeather;
     }
+
     public Player getPlayerByUsername(String username) {
         for (Player player : players) {
             if(player.getName().equals(username)) {

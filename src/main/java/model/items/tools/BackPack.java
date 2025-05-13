@@ -65,20 +65,6 @@ public class BackPack {
         }
     }
 
-
-
-    //    @Override
-//    public Result use(Item item) {
-//        if(itemsInBackPack.size() < level.getSize()){
-//            itemsInBackPack.add(item);
-//            return new Result(true,"Item added to backpack");
-//        }
-//        else {
-//            return new Result(false,"Backpack is Full");
-//        }
-//    }
-
-
     public void upgrade() {
         if (level != BackPackLevel.DELUX) {
             level = BackPackLevel.values()[level.ordinal() + 1];

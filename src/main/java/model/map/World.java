@@ -14,6 +14,7 @@ import java.util.TreeSet;
 public class World {
     private static final int NUMBER_OF_ROWS = 52;
     private static final int NUMBER_OF_COLUMNS = 100;
+    private static final int NUMBER_OF_THUNDER = 3;
 
     private final Farm[] playerFarms;
 
@@ -42,6 +43,14 @@ public class World {
                 return farm;
         }
         return null;
+    }
+
+    public void thunder() {
+        for (int i = 1; i <= NUMBER_OF_THUNDER; i++) {
+            for (Farm farm: playerFarms) {
+                farm.thunderStrike(farm.getRandomLocation());
+            }
+        }
     }
 
     public int getDistance(Location A, Location B) {

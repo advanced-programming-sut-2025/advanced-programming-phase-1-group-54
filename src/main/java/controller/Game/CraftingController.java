@@ -40,7 +40,7 @@ public class CraftingController {
 
     }
 
-    public static Result Crafting(String artisanName){
+    public static Result crafting(String artisanName){
 
         Player player = App.getCurrentGame().getCurrentPlayer();
         Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
@@ -141,7 +141,10 @@ public class CraftingController {
             for(int i = -unProducerArtisan.getRadius();i < unProducerArtisan.getRadius();i++){
                 for(int j = -unProducerArtisan.getRadius(); j < unProducerArtisan.getRadius();j++){
                     Location location1 = location.delta(new Location(location.row() + i,location.column() + j));
-                    farm.getTileAt(location1).getFeatures().add(unProducerArtisan.getFeature());
+                    Tile tile1 =  farm.getTileAt(location1);
+                    if(tile1 != null){
+                        tile.getFeatures().add(unProducerArtisan.getFeature());
+                    }
                 }
             }
         }

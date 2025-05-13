@@ -4,8 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="write some TODO in controller methods and write fertilize Class">
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/enums/FishingPoleLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2025_10_03_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2025_10_03_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/AnimalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/AnimalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/FishingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FishingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building/GreenHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Building/GreenHouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/TurnUpdate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/ToolLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/ToolLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/ToolType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/ToolType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/BackPack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/FishingPole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/FishingPole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Tool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Farm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Farm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +41,8 @@
         <option value="package.json" />
         <option value="Interface" />
         <option value="Record" />
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -37,12 +60,12 @@
     &quot;assignee&quot;: &quot;goodguy-not&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54.git&quot;,
-    &quot;accountId&quot;: &quot;c59022d6-305f-4e82-b1ba-a11f215082e8&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54",
+    "accountId": "ba300db7-7910-41b6-8de7-53faa46dff5f"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -128,6 +151,7 @@
       <workItem from="1746969796674" duration="15898000" />
       <workItem from="1747054765525" duration="708000" />
       <workItem from="1747056717632" duration="490000" />
+      <workItem from="1747162528655" duration="2329000" />
     </task>
     <task id="LOCAL-00006" summary="read and write Crops from Json">
       <option name="closed" value="true" />
@@ -551,7 +575,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="harvest method" />
     <MESSAGE value="edit Artisan Types" />
     <MESSAGE value="edit controller" />
     <MESSAGE value="edit model and some controller" />
@@ -577,7 +600,8 @@
     <MESSAGE value="added features arraylist" />
     <MESSAGE value="merge" />
     <MESSAGE value="write some TODO in controller methods and write fertilize Class" />
-    <option name="LAST_COMMIT_MESSAGE" value="write some TODO in controller methods and write fertilize Class" />
+    <MESSAGE value="mergeg" />
+    <option name="LAST_COMMIT_MESSAGE" value="mergeg" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -606,15 +630,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java</url>
           <line>459</line>
           <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java</url>
-          <line>69</line>
-          <properties class="controller.Game.FoodController">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="76" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

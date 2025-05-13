@@ -18,7 +18,9 @@ public abstract class Tool {
         this.toolLevel = toolLevel;
     }
 
-    abstract public boolean use(BackPack backPack, Tile tile);
+    abstract public boolean checkSuccess(Tile tile);
+
+    abstract public void use(BackPack backPack, Tile tile);
 
     public int getEnergyNeededPerUse() {
         switch (toolLevel) {
@@ -41,7 +43,7 @@ public abstract class Tool {
         if (toolLevel == ToolLevel.IRIDIUM)
             return false;
 
-        setToolLevel(toolLevel.getNextLevel());
+        toolLevel = ToolLevel.values()[toolLevel.ordinal() + 1];
         return true;
     }
 }
