@@ -73,7 +73,7 @@ public class Farm implements DailyUpdate {
     }
 
     public Location getRandomLocation() {
-        return new Location((int)(Math.random() * getNumberOfRows()), (int) (Math.random() * getNumberOfColumns()));
+        return map.getRandomLocation();
     }
 
     public void destroy(Location location) {
