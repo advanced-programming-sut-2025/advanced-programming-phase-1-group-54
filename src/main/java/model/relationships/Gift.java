@@ -9,10 +9,12 @@ public class Gift {
     private final String itemName;
     private final DateTime timeStamp;
     private final int amount;
+    private int rate;
     public Gift(Player payer, String itemName, int amount) {
         this.payer = payer;
         this.itemName = itemName;
         this.amount = amount;
+        this.rate = 0;
         this.timeStamp = App.getCurrentGame().getDateTime();
     }
 
@@ -30,5 +32,11 @@ public class Gift {
 
     public int getAmount() {
         return amount;
+    }
+    public int getRate() {
+        return rate;
+    }
+    public void setRate(int rate) {
+        this.rate = rate;
     }
 }

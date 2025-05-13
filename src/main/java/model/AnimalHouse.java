@@ -3,7 +3,6 @@ package model;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import model.items.Food;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
