@@ -8,22 +8,28 @@
       "row": 1,
       "column": 7
     },
-    "quarryUpperLeftLocation": {
-      "row": 0,
-      "column": 0
+    "quarryArea": {
+      "upperLeftLocation": {
+        "row": 0,
+        "column": 0
+      },
+      "lowerRightLocation": {
+        "row": 4,
+        "column": 4
+      }
     },
-    "quarryLowerRightLocation": {
-      "row": 4,
-      "column": 4
-    },
-    "lakeUpperLeftLocation": {
-      "row": 19,
-      "column": 9
-    },
-    "lakeLowerRightLocation": {
-      "row": 24,
-      "column": 15
-    }
+    "lakeAreas": [
+      {
+        "upperLeftLocation": {
+          "row": 19,
+          "column": 9
+        },
+        "lowerRightLocation": {
+          "row": 24,
+          "column": 15
+        }
+      }
+    ]
   },
   {
     "cabinLocation": {
@@ -34,21 +40,27 @@
       "row": 11,
       "column": 1
     },
-    "quarryUpperLeftLocation": {
-      "row": 0,
-      "column": 14
+    "quarryArea": {
+      "upperLeftLocation": {
+        "row": 0,
+        "column": 14
+      },
+      "lowerRightLocation": {
+        "row": 7,
+        "column": 24
+      }
     },
-    "quarryLowerRightLocation": {
-      "row": 7,
-      "column": 24
-    },
-    "lakeUpperLeftLocation": {
-      "row": 0,
-      "column": 22
-    },
-    "lakeLowerRightLocation": {
-      "row": 24,
-      "column": 24
-    }
+    "lakeAreas": [
+      {
+        "upperLeftLocation": {
+          "row": 9,
+          "column": 22
+        },
+        "lowerRightLocation": {
+          "row": 24,
+          "column": 24
+        }
+      }
+    ]
   }
 ]

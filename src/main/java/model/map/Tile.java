@@ -14,7 +14,14 @@ public class Tile {
     private Placeable thingOnTile = null;
     private final ArrayList<Feature> features = new ArrayList<>();
 
+    public Location getLocation() {
+        return location;
+    }
 
+    public void setLocation(Location location) {
+        if (this.location == null)
+            this.location = location;
+    }
 
     public boolean isWalkable() {
         if (thingOnTile == null)
@@ -43,6 +50,10 @@ public class Tile {
 
     public void addFeature(Feature feature) {
         features.add(feature);
+    }
+
+    public void removeFeature(Feature feature) {
+        features.remove(feature);
     }
 
     public boolean hasFeature(Feature feature) {

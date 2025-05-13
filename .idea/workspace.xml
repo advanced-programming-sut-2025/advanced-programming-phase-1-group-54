@@ -4,24 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="update map &amp; tools">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="added features arraylist">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/enums/ToolType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/map/Area.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Refrigerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Refrigerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/BlackSmithShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/BlackSmithShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/CarpenterShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/CarpenterShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/FishShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/FishShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/JojoMartShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/JojoMartShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/MarnieRanch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/MarnieRanch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/PierreGeneralShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/PierreGeneralShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/TheStardropSaloonShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Shops/TheStardropSaloonShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Human.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/NPC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/FarmBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/FarmBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/WorldBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building/Cabin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Building/Cabin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building/GreenHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Building/GreenHouse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/Symbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Pickaxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Pickaxe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Scythe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Scythe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/TrashCan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/TrashCan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/WateringCan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/WateringCan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Farm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Farm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Lake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Lake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Quarry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Quarry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/farms.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/farms.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,10 +35,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="package.json" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Record" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -143,22 +148,6 @@
       <workItem from="1746969796674" duration="15898000" />
       <workItem from="1747054765525" duration="708000" />
       <workItem from="1747056717632" duration="490000" />
-    </task>
-    <task id="LOCAL-00002" summary="edit plants package">
-      <option name="closed" value="true" />
-      <created>1745871410470</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1745871410470</updated>
-    </task>
-    <task id="LOCAL-00003" summary="plants read from json by gson">
-      <option name="closed" value="true" />
-      <created>1745873765397</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1745873765397</updated>
     </task>
     <task id="LOCAL-00004" summary="read Trees from Json">
       <option name="closed" value="true" />
@@ -536,7 +525,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747058052354</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="some fixes">
+      <option name="closed" value="true" />
+      <created>1747061855639</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1747061855640</updated>
+    </task>
+    <task id="LOCAL-00052" summary="added features arraylist">
+      <option name="closed" value="true" />
+      <created>1747062024933</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1747062024933</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -566,22 +571,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="read and write Fishes Json And add constructor to Item Class Babies :)" />
-    <MESSAGE value="write writeToJson method Of Recipe Class" />
-    <MESSAGE value="write writeToJson method Of Artisan Class and Produce Class" />
-    <MESSAGE value="write writeToJson method Of Material Class" />
-    <MESSAGE value="write writeToJson method Of Seed Class" />
-    <MESSAGE value="write foraging Trees" />
-    <MESSAGE value="edit writeToJson method of Seed Class" />
-    <MESSAGE value=" write to json foragingCrops" />
-    <MESSAGE value=" write to json Foods" />
-    <MESSAGE value=" edit some things" />
-    <MESSAGE value="complete refigerator and backpack" />
-    <MESSAGE value="complete planting method" />
-    <MESSAGE value="Changing Shop Class" />
-    <MESSAGE value="edit planting method&#10;write crowAttack method &#10;write showPlant method&#10;write grow method for plants" />
-    <MESSAGE value="BlackSmithShop created" />
-    <MESSAGE value="BlackSmithShop created (errors hendeled)" />
     <MESSAGE value="Character changes to humen" />
     <MESSAGE value="black smith changed" />
     <MESSAGE value="harvest method" />
@@ -607,7 +596,9 @@
     <MESSAGE value="merge" />
     <MESSAGE value="make code run able ://///////////////" />
     <MESSAGE value="update map &amp; tools" />
-    <option name="LAST_COMMIT_MESSAGE" value="update map &amp; tools" />
+    <MESSAGE value="some fixes" />
+    <MESSAGE value="added features arraylist" />
+    <option name="LAST_COMMIT_MESSAGE" value="added features arraylist" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

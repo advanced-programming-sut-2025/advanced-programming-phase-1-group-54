@@ -23,7 +23,7 @@ public class Farm implements DailyUpdate {
     private final GreenHouse greenhouse;
     private final Cabin cabin;
     private final Quarry quarry;
-    private final Lake lake;
+    private final Lake[] lakes;
 
     public static int getNumberOfRows() {
         return NUMBER_OF_ROWS;
@@ -33,7 +33,7 @@ public class Farm implements DailyUpdate {
         return NUMBER_OF_COLUMNS;
     }
 
-    public Farm(Player owner, Location location, GreenHouse greenhouse, Cabin cabin, Quarry quarry, Lake lake, Map map) {
+    public Farm(Player owner, Location location, GreenHouse greenhouse, Cabin cabin, Quarry quarry, Lake[] lakes, Map map) {
         this.owner = owner;
         this.location = location;
         this.map = map;
@@ -41,7 +41,7 @@ public class Farm implements DailyUpdate {
         this.greenhouse = greenhouse;
         this.cabin = cabin;
         this.quarry = quarry;
-        this.lake = lake;
+        this.lakes = lakes;
     }
 
     public Player getOwner() {
@@ -68,8 +68,8 @@ public class Farm implements DailyUpdate {
         return quarry;
     }
 
-    public Lake getLake() {
-        return lake;
+    public Lake[] getLakes() {
+        return lakes;
     }
 
     public Location getRandomLocation() {
