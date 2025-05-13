@@ -5,6 +5,7 @@ import model.App;
 import model.Result;
 import model.alive.Animal;
 import model.alive.Player;
+import model.items.Item;
 import model.map.Farm;
 import model.map.Location;
 import model.map.Tile;
@@ -54,7 +55,6 @@ public class AnimalController {
         return new Result(1,output.toString());
     }
 
-    // TODO
     public static Result moveAnimal(String animalName,String xString,String yString) {
         int x;
         try{
@@ -103,14 +103,25 @@ public class AnimalController {
 
 
 
-        return null;
+        return new Result(1,"Animal " + animalName + " has moved successfully");
     }
 
-    //TODO
     public static Result feedAnimal(String animalName) {
-        //todo
 
-        return null;
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        Animal animal = player.getAnimals().get(animalName);
+        if(animal == null) {
+            return new Result(-1, "Animal " + animalName + " not found");
+        }
+
+        Item item = CommonGameController.findItem("Hay");
+        if(! player.getBackpack().removeItem(item,1)){
+            return new Result(-1, "You don't have any Hay in backpack");
+        }
+
+        animal.setHungry(false);
+
+        return new Result(1,"animal " + animalName + " has feeded successfully");
     }
 
     public static Result showProducedAnimals() {
