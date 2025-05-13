@@ -440,7 +440,7 @@ public class NPCShopsController {
 
         else if(item.getName().equals("Shears")){
             Shear shear = new Shear();
-            //TODO player.tools.add
+            App.getCurrentGame().getCurrentPlayer().getTools().put("shear",shear);
         }
         else if(item.getName().contains(" (Recipe)")){
             String temp = item.getName().split("(Recipe)")[0];
@@ -620,8 +620,8 @@ public class NPCShopsController {
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
+            App.getCurrentGame().getCurrentPlayer().getTools().put(item.getName(),pole);
             return new Result(true, "Item purchased");
-            //TODO player.tools.add
         }
         else {
             Item temp = CommonGameController.findItem(item.getName());
@@ -645,14 +645,21 @@ public class NPCShopsController {
         if(App.getCurrentGame().getCurrentPlayer().getAnimals().get(name) != null){
             return new Result(false,"this name is for another animal");
         }
-        //TODO check Animal house exist
+        boolean temp = false;
+        for(AnimalHouse animalHouse : App.getCurrentGame().getCurrentPlayer().getAnimalHouses()){
+            if(animalHouse.getName().equals(item.getBuildingRequired())){
+                temp = true;
+            }
+        }
+        if(!temp){
+            return new Result(false,"building required");
+        }
         App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }
-        //Animal temp = Animal.animals.get(item.getName());
-        //Animal animal = temp.clone();
-        //TODO App.getplayer.AnimalHouses.add animal
+        //TODO animal get animal
+        App.getCurrentGame().getCurrentPlayer().getAnimals().put(name,)
         return new Result(true,"animal purchased");
     }
 }

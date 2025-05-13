@@ -63,10 +63,10 @@ public class Player extends Human implements DailyUpdate {
     private final HashMap<String,Animal> animals = new HashMap<>();
     private final HashMap<SkillType,Skill> skills;
 
-    private final HashMap<String, AnimalHouse> animalHouses = new HashMap<>();
+    private final ArrayList<AnimalHouse> animalHouses = new ArrayList<>();
     private final HashMap<String,Tool> tools = new HashMap<>();
 
-    
+
     private SkillType buffSkill;
     private int buffHours;
 
@@ -173,6 +173,14 @@ public class Player extends Human implements DailyUpdate {
 
     public void setControllingUser(User controllingUser) {
         this.controllingUser = controllingUser;
+    }
+
+    public HashMap<String, Tool> getTools() {
+        return tools;
+    }
+
+    public ArrayList<AnimalHouse> getAnimalHouses() {
+        return animalHouses;
     }
 
     public void setEnergy(int energy) {
