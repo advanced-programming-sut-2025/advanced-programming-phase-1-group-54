@@ -3,6 +3,7 @@ package model;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import model.items.AnimalProduce;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -39,6 +40,13 @@ public class AnimalHouse {
         this.animals = animals;
         this.size = size;
         this.numberOfAnimals = 0;
+    }
+    public AnimalHouse clone()  {
+        try {
+            return (AnimalHouse) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     public String getName() {
