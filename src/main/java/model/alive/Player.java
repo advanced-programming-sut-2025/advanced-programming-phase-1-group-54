@@ -1,9 +1,6 @@
 package model.alive;
 
-import model.DailyUpdate;
-import model.Refrigerator;
-import model.Skill;
-import model.User;
+import model.*;
 import model.enums.SkillType;
 import model.enums.Symbol;
 import model.items.crafting.Artisan;
@@ -66,7 +63,10 @@ public class Player extends Human implements DailyUpdate {
     private final HashMap<String,Animal> animals = new HashMap<>();
     private final HashMap<SkillType,Skill> skills;
 
+    private final HashMap<String, AnimalHouse> animalHouses = new HashMap<>();
+    private final HashMap<String,Tool> tools = new HashMap<>();
 
+    
     private SkillType buffSkill;
     private int buffHours;
 
