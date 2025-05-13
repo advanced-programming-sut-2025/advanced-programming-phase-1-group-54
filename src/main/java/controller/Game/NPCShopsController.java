@@ -16,6 +16,7 @@ import model.enums.SkillType;
 import model.enums.ToolLevel;
 import model.items.Item;
 import model.items.ItemsInShops;
+import model.items.UniqeItems;
 import model.items.recipes.Recipe;
 import model.items.tools.BackPack;
 import model.items.tools.FishingPole;
@@ -403,15 +404,10 @@ public class NPCShopsController {
         return new Result(false,"No product with this name was found.");
     }
 
-    public static Result buySomthingFromMarnie(String itemName, int count,String name) {
+    public static Result buySomthingFromMarnie(String itemName, int count) {
         for (ItemsInShops item : ((MarnieRanch)(App.getCurrentGame().getNpcShops().get(5))).getShopInventory()){
             if (item.getName().equals(itemName)){
                 return buyItemsInShopsProduct(item,count);
-            }
-        }
-        for (MarnieRanch.ItemsInMarineRanch item : ((MarnieRanch)(App.getCurrentGame().getNpcShops().get(5))).getLivesTock()){
-            if (item.getName().equals(itemName)){
-                return buyLivesStockInMarine(item,count,name);
             }
         }
         return new Result(false,"No product with this name was found.");
@@ -436,35 +432,69 @@ public class NPCShopsController {
         if(item.getName().equals("Milk Pail")){
             MilkPail milkPail = new MilkPail();
             App.getCurrentGame().getCurrentPlayer().getTools().put("MilkPail", milkPail);
-        }
-
-        else if(item.getName().equals("Shears")){
-            Shear shear = new Shear();
-            App.getCurrentGame().getCurrentPlayer().getTools().put("Shear",shear);
-        }
-        else if(item.getName().contains(" (Recipe)")){
-            String temp = item.getName().split("(Recipe)")[0];
-            Recipe temp1 = Recipe.craftRecipes.get(temp);
-            App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes().add(temp1);
-        }
-        else if (item.getName().contains("Recipe")){
-            String temp = item.getName().split("Recipe")[0];
-            Recipe temp1 = Recipe.foodRecipes.get(temp);
-            App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes().add(temp1);
-        }
-
-        else {
-            Item temp = CommonGameController.findItem(item.getName());
-            if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, count) == false) {
-                return new Result(false, "No space in Backpack.");
-            }
             App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
             return new Result(true, "Item purchased");
         }
-        return null;
+
+        else if(item.getName().equals("Shears")){
+            Shear shear = new Shear();
+            App.getCurrentGame().getCurrentPlayer().getTools().put("Shear",shear);
+            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            if (item.getCount() != -1) {
+                item.setCount(item.getCount() - 1);
+            }
+            return new Result(true, "Item purchased");
+
+        }
+        else if(item.getName().contains(" (Recipe)")){
+            String temp = item.getName().split("(Recipe)")[0];
+            Recipe temp1 = Recipe.craftRecipes.get(temp);
+            App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes().add(temp1);
+            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            if (item.getCount() != -1) {
+                item.setCount(item.getCount() - 1);
+            }
+            return new Result(true, "Item purchased");
+
+        }
+        else if (item.getName().contains("Recipe")){
+            String temp = item.getName().split("Recipe")[0];
+            Recipe temp1 = Recipe.foodRecipes.get(temp);
+            App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes().add(temp1);
+            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            if (item.getCount() != -1) {
+                item.setCount(item.getCount() - 1);
+            }
+            return new Result(true, "Item purchased");
+
+        }
+
+        else {
+            Item temp = CommonGameController.findItem(item.getName());
+            if (temp == null) {
+                UniqeItems uniqeItems = UniqeItems.getUniqeItems(item.getName());
+                if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(uniqeItems, count) == false) {
+                    return new Result(false, "No space in Backpack.");
+                }
+                App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+                if (item.getCount() != -1) {
+                    item.setCount(item.getCount() - 1);
+                }
+                return new Result(true, "Item purchased");
+            } else {
+                if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, count) == false) {
+                    return new Result(false, "No space in Backpack.");
+                }
+                App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+                if (item.getCount() != -1) {
+                    item.setCount(item.getCount() - 1);
+                }
+                return new Result(true, "Item purchased");
+            }
+        }
     }
     public static Result buyUpgradeToolsInBlackSmith(BlackSmithShop.upgradesToolsBlacsmithShop item, int count){
         if (count > item.getCount() && item.getCount() != -1){
@@ -662,5 +692,339 @@ public class NPCShopsController {
         Animal animal = Animal.getAnimal(item.getName());
         App.getCurrentGame().getCurrentPlayer().getAnimals().put(name,animal);
         return new Result(true,"animal purchased");
+    }
+    public static ArrayList<String> showPrductsinBlackSmith(Boolean available) {
+        ArrayList<String> prducts = new ArrayList<>();
+        prducts.add("Stock");
+        prducts.add("Name           Description                             Price           Daily Limit");
+        for (ItemsInShops items : ((BlackSmithShop) (App.getCurrentGame().getNpcShops().get(0))).getStock()) {
+            if(items.getCount() == -1){
+                prducts.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    prducts.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        prducts.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        prducts.add("Stock");
+        prducts.add("Name           Ingredient                             Price           Daily Limit");
+        for (BlackSmithShop.upgradesToolsBlacsmithShop items : ((BlackSmithShop) (App.getCurrentGame().getNpcShops().get(0))).getUpgradeTools()) {
+            if(items.getCount() == -1){
+                prducts.add(items.getName() + "    " + items.getIngredientString() + ": " + items.getIngredientsInt() + "    " + items.getPrice() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    prducts.add(items.getName() + "    " + items.getIngredientString() + ": " + items.getIngredientsInt() + "    " + items.getPrice() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        prducts.add(items.getName() + "    " + items.getIngredientString() + ": " + items.getIngredientsInt() + "    " + items.getPrice() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        return prducts;
+    }
+    public static ArrayList<String> showproductsMarinesRench(Boolean available){
+        ArrayList<String> products = new ArrayList<>();
+        products.add("Shop Inventory");
+        products.add("Name           Description                             Price           Daily Limit");
+        for (ItemsInShops items : ((MarnieRanch)(App.getCurrentGame().getNpcShops().get(1))).getShopInventory()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        products.add("Lives tock");
+        products.add("Name           Description                             Price          Building required           Daily Limit");
+        for (MarnieRanch.ItemsInMarineRanch items : ((MarnieRanch)(App.getCurrentGame().getNpcShops().get(1))).getLivesTock()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "    " + items.getBuildingRequired()  + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "    " + items.getBuildingRequired() +"   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "    " + items.getBuildingRequired() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        return products;
+    }
+    public static ArrayList<String> showProductsStardropSaloon(Boolean available){
+        ArrayList<String> products = new ArrayList<>();
+        products.add("Permanent Stock");
+        products.add("Name           Description                             Price           Daily Limit");
+        for (ItemsInShops items : ((TheStardropSaloonShop)(App.getCurrentGame().getNpcShops().get(2))).getPermanentStock()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        return products;
+    }
+    public static ArrayList<String> showCarpenterShop(Boolean available){
+        ArrayList<String> products = new ArrayList<>();
+        products.add("Permanent Stock");
+        products.add("Name           Description                             Price           Daily Limit");
+        for (ItemsInShops items : ((CarpenterShop)(App.getCurrentGame().getNpcShops().get(3))).getPermanentStock()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        products.add("Farm Buildings");
+        products.add("Name           Description                       Price         size       Daily Limit");
+        for (CarpenterShop.ItemsinCarpenterShop items : ((CarpenterShop)(App.getCurrentGame().getNpcShops().get(3))).getFarmBuildings()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + " stone: " + items.getStone() + " wood:  " + items.getWood() + "   " +items.getxSize() + "X" + items.getySize() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + " stone: " + items.getStone() + " wood:  " + items.getWood() + "   " +items.getxSize() + "X" + items.getySize() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + " stone: " + items.getStone() + " wood:  " + items.getWood() + "   " +items.getxSize() + "X" + items.getySize() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        return products;
+    }
+    public static ArrayList<String> showJojaMart (Boolean available){
+        ArrayList<String> products = new ArrayList<>();
+        products.add("Permanent Stock");
+        products.add("Name           Description                             Price           Daily Limit");
+        for (ItemsInShops items : ((CarpenterShop)(App.getCurrentGame().getNpcShops().get(4))).getPermanentStock()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        products.add("Spring Stock");
+        products.add("Name           Description                             Price           Daily Limit");
+        for (ItemsInShops items : ((JojoMartShop)(App.getCurrentGame().getNpcShops().get(4))).getSpringStock()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        products.add("Summer Stock");
+        products.add("Name           Description                             Price           Daily Limit");
+        for (ItemsInShops items : ((JojoMartShop)(App.getCurrentGame().getNpcShops().get(4))).getSummerStock()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        products.add("Fall Stock");
+        products.add("Name           Description                             Price           Daily Limit");
+        for (ItemsInShops items : ((JojoMartShop)(App.getCurrentGame().getNpcShops().get(4))).getFallStock()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        products.add("Winter Stock");
+        products.add("Name           Description                             Price           Daily Limit");
+        for (ItemsInShops items : ((JojoMartShop)(App.getCurrentGame().getNpcShops().get(4))).getWinterStock()){
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        return products;
+    }
+    public static ArrayList<String> showPierreGeneralShop(Boolean available) {
+        ArrayList<String> products = new ArrayList<>();
+        products.add("Year-Round Stock");
+        products.add("Name           Description                             Price           Daily Limit");
+        for (ItemsInShops items : ((PierreGeneralShop)(App.getCurrentGame().getNpcShops().get(5))).getYearRoundStock()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        products.add("backPacks");
+        products.add("Name           Description                             Price          Available           Daily Limit");
+        for (PierreGeneralShop.BackPacksItems items : ((PierreGeneralShop)(App.getCurrentGame().getNpcShops().get(5))).getBackPacks()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "      " + items.getIsAvailable() +  "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "      " + items.getIsAvailable() +   "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() +  "      " + items.getIsAvailable() +   "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        products.add("Spring Stock");
+        products.add("Name           Description                             Price In/Out           Daily Limit");
+        for (PierreGeneralShop.SeasonalStockItems items : ((PierreGeneralShop)(App.getCurrentGame().getNpcShops().get(5))).getSpringStock()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPriceInSeason() + "/" + items.getPriceOutOfSeason()  +  "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPriceInSeason() + "/" + items.getPriceOutOfSeason()  +  "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPriceInSeason() + "/" + items.getPriceOutOfSeason()  +   "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        products.add("Summer Stock");
+        products.add("Name           Description                             Price In/Out           Daily Limit");
+        for (PierreGeneralShop.SeasonalStockItems items : ((PierreGeneralShop)(App.getCurrentGame().getNpcShops().get(5))).getSummerStock()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPriceInSeason() + "/" + items.getPriceOutOfSeason()  +  "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPriceInSeason() + "/" + items.getPriceOutOfSeason()  +  "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPriceInSeason() + "/" + items.getPriceOutOfSeason()  +   "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        products.add("Fall Stock");
+        products.add("Name           Description                             Price In/Out           Daily Limit");
+        for (PierreGeneralShop.SeasonalStockItems items : ((PierreGeneralShop)(App.getCurrentGame().getNpcShops().get(5))).getFallStock()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPriceInSeason() + "/" + items.getPriceOutOfSeason()  +  "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPriceInSeason() + "/" + items.getPriceOutOfSeason()  +  "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPriceInSeason() + "/" + items.getPriceOutOfSeason()  +   "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        return products;
+    }
+    public static ArrayList<String> showFishShop(Boolean available){
+        ArrayList<String> products = new ArrayList<>();
+        products.add("Stock");
+        products.add("Name           Description                             Price         Fishing Skill         Daily Limit");
+        for (FishShop.StockInShop items : ((FishShop)(App.getCurrentGame().getNpcShops().get(6))).getStockInShop()) {
+            if(items.getCount() == -1){
+                products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "      " + items.getPurchaseable() + "   unlimited");
+            }
+            else {
+                if (!available) {
+                    products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "      " + items.getPurchaseable() + "   " + items.getCount());
+                }
+                else {
+                    if (items.getCount() > 0) {
+                        products.add(items.getName() + "    " + items.getDescription() + "    " + items.getPrice() + "      " + items.getPurchaseable() + "   " + items.getCount());
+                    }
+                }
+            }
+        }
+        return products;
     }
 }

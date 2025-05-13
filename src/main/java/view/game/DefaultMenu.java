@@ -6,6 +6,7 @@ import controller.Game.NPCShopsController;
 import controller.GameController;
 import model.Game;
 import model.Result;
+import model.Shops.MarnieRanch;
 import model.enums.commands.Command;
 import model.App;
 import model.Result;
@@ -45,6 +46,14 @@ public class DefaultMenu implements GameSubMenu {
 
         else if (GameCommand.GREENHOUSE_BUILD.matches(input))
             handleGreenHouseBuild();
+        else if(GameCommand.PURCHASE_ITEM.getMatcher(input) != null)
+            purchaseItem(GameCommand.PURCHASE_ITEM.getMatcher(input));
+        else if(GameCommand.PURCHASE_ANIMAL.getMatcher(input) != null)
+            purchaseAnimal(GameCommand.PURCHASE_ANIMAL.getMatcher(input));
+        else if(GameCommand.SHOW_ALL_PRODUCTS.matches(input))
+            showAllItems();
+        else if (GameCommand.SHOW_ALL_AVAILABLE_PRODUCTS.matches(input))
+            showAllAvailableItems();
         else if (GameCommand.FRIENDSHIP.matches(input))
             friendShips();
         else if(GameCommand.TALK.getMatcher(input) != null)
@@ -55,7 +64,8 @@ public class DefaultMenu implements GameSubMenu {
             gift(GameCommand.GIFT.getMatcher(input));
         else if(GameCommand.GIFT_LIST.getMatcher(input) != null){
             giftList();
-            App.getCurrentGame().getCurrentPlayer().setInGiftList(true);}
+            App.getCurrentGame().getCurrentPlayer().setInGiftList(true);
+        }
         else if(GameCommand.GIFT_RATE.getMatcher(input) != null ) {
             if(App.getCurrentGame().getCurrentPlayer().isInGiftList()){
                 giftRate(GameCommand.GIFT_RATE.getMatcher(input));
@@ -97,6 +107,50 @@ public class DefaultMenu implements GameSubMenu {
 //            handleShowInventory();
 //        else if (GameCommand.TRASH.matches(input))
 //            handleTrash(input);
+    }
+
+    private void purchaseAnimal(Matcher matcher) {
+        String animalName = matcher.group("name");
+        String product = matcher.group("product_name");
+        String temp = matcher.group("count");
+        int count = Integer.parseInt(temp);
+        for (MarnieRanch.ItemsInMarineRanch items : ((MarnieRanch)(App.getCurrentGame().getNpcShops().get(5))).getLivesTock()){
+            if (items.getName().equals(product)){
+                Result result = NPCShopsController.buyLivesStockInMarine(items,count,animalName);
+                System.out.println(result.message());
+                return;
+            }
+        }
+        System.out.println("there is no animal with name " + product);
+    }
+
+    private void showAllAvailableItems() {
+
+        /*if(){
+        //  ArrayList<String> temp = NPCShopsController.showPrductsinBlackSmith(true);
+        // }
+        // if(){
+        //
+        //
+        ArrayList<String> temp = NPCShopsController.showproductsMarinesRench(true);
+        ArrayList<String> temp = NPCShopsController.showCarpenterShop(true);
+        ArrayList<String> temp = NPCShopsController.showJojaMart(true);
+        ArrayList<String> temp = NPCShopsController.showPierreGeneralShop(true);
+        ArrayList<String> temp = NPCShopsController.showFishShop(true);
+        */
+        ArrayList<String> temp = NPCShopsController.showProductsStardropSaloon(true);
+    }
+
+    private void showAllItems() {
+        /*
+        ArrayList<String> temp = NPCShopsController.showPrductsinBlackSmith(false);
+        ArrayList<String> temp = NPCShopsController.showproductsMarinesRench(false);
+        ArrayList<String> temp = NPCShopsController.showCarpenterShop(false);
+        ArrayList<String> temp = NPCShopsController.showJojaMart(false);
+        ArrayList<String> temp = NPCShopsController.showPierreGeneralShop(false);
+        ArrayList<String> temp = NPCShopsController.showFishShop(false);
+        ArrayList<String> temp = NPCShopsController.showProductsStardropSaloon(false);
+        */
     }
 
     private void respondForMarriage(Matcher matcher) {
@@ -286,5 +340,7 @@ public class DefaultMenu implements GameSubMenu {
         System.out.println(result.message());
         App.getCurrentGame().getCurrentPlayer().setInGiftList(false);
     }
+    private void purchaseItem(Matcher matcher){
 
+    }
 }
