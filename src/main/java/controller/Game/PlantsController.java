@@ -9,6 +9,7 @@ import model.alive.Player;
 import model.enums.Direction;
 import model.enums.Feature;
 import model.items.Fertilize;
+import model.items.Material;
 import model.items.plants.*;
 import model.items.tools.Scythe;
 import model.map.Farm;
@@ -253,11 +254,16 @@ public class PlantsController {
         return new Result(1,"foragingCrop finished");
     }
 
-    //TODO
-    public Result foragingMaterial(){
+    public Result foragingMaterial(Player player){
+        Farm farm = App.getCurrentGame().getWorld().getFarm(player);
+        for(int i = 0 ;i < 3;i++){
+            Tile tile = farm.getQuarry().getTileAt(farm.getQuarry().getRandomLocation());
+            if(tile.getThingOnTile() == null){
+                tile.setThingOnTile(Material.getForagingMaterial());
+            }
+        }
 
-
-        return null;
+        return new Result(1,"foragingMaterial finished");
     }
 
     public Result foragingSeed(Player player){
