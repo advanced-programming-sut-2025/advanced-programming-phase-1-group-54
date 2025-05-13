@@ -495,7 +495,6 @@ public class NPCShopsController {
                 return new Result(true, "Item purchased");
             }
         }
-        return null;
     }
     public static Result buyUpgradeToolsInBlackSmith(BlackSmithShop.upgradesToolsBlacsmithShop item, int count){
         if (count > item.getCount() && item.getCount() != -1){
