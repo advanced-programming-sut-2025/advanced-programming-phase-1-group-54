@@ -1,6 +1,7 @@
 package model;
 
 import controller.Game.FriendShipController;
+import controller.Game.NPCShopsController;
 import model.Shops.Shop;
 import model.alive.Player;
 import model.enums.SubMenu;
@@ -91,6 +92,7 @@ public class Game implements DailyUpdate {
         dateTime.increaseDay(1);
         FriendShipController.relaitionshipUpdate();
         FriendShipController.decreaseHeartBropken();
+        NPCShopsController.refillShps();
         //TODO in every turn check the gifts trades etc
         //TODO fill the shops
     }
