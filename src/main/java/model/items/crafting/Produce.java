@@ -44,7 +44,7 @@ public class Produce extends Item implements Cloneable{
         }
     }
 
-    private final int sellPrice;
+
     private final boolean edible;
     private final int energy;
     private final int processingHours;
@@ -54,18 +54,13 @@ public class Produce extends Item implements Cloneable{
 
     public Produce(String name, int sellPrice, boolean edible, int energy, int processingHours, int processingMornings,
                    ArrayList<String> ingredientsNames, HashMap<String, Integer> ingredientsNumber) {
-        super(name,true);
-        this.sellPrice = sellPrice;
+        super(name,true,sellPrice);
         this.edible = edible;
         this.energy = energy;
         this.processingHours = processingHours;
         this.processingMornings = processingMornings;
         this.ingredientsNames = ingredientsNames;
         this.ingredientsNumber = ingredientsNumber;
-    }
-
-    public int getSellPrice() {
-        return sellPrice;
     }
 
     public boolean isEdible() {

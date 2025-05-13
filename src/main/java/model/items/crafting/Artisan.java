@@ -41,7 +41,7 @@ public class Artisan extends Item implements Placeable,Cloneable{
 
 
     public Artisan(String name, String recipeName) {
-        super(name,false);
+        super(name,false,0);
         this.recipeName = recipeName;
     }
 

@@ -67,6 +67,13 @@ public class CommonGameController {
             return animalProduce;
         }
 
+        Fertilize fertilize = Fertilize.getFertilizer(ItemName);
+        if(fertilize != null){
+            return fertilize;
+        }
+
+
+
         return null;
     }
 

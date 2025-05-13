@@ -30,7 +30,7 @@ public class ItemsInShops extends Item {
     }
 
     public ItemsInShops(String name, boolean isEdible, int count, int price, String description) {
-        super(name, isEdible);
+        super(name, isEdible,0);
         this.description = description;
         this.count = count;
         this.price = price;

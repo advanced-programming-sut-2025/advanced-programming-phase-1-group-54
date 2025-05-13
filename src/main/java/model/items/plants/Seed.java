@@ -97,7 +97,7 @@ public class Seed extends Item implements Placeable, Cloneable{
     private final String plant;
 
     public Seed(String name, String plant) {
-        super(name,false);
+        super(name,false,0);
         this.plant = plant;
     }
 

@@ -3,6 +3,7 @@ package model.items;
 public abstract class Item{
     protected final String name;
     protected final boolean isEdible;
+    protected final int baseSellPrice;
 //    protected final boolean sellable;
 
 //    public Item(String name, boolean isEdible, boolean sellable) {
@@ -12,9 +13,10 @@ public abstract class Item{
 //    }
 
 
-    public Item(String name, boolean isEdible) {
+    public Item(String name, boolean isEdible, int sellPrice) {
         this.name = name;
         this.isEdible = isEdible;
+        this.baseSellPrice = sellPrice;
     }
 
     public String getName() {
@@ -23,5 +25,9 @@ public abstract class Item{
 
     public boolean isEdible() {
         return isEdible;
+    }
+
+    public int getBaseSellPrice() {
+        return baseSellPrice;
     }
 }

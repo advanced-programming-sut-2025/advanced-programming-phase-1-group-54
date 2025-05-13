@@ -58,15 +58,9 @@ public class Material extends Item implements Placeable,Cloneable {
     }
 
 
-    private final int baseSellPrice;
 
-    public Material(String name, int baseSellPrice) {
-        super(name,false);
-        this.baseSellPrice = baseSellPrice;
-    }
-
-    public int getBaseSellPrice() {
-        return baseSellPrice;
+    public Material(String name, int sellPrice) {
+        super(name,false,sellPrice);
     }
 
     @Override
