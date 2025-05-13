@@ -3,6 +3,7 @@ package model.Shops;
 import model.Building.Building;
 import model.alive.Human;
 import model.enums.Symbol;
+import model.map.Area;
 import model.map.Location;
 import model.map.Map;
 
@@ -14,9 +15,9 @@ public class Shop extends Building {
     protected int openingHours;
     protected int closingHours;
 
-    public Shop(Human owner, int openingHours, int closingHours, Location upperLeftLocation, Location lowerRightLocation) {
-        super(upperLeftLocation, new Map(lowerRightLocation.row() - upperLeftLocation.row(),
-                lowerRightLocation.column() - upperLeftLocation.column()));
+    public Shop(Human owner, int openingHours, int closingHours, Area area) {
+        super(area.upperLeftLocation(), new Map(area.lowerRightLocation().row() - area.upperLeftLocation().row(),
+                area.lowerRightLocation().column() - area.upperLeftLocation().column()));
         this.owner = owner;
         this.openingHours = openingHours;
         this.closingHours = closingHours;
