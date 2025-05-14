@@ -382,8 +382,9 @@ public class CommonGameController {
     public static void acceptMarriage(Player player){
         //TODO zaminashono ok kon @korosh
     }
+    //TODO check baghal ham. ham bra player ham bra satl
     public static Result sell(String product, int count) {
-        //TODO korosh check baghal satl bodan
+        //next to each other
         Fish fish = Fish.getFish(product);
         if (fish != null) {
             if (count != 1) {
