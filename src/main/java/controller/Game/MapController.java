@@ -1,6 +1,7 @@
 package controller.Game;
 
 import model.App;
+import model.Placeable;
 import model.map.Building;
 import model.map.GreenHouse;
 import model.Game;
@@ -149,5 +150,15 @@ public class MapController {
 
     public static Result buildAnimalHouse(String buildingName, Location location) {
         return null;
+    }
+
+    static boolean isNear(Location location, Placeable placeable) {
+        World world = App.getCurrentGame().getWorld();
+        for (Direction direction : Direction.values()) {
+            Location nearLocation = location.getLocationAt(direction);
+            if (world.getTileAt(nearLocation).getThingOnTile().equals(placeable))
+                return true;
+        }
+        return false;
     }
 }

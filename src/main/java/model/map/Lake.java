@@ -14,6 +14,6 @@ public class Lake extends Building {
 
     @Override
     public Symbol getSymbol() {
-        return Symbol.LAKE;
+        return Symbol.WATER;
     }
 }

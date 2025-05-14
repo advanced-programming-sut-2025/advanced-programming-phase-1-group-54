@@ -58,6 +58,13 @@ public class World implements DailyUpdate {
         this.tomorrowWeather = tomorrowWeather;
     }
 
+
+    public void rain() {
+        for (Farm farm : playerFarms) {
+            farm.rain();
+        }
+    }
+
     public void thunder() {
         for (Farm farm : playerFarms) {
             for (int i = 1; i <= NUMBER_OF_THUNDER; i++) {
@@ -78,20 +85,12 @@ public class World implements DailyUpdate {
     public void nextDayUpdate() {
         currentWeather = tomorrowWeather;
 
-
         for (Farm farm : playerFarms) {
             farm.nextDayUpdate();
         }
 
         if (currentWeather == Weather.RAIN || currentWeather == Weather.STORM) {
-            for (Farm farm : playerFarms) {
-                farm.rain();
-            }
-        }
-        else {
-            for (Farm farm : playerFarms) {
-                farm.dry();
-            }
+            rain();
         }
 
         if (currentWeather.equals(Weather.STORM)) {

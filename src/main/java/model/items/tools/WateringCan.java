@@ -2,11 +2,15 @@ package model.items.tools;
 
 import model.enums.Feature;
 import model.enums.SkillType;
-import model.map.Lake;
+import model.enums.ToolType;
 import model.map.Tile;
 
 public class WateringCan extends Tool {
     private int currentWater;
+
+    public WateringCan() {
+        super(ToolType.WATERING_CAN);
+    }
 
     public int getCurrentWater() {
         return currentWater;
@@ -22,33 +26,6 @@ public class WateringCan extends Tool {
         currentWater--;
         if (currentWater < 0)
             currentWater = 0;
-    }
-
-    @Override
-    public boolean checkSuccess(Tile tile) {
-        if (tile.hasFeature(Feature.WATERED)) {
-            return true;
-        }
-
-        return currentWater > 0;
-    }
-
-    @Override
-    public void use(BackPack backPack, Tile tile) {
-        if (!checkSuccess(tile))
-            return;
-
-        if (tile.hasFeature(Feature.WATERED)) {
-            increaseWater();
-            if (tile.getThingOnTile() == null || !(tile.getThingOnTile() instanceof Lake))
-                // TODO rain?
-                tile.removeFeature(Feature.WATERED);
-        }
-
-        else {
-            decreaseWater();
-            tile.addFeature(Feature.WATERED);
-        }
     }
 
     public int getCapacity() {
@@ -70,6 +47,6 @@ public class WateringCan extends Tool {
 
     @Override
     public SkillType getSkillType() {
-        return null;
+        return SkillType.FARMING;
     }
 }

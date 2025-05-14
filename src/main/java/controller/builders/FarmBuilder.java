@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import controller.Game.PlantsController;
+import model.items.Material;
 import model.map.Cabin;
 import model.map.GreenHouse;
 import model.alive.Player;
@@ -17,6 +18,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class FarmBuilder {
+    private static int NUMBER_OF_FORAGING_MATERIAL = 2;
+    private static int NUMBER_OF_FORAGING_CROP = 10;
+
     private static Location location;
     private static Player owner;
 
@@ -115,7 +119,7 @@ public class FarmBuilder {
             for (int row = lakeAreas[t].upperLeftLocation().row(); row <= lakeAreas[t].lowerRightLocation().row(); row++) {
                 for (int column = lakeAreas[t].upperLeftLocation().column(); column <= lakeAreas[t].lowerRightLocation().column(); column++) {
                     tiles[row][column].setThingOnTile(lakes[t]);
-                    tiles[row][column].addFeature(Feature.WATERED);
+                    tiles[row][column].addFeature(Feature.WATER);
                 }
             }
         }
@@ -131,7 +135,25 @@ public class FarmBuilder {
             }
         }
 
+        for (int i = 1; i <= NUMBER_OF_FORAGING_MATERIAL; i++) {
+            quarry.foragingMaterial();
+        }
+
         return quarry;
+    }
+
+    public static void placeRandomStuff(Farm farm) {
+        for (int i = 1; i <= NUMBER_OF_FORAGING_MATERIAL; i++) {
+            farm.foragingCrop();
+        }
+
+        for (int i = 0; i < Farm.getNumberOfRows(); i++) {
+            for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
+                if ((int) (Math.random() * 100) < 5) {
+                    tiles[i][j].setThingOnTile(Material.getMaterial("Wood"));
+                }
+            }
+        }
     }
 
     public static Farm getResult() {
@@ -147,6 +169,8 @@ public class FarmBuilder {
         Quarry quarry = buildQuarry();
 
         Farm farm = new Farm(location, greenHouse, cabin, quarry, lakes, new Map(Farm.getNumberOfRows(), Farm.getNumberOfColumns(), tiles));
+        placeRandomStuff(farm);
+
         FarmBuilder.reset();
         return farm;
     }

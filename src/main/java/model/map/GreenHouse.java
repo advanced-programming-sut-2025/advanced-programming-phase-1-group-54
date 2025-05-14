@@ -12,8 +12,6 @@ public class GreenHouse extends Building implements DailyUpdate {
 
     private boolean built;
 
-    private final Lake waterTank;
-
     public static int getNumberOfRows() {
         return NUMBER_OF_ROWS;
     }
@@ -39,15 +37,11 @@ public class GreenHouse extends Building implements DailyUpdate {
             }
         }
 
-        waterTank = new Lake(new Area(new Location(0, 0), new Location(0, NUMBER_OF_COLUMNS - 1)));
+        Lake waterTank = new Lake(new Area(new Location(0, 0), new Location(0, NUMBER_OF_COLUMNS - 1)));
         for (int j = 0; j < NUMBER_OF_COLUMNS; j++) {
             this.getTileAt(new Location(0, j)).setThingOnTile(waterTank);
-            this.getTileAt(new Location(0, j)).addFeature(Feature.WATERED);
+            this.getTileAt(new Location(0, j)).addFeature(Feature.WATER);
         }
-    }
-
-    public Lake getWaterTank() {
-        return waterTank;
     }
 
     public boolean isBuilt() {

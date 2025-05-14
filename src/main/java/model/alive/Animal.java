@@ -6,7 +6,6 @@ import com.google.gson.reflect.TypeToken;
 import controller.Game.CommonGameController;
 import model.DailyUpdate;
 import model.map.AnimalHouse;
-import model.App;
 import model.Placeable;
 import model.enums.ProduceQuality;
 import model.enums.Symbol;
@@ -24,7 +23,7 @@ import java.util.HashMap;
 
 public class Animal implements Placeable,Cloneable,DailyUpdate {
 
-    static final HashMap<String,Animal> animals;
+    private static final HashMap<String,Animal> animals;
 
 
     static {
@@ -39,7 +38,7 @@ public class Animal implements Placeable,Cloneable,DailyUpdate {
         animals = gson.fromJson(file,type);
     }
 
-    static final int maxFriendship = 1000;
+    private static final int MAX_FRIENDSHIP = 1000;
 
     public static Animal getAnimal(String name) {
         Animal animal = animals.get(name);
@@ -147,13 +146,13 @@ public class Animal implements Placeable,Cloneable,DailyUpdate {
     }
 
     public void setFriendshipLevel(int friendshipLevel) {
-        this.friendshipLevel = Math.min(friendshipLevel,maxFriendship);
+        this.friendshipLevel = Math.min(friendshipLevel, MAX_FRIENDSHIP);
     }
 
     public void increaseFriendshipLevel(int friendshipLevel) {
         this.friendshipLevel += friendshipLevel;
-        if(this.friendshipLevel > maxFriendship){
-            this.friendshipLevel = maxFriendship;
+        if(this.friendshipLevel > MAX_FRIENDSHIP){
+            this.friendshipLevel = MAX_FRIENDSHIP;
         }
     }
 

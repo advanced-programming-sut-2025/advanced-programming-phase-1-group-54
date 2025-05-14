@@ -72,8 +72,8 @@ public class Tile implements DailyUpdate {
         else
             out = getThingOnTile().getSymbol().toString();
 
-        if (features.contains(Feature.WATERED))
-            out = Color.BLUE_BACKGROUND + out + Color.DEFAULT;
+        if (features.contains(Feature.WATER))
+            out = Symbol.WATER.toString();
 
         else if (features.contains(Feature.PROTECTED))
             out = Color.YELLOW_BACKGROUND + out + Color.DEFAULT;
@@ -83,19 +83,11 @@ public class Tile implements DailyUpdate {
 
     @Override
     public void nextDayUpdate() {
-        if (thingOnTile == null || thingOnTile instanceof Building) {
+        if (thingOnTile instanceof Building) {
             return;
         }
 
         if (thingOnTile instanceof Plant plant) {
-            plant.setWatered(this.hasFeature(Feature.WATERED));
-            if (!plant.isWatered())
-                plant.increaseNumberOfDaysWithoutWater();
-            else
-                plant.setNumberOfDaysWithoutWater(0);
-
-            // TODO fertilizers
-
             if (plant.isDead()) {
                 setThingOnTile(null);
             }

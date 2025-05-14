@@ -6,10 +6,10 @@ import model.items.recipes.Recipe;
 
 public class Skill {
 
-    private final static int maxSkillLevel = 4;
+    private final static int MAX_SKILL_LEVEL = 4;
 
     public static int getMaxSkillLevel() {
-        return maxSkillLevel;
+        return MAX_SKILL_LEVEL;
     }
 
     private final SkillType skillType;
@@ -24,14 +24,23 @@ public class Skill {
         return level;
     }
 
+    public int getXpNeededForLevelUp() {
+        return 100 * (level + 1) + 50;
+    }
+
     public void addXP(int amount) {
         this.xp += amount;
         Player player = App.getCurrentGame().getCurrentPlayer();
-        while (this.level != 4 && this.xp > 100 * level + 50) {
+        while (this.level < 4 && this.xp >= getXpNeededForLevelUp()) {
+            xp -= getXpNeededForLevelUp();
+            this.level++;
             for(String recipeName : skillType.getCraftingRecipesRelease()[level]){
                 player.getLearnedCraftingRecipes().add(Recipe.craftRecipes.get(recipeName));
             }
-            this.level++;
+        }
+
+        if (this.level == 4) {
+            this.xp = 0;
         }
     }
 }

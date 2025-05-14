@@ -61,8 +61,12 @@ public class BackPack {
             return true;
         }
         else{
-            return numberOfItemInBackPack.size() < level.getSize();
+            return numberOfItemInBackPack.size() < this.getCapacity();
         }
+    }
+
+    public int getCapacity() {
+        return level.getSize();
     }
 
     public void upgrade() {

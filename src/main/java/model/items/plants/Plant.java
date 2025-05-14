@@ -113,6 +113,8 @@ public abstract class Plant implements Placeable, DailyUpdate {
 
     public void setWatered(boolean watered) {
         this.watered = watered;
+        if (watered)
+            setNumberOfDaysWithoutWater(0);
     }
 
     public void setNumberOfDaysWithoutWater(int numberOfDaysWithoutWater) {
@@ -124,7 +126,7 @@ public abstract class Plant implements Placeable, DailyUpdate {
     }
 
     public boolean isDead() {
-        return (!watered && !fertilized && numberOfDaysWithoutWater >= 2);
+        return (!watered && !fertilized && numberOfDaysWithoutWater > 0);
 //        if(!watered && !fertilized && numberOfDaysWithoutWater > 0){
 //            Tile tile = player.getPlants().get(this);
 //            tile.setThingOnTile(null);
@@ -153,6 +155,9 @@ public abstract class Plant implements Placeable, DailyUpdate {
                 this.fruitIsRipen = true;
             }
         }
+
+        if (!watered)
+            numberOfDaysWithoutWater++;
 
         watered = false;
     }

@@ -75,20 +75,6 @@ public class GameBuilder {
         }
 
         Game game = new Game(world, players);
-
-        App.setCurrentGame(game);
-
-        for (Player player : game.getPlayers()) {
-            for (int t = 0; t < 10; t++) {
-                PlantsController.foragingCrop(player);
-            }
-            for (int t = 0; t < 2; t++) {
-                PlantsController.foragingMaterial(player);
-            }
-        }
-
-        App.setCurrentGame(null);
-
         GameBuilder.reset();
         return game;
     }

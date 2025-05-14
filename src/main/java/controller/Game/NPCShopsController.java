@@ -1,16 +1,12 @@
 package controller.Game;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import model.AnimalHouse;
 import model.App;
-import model.Game;
 import model.Result;
 import model.Shops.*;
 import model.alive.Animal;
 import model.alive.Human;
 import model.alive.NPC;
-import model.alive.Player;
 import model.enums.BackPackLevel;
 import model.enums.SkillType;
 import model.enums.ToolLevel;
@@ -18,19 +14,14 @@ import model.items.Item;
 import model.items.ItemsInShops;
 import model.items.UniqeItems;
 import model.items.recipes.Recipe;
-import model.items.tools.BackPack;
 import model.items.tools.FishingPole;
-import model.items.tools.MilkPail;
-import model.items.tools.Shear;
 import org.json.JSONArray;
 import org.json.JSONTokener;
 
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 
 public class NPCShopsController {
     // TODO add upperleft and lowerright locations of buildings to each shop

@@ -344,10 +344,6 @@ public class Player extends Human implements DailyUpdate {
             }
         }
 
-        PlantsController.foragingCrop(this);
-        PlantsController.foragingSeed(this);
-        PlantsController.foragingMaterial(this);
-
         if (this.isFallen())
             energy = 75 * MAXIMUM_ENERGY / 100;
         else {
@@ -365,20 +361,20 @@ public class Player extends Human implements DailyUpdate {
         if (this.unlimitedEnergy) {
             return true;
         } else if (skillType == null) {
-            return this.energy >= energyAmount;
+            return this.energy > energyAmount;
         }
         else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
                 this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
-            return this.energy >= energyAmount - 2;
+            return this.energy > energyAmount - 2;
         }
         else if(this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
-            return this.energy >= energyAmount - 1;
+            return this.energy > energyAmount - 1;
         }
         else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
-            return this.energy >= energyAmount - 1;
+            return this.energy > energyAmount - 1;
         }
         else{
-            return this.energy >= energyAmount;
+            return this.energy > energyAmount;
         }
     }
 

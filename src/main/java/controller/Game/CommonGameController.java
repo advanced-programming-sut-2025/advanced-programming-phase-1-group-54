@@ -28,6 +28,10 @@ public class CommonGameController {
 
     // TODO add functions for "force terminate"
 
+    public static Result passOut() {
+        return new Result(true, "you passed out!" + nextTurn().message());
+    }
+
     public static Result nextTurn() {
         Game game = App.getCurrentGame();
         game.nextTurn();

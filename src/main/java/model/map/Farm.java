@@ -4,10 +4,12 @@ package model.map;
     each player has a farm, at the start player selects one of predefined farms;
  */
 
+import model.App;
 import model.DailyUpdate;
 import model.enums.Feature;
 import model.items.plants.Crop;
 import model.items.plants.Fruit;
+import model.items.plants.Plant;
 import model.items.plants.Seed;
 
 public class Farm implements DailyUpdate {
@@ -76,30 +78,23 @@ public class Farm implements DailyUpdate {
         tile.setThingOnTile(null);
     }
 
-    public void rain() {
-        for (int i = 0; i < getNumberOfRows(); i++) {
-            for (int j = 0; j < getNumberOfColumns(); j++) {
-                Location location = new Location(i, j);
-                Tile tile = getTileAt(location);
-
-                if (tile.getThingOnTile() != null && tile.getThingOnTile() instanceof Building)
-                    continue;
-
-                tile.addFeature(Feature.WATERED);
+    public void foragingCrop() {
+        for (int i = 0; i < Farm.getNumberOfRows(); i++) {
+            for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
+                Tile tile = getTileAt(new Location(i, j));
+                if (Math.random() <= 0.01 && tile.getThingOnTile() == null) {
+                    tile.setThingOnTile(Fruit.getForagingCrop());
+                }
             }
         }
     }
 
-    public void dry() {
-        for (int i = 0; i < getNumberOfRows(); i++) {
-            for (int j = 0; j < getNumberOfColumns(); j++) {
-                Location location = new Location(i, j);
-                Tile tile = getTileAt(location);
-
-                if (tile.getThingOnTile() != null && tile.getThingOnTile() instanceof Building)
-                    continue;
-
-                tile.removeFeature(Feature.WATERED);
+    public void rain() {
+        for (int i = 0; i < Farm.getNumberOfRows(); i++) {
+            for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
+                Tile tile = getTileAt(new Location(i, j));
+                if (tile.getThingOnTile() instanceof Plant plant)
+                    plant.setWatered(true);
             }
         }
     }
@@ -113,5 +108,10 @@ public class Farm implements DailyUpdate {
                 tile.nextDayUpdate();
             }
         }
+
+        greenhouse.nextDayUpdate();
+        quarry.nextDayUpdate();
+
+        foragingCrop();
     }
 }

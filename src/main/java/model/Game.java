@@ -108,11 +108,14 @@ public class Game implements DailyUpdate, HourUpdate {
     }
 
     public void nextTurn() {
-        turn++;
-        if (turn >= players.length) {
-            turn = 0;
-            nextHourUpdate();
-        }
+        do {
+            turn++;
+            if (turn >= players.length) {
+                turn = 0;
+                nextHourUpdate();
+            }
+        } while (players[turn].isFallen());
+
         Player player = App.getCurrentGame().getCurrentPlayer();
         if (!player.getReceivedTrades().isEmpty()){
             System.out.println("you have some trade to do");
