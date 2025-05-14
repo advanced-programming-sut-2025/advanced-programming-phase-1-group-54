@@ -91,7 +91,7 @@ public class Game implements DailyUpdate {
             player.nextDayUpdate();
         }
         dateTime.increaseDay(1);
-        FriendShipController.relaitionshipUpdate();
+        //FriendShipController.relaitionshipUpdate();
         FriendShipController.decreaseHeartBropken();
         NPCShopsController.refillShps();
         CommonGameController.nextDayMoney();
@@ -103,6 +103,16 @@ public class Game implements DailyUpdate {
         turn++;
         if (turn >= players.length) {
             turn = 0;
+        }
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        if (!player.getRecivedTrades().isEmpty()){
+            System.out.println("you have some trade to do");
+        }
+        if(!player.getRecivedGifts().isEmpty()){
+            System.out.println("you have some gift to open");
+        }
+        if (!(player.getRecivedRequsets()).isEmpty()){
+            System.out.println("you have some marriage request");
         }
     }
 

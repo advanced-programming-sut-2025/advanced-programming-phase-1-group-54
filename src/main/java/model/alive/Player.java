@@ -14,6 +14,7 @@ import model.map.Location;
 import model.map.Tile;
 import model.relationships.Gift;
 import model.relationships.PlayerRelationship;
+import model.relationships.Trade;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,7 +56,9 @@ public class Player extends Human implements DailyUpdate {
         add(Recipe.craftRecipes.get("Mayonnaise Machine Recipe"));
     }};
 
-    private ArrayList<Gift> recivedGifts;
+    private ArrayList<Gift> recivedGifts = new ArrayList<>();
+    private ArrayList<Trade> recivedTrades = new ArrayList<>();
+    private ArrayList<Trade> recivedRequsets = new ArrayList<>();
     private ArrayList<Player> askedForMarriage = new ArrayList<>();
     private Player partner = null;
 
@@ -278,6 +281,25 @@ public class Player extends Human implements DailyUpdate {
         return recivedGifts;
     }
 
+    public void setAskedForMarriage(ArrayList<Player> askedForMarriage) {
+        this.askedForMarriage = askedForMarriage;
+    }
+
+    public ArrayList<Trade> getRecivedTrades() {
+        return recivedTrades;
+    }
+
+    public void setRecivedTrades(ArrayList<Trade> recivedTrades) {
+        this.recivedTrades = recivedTrades;
+    }
+
+    public ArrayList<Trade> getRecivedRequsets() {
+        return recivedRequsets;
+    }
+
+    public void setRecivedRequsets(ArrayList<Trade> recivedRequsets) {
+        this.recivedRequsets = recivedRequsets;
+    }
 
     public ArrayList<Player> getAskedForMarriage() {
         return askedForMarriage;
