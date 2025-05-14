@@ -1,16 +1,16 @@
 package controller.builders;
 
-import model.Building.Cabin;
+import controller.Game.PlantsController;
+import model.App;
+import model.map.Cabin;
 import model.Game;
 import model.User;
 import model.alive.Player;
-import model.enums.Symbol;
 import model.map.Farm;
 import model.map.Location;
 import model.map.World;
 
 public class GameBuilder {
-
     private static User[] users;
     private static int[] playerFarmNumbers;
 
@@ -57,7 +57,7 @@ public class GameBuilder {
 
         Player[] players = new Player[users.length];
         for (int i = 0; i < users.length; i++) {
-            players[i] = new Player(users[i]);
+            players[i] = new Player(users[i], playerFarms[i]);
 
             Cabin cabin = playerFarms[i].getCabin();
 
@@ -71,11 +71,24 @@ public class GameBuilder {
             );
 
             cabin.getTileAt(locationInCabin).setThingOnTile(players[i]);
-
             players[i].setCurrentLocation(location);
         }
 
         Game game = new Game(world, players);
+
+        App.setCurrentGame(game);
+
+        for (Player player : game.getPlayers()) {
+            for (int t = 0; t < 10; t++) {
+                PlantsController.foragingCrop(player);
+            }
+            for (int t = 0; t < 2; t++) {
+                PlantsController.foragingMaterial(player);
+            }
+        }
+
+        App.setCurrentGame(null);
+
         GameBuilder.reset();
         return game;
     }

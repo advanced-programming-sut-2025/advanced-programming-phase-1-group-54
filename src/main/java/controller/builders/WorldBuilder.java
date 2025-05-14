@@ -42,11 +42,6 @@ public class WorldBuilder {
                 if (tiles[i][j] == null) {
                     tiles[i][j] = new Tile();
                 }
-            }
-        }
-
-        for (int i = 0; i < World.getNumberOfRows(); i++) {
-            for (int j = 0; j < World.getNumberOfColumns(); j++) {
                 tiles[i][j].setLocation(new Location(i, j));
             }
         }

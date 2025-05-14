@@ -1,7 +1,7 @@
 package controller.Game;
 
 import model.App;
-import model.Building.GreenHouse;
+import model.map.GreenHouse;
 import model.Game;
 import model.Placeable;
 import model.Result;

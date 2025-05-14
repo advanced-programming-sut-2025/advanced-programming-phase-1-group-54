@@ -1,6 +1,5 @@
 package model.map;
 
-import model.Building.Building;
 import model.enums.Symbol;
 
 public class Lake extends Building {

@@ -1,7 +1,7 @@
 package controller.Game;
 
 import model.App;
-import model.Building.Cabin;
+import model.map.Cabin;
 import model.Refrigerator;
 import model.Result;
 import model.alive.Player;

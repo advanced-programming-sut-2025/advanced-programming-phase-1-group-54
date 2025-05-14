@@ -1,9 +1,7 @@
-package model.Building;
+package model.map;
 
 import model.Refrigerator;
 import model.enums.Symbol;
-import model.map.Location;
-import model.map.Map;
 
 public class Cabin extends Building {
     private final static int NUMBER_OF_ROWS = 4;

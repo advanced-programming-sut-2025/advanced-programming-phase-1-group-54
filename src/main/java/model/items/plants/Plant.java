@@ -1,12 +1,13 @@
 package model.items.plants;
 
 import model.App;
+import model.DailyUpdate;
 import model.Placeable;
 import model.alive.Player;
 import model.enums.Season;
 import model.map.Tile;
 
-public abstract class Plant implements Placeable {
+public abstract class Plant implements Placeable, DailyUpdate {
 
     protected final String name;
     protected final String source;
@@ -94,10 +95,6 @@ public abstract class Plant implements Placeable {
         return numberOfDaysWithoutWater;
     }
 
-//    public void setMaxStages(int maxStages) {
-//        this.maxStages = maxStages;
-//    }
-
     public void increaseCurrentStage(int currentStage) {
         this.currentStage += currentStage;
     }
@@ -122,14 +119,23 @@ public abstract class Plant implements Placeable {
         this.numberOfDaysWithoutWater = numberOfDaysWithoutWater;
     }
 
-    public void grow(Player player){
+    public void increaseNumberOfDaysWithoutWater() {
+        this.numberOfDaysWithoutWater++;
+    }
 
-        if(!watered && !fertilized && numberOfDaysWithoutWater > 0){
-            Tile tile = player.getPlants().get(this);
-            tile.setThingOnTile(null);
-            player.getPlants().remove(this);
-        }
+    public boolean isDead() {
+        return (!watered && !fertilized && numberOfDaysWithoutWater >= 2);
+//        if(!watered && !fertilized && numberOfDaysWithoutWater > 0){
+//            Tile tile = player.getPlants().get(this);
+//            tile.setThingOnTile(null);
+//            player.getPlants().remove(this);
+//        }
+        // commands moved to each objects' nextDayUpdate();
+    }
 
+
+    @Override
+    public void nextDayUpdate() {
         if(this.currentStage <= this.maxStages){
             this.daysInCurrentStage++;
             this.daysInCurrentStage = this.daysInCurrentStage % this.stages[this.currentStage];
@@ -149,9 +155,5 @@ public abstract class Plant implements Placeable {
         }
 
         watered = false;
-
     }
-
-
-
 }

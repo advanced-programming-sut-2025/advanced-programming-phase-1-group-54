@@ -1,5 +1,6 @@
 package model.alive;
 
+import controller.Game.PlantsController;
 import model.DailyUpdate;
 import model.Refrigerator;
 import model.Skill;
@@ -22,7 +23,6 @@ import model.relationships.Gift;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 
 
 public class Player extends Human implements DailyUpdate {
@@ -50,14 +50,14 @@ public class Player extends Human implements DailyUpdate {
     private Tool equippedTool;
 
     private Location currentLocation;
-    private final HashMap<Plant,Tile> Plants = new HashMap<>();
+    private final HashMap<Plant, Tile> plants = new HashMap<>();
 
-    private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>(){{
+    private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>() {{
         add(Recipe.foodRecipes.get("Fried Egg Recipe"));
     }};
 
 
-    private final ArrayList<Recipe> learnedCraftingRecipes = new ArrayList<>(){{
+    private final ArrayList<Recipe> learnedCraftingRecipes = new ArrayList<>() {{
         add(Recipe.craftRecipes.get("Furnace Recipe"));
         add(Recipe.craftRecipes.get("Scarecrow Recipe"));
         add(Recipe.craftRecipes.get("Mayonnaise Machine Recipe"));
@@ -69,8 +69,8 @@ public class Player extends Human implements DailyUpdate {
 
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
-    private final HashMap<String,Animal> animals = new HashMap<>();
-    private final HashMap<SkillType,Skill> skills;
+    private final HashMap<String, Animal> animals = new HashMap<>();
+    private final HashMap<SkillType, Skill> skills;
 
     private SkillType buffSkill;
     private int buffHours;
@@ -85,10 +85,11 @@ public class Player extends Human implements DailyUpdate {
         this.isInGiftList = false;
         this.skills = new HashMap<>();
         this.heartBroken = 0;
-        skills.put(SkillType.FARMING,new Skill(SkillType.FARMING));
-        skills.put(SkillType.FORAGING,new Skill(SkillType.FORAGING));
-        skills.put(SkillType.MINING,new Skill(SkillType.MINING));
-        skills.put(SkillType.FISHING,new Skill(SkillType.FISHING));
+        this.energy = MAXIMUM_ENERGY;
+        skills.put(SkillType.FARMING, new Skill(SkillType.FARMING));
+        skills.put(SkillType.FORAGING, new Skill(SkillType.FORAGING));
+        skills.put(SkillType.MINING, new Skill(SkillType.MINING));
+        skills.put(SkillType.FISHING, new Skill(SkillType.FISHING));
         // TODO
     }
 
@@ -116,9 +117,9 @@ public class Player extends Human implements DailyUpdate {
         return money;
     }
 
-    public void spentMoney(int spent){
+    public void spentMoney(int spent) {
         money -= spent;
-        if(partner != null) {
+        if (partner != null) {
             partner.setMoney(money);
         }
     }
@@ -167,7 +168,7 @@ public class Player extends Human implements DailyUpdate {
     }
 
     public HashMap<Plant, Tile> getPlants() {
-        return Plants;
+        return plants;
     }
 
     public ArrayList<Recipe> getLearnedFoodRecipes() {
@@ -200,25 +201,25 @@ public class Player extends Human implements DailyUpdate {
     }
 
     public void increaseMoney(int money) {
-        if(partner != null) {
+        if (partner != null) {
             partner.increaseMoney(money);
         }
         this.money += money;
     }
 
     public boolean decreaseMoney(int money) {
-        if(this.money < money) {
+        if (this.money < money) {
             return false;
         }
         this.money -= money;
-        if(partner != null) {
+        if (partner != null) {
             partner.decreaseMoney(money);
         }
         return true;
     }
 
     public void setMoney(int money) {
-        if(partner != null) {
+        if (partner != null) {
             partner.setMoney(money);
         }
         this.money = money;
@@ -251,9 +252,11 @@ public class Player extends Human implements DailyUpdate {
     public void setHeartBroken(int heartBroken) {
         this.heartBroken = heartBroken;
     }
+
     public void decreaseHeartBroken() {
         heartBroken--;
     }
+
     public void setBuffSkill(SkillType buffSkill) {
         this.buffSkill = buffSkill;
     }
@@ -297,59 +300,63 @@ public class Player extends Human implements DailyUpdate {
 
     @Override
     public void nextDayUpdate() {
+        for (Animal animal : animals.values()) {
+            animal.nextDayUpdate();
+        }
+
+        for (Plant plant : plants.keySet()) {
+            if (plant.isDead()) {
+                plants.remove(plant);
+            }
+        }
+
+        PlantsController.foragingCrop(this);
+        PlantsController.foragingSeed(this);
+        PlantsController.foragingMaterial(this);
+
         if (this.isFallen())
             energy = 75 * MAXIMUM_ENERGY / 100;
         else {
-            if(this.heartBroken > 0){
-                energy = MAXIMUM_ENERGY / 2;
-            }
-            else {
-                energy = MAXIMUM_ENERGY;
-            }
+            energy = MAXIMUM_ENERGY;
+        }
+
+        if (heartBroken > 0) {
+            energy /= 2;
+            decreaseHeartBroken();
         }
     }
 
 
-    public boolean checkEnergy(int energyAmount,SkillType skillType) {
-        if(this.unlimitedEnergy){
+    public boolean checkEnergy(int energyAmount, SkillType skillType) {
+        if (this.unlimitedEnergy) {
             return true;
-        }
-        else if(skillType == null){
+        } else if (skillType == null) {
             return this.energy >= energyAmount;
-        }
-        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
-                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+        } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
+                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY) {
             return this.energy >= energyAmount - 2;
-        }
-        else if(this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+        } else if (this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY) {
             return this.energy >= energyAmount - 1;
-        }
-        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
+        } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())) {
             return this.energy >= energyAmount - 1;
-        }
-        else{
+        } else {
             return this.energy >= energyAmount;
         }
     }
 
-    public void decreaseEnergy(int energyAmount,SkillType skillType) {
-        if(this.unlimitedEnergy){
+    public void decreaseEnergy(int energyAmount, SkillType skillType) {
+        if (this.unlimitedEnergy) {
             return;
-        }
-        else if(skillType == null){
+        } else if (skillType == null) {
             this.energy -= energyAmount;
-        }
-        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
-                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+        } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
+                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY) {
             this.energy -= energyAmount - 2;
-        }
-        else if(this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+        } else if (this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY) {
             this.energy -= energyAmount - 1;
-        }
-        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
+        } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())) {
             this.energy -= energyAmount - 1;
-        }
-        else{
+        } else {
             this.energy -= energyAmount;
         }
     }

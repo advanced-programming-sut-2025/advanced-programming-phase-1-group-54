@@ -1,6 +1,5 @@
 package model.items;
 
-import model.AnimalHouse;
 import model.enums.Feature;
 
 import java.util.HashMap;

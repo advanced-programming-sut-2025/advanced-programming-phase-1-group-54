@@ -4,12 +4,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import model.Building.Cabin;
-import model.Building.GreenHouse;
+import controller.Game.PlantsController;
+import model.map.Cabin;
+import model.map.GreenHouse;
 import model.alive.Player;
 import model.enums.Feature;
 import model.map.*;
-import org.json.JSONArray;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -146,9 +146,7 @@ public class FarmBuilder {
         Lake[] lakes = buildLakes();
         Quarry quarry = buildQuarry();
 
-        // TODO tree, foraging, random stuff
-
-        Farm farm = new Farm(owner, location, greenHouse, cabin, quarry, lakes, new Map(Farm.getNumberOfRows(), Farm.getNumberOfColumns(), tiles));
+        Farm farm = new Farm(location, greenHouse, cabin, quarry, lakes, new Map(Farm.getNumberOfRows(), Farm.getNumberOfColumns(), tiles));
         FarmBuilder.reset();
         return farm;
     }

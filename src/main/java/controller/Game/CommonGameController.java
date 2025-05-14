@@ -1,7 +1,9 @@
 package controller.Game;
 
 import model.App;
+import model.Game;
 import model.Refrigerator;
+import model.Result;
 import model.alive.Player;
 import model.enums.ProduceQuality;
 import model.items.*;
@@ -14,6 +16,67 @@ import model.items.tools.BackPack;
 
 
 public class CommonGameController {
+    public static Result exitGame() {
+        App.setCurrentGame(null);
+        return new Result(true, "exited game");
+    }
+
+    public static Result deleteGame() {
+        return null;
+    }
+
+    // TODO add functions for "force terminate"
+
+    public static Result nextTurn() {
+        Game game = App.getCurrentGame();
+        game.nextTurn();
+        return new Result(true, String.format("it is %s's turn",
+                game.getCurrentPlayer().getControllingUser().getUsername()));
+    }
+
+    public static Result showTime() {
+        Game game = App.getCurrentGame();
+        return new Result(true, String.format("%d o'clock", game.getDateTime().getHour()));
+    }
+
+    public static Result showDate() {
+        Game game = App.getCurrentGame();
+        return new Result(true, String.format("%d/%s/%d",
+                game.getDateTime().getYear(), game.getDateTime().getSeason().toString().toLowerCase(), game.getDateTime().getDay()));
+    }
+
+    public static Result showDateTime() {
+        return new Result(true, showDate().message() + ' ' + showTime().message());
+
+    }
+
+    public static Result showDayOfWeek() {
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getDateTime().getWeekDay().toString().toLowerCase());
+    }
+
+    public static Result showSeason() {
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getDateTime().getSeason().toString().toLowerCase());
+    }
+
+    public static Result showWeather() {
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getCurrentWeather().toString().toLowerCase());
+    }
+
+    public static Result showWeatherForecast() {
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getTomorrowWeather().toString().toLowerCase());
+    }
+
+    public static Result showEnergy() {
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+
+        return new Result(true, String.format("you have %d energy left.", player.getEnergy()));
+    }
+
 
     public static Item findItem(String ItemName){
 

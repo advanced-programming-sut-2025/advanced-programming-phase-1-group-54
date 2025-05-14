@@ -4,11 +4,11 @@ package model.map;
     each player has a farm, at the start player selects one of predefined farms;
  */
 
-import model.Building.Building;
-import model.Building.Cabin;
-import model.Building.GreenHouse;
 import model.DailyUpdate;
-import model.alive.Player;
+import model.enums.Feature;
+import model.items.plants.Crop;
+import model.items.plants.Fruit;
+import model.items.plants.Seed;
 
 public class Farm implements DailyUpdate {
     private static final int NUMBER_OF_ROWS = 25;
@@ -76,8 +76,42 @@ public class Farm implements DailyUpdate {
         tile.setThingOnTile(null);
     }
 
+    public void rain() {
+        for (int i = 0; i < getNumberOfRows(); i++) {
+            for (int j = 0; j < getNumberOfColumns(); j++) {
+                Location location = new Location(i, j);
+                Tile tile = getTileAt(location);
+
+                if (tile.getThingOnTile() != null && tile.getThingOnTile() instanceof Building)
+                    continue;
+
+                tile.addFeature(Feature.WATERED);
+            }
+        }
+    }
+
+    public void dry() {
+        for (int i = 0; i < getNumberOfRows(); i++) {
+            for (int j = 0; j < getNumberOfColumns(); j++) {
+                Location location = new Location(i, j);
+                Tile tile = getTileAt(location);
+
+                if (tile.getThingOnTile() != null && tile.getThingOnTile() instanceof Building)
+                    continue;
+
+                tile.removeFeature(Feature.WATERED);
+            }
+        }
+    }
+
     @Override
     public void nextDayUpdate() {
-
+        for (int i = 0; i < getNumberOfRows(); i++) {
+            for (int j = 0; j < getNumberOfColumns(); j++) {
+                Location location = new Location(i, j);
+                Tile tile = getTileAt(location);
+                tile.nextDayUpdate();
+            }
+        }
     }
 }

@@ -4,14 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import controller.Game.CommonGameController;
-import model.AnimalHouse;
+import model.DailyUpdate;
+import model.map.AnimalHouse;
 import model.App;
 import model.Placeable;
 import model.enums.ProduceQuality;
 import model.enums.Symbol;
 import model.items.AnimalProduce;
-import model.items.Food;
-import model.items.Item;
 import model.map.Farm;
 import model.map.Location;
 
@@ -22,9 +21,8 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
-public class Animal implements Placeable,Cloneable {
+public class Animal implements Placeable,Cloneable,DailyUpdate {
 
     static final HashMap<String,Animal> animals;
 
@@ -186,9 +184,8 @@ public class Animal implements Placeable,Cloneable {
         this.location = location;
     }
 
-
-
-    public void update(Player player){
+    @Override
+    public void nextDayUpdate(){
         if(this.isGoneOut()){
             this.setHungry(false);
             this.increaseFriendshipLevel(8);
@@ -198,7 +195,7 @@ public class Animal implements Placeable,Cloneable {
             this.decreaseFriendshipLevel(10);
         }
 
-        Farm farm = App.getCurrentGame().getWorld().getFarm(player);
+        Farm farm = getOwner().getFarm();
         Location location = this.getLocation();
         if(location == null){
             this.decreaseFriendshipLevel(20);
@@ -332,6 +329,6 @@ public class Animal implements Placeable,Cloneable {
 
     @Override
     public Symbol getSymbol() {
-        return null;
+        return Symbol.ANIMAL;
     }
 }

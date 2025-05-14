@@ -1,13 +1,10 @@
-package model.Building;
+package model.map;
 
+import model.DailyUpdate;
 import model.enums.Feature;
 import model.enums.Symbol;
-import model.map.Area;
-import model.map.Lake;
-import model.map.Location;
-import model.map.Map;
 
-public class GreenHouse extends Building {
+public class GreenHouse extends Building implements DailyUpdate {
     private final static int NUMBER_OF_ROWS = 5;
     private final static int NUMBER_OF_COLUMNS = 6;
     private final static int NEEDED_MONEY = 1000;
@@ -59,6 +56,15 @@ public class GreenHouse extends Building {
 
     public void setBuilt(boolean built) {
         this.built = built;
+    }
+
+    @Override
+    public void nextDayUpdate() {
+        for (int i = 0; i < NUMBER_OF_ROWS; i++) {
+            for (int j = 0; j < NUMBER_OF_COLUMNS; j++) {
+                this.getTileAt(new Location(i, j)).nextDayUpdate();
+            }
+        }
     }
 
     @Override

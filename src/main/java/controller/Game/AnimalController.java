@@ -1,14 +1,11 @@
 package controller.Game;
 
-import model.AnimalHouse;
+import model.map.*;
 import model.App;
 import model.Result;
 import model.alive.Animal;
 import model.alive.Player;
 import model.items.Item;
-import model.map.Farm;
-import model.map.Location;
-import model.map.Tile;
 
 public class AnimalController {
 

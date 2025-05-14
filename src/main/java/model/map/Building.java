@@ -1,9 +1,6 @@
-package model.Building;
+package model.map;
 
 import model.Placeable;
-import model.map.Location;
-import model.map.Map;
-import model.map.Tile;
 
 public abstract class Building implements Placeable {
     private final Location location;

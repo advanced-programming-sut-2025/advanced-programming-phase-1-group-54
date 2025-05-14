@@ -163,11 +163,6 @@ public class FriendShipController {
         }
         return new Result(true,"you hugged " + player.getName());
     }
-    public static void relaitionshipUpdate(){
-        for (PlayerRelationship relationship : App.getCurrentGame().getPlayerRelationships()){
-            relationship.reset();
-        }
-    }
 
     public static Result flower(Player player) {
         PlayerRelationship relationship = FriendShipController.getPlayerRelationship(App.getCurrentGame().getCurrentPlayer(), player);
@@ -222,14 +217,6 @@ public class FriendShipController {
             CommonGameController.getregectedInMarriage(App.getCurrentGame().getCurrentPlayer());
             return new Result(true,"successfully rejected");
             //TODO relaitionship.back to player
-        }
-    }
-
-    public static void decreaseHeartBropken() {
-        for (Player player : App.getCurrentGame().getPlayers()){
-            if(player.getHeartBroken() > 0){
-                player.decreaseHeartBroken();
-            }
         }
     }
 }

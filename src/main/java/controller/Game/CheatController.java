@@ -1,4 +1,4 @@
-package controller;
+package controller.Game;
 
 import model.map.Location;
 import model.Result;
