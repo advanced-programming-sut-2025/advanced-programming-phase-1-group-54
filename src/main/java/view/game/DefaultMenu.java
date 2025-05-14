@@ -16,6 +16,7 @@ import model.enums.commands.GameCommand;
 import model.map.Location;
 import model.relationships.Gift;
 import model.relationships.PlayerRelationship;
+import model.relationships.Trade;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -90,6 +91,20 @@ public class DefaultMenu implements GameSubMenu {
             askMarriage(GameCommand.ASK_MARRIAGE.getMatcher(input));
         else if (GameCommand.RESPOND_MARRIAGE.getMatcher(input) != null)
             respondForMarriage(GameCommand.RESPOND_MARRIAGE.getMatcher(input));
+        else if(GameCommand.START_TRADE.matches(input))
+            startTrade();
+        else if(GameCommand.TRADE_REQUSET.getMatcher(input) != null)
+            tradeRequset(GameCommand.TRADE_REQUSET.getMatcher(input));
+        else if (GameCommand.TRADE_WITH_MONEY.getMatcher(input) != null)
+            tradeWithMoney(GameCommand.TRADE_WITH_MONEY.getMatcher(input));
+        else if(GameCommand.TRADE_WITH_PRODUCT.getMatcher(input) != null)
+            tradeWithProduct(GameCommand.TRADE_WITH_PRODUCT.getMatcher(input));
+        else if (GameCommand.TRADE_LIST.matches(input))
+            tradeList();
+        else if(GameCommand.TRADE_RESPONSE.getMatcher(input) != null)
+            tradeResponse(GameCommand.TRADE_RESPONSE.getMatcher(input));
+        else if(GameCommand.TRADE_HISTORY.matches(input))
+            tradeHistory();
         else if (GameCommand.WALK.matches(input))
             handleWalk(input, scanner);
         else if (GameCommand.PRINT_MAP.matches(input))
@@ -98,12 +113,7 @@ public class DefaultMenu implements GameSubMenu {
             cheatAddMoney(CheatCode.ADD_MONEY.getMatcher(input));
         }
 
-
-        /*else if (GameCommand.SHOW_ALL_PRODUCTS.matches(input))
-            NPCShopsController.showProducts(shop , false);
-        else if (GameCommand.SHOW_ALL_AVAILABLE_PRODUCTS.matches(input))
-            NPCShopsController.showProducts(shop , true);
-        */
+        System.out.println("invalid command");
 //      todo  else if (GameComman
 
 
@@ -114,6 +124,94 @@ public class DefaultMenu implements GameSubMenu {
 //            handleShowInventory();
 //        else if (GameCommand.TRASH.matches(input))
 //            handleTrash(input);
+    }
+
+    private void tradeHistory() {
+        System.out.println("sender      reciver         type        item        amount      price       targetitem      targaetamount       is Accepted");
+        for (Player player : App.getCurrentGame().getPlayers()) {
+            if(!player.equals(App.getCurrentGame().getCurrentPlayer())){
+                PlayerRelationship relationship = FriendShipController.getPlayerRelationship(player,App.getCurrentGame().getCurrentPlayer());
+                if(relationship.getTradeHistory() == null){
+                    continue;
+                }
+                for (Trade trade : relationship.getTradeHistory()){
+                    System.out.println(trade.getSender().getName() + "      " + trade.getReceiver().getName() + "      " + trade.getType() + "      "
+                    + trade.getItem() + "      " + trade.getAmount() + "     " + trade.getPrice() + "      " + trade.getTargetItem() + "      "
+                    + trade.getTargetAmount() + "      " + trade.isAccepted());
+                }
+            }
+        }
+    }
+
+    private void tradeResponse(Matcher matcher) {
+        String answer = matcher.group("answer");
+        String temp = matcher.group("id");
+        int id = Integer.parseInt(temp);
+        if (answer.equals("-accept")) {
+            Result result = FriendShipController.tradeResponse(true,id);
+            System.out.println(result.message());
+            return;
+        }
+        if(answer.equals("-reject")){
+            Result result = FriendShipController.tradeResponse(false,id);
+            System.out.println(result.message());
+        }
+    }
+
+    private void tradeList() {
+        for (int i = 0; i < App.getCurrentGame().getCurrentPlayer().getRecivedTrades().size(); i++) {
+            Trade trade = App.getCurrentGame().getCurrentPlayer().getRecivedTrades().get(i);
+            if(trade.getType().equals("offer")){
+                String string = trade.getSender().getName() + "whants " + trade.getTargetItem() + " " + trade.getTargetAmount();
+            }
+            else if(trade.getType().equals("request")){
+                if (trade.getPrice() == 0){
+                    String st = trade.getSender().getName() + "whants " + trade.getTargetItem() + " " + trade.getTargetAmount() + " and gives " + trade.getAmount() + " "+ trade.getItem();
+                    System.out.println(i + ": " + st);
+                }
+                else{
+                    String st = trade.getSender().getName() + "whants " + trade.getTargetItem() + " " + trade.getTargetAmount() + " and gives " + trade.getPrice();
+                    System.out.println(i + ": " + st);
+                }
+            }
+        }
+    }
+
+    private void tradeWithProduct(Matcher matcher) {
+        String username = matcher.group("username");
+        String itemName = matcher.group("item");
+        String temp1 = matcher.group("amount");
+        int amount = Integer.parseInt(temp1);
+        String targetItem = matcher.group("targetItem");
+        String temp2 = matcher.group("targetAmount");
+        int targetAmount = Integer.parseInt(temp2);
+        Result result = FriendShipController.tradeWithProduct(username,itemName,amount,targetItem,targetAmount);
+    }
+
+    private void tradeRequset(Matcher matcher) {
+        String username = matcher.group("username");
+        String item = matcher.group("item");
+        String temp1 = matcher.group("amount");
+        int amount = Integer.parseInt(temp1);
+        Result result = FriendShipController.tradeRequest(username,item,amount);
+        System.out.println(result.message());
+    }
+
+    private void tradeWithMoney(Matcher matcher) {
+        String username = matcher.group("username");
+        String item = matcher.group("item");
+        String temp1 = matcher.group("amount");
+        int amount = Integer.parseInt(temp1);
+        String temp2 = matcher.group("price");
+        int price = Integer.parseInt(temp2);
+        Result result = FriendShipController.tradeWithMoney(username,item,amount,price);
+        System.out.println(result.message());
+    }
+
+    private void startTrade() {
+        for (Player player : App.getCurrentGame().getPlayers()){
+            System.out.println(player.getName());
+        }
     }
 
     private void sellAll(Matcher matcher) {
