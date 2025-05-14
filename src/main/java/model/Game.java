@@ -1,5 +1,6 @@
 package model;
 
+import controller.Game.CommonGameController;
 import controller.Game.FriendShipController;
 import controller.Game.NPCShopsController;
 import model.Shops.Shop;
@@ -93,6 +94,7 @@ public class Game implements DailyUpdate {
         FriendShipController.relaitionshipUpdate();
         FriendShipController.decreaseHeartBropken();
         NPCShopsController.refillShps();
+        CommonGameController.nextDayMoney();
         //TODO in every turn check the gifts trades etc
         //TODO fill the shops
     }

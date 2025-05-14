@@ -28,6 +28,7 @@ public class Player extends Human implements DailyUpdate {
     }
 
     private int money;
+    private int nextDayMoney = 0;
 
     private User controllingUser;
 
@@ -171,6 +172,16 @@ public class Player extends Human implements DailyUpdate {
         this.partner = partner;
     }
 
+    public int getNextDayMoney() {
+        return nextDayMoney;
+    }
+
+    public void setNextDayMoney(int nextDayMoney) {
+        this.nextDayMoney = nextDayMoney;
+    }
+    public void increaseNextDayMoney(int count) {
+        nextDayMoney += count;
+    }
     public void setControllingUser(User controllingUser) {
         this.controllingUser = controllingUser;
     }
