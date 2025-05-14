@@ -4,17 +4,14 @@ import controller.Game.CommonGameController;
 import controller.Game.FriendShipController;
 import controller.Game.MapController;
 import controller.Game.NPCShopsController;
-import model.Game;
 import model.Result;
 import model.Shops.*;
 import model.enums.commands.CheatCode;
 import model.enums.commands.Command;
 import model.App;
-import model.Result;
 import model.alive.Player;
 import model.enums.commands.GameCommand;
 import model.map.Location;
-import model.relationships.Gift;
 import model.relationships.PlayerRelationship;
 import model.relationships.Trade;
 
@@ -158,8 +155,8 @@ public class DefaultMenu implements GameSubMenu {
     }
 
     private void tradeList() {
-        for (int i = 0; i < App.getCurrentGame().getCurrentPlayer().getRecivedTrades().size(); i++) {
-            Trade trade = App.getCurrentGame().getCurrentPlayer().getRecivedTrades().get(i);
+        for (int i = 0; i < App.getCurrentGame().getCurrentPlayer().getReceivedTrades().size(); i++) {
+            Trade trade = App.getCurrentGame().getCurrentPlayer().getReceivedTrades().get(i);
             if(trade.getType().equals("offer")){
                 String string = trade.getSender().getName() + "whants " + trade.getTargetItem() + " " + trade.getTargetAmount();
             }

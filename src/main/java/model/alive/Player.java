@@ -20,7 +20,6 @@ import model.map.Farm;
 import model.map.Location;
 import model.map.Tile;
 import model.relationships.Gift;
-import model.relationships.PlayerRelationship;
 import model.relationships.Trade;
 
 import java.util.ArrayList;
@@ -66,9 +65,9 @@ public class Player extends Human implements DailyUpdate {
         add(Recipe.craftRecipes.get("Mayonnaise Machine Recipe"));
     }};
 
-    private ArrayList<Gift> recivedGifts = new ArrayList<>();
-    private ArrayList<Trade> recivedTrades = new ArrayList<>();
-    private ArrayList<Trade> recivedRequsets = new ArrayList<>();
+    private ArrayList<Gift> receivedGifts = new ArrayList<>();
+    private ArrayList<Trade> receivedTrades = new ArrayList<>();
+    private ArrayList<Trade> receivedRequests = new ArrayList<>();
     private ArrayList<Player> askedForMarriage = new ArrayList<>();
     private Player partner = null;
 
@@ -301,20 +300,20 @@ public class Player extends Human implements DailyUpdate {
         this.askedForMarriage = askedForMarriage;
     }
 
-    public ArrayList<Trade> getRecivedTrades() {
-        return recivedTrades;
+    public ArrayList<Trade> getReceivedTrades() {
+        return receivedTrades;
     }
 
-    public void setRecivedTrades(ArrayList<Trade> recivedTrades) {
-        this.recivedTrades = recivedTrades;
+    public void setReceivedTrades(ArrayList<Trade> receivedTrades) {
+        this.receivedTrades = receivedTrades;
     }
 
-    public ArrayList<Trade> getRecivedRequsets() {
-        return recivedRequsets;
+    public ArrayList<Trade> getReceivedRequests() {
+        return receivedRequests;
     }
 
-    public void setRecivedRequsets(ArrayList<Trade> recivedRequsets) {
-        this.recivedRequsets = recivedRequsets;
+    public void setReceivedRequests(ArrayList<Trade> receivedRequests) {
+        this.receivedRequests = receivedRequests;
     }
 
     public ArrayList<Player> getAskedForMarriage() {

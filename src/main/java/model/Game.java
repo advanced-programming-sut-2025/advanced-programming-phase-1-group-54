@@ -7,7 +7,6 @@ import model.Shops.Shop;
 import model.alive.Player;
 import model.enums.SubMenu;
 import model.enums.Weather;
-import model.map.Farm;
 import model.map.World;
 import model.relationships.PlayerRelationship;
 
@@ -115,13 +114,13 @@ public class Game implements DailyUpdate, HourUpdate {
             nextHourUpdate();
         }
         Player player = App.getCurrentGame().getCurrentPlayer();
-        if (!player.getRecivedTrades().isEmpty()){
+        if (!player.getReceivedTrades().isEmpty()){
             System.out.println("you have some trade to do");
         }
-        if(!player.getRecivedGifts().isEmpty()){
+        if(!player.getReceivedGifts().isEmpty()){
             System.out.println("you have some gift to open");
         }
-        if (!(player.getRecivedRequsets()).isEmpty()){
+        if (!(player.getReceivedRequests()).isEmpty()){
             System.out.println("you have some marriage request");
         }
     }

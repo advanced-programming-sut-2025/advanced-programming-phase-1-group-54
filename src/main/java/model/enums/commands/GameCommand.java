@@ -56,11 +56,4 @@ public enum GameCommand implements Command {
     public String getRegex() {
         return regex;
     }
-    public Matcher getMatcher(String input){
-        Matcher matcher = Pattern.compile(this.regex).matcher(input);
-        if (matcher.matches()) {
-            return matcher;
-        }
-        return null;
-    }
 }
