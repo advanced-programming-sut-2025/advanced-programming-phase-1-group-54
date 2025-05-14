@@ -7,6 +7,7 @@ import controller.GameController;
 import model.Game;
 import model.Result;
 import model.Shops.*;
+import model.enums.commands.CheatCode;
 import model.enums.commands.Command;
 import model.App;
 import model.Result;
@@ -54,6 +55,10 @@ public class DefaultMenu implements GameSubMenu {
             showAllItems();
         else if (GameCommand.SHOW_ALL_AVAILABLE_PRODUCTS.matches(input))
             showAllAvailableItems();
+        else if(GameCommand.SELL.getMatcher(input) != null)
+            sell(GameCommand.SELL.getMatcher(input));
+        else if (GameCommand.SELL_ALL.getMatcher(input) != null)
+            sellAll(GameCommand.SELL_ALL.getMatcher(input));
         else if (GameCommand.FRIENDSHIP.matches(input))
             friendShips();
         else if(GameCommand.TALK.getMatcher(input) != null)
@@ -89,7 +94,9 @@ public class DefaultMenu implements GameSubMenu {
             handleWalk(input, scanner);
         else if (GameCommand.PRINT_MAP.matches(input))
             handlePrintMap(input);
-
+        else if(CheatCode.ADD_MONEY.getMatcher(input) != null){
+            cheatAddMoney(CheatCode.ADD_MONEY.getMatcher(input));
+        }
 
 
         /*else if (GameCommand.SHOW_ALL_PRODUCTS.matches(input))
@@ -107,6 +114,30 @@ public class DefaultMenu implements GameSubMenu {
 //            handleShowInventory();
 //        else if (GameCommand.TRASH.matches(input))
 //            handleTrash(input);
+    }
+
+    private void sellAll(Matcher matcher) {
+        String product = matcher.group("product_name");
+        Result result = CommonGameController.sell(product,-1);
+        System.out.println(result.message());
+    }
+
+    private void cheatAddMoney(Matcher matcher) {
+        String temp = matcher.group("count");
+        int count = Integer.parseInt(temp);
+        App.getCurrentGame().getCurrentPlayer().increaseMoney(count);
+    }
+
+    private void sell(Matcher matcher) {
+        String product = matcher.group("product_name");
+        String Temp = matcher.group("count");
+        int count = Integer.parseInt(Temp);
+        if(count < 1){
+            System.out.println("number should be positive");
+            return;
+        }
+        Result result = CommonGameController.sell(product,count);
+        System.out.println(result.message());
     }
 
     private void purchaseAnimal(Matcher matcher) {
