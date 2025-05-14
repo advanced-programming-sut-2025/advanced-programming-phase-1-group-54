@@ -2,6 +2,7 @@ package model.relationships;
 
 import model.App;
 import model.alive.Player;
+import model.items.UniqeItems;
 
 import java.util.ArrayList;
 
@@ -10,11 +11,12 @@ public class PlayerRelationship extends Friendship {
     private Player player2;
     private ArrayList<Talk> talkHistory;
     private ArrayList<Gift> giftHistory;
+    private ArrayList<Trade> tradeHistory;
     private int giftDailyCount;
     private int hugDailyCount;
     private int talkDailyCount;
     private int partnerDailyCount;
-    //TODO  private ring
+    private UniqeItems ring;
 
     public PlayerRelationship(Player player1, Player player2) {
         super();
@@ -52,6 +54,38 @@ public class PlayerRelationship extends Friendship {
     }
     public void increaseTalkDailyCount() {
         talkDailyCount++;
+    }
+
+    public void setGiftDailyCount(int giftDailyCount) {
+        this.giftDailyCount = giftDailyCount;
+    }
+
+    public void setHugDailyCount(int hugDailyCount) {
+        this.hugDailyCount = hugDailyCount;
+    }
+
+    public void setTalkDailyCount(int talkDailyCount) {
+        this.talkDailyCount = talkDailyCount;
+    }
+
+    public void setPartnerDailyCount(int partnerDailyCount) {
+        this.partnerDailyCount = partnerDailyCount;
+    }
+
+    public UniqeItems getRing() {
+        return ring;
+    }
+
+    public void setRing(UniqeItems ring) {
+        this.ring = ring;
+    }
+
+    public ArrayList<Trade> getTradeHistory() {
+        return tradeHistory;
+    }
+
+    public void setTradeHistory(ArrayList<Trade> tradeHistory) {
+        this.tradeHistory = tradeHistory;
     }
 
     public Player getPlayer1() {

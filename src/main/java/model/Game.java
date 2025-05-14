@@ -1,6 +1,8 @@
 package model;
 
+import controller.Game.CommonGameController;
 import controller.Game.FriendShipController;
+import controller.Game.NPCShopsController;
 import model.Shops.Shop;
 import model.alive.Player;
 import model.enums.SubMenu;
@@ -90,6 +92,10 @@ public class Game implements DailyUpdate, HourUpdate {
         }
 
         dateTime.increaseDay(1);
+        //FriendShipController.relaitionshipUpdate();
+        FriendShipController.decreaseHeartBropken();
+        NPCShopsController.refillShps();
+        CommonGameController.nextDayMoney();
         //TODO in every turn check the gifts trades etc
         //TODO fill the shops
     }
@@ -107,6 +113,16 @@ public class Game implements DailyUpdate, HourUpdate {
         if (turn >= players.length) {
             turn = 0;
             nextHourUpdate();
+        }
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        if (!player.getRecivedTrades().isEmpty()){
+            System.out.println("you have some trade to do");
+        }
+        if(!player.getRecivedGifts().isEmpty()){
+            System.out.println("you have some gift to open");
+        }
+        if (!(player.getRecivedRequsets()).isEmpty()){
+            System.out.println("you have some marriage request");
         }
     }
 

@@ -26,6 +26,8 @@ public enum GameCommand implements Command {
     SHOW_ALL_AVAILABLE_PRODUCTS("show all available products"),
     PURCHASE_ITEM("purchase (?<product_name>\\S) -n (?<count>\\d)"),
     PURCHASE_ANIMAL("purchase animal (?<product_name>\\S) -n (?<count>\\d) -name (?<name>\\S)"),
+    SELL("sell (?<product_name>\\S) -n (?<count>\\d)"),
+    SELL_ALL("sell (?<product_name>\\S)"),
     FRIENDSHIP("friendships"),
     TALK(" talk -u (?<username>\\S) -m (?<message>\\S)"),
     TALK_HISTORY("talk history (?<username>\\S)"),
@@ -37,6 +39,13 @@ public enum GameCommand implements Command {
     FLOWER("flower -u (?<username>\\S)"),
     ASK_MARRIAGE("ask marriage -u (?<username>\\S) -r (?<ring>\\S)"),
     RESPOND_MARRIAGE("respond (?<bool>(–accept|–reject)) -u (?<username>\\S)"),
+    START_TRADE("start trade"),
+    TRADE_REQUSET("trade -u (?<username>\\S) -t request -i (<item>\\S) -a (?<amount>\\d)"),
+    TRADE_WITH_MONEY("trade -u (?<username>\\S) -t offer -i (?<item>\\S) -a (?<amount>\\d) -p (?<price>\\d)"),
+    TRADE_WITH_PRODUCT("trade -u (?<username>\\S) -t offer -i (?<item>\\S) -a (?<amount>\\d) -ti (?<targetItem>\\S) -ta (?<targetAmount>\\d)"),
+    TRADE_LIST("trade list"),
+    TRADE_RESPONSE("trade response (?<answer>(–accept|–reject)) -i (?<id>\\d)"),
+    TRADE_HISTORY("trade history"),
     EXIT("exit")
     ;
     private final String regex;

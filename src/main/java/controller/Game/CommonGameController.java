@@ -7,6 +7,7 @@ import model.Result;
 import model.alive.Player;
 import model.enums.ProduceQuality;
 import model.items.*;
+import model.items.crafting.Artisan;
 import model.items.crafting.Produce;
 import model.items.crafting.ProducerArtisan;
 import model.items.crafting.UnProducerArtisan;
@@ -443,5 +444,130 @@ public class CommonGameController {
     public static void acceptMarriage(Player player){
         //TODO zaminashono ok kon @korosh
     }
+    //TODO check baghal ham. ham bra player ham bra satl
+    public static Result sell(String product, int count) {
+        //next to each other
+        Fish fish = Fish.getFish(product);
+        if (fish != null) {
+            if (count != 1) {
+                if (removeItemFromInventory(fish,count) == false){
+                    return new Result(false,"not enough products");
+                }
+            }
+            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish) == 0){
+                return new Result(false,"not enough products");
+            }
+            else{
+                int money = 0;
+                if(count == -1){
+                     money = (int)(fish.getBaseSellPrice() * fish.getQuality().getValue())
+                            * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish);
+                }
+                else{
+                     money = (int)(fish.getBaseSellPrice() * fish.getQuality().getValue()) * count;
+                }
+                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+                return new Result(true,"item sold successfully");
+            }
+        }
+        Fruit fruit = Fruit.getFruit(product);
+        if (fruit != null) {
+            if (count != 1) {
+                if (removeItemFromInventory(fruit,count) == false){
+                    return new Result(false,"not enough products");
+                }
+            }
+            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit) == 0){
+                return new Result(false,"not enough products");
+            }
+            else{
+                int money = 0;
+                if(count == -1){
+                    money = (int)(fruit.getBaseSellPrice() * fruit.getQuality().getValue())
+                            * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit);
+                }
+                else{
+                    money = (int)(fish.getBaseSellPrice() * fruit.getQuality().getValue()) * count;
+                }
+                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+                return new Result(true,"item sold successfully");
+            }
+        }
 
+        //Artisan artisan =
+        Food food = Food.getFood(product);
+        if (food != null) {
+            if (count != 1) {
+                if (removeItemFromInventory(food,count) == false){
+                    return new Result(false,"not enough products");
+                }
+            }
+            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food) == 0){
+                return new Result(false,"not enough products");
+            }
+            else{
+                int money = 0;
+                if(count == -1){
+                    money = food.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food);
+                }
+                else{
+                    money = food.getBaseSellPrice() * count;
+                }
+                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+                return new Result(true,"item sold successfully");
+            }
+        }
+        Produce produce = Produce.getProduce(product);
+        if (produce != null) {
+            if (count != 1) {
+                if (removeItemFromInventory(produce,count) == false){
+                    return new Result(false,"not enough products");
+                }
+            }
+            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce) == 0){
+                return new Result(false,"not enough products");
+            }
+            else{
+                int money = 0;
+                if(count == -1){
+                    money = produce.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce);
+                }
+                else{
+                    money = produce.getBaseSellPrice() * count;
+                }
+                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+                return new Result(true,"item sold successfully");
+            }
+        }
+        UnProducerArtisan unproduce = UnProducerArtisan.getUnProducerArtisan(product);
+        if (unproduce != null) {
+            if (count != 1) {
+                if (removeItemFromInventory(unproduce,count) == false){
+                    return new Result(false,"not enough products");
+                }
+            }
+            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(unproduce) == 0){
+                return new Result(false,"not enough products");
+            }
+            else{
+
+                int money = 0;
+                if(count == -1){
+                    money = unproduce.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(unproduce);
+                }
+                else{
+                    money = unproduce.getBaseSellPrice() * count;
+                }
+                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+                return new Result(false,"item sold successfully");
+            }
+        }
+        return new Result(false,"you can't sell this product");
+    }
+    public static void nextDayMoney() {
+        for(Player player : App.getCurrentGame().getPlayers()){
+            player.increaseMoney(player.getNextDayMoney());
+            player.setNextDayMoney(0);
+        }
+    }
 }

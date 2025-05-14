@@ -20,6 +20,8 @@ import model.map.Farm;
 import model.map.Location;
 import model.map.Tile;
 import model.relationships.Gift;
+import model.relationships.PlayerRelationship;
+import model.relationships.Trade;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +35,7 @@ public class Player extends Human implements DailyUpdate {
     }
 
     private int money;
+    private int nextDayMoney = 0;
 
     private final User controllingUser;
     private final Farm farm;
@@ -63,8 +66,10 @@ public class Player extends Human implements DailyUpdate {
         add(Recipe.craftRecipes.get("Mayonnaise Machine Recipe"));
     }};
 
-    private final ArrayList<Gift> receivedGifts = new ArrayList<>();
-    private final ArrayList<Player> askedForMarriage = new ArrayList<>();
+    private ArrayList<Gift> recivedGifts = new ArrayList<>();
+    private ArrayList<Trade> recivedTrades = new ArrayList<>();
+    private ArrayList<Trade> recivedRequsets = new ArrayList<>();
+    private ArrayList<Player> askedForMarriage = new ArrayList<>();
     private Player partner = null;
 
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
@@ -195,6 +200,17 @@ public class Player extends Human implements DailyUpdate {
         this.partner = partner;
     }
 
+    public int getNextDayMoney() {
+        return nextDayMoney;
+    }
+
+    public void setNextDayMoney(int nextDayMoney) {
+        this.nextDayMoney = nextDayMoney;
+    }
+    public void increaseNextDayMoney(int count) {
+        nextDayMoney += count;
+    }
+
     public void setEnergy(int energy) {
         if (energy <= MAXIMUM_ENERGY)
             this.energy = energy;
@@ -281,6 +297,25 @@ public class Player extends Human implements DailyUpdate {
         return receivedGifts;
     }
 
+    public void setAskedForMarriage(ArrayList<Player> askedForMarriage) {
+        this.askedForMarriage = askedForMarriage;
+    }
+
+    public ArrayList<Trade> getRecivedTrades() {
+        return recivedTrades;
+    }
+
+    public void setRecivedTrades(ArrayList<Trade> recivedTrades) {
+        this.recivedTrades = recivedTrades;
+    }
+
+    public ArrayList<Trade> getRecivedRequsets() {
+        return recivedRequsets;
+    }
+
+    public void setRecivedRequsets(ArrayList<Trade> recivedRequsets) {
+        this.recivedRequsets = recivedRequsets;
+    }
 
     public ArrayList<Player> getAskedForMarriage() {
         return askedForMarriage;
@@ -332,31 +367,40 @@ public class Player extends Human implements DailyUpdate {
             return true;
         } else if (skillType == null) {
             return this.energy >= energyAmount;
-        } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
-                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY) {
+        }
+        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
+                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
             return this.energy >= energyAmount - 2;
-        } else if (this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY) {
+        }
+        else if(this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
             return this.energy >= energyAmount - 1;
-        } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())) {
+        }
+        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
             return this.energy >= energyAmount - 1;
-        } else {
+        }
+        else{
             return this.energy >= energyAmount;
         }
     }
 
     public void decreaseEnergy(int energyAmount, SkillType skillType) {
-        if (this.unlimitedEnergy) {
+        if(this.unlimitedEnergy){
             return;
-        } else if (skillType == null) {
+        }
+        else if(skillType == null){
             this.energy -= energyAmount;
-        } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
-                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY) {
+        }
+        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
+                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
             this.energy -= energyAmount - 2;
-        } else if (this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY) {
+        }
+        else if(this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
             this.energy -= energyAmount - 1;
-        } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())) {
+        }
+        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
             this.energy -= energyAmount - 1;
-        } else {
+        }
+        else{
             this.energy -= energyAmount;
         }
     }
