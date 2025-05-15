@@ -6,7 +6,7 @@ import model.map.Building;
 import model.map.GreenHouse;
 import model.Game;
 import model.Result;
-import model.alive.Player;
+import model.lives.Player;
 import model.enums.Direction;
 import model.items.Material;
 import model.map.Farm;
@@ -98,9 +98,9 @@ public class MapController {
         for (Direction direction : shortestPath) {
             energyNeeded += 1 + (lastDirection != null && direction == lastDirection ? 10 : 0);
             if (energyNeeded >= player.getEnergy() * 20) {
-                player.setEnergy(0);
-                return new Result(true, String.format("Player has fallen at location (%d, %d)!",
-                        player.getCurrentLocation().row(), player.getCurrentLocation().column()));
+                Result passOut = CommonGameController.passOut();
+                return new Result(true, String.format("Player has fallen at location (%d, %d)!\n",
+                        player.getCurrentLocation().row(), player.getCurrentLocation().column()) + passOut.message());
             }
 
             Tile A = world.getTileAt(player.getCurrentLocation()).getTop();
@@ -156,8 +156,11 @@ public class MapController {
         World world = App.getCurrentGame().getWorld();
         for (Direction direction : Direction.values()) {
             Location nearLocation = location.getLocationAt(direction);
-            if (world.getTileAt(nearLocation).getThingOnTile().equals(placeable))
-                return true;
+            if (world.getTileAt(nearLocation).getTop().getThingOnTile().equals(placeable)) {
+                return (!(world.getTileAt(location).getThingOnTile() instanceof Building building)
+                        || world.getTileAt(nearLocation).getThingOnTile().equals(building))
+                        && (!(world.getTileAt(nearLocation).getThingOnTile() instanceof Building));
+            }
         }
         return false;
     }

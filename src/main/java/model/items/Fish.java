@@ -3,13 +3,8 @@ package model.items;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import model.App;
-import model.Skill;
-import model.alive.Player;
 import model.enums.ProduceQuality;
 import model.enums.Season;
-import model.enums.SkillType;
-import model.items.plants.Tree;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,10 +13,10 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.*;
 
-public class Fish extends Item implements Cloneable{
-    private static final HashMap<String ,Fish> fishes;
-    private static final HashMap<Season,ArrayList<Fish>> seasonFishes ;
-    private static final HashMap<Season,ArrayList<Fish>> seasonLegendaryFishes ;
+public class Fish extends Item implements Cloneable {
+    private static final HashMap<String, Fish> fishes;
+    private static final HashMap<Season, ArrayList<Fish>> seasonFishes;
+    private static final HashMap<Season, ArrayList<Fish>> seasonLegendaryFishes;
 
     static {
         Gson gson = new Gson();
@@ -31,54 +26,51 @@ public class Fish extends Item implements Cloneable{
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        Type type = new TypeToken<HashMap<String, Fish>>(){}.getType();
-        fishes = gson.fromJson(file,type);
+        Type type = new TypeToken<HashMap<String, Fish>>() {
+        }.getType();
+        fishes = gson.fromJson(file, type);
 
         try {
             file = new FileReader("seasonFishes.json");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        type = new TypeToken<HashMap<Season,ArrayList<Fish>>>(){}.getType();
-        seasonFishes = gson.fromJson(file,type);
+        type = new TypeToken<HashMap<Season, ArrayList<Fish>>>() {
+        }.getType();
+        seasonFishes = gson.fromJson(file, type);
 
         try {
             file = new FileReader("seasonLegendaryFishes.json");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        type = new TypeToken<HashMap<Season,ArrayList<Fish>>>(){}.getType();
-        seasonLegendaryFishes = gson.fromJson(file,type);
+        type = new TypeToken<HashMap<Season, ArrayList<Fish>>>() {
+        }.getType();
+        seasonLegendaryFishes = gson.fromJson(file, type);
 
     }
 
-    public static HashSet<Fish> getFishesValues(){
+    public static HashSet<Fish> getFishesValues() {
         HashSet<Fish> fishesSet = new HashSet<Fish>();
-        for(Fish fish : fishes.values()){
+        for (Fish fish : fishes.values()) {
             fishesSet.add(fish.clone());
         }
         return fishesSet;
     }
 
-    public static Fish getFish(String name){
+    public static Fish getFish(String name) {
         Fish fish = fishes.get(name);
-        if(fish == null){
+        if (fish == null) {
             return null;
-        }
-        else{
+        } else {
             return fish.clone();
         }
     }
 
-    // Todo get season Fish random
-
-    public static Fish getSeasonFish(){
-
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        Season season = App.getCurrentGame().getDateTime().getSeason();
+    public static Fish getSeasonFish(Season season, boolean addLegendary) {
         ArrayList<Fish> fishes = seasonFishes.get(season);
 
-        if(player.getSkills().get(SkillType.FISHING).getLevel() == Skill.getMaxSkillLevel()){
+        if (addLegendary) {
             fishes.addAll(seasonLegendaryFishes.get(season));
         }
 
@@ -86,12 +78,24 @@ public class Fish extends Item implements Cloneable{
         return fishes.get(rand.nextInt(fishes.size()));
     }
 
+    public static Fish getCheapestSeasonFish(Season season) {
+        ArrayList<Fish> fishes = seasonFishes.get(season);
+
+        Fish cheapestFish = fishes.get(0);
+        for (Fish fish : fishes) {
+            if (fish.getBaseSellPrice() < cheapestFish.getBaseSellPrice()) {
+                cheapestFish = fish;
+            }
+        }
+
+        return cheapestFish;
+    }
 
     private final int energy;
     private ProduceQuality quality;
 
     public Fish(String name, int sellPrice) {
-        super(name,true,sellPrice);
+        super(name, true, sellPrice);
         this.quality = ProduceQuality.NORMAL;
         this.energy = 0;
     }
@@ -119,162 +123,159 @@ public class Fish extends Item implements Cloneable{
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof Fish fish){
+        if (obj instanceof Fish fish) {
             return this.getName().equals(fish.getName()) && this.getQuality().equals(fish.getQuality());
         }
         return false;
     }
 
-    public static void writeToJson(){
+    public static void writeToJson() {
 
-        HashMap<String,Fish> fishesType = new HashMap<String,Fish>() ;
+        HashMap<String, Fish> fishesType = new HashMap<String, Fish>();
 
         Fish fish;
 
-        HashMap<Season,ArrayList<Fish>> seasonFishesType  = new HashMap<Season,ArrayList<Fish>>() ;
+        HashMap<Season, ArrayList<Fish>> seasonFishesType = new HashMap<Season, ArrayList<Fish>>();
 
 
-        ArrayList<Fish> springFishes = new ArrayList<Fish>() ;
+        ArrayList<Fish> springFishes = new ArrayList<Fish>();
 
-        fish = new Fish("Flounder",100);
-        fishesType.put("Flounder",fish);
+        fish = new Fish("Flounder", 100);
+        fishesType.put("Flounder", fish);
         springFishes.add(fish);
 
-        fish = new Fish("Lionfish",100);
-        fishesType.put("Lionfish",fish);
+        fish = new Fish("Lionfish", 100);
+        fishesType.put("Lionfish", fish);
         springFishes.add(fish);
 
-        fish = new Fish("Herring",30);
-        fishesType.put("Herring",fish);
+        fish = new Fish("Herring", 30);
+        fishesType.put("Herring", fish);
         springFishes.add(fish);
 
-        fish = new Fish("Ghostfish",45);
-        fishesType.put("Ghostfish",fish);
+        fish = new Fish("Ghostfish", 45);
+        fishesType.put("Ghostfish", fish);
         springFishes.add(fish);
 
-        seasonFishesType.put(Season.SPRING,springFishes);
+        seasonFishesType.put(Season.SPRING, springFishes);
 
 
-        ArrayList<Fish> summerFishes = new ArrayList<Fish>() ;
+        ArrayList<Fish> summerFishes = new ArrayList<Fish>();
 
-        fish = new Fish("Tilapia",75);
-        fishesType.put("Tilapia",fish);
+        fish = new Fish("Tilapia", 75);
+        fishesType.put("Tilapia", fish);
         summerFishes.add(fish);
 
-        fish = new Fish("Dorado",100);
-        fishesType.put("Dorado",fish);
+        fish = new Fish("Dorado", 100);
+        fishesType.put("Dorado", fish);
         summerFishes.add(fish);
 
-        fish = new Fish("Sunfish",30);
-        fishesType.put("Sunfish",fish);
+        fish = new Fish("Sunfish", 30);
+        fishesType.put("Sunfish", fish);
         summerFishes.add(fish);
 
-        fish = new Fish("Rainbow Trout",65);
-        fishesType.put("Rainbow Trout",fish);
+        fish = new Fish("Rainbow Trout", 65);
+        fishesType.put("Rainbow Trout", fish);
         summerFishes.add(fish);
 
-        seasonFishesType.put(Season.SUMMER,summerFishes );
+        seasonFishesType.put(Season.SUMMER, summerFishes);
 
 
-        ArrayList<Fish> fallFishes = new ArrayList<Fish>() ;
+        ArrayList<Fish> fallFishes = new ArrayList<Fish>();
 
-        fish = new Fish("Salmon",75);
-        fishesType.put("Salmon",fish);
+        fish = new Fish("Salmon", 75);
+        fishesType.put("Salmon", fish);
         fallFishes.add(fish);
 
-        fish = new Fish("Sardine",40);
-        fishesType.put("Sardine",fish);
+        fish = new Fish("Sardine", 40);
+        fishesType.put("Sardine", fish);
         fallFishes.add(fish);
 
-        fish = new Fish("Shad",60);
-        fishesType.put("Shad",fish);
+        fish = new Fish("Shad", 60);
+        fishesType.put("Shad", fish);
         fallFishes.add(fish);
 
-        fish = new Fish("Blue Discus",120);
-        fishesType.put("Blue Discus",fish);
+        fish = new Fish("Blue Discus", 120);
+        fishesType.put("Blue Discus", fish);
         fallFishes.add(fish);
 
-        seasonFishesType.put(Season.FALL,fallFishes );
+        seasonFishesType.put(Season.FALL, fallFishes);
 
 
-        ArrayList<Fish> winterFishes = new ArrayList<Fish>() ;
+        ArrayList<Fish> winterFishes = new ArrayList<Fish>();
 
-        fish = new Fish("Midnight Carp",150);
-        fishesType.put("Midnight Carp",fish);
+        fish = new Fish("Midnight Carp", 150);
+        fishesType.put("Midnight Carp", fish);
         winterFishes.add(fish);
 
-        fish = new Fish("Squid",80);
-        fishesType.put("Squid",fish);
+        fish = new Fish("Squid", 80);
+        fishesType.put("Squid", fish);
         winterFishes.add(fish);
 
-        fish = new Fish("Tuna",100);
-        fishesType.put("Tuna",fish);
+        fish = new Fish("Tuna", 100);
+        fishesType.put("Tuna", fish);
         winterFishes.add(fish);
 
-        fish = new Fish("Perch",55);
-        fishesType.put("Perch",fish);
+        fish = new Fish("Perch", 55);
+        fishesType.put("Perch", fish);
         winterFishes.add(fish);
 
-        seasonFishesType.put(Season.WINTER,winterFishes );
+        seasonFishesType.put(Season.WINTER, winterFishes);
 
 
-
-
-        HashMap<Season,ArrayList<Fish>> seasonLegendaryFishesType = new HashMap<Season,ArrayList<Fish>>();
+        HashMap<Season, ArrayList<Fish>> seasonLegendaryFishesType = new HashMap<Season, ArrayList<Fish>>();
 
         ArrayList<Fish> springLegendaryFishes = new ArrayList<Fish>();
 
-        fish = new Fish("Legend",5000);
-        fishesType.put("Legend",fish);
+        fish = new Fish("Legend", 5000);
+        fishesType.put("Legend", fish);
         springLegendaryFishes.add(fish);
 
-        seasonLegendaryFishesType.put(Season.SPRING,springLegendaryFishes );
+        seasonLegendaryFishesType.put(Season.SPRING, springLegendaryFishes);
 
 
         ArrayList<Fish> summerLegendaryFishes = new ArrayList<Fish>();
 
-        fish = new Fish("Crimsonfish",1500);
-        fishesType.put("Crimsonfish",fish);
+        fish = new Fish("Crimsonfish", 1500);
+        fishesType.put("Crimsonfish", fish);
         summerLegendaryFishes.add(fish);
 
-        seasonLegendaryFishesType.put(Season.SUMMER,summerLegendaryFishes );
+        seasonLegendaryFishesType.put(Season.SUMMER, summerLegendaryFishes);
 
 
         ArrayList<Fish> fallLegendaryFishes = new ArrayList<Fish>();
 
-        fish = new Fish("Angler",900);
-        fishesType.put("Angler",fish);
+        fish = new Fish("Angler", 900);
+        fishesType.put("Angler", fish);
         fallLegendaryFishes.add(fish);
 
-        seasonLegendaryFishesType.put(Season.FALL,fallLegendaryFishes );
+        seasonLegendaryFishesType.put(Season.FALL, fallLegendaryFishes);
 
 
         ArrayList<Fish> winterLegendaryFishes = new ArrayList<Fish>();
 
-        fish = new Fish("Glacierfish",1000);
-        fishesType.put("Glacierfish",fish);
+        fish = new Fish("Glacierfish", 1000);
+        fishesType.put("Glacierfish", fish);
         winterLegendaryFishes.add(fish);
 
-        seasonLegendaryFishesType.put(Season.WINTER,winterLegendaryFishes );
-
+        seasonLegendaryFishesType.put(Season.WINTER, winterLegendaryFishes);
 
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        try (FileWriter file = new FileWriter("fishes.json")){
+        try (FileWriter file = new FileWriter("fishes.json")) {
             gson.toJson(fishesType, file);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        try (FileWriter seasonFile = new FileWriter("seasonFishes.json")){
+        try (FileWriter seasonFile = new FileWriter("seasonFishes.json")) {
             gson.toJson(seasonFishesType, seasonFile);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        try (FileWriter seasonLegendaryFile = new FileWriter("seasonLegendaryFishes.json")){
-            gson.toJson(seasonLegendaryFishesType, seasonLegendaryFile );
+        try (FileWriter seasonLegendaryFile = new FileWriter("seasonLegendaryFishes.json")) {
+            gson.toJson(seasonLegendaryFishesType, seasonLegendaryFile);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

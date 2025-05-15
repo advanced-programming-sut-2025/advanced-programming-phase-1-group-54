@@ -3,6 +3,7 @@ package model.map;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import model.enums.AnimalHouseType;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -47,6 +48,18 @@ public class AnimalHousePrototype implements Cloneable{
         this.name = name;
         this.animals = animals;
         this.size = size;
+    }
+
+    public AnimalHouseType getAnimalHouseType() {
+        return this.getName().contains("Barn") ? AnimalHouseType.BARN : AnimalHouseType.COOP;
+    }
+
+    public int getNumberOfRows() {
+        return getAnimalHouseType().equals(AnimalHouseType.BARN) ? 4 : 3;
+    }
+
+    public int getNumberOfColumns() {
+        return getAnimalHouseType().equals(AnimalHouseType.BARN) ? 7 : 6;
     }
 
     public String getName() {

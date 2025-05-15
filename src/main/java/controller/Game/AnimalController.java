@@ -3,8 +3,8 @@ package controller.Game;
 import model.map.*;
 import model.App;
 import model.Result;
-import model.alive.Animal;
-import model.alive.Player;
+import model.lives.Animal;
+import model.lives.Player;
 import model.items.Item;
 
 public class AnimalController {

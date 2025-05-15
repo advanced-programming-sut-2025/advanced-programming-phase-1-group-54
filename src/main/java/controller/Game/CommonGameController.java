@@ -2,12 +2,11 @@ package controller.Game;
 
 import model.App;
 import model.Game;
-import model.Refrigerator;
+import model.map.Refrigerator;
 import model.Result;
-import model.alive.Player;
+import model.lives.Player;
 import model.enums.ProduceQuality;
 import model.items.*;
-import model.items.crafting.Artisan;
 import model.items.crafting.Produce;
 import model.items.crafting.ProducerArtisan;
 import model.items.crafting.UnProducerArtisan;
@@ -29,14 +28,35 @@ public class CommonGameController {
     // TODO add functions for "force terminate"
 
     public static Result passOut() {
+        App.getCurrentGame().getCurrentPlayer().setEnergy(0);
         return new Result(true, "you passed out!" + nextTurn().message());
     }
 
     public static Result nextTurn() {
         Game game = App.getCurrentGame();
         game.nextTurn();
+        String notification = getNotification();
         return new Result(true, String.format("it is %s's turn",
-                game.getCurrentPlayer().getControllingUser().getUsername()));
+                game.getCurrentPlayer().getControllingUser().getUsername()) + notification);
+    }
+
+    private static String getNotification() {
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+
+        StringBuilder messageBuilder = new StringBuilder();
+
+        if (!player.getReceivedTrades().isEmpty()){
+            messageBuilder.append("\nYou have some trade to do");
+        }
+        if (!player.getReceivedGifts().isEmpty()){
+            messageBuilder.append("\nYou have some gift to open");
+        }
+        if (!(player.getReceivedRequests()).isEmpty()){
+            messageBuilder.append("\nYou have some marriage proposal");
+        }
+
+        return messageBuilder.toString();
     }
 
     public static Result showTime() {

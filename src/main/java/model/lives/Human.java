@@ -1,4 +1,4 @@
-package model.alive;
+package model.lives;
 
 import model.Placeable;
 

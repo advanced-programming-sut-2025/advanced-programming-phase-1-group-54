@@ -1,11 +1,9 @@
 package controller.builders;
 
-import controller.Game.PlantsController;
-import model.App;
 import model.map.Cabin;
 import model.Game;
 import model.User;
-import model.alive.Player;
+import model.lives.Player;
 import model.map.Farm;
 import model.map.Location;
 import model.map.World;
@@ -61,9 +59,10 @@ public class GameBuilder {
 
             Cabin cabin = playerFarms[i].getCabin();
 
-            Location locationInCabin = new Location(
-                    Cabin.getNumberOfRows() / 2,
-                    Cabin.getNumberOfColumns() / 2);
+            Location locationInCabin;
+            do {
+                locationInCabin = cabin.getRandomLocation();
+            } while (cabin.getTileAt(locationInCabin).getThingOnTile() == null);
 
             Location location = new Location(
                     playerFarms[i].getLocation().row() + cabin.getLocation().row() + locationInCabin.row(),

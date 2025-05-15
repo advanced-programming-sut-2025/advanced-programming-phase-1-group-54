@@ -1,9 +1,10 @@
 package controller.Game;
 
 import model.App;
+import model.DateTime;
 import model.map.Cabin;
 import model.Result;
-import model.alive.Player;
+import model.lives.Player;
 import model.enums.Direction;
 import model.enums.Feature;
 import model.items.Item;
@@ -215,8 +216,8 @@ public class CraftingController {
 
         producerArtisan.setProcessingProduce(produce);
         if(produce.getProcessingMornings() > 0){
-            producerArtisan.setRemainingHours(24 - App.getCurrentGame().getDateTime().getHour() +
-                    (produce.getProcessingMornings() - 1) * 24);
+            producerArtisan.setRemainingHours(DateTime.getHoursInDay() - App.getCurrentGame().getDateTime().getHour() +
+                    (produce.getProcessingMornings() - 1) * DateTime.getHoursInDay());
         }
         else{
             producerArtisan.setRemainingHours(produce.getProcessingHours());
@@ -242,7 +243,7 @@ public class CraftingController {
             return new Result(-1,"you don't have the artisan");
         }
 
-        if(! producerArtisan.isProduceIsReady()){
+        if(! producerArtisan.isProduceReady()){
             return new Result(-1,"Produce isn't ready");
         }
 

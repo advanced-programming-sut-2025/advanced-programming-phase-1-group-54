@@ -1,16 +1,19 @@
 package controller.Game;
 
 import model.App;
+import model.DateTime;
 import model.Result;
-import model.alive.Player;
+import model.lives.Player;
 import model.items.Item;
-import model.items.UniqeItems;
+import model.items.UniqueItem;
 import model.relationships.Gift;
 import model.relationships.PlayerRelationship;
 import model.relationships.Talk;
 import model.relationships.Trade;
 
 import java.util.ArrayList;
+
+import static controller.Game.MapController.isNear;
 
 public class FriendShipController {
     public static ArrayList<PlayerRelationship> showFriendShip(Player player1){
@@ -20,11 +23,14 @@ public class FriendShipController {
         if(App.getCurrentGame().getPlayerByUsername(username) == null){
             return new Result(false, "user not found");
         }
-        Player player = App.getCurrentGame().getPlayerByUsername(username);
-        PlayerRelationship relationship = getPlayerRelationship(App.getCurrentGame().getCurrentPlayer(), player);
-        //TODO
-        //if (player next to current player)
-        Talk talk = new Talk(App.getCurrentGame().getCurrentPlayer(),message,App.getCurrentGame().getDateTime());
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player otherPlayer = App.getCurrentGame().getPlayerByUsername(username);
+        PlayerRelationship relationship = getPlayerRelationship(player, otherPlayer);
+
+        if (!isNear(player.getCurrentLocation(), otherPlayer))
+            return new Result(false, "you must be next to each other to talk to each other!");
+
+        Talk talk = new Talk(App.getCurrentGame().getCurrentPlayer(),message, new DateTime(App.getCurrentGame().getDateTime()));
         relationship.getTalkHistory().add(talk);
         if(relationship.getTalkDailyCount() == 0) {
             relationship.increasXp(20);
@@ -173,14 +179,14 @@ public class FriendShipController {
 
     public static Result flower(Player player) {
         PlayerRelationship relationship = FriendShipController.getPlayerRelationship(App.getCurrentGame().getCurrentPlayer(), player);
-        UniqeItems uniqeItems = UniqeItems.getUniqeItems("Bouquet");
-        if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(uniqeItems) == 0){
+        UniqueItem uniqueItem = UniqueItem.getUniqueItem("Bouquet");
+        if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(uniqueItem) == 0){
             return new Result(false,"you dont have bouquet");
         }
         if (relationship.getXp() < 300 && relationship.getLevel() < 3){
             return new Result(false,"your friendship xp should reach to 300 at level 2 for sending flower");
         }
-        if (!player.getBackpack().addItem(uniqeItems, 1)){
+        if (!player.getBackpack().addItem(uniqueItem, 1)){
             return new Result(false,player.getName() + " has no space in backpack");
         }
         if (App.getCurrentGame().getCurrentPlayer().getPartner() != null){
@@ -192,7 +198,7 @@ public class FriendShipController {
             }
         }
         relationship.increasLevel();
-        App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(uniqeItems,1);
+        App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(uniqueItem,1);
         return new Result(true,"flower sent");
     }
 
@@ -207,11 +213,11 @@ public class FriendShipController {
         if (relationship.getXp() < 400){
             return new Result(false,"your friendship xp should reach to 400 at level 3 for asking marriage");
         }
-        UniqeItems uniqeItems = UniqeItems.getUniqeItems("Wedding Ring");
-        if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(uniqeItems) == 0){
+        UniqueItem uniqueItem = UniqueItem.getUniqueItem("Wedding Ring");
+        if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(uniqueItem) == 0){
             return new Result(false,"you dont have Wedding ring");
         }
-        relationship.setRing(uniqeItems);
+        relationship.setRing(uniqueItem);
         player.getAskedForMarriage().add(App.getCurrentGame().getCurrentPlayer());
         return null;
     }
@@ -236,14 +242,6 @@ public class FriendShipController {
             player.getBackpack().addItem(relationship.getRing(), 1);
             App.getCurrentGame().getCurrentPlayer().setAskedForMarriage(new ArrayList<>());
             return new Result(true,"successfully rejected");
-        }
-    }
-
-    public static void decreaseHeartBropken() {
-        for (Player player : App.getCurrentGame().getPlayers()){
-            if(player.getHeartBroken() > 0){
-                player.decreaseHeartBroken();
-            }
         }
     }
 

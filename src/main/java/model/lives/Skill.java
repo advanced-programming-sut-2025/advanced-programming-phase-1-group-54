@@ -1,6 +1,6 @@
-package model;
+package model.lives;
 
-import model.alive.Player;
+import model.App;
 import model.enums.SkillType;
 import model.items.recipes.Recipe;
 

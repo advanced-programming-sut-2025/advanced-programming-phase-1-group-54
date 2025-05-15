@@ -12,14 +12,6 @@ public class GreenHouse extends Building implements DailyUpdate {
 
     private boolean built;
 
-    public static int getNumberOfRows() {
-        return NUMBER_OF_ROWS;
-    }
-
-    public static int getNumberOfColumns() {
-        return NUMBER_OF_COLUMNS;
-    }
-
     public static int getNeededMoney() {
         return NEEDED_MONEY;
     }

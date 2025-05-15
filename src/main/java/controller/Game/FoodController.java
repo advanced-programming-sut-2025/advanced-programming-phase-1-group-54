@@ -2,9 +2,9 @@ package controller.Game;
 
 import model.App;
 import model.map.Cabin;
-import model.Refrigerator;
+import model.map.Refrigerator;
 import model.Result;
-import model.alive.Player;
+import model.lives.Player;
 import model.items.Food;
 import model.items.Item;
 import model.items.recipes.Recipe;

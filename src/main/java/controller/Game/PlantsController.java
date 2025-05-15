@@ -1,23 +1,15 @@
 package controller.Game;
 
 import model.App;
-import model.map.GreenHouse;
+import model.map.*;
 import model.Game;
 import model.Placeable;
 import model.Result;
-import model.alive.Player;
+import model.lives.Player;
 import model.enums.Direction;
 import model.enums.Feature;
 import model.items.Fertilize;
-import model.items.Material;
 import model.items.plants.*;
-import model.map.Farm;
-import model.map.Location;
-import model.map.Tile;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class PlantsController {
 
@@ -47,14 +39,7 @@ public class PlantsController {
 
     }
 
-    public static Result planting(String seedName, String directionString) {
-
-        Direction direction;
-        try {
-            direction = Direction.valueOf(directionString);
-        } catch (IllegalArgumentException e) {
-            return new Result(-1, "invalid direction");
-        }
+    public static Result planting(String seedName, Direction direction) {
 
         Seed seed;
         if (seedName.equals("Mixed Seeds")) {
@@ -69,38 +54,9 @@ public class PlantsController {
 
     }
 
-    public static void crowAttack() {
-
-        Player player = App.getCurrentGame().getCurrentPlayer();
-
-        Random rand = new Random();
-        int numberOfPlayerPlants = player.getPlants().size() / 16;
-
-        for (int i = 0; i < numberOfPlayerPlants; i++) {
-            if (rand.nextInt(4) == 0) {
-                List<Plant> keys = new ArrayList<>(player.getPlants().keySet());
-                Plant plant = keys.get(rand.nextInt(keys.size()));
-                Tile tile = player.getPlants().get(plant);
-                if (!tile.getFeatures().contains(Feature.PROTECTED)) {
-                    player.getPlants().remove(plant);
-                    tile.setThingOnTile(null);
-                    if (plant instanceof Crop crop && crop.getGiantDirection() != null) {
-                        for (int k = 0; k < 3; k++) {
-                            tile = App.getCurrentGame().getWorld().getFarm(player).getTileAt(tile.getLocation().
-                                    getLocationAt(crop.getGiantDirection()));
-                            crop = (Crop) tile.getThingOnTile();
-                            player.getPlants().remove(crop);
-                            tile.setThingOnTile(null);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     public static Result showPlant(Location location) {
         Player player = App.getCurrentGame().getCurrentPlayer();
-        Tile tile = App.getCurrentGame().getWorld().getFarm(player).getTileAt(location);
+        Tile tile = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation()).getTileAt(location);
 
         if (tile == null) {
             return new Result(-1, "tile is not in your farm");
@@ -133,7 +89,7 @@ public class PlantsController {
     static Result harvestPlant(Direction direction) {
         Game game = App.getCurrentGame();
         Location location = game.getCurrentPlayer().getCurrentLocation().getLocationAt(direction);
-        Farm farm = game.getWorld().getFarm(game.getCurrentPlayer());
+        Farm farm = game.getWorld().getFarmAt(game.getCurrentPlayer().getCurrentLocation());
         Tile tile = farm.getTileAt(location.delta(farm.getLocation()));
 
         if (tile.getThingOnTile() != null && tile.getThingOnTile() instanceof GreenHouse) {
@@ -190,7 +146,7 @@ public class PlantsController {
     static Result giveWater(Direction direction) {
         Game game = App.getCurrentGame();
         Location location = game.getCurrentPlayer().getCurrentLocation().getLocationAt(direction);
-        Farm farm = game.getWorld().getFarm(game.getCurrentPlayer());
+        Farm farm = game.getWorld().getFarmAt(game.getCurrentPlayer().getCurrentLocation());
         Tile tile = farm.getTileAt(location.delta(farm.getLocation()));
 
         if (tile.getThingOnTile() != null && tile.getThingOnTile() instanceof GreenHouse) {
@@ -215,20 +171,15 @@ public class PlantsController {
         return new Result(true, "You watered the plant on this tile");
     }
 
-    public static Result fertilizePlant(String fertilizeName, String directionString) {
-
-        Direction direction;
-        try {
-            direction = Direction.valueOf(directionString);
-        } catch (IllegalArgumentException e) {
-            return new Result(-1, "invalid direction");
-        }
-
+    public static Result fertilizePlant(String fertilizeName, Direction direction) {
         Player player = App.getCurrentGame().getCurrentPlayer();
-        Farm farm = App.getCurrentGame().getWorld().getFarm(player);
+        Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
+        if (farm == null) {
+            return new Result(-1, "You must be in a farm to do this action");
+        }
         Tile tile = farm.getTileAt(player.getCurrentLocation().delta(farm.getLocation()).getLocationAt(direction));
         if (tile == null) {
-            return new Result(-1, "tile is not in your farm");
+            return new Result(-1, "tile is not in this farm");
         }
 
         if (tile.getThingOnTile() instanceof GreenHouse) {
@@ -251,14 +202,13 @@ public class PlantsController {
         return new Result(1, "Tile fertilized successfully");
     }
 
-    static void foragingSeed(Player player) {
+    public static void foragingSeed(Farm farm) {
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
-                Tile tile = App.getCurrentGame().getWorld().getFarm(player).getTileAt(new Location(i, j));
+                Tile tile = farm.getTileAt(new Location(i, j));
                 if (Math.random() <= 0.01 && tile.getThingOnTile() == null && tile.getFeatures().contains(Feature.PLOWED)) {
                     Crop crop = Crop.getCrop(Seed.getForagingSeed().getPlant());
                     if (!cropCanBeGiant(crop, tile.getLocation())) {
-                        player.getPlants().put(crop, tile);
                         tile.setThingOnTile(crop);
                     }
                 }
@@ -270,12 +220,17 @@ public class PlantsController {
     private static Result plantingSeeds(Seed seed, Direction direction) {
 
         Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
-        Farm farm = App.getCurrentGame().getWorld().getFarm(currentPlayer);
+
+        Farm farm = App.getCurrentGame().getWorld().getFarmAt(currentPlayer.getCurrentLocation());
+        if (farm == null) {
+            return new Result(-1, "You are not in any farm");
+        }
+
         Location location = currentPlayer.getCurrentLocation().getLocationAt(direction).delta(farm.getLocation());
         Tile tile = farm.getTileAt(location);
 
         if (tile == null) {
-            return new Result(-1, "tile is not in your farm");
+            return new Result(-1, "tile is not in this farm");
         }
 
         Integer numberOfSeeds = currentPlayer.getBackpack().getNumberOfItemInBackPack().get(seed);
@@ -300,14 +255,12 @@ public class PlantsController {
 
         Tree tree = Tree.getTree(seed.getPlant());
         if (tree != null) {
-            currentPlayer.getPlants().put(tree, tile);
             tile.setThingOnTile(tree);
         }
 
         Crop crop = Crop.getCrop(seed.getPlant());
         if (crop != null) {
             if (!cropCanBeGiant(crop, location)) {
-                currentPlayer.getPlants().put(crop, tile);
                 tile.setThingOnTile(crop);
             }
         }
@@ -317,9 +270,10 @@ public class PlantsController {
     }
 
     private static boolean cropCanBeGiant(Crop crop, Location location) {
+        if (!crop.isGiantPossible())
+            return false;
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        Farm farm = App.getCurrentGame().getWorld().getFarm(player);
+        Farm farm = App.getCurrentGame().getWorld().getFarmAt(location);
 
         Tile tile = farm.getTileAt(location);
         Tile upTile = farm.getTileAt(location.getLocationAt(Direction.UP));
@@ -346,10 +300,6 @@ public class PlantsController {
 
                 if ((upLeftCrop = checkCropOnTile(crop, up_LeftTile)) != null) {
 
-                    player.getPlants().remove(upCrop);
-                    player.getPlants().remove(leftCrop);
-                    player.getPlants().remove(upLeftCrop);
-
                     crop = compareCropsGrowth(crop, upCrop, leftCrop, upLeftCrop).clone();
                     upCrop = crop.clone();
                     leftCrop = crop.clone();
@@ -359,11 +309,6 @@ public class PlantsController {
                     upCrop.setGiantDirection(Direction.DOWN);
                     leftCrop.setGiantDirection(Direction.UP);
                     upLeftCrop.setGiantDirection(Direction.RIGHT);
-
-                    player.getPlants().put(crop, tile);
-                    player.getPlants().put(upCrop, upTile);
-                    player.getPlants().put(leftCrop, leftTile);
-                    player.getPlants().put(upLeftCrop, up_LeftTile);
 
                     tile.setThingOnTile(crop);
                     upTile.setThingOnTile(upCrop);
@@ -378,10 +323,6 @@ public class PlantsController {
 
                 if ((upRightCrop = checkCropOnTile(crop, up_RightTile)) != null) {
 
-                    player.getPlants().remove(upCrop);
-                    player.getPlants().remove(rightCrop);
-                    player.getPlants().remove(upRightCrop);
-
                     crop = compareCropsGrowth(crop, upCrop, rightCrop, upRightCrop).clone();
                     upCrop = crop.clone();
                     rightCrop = crop.clone();
@@ -391,11 +332,6 @@ public class PlantsController {
                     upCrop.setGiantDirection(Direction.RIGHT);
                     rightCrop.setGiantDirection(Direction.LEFT);
                     upRightCrop.setGiantDirection(Direction.DOWN);
-
-                    player.getPlants().put(crop, tile);
-                    player.getPlants().put(upCrop, upTile);
-                    player.getPlants().put(rightCrop, rightTile);
-                    player.getPlants().put(upRightCrop, up_RightTile);
 
                     tile.setThingOnTile(crop);
                     upTile.setThingOnTile(upCrop);
@@ -413,10 +349,6 @@ public class PlantsController {
 
                 if ((downLeftCrop = checkCropOnTile(crop, down_LeftTile)) != null) {
 
-                    player.getPlants().remove(downCrop);
-                    player.getPlants().remove(leftCrop);
-                    player.getPlants().remove(downLeftCrop);
-
                     crop = compareCropsGrowth(crop, downCrop, leftCrop, downLeftCrop).clone();
                     downCrop = crop.clone();
                     leftCrop = crop.clone();
@@ -426,11 +358,6 @@ public class PlantsController {
                     downCrop.setGiantDirection(Direction.LEFT);
                     leftCrop.setGiantDirection(Direction.RIGHT);
                     downLeftCrop.setGiantDirection(Direction.UP);
-
-                    player.getPlants().put(crop, tile);
-                    player.getPlants().put(downCrop, downTile);
-                    player.getPlants().put(leftCrop, leftTile);
-                    player.getPlants().put(downLeftCrop, down_LeftTile);
 
                     tile.setThingOnTile(crop);
                     downTile.setThingOnTile(downCrop);
@@ -444,10 +371,6 @@ public class PlantsController {
 
                 if ((downRightCrop = checkCropOnTile(crop, down_RightTile)) != null) {
 
-                    player.getPlants().remove(downCrop);
-                    player.getPlants().remove(rightCrop);
-                    player.getPlants().remove(downRightCrop);
-
                     crop = compareCropsGrowth(crop, downCrop, rightCrop, downRightCrop).clone();
                     downCrop = crop.clone();
                     rightCrop = crop.clone();
@@ -457,11 +380,6 @@ public class PlantsController {
                     downCrop.setGiantDirection(Direction.UP);
                     rightCrop.setGiantDirection(Direction.DOWN);
                     downRightCrop.setGiantDirection(Direction.LEFT);
-
-                    player.getPlants().put(crop, tile);
-                    player.getPlants().put(downCrop, downTile);
-                    player.getPlants().put(rightCrop, rightTile);
-                    player.getPlants().put(downRightCrop, down_RightTile);
 
                     tile.setThingOnTile(crop);
                     downTile.setThingOnTile(downCrop);

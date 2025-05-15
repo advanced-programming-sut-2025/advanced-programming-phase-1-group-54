@@ -1,26 +1,25 @@
-package model.Shops;
+package model.map.Shops;
 
-import model.alive.Human;
-import model.items.ItemsInShops;
-import model.map.Location;
+import model.lives.NPC;
+import model.items.ShopItem;
+import model.map.Area;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CarpenterShop extends Shop {
-    private ArrayList<ItemsInShops> permanentStock;
+    private ArrayList<ShopItem> permanentStock;
     private ArrayList<ItemsinCarpenterShop> farmBuildings;
-    public CarpenterShop(Human owner, Location upperLeftLocation, Location lowerRightLocation) {
-        super(owner,8,20, upperLeftLocation, lowerRightLocation);
+    public CarpenterShop(NPC owner, Area area) {
+        super(owner,8,20, area);
         this.permanentStock = new ArrayList<>();
         this.farmBuildings = new ArrayList<>();
     }
 
-    public ArrayList<ItemsInShops> getPermanentStock() {
+    public ArrayList<ShopItem> getPermanentStock() {
         return permanentStock;
     }
 
-    public void setPermanentStock(ArrayList<ItemsInShops> permanentStock) {
+    public void setPermanentStock(ArrayList<ShopItem> permanentStock) {
         this.permanentStock = permanentStock;
     }
 
@@ -32,7 +31,7 @@ public class CarpenterShop extends Shop {
         this.farmBuildings = farmBuildings;
     }
 
-    public static class ItemsinCarpenterShop extends ItemsInShops {
+    public static class ItemsinCarpenterShop extends ShopItem {
         int xSize;
         int ySize;
         int wood;

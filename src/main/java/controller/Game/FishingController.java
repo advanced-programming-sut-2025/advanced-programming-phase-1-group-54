@@ -2,11 +2,13 @@ package controller.Game;
 
 import model.App;
 import model.Result;
-import model.alive.Player;
-import model.enums.FishingPoleLevel;
+import model.lives.Skill;
+import model.lives.Player;
+import model.enums.FishingPoleType;
 import model.enums.ProduceQuality;
 import model.enums.SkillType;
 import model.items.Fish;
+import model.items.tools.FishingPole;
 import model.map.Farm;
 import model.map.Lake;
 
@@ -25,14 +27,29 @@ public class FishingController {
         }
 
         if (!isNearLake) {
-            return new Result(false,"you must be next to a lake to start fishing");
+            return new Result(false, "you must be next to a lake to start fishing");
         }
 
-        int skillLevel = player.getSkills().get(SkillType.FISHING).getLevel();
+        FishingPoleType fishingPoleType = FishingPoleType.fromString(fishingPoleName);
+
+        if (fishingPoleType == null) {
+            return new Result(false, "invalid fishing pole");
+        }
+
+        FishingPole fishingPole = player.getFishingPole(fishingPoleType);
+
+        if (fishingPole == null) {
+            return new Result(false, "you don't have " + fishingPoleName + " fishing pole");
+        }
+
+        int energyNeeded = fishingPole.getEnergyNeededPerUse();
+        boolean enoughEnergy = player.checkEnergy(energyNeeded, SkillType.FISHING);
+
+        int skillLevel = player.getSkill(SkillType.FISHING).getLevel();
         double weatherFactor = App.getCurrentGame().getCurrentWeather().getFishingFactor();
 
         int numberOfFishes = Math.min((int) Math.ceil(Math.random() * weatherFactor * (skillLevel + 2)), 6);
-        double poleFactor = player.getFishingPole(FishingPoleLevel.valueOf(fishingPoleName)).getPoleFactor();
+        double poleFactor = player.getFishingPole(FishingPoleType.valueOf(fishingPoleName)).getPoleFactor();
 
         StringBuilder message = new StringBuilder("Starting fishing ...");
 
@@ -40,8 +57,13 @@ public class FishingController {
             ProduceQuality quality = CommonGameController.
                     giveQuality(Math.random() * (skillLevel + 2) * poleFactor / (7 - weatherFactor));
 
-            Fish fish = Fish.getSeasonFish();
-            // TODO getCheapestFish
+
+            Fish fish;
+            if (fishingPoleType == FishingPoleType.TRAINING) {
+                fish = Fish.getCheapestSeasonFish(App.getCurrentGame().getDateTime().getSeason());
+            } else {
+                fish = Fish.getSeasonFish(App.getCurrentGame().getDateTime().getSeason(), skillLevel == Skill.getMaxSkillLevel());
+            }
             fish.setQuality(quality);
 
             Result result = addToBackPack(player.getBackpack(), fish, 1);
@@ -51,7 +73,10 @@ public class FishingController {
         if (numberOfFishes == 0)
             message.append("\nYou got no fish :(");
 
-        player.getSkills().get(SkillType.FISHING).addXP(5);
+        if (!enoughEnergy) {
+
+        }
+        player.getSkill(SkillType.FISHING).addXP(5);
         return new Result(true, message.toString());
     }
 

@@ -4,11 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import controller.Game.PlantsController;
 import model.items.Material;
 import model.map.Cabin;
 import model.map.GreenHouse;
-import model.alive.Player;
+import model.lives.Player;
 import model.enums.Feature;
 import model.map.*;
 
@@ -18,8 +17,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class FarmBuilder {
-    private static int NUMBER_OF_FORAGING_MATERIAL = 2;
-    private static int NUMBER_OF_FORAGING_CROP = 10;
+    private static final int NUMBER_OF_FORAGING_MATERIAL = 2;
+    private static final int NUMBER_OF_FORAGING_CROP = 10;
 
     private static Location location;
     private static Player owner;
@@ -92,8 +91,8 @@ public class FarmBuilder {
 
     public static Cabin buildCabin() {
         Cabin cabin = new Cabin(cabinLocation);
-        for (int x = 0; x < Cabin.getNumberOfRows(); x++) {
-            for (int y = 0; y < Cabin.getNumberOfColumns(); y++) {
+        for (int x = 0; x < cabin.getNumberOfRows(); x++) {
+            for (int y = 0; y < cabin.getNumberOfColumns(); y++) {
                 Location location = cabinLocation.add(new Location(x, y));
                 tiles[location.row()][location.column()].setThingOnTile(cabin);
             }
@@ -103,8 +102,8 @@ public class FarmBuilder {
 
     private static GreenHouse buildGreenHouse() {
         GreenHouse greenHouse = new GreenHouse(greenHouseLocation);
-        for (int x = 0; x < GreenHouse.getNumberOfRows(); x++) {
-            for (int y = 0; y < GreenHouse.getNumberOfColumns(); y++) {
+        for (int x = 0; x < greenHouse.getNumberOfRows(); x++) {
+            for (int y = 0; y < greenHouse.getNumberOfColumns(); y++) {
                 Location location = greenHouseLocation.add(new Location(x, y));
                 tiles[location.row()][location.column()].setThingOnTile(greenHouse);
             }
@@ -143,7 +142,7 @@ public class FarmBuilder {
     }
 
     public static void placeRandomStuff(Farm farm) {
-        for (int i = 1; i <= NUMBER_OF_FORAGING_MATERIAL; i++) {
+        for (int i = 1; i <= NUMBER_OF_FORAGING_CROP; i++) {
             farm.foragingCrop();
         }
 

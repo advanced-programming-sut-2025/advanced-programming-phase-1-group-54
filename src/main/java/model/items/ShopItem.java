@@ -1,6 +1,6 @@
 package model.items;
 
-public class ItemsInShops extends Item {
+public class ShopItem extends Item {
     protected int count;
     protected int price;
     protected String description;
@@ -29,7 +29,7 @@ public class ItemsInShops extends Item {
         this.description = description;
     }
 
-    public ItemsInShops(String name, boolean isEdible, int count, int price, String description) {
+    public ShopItem(String name, boolean isEdible, int count, int price, String description) {
         super(name, isEdible,0);
         this.description = description;
         this.count = count;

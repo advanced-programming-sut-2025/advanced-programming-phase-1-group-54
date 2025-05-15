@@ -1,19 +1,19 @@
-package model.Shops;
+package model.map.Shops;
 
-import model.alive.Human;
-import model.items.ItemsInShops;
-import model.map.Location;
+import model.lives.NPC;
+import model.items.ShopItem;
+import model.map.Area;
 
 import java.util.ArrayList;
 
 public class PierreGeneralShop extends Shop {
-    private ArrayList<ItemsInShops> yearRoundStock;
+    private ArrayList<ShopItem> yearRoundStock;
     private ArrayList<BackPacksItems> backPacks;
     private ArrayList<SeasonalStockItems> springStock;
     private ArrayList<SeasonalStockItems> summerStock;
     private ArrayList<SeasonalStockItems> fallStock;
-    public PierreGeneralShop(Human owner, Location upperLeftLocation, Location lowerRightLocation) {
-        super(owner,9,17, upperLeftLocation, lowerRightLocation);
+    public PierreGeneralShop(NPC owner, Area area) {
+        super(owner,9,17, area);
         this.yearRoundStock = new ArrayList<>();
         this.backPacks = new ArrayList<>();
         this.springStock = new ArrayList<>();
@@ -21,11 +21,11 @@ public class PierreGeneralShop extends Shop {
         this.fallStock = new ArrayList<>();
     }
 
-    public ArrayList<ItemsInShops> getYearRoundStock() {
+    public ArrayList<ShopItem> getYearRoundStock() {
         return yearRoundStock;
     }
 
-    public void setYearRoundStock(ArrayList<ItemsInShops> yearRoundStock) {
+    public void setYearRoundStock(ArrayList<ShopItem> yearRoundStock) {
         this.yearRoundStock = yearRoundStock;
     }
 
@@ -61,7 +61,7 @@ public class PierreGeneralShop extends Shop {
         this.fallStock = fallStock;
     }
 
-    public static class BackPacksItems extends ItemsInShops {
+    public static class BackPacksItems extends ShopItem {
         private boolean isPurchaseAble;
         private String isAvailable;
         public BackPacksItems(boolean isPurchaseAble,String name, int price,String description, String isAvailable) {
@@ -86,7 +86,7 @@ public class PierreGeneralShop extends Shop {
             isPurchaseAble = purchaseAble;
         }
     }
-    public static class SeasonalStockItems extends ItemsInShops {
+    public static class SeasonalStockItems extends ShopItem {
         private int priceInSeason;
         private int priceOutOfSeason;
         public SeasonalStockItems (String name, int price,String description,int priceInSeason,int priceOutOfSeason) {

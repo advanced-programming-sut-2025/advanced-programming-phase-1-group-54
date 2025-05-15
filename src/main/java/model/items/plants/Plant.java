@@ -1,11 +1,8 @@
 package model.items.plants;
 
-import model.App;
 import model.DailyUpdate;
 import model.Placeable;
-import model.alive.Player;
 import model.enums.Season;
-import model.map.Tile;
 
 public abstract class Plant implements Placeable, DailyUpdate {
 

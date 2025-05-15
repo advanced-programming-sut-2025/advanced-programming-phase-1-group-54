@@ -3,11 +3,10 @@ package controller.Game;
 import model.App;
 import model.Game;
 import model.Result;
-import model.alive.Player;
+import model.lives.Player;
 import model.enums.*;
 import model.items.Item;
 import model.items.Material;
-import model.items.plants.Plant;
 import model.items.plants.Seed;
 import model.items.plants.Tree;
 import model.items.tools.*;
@@ -87,9 +86,11 @@ public class ToolsController {
     public static Result useTool(Direction direction) {
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
-        Farm farm = game.getWorld().getFarm(player);
+        Farm farm = game.getWorld().getFarmAt(player.getCurrentLocation());
 
-        // partner farm ??
+        if (farm == null) {
+            return new Result(false, "You must be in a farm to use your tools");
+        }
 
         Location currentLocation = player.getCurrentLocation().delta(farm.getLocation());
         Location location = currentLocation.getLocationAt(direction).delta(farm.getLocation());
@@ -130,14 +131,9 @@ public class ToolsController {
 
         boolean enoughEnergy = player.checkEnergy(energyNeeded, equippedTool.getSkillType());
 
-        if (!enoughEnergy) {
-            player.setEnergy(0);
-        } else {
-            player.decreaseEnergy(energyNeeded, equippedTool.getSkillType());
-        }
-
         String message = String.format("tool was used, and you %s\n%s",
                 (useToolDetail.success() ? "succeeded" : "failed"), useToolDetail.message());
+
         if (!enoughEnergy) {
             Result passOut = CommonGameController.passOut();
             message += "\n" + passOut.message();
@@ -168,7 +164,7 @@ public class ToolsController {
             case PICKAXE:
                 return usePickaxe(player, tool, backpack, tile);
             default:
-                return null;
+                return new Result(true, "nothing happened");
         }
     }
 
@@ -208,7 +204,7 @@ public class ToolsController {
 
     private static Result useAxe(Player player, BackPack backpack, Tile tile) {
         if (tile.getThingOnTile() instanceof Tree tree) {
-            player.getSkills().get(SkillType.FORAGING).addXP(10);
+            player.getSkill(SkillType.FORAGING).addXP(10);
             Result woodAdded = addToBackPack(backpack, Material.getMaterial("Wood"), 1);
             Result seedsAdded = addToBackPack(backpack, Seed.getSeed(tree.getSource()), 2);
 
@@ -223,7 +219,7 @@ public class ToolsController {
         }
         if (tile.getThingOnTile() instanceof Material material) {
             if (material.getName().equals("Wood")) {
-                player.getSkills().get(SkillType.FORAGING).addXP(10);
+                player.getSkill(SkillType.FORAGING).addXP(10);
                 Result woodAdded = addToBackPack(backpack, Material.getMaterial("Wood"), 1);
 
 
@@ -245,13 +241,13 @@ public class ToolsController {
             if (tile.getThingOnTile() instanceof Material rock) {
                 switch (rock.getName()) {
                     case "Wood":
-                        player.getSkills().get(SkillType.MINING).addXP(10);
+                        player.getSkill(SkillType.MINING).addXP(10);
                         return new Result(true, "item on tile destroyed");
                     case "Stone", "Coal", "Copper Ore":
                         break;
                     case "Iron Ore":
                         if (tool.getToolLevel() == ToolLevel.NORMAL) {
-                            player.getSkills().get(SkillType.MINING).addXP(10);
+                            player.getSkill(SkillType.MINING).addXP(10);
                             return new Result(false, "Iron Ore can be mined with Copper or higher pickaxe");
                         }
                         break;
@@ -259,14 +255,14 @@ public class ToolsController {
                         if (tool.getToolLevel() == ToolLevel.NORMAL ||
                                 tool.getToolLevel() == ToolLevel.COPPER ||
                                 tool.getToolLevel() == ToolLevel.IRON) {
-                            player.getSkills().get(SkillType.MINING).addXP(10);
+                            player.getSkill(SkillType.MINING).addXP(10);
                             return new Result(false, "Iridium Ore can be mined with Gold or higher pickaxe");
                         }
                         break;
                     default:
                         if (tool.getToolLevel() == ToolLevel.NORMAL ||
                                 tool.getToolLevel() == ToolLevel.COPPER) {
-                            player.getSkills().get(SkillType.MINING).addXP(10);
+                            player.getSkill(SkillType.MINING).addXP(10);
                             return new Result(false, rock.getName() + " can be mined with Iron or higher pickaxe");
                         }
                         break;
@@ -274,7 +270,7 @@ public class ToolsController {
 
                Result result = addToBackPack(player.getBackpack(), rock, 1);
 
-                if (player.getSkills().get(SkillType.MINING).getLevel() >= 2) {
+                if (player.getSkill(SkillType.MINING).getLevel() >= 2) {
                     Material material = Material.getForagingMaterial();
                     Result materialAddedResult = addToBackPack(backpack, material, 1);
                     result = new Result(true, result.message() + "\n" + materialAddedResult.message());

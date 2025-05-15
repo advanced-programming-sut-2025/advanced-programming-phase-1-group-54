@@ -1,6 +1,7 @@
 package model.items.tools;
 
 import model.enums.ToolLevel;
+import model.enums.ToolType;
 import model.items.Item;
 
 public class TrashCan {
@@ -33,11 +34,12 @@ public class TrashCan {
         }
     }
 
-    public boolean upgrade() {
-        if (toolLevel == ToolLevel.IRIDIUM)
-            return false;
+    public boolean isUpgradable() {
+        return toolLevel != ToolLevel.IRIDIUM;
+    }
 
-        toolLevel = ToolLevel.values()[toolLevel.ordinal() + 1];
-        return true;
+    public void upgrade() {
+        if (isUpgradable())
+            toolLevel = ToolLevel.values()[toolLevel.ordinal() + 1];
     }
 }

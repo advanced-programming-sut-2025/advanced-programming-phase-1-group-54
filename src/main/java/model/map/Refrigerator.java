@@ -1,5 +1,7 @@
-package model;
+package model.map;
 
+import model.Placeable;
+import model.Result;
 import model.enums.Symbol;
 import model.items.Item;
 
@@ -13,7 +15,7 @@ public class Refrigerator implements Placeable {
         return numberOfItemInRefrigerator;
     }
 
-    public Result addItem(Item item,Integer number) {
+    public Result addItem(Item item, Integer number) {
 
         Integer numberOfItem = numberOfItemInRefrigerator.get(item);
         if(numberOfItem != null) {

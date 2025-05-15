@@ -1,15 +1,15 @@
-package model.Shops;
+package model.map.Shops;
 
-import model.alive.Human;
-import model.items.ItemsInShops;
-import model.map.Location;
+import model.lives.NPC;
+import model.items.ShopItem;
+import model.map.Area;
 
 import java.util.ArrayList;
 
 public class FishShop extends Shop {
     private ArrayList<StockInShop> stockInShop;
-    public FishShop(Human human, Location upperLeftLocation, Location lowerRightLocation) {
-        super(human,9,17, upperLeftLocation, lowerRightLocation);
+    public FishShop(NPC owner, Area area) {
+        super(owner,9,17, area);
         stockInShop = new ArrayList<>();
     }
 
@@ -21,7 +21,7 @@ public class FishShop extends Shop {
         this.stockInShop = stockInShop;
     }
 
-    public static class StockInShop extends ItemsInShops {
+    public static class StockInShop extends ShopItem {
         private int fishingSkillRequired;
         public StockInShop(int fishingSkillRequired,String name,boolean isEdible, int price,String description) {
             super(name, isEdible, 1, price, description);

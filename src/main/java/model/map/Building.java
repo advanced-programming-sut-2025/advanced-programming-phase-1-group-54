@@ -15,6 +15,14 @@ public abstract class Building implements Placeable {
         return location;
     }
 
+    public int getNumberOfRows() {
+        return map.getNumberOfRows();
+    }
+
+    public int getNumberOfColumns() {
+        return map.getNumberOfColumns();
+    }
+
     public Tile getTileAt(Location location) {
         return map.getTileAt(location);
     }

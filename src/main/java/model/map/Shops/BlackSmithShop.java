@@ -1,40 +1,39 @@
-package model.Shops;
+package model.map.Shops;
 
-import model.alive.Human;
-import model.items.ItemsInShops;
-import model.map.Location;
+import model.lives.NPC;
+import model.items.ShopItem;
+import model.map.Area;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BlackSmithShop extends Shop {
-    private ArrayList<upgradesToolsBlacsmithShop> upgradeTools;
-    private ArrayList<ItemsInShops> stock;
-    public BlackSmithShop(Human owner, Location upperLeftLocation, Location lowerRightLocation) {
-        super(owner,9,16, upperLeftLocation, lowerRightLocation);
+    private ArrayList<UpgradeToolBlackSmith> upgradeTools;
+    private ArrayList<ShopItem> stock;
+    public BlackSmithShop(NPC owner, Area area) {
+        super(owner,9,16, area);
         upgradeTools = new ArrayList<>();
         stock = new ArrayList<>();
     }
-    public ArrayList<upgradesToolsBlacsmithShop> getUpgradeTools() {
+    public ArrayList<UpgradeToolBlackSmith> getUpgradeTools() {
         return upgradeTools;
     }
 
-    public void setUpgradeTools(ArrayList<upgradesToolsBlacsmithShop> upgradeTool) {
+    public void setUpgradeTools(ArrayList<UpgradeToolBlackSmith> upgradeTool) {
         this.upgradeTools = upgradeTool;
     }
 
-    public ArrayList<ItemsInShops> getStock() {
+    public ArrayList<ShopItem> getStock() {
         return stock;
     }
 
-    public void setStock(ArrayList<ItemsInShops> stock) {
+    public void setStock(ArrayList<ShopItem> stock) {
         this.stock = stock;
     }
 
-    public static class upgradesToolsBlacsmithShop extends ItemsInShops {
+    public static class UpgradeToolBlackSmith extends ShopItem {
         private String ingredientString;
         private int ingredientsInt;
-        public upgradesToolsBlacsmithShop(String name, int price, String hashmapString, int hashmapInt) {
+        public UpgradeToolBlackSmith(String name, int price, String hashmapString, int hashmapInt) {
             super(name,false,1, price,"no description");
             this.ingredientsInt = hashmapInt;
             this.ingredientString = hashmapString;

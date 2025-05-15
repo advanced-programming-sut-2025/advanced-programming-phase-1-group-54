@@ -1,4 +1,4 @@
-package model.alive;
+package model.lives;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

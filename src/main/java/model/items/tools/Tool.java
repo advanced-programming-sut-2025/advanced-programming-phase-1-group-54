@@ -64,13 +64,15 @@ public class Tool {
         }
     }
 
-    public void upgrade() {
+    public boolean isUpgradable() {
         if (toolType == ToolType.SCYTHE || toolType == ToolType.MILK_PAIL || toolType == ToolType.SHEAR)
-            return;
+            return false;
 
-        if (toolLevel == ToolLevel.IRIDIUM)
-            return;
+        return toolLevel != ToolLevel.IRIDIUM;
+    }
 
-        toolLevel = ToolLevel.values()[toolLevel.ordinal() + 1];
+    public void upgrade() {
+        if (isUpgradable())
+            toolLevel = ToolLevel.values()[toolLevel.ordinal() + 1];
     }
 }

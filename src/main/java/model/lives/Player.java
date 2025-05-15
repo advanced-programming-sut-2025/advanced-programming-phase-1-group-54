@@ -1,16 +1,15 @@
-package model.alive;
+package model.lives;
 
-import controller.Game.PlantsController;
 import model.DailyUpdate;
-import model.Refrigerator;
-import model.Skill;
+import model.DateTime;
+import model.HourUpdate;
+import model.map.Refrigerator;
 import model.User;
-import model.enums.FishingPoleLevel;
+import model.enums.FishingPoleType;
 import model.enums.SkillType;
 import model.enums.Symbol;
 import model.enums.ToolType;
 import model.items.crafting.ProducerArtisan;
-import model.items.plants.Plant;
 import model.items.recipes.Recipe;
 import model.items.tools.BackPack;
 import model.items.tools.FishingPole;
@@ -18,7 +17,6 @@ import model.items.tools.Tool;
 import model.items.tools.TrashCan;
 import model.map.Farm;
 import model.map.Location;
-import model.map.Tile;
 import model.relationships.Gift;
 import model.relationships.Trade;
 
@@ -26,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Player extends Human implements DailyUpdate {
+public class Player extends Human implements DailyUpdate, HourUpdate {
     private static final int MAXIMUM_ENERGY = 200;
 
     public static int getMaximumEnergy() {
@@ -47,12 +45,12 @@ public class Player extends Human implements DailyUpdate {
     private final TrashCan trashCan = new TrashCan();
 
     private final Tool[] tools = new Tool[ToolType.values().length];
-    private final FishingPole[] fishingPoles = new FishingPole[FishingPoleLevel.values().length];
+    private final FishingPole[] fishingPoles = new FishingPole[FishingPoleType.values().length];
+    private final Skill[] skills = new Skill[SkillType.values().length];
 
     private Tool equippedTool;
 
     private Location currentLocation;
-    private final HashMap<Plant, Tile> plants = new HashMap<>();
 
     private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>() {{
         add(Recipe.foodRecipes.get("Fried Egg Recipe"));
@@ -74,7 +72,6 @@ public class Player extends Human implements DailyUpdate {
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
     private final HashMap<String, Animal> animals = new HashMap<>();
-    private final HashMap<SkillType, Skill> skills;
 
     private SkillType buffSkill;
     private int buffHours;
@@ -87,13 +84,12 @@ public class Player extends Human implements DailyUpdate {
         this.farm = farm;
         this.money = 0;
         this.isInGiftList = false;
-        this.skills = new HashMap<>();
         this.heartBroken = 0;
         this.energy = MAXIMUM_ENERGY;
-        skills.put(SkillType.FARMING, new Skill(SkillType.FARMING));
-        skills.put(SkillType.FORAGING, new Skill(SkillType.FORAGING));
-        skills.put(SkillType.MINING, new Skill(SkillType.MINING));
-        skills.put(SkillType.FISHING, new Skill(SkillType.FISHING));
+        
+        for (SkillType skilltype : SkillType.values()) {
+            skills[skilltype.ordinal()] = new Skill(skilltype);
+        }
         // TODO
     }
 
@@ -109,12 +105,12 @@ public class Player extends Human implements DailyUpdate {
         tools[toolType.ordinal()] = tool;
     }
 
-    public FishingPole getFishingPole(FishingPoleLevel fishingPoleLevel) {
-        return fishingPoles[fishingPoleLevel.ordinal()];
+    public FishingPole getFishingPole(FishingPoleType fishingPoleType) {
+        return fishingPoles[fishingPoleType.ordinal()];
     }
 
-    public void setFishingPole(FishingPoleLevel fishingPoleLevel, FishingPole fishingPole) {
-        fishingPoles[fishingPoleLevel.ordinal()] = fishingPole;
+    public void setFishingPole(FishingPoleType fishingPoleType, FishingPole fishingPole) {
+        fishingPoles[fishingPoleType.ordinal()] = fishingPole;
     }
 
     public int getMoney() {
@@ -128,8 +124,8 @@ public class Player extends Human implements DailyUpdate {
         }
     }
 
-    public HashMap<SkillType, Skill> getSkills() {
-        return skills;
+    public Skill getSkill(SkillType skillType) {
+        return skills[skillType.ordinal()];
     }
 
     public User getControllingUser() {
@@ -159,20 +155,12 @@ public class Player extends Human implements DailyUpdate {
         return buffSkill;
     }
 
-    public int getBuffHours() {
-        return buffHours;
-    }
-
     public Tool getEquippedTool() {
         return equippedTool;
     }
 
     public Location getCurrentLocation() {
         return currentLocation;
-    }
-
-    public HashMap<Plant, Tile> getPlants() {
-        return plants;
     }
 
     public ArrayList<Recipe> getLearnedFoodRecipes() {
@@ -241,13 +229,19 @@ public class Player extends Human implements DailyUpdate {
     }
 
     public void decreaseEnergy(int amount) {
-        if (!unlimitedEnergy)
+        if (!unlimitedEnergy) {
             energy -= amount;
+            if (energy < 0)
+                energy = 0;
+        }
     }
 
     public void increaseEnergy(int amount) {
-        if (unlimitedEnergy)
+        if (!unlimitedEnergy) {
             energy += amount;
+            if (energy > MAXIMUM_ENERGY)
+                energy = MAXIMUM_ENERGY;
+        }
     }
 
     public boolean isUnlimitedEnergy() {
@@ -274,10 +268,6 @@ public class Player extends Human implements DailyUpdate {
 
     public void setBuffSkill(SkillType buffSkill) {
         this.buffSkill = buffSkill;
-    }
-
-    public void decreaseBuffHours(int buffHours) {
-        this.buffHours -= buffHours;
     }
 
     public void setBuffHours(int buffHours) {
@@ -334,14 +324,13 @@ public class Player extends Human implements DailyUpdate {
 
     @Override
     public void nextDayUpdate() {
-        for (Animal animal : animals.values()) {
-            animal.nextDayUpdate();
+        buffHours -= DateTime.getNightTime();
+        if (buffHours <= 0) {
+            buffSkill = null;
         }
 
-        for (Plant plant : plants.keySet()) {
-            if (plant.isDead()) {
-                plants.remove(plant);
-            }
+        for (Animal animal : animals.values()) {
+            animal.nextDayUpdate();
         }
 
         if (this.isFallen())
@@ -364,10 +353,10 @@ public class Player extends Human implements DailyUpdate {
             return this.energy > energyAmount;
         }
         else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
-                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+                this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY){
             return this.energy > energyAmount - 2;
         }
-        else if(this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+        else if(this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY){
             return this.energy > energyAmount - 1;
         }
         else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
@@ -386,10 +375,10 @@ public class Player extends Human implements DailyUpdate {
             this.energy -= energyAmount;
         }
         else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
-                this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+                this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY){
             this.energy -= energyAmount - 2;
         }
-        else if(this.getSkills().get(skillType).getLevel() == MAXIMUM_ENERGY){
+        else if(this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY){
             this.energy -= energyAmount - 1;
         }
         else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
@@ -404,5 +393,13 @@ public class Player extends Human implements DailyUpdate {
     @Override
     public Symbol getSymbol() {
         return Symbol.PLAYER;
+    }
+
+    @Override
+    public void nextHourUpdate() {
+        buffHours--;
+        if (buffHours <= 0) {
+            buffSkill = null;
+        }
     }
 }

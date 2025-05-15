@@ -9,18 +9,6 @@ public class GameController {
         return null;
     }
 
-    public static Result showAllShopProducts() {
-        return null;
-    }
-
-    public static Result showAllAvailableShopProducts() {
-        return null;
-    }
-
-    public static Result purchaseProduct(String productName, int count) {
-        return null;
-    }
-
     public static Result sellProduct(String productName, int count) {
         return null;
     }
