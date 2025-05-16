@@ -11,7 +11,7 @@ public enum Symbol {
     BARN(Color.CYAN_FONT + "B" + Color.DEFAULT),
     COOP(Color.CYAN_FONT + "C" + Color.DEFAULT),
 
-    LAKE(Color.GRAY_FONT + "~" + Color.DEFAULT),
+    WATER(Color.GRAY_FONT + "~" + Color.DEFAULT),
     WATER_TANK(Color.BLUE_FONT + "W" + Color.DEFAULT),
     TREE(Color.GREEN_FONT + "T" + Color.DEFAULT),
     ANIMAL(Color.RED_FONT + "A" + Color.DEFAULT),

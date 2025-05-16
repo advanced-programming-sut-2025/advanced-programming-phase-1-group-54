@@ -1,8 +1,10 @@
 package controller.Game;
 
 import model.App;
-import model.Refrigerator;
-import model.alive.Player;
+import model.Game;
+import model.map.Refrigerator;
+import model.Result;
+import model.lives.Player;
 import model.enums.ProduceQuality;
 import model.items.*;
 import model.items.crafting.Produce;
@@ -14,6 +16,92 @@ import model.items.tools.BackPack;
 
 
 public class CommonGameController {
+    public static Result exitGame() {
+        App.setCurrentGame(null);
+        return new Result(true, "exited game");
+    }
+
+    public static Result deleteGame() {
+        return null;
+    }
+
+    // TODO add functions for "force terminate"
+
+    public static Result passOut() {
+        App.getCurrentGame().getCurrentPlayer().setEnergy(0);
+        return new Result(true, "you passed out!" + nextTurn().message());
+    }
+
+    public static Result nextTurn() {
+        Game game = App.getCurrentGame();
+        game.nextTurn();
+        String notification = getNotification();
+        return new Result(true, String.format("it is %s's turn",
+                game.getCurrentPlayer().getControllingUser().getUsername()) + notification);
+    }
+
+    private static String getNotification() {
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+
+        StringBuilder messageBuilder = new StringBuilder();
+
+        if (!player.getReceivedTrades().isEmpty()){
+            messageBuilder.append("\nYou have some trade to do");
+        }
+        if (!player.getReceivedGifts().isEmpty()){
+            messageBuilder.append("\nYou have some gift to open");
+        }
+        if (!(player.getReceivedRequests()).isEmpty()){
+            messageBuilder.append("\nYou have some marriage proposal");
+        }
+
+        return messageBuilder.toString();
+    }
+
+    public static Result showTime() {
+        Game game = App.getCurrentGame();
+        return new Result(true, String.format("%d o'clock", game.getDateTime().getHour()));
+    }
+
+    public static Result showDate() {
+        Game game = App.getCurrentGame();
+        return new Result(true, String.format("%d/%s/%d",
+                game.getDateTime().getYear(), game.getDateTime().getSeason().toString().toLowerCase(), game.getDateTime().getDay()));
+    }
+
+    public static Result showDateTime() {
+        return new Result(true, showDate().message() + ' ' + showTime().message());
+
+    }
+
+    public static Result showDayOfWeek() {
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getDateTime().getWeekDay().toString().toLowerCase());
+    }
+
+    public static Result showSeason() {
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getDateTime().getSeason().toString().toLowerCase());
+    }
+
+    public static Result showWeather() {
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getCurrentWeather().toString().toLowerCase());
+    }
+
+    public static Result showWeatherForecast() {
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getTomorrowWeather().toString().toLowerCase());
+    }
+
+    public static Result showEnergy() {
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+
+        return new Result(true, String.format("you have %d energy left.", player.getEnergy()));
+    }
+
 
     public static Item findItem(String ItemName){
 
@@ -380,5 +468,130 @@ public class CommonGameController {
     public static void acceptMarriage(Player player){
         //TODO zaminashono ok kon @korosh
     }
+    //TODO check baghal ham. ham bra player ham bra satl
+    public static Result sell(String product, int count) {
+        //next to each other
+        Fish fish = Fish.getFish(product);
+        if (fish != null) {
+            if (count != 1) {
+                if (removeItemFromInventory(fish,count) == false){
+                    return new Result(false,"not enough products");
+                }
+            }
+            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish) == 0){
+                return new Result(false,"not enough products");
+            }
+            else{
+                int money = 0;
+                if(count == -1){
+                     money = (int)(fish.getBaseSellPrice() * fish.getQuality().getValue())
+                            * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish);
+                }
+                else{
+                     money = (int)(fish.getBaseSellPrice() * fish.getQuality().getValue()) * count;
+                }
+                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+                return new Result(true,"item sold successfully");
+            }
+        }
+        Fruit fruit = Fruit.getFruit(product);
+        if (fruit != null) {
+            if (count != 1) {
+                if (removeItemFromInventory(fruit,count) == false){
+                    return new Result(false,"not enough products");
+                }
+            }
+            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit) == 0){
+                return new Result(false,"not enough products");
+            }
+            else{
+                int money = 0;
+                if(count == -1){
+                    money = (int)(fruit.getBaseSellPrice() * fruit.getQuality().getValue())
+                            * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit);
+                }
+                else{
+                    money = (int)(fish.getBaseSellPrice() * fruit.getQuality().getValue()) * count;
+                }
+                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+                return new Result(true,"item sold successfully");
+            }
+        }
 
+        //Artisan artisan =
+        Food food = Food.getFood(product);
+        if (food != null) {
+            if (count != 1) {
+                if (removeItemFromInventory(food,count) == false){
+                    return new Result(false,"not enough products");
+                }
+            }
+            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food) == 0){
+                return new Result(false,"not enough products");
+            }
+            else{
+                int money = 0;
+                if(count == -1){
+                    money = food.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food);
+                }
+                else{
+                    money = food.getBaseSellPrice() * count;
+                }
+                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+                return new Result(true,"item sold successfully");
+            }
+        }
+        Produce produce = Produce.getProduce(product);
+        if (produce != null) {
+            if (count != 1) {
+                if (removeItemFromInventory(produce,count) == false){
+                    return new Result(false,"not enough products");
+                }
+            }
+            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce) == 0){
+                return new Result(false,"not enough products");
+            }
+            else{
+                int money = 0;
+                if(count == -1){
+                    money = produce.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce);
+                }
+                else{
+                    money = produce.getBaseSellPrice() * count;
+                }
+                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+                return new Result(true,"item sold successfully");
+            }
+        }
+        UnProducerArtisan unproduce = UnProducerArtisan.getUnProducerArtisan(product);
+        if (unproduce != null) {
+            if (count != 1) {
+                if (removeItemFromInventory(unproduce,count) == false){
+                    return new Result(false,"not enough products");
+                }
+            }
+            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(unproduce) == 0){
+                return new Result(false,"not enough products");
+            }
+            else{
+
+                int money = 0;
+                if(count == -1){
+                    money = unproduce.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(unproduce);
+                }
+                else{
+                    money = unproduce.getBaseSellPrice() * count;
+                }
+                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+                return new Result(false,"item sold successfully");
+            }
+        }
+        return new Result(false,"you can't sell this product");
+    }
+    public static void nextDayMoney() {
+        for(Player player : App.getCurrentGame().getPlayers()){
+            player.increaseMoney(player.getNextDayMoney());
+            player.setNextDayMoney(0);
+        }
+    }
 }

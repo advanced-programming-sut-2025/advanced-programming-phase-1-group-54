@@ -4,12 +4,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import model.Building.Cabin;
-import model.Building.GreenHouse;
-import model.alive.Player;
+import model.items.Material;
+import model.map.Cabin;
+import model.map.GreenHouse;
+import model.lives.Player;
 import model.enums.Feature;
 import model.map.*;
-import org.json.JSONArray;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,6 +17,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class FarmBuilder {
+    private static final int NUMBER_OF_FORAGING_MATERIAL = 2;
+    private static final int NUMBER_OF_FORAGING_CROP = 10;
+
     private static Location location;
     private static Player owner;
 
@@ -88,8 +91,8 @@ public class FarmBuilder {
 
     public static Cabin buildCabin() {
         Cabin cabin = new Cabin(cabinLocation);
-        for (int x = 0; x < Cabin.getNumberOfRows(); x++) {
-            for (int y = 0; y < Cabin.getNumberOfColumns(); y++) {
+        for (int x = 0; x < cabin.getNumberOfRows(); x++) {
+            for (int y = 0; y < cabin.getNumberOfColumns(); y++) {
                 Location location = cabinLocation.add(new Location(x, y));
                 tiles[location.row()][location.column()].setThingOnTile(cabin);
             }
@@ -99,8 +102,8 @@ public class FarmBuilder {
 
     private static GreenHouse buildGreenHouse() {
         GreenHouse greenHouse = new GreenHouse(greenHouseLocation);
-        for (int x = 0; x < GreenHouse.getNumberOfRows(); x++) {
-            for (int y = 0; y < GreenHouse.getNumberOfColumns(); y++) {
+        for (int x = 0; x < greenHouse.getNumberOfRows(); x++) {
+            for (int y = 0; y < greenHouse.getNumberOfColumns(); y++) {
                 Location location = greenHouseLocation.add(new Location(x, y));
                 tiles[location.row()][location.column()].setThingOnTile(greenHouse);
             }
@@ -115,7 +118,7 @@ public class FarmBuilder {
             for (int row = lakeAreas[t].upperLeftLocation().row(); row <= lakeAreas[t].lowerRightLocation().row(); row++) {
                 for (int column = lakeAreas[t].upperLeftLocation().column(); column <= lakeAreas[t].lowerRightLocation().column(); column++) {
                     tiles[row][column].setThingOnTile(lakes[t]);
-                    tiles[row][column].addFeature(Feature.WATERED);
+                    tiles[row][column].addFeature(Feature.WATER);
                 }
             }
         }
@@ -131,7 +134,25 @@ public class FarmBuilder {
             }
         }
 
+        for (int i = 1; i <= NUMBER_OF_FORAGING_MATERIAL; i++) {
+            quarry.foragingMaterial();
+        }
+
         return quarry;
+    }
+
+    public static void placeRandomStuff(Farm farm) {
+        for (int i = 1; i <= NUMBER_OF_FORAGING_CROP; i++) {
+            farm.foragingCrop();
+        }
+
+        for (int i = 0; i < Farm.getNumberOfRows(); i++) {
+            for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
+                if ((int) (Math.random() * 100) < 5) {
+                    tiles[i][j].setThingOnTile(Material.getMaterial("Wood"));
+                }
+            }
+        }
     }
 
     public static Farm getResult() {
@@ -146,9 +167,9 @@ public class FarmBuilder {
         Lake[] lakes = buildLakes();
         Quarry quarry = buildQuarry();
 
-        // TODO tree, foraging, random stuff
+        Farm farm = new Farm(location, greenHouse, cabin, quarry, lakes, new Map(Farm.getNumberOfRows(), Farm.getNumberOfColumns(), tiles));
+        placeRandomStuff(farm);
 
-        Farm farm = new Farm(owner, location, greenHouse, cabin, quarry, lakes, new Map(Farm.getNumberOfRows(), Farm.getNumberOfColumns(), tiles));
         FarmBuilder.reset();
         return farm;
     }

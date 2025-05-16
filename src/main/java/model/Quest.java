@@ -1,6 +1,6 @@
 package model;
 
-import model.alive.NPC;
+import model.lives.NPC;
 import model.items.Item;
 
 public class Quest {

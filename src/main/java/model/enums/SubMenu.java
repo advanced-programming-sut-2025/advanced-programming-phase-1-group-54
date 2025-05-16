@@ -2,7 +2,6 @@ package model.enums;
 
 import view.game.DefaultMenu;
 import view.game.GameSubMenu;
-import view.game.NPCHouseMenu;
 
 import java.util.Scanner;
 

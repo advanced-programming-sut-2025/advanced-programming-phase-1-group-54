@@ -1,30 +1,28 @@
 package model.relationships;
 
 import model.App;
-import model.alive.Player;
+import model.lives.Player;
+import model.items.UniqueItem;
 
 import java.util.ArrayList;
 
 public class PlayerRelationship extends Friendship {
-    private Player player1;
-    private Player player2;
-    private ArrayList<Talk> talkHistory;
-    private ArrayList<Gift> giftHistory;
+    private final Player player1;
+    private final Player player2;
+    private final ArrayList<Talk> talkHistory = new ArrayList<>();
+    private final ArrayList<Gift> giftHistory = new ArrayList<>();
+    private final ArrayList<Trade> tradeHistory = new ArrayList<>();
     private int giftDailyCount;
     private int hugDailyCount;
     private int talkDailyCount;
     private int partnerDailyCount;
-    //TODO  private ring
+
+    private UniqueItem ring;
 
     public PlayerRelationship(Player player1, Player player2) {
         super();
         this.player1 = player1;
         this.player2 = player2;
-        this.talkHistory = new ArrayList<>();
-        this.giftHistory = new ArrayList<>();
-        this.giftDailyCount = 0;
-        this.hugDailyCount = 0;
-        this.talkDailyCount = 0;
     }
 
     public int getGiftDailyCount() {
@@ -54,36 +52,48 @@ public class PlayerRelationship extends Friendship {
         talkDailyCount++;
     }
 
-    public Player getPlayer1() {
-        return player1;
+    public void setGiftDailyCount(int giftDailyCount) {
+        this.giftDailyCount = giftDailyCount;
     }
 
-    public void setPlayer1(Player player1) {
-        this.player1 = player1;
+    public void setHugDailyCount(int hugDailyCount) {
+        this.hugDailyCount = hugDailyCount;
+    }
+
+    public void setTalkDailyCount(int talkDailyCount) {
+        this.talkDailyCount = talkDailyCount;
+    }
+
+    public void setPartnerDailyCount(int partnerDailyCount) {
+        this.partnerDailyCount = partnerDailyCount;
+    }
+
+    public UniqueItem getRing() {
+        return ring;
+    }
+
+    public void setRing(UniqueItem ring) {
+        this.ring = ring;
+    }
+
+    public ArrayList<Trade> getTradeHistory() {
+        return tradeHistory;
+    }
+
+    public Player getPlayer1() {
+        return player1;
     }
 
     public ArrayList<Talk> getTalkHistory() {
         return talkHistory;
     }
 
-    public void setTalkHistory(ArrayList<Talk> talkHistory) {
-        this.talkHistory = talkHistory;
-    }
-
     public Player getPlayer2() {
         return player2;
     }
 
-    public void setPlayer2(Player player2) {
-        this.player2 = player2;
-    }
-
     public ArrayList<Gift> getGiftHistory() {
         return giftHistory;
-    }
-
-    public void setGiftHistory(ArrayList<Gift> giftHistory) {
-        this.giftHistory = giftHistory;
     }
 
     //TODO public void setring ()

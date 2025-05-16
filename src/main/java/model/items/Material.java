@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.Placeable;
 import model.enums.Symbol;
-import model.items.plants.Fruit;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

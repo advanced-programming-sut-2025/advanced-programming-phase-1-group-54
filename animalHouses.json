@@ -1,13 +1,13 @@
 {
   "Barn": {
-    "Name": "Barn",
+    "name": "Barn",
     "animals": [
       "Cow"
     ],
     "numberOfAnimals": 4
   },
   "Big Barn": {
-    "Name": "Big Barn",
+    "name": "Big Barn",
     "animals": [
       "Cow",
       "Goat"
@@ -15,14 +15,14 @@
     "numberOfAnimals": 8
   },
   "Coop": {
-    "Name": "Coop",
+    "name": "Coop",
     "animals": [
       "Hen"
     ],
     "numberOfAnimals": 4
   },
   "Deluxe Barn": {
-    "Name": "Deluxe Barn",
+    "name": "Deluxe Barn",
     "animals": [
       "Cow",
       "Goat",
@@ -32,7 +32,7 @@
     "numberOfAnimals": 12
   },
   "Big Coop": {
-    "Name": "Big Coop",
+    "name": "Big Coop",
     "animals": [
       "Hen",
       "Duck",
@@ -41,7 +41,7 @@
     "numberOfAnimals": 8
   },
   "Deluxe Coop": {
-    "Name": "Deluxe Coop",
+    "name": "Deluxe Coop",
     "animals": [
       "Hen",
       "Duck",

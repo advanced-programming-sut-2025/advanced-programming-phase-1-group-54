@@ -1,6 +1,7 @@
 package model.enums.commands;
 
 public enum CheatCode implements Command {
+    ADD_MONEY("cheat add (?<count>\\S) dollars")
     ; // TODO
 
     private final String regex;

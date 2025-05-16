@@ -1,10 +1,10 @@
 package controller.Game;
 
 import model.App;
-import model.Building.Cabin;
-import model.Refrigerator;
+import model.map.Cabin;
+import model.map.Refrigerator;
 import model.Result;
-import model.alive.Player;
+import model.lives.Player;
 import model.items.Food;
 import model.items.Item;
 import model.items.recipes.Recipe;
@@ -101,12 +101,19 @@ public class FoodController {
 
     public static Result moveToRefrigerator(String itemName ,int number){
 
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
+
+        if(! (tile.getThingOnTile() instanceof Cabin cabin)){
+            return new Result(-1,"You are not in Cabin");
+        }
+
         Item item = CommonGameController.findItem(itemName);
         if(item == null){
             return new Result(-1, "Item doesn't exist");
         }
 
-        Refrigerator refrigerator = App.getCurrentGame().getCurrentPlayer().getRefrigerator();
+        Refrigerator refrigerator = cabin.getRefrigerator();
         BackPack backPack = App.getCurrentGame().getCurrentPlayer().getBackpack();
 
         if(! refrigerator.addItem(item,number).success()){
