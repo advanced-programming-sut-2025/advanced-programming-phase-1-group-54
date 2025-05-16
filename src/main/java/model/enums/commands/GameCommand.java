@@ -46,6 +46,11 @@ public enum GameCommand implements Command {
     TRADE_LIST("trade list"),
     TRADE_RESPONSE("trade response (?<answer>(–accept|–reject)) -i (?<id>\\d)"),
     TRADE_HISTORY("trade history"),
+    MEET_NPC("meet NPC (?<npc_name>\\S)"),
+    GIFT_NPC("gift NPC (?<npc_name>\\S) -i (?<item>\\S)"),
+    FRIENDSHIP_NPC_LIST("friendship NPC list"),
+    QUEST_LIST("quests list"),
+    QUEST_FINISH("quests finish -i (?<index>\\S)"),
     EXIT("exit")
     ;
     private final String regex;
