@@ -4,6 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="Trade added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="major updates">
       <change afterPath="$PROJECT_DIR$/src/main/java/controller/Game/ShopsController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/model/enums/FishingPoleType.java" afterDir="false" />
@@ -196,6 +199,7 @@
       <workItem from="1747056717632" duration="490000" />
       <workItem from="1747161513398" duration="2176000" />
       <workItem from="1747165191149" duration="7057000" />
+      <workItem from="1747172699186" duration="16830000" />
       <workItem from="1747233139067" duration="41485000" />
       <workItem from="1747303498996" duration="9253000" />
     </task>
@@ -591,6 +595,79 @@
       <option name="project" value="LOCAL" />
       <updated>1747258598773</updated>
     </task>
+    <task id="LOCAL-00063" summary="commands added">
+      <option name="closed" value="true" />
+      <created>1747181133580</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1747181133580</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Sell method added">
+      <option name="closed" value="true" />
+      <created>1747181167765</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1747181167765</updated>
+    </task>
+    <task id="LOCAL-00065" summary="sell next day money update">
+      <option name="closed" value="true" />
+      <created>1747181201348</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1747181201348</updated>
+    </task>
+    <task id="LOCAL-00066" summary="xml">
+      <option name="closed" value="true" />
+      <created>1747181217129</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1747181217129</updated>
+    </task>
+    <task id="LOCAL-00067" summary="commands added">
+      <option name="closed" value="true" />
+      <created>1747190214230</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1747190214231</updated>
+    </task>
+    <task id="LOCAL-00068" summary="notif">
+      <option name="closed" value="true" />
+      <created>1747190239486</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1747190239486</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Commands added">
+      <option name="closed" value="true" />
+      <created>1747190270835</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1747190270835</updated>
+    </task>
+    <task id="LOCAL-00070" summary="notif every turn for marriage and rtc">
+      <option name="closed" value="true" />
+      <created>1747190290443</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1747190290443</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Trade added">
+      <option name="closed" value="true" />
+      <created>1747190312122</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1747190312122</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <option name="localTasksCounter" value="60" />
     <servers />
   </component>
@@ -644,6 +721,17 @@
     <MESSAGE value="complete foraging minerals method" />
     <MESSAGE value="beautify code" />
     <MESSAGE value="npc shpo controller added" />
+    <MESSAGE value="commands completed" />
+    <MESSAGE value="shops update every day" />
+    <MESSAGE value="update every shop method added" />
+    <MESSAGE value="Sell method added" />
+    <MESSAGE value="sell next day money update" />
+    <MESSAGE value="xml" />
+    <MESSAGE value="commands added" />
+    <MESSAGE value="trade added" />
+    <MESSAGE value="notif every turn for marriage and rtc" />
+    <MESSAGE value="Trade added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trade added" />
     <MESSAGE value="some changes" />
     <MESSAGE value="major updates" />
     <option name="LAST_COMMIT_MESSAGE" value="major updates" />
