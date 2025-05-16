@@ -93,6 +93,9 @@ public class Material extends Item implements Placeable,Cloneable {
         material = new Material("Stone", 0);
         materialsType.put(material.getName(), material);
 
+        material = new Material("Fiber", 0);
+        materialsType.put(material.getName(), material);
+
         material = new Material("Quartz", 25);
         materialsType.put(material.getName(), material);
         foragingMaterialsType.add(material.getName());

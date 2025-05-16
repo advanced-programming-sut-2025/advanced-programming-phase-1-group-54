@@ -171,6 +171,12 @@ public class PlantsController {
         if(placeable == null){
             return new Result(-1,"Does not exist any plant on the tile");
         }
+        if(placeable instanceof Fruit fruit){
+            if(! game.getCurrentPlayer().getBackpack().removeItem(fruit,1)){
+                return new Result(-1,"Backpack is full");
+            }
+            return new Result(1,"you got 1 " + fruit.getName());
+        }
         if(placeable instanceof Tree tree){
             if(tree.isFruitIsRipen()){
                 game.getCurrentPlayer().getBackpack().addItem(Fruit.getFruit(tree.getFruit()),1);
@@ -191,10 +197,12 @@ public class PlantsController {
                     crop.setFruitIsRipen(false);
                     crop = (Crop) game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
                     crop.setFruitIsRipen(false);
+                    return new Result(1,"You get 10 " + crop.getFruit());
                 }
                 else{
                     game.getCurrentPlayer().getBackpack().addItem(Fruit.getFruit(crop.getFruit()),1);
                     crop.setFruitIsRipen(false);
+                    return new Result(1,"You get 1 " + crop.getFruit());
                 }
             }
             return new Result(1,"fruit has not ripen");
@@ -305,8 +313,8 @@ public class PlantsController {
             return new Result(-1,"You do not have Seed");
         }
 
-        if(tile.getThingOnTile() instanceof GreenHouse greenHouse){
-         tile = tile.getTop();
+        if(tile.getThingOnTile() instanceof GreenHouse ){
+            tile = tile.getTop();
         }
 
         if(! tile.getFeatures().contains(Feature.PLOWED)){
@@ -323,18 +331,35 @@ public class PlantsController {
         if(tree != null){
             currentPlayer.getPlants().put(tree,tile);
             tile.setThingOnTile(tree);
+            if(tile.getFeatures().contains(Feature.SPEEDFERTILIZE)){
+                tree.grow(currentPlayer);
+                tile.getFeatures().remove(Feature.SPEEDFERTILIZE);
+            }
+            if(tile.getFeatures().contains(Feature.WATERFERTILIZE)){
+                tree.setFertilized(true);
+                tile.getFeatures().remove(Feature.WATERFERTILIZE);
+            }
         }
 
         Crop crop = Crop.getCrop(seed.getPlant());
         if(crop != null){
+            if(tile.getFeatures().contains(Feature.SPEEDFERTILIZE)){
+                crop.grow(currentPlayer);
+                tile.getFeatures().remove(Feature.SPEEDFERTILIZE);
+            }
+            if(tile.getFeatures().contains(Feature.WATERFERTILIZE)){
+                crop.setFertilized(true);
+                tile.getFeatures().remove(Feature.WATERFERTILIZE);
+            }
             if(!cropCanBeGiant(crop,location)){
                 currentPlayer.getPlants().put(crop,tile);
                 tile.setThingOnTile(crop);
             }
         }
 
-        System.out.println("EROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOR");
-        return null;
+        tile.getFeatures().remove(Feature.PLOWED);
+
+        return new Result(1,"plantingSeed successfully");
     }
 
     private boolean cropCanBeGiant(Crop crop, Location location){
