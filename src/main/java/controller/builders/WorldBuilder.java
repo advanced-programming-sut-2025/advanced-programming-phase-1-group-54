@@ -1,18 +1,6 @@
 package controller.builders;
 
-import controller.Game.DataBaseController;
-import model.App;
-import model.items.ShopItem;
-import model.lives.Human;
-import model.lives.NPC;
 import model.map.*;
-import model.map.Shops.*;
-import org.json.JSONArray;
-import org.json.JSONTokener;
-
-import java.io.*;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 
 public class WorldBuilder {
     static final Location[] farmLocation = {

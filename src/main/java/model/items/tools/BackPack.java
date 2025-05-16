@@ -30,21 +30,17 @@ public class BackPack {
         Integer numberOfItem = numberOfItemInBackPack.get(item);
         if(numberOfItem == null){
             return false;
-//            return new Result(-1,"You do not have " + item.getName() + " in your backpack");
         }
         else if (Objects.equals(number, numberOfItem)) {
             numberOfItemInBackPack.remove(item);
             return true;
-//            return new Result(1,number + item.getName() + "Removed completely from backpack");
         }
         else if(numberOfItem > number){
             numberOfItemInBackPack.put(item,numberOfItem - number);
             return true;
-//            return new Result(1,number + item.getName() + " Removed from backpack");
         }
         else {
             return false;
-//            return new Result(-1,"You do not have enough " + item.getName() + " to remove from backpack");
         }
     }
 

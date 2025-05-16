@@ -84,6 +84,9 @@ public class ToolsController {
     }
 
     public static Result useTool(Direction direction) {
+        if (direction == null)
+            return new Result(false, "invalid direction");
+
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
         Farm farm = game.getWorld().getFarmAt(player.getCurrentLocation());
@@ -109,9 +112,6 @@ public class ToolsController {
             if (tile.getThingOnTile() == null || !tile.getThingOnTile().equals(playerBuilding)) {
                 return new Result(false, "you should go out of building to use this tool on this tile");
             }
-
-            playerTile = playerTile.getTop();
-            tile = tile.getTop();
         } else if (tile.getThingOnTile() != null && tile.getThingOnTile() instanceof Building) {
             return new Result(false, "you should go in building to use this tool on this tile");
         }

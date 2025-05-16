@@ -54,7 +54,7 @@ public class FishingController {
         StringBuilder message = new StringBuilder("Starting fishing ...");
 
         for (int i = 0; i < numberOfFishes; i++) {
-            ProduceQuality quality = CommonGameController.
+            ProduceQuality quality = ProduceQuality.
                     giveQuality(Math.random() * (skillLevel + 2) * poleFactor / (7 - weatherFactor));
 
 

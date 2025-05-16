@@ -98,14 +98,9 @@ public class CraftingController {
     }
 
     // TODO
-    public static Result placeArtisan(String artisanName,String directionString){
-
-        Direction direction;
-        try{
-            direction = Direction.valueOf(directionString);
-        }catch(IllegalArgumentException e){
-            return new Result(-1,"Invalid direction");
-        }
+    public static Result placeArtisan(String artisanName, Direction direction){
+        if (direction == null)
+            return new Result(false, "invalid direction");
 
         Player player = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarm(player);

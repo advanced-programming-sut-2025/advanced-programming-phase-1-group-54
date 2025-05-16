@@ -113,7 +113,7 @@ public class App {
 
         for (Game game : games) {
             for (Player player : game.getPlayers()) {
-                if (player.getControllingUser() == user)
+                if (player.getControllingUser().equals(user))
                     return game;
             }
         }

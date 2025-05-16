@@ -42,8 +42,8 @@ public class AnimalController {
         Player player = App.getCurrentGame().getCurrentPlayer();
         StringBuilder output = new StringBuilder();
         for(Animal animal : player.getAnimals().values()) {
-            output.append(animal.getName()).append("\n").
-                    append(animal.getAnimalName()).append("\n").
+            output.append(animal.getAnimalName()).append(" ").
+                    append(animal.getName()).append("\n").
                     append("friendship level: ").append(animal.getFriendshipLevel()).append("\n").
                     append("caressed: ").append(animal.isCaressed()).append("\n").
                     append("hungry").append(animal.isHungry()).append("\n").
@@ -103,7 +103,7 @@ public class AnimalController {
 
         animal.setHungry(false);
 
-        return new Result(1,"animal " + animalName + " has feeded successfully");
+        return new Result(1,"animal " + animalName + " was fed successfully");
     }
 
     public static Result showProducedAnimals() {
@@ -111,8 +111,8 @@ public class AnimalController {
         StringBuilder output = new StringBuilder();
         for(Animal animal : player.getAnimals().values()) {
             if(animal.getProduce() != null){
-                output.append(animal.getName()).append("\n").
-                        append(animal.getAnimalName()).append("\n").
+                output.append(animal.getAnimalName()).append("\n").
+                        append(animal.getName()).append("\n").
                         append(animal.getProduce().getName()).append("\n").
                         append("-------------------");
             }

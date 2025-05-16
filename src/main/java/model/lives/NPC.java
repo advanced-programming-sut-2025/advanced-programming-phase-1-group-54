@@ -6,7 +6,7 @@ import model.items.Item;
 
 import java.util.ArrayList;
 
-public class NPC extends Human {
+public class NPC extends Live {
     private String job;
     
     private ArrayList<String> dialogs;
