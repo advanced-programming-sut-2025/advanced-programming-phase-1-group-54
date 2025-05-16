@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="xml">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/relationships/Trade.java" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="Trade added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/FriendShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FriendShipController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/relationships/PlayerRelationship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/relationships/PlayerRelationship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,47 +130,7 @@
       <workItem from="1747056717632" duration="490000" />
       <workItem from="1747161513398" duration="2176000" />
       <workItem from="1747165191149" duration="7057000" />
-      <workItem from="1747172699186" duration="15895000" />
-    </task>
-    <task id="LOCAL-00018" summary="write writeToJson method Of Artisan Class and Produce Class">
-      <option name="closed" value="true" />
-      <created>1746208341125</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1746208341125</updated>
-    </task>
-    <task id="LOCAL-00019" summary="write writeToJson method Of Material Class">
-      <option name="closed" value="true" />
-      <created>1746208780315</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1746208780315</updated>
-    </task>
-    <task id="LOCAL-00020" summary="write writeToJson method Of Seed Class">
-      <option name="closed" value="true" />
-      <created>1746215903865</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1746215903865</updated>
-    </task>
-    <task id="LOCAL-00021" summary="write foraging Trees">
-      <option name="closed" value="true" />
-      <created>1746216305539</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1746216305539</updated>
-    </task>
-    <task id="LOCAL-00022" summary="edit writeToJson method of Seed Class">
-      <option name="closed" value="true" />
-      <created>1746216777704</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1746216777704</updated>
+      <workItem from="1747172699186" duration="16830000" />
     </task>
     <task id="LOCAL-00023" summary=" write to json foragingCrops">
       <option name="closed" value="true" />
@@ -530,7 +484,47 @@
       <option name="project" value="LOCAL" />
       <updated>1747181217129</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="commands added">
+      <option name="closed" value="true" />
+      <created>1747190214230</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1747190214231</updated>
+    </task>
+    <task id="LOCAL-00068" summary="notif">
+      <option name="closed" value="true" />
+      <created>1747190239486</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1747190239486</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Commands added">
+      <option name="closed" value="true" />
+      <created>1747190270835</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1747190270835</updated>
+    </task>
+    <task id="LOCAL-00070" summary="notif every turn for marriage and rtc">
+      <option name="closed" value="true" />
+      <created>1747190290443</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1747190290443</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Trade added">
+      <option name="closed" value="true" />
+      <created>1747190312122</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1747190312122</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -560,9 +554,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="String available added" />
-    <MESSAGE value="gifts added to player" />
-    <MESSAGE value="xml changes" />
     <MESSAGE value="method get player relainship added" />
     <MESSAGE value="gift menu added and gift class changed" />
     <MESSAGE value="Friendship between players handled" />
@@ -581,11 +572,14 @@
     <MESSAGE value="commands completed" />
     <MESSAGE value="shops update every day" />
     <MESSAGE value="update every shop method added" />
-    <MESSAGE value="commands added" />
     <MESSAGE value="Sell method added" />
     <MESSAGE value="sell next day money update" />
     <MESSAGE value="xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="xml" />
+    <MESSAGE value="commands added" />
+    <MESSAGE value="trade added" />
+    <MESSAGE value="notif every turn for marriage and rtc" />
+    <MESSAGE value="Trade added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trade added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
