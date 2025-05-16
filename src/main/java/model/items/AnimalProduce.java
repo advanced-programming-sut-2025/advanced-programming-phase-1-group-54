@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-public class AnimalProduce extends Item implements Cloneable{
+public class AnimalProduce extends Item implements Cloneable {
 
     private final static HashMap<String, AnimalProduce> animalProduces;
 
@@ -24,17 +24,17 @@ public class AnimalProduce extends Item implements Cloneable{
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        Type type = new TypeToken<HashMap<String, AnimalProduce>>(){}.getType();
-        animalProduces = gson.fromJson(file,type);
+        Type type = new TypeToken<HashMap<String, AnimalProduce>>() {
+        }.getType();
+        animalProduces = gson.fromJson(file, type);
         System.out.println(animalProduces.size());
     }
 
-    public static AnimalProduce getAnimalProduce(String name){
+    public static AnimalProduce getAnimalProduce(String name) {
         AnimalProduce animalProduce = animalProduces.get(name);
-        if(animalProduce == null){
+        if (animalProduce == null) {
             return null;
-        }
-        else {
+        } else {
             return animalProduce.clone();
         }
     }
@@ -54,11 +54,8 @@ public class AnimalProduce extends Item implements Cloneable{
     }
 
 
-
-
-
     @Override
-    public AnimalProduce clone()  {
+    public AnimalProduce clone() {
         try {
             return (AnimalProduce) super.clone();
         } catch (CloneNotSupportedException e) {
@@ -68,58 +65,58 @@ public class AnimalProduce extends Item implements Cloneable{
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof AnimalProduce animalProduce){
+        if (obj instanceof AnimalProduce animalProduce) {
             return this.getName().equals(animalProduce.getName()) && this.getQuality().equals(animalProduce.getQuality());
         }
         return false;
     }
 
-    public static void writeToJson(){
+    public static void writeToJson() {
 
         HashMap<String, AnimalProduce> animalProducesType = new HashMap<>();
 
-        AnimalProduce animalProduce ;
+        AnimalProduce animalProduce;
 
-        animalProduce = new AnimalProduce("Egg", true,50);
+        animalProduce = new AnimalProduce("Egg", true, 50);
         animalProducesType.put("Egg", animalProduce);
 
-        animalProduce = new AnimalProduce("Large Egg", true,95);
+        animalProduce = new AnimalProduce("Large Egg", true, 95);
         animalProducesType.put("Large Egg", animalProduce);
 
-        animalProduce = new AnimalProduce("Duck Egg", true,95);
+        animalProduce = new AnimalProduce("Duck Egg", true, 95);
         animalProducesType.put("Duck Egg", animalProduce);
 
-        animalProduce = new AnimalProduce("Duck feather",false ,250);
+        animalProduce = new AnimalProduce("Duck feather", false, 250);
         animalProducesType.put("Duck feather", animalProduce);
 
-        animalProduce = new AnimalProduce("Wool", false,340);
+        animalProduce = new AnimalProduce("Wool", false, 340);
         animalProducesType.put("Wool", animalProduce);
 
-        animalProduce = new AnimalProduce("Rabbit Leg", false,565);
+        animalProduce = new AnimalProduce("Rabbit Leg", false, 565);
         animalProducesType.put("Rabbit Leg", animalProduce);
 
-        animalProduce = new AnimalProduce("Dinosaur Egg",true ,350);
+        animalProduce = new AnimalProduce("Dinosaur Egg", true, 350);
         animalProducesType.put("Dinosaur Egg", animalProduce);
 
-        animalProduce = new AnimalProduce("Milk", true,125);
+        animalProduce = new AnimalProduce("Milk", true, 125);
         animalProducesType.put("Milk", animalProduce);
 
-        animalProduce = new AnimalProduce("Large Milk",true ,190);
+        animalProduce = new AnimalProduce("Large Milk", true, 190);
         animalProducesType.put("Large Milk", animalProduce);
 
-        animalProduce = new AnimalProduce("Goat Milk",true ,225);
+        animalProduce = new AnimalProduce("Goat Milk", true, 225);
         animalProducesType.put("Goat Milk", animalProduce);
 
-        animalProduce = new AnimalProduce("Large Goat Milk",true ,345);
+        animalProduce = new AnimalProduce("Large Goat Milk", true, 345);
         animalProducesType.put("Large Goat Milk", animalProduce);
 
-        animalProduce = new AnimalProduce("Truffle",false ,625);
+        animalProduce = new AnimalProduce("Truffle", false, 625);
         animalProducesType.put("Truffle", animalProduce);
 
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        try (FileWriter file = new FileWriter("animalProduces.json")){
+        try (FileWriter file = new FileWriter("animalProduces.json")) {
             gson.toJson(animalProducesType, file);
         } catch (IOException e) {
             throw new RuntimeException(e);

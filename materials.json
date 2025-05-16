@@ -1,78 +1,102 @@
 {
   "Gold Ore": {
-    "baseSellPrice": 0,
-    "name": "Gold Ore"
+    "name": "Gold Ore",
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Wood": {
-    "baseSellPrice": 0,
-    "name": "Wood"
+    "name": "Wood",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Fiber": {
+    "name": "Fiber",
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Iridium Ore": {
-    "baseSellPrice": 0,
-    "name": "Iridium Ore"
+    "name": "Iridium Ore",
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Iron Ore": {
-    "baseSellPrice": 0,
-    "name": "Iron Ore"
+    "name": "Iron Ore",
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Diamond": {
-    "baseSellPrice": 750,
-    "name": "Diamond"
+    "name": "Diamond",
+    "isEdible": false,
+    "baseSellPrice": 750
   },
   "Copper Ore": {
-    "baseSellPrice": 0,
-    "name": "Copper Ore"
+    "name": "Copper Ore",
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Quartz": {
-    "baseSellPrice": 25,
-    "name": "Quartz"
+    "name": "Quartz",
+    "isEdible": false,
+    "baseSellPrice": 25
   },
   "Stone": {
-    "baseSellPrice": 0,
-    "name": "Stone"
+    "name": "Stone",
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Amethyst": {
-    "baseSellPrice": 100,
-    "name": "Amethyst"
+    "name": "Amethyst",
+    "isEdible": false,
+    "baseSellPrice": 100
   },
   "Frozen Tear": {
-    "baseSellPrice": 75,
-    "name": "Frozen Tear"
+    "name": "Frozen Tear",
+    "isEdible": false,
+    "baseSellPrice": 75
   },
   "Fire Quartz": {
-    "baseSellPrice": 100,
-    "name": "Fire Quartz"
+    "name": "Fire Quartz",
+    "isEdible": false,
+    "baseSellPrice": 100
   },
   "Aquamarine": {
-    "baseSellPrice": 180,
-    "name": "Aquamarine"
+    "name": "Aquamarine",
+    "isEdible": false,
+    "baseSellPrice": 180
   },
   "Emerald": {
-    "baseSellPrice": 250,
-    "name": "Emerald"
+    "name": "Emerald",
+    "isEdible": false,
+    "baseSellPrice": 250
   },
   "Coal": {
-    "baseSellPrice": 0,
-    "name": "Coal"
+    "name": "Coal",
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Earth Crystal": {
-    "baseSellPrice": 50,
-    "name": "Earth Crystal"
+    "name": "Earth Crystal",
+    "isEdible": false,
+    "baseSellPrice": 50
   },
   "Jade": {
-    "baseSellPrice": 200,
-    "name": "Jade"
+    "name": "Jade",
+    "isEdible": false,
+    "baseSellPrice": 200
   },
   "Prismatic Shard": {
-    "baseSellPrice": 2000,
-    "name": "Prismatic Shard"
+    "name": "Prismatic Shard",
+    "isEdible": false,
+    "baseSellPrice": 2000
   },
   "Ruby": {
-    "baseSellPrice": 250,
-    "name": "Ruby"
+    "name": "Ruby",
+    "isEdible": false,
+    "baseSellPrice": 250
   },
   "Topaz": {
-    "baseSellPrice": 80,
-    "name": "Topaz"
+    "name": "Topaz",
+    "isEdible": false,
+    "baseSellPrice": 80
   }
 }

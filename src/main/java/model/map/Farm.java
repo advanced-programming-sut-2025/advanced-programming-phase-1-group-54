@@ -100,7 +100,7 @@ public class Farm implements DailyUpdate, HourUpdate {
         }
     }
 
-    private HashMap<Plant, Tile> getPlants() {
+    public HashMap<Plant, Tile> getPlants() {
         HashMap<Plant, Tile> plants = new HashMap<>();
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {

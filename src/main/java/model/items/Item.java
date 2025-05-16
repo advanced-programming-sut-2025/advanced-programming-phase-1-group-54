@@ -1,6 +1,6 @@
 package model.items;
 
-public abstract class Item{
+public abstract class Item {
     protected final String name;
     protected final boolean isEdible;
     protected final int baseSellPrice;

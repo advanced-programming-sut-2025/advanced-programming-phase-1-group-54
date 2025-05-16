@@ -15,10 +15,10 @@ import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class Crop extends Plant implements Cloneable{
-    private static final HashMap<String,Crop> crops;
+public class Crop extends Plant implements Cloneable {
+    private static final HashMap<String, Crop> crops;
 
-    static{
+    static {
         Gson gson = new Gson();
         FileReader file = null;
         try {
@@ -26,21 +26,20 @@ public class Crop extends Plant implements Cloneable{
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        Type type = new TypeToken<HashMap<String,Crop>>(){}.getType();
-        crops = gson.fromJson(file,type);
-        System.out.println(crops.size());
+        Type type = new TypeToken<HashMap<String, Crop>>() {
+        }.getType();
+        crops = gson.fromJson(file, type);
+//        System.out.println(crops.size());
     }
 
-    public static Crop getCrop(String name){
+    public static Crop getCrop(String name) {
         Crop crop = crops.get(name);
-        if(crop == null){
+        if (crop == null) {
             return null;
-        }
-        else {
+        } else {
             return crop.clone();
         }
     }
-
 
 
     private final boolean oneTime;
@@ -72,23 +71,23 @@ public class Crop extends Plant implements Cloneable{
 
     @Override
     public String toString() {
-        return "Name: " + name +"\nSource: " + source + "\nFruit: " + fruit + "\nStages: " + Arrays.toString(stages) +
-                "\nTotal Harvest Time: " + totalHarvestTime + "\nOne Time: " + oneTime +  "\nRegrowth Time: " +
+        return "Name: " + name + "\nSource: " + source + "\nFruit: " + fruit + "\nStages: " + Arrays.toString(stages) +
+                "\nTotal Harvest Time: " + totalHarvestTime + "\nOne Time: " + oneTime + "\nRegrowth Time: " +
                 regrowthTime + "\nSeason: " + Arrays.toString(seasons) + "\nCan Become Giant: " + isGiantPossible;
     }
 
     @Override
     public Crop clone() {
-        try{
+        try {
             return (Crop) super.clone();
-        } catch (CloneNotSupportedException e){
+        } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
 
     }
 
-    public static void writeToJson(){
-        HashMap<String ,Crop> cropTypes = new HashMap<String,Crop>();
+    public static void writeToJson() {
+        HashMap<String, Crop> cropTypes = new HashMap<String, Crop>();
 
         Crop crop;
 
@@ -96,7 +95,7 @@ public class Crop extends Plant implements Cloneable{
                 "Blue Jazz Crop",
                 "Jazz Seeds",
                 "Blue Jazz",
-                new int[] {1, 2, 2, 2},
+                new int[]{1, 2, 2, 2},
                 7,
                 0,
                 new Season[]{Season.SPRING},
@@ -109,7 +108,7 @@ public class Crop extends Plant implements Cloneable{
                 "Carrot Crop",
                 "Carrot Seeds",
                 "Carrot",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 10,
                 0,
                 new Season[]{Season.SPRING},
@@ -122,7 +121,7 @@ public class Crop extends Plant implements Cloneable{
                 "Cauliflower Crop",
                 "Cauliflower Seeds",
                 "Cauliflower",
-                new int[] {1, 2, 4, 4, 1},
+                new int[]{1, 2, 4, 4, 1},
                 12,
                 2,
                 new Season[]{Season.SPRING},
@@ -135,7 +134,7 @@ public class Crop extends Plant implements Cloneable{
                 "Coffee Bean Crop",
                 "Coffee Bean",
                 "Coffee Bean",
-                new int[] {1, 2, 2, 3, 2},
+                new int[]{1, 2, 2, 3, 2},
                 10,
                 2,
                 new Season[]{Season.SPRING, Season.SUMMER},
@@ -148,7 +147,7 @@ public class Crop extends Plant implements Cloneable{
                 "Garlic Crop",
                 "Garlic Seeds",
                 "Garlic",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 4,
                 3,
                 new Season[]{Season.SPRING},
@@ -161,7 +160,7 @@ public class Crop extends Plant implements Cloneable{
                 "Green Bean Crop",
                 "Bean Starter",
                 "Green Bean",
-                new int[] {1, 1, 1, 3, 2},
+                new int[]{1, 1, 1, 3, 2},
                 10,
                 3,
                 new Season[]{Season.SPRING},
@@ -174,7 +173,7 @@ public class Crop extends Plant implements Cloneable{
                 "Kale Crop",
                 "Kale Seeds",
                 "Kale",
-                new int[] {1, 2, 2, 2},
+                new int[]{1, 2, 2, 2},
                 6,
                 3,
                 new Season[]{Season.SPRING},
@@ -187,7 +186,7 @@ public class Crop extends Plant implements Cloneable{
                 "Parsnip Crop",
                 "Parsnip Seeds",
                 "Parsnip",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 4,
                 0,
                 new Season[]{Season.SPRING},
@@ -200,7 +199,7 @@ public class Crop extends Plant implements Cloneable{
                 "Potato Crop",
                 "Potato Seeds",
                 "Potato",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 6,
                 0,
                 new Season[]{Season.SPRING},
@@ -213,7 +212,7 @@ public class Crop extends Plant implements Cloneable{
                 "Rhubarb Crop",
                 "Rhubarb Seeds",
                 "Rhubarb",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 13,
                 0,
                 new Season[]{Season.SPRING},
@@ -226,7 +225,7 @@ public class Crop extends Plant implements Cloneable{
                 "Strawberry Crop",
                 "Strawberry Seeds",
                 "Strawberry",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 8,
                 0,
                 new Season[]{Season.SPRING},
@@ -239,7 +238,7 @@ public class Crop extends Plant implements Cloneable{
                 "Tulip Crop",
                 "Tulip Bulb",
                 "Tulip",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 6,
                 0,
                 new Season[]{Season.SPRING},
@@ -252,7 +251,7 @@ public class Crop extends Plant implements Cloneable{
                 "Unmilled Rice Crop",
                 "Rice Shoot",
                 "Unmilled Rice",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 6,
                 0,
                 new Season[]{Season.SPRING},
@@ -265,7 +264,7 @@ public class Crop extends Plant implements Cloneable{
                 "Blueberry Crop",
                 "Blueberry Seeds",
                 "Blueberry",
-                new int[] {1, 2, 3, 3},
+                new int[]{1, 2, 3, 3},
                 13,
                 0,
                 new Season[]{Season.SUMMER},
@@ -278,7 +277,7 @@ public class Crop extends Plant implements Cloneable{
                 "Corn Crop",
                 "Corn Seeds",
                 "Corn",
-                new int[] {1, 2, 2, 3},
+                new int[]{1, 2, 2, 3},
                 14,
                 0,
                 new Season[]{Season.SUMMER, Season.FALL},
@@ -291,7 +290,7 @@ public class Crop extends Plant implements Cloneable{
                 "Hops Crop",
                 "Hops Starter",
                 "Hops",
-                new int[] {1, 2, 3},
+                new int[]{1, 2, 3},
                 11,
                 3,
                 new Season[]{Season.SUMMER},
@@ -304,7 +303,7 @@ public class Crop extends Plant implements Cloneable{
                 "Hot Pepper Crop",
                 "Pepper Seeds",
                 "Hot Pepper",
-                new int[] {1, 2, 2, 2},
+                new int[]{1, 2, 2, 2},
                 5,
                 3,
                 new Season[]{Season.SUMMER},
@@ -317,7 +316,7 @@ public class Crop extends Plant implements Cloneable{
                 "Melon Crop",
                 "Melon Seeds",
                 "Melon",
-                new int[] {1, 2, 3, 4},
+                new int[]{1, 2, 3, 4},
                 12,
                 0,
                 new Season[]{Season.SUMMER},
@@ -330,7 +329,7 @@ public class Crop extends Plant implements Cloneable{
                 "Poppy Crop",
                 "Poppy Seeds",
                 "Poppy",
-                new int[] {1, 2, 2, 3},
+                new int[]{1, 2, 2, 3},
                 7,
                 0,
                 new Season[]{Season.SUMMER},
@@ -343,7 +342,7 @@ public class Crop extends Plant implements Cloneable{
                 "Radish Crop",
                 "Radish Seeds",
                 "Radish",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 6,
                 0,
                 new Season[]{Season.SUMMER},
@@ -356,7 +355,7 @@ public class Crop extends Plant implements Cloneable{
                 "Red Cabbage Crop",
                 "Red Cabbage Seeds",
                 "Red Cabbage",
-                new int[] {1, 2, 3, 3},
+                new int[]{1, 2, 3, 3},
                 9,
                 0,
                 new Season[]{Season.SUMMER},
@@ -369,7 +368,7 @@ public class Crop extends Plant implements Cloneable{
                 "Starfruit Crop",
                 "Starfruit Seeds",
                 "Starfruit",
-                new int[] {1, 2, 3, 3},
+                new int[]{1, 2, 3, 3},
                 13,
                 0,
                 new Season[]{Season.SUMMER},
@@ -382,7 +381,7 @@ public class Crop extends Plant implements Cloneable{
                 "Spangle Crop",
                 "Spangle Seeds",
                 "Summer Spangle",
-                new int[] {1, 2, 3},
+                new int[]{1, 2, 3},
                 8,
                 0,
                 new Season[]{Season.SUMMER},
@@ -395,7 +394,7 @@ public class Crop extends Plant implements Cloneable{
                 "Summer Squash Crop",
                 "Squash Seeds",
                 "Summer Squash",
-                new int[] {1, 2, 2, 2},
+                new int[]{1, 2, 2, 2},
                 7,
                 0,
                 new Season[]{Season.SUMMER, Season.FALL},
@@ -408,7 +407,7 @@ public class Crop extends Plant implements Cloneable{
                 "Sunflower Crop",
                 "Sunflower Seeds",
                 "Sunflower",
-                new int[] {1, 2, 3},
+                new int[]{1, 2, 3},
                 8,
                 0,
                 new Season[]{Season.SUMMER, Season.FALL},
@@ -421,7 +420,7 @@ public class Crop extends Plant implements Cloneable{
                 "Tomato Crop",
                 "Tomato Seeds",
                 "Tomato",
-                new int[] {1, 2, 2, 2},
+                new int[]{1, 2, 2, 2},
                 11,
                 3,
                 new Season[]{Season.SUMMER},
@@ -434,7 +433,7 @@ public class Crop extends Plant implements Cloneable{
                 "Wheat Crop",
                 "Wheat Seeds",
                 "Wheat",
-                new int[] {1, 1, 2},
+                new int[]{1, 1, 2},
                 4,
                 0,
                 new Season[]{Season.SUMMER, Season.FALL},
@@ -447,7 +446,7 @@ public class Crop extends Plant implements Cloneable{
                 "Amaranth Crop",
                 "Amaranth Seeds",
                 "Amaranth",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 7,
                 0,
                 new Season[]{Season.FALL},
@@ -460,7 +459,7 @@ public class Crop extends Plant implements Cloneable{
                 "Artichoke Crop",
                 "Artichoke Seeds",
                 "Artichoke",
-                new int[] {1, 2, 2, 2},
+                new int[]{1, 2, 2, 2},
                 8,
                 0,
                 new Season[]{Season.FALL},
@@ -473,7 +472,7 @@ public class Crop extends Plant implements Cloneable{
                 "Beet Crop",
                 "Beet Seeds",
                 "Beet",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 6,
                 0,
                 new Season[]{Season.FALL},
@@ -486,7 +485,7 @@ public class Crop extends Plant implements Cloneable{
                 "Bok Choy Crop",
                 "Bok Choy Seeds",
                 "Bok Choy",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 4,
                 0,
                 new Season[]{Season.FALL},
@@ -499,7 +498,7 @@ public class Crop extends Plant implements Cloneable{
                 "Broccoli Crop",
                 "Broccoli Seeds",
                 "Broccoli",
-                new int[] {1, 2, 2},
+                new int[]{1, 2, 2},
                 6,
                 0,
                 new Season[]{Season.FALL},
@@ -512,7 +511,7 @@ public class Crop extends Plant implements Cloneable{
                 "Cranberry Crop",
                 "Cranberry Seeds",
                 "Cranberries",
-                new int[] {1, 2, 2, 1},
+                new int[]{1, 2, 2, 1},
                 7,
                 5,
                 new Season[]{Season.FALL},
@@ -525,7 +524,7 @@ public class Crop extends Plant implements Cloneable{
                 "Eggplant Crop",
                 "Eggplant Seeds",
                 "Eggplant",
-                new int[] {1, 2, 2, 2},
+                new int[]{1, 2, 2, 2},
                 5,
                 3,
                 new Season[]{Season.FALL},
@@ -538,7 +537,7 @@ public class Crop extends Plant implements Cloneable{
                 "Fairy Rose Crop",
                 "Fairy Seeds",
                 "Fairy Rose",
-                new int[] {1, 2, 3, 3},
+                new int[]{1, 2, 3, 3},
                 12,
                 0,
                 new Season[]{Season.FALL},
@@ -551,7 +550,7 @@ public class Crop extends Plant implements Cloneable{
                 "Grape Crop",
                 "Grape Starter",
                 "Grape",
-                new int[] {1, 2, 2, 2},
+                new int[]{1, 2, 2, 2},
                 10,
                 3,
                 new Season[]{Season.FALL},
@@ -564,7 +563,7 @@ public class Crop extends Plant implements Cloneable{
                 "Pumpkin Crop",
                 "Pumpkin Seeds",
                 "Pumpkin",
-                new int[] {1, 2, 3, 3},
+                new int[]{1, 2, 3, 3},
                 13,
                 0,
                 new Season[]{Season.FALL},
@@ -577,7 +576,7 @@ public class Crop extends Plant implements Cloneable{
                 "Yam Crop",
                 "Yam Seeds",
                 "Yam",
-                new int[] {1, 2, 3, 2},
+                new int[]{1, 2, 3, 2},
                 10,
                 0,
                 new Season[]{Season.FALL},
@@ -590,7 +589,7 @@ public class Crop extends Plant implements Cloneable{
                 "Sweet Gem Crop",
                 "Rare Seed",
                 "Sweet Gem Berry",
-                new int[] {1, 2, 4, 3},
+                new int[]{1, 2, 4, 3},
                 24,
                 0,
                 new Season[]{Season.FALL},
@@ -603,7 +602,7 @@ public class Crop extends Plant implements Cloneable{
                 "Powdermelon Crop",
                 "Powdermelon Seeds",
                 "Powdermelon",
-                new int[] {1,2,1,2,1},
+                new int[]{1, 2, 1, 2, 1},
                 7,
                 0,
                 new Season[]{Season.WINTER},
@@ -616,7 +615,7 @@ public class Crop extends Plant implements Cloneable{
                 "Ancient Fruit Crop",
                 "Ancient Seeds",
                 "Ancient Fruit",
-                new int[] {2, 2, 2, 2, 5},
+                new int[]{2, 2, 2, 2, 5},
                 28,
                 7,
                 new Season[]{Season.SPRING, Season.SUMMER, Season.FALL},
@@ -627,7 +626,7 @@ public class Crop extends Plant implements Cloneable{
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        try (FileWriter file = new FileWriter("crops.json")){
+        try (FileWriter file = new FileWriter("crops.json")) {
             gson.toJson(cropTypes, file);
         } catch (IOException e) {
             throw new RuntimeException(e);

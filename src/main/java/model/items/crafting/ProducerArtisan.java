@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 public class ProducerArtisan extends Artisan implements HourUpdate, DailyUpdate, Cloneable {
 
-    private final static HashMap<String,ProducerArtisan> producerArtisans;
+    private final static HashMap<String, ProducerArtisan> producerArtisans;
 
     static {
         Gson gson = new Gson();
@@ -27,16 +27,16 @@ public class ProducerArtisan extends Artisan implements HourUpdate, DailyUpdate,
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        Type type = new TypeToken<HashMap<String, ProducerArtisan>>(){}.getType();
-        producerArtisans = gson.fromJson(file,type);
+        Type type = new TypeToken<HashMap<String, ProducerArtisan>>() {
+        }.getType();
+        producerArtisans = gson.fromJson(file, type);
     }
 
-    public static ProducerArtisan getProducerArtisan(String artisan){
+    public static ProducerArtisan getProducerArtisan(String artisan) {
         ProducerArtisan producerArtisan = producerArtisans.get(artisan);
-        if(producerArtisan == null){
+        if (producerArtisan == null) {
             return null;
-        }
-        else{
+        } else {
             return producerArtisan.clone();
         }
     }
@@ -94,9 +94,9 @@ public class ProducerArtisan extends Artisan implements HourUpdate, DailyUpdate,
         return false;
     }
 
-    public static void writeToJson(){
+    public static void writeToJson() {
 
-        HashMap<String,ProducerArtisan> producerArtisanType = new HashMap<>();
+        HashMap<String, ProducerArtisan> producerArtisanType = new HashMap<>();
 
         ProducerArtisan producerArtisan;
         ArrayList<String> produces;
@@ -410,10 +410,9 @@ public class ProducerArtisan extends Artisan implements HourUpdate, DailyUpdate,
         producerArtisanType.put(producerArtisan.getName(), producerArtisan);
 
 
-
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        try (FileWriter file = new FileWriter("producerArtisans.json")){
+        try (FileWriter file = new FileWriter("producerArtisans.json")) {
             gson.toJson(producerArtisanType, file);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -424,7 +423,7 @@ public class ProducerArtisan extends Artisan implements HourUpdate, DailyUpdate,
     @Override
     public void nextHourUpdate() {
         if (this.getProcessingProduce() != null) {
-           remainingHours--;
+            remainingHours--;
             if (remainingHours <= 0) {
                 produceIsReady = true;
                 remainingHours = 0;
