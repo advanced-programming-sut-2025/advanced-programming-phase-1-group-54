@@ -1,14 +1,24 @@
 package model.items.tools;
 
 import model.enums.SkillType;
+import model.enums.ToolType;
 import model.items.Item;
 import model.enums.ToolLevel;
 import model.map.Location;
 import model.map.Node;
 import model.map.Tile;
 
-public abstract class Tool {
+public class Tool {
     private ToolLevel toolLevel = ToolLevel.NORMAL;
+    private final ToolType toolType;
+
+    public Tool(ToolType toolType) {
+        this.toolType = toolType;
+    }
+
+    public ToolType getToolType() {
+        return toolType;
+    }
 
     public ToolLevel getToolLevel() {
         return toolLevel;
@@ -18,9 +28,26 @@ public abstract class Tool {
         this.toolLevel = toolLevel;
     }
 
-    abstract public boolean use(BackPack backPack, Tile tile);
+    public SkillType getSkillType() {
+        switch (toolType) {
+            case AXE:
+                return SkillType.FORAGING;
+            case PICKAXE:
+                return SkillType.MINING;
+            case HOE, WATERING_CAN:
+                return SkillType.FARMING;
+            default:
+                return null;
+        }
+    }
 
     public int getEnergyNeededPerUse() {
+        if (toolType == ToolType.SCYTHE)
+            return 2;
+
+        if (toolType == ToolType.MILK_PAIL || toolType == ToolType.SHEAR)
+            return 4;
+
         switch (toolLevel) {
             case NORMAL:
                 return 5;
@@ -37,11 +64,15 @@ public abstract class Tool {
         }
     }
 
-    public boolean upgrade() {
-        if (toolLevel == ToolLevel.IRIDIUM)
+    public boolean isUpgradable() {
+        if (toolType == ToolType.SCYTHE || toolType == ToolType.MILK_PAIL || toolType == ToolType.SHEAR)
             return false;
 
-        setToolLevel(toolLevel.getNextLevel());
-        return true;
+        return toolLevel != ToolLevel.IRIDIUM;
+    }
+
+    public void upgrade() {
+        if (isUpgradable())
+            toolLevel = ToolLevel.values()[toolLevel.ordinal() + 1];
     }
 }

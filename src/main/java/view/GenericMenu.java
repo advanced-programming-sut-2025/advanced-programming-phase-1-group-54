@@ -21,7 +21,7 @@ public interface GenericMenu {
         do {
             System.out.println("[y/n]:");
             input = scanner.nextLine();
-        } while (!input.equalsIgnoreCase("y") || !input.equalsIgnoreCase("n"));
+        } while (!input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n"));
         return input.equalsIgnoreCase("y");
     }
 }

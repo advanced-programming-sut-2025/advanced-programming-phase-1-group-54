@@ -412,6 +412,6 @@ public class Fruit extends Item implements Cloneable, Placeable {
 
     @Override
     public Symbol getSymbol() {
-        return null;
+        return Symbol.FORAGING;
     }
 }

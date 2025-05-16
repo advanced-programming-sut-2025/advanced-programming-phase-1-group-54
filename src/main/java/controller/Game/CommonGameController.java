@@ -1,12 +1,12 @@
 package controller.Game;
 
 import model.App;
-import model.Refrigerator;
+import model.Game;
+import model.map.Refrigerator;
 import model.Result;
-import model.alive.Player;
+import model.lives.Player;
 import model.enums.ProduceQuality;
 import model.items.*;
-import model.items.crafting.Artisan;
 import model.items.crafting.Produce;
 import model.items.crafting.ProducerArtisan;
 import model.items.crafting.UnProducerArtisan;
@@ -16,6 +16,92 @@ import model.items.tools.BackPack;
 
 
 public class CommonGameController {
+    public static Result exitGame() {
+        App.setCurrentGame(null);
+        return new Result(true, "exited game");
+    }
+
+    public static Result deleteGame() {
+        return null;
+    }
+
+    // TODO add functions for "force terminate"
+
+    public static Result passOut() {
+        App.getCurrentGame().getCurrentPlayer().setEnergy(0);
+        return new Result(true, "you passed out!" + nextTurn().message());
+    }
+
+    public static Result nextTurn() {
+        Game game = App.getCurrentGame();
+        game.nextTurn();
+        String notification = getNotification();
+        return new Result(true, String.format("it is %s's turn",
+                game.getCurrentPlayer().getControllingUser().getUsername()) + notification);
+    }
+
+    private static String getNotification() {
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+
+        StringBuilder messageBuilder = new StringBuilder();
+
+        if (!player.getReceivedTrades().isEmpty()){
+            messageBuilder.append("\nYou have some trade to do");
+        }
+        if (!player.getReceivedGifts().isEmpty()){
+            messageBuilder.append("\nYou have some gift to open");
+        }
+        if (!(player.getReceivedRequests()).isEmpty()){
+            messageBuilder.append("\nYou have some marriage proposal");
+        }
+
+        return messageBuilder.toString();
+    }
+
+    public static Result showTime() {
+        Game game = App.getCurrentGame();
+        return new Result(true, String.format("%d o'clock", game.getDateTime().getHour()));
+    }
+
+    public static Result showDate() {
+        Game game = App.getCurrentGame();
+        return new Result(true, String.format("%d/%s/%d",
+                game.getDateTime().getYear(), game.getDateTime().getSeason().toString().toLowerCase(), game.getDateTime().getDay()));
+    }
+
+    public static Result showDateTime() {
+        return new Result(true, showDate().message() + ' ' + showTime().message());
+
+    }
+
+    public static Result showDayOfWeek() {
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getDateTime().getWeekDay().toString().toLowerCase());
+    }
+
+    public static Result showSeason() {
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getDateTime().getSeason().toString().toLowerCase());
+    }
+
+    public static Result showWeather() {
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getCurrentWeather().toString().toLowerCase());
+    }
+
+    public static Result showWeatherForecast() {
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getTomorrowWeather().toString().toLowerCase());
+    }
+
+    public static Result showEnergy() {
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+
+        return new Result(true, String.format("you have %d energy left.", player.getEnergy()));
+    }
+
 
     public static Item findItem(String ItemName){
 
@@ -382,8 +468,9 @@ public class CommonGameController {
     public static void acceptMarriage(Player player){
         //TODO zaminashono ok kon @korosh
     }
+    //TODO check baghal ham. ham bra player ham bra satl
     public static Result sell(String product, int count) {
-        //TODO korosh check baghal satl bodan
+        //next to each other
         Fish fish = Fish.getFish(product);
         if (fish != null) {
             if (count != 1) {

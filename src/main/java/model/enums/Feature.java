@@ -2,7 +2,7 @@ package model.enums;
 
 public enum Feature {
     PROTECTED,
-    WATERED,
+    WATER,
     DESTROYED,
     GRASS,
     PLOWED,

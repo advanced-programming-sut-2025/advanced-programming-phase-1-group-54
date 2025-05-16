@@ -117,7 +117,7 @@ public class UnProducerArtisan extends Artisan implements Cloneable{
                 "Sprinkler Recipe",
                 0,
                 4,
-                Feature.WATERED
+                Feature.WATER
         );
         UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
 
@@ -127,7 +127,7 @@ public class UnProducerArtisan extends Artisan implements Cloneable{
                 "Quality Sprinkler Recipe",
                 0,
                 8,
-                Feature.WATERED
+                Feature.WATER
         );
         UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
 
@@ -137,7 +137,7 @@ public class UnProducerArtisan extends Artisan implements Cloneable{
                 "Iridium Sprinkler Recipe",
                 0,
                 24,
-                Feature.WATERED
+                Feature.WATER
         );
         UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
 

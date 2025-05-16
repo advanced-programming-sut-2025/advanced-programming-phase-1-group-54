@@ -1,14 +1,11 @@
 package controller.Game;
 
-import model.AnimalHouse;
+import model.map.*;
 import model.App;
 import model.Result;
-import model.alive.Animal;
-import model.alive.Player;
+import model.lives.Animal;
+import model.lives.Player;
 import model.items.Item;
-import model.map.Farm;
-import model.map.Location;
-import model.map.Tile;
 
 public class AnimalController {
 
@@ -55,22 +52,7 @@ public class AnimalController {
         return new Result(1,output.toString());
     }
 
-    public static Result moveAnimal(String animalName,String xString,String yString) {
-        int x;
-        try{
-            x = Integer.parseInt(xString);
-        }catch (NumberFormatException e) {
-            return new Result(-1, "X format is invalid");
-        }
-
-        int y;
-        try{
-            y = Integer.parseInt(yString);
-        }catch (NumberFormatException e) {
-            return new Result(-1, "Y format is invalid");
-        }
-
-        Location location = new Location(x, y);
+    public static Result moveAnimal(String animalName, Location location) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarm(player);
         Location locationInFarm = location.delta(farm.getLocation());

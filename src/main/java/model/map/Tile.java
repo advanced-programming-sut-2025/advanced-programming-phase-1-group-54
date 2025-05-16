@@ -1,14 +1,15 @@
 package model.map;
 
-import model.Building.Building;
+import model.DailyUpdate;
 import model.Placeable;
 import model.enums.Color;
 import model.enums.Symbol;
 import model.enums.Feature;
+import model.items.plants.Plant;
 
 import java.util.ArrayList;
 
-public class Tile {
+public class Tile implements DailyUpdate {
     private Location location;
 
     private Placeable thingOnTile = null;
@@ -19,10 +20,8 @@ public class Tile {
     }
 
     public void setLocation(Location location) {
-        if (this.location == null)
-            this.location = location;
+        this.location = location;
     }
-
     public boolean isWalkable() {
         if (thingOnTile == null)
             return true;
@@ -49,7 +48,8 @@ public class Tile {
     }
 
     public void addFeature(Feature feature) {
-        features.add(feature);
+        if (!hasFeature(feature))
+            features.add(feature);
     }
 
     public void removeFeature(Feature feature) {
@@ -72,12 +72,31 @@ public class Tile {
         else
             out = getThingOnTile().getSymbol().toString();
 
-        if (features.contains(Feature.WATERED))
-            out = Color.BLUE_BACKGROUND + out + Color.DEFAULT;
+        if (features.contains(Feature.WATER))
+            out = Symbol.WATER.toString();
 
         else if (features.contains(Feature.PROTECTED))
             out = Color.YELLOW_BACKGROUND + out + Color.DEFAULT;
 
         return out;
+    }
+
+    @Override
+    public void nextDayUpdate() {
+        if (thingOnTile instanceof Building) {
+            return;
+        }
+
+        if (thingOnTile instanceof Plant plant) {
+            if (plant.isDead()) {
+                setThingOnTile(null);
+            }
+            else {
+                plant.nextDayUpdate();
+            }
+        }
+        else if (thingOnTile instanceof DailyUpdate updating) {
+            updating.nextDayUpdate();
+        }
     }
 }

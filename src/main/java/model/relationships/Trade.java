@@ -1,6 +1,6 @@
 package model.relationships;
 
-import model.alive.Player;
+import model.lives.Player;
 
 public class Trade {
     private Player sender;

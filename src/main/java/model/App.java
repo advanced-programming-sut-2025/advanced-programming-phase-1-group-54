@@ -1,8 +1,7 @@
 package model;
 
 import com.google.gson.Gson;
-import controller.builders.GameBuilder;
-import model.alive.Player;
+import model.lives.Player;
 import model.enums.Menu;
 
 import java.io.*;

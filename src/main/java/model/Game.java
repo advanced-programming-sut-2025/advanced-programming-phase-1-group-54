@@ -1,10 +1,7 @@
 package model;
 
 import controller.Game.CommonGameController;
-import controller.Game.FriendShipController;
-import controller.Game.NPCShopsController;
-import model.Shops.Shop;
-import model.alive.Player;
+import model.lives.Player;
 import model.enums.SubMenu;
 import model.enums.Weather;
 import model.map.World;
@@ -12,21 +9,16 @@ import model.relationships.PlayerRelationship;
 
 import java.util.ArrayList;
 
-public class Game implements DailyUpdate {
+public class Game implements DailyUpdate, HourUpdate {
     private SubMenu subMenu = SubMenu.DEFAULT;
 
     private final World world;
     private final Player[] players;
 
-    private DateTime dateTime;
+    private final DateTime dateTime = new DateTime();
     private int turn;
 
-    private ArrayList<Shop> npcShops;
-
-
-    private Weather currentWeather;
-    private ArrayList<PlayerRelationship> playerRelationships;
-    private Weather tomorrowWeather;
+    private final ArrayList<PlayerRelationship> playerRelationships;
 
     public Game(World world, Player[] players) {
         this.world = world;
@@ -41,9 +33,7 @@ public class Game implements DailyUpdate {
     public ArrayList<PlayerRelationship> getPlayerRelationships() {
         return playerRelationships;
     }
-    public void setPlayerRelationships(ArrayList<PlayerRelationship> playerRelationships) {
-        this.playerRelationships = playerRelationships;
-    }
+
     public SubMenu getSubMenu() {
         return subMenu;
     }
@@ -60,73 +50,67 @@ public class Game implements DailyUpdate {
         return players;
     }
 
-    public ArrayList<Shop> getNpcShops() {
-        return npcShops;
-    }
-
-    public void setNpcShops(ArrayList<Shop> npcShops) {
-        this.npcShops = npcShops;
-    }
-
     public DateTime getDateTime() {
         return dateTime;
-    }
-
-    public int getTurn() {
-        return turn;
     }
 
     public Player getCurrentPlayer() {
         return players[turn];
     }
 
-    public void thunder() {}
-
     @Override
     public void nextDayUpdate() {
-        currentWeather = tomorrowWeather;
-        tomorrowWeather = Weather.getRandom(dateTime.getSeason());
+        world.nextDayUpdate();
+        world.setTomorrowWeather(Weather.getRandom(dateTime.getSeason()));
 
         for (Player player : players) {
             player.nextDayUpdate();
         }
+
+        for (PlayerRelationship relationship : playerRelationships) {
+            relationship.reset();
+        }
+
         dateTime.increaseDay(1);
-        //FriendShipController.relaitionshipUpdate();
-        FriendShipController.decreaseHeartBropken();
-        NPCShopsController.refillShps();
+
         CommonGameController.nextDayMoney();
         //TODO in every turn check the gifts trades etc
         //TODO fill the shops
     }
 
+    @Override
+    public void nextHourUpdate() {
+        world.nextHourUpdate();
+
+        for (Player player : players) {
+            player.nextHourUpdate();
+        }
+
+        dateTime.increaseHour(1);
+        if (dateTime.getHour() == DateTime.getStartHour()) {
+            nextDayUpdate();
+        }
+    }
+
     public void nextTurn() {
-        turn++;
-        if (turn >= players.length) {
-            turn = 0;
-        }
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        if (!player.getRecivedTrades().isEmpty()){
-            System.out.println("you have some trade to do");
-        }
-        if(!player.getRecivedGifts().isEmpty()){
-            System.out.println("you have some gift to open");
-        }
-        if (!(player.getRecivedRequsets()).isEmpty()){
-            System.out.println("you have some marriage request");
-        }
+        do {
+            turn++;
+            if (turn >= players.length) {
+                turn = 0;
+                nextHourUpdate();
+            }
+        } while (players[turn].isFallen());
+
     }
 
     public Weather getCurrentWeather() {
-        return currentWeather;
+        return world.getCurrentWeather();
     }
 
     public Weather getTomorrowWeather() {
-        return tomorrowWeather;
+        return world.getTomorrowWeather();
     }
 
-    public void setTomorrowWeather(Weather tomorrowWeather) {
-        this.tomorrowWeather = tomorrowWeather;
-    }
     public Player getPlayerByUsername(String username) {
         for (Player player : players) {
             if(player.getName().equals(username)) {

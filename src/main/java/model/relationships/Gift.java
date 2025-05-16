@@ -2,7 +2,7 @@ package model.relationships;
 
 import model.App;
 import model.DateTime;
-import model.alive.Player;
+import model.lives.Player;
 
 public class Gift {
     private final Player payer;

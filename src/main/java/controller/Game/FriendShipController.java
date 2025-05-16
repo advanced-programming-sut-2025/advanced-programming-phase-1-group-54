@@ -1,16 +1,19 @@
 package controller.Game;
 
 import model.App;
+import model.DateTime;
 import model.Result;
-import model.alive.Player;
+import model.lives.Player;
 import model.items.Item;
-import model.items.UniqeItems;
+import model.items.UniqueItem;
 import model.relationships.Gift;
 import model.relationships.PlayerRelationship;
 import model.relationships.Talk;
 import model.relationships.Trade;
 
 import java.util.ArrayList;
+
+import static controller.Game.MapController.isNear;
 
 public class FriendShipController {
     public static ArrayList<PlayerRelationship> showFriendShip(Player player1){
@@ -20,11 +23,14 @@ public class FriendShipController {
         if(App.getCurrentGame().getPlayerByUsername(username) == null){
             return new Result(false, "user not found");
         }
-        Player player = App.getCurrentGame().getPlayerByUsername(username);
-        PlayerRelationship relationship = getPlayerRelationship(App.getCurrentGame().getCurrentPlayer(), player);
-        //TODO
-        //if (player next to current player)
-        Talk talk = new Talk(App.getCurrentGame().getCurrentPlayer(),message,App.getCurrentGame().getDateTime());
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player otherPlayer = App.getCurrentGame().getPlayerByUsername(username);
+        PlayerRelationship relationship = getPlayerRelationship(player, otherPlayer);
+
+        if (!isNear(player.getCurrentLocation(), otherPlayer))
+            return new Result(false, "you must be next to each other to talk to each other!");
+
+        Talk talk = new Talk(App.getCurrentGame().getCurrentPlayer(),message, new DateTime(App.getCurrentGame().getDateTime()));
         relationship.getTalkHistory().add(talk);
         if(relationship.getTalkDailyCount() == 0) {
             relationship.increasXp(20);
@@ -77,7 +83,7 @@ public class FriendShipController {
             return new Result(false,"not enough in " + player.getName() + " back pack");
         }
         Gift gift = new Gift(App.getCurrentGame().getCurrentPlayer(),item,count);
-        player.getRecivedGifts().add(gift);
+        player.getReceivedGifts().add(gift);
         relationship.getGiftHistory().add(gift);
         return new Result(true,"gift sent");
     }
@@ -112,7 +118,7 @@ public class FriendShipController {
     }
     public static  ArrayList<String> giftList(){
         ArrayList<String> giftHistory = new ArrayList<>();
-        for (Gift gift : App.getCurrentGame().getCurrentPlayer().getRecivedGifts()){
+        for (Gift gift : App.getCurrentGame().getCurrentPlayer().getReceivedGifts()){
             String st = gift.getPayer().getName() + " gave you " + gift.getAmount() + gift.getItemName() + " as gift.";
             giftHistory.add(st);
         }
@@ -123,10 +129,10 @@ public class FriendShipController {
         if (rate > 5 || rate < 1){
             return new Result(false,"rate between 1 to 5");
         }
-        if (number < 1 || number > (App.getCurrentGame().getCurrentPlayer().getRecivedGifts().size())){
+        if (number < 1 || number > (App.getCurrentGame().getCurrentPlayer().getReceivedGifts().size())){
             return new Result(false,"number not in list");
         }
-        Gift gift = App.getCurrentGame().getCurrentPlayer().getRecivedGifts().get(number-1);
+        Gift gift = App.getCurrentGame().getCurrentPlayer().getReceivedGifts().get(number-1);
         Player player = gift.getPayer();
         PlayerRelationship relationship = FriendShipController.getPlayerRelationship(App.getCurrentGame().getCurrentPlayer(), player);
         if (relationship.getGiftDailyCount() == 0) {
@@ -141,7 +147,7 @@ public class FriendShipController {
                         App.getCurrentGame().getCurrentPlayer().getEnergy());
             }
         }
-        App.getCurrentGame().getCurrentPlayer().getRecivedGifts().remove(number-1);
+        App.getCurrentGame().getCurrentPlayer().getReceivedGifts().remove(number-1);
         gift.setRate(rate);
         return new Result(true,"done successfully");
     }
@@ -173,14 +179,14 @@ public class FriendShipController {
 
     public static Result flower(Player player) {
         PlayerRelationship relationship = FriendShipController.getPlayerRelationship(App.getCurrentGame().getCurrentPlayer(), player);
-        UniqeItems uniqeItems = UniqeItems.getUniqeItems("Bouquet");
-        if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(uniqeItems) == 0){
+        UniqueItem uniqueItem = UniqueItem.getUniqueItem("Bouquet");
+        if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(uniqueItem) == 0){
             return new Result(false,"you dont have bouquet");
         }
         if (relationship.getXp() < 300 && relationship.getLevel() < 3){
             return new Result(false,"your friendship xp should reach to 300 at level 2 for sending flower");
         }
-        if (!player.getBackpack().addItem(uniqeItems, 1)){
+        if (!player.getBackpack().addItem(uniqueItem, 1)){
             return new Result(false,player.getName() + " has no space in backpack");
         }
         if (App.getCurrentGame().getCurrentPlayer().getPartner() != null){
@@ -192,7 +198,7 @@ public class FriendShipController {
             }
         }
         relationship.increasLevel();
-        App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(uniqeItems,1);
+        App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(uniqueItem,1);
         return new Result(true,"flower sent");
     }
 
@@ -207,11 +213,11 @@ public class FriendShipController {
         if (relationship.getXp() < 400){
             return new Result(false,"your friendship xp should reach to 400 at level 3 for asking marriage");
         }
-        UniqeItems uniqeItems = UniqeItems.getUniqeItems("Wedding Ring");
-        if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(uniqeItems) == 0){
+        UniqueItem uniqueItem = UniqueItem.getUniqueItem("Wedding Ring");
+        if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(uniqueItem) == 0){
             return new Result(false,"you dont have Wedding ring");
         }
-        relationship.setRing(uniqeItems);
+        relationship.setRing(uniqueItem);
         player.getAskedForMarriage().add(App.getCurrentGame().getCurrentPlayer());
         return null;
     }
@@ -239,14 +245,6 @@ public class FriendShipController {
         }
     }
 
-    public static void decreaseHeartBropken() {
-        for (Player player : App.getCurrentGame().getPlayers()){
-            if(player.getHeartBroken() > 0){
-                player.decreaseHeartBroken();
-            }
-        }
-    }
-
     public static Result tradeRequest(String username, String itemName, int amount) {
         if(App.getCurrentGame().getPlayerByUsername(username) == null){
             return new Result(false,"user not found");
@@ -262,7 +260,7 @@ public class FriendShipController {
             return  new Result(false,"not enough product");
         }
         Trade trade = new Trade(App.getCurrentGame().getCurrentPlayer(),App.getCurrentGame().getPlayerByUsername(username),"offer",itemName,amount,0,"",0);
-        App.getCurrentGame().getPlayerByUsername(username).getRecivedTrades().add(trade);
+        App.getCurrentGame().getPlayerByUsername(username).getReceivedTrades().add(trade);
         return new Result(true,"offer sent successfully");
     }
 
@@ -284,7 +282,7 @@ public class FriendShipController {
             return new Result(false,"not enough money");
         }
         Trade trade = new Trade(App.getCurrentGame().getCurrentPlayer(),App.getCurrentGame().getPlayerByUsername(username),"request",itemName,amount,price,"",0);
-        App.getCurrentGame().getPlayerByUsername(username).getRecivedTrades().add(trade);
+        App.getCurrentGame().getPlayerByUsername(username).getReceivedTrades().add(trade);
         return new Result(true,"offer sent successfully");
     }
 
@@ -310,15 +308,15 @@ public class FriendShipController {
             return  new Result(false,"not enough product");
         }
         Trade trade = new Trade(App.getCurrentGame().getCurrentPlayer(),App.getCurrentGame().getPlayerByUsername(username),"request",itemName,amount,0,"",targetAmount);
-        App.getCurrentGame().getPlayerByUsername(username).getRecivedTrades().add(trade);
+        App.getCurrentGame().getPlayerByUsername(username).getReceivedTrades().add(trade);
         return new Result(true,"offer sent successfully");
     }
 
     public static Result tradeResponse(boolean b, int id) {
-        if (id > App.getCurrentGame().getCurrentPlayer().getRecivedTrades().size()){
+        if (id > App.getCurrentGame().getCurrentPlayer().getReceivedTrades().size()){
             return new Result(false,"id out of range");
         }
-        Trade trade = App.getCurrentGame().getCurrentPlayer().getRecivedTrades().get(id-1);
+        Trade trade = App.getCurrentGame().getCurrentPlayer().getReceivedTrades().get(id-1);
         PlayerRelationship relationship = getPlayerRelationship(trade.getSender(),trade.getReceiver());
         Item item = CommonGameController.findItem(trade.getItem());
         if (b){
@@ -333,7 +331,7 @@ public class FriendShipController {
                     Trade temp = new Trade(trade.getSender(),trade.getReceiver(), trade.getType(), trade.getItem(),trade.getAmount(),trade.getPrice(),trade.getTargetItem(), trade.getTargetAmount());
                     temp.setAccepted(true);
                     relationship.getTradeHistory().add(temp);
-                    App.getCurrentGame().getCurrentPlayer().getRecivedTrades().remove(id-1);
+                    App.getCurrentGame().getCurrentPlayer().getReceivedTrades().remove(id-1);
                     return new Result(true,"offer accepted successfully");
                 }
                 else{
@@ -348,7 +346,7 @@ public class FriendShipController {
                         Trade temp = new Trade(trade.getSender(),trade.getReceiver(), trade.getType(), trade.getItem(),trade.getAmount(),trade.getPrice(),trade.getTargetItem(), trade.getTargetAmount());
                         temp.setAccepted(true);
                         relationship.getTradeHistory().add(temp);
-                        App.getCurrentGame().getCurrentPlayer().getRecivedTrades().remove(id-1);
+                        App.getCurrentGame().getCurrentPlayer().getReceivedTrades().remove(id-1);
                         return new Result(true,"offer accepted");
                     }
                 }
@@ -360,7 +358,7 @@ public class FriendShipController {
                 Trade temp = new Trade(trade.getSender(),trade.getReceiver(), trade.getType(), trade.getItem(),trade.getAmount(),trade.getPrice(),trade.getTargetItem(), trade.getTargetAmount());
                 temp.setAccepted(true);
                 relationship.getTradeHistory().add(temp);
-                App.getCurrentGame().getCurrentPlayer().getRecivedTrades().remove(id-1);
+                App.getCurrentGame().getCurrentPlayer().getReceivedTrades().remove(id-1);
                 return new Result(true,"offer accepted successfully");
             }
         }
@@ -370,7 +368,7 @@ public class FriendShipController {
             Trade temp = new Trade(trade.getSender(),trade.getReceiver(), trade.getType(), trade.getItem(),trade.getAmount(),trade.getPrice(),trade.getTargetItem(), trade.getTargetAmount());
             temp.setAccepted(false);
             relationship.getTradeHistory().add(temp);
-            App.getCurrentGame().getCurrentPlayer().getRecivedTrades().remove(id-1);
+            App.getCurrentGame().getCurrentPlayer().getReceivedTrades().remove(id-1);
             return new Result(true,"offer rejected successfully");
         }
     }

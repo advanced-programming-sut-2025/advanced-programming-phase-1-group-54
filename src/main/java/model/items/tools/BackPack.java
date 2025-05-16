@@ -61,23 +61,13 @@ public class BackPack {
             return true;
         }
         else{
-            return numberOfItemInBackPack.size() < level.getSize();
+            return numberOfItemInBackPack.size() < this.getCapacity();
         }
     }
 
-
-
-    //    @Override
-//    public Result use(Item item) {
-//        if(itemsInBackPack.size() < level.getSize()){
-//            itemsInBackPack.add(item);
-//            return new Result(true,"Item added to backpack");
-//        }
-//        else {
-//            return new Result(false,"Backpack is Full");
-//        }
-//    }
-
+    public int getCapacity() {
+        return level.getSize();
+    }
 
     public void upgrade() {
         if (level != BackPackLevel.DELUX) {

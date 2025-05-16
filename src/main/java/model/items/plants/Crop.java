@@ -44,22 +44,22 @@ public class Crop extends Plant implements Cloneable{
 
 
     private final boolean oneTime;
-    private final boolean canBecomeGiant;
+    private final boolean isGiantPossible;
     private Direction giantDirection;
 
     public Crop(String name, String source, String fruit, int[] stages, int totalHarvestTime, int regrowthTime,
-                Season[] seasons, boolean oneTime, boolean canBecomeGiant) {
+                Season[] seasons, boolean oneTime, boolean isGiantPossible) {
         super(name, source, fruit, stages, totalHarvestTime, regrowthTime, seasons);
         this.oneTime = oneTime;
-        this.canBecomeGiant = canBecomeGiant;
+        this.isGiantPossible = isGiantPossible;
     }
 
     public boolean isOneTime() {
         return oneTime;
     }
 
-    public boolean isCanBecomeGiant() {
-        return canBecomeGiant;
+    public boolean isGiantPossible() {
+        return isGiantPossible;
     }
 
     public Direction getGiantDirection() {
@@ -74,7 +74,7 @@ public class Crop extends Plant implements Cloneable{
     public String toString() {
         return "Name: " + name +"\nSource: " + source + "\nFruit: " + fruit + "\nStages: " + Arrays.toString(stages) +
                 "\nTotal Harvest Time: " + totalHarvestTime + "\nOne Time: " + oneTime +  "\nRegrowth Time: " +
-                regrowthTime + "\nSeason: " + Arrays.toString(seasons) + "\nCan Become Giant: " + canBecomeGiant ;
+                regrowthTime + "\nSeason: " + Arrays.toString(seasons) + "\nCan Become Giant: " + isGiantPossible;
     }
 
     @Override

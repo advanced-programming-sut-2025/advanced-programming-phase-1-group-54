@@ -4,8 +4,77 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="Trade added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="major updates">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Game/ShopsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/enums/FishingPoleType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/enums/ShopType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/map/Shops/JojoMartShop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/map/Shops/Shop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/map/Shops/TheStardropSaloonShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animalHouses.json" beforeDir="false" afterPath="$PROJECT_DIR$/animalHouses.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DataBaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/DataBaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/AnimalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/AnimalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/FishingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FishingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/FriendShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FriendShipController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/MapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/MapController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/NPCShopsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/ToolsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/ToolsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/FarmBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/FarmBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/GameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/GameBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/WorldBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/DateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Quest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Quest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Refrigerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Refrigerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/BlackSmithShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Shops/BlackSmithShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/CarpenterShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Shops/CarpenterShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/FishShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Shops/FishShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/JojoMartShop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/MarnieRanch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Shops/MarnieRanch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/PierreGeneralShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Shops/PierreGeneralShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/Shop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Shops/TheStardropSaloonShop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/lives/Skill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/lives/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/lives/Human.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/lives/NPC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/alive/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/lives/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/FishingPoleLevel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/ToolLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/ToolLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/ItemsInShops.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/ShopItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/UniqeItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/UniqueItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/UnProducerArtisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/UnProducerArtisan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/FishingPole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/FishingPole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/Tool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/tools/TrashCan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/tools/TrashCan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/AnimalHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/AnimalHouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/AnimalHousePrototype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/AnimalHousePrototype.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Cabin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Cabin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Farm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Farm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/GreenHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/GreenHouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/relationships/AnimalFriendship.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/relationships/Gift.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/relationships/Gift.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/relationships/PlayerRelationship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/relationships/PlayerRelationship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/relationships/Talk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/relationships/Talk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/relationships/Trade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/relationships/Trade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,10 +85,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
-        <option value="Interface" />
         <option value="Record" />
-        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -39,8 +108,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54.git&quot;,
-    &quot;accountId&quot;: &quot;c59022d6-305f-4e82-b1ba-a11f215082e8&quot;
+    &quot;url&quot;: &quot;https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54&quot;,
+    &quot;accountId&quot;: &quot;ba300db7-7910-41b6-8de7-53faa46dff5f&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -60,7 +129,7 @@
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ehsan&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Asus/IdeaProjects/advanced-programming-phase-1-group-54&quot;,
@@ -69,7 +138,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
@@ -131,6 +200,104 @@
       <workItem from="1747161513398" duration="2176000" />
       <workItem from="1747165191149" duration="7057000" />
       <workItem from="1747172699186" duration="16830000" />
+      <workItem from="1747233139067" duration="41485000" />
+      <workItem from="1747303498996" duration="9253000" />
+    </task>
+    <task id="LOCAL-00011" summary="write Produce until Loom Artisan">
+      <option name="closed" value="true" />
+      <created>1746092227345</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1746092227345</updated>
+    </task>
+    <task id="LOCAL-00012" summary="edit write Produce until Loom Artisan">
+      <option name="closed" value="true" />
+      <created>1746098142936</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1746098142936</updated>
+    </task>
+    <task id="LOCAL-00013" summary="edit write Produce until Preservers Jar Artisan">
+      <option name="closed" value="true" />
+      <created>1746123476875</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1746123476875</updated>
+    </task>
+    <task id="LOCAL-00014" summary="write writeToJson method of Fish class">
+      <option name="closed" value="true" />
+      <created>1746133358305</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1746133358305</updated>
+    </task>
+    <task id="LOCAL-00015" summary="read and write Fishes Json And add constructor to Item Class Babies :)">
+      <option name="closed" value="true" />
+      <created>1746134408448</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1746134408448</updated>
+    </task>
+    <task id="LOCAL-00016" summary="read and write Fishes Json And add constructor to Item Class Babies :)">
+      <option name="closed" value="true" />
+      <created>1746134471763</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1746134471763</updated>
+    </task>
+    <task id="LOCAL-00017" summary="write writeToJson method Of Recipe Class">
+      <option name="closed" value="true" />
+      <created>1746189858955</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1746189858955</updated>
+    </task>
+    <task id="LOCAL-00018" summary="write writeToJson method Of Artisan Class and Produce Class">
+      <option name="closed" value="true" />
+      <created>1746208341125</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1746208341125</updated>
+    </task>
+    <task id="LOCAL-00019" summary="write writeToJson method Of Material Class">
+      <option name="closed" value="true" />
+      <created>1746208780315</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1746208780315</updated>
+    </task>
+    <task id="LOCAL-00020" summary="write writeToJson method Of Seed Class">
+      <option name="closed" value="true" />
+      <created>1746215903865</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1746215903865</updated>
+    </task>
+    <task id="LOCAL-00021" summary="write foraging Trees">
+      <option name="closed" value="true" />
+      <created>1746216305539</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1746216305539</updated>
+    </task>
+    <task id="LOCAL-00022" summary="edit writeToJson method of Seed Class">
+      <option name="closed" value="true" />
+      <created>1746216777704</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1746216777704</updated>
     </task>
     <task id="LOCAL-00023" summary=" write to json foragingCrops">
       <option name="closed" value="true" />
@@ -412,45 +579,21 @@
       <option name="project" value="LOCAL" />
       <updated>1747165595789</updated>
     </task>
-    <task id="LOCAL-00058" summary="commands completed">
+    <task id="LOCAL-00058" summary="some changes">
       <option name="closed" value="true" />
-      <created>1747176868699</created>
+      <created>1747233014633</created>
       <option name="number" value="00058" />
       <option name="presentableId" value="LOCAL-00058" />
       <option name="project" value="LOCAL" />
-      <updated>1747176868699</updated>
+      <updated>1747233014633</updated>
     </task>
-    <task id="LOCAL-00059" summary="shops update every day">
+    <task id="LOCAL-00059" summary="major updates">
       <option name="closed" value="true" />
-      <created>1747176916861</created>
+      <created>1747258598773</created>
       <option name="number" value="00059" />
       <option name="presentableId" value="LOCAL-00059" />
       <option name="project" value="LOCAL" />
-      <updated>1747176916861</updated>
-    </task>
-    <task id="LOCAL-00060" summary="update every shop method added">
-      <option name="closed" value="true" />
-      <created>1747176968131</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1747176968131</updated>
-    </task>
-    <task id="LOCAL-00061" summary="xml">
-      <option name="closed" value="true" />
-      <created>1747176986276</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1747176986276</updated>
-    </task>
-    <task id="LOCAL-00062" summary="xml">
-      <option name="closed" value="true" />
-      <created>1747177359273</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1747177359273</updated>
+      <updated>1747258598773</updated>
     </task>
     <task id="LOCAL-00063" summary="commands added">
       <option name="closed" value="true" />
@@ -525,6 +668,7 @@
       <updated>1747190312122</updated>
     </task>
     <option name="localTasksCounter" value="72" />
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -554,6 +698,13 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="make produces json and write some controller" />
+    <MESSAGE value="edit quality in some models and write animalProduces in to json" />
+    <MESSAGE value="shops updated" />
+    <MESSAGE value="buy item(some peoduct are not completed) and show item" />
+    <MESSAGE value="String available added" />
+    <MESSAGE value="gifts added to player" />
+    <MESSAGE value="xml changes" />
     <MESSAGE value="method get player relainship added" />
     <MESSAGE value="gift menu added and gift class changed" />
     <MESSAGE value="Friendship between players handled" />
@@ -568,6 +719,7 @@
     <MESSAGE value="write some TODO in controller methods and write fertilize Class" />
     <MESSAGE value="merge" />
     <MESSAGE value="complete foraging minerals method" />
+    <MESSAGE value="beautify code" />
     <MESSAGE value="npc shpo controller added" />
     <MESSAGE value="commands completed" />
     <MESSAGE value="shops update every day" />
@@ -580,6 +732,9 @@
     <MESSAGE value="notif every turn for marriage and rtc" />
     <MESSAGE value="Trade added" />
     <option name="LAST_COMMIT_MESSAGE" value="Trade added" />
+    <MESSAGE value="some changes" />
+    <MESSAGE value="major updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="major updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -608,15 +763,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java</url>
           <line>459</line>
           <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java</url>
-          <line>69</line>
-          <properties class="controller.Game.FoodController">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="76" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
