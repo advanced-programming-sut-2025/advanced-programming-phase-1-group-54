@@ -1,6 +1,7 @@
 package controller.Game;
 
 import model.App;
+import model.enums.SkillType;
 import model.map.*;
 import model.Game;
 import model.Placeable;
@@ -47,10 +48,10 @@ public class PlantsController {
         Seed seed;
         if (seedName.equals("Mixed Seeds")) {
             Result result = plantingSeeds(Seed.getMixedSeed(App.getCurrentGame().getDateTime().getSeason()), direction);
-            if(result.success()){
-                if(! App.getCurrentGame().getCurrentPlayer().getBackpack().
-                        removeItem(Seed.getSeed("Mixed Seeds"),1)){
-                    return new Result(-1,"you don't enough " + seedName);
+            if (result.success()) {
+                if (!App.getCurrentGame().getCurrentPlayer().getBackpack().
+                        removeItem(Seed.getSeed("Mixed Seeds"), 1)) {
+                    return new Result(-1, "you don't enough " + seedName);
                 }
             }
             return result;
@@ -60,9 +61,9 @@ public class PlantsController {
                 return new Result(-1, "seed does not exist");
             }
             Result result = plantingSeeds(seed, direction);
-            if(result.success()){
-                if(! App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(seed,1)){
-                    return new Result(-1,"you don't enough " + seedName);
+            if (result.success()) {
+                if (!App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(seed, 1)) {
+                    return new Result(-1, "you don't enough " + seedName);
                 }
             }
             return result;
@@ -120,7 +121,8 @@ public class PlantsController {
         if (placeable instanceof Fruit fruit) {
             Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().
                     getBackpack(), fruit, 1);
-            if(addedToBackPack.success()){
+            if (addedToBackPack.success()) {
+                game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
                 tile.setThingOnTile(null);
             }
             return addedToBackPack;
@@ -131,7 +133,8 @@ public class PlantsController {
                 Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(),
                         Fruit.getFruit(tree.getFruit()), 1);
 
-                if(addedToBackPack.success()){
+                if (addedToBackPack.success()) {
+                    game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
                     tree.setFruitIsRipen(false);
                 }
 
@@ -147,42 +150,31 @@ public class PlantsController {
                     Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(),
                             Fruit.getFruit(crop.getFruit()), 10);
 
-                    if(addedToBackPack.success()){
+                    if (addedToBackPack.success()) {
+                        game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
                         crop.setFruitIsRipen(false);
-                        if(crop.isOneTime()){
+                        if (crop.isOneTime()) {
                             tile.setThingOnTile(null);
                         }
 
-                        HashMap<Plant,Tile> plants = farm.getPlants();
-
-                        crop = (Crop) game.getWorld().
-                                getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
-                        crop.setFruitIsRipen(false);
-                        if(crop.isOneTime()){
-                            plants.get(crop).setThingOnTile(null);
-                        }
-
-                        crop = (Crop) game.getWorld().
-                                getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
-                        crop.setFruitIsRipen(false);
-                        if(crop.isOneTime()){
-                            plants.get(crop).setThingOnTile(null);
-                        }
-
-                        crop = (Crop) game.getWorld().
-                                getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
-                        crop.setFruitIsRipen(false);
-                        if(crop.isOneTime()){
-                            plants.get(crop).setThingOnTile(null);
+                        for (int i = 0; i < 3; i++) {
+                            tile = game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection()));
+                            crop = (Crop) tile.getThingOnTile();
+                            crop.setFruitIsRipen(false);
+                            if (crop.isOneTime()) {
+                                tile.setThingOnTile(null);
+                            }
                         }
                     }
 
                     return addedToBackPack;
                 } else {
-                    Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(), Fruit.getFruit(crop.getFruit()), 1);
-                    if(addedToBackPack.success()){
+                    Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(),
+                            Fruit.getFruit(crop.getFruit()), 1);
+                    if (addedToBackPack.success()) {
+                        game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
                         crop.setFruitIsRipen(false);
-                        if(crop.isOneTime()){
+                        if (crop.isOneTime()) {
                             tile.setThingOnTile(null);
                         }
                     }
@@ -290,7 +282,7 @@ public class PlantsController {
             return new Result(-1, "tile is not in this farm");
         }
 
-        if (tile.getThingOnTile() instanceof GreenHouse ) {
+        if (tile.getThingOnTile() instanceof GreenHouse) {
             tile = tile.getTop();
         }
 
@@ -304,11 +296,11 @@ public class PlantsController {
 
         Tree tree = Tree.getTree(seed.getPlant());
         if (tree != null) {
-            if(tile.hasFeature(Feature.SPEEDFERTILIZE)){
+            if (tile.hasFeature(Feature.SPEEDFERTILIZE)) {
                 tree.nextDayUpdate();
                 tile.removeFeature(Feature.SPEEDFERTILIZE);
             }
-            if(tile.hasFeature(Feature.WATERFERTILIZE)){
+            if (tile.hasFeature(Feature.WATERFERTILIZE)) {
                 tree.setFertilized(true);
                 tile.removeFeature(Feature.WATERFERTILIZE);
             }
@@ -317,11 +309,11 @@ public class PlantsController {
 
         Crop crop = Crop.getCrop(seed.getPlant());
         if (crop != null) {
-            if(tile.hasFeature(Feature.SPEEDFERTILIZE)){
+            if (tile.hasFeature(Feature.SPEEDFERTILIZE)) {
                 crop.nextDayUpdate();
                 tile.removeFeature(Feature.SPEEDFERTILIZE);
             }
-            if(tile.hasFeature(Feature.WATERFERTILIZE)){
+            if (tile.hasFeature(Feature.WATERFERTILIZE)) {
                 crop.setFertilized(true);
                 tile.removeFeature(Feature.WATERFERTILIZE);
             }
@@ -332,7 +324,7 @@ public class PlantsController {
 
         tile.removeFeature(Feature.PLOWED);
 
-        return new Result(1,"Planted seed successfully");
+        return new Result(1, "Planted seed successfully");
     }
 
     private static boolean cropCanBeGiant(Crop crop, Location location) {

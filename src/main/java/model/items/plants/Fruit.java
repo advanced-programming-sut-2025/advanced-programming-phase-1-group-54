@@ -8,9 +8,7 @@ import model.Placeable;
 import model.enums.ProduceQuality;
 import model.enums.Season;
 import model.enums.Symbol;
-import model.items.Fish;
 import model.items.Item;
-import model.items.crafting.UnProducerArtisan;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

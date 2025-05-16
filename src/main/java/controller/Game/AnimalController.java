@@ -1,5 +1,7 @@
 package controller.Game;
 
+import model.enums.SkillType;
+import model.enums.ToolType;
 import model.map.*;
 import model.App;
 import model.Result;
@@ -145,13 +147,37 @@ public class AnimalController {
             return new Result(-1, "Animal " + animalName + " hasn't any produce");
         }
 
+        boolean enoughEnergy = true;
+        if(animal.getName().equals("Cow") || animal.getName().equals("Goat")){
+            if(! player.getEquippedTool().getToolType().equals(ToolType.MILK_PAIL)){
+                return new Result(-1, "You don't have milk pail in your hand");
+            }
+            enoughEnergy = player.checkEnergy(player.getEquippedTool().getEnergyNeededPerUse(),null);
+            player.decreaseEnergy(player.getEquippedTool().getEnergyNeededPerUse(),null);
+        }
+        else if(animal.getName().equals("Sheep")){
+            if(! player.getEquippedTool().getToolType().equals(ToolType.SHEAR)){
+                return new Result(-1, "You don't have milk pail in your hand");
+            }
+            enoughEnergy = player.checkEnergy(player.getEquippedTool().getEnergyNeededPerUse(),null);
+            player.decreaseEnergy(player.getEquippedTool().getEnergyNeededPerUse(),null);
+        }
+
         if(! player.getBackpack().addItem(animal.getProduce(),1)){
             return new Result(-1, "Backpack is full");
         }
 
         animal.setProduce(null);
         animal.increaseFriendshipLevel(5);
-        return new Result(1,"You got produce from " + animalName);
+        player.getSkill(SkillType.FARMING).addXP(5);
+        if(enoughEnergy){
+            return new Result(1,"You got produce from " + animalName);
+        }
+        else {
+            return new Result(1,"You got produce from " +
+                    animalName  + ". " + CommonGameController.passOut().message());
+        }
+
     }
 
     public static Result sellAnimal(String animalName) {

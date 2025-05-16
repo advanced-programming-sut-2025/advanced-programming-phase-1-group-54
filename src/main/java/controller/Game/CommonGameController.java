@@ -2,6 +2,9 @@ package controller.Game;
 
 import model.App;
 import model.Game;
+import model.items.plants.Crop;
+import model.lives.Animal;
+import model.map.*;
 import model.enums.ToolType;
 import model.map.Refrigerator;
 import model.Result;
@@ -10,7 +13,7 @@ import model.enums.ProduceQuality;
 import model.items.*;
 import model.items.crafting.Produce;
 import model.items.crafting.ProducerArtisan;
-import model.items.crafting.UnProducerArtisan;
+import model.items.crafting.FeatureArtisan;
 import model.items.plants.Fruit;
 import model.items.plants.Seed;
 import model.items.tools.BackPack;
@@ -147,9 +150,9 @@ public class CommonGameController {
             return producerArtisan;
         }
 
-        UnProducerArtisan unProducerArtisan = UnProducerArtisan.getUnProducerArtisan(ItemName);
-        if(unProducerArtisan != null){
-            return unProducerArtisan;
+        FeatureArtisan featureArtisan = FeatureArtisan.getUnProducerArtisan(ItemName);
+        if(featureArtisan != null){
+            return featureArtisan;
         }
 
         Fish fish = Fish.getFish(ItemName);
@@ -488,6 +491,45 @@ public class CommonGameController {
         }
     }
 
+    public static void deleteThingOnTile(Tile tile, Farm farm){
+        Player player = App.getCurrentGame().getCurrentPlayer();
+
+        Location location = player.getCurrentLocation().delta(farm.getLocation());
+
+        if(tile.getThingOnTile() instanceof FeatureArtisan featureArtisan){
+            for(int i = -featureArtisan.getRadius() ; i <= featureArtisan.getRadius() ; i++){
+                for(int j = -featureArtisan.getRadius() ; j <= featureArtisan.getRadius() ; j++){
+                    Location location1 = location.delta(new Location(location.row() + i, location.column() + j));
+                    Tile tile1 = farm.getTileAt(location1);
+                    if(tile1 != null){
+                        tile.getFeatures().remove(featureArtisan.getFeature());
+                    }
+                }
+            }
+        }
+        else if(tile.getThingOnTile() instanceof ProducerArtisan producerArtisan){
+            tile.setThingOnTile(null);
+            player.getPlacedArtisans().remove(producerArtisan);
+        }
+        else if(tile.getThingOnTile() instanceof Crop crop && crop.getGiantDirection() != null){
+            tile.setThingOnTile(null);
+            for(int i = 0 ; i < 3 ; i++){
+                tile = App.getCurrentGame().getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection()));
+                crop = (Crop) tile.getThingOnTile();
+                tile.setThingOnTile(null);
+            }
+        }
+        else if(tile.getThingOnTile() instanceof Building){
+            deleteThingOnTile(tile.getTop(),farm);
+        }
+        else if(! (tile.getThingOnTile() instanceof Animal)){
+            tile.setThingOnTile(null);
+        }
+
+    }
+
+
+
     //TODO check baghal ham. ham bra player ham bra satl
     public static Result sell(String product, int count) {
         //next to each other
@@ -583,7 +625,7 @@ public class CommonGameController {
                 return new Result(true,"item sold successfully");
             }
         }
-        UnProducerArtisan unproduce = UnProducerArtisan.getUnProducerArtisan(product);
+        FeatureArtisan unproduce = FeatureArtisan.getUnProducerArtisan(product);
         if (unproduce != null) {
             if (count != 1) {
                 if (removeItemFromInventory(unproduce,count) == false){
@@ -608,6 +650,7 @@ public class CommonGameController {
         }
         return new Result(false,"you can't sell this product");
     }
+
     public static void nextDayMoney() {
         for(Player player : App.getCurrentGame().getPlayers()){
             player.increaseMoney(player.getNextDayMoney());
