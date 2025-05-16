@@ -20,8 +20,8 @@ public class FishingController {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
 
-        if(farm == null){
-            return new Result(1,"You aren't in any farm");
+        if (farm == null) {
+            return new Result(1, "You aren't in any farm");
         }
 
         boolean isNearLake = false;
@@ -67,7 +67,8 @@ public class FishingController {
             if (fishingPoleType == FishingPoleType.TRAINING) {
                 fish = Fish.getCheapestSeasonFish(App.getCurrentGame().getDateTime().getSeason());
             } else {
-                fish = Fish.getSeasonFish(App.getCurrentGame().getDateTime().getSeason(), skillLevel == Skill.getMaxSkillLevel());
+                fish = Fish.getSeasonFish(App.getCurrentGame().getDateTime().getSeason(),
+                        skillLevel == Skill.getMaxSkillLevel());
             }
             fish.setQuality(quality);
 

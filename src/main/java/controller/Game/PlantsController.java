@@ -1,6 +1,7 @@
 package controller.Game;
 
 import model.App;
+import model.enums.SkillType;
 import model.map.*;
 import model.Game;
 import model.Placeable;
@@ -121,6 +122,7 @@ public class PlantsController {
             Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().
                     getBackpack(), fruit, 1);
             if (addedToBackPack.success()) {
+                game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
                 tile.setThingOnTile(null);
             }
             return addedToBackPack;
@@ -132,6 +134,7 @@ public class PlantsController {
                         Fruit.getFruit(tree.getFruit()), 1);
 
                 if (addedToBackPack.success()) {
+                    game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
                     tree.setFruitIsRipen(false);
                 }
 
@@ -148,6 +151,7 @@ public class PlantsController {
                             Fruit.getFruit(crop.getFruit()), 10);
 
                     if (addedToBackPack.success()) {
+                        game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
                         crop.setFruitIsRipen(false);
                         if (crop.isOneTime()) {
                             tile.setThingOnTile(null);
@@ -165,8 +169,10 @@ public class PlantsController {
 
                     return addedToBackPack;
                 } else {
-                    Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(), Fruit.getFruit(crop.getFruit()), 1);
+                    Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(),
+                            Fruit.getFruit(crop.getFruit()), 1);
                     if (addedToBackPack.success()) {
+                        game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
                         crop.setFruitIsRipen(false);
                         if (crop.isOneTime()) {
                             tile.setThingOnTile(null);
