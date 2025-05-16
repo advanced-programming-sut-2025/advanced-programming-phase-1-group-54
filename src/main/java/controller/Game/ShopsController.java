@@ -318,7 +318,7 @@ public class ShopsController {
         if (item.getName().equals("Milk Pail")) {
             Tool milkPail = new Tool(ToolType.MILK_PAIL);
             App.getCurrentGame().getCurrentPlayer().setTool(ToolType.MILK_PAIL, milkPail);
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -326,7 +326,7 @@ public class ShopsController {
         } else if (item.getName().equals("Shears")) {
             Tool shear = new Tool(ToolType.SHEAR);
             App.getCurrentGame().getCurrentPlayer().setTool(ToolType.SHEAR, shear);
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -336,7 +336,7 @@ public class ShopsController {
             String temp = item.getName().split(" \\(Recipe\\)")[0];
             Recipe temp1 = Recipe.craftRecipes.get(temp);
             App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes().add(temp1);
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -346,7 +346,7 @@ public class ShopsController {
             String temp = item.getName().split(" Recipe")[0];
             Recipe temp1 = Recipe.foodRecipes.get(temp);
             App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes().add(temp1);
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -359,7 +359,7 @@ public class ShopsController {
                 if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(uniqueItem, count) == false) {
                     return new Result(false, "No space in Backpack.");
                 }
-                App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+                App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
                 if (item.getCount() != -1) {
                     item.setCount(item.getCount() - 1);
                 }
@@ -368,7 +368,7 @@ public class ShopsController {
                 if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, count) == false) {
                     return new Result(false, "No space in Backpack.");
                 }
-                App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+                App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
                 if (item.getCount() != -1) {
                     item.setCount(item.getCount() - 1);
                 }
@@ -391,7 +391,7 @@ public class ShopsController {
         if (!App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(temp, count)) {
             return new Result(false, "Not enough " + item.getIngredientString());
         }
-        App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+        App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
         //trashcan handle
         if (item.getName().contains("Trash")) {
             if (item.getName().contains("Copper")) {
@@ -445,7 +445,7 @@ public class ShopsController {
             return new Result(false, "You should buy Large Backpack first.");
         }
         App.getCurrentGame().getCurrentPlayer().getBackpack().upgrade();
-        App.getCurrentGame().getCurrentPlayer().spentMoney(count * item.getPrice());
+        App.getCurrentGame().getCurrentPlayer().decreaseMoney(count * item.getPrice());
         item.setCount(item.getCount() - 1);
         return new Result(true, "God willing, wear it in joy.");
     }
@@ -467,7 +467,7 @@ public class ShopsController {
         if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, count) == false) {
             return new Result(false, "No space in Backpack.");
         }
-        App.getCurrentGame().getCurrentPlayer().spentMoney(price * item.getCount());
+        App.getCurrentGame().getCurrentPlayer().decreaseMoney(price * item.getCount());
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }
@@ -509,7 +509,7 @@ public class ShopsController {
             return new Result(false, "You can't build this at that location");
         }
 
-        App.getCurrentGame().getCurrentPlayer().spentMoney(count * item.getPrice());
+        App.getCurrentGame().getCurrentPlayer().decreaseMoney(count * item.getPrice());
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }
@@ -538,7 +538,7 @@ public class ShopsController {
         if (item.getName().contains("Recipe")) {
             Recipe recipe = Recipe.craftRecipes.get("Fish Smoker");
             App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes().add(recipe);
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -557,7 +557,7 @@ public class ShopsController {
                 return null;
             }
 
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -568,7 +568,7 @@ public class ShopsController {
             if (!App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, count)) {
                 return new Result(false, "No space in Backpack.");
             }
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -596,7 +596,7 @@ public class ShopsController {
         if (!temp) {
             return new Result(false, "building required");
         }
-        App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+        App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }

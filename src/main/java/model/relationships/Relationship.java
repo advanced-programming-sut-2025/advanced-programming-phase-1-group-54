@@ -11,6 +11,7 @@ public class Relationship extends Friendship {
     private final ArrayList<Talk> talkHistory = new ArrayList<>();
     private final ArrayList<Gift> giftHistory = new ArrayList<>();
     private final ArrayList<Trade> tradeHistory = new ArrayList<>();
+
     private int giftDailyCount;
     private int hugDailyCount;
     private int talkDailyCount;
@@ -51,22 +52,6 @@ public class Relationship extends Friendship {
         talkDailyCount++;
     }
 
-    public void setGiftDailyCount(int giftDailyCount) {
-        this.giftDailyCount = giftDailyCount;
-    }
-
-    public void setHugDailyCount(int hugDailyCount) {
-        this.hugDailyCount = hugDailyCount;
-    }
-
-    public void setTalkDailyCount(int talkDailyCount) {
-        this.talkDailyCount = talkDailyCount;
-    }
-
-    public void setPartnerDailyCount(int partnerDailyCount) {
-        this.partnerDailyCount = partnerDailyCount;
-    }
-
     public UniqueItem getRing() {
         return ring;
     }
@@ -101,8 +86,6 @@ public class Relationship extends Friendship {
     public ArrayList<Gift> getGiftHistory() {
         return giftHistory;
     }
-
-    //TODO public void setring ()
 
     public void reset(){
         this.giftDailyCount = 0;

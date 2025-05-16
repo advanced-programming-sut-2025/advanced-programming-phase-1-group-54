@@ -322,13 +322,16 @@ public class FriendShipController {
             return new Result(false, player.getName() + " not asking marriage");
         } else if (marriage) {
             relationship.increasLevel();
+            int totalMoney = currentPlayer.getMoney() + player.getMoney();
             currentPlayer.setPartner(player);
-            player.setPartner(App.getCurrentGame().getCurrentPlayer());
+            currentPlayer.setMoney(totalMoney);
+            player.setPartner(currentPlayer);
+            player.setMoney(totalMoney);
             currentPlayer.getBackpack().addItem(relationship.getRing(), 1);
             return new Result(true, "successfully accepted");
         } else {
             relationship.resetlevel();
-
+            player.setHeartBreakDaysRemaining(7);
             player.getBackpack().addItem(relationship.getRing(), 1);
             return new Result(true, "successfully rejected");
         }
@@ -429,7 +432,7 @@ public class FriendShipController {
                     } else if (!App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(item, trade.getAmount())) {
                         return new Result(false, "not enough space in backpack");
                     } else {
-                        App.getCurrentGame().getCurrentPlayer().spentMoney(trade.getPrice());
+                        App.getCurrentGame().getCurrentPlayer().decreaseMoney(trade.getPrice());
                         Trade temp = new Trade(trade.getSender(), trade.getReceiver(), trade.getType(), trade.getItem(), trade.getAmount(), trade.getPrice(), trade.getTargetItem(), trade.getTargetAmount());
                         temp.setAccepted(true);
                         relationship.getTradeHistory().add(temp);

@@ -398,7 +398,7 @@ public class DefaultMenu implements GameSubMenu {
     private void handleEating(String input) {
         Command command = GameCommand.EATING;
         String foodName = command.getGroup(input, "foodName");
-        showResult(FoodController.cooking(foodName));
+        showResult(FoodController.eatFood(foodName));
     }
 
     private void handleBuildAnimalHouse(String input) {

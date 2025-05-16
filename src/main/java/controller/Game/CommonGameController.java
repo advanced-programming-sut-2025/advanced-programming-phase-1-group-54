@@ -610,8 +610,7 @@ public class CommonGameController {
     }
     public static void nextDayMoney() {
         for(Player player : App.getCurrentGame().getPlayers()){
-            player.increaseMoney(player.getNextDayMoney());
-            player.setNextDayMoney(0);
+
         }
     }
 
