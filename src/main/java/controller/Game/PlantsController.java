@@ -45,13 +45,26 @@ public class PlantsController {
 
         Seed seed;
         if (seedName.equals("Mixed Seeds")) {
-            return plantingSeeds(Seed.getMixedSeed(App.getCurrentGame().getDateTime().getSeason()), direction);
+            Result result = plantingSeeds(Seed.getMixedSeed(App.getCurrentGame().getDateTime().getSeason()), direction);
+            if(result.success()){
+                if(! App.getCurrentGame().getCurrentPlayer().getBackpack().
+                        removeItem(Seed.getSeed("Mixed Seeds"),1)){
+                    return new Result(-1,"you don't enough " + seedName);
+                }
+            }
+            return result;
         } else {
             seed = Seed.getSeed(seedName);
             if (seed == null) {
                 return new Result(-1, "seed does not exist");
             }
-            return plantingSeeds(seed, direction);
+            Result result = plantingSeeds(seed, direction);
+            if(result.success()){
+                if(! App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(seed,1)){
+                    return new Result(-1,"you don't enough " + seedName);
+                }
+            }
+            return result;
         }
 
     }
@@ -273,12 +286,6 @@ public class PlantsController {
             return new Result(-1, "tile is not in this farm");
         }
 
-        Integer numberOfSeeds = currentPlayer.getBackpack().getNumberOfItemInBackPack().get(seed);
-
-        if (numberOfSeeds == null || numberOfSeeds < 1) {
-            return new Result(-1, "You do not have Seed");
-        }
-
         if (tile.getThingOnTile() instanceof GreenHouse ) {
             tile = tile.getTop();
         }
@@ -290,8 +297,6 @@ public class PlantsController {
         if (tile.getThingOnTile() != null) {
             return new Result(-1, "tile already is full");
         }
-
-        currentPlayer.getBackpack().removeItem(seed, 1);
 
         Tree tree = Tree.getTree(seed.getPlant());
         if (tree != null) {

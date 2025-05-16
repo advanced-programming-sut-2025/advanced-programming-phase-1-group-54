@@ -15,6 +15,9 @@ public class AnimalController {
         if(animal == null) {
             return new Result(-1, "Animal " + animalName + " not found");
         }
+        if(! MapController.isNear(player.getCurrentLocation(),animal)){
+            return new Result(-1, "Animal " + animalName + " is not near you");
+        }
         animal.increaseFriendshipLevel(15);
         animal.setCaressed(true);
         return new Result(1,"Animal " + animalName + " has petted");
@@ -68,24 +71,35 @@ public class AnimalController {
         }
 
         if(tile.getThingOnTile() == null){
-            if(animal.getLocation() != null &&
-                    farm.getTileAt(animal.getLocation()).getThingOnTile() instanceof AnimalHouse pastAnimalHouse) {
-                pastAnimalHouse.decreaseNumberOfAnimals(1);
-            }
+            deleteAnimalFromFarm(animal);
             tile.setThingOnTile(animal);
             animal.setLocation(locationInFarm);
         }
         else if(tile.getThingOnTile() instanceof AnimalHouse animalHouse){
-            if(animalHouse.getSize() > animalHouse.getNumberOfAnimals()){
+            if(animalHouse.getSize() > animalHouse.getNumberOfAnimals() && tile.getTop().getThingOnTile() == null){
+                deleteAnimalFromFarm(animal);
                 animalHouse.increaseNumberOfAnimals(1);
                 animal.setLocation(locationInFarm);
+                tile.getTop().setThingOnTile(animal);
             }
         }
 
 
-
-
         return new Result(1,"Animal " + animalName + " has moved successfully");
+    }
+
+    private static void deleteAnimalFromFarm(Animal animal) {
+        if(animal.getLocation() != null ) {
+            Tile pastTile = App.getCurrentGame().getWorld().getFarm(App.getCurrentGame().getCurrentPlayer()).
+                    getTileAt(animal.getLocation());
+            if(pastTile.getThingOnTile() instanceof AnimalHouse pastAnimalHouse){
+                pastAnimalHouse.decreaseNumberOfAnimals(1);
+                pastTile.setThingOnTile(null);
+            }
+            else{
+                pastTile.setThingOnTile(null);
+            }
+        }
     }
 
     public static Result feedAnimal(String animalName) {
@@ -148,6 +162,7 @@ public class AnimalController {
         }
 
         player.getAnimals().remove(animalName);
+        deleteAnimalFromFarm(animal);
         player.increaseMoney((int)(animal.getSellPrice() * ((double) animal.getFriendshipLevel() /1000) + 0.3));
 
         return new Result(1,"You sold " + animalName);

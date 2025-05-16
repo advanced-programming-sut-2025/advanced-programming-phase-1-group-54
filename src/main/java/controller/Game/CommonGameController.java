@@ -160,7 +160,10 @@ public class CommonGameController {
             return fertilize;
         }
 
-
+        UniqueItem uniqueItem = UniqueItem.getUniqueItem(ItemName);
+        if(uniqueItem != null){
+            return uniqueItem;
+        }
 
         return null;
     }
@@ -462,9 +465,11 @@ public class CommonGameController {
             return ProduceQuality.IRIDIUM;
         }
     }
+
     public static void getregectedInMarriage(Player player){
         player.setHeartBroken(7);
     }
+
     public static void acceptMarriage(Player player){
         //TODO zaminashono ok kon @korosh
     }
@@ -588,6 +593,7 @@ public class CommonGameController {
         }
         return new Result(false,"you can't sell this product");
     }
+
     public static void nextDayMoney() {
         for(Player player : App.getCurrentGame().getPlayers()){
             player.increaseMoney(player.getNextDayMoney());

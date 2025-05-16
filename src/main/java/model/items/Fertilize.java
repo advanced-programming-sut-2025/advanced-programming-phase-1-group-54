@@ -7,8 +7,8 @@ import java.util.HashMap;
 public class Fertilize extends Item {
 
     private static final HashMap<String, Fertilize> fertilizers = new HashMap<>() {{
-        put("speedFertilize", new Fertilize("speedFertilize", false, Feature.SPEEDFERTILIZE));
-        put("waterFertilize", new Fertilize("waterFertilize", false, Feature.WATERFERTILIZE));
+        put("Speed-Gro", new Fertilize("Speed-Gro", false, Feature.SPEEDFERTILIZE));
+        put("Deluxe Retaining Soil", new Fertilize("Deluxe Retaining Soil", false, Feature.WATERFERTILIZE));
     }};
 
     public static Fertilize getFertilizer(String fertilizeName) {
@@ -19,7 +19,7 @@ public class Fertilize extends Item {
     private final Feature feature;
 
     public Fertilize(String name, boolean isEdible, Feature feature) {
-        super(name, isEdible,0);
+        super(name, isEdible, 0);
         this.feature = feature;
     }
 

@@ -86,7 +86,7 @@ public class Player extends Human implements DailyUpdate, HourUpdate {
         this.isInGiftList = false;
         this.heartBroken = 0;
         this.energy = MAXIMUM_ENERGY;
-        
+
         for (SkillType skilltype : SkillType.values()) {
             skills[skilltype.ordinal()] = new Skill(skilltype);
         }
@@ -194,6 +194,7 @@ public class Player extends Human implements DailyUpdate, HourUpdate {
     public void setNextDayMoney(int nextDayMoney) {
         this.nextDayMoney = nextDayMoney;
     }
+
     public void increaseNextDayMoney(int count) {
         nextDayMoney += count;
     }
@@ -351,40 +352,31 @@ public class Player extends Human implements DailyUpdate, HourUpdate {
             return true;
         } else if (skillType == null) {
             return this.energy > energyAmount;
-        }
-        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
-                this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY){
+        } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
+                this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY) {
             return this.energy > energyAmount - 2;
-        }
-        else if(this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY){
+        } else if (this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY) {
             return this.energy > energyAmount - 1;
-        }
-        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
+        } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())) {
             return this.energy > energyAmount - 1;
-        }
-        else{
+        } else {
             return this.energy > energyAmount;
         }
     }
 
     public void decreaseEnergy(int energyAmount, SkillType skillType) {
-        if(this.unlimitedEnergy){
+        if (this.unlimitedEnergy) {
             return;
-        }
-        else if(skillType == null){
+        } else if (skillType == null) {
             this.energy -= energyAmount;
-        }
-        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
-                this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY){
+        } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
+                this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY) {
             this.energy -= energyAmount - 2;
-        }
-        else if(this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY){
+        } else if (this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY) {
             this.energy -= energyAmount - 1;
-        }
-        else if(this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())){
+        } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill())) {
             this.energy -= energyAmount - 1;
-        }
-        else{
+        } else {
             this.energy -= energyAmount;
         }
     }

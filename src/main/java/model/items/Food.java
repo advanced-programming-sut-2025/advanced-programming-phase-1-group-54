@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-public class Food extends Item implements Cloneable{
+public class Food extends Item implements Cloneable {
 
-    private static HashMap<String,Food> foods;
+    private final static HashMap<String, Food> foods;
 
     static {
         Gson gson = new Gson();
@@ -25,16 +25,16 @@ public class Food extends Item implements Cloneable{
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        Type type = new TypeToken<HashMap<String, Food>>(){}.getType();
-        foods = gson.fromJson(file,type);
+        Type type = new TypeToken<HashMap<String, Food>>() {
+        }.getType();
+        foods = gson.fromJson(file, type);
     }
 
-    public static Food getFood(String ItemName){
+    public static Food getFood(String ItemName) {
         Food food = foods.get(ItemName);
-        if(food == null){
+        if (food == null) {
             return null;
-        }
-        else{
+        } else {
             return food.clone();
         }
     }
@@ -45,7 +45,7 @@ public class Food extends Item implements Cloneable{
     private final int buffHours;
 
     public Food(String name, int energy, int sellPrice, SkillType skillType, int energyBuff, int buffHours) {
-        super(name,true,sellPrice);
+        super(name, true, sellPrice);
         this.energy = energy;
         this.skillType = skillType;
         this.energyBuff = energyBuff;
@@ -80,105 +80,105 @@ public class Food extends Item implements Cloneable{
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof Food food){
+        if (obj instanceof Food food) {
             return this.getName().equals(food.getName());
         }
         return false;
     }
 
-    public static void writeToJson(){
+    public static void writeToJson() {
 
-        HashMap<String,Food> foodsType = new HashMap<>();
+        HashMap<String, Food> foodsType = new HashMap<>();
 
         Food food;
 
         food = new Food("Fried Egg"
-                ,50
-                ,35
-                ,null,
+                , 50
+                , 35
+                , null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Baked Fish"
-                ,75
-                ,100
-                ,null,
+                , 75
+                , 100
+                , null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Salad"
-                ,113
-                ,110
-                ,null,
+                , 113
+                , 110
+                , null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Omelet"
-                ,100
-                ,125
-                ,null,
+                , 100
+                , 125
+                , null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Pumpkin Pie"
-                ,225
-                ,385
-                ,null,
+                , 225
+                , 385
+                , null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Spaghetti"
-                ,75
-                ,120
-                ,null,
+                , 75
+                , 120
+                , null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Pizza"
-                ,150
-                ,300
-                ,null,
+                , 150
+                , 300
+                , null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Tortilla"
-                ,50
-                ,50
-                ,null,
+                , 50
+                , 50
+                , null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Maki Roll"
-                ,100
-                ,220
-                ,null,
+                , 100
+                , 220
+                , null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Triple Shot Espresso"
-                ,200
-                ,450
-                ,null,
+                , 200
+                , 450
+                , null,
                 100,
                 5);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Cookie"
-                ,90
-                ,140
-                ,null,
+                , 90
+                , 140
+                , null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Hash Browns",
                 90,
@@ -186,7 +186,7 @@ public class Food extends Item implements Cloneable{
                 SkillType.FARMING,
                 0,
                 5);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Pancakes",
                 90,
@@ -194,7 +194,7 @@ public class Food extends Item implements Cloneable{
                 SkillType.FORAGING,
                 0,
                 11);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Fruit Salad",
                 263,
@@ -202,7 +202,7 @@ public class Food extends Item implements Cloneable{
                 null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Red Plate",
                 240,
@@ -210,7 +210,7 @@ public class Food extends Item implements Cloneable{
                 null,
                 50,
                 3);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Bread",
                 50,
@@ -218,7 +218,7 @@ public class Food extends Item implements Cloneable{
                 null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Salmon Dinner",
                 125,
@@ -226,7 +226,7 @@ public class Food extends Item implements Cloneable{
                 null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Vegetable Medley",
                 165,
@@ -234,7 +234,7 @@ public class Food extends Item implements Cloneable{
                 null,
                 0,
                 0);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Farmer's Lunch",
                 200,
@@ -242,7 +242,7 @@ public class Food extends Item implements Cloneable{
                 SkillType.FARMING,
                 0,
                 5);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
 
         food = new Food("Survival Burger",
@@ -251,7 +251,7 @@ public class Food extends Item implements Cloneable{
                 SkillType.FORAGING,
                 0,
                 5);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Dish O' The Sea",
                 150,
@@ -259,7 +259,7 @@ public class Food extends Item implements Cloneable{
                 SkillType.FISHING,
                 0,
                 5);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Seaform Pudding",
                 175,
@@ -267,7 +267,7 @@ public class Food extends Item implements Cloneable{
                 SkillType.FISHING,
                 0,
                 10);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         food = new Food("Miner's Treat",
                 125,
@@ -275,11 +275,11 @@ public class Food extends Item implements Cloneable{
                 SkillType.MINING,
                 0,
                 5);
-        foodsType.put(food.getName(),food);
+        foodsType.put(food.getName(), food);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        try (FileWriter file = new FileWriter("foods.json")){
+        try (FileWriter file = new FileWriter("foods.json")) {
             gson.toJson(foodsType, file);
         } catch (IOException e) {
             throw new RuntimeException(e);

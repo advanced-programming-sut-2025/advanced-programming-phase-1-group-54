@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Artisan extends Item implements Placeable,Cloneable{
+public class Artisan extends Item implements Placeable, Cloneable {
 
 //    private final static HashMap<String,Artisan> artisans;
 //
@@ -35,13 +35,11 @@ public class Artisan extends Item implements Placeable,Cloneable{
 //    }
 
 
-
     private final String recipeName;
 
 
-
     public Artisan(String name, String recipeName) {
-        super(name,false,0);
+        super(name, false, 0);
         this.recipeName = recipeName;
     }
 
@@ -58,9 +56,9 @@ public class Artisan extends Item implements Placeable,Cloneable{
         }
     }
 
-    public static void writeToJson(){
+    public static void writeToJson() {
 
-        HashMap<String,Artisan> artisansType = new HashMap<>();
+        HashMap<String, Artisan> artisansType = new HashMap<>();
 
         Artisan artisan;
         ArrayList<String> produces;
@@ -470,7 +468,6 @@ public class Artisan extends Item implements Placeable,Cloneable{
         artisansType.put(artisan.getName(), artisan);
 
 
-
         artisan = new UnProducerArtisan(
                 "Mystic Tree Seeds",
                 "Mystic Tree Seeds Recipe",
@@ -483,7 +480,7 @@ public class Artisan extends Item implements Placeable,Cloneable{
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        try (FileWriter file = new FileWriter("artisans.json")){
+        try (FileWriter file = new FileWriter("artisans.json")) {
             gson.toJson(artisansType, file);
         } catch (IOException e) {
             throw new RuntimeException(e);
