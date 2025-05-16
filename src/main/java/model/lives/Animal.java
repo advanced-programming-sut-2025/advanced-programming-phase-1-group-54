@@ -6,7 +6,6 @@ import com.google.gson.reflect.TypeToken;
 import controller.Game.CommonGameController;
 import model.DailyUpdate;
 import model.map.AnimalHouse;
-import model.Placeable;
 import model.enums.ProduceQuality;
 import model.enums.Symbol;
 import model.items.AnimalProduce;
@@ -21,7 +20,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Animal implements Placeable,Cloneable,DailyUpdate {
+public class Animal extends Live implements Cloneable,DailyUpdate {
 
     private static final HashMap<String,Animal> animals;
 
@@ -51,8 +50,7 @@ public class Animal implements Placeable,Cloneable,DailyUpdate {
     }
 
 
-    private final String name;
-    private String animalName;
+    private final String animalName;
     protected final int sellPrice;
     private final int numberOfProducingDays;
     private int daysAfterProducing;
@@ -68,15 +66,11 @@ public class Animal implements Placeable,Cloneable,DailyUpdate {
     private AnimalProduce produce;
     protected Location location;
 
-    public Animal(String name, int sellPrice, int numberOfProducingDays, ArrayList<String> animalProducesNames) {
-        this.name = name;
+    public Animal(String animalName, int sellPrice, int numberOfProducingDays, ArrayList<String> animalProducesNames) {
+        this.animalName = animalName;
         this.sellPrice = sellPrice;
         this.numberOfProducingDays = numberOfProducingDays;
         this.animalProducesNames = animalProducesNames;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getAnimalName() {
@@ -125,12 +119,6 @@ public class Animal implements Placeable,Cloneable,DailyUpdate {
 
     public Location getLocation() {
         return location;
-    }
-
-
-
-    public void setAnimalName(String animalName) {
-        this.animalName = animalName;
     }
 
     public void increaseDaysAfterProducing(int daysAfterProducing) {
@@ -211,7 +199,7 @@ public class Animal implements Placeable,Cloneable,DailyUpdate {
             this.increaseDaysAfterProducing(1);
         }
 
-        if(this.getName().equals("Pig")){
+        if(this.getAnimalName().equals("Pig")){
             if(this.isGoneOut()){
                 AnimalProduce animalProduce = producing();
                 setProduceQuality(animalProduce);
@@ -247,7 +235,7 @@ public class Animal implements Placeable,Cloneable,DailyUpdate {
 
     private void setProduceQuality(AnimalProduce produce){
         double qualityNumber = ((double) this.getFriendshipLevel() / 1000) * (0.5 + 0.5 * Math.random());
-        ProduceQuality quality = CommonGameController.giveQuality(qualityNumber);
+        ProduceQuality quality = ProduceQuality.giveQuality(qualityNumber);
         produce.setQuality(quality);
     }
 
@@ -263,45 +251,45 @@ public class Animal implements Placeable,Cloneable,DailyUpdate {
             add("Egg");
             add("Large Egg");
         }});
-        animalsType.put(animal.getName(), animal);
+        animalsType.put(animal.getAnimalName(), animal);
 
         animal = new Animal("Duck",1200,2,new ArrayList<>(){{
             add("Duck Egg");
         }});
-        animalsType.put(animal.getName(), animal);
+        animalsType.put(animal.getAnimalName(), animal);
 
         animal = new Animal("Rabbit",8000,4,new ArrayList<>(){{
             add("Wool");
             add("Rabbit Leg");
         }});
-        animalsType.put(animal.getName(), animal);
+        animalsType.put(animal.getAnimalName(), animal);
 
         animal = new Animal("Dinosaur",14000,7,new ArrayList<>(){{
             add("Dinosaur Egg");
         }});
-        animalsType.put(animal.getName(), animal);
+        animalsType.put(animal.getAnimalName(), animal);
 
         animal = new Animal("Cow",1500,1,new ArrayList<>(){{
             add("Milk");
             add("Large Milk");
         }});
-        animalsType.put(animal.getName(), animal);
+        animalsType.put(animal.getAnimalName(), animal);
 
         animal = new Animal("Goat",4000,2,new ArrayList<>(){{
             add("Goat Milk");
             add("Large Goat Milk");
         }});
-        animalsType.put(animal.getName(), animal);
+        animalsType.put(animal.getAnimalName(), animal);
 
         animal = new Animal("Sheep",8000,3,new ArrayList<>(){{
             add("Wool");
         }});
-        animalsType.put(animal.getName(), animal);
+        animalsType.put(animal.getAnimalName(), animal);
 
         animal = new Animal("Pig",16000,-1,new ArrayList<>(){{
             add("Truffle");
         }});
-        animalsType.put(animal.getName(), animal);
+        animalsType.put(animal.getAnimalName(), animal);
 
 
 

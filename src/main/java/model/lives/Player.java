@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Player extends Human implements DailyUpdate, HourUpdate {
+public class Player extends Live implements DailyUpdate, HourUpdate {
     private static final int MAXIMUM_ENERGY = 200;
 
     public static int getMaximumEnergy() {
@@ -39,7 +39,7 @@ public class Player extends Human implements DailyUpdate, HourUpdate {
 
     private int energy;
     private boolean unlimitedEnergy;
-    private int heartBroken;
+    private int heartBreakDaysRemaining;
 
     private final BackPack backpack = new BackPack();
     private final TrashCan trashCan = new TrashCan();
@@ -63,10 +63,10 @@ public class Player extends Human implements DailyUpdate, HourUpdate {
         add(Recipe.craftRecipes.get("Mayonnaise Machine Recipe"));
     }};
 
-    private ArrayList<Gift> receivedGifts = new ArrayList<>();
-    private ArrayList<Trade> receivedTrades = new ArrayList<>();
-    private ArrayList<Trade> receivedRequests = new ArrayList<>();
-    private ArrayList<Player> askedForMarriage = new ArrayList<>();
+    private final ArrayList<Gift> receivedGifts = new ArrayList<>();
+    private final ArrayList<Trade> receivedTrades = new ArrayList<>();
+    private final ArrayList<Trade> receivedRequests = new ArrayList<>();
+    private final ArrayList<Player> askedForMarriage = new ArrayList<>();
     private Player partner = null;
 
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
@@ -80,11 +80,12 @@ public class Player extends Human implements DailyUpdate, HourUpdate {
     private boolean isInGiftList;
 
     public Player(User controllingUser, Farm farm) {
+        super(controllingUser.getUsername());
         this.controllingUser = controllingUser;
         this.farm = farm;
         this.money = 0;
         this.isInGiftList = false;
-        this.heartBroken = 0;
+        this.heartBreakDaysRemaining = 0;
         this.energy = MAXIMUM_ENERGY;
 
         for (SkillType skilltype : SkillType.values()) {
@@ -133,7 +134,7 @@ public class Player extends Human implements DailyUpdate, HourUpdate {
     }
 
     public int getEnergy() {
-        if (isUnlimitedEnergy())
+        if (unlimitedEnergy)
             return MAXIMUM_ENERGY;
         return energy;
     }
@@ -200,8 +201,10 @@ public class Player extends Human implements DailyUpdate, HourUpdate {
     }
 
     public void setEnergy(int energy) {
-        if (energy <= MAXIMUM_ENERGY)
-            this.energy = energy;
+        if (!unlimitedEnergy) {
+            if (energy <= MAXIMUM_ENERGY)
+                this.energy = energy;
+            }
     }
 
     public void increaseMoney(int money) {
@@ -245,26 +248,18 @@ public class Player extends Human implements DailyUpdate, HourUpdate {
         }
     }
 
-    public boolean isUnlimitedEnergy() {
-        return unlimitedEnergy;
-    }
-
     public void setUnlimitedEnergy(boolean unlimitedEnergy) {
         this.unlimitedEnergy = unlimitedEnergy;
         if (unlimitedEnergy)
             setEnergy(MAXIMUM_ENERGY);
     }
 
-    public int getHeartBroken() {
-        return heartBroken;
-    }
-
-    public void setHeartBroken(int heartBroken) {
-        this.heartBroken = heartBroken;
+    public void setHeartBreakDaysRemaining(int heartBreakDaysRemaining) {
+        this.heartBreakDaysRemaining = heartBreakDaysRemaining;
     }
 
     public void decreaseHeartBroken() {
-        heartBroken--;
+        heartBreakDaysRemaining--;
     }
 
     public void setBuffSkill(SkillType buffSkill) {
@@ -287,24 +282,12 @@ public class Player extends Human implements DailyUpdate, HourUpdate {
         return receivedGifts;
     }
 
-    public void setAskedForMarriage(ArrayList<Player> askedForMarriage) {
-        this.askedForMarriage = askedForMarriage;
-    }
-
     public ArrayList<Trade> getReceivedTrades() {
         return receivedTrades;
     }
 
-    public void setReceivedTrades(ArrayList<Trade> receivedTrades) {
-        this.receivedTrades = receivedTrades;
-    }
-
     public ArrayList<Trade> getReceivedRequests() {
         return receivedRequests;
-    }
-
-    public void setReceivedRequests(ArrayList<Trade> receivedRequests) {
-        this.receivedRequests = receivedRequests;
     }
 
     public ArrayList<Player> getAskedForMarriage() {
@@ -340,7 +323,7 @@ public class Player extends Human implements DailyUpdate, HourUpdate {
             energy = MAXIMUM_ENERGY;
         }
 
-        if (heartBroken > 0) {
+        if (heartBreakDaysRemaining > 0) {
             energy /= 2;
             decreaseHeartBroken();
         }

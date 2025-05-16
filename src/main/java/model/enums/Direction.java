@@ -47,4 +47,18 @@ public enum Direction {
         }
         return null;
     }
+
+    public static Direction fromString(String string) {
+        for (Direction direction : Direction.values()) {
+            if (direction.toString().equals(string)) {
+                return direction;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return this.name().toLowerCase().replace("_", " ");
+    }
 }

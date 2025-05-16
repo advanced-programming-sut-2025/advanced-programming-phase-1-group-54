@@ -72,11 +72,11 @@ public class DateTime {
     }
 
     public void increaseDay(int amount) {
-        weekDay = WeekDay.values()[(amount + weekDay.ordinal())%DAYS_IN_WEEK];
-        year += (((amount + day)/DAYS_IN_SEASON)+ season.ordinal())/SEASONS_IN_YEAR;
-        season = Season.values()[(((amount + day)/DAYS_IN_SEASON)+ season.ordinal())%SEASONS_IN_YEAR];
-        day = (amount + day)%DAYS_IN_SEASON;
-        if(day == 0){
+        weekDay = WeekDay.values()[(amount + weekDay.ordinal()) % DAYS_IN_WEEK];
+        year += (((amount + day) / DAYS_IN_SEASON) + season.ordinal()) / SEASONS_IN_YEAR;
+        season = Season.values()[(((amount + day) / DAYS_IN_SEASON) + season.ordinal()) % SEASONS_IN_YEAR];
+        day = (amount + day) % DAYS_IN_SEASON;
+        if (day == 0) {
             day = DAYS_IN_SEASON;
         }
     }
@@ -102,4 +102,13 @@ public class DateTime {
         this.season = dateTime.season;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s, %d/%s/%d at %d o'clock",
+                this.weekDay,
+                this.day,
+                this.season,
+                this.year,
+                this.hour);
+    }
 }

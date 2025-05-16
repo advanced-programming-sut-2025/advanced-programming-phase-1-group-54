@@ -5,7 +5,7 @@ import model.lives.Player;
 import model.enums.SubMenu;
 import model.enums.Weather;
 import model.map.World;
-import model.relationships.PlayerRelationship;
+import model.relationships.Relationship;
 
 import java.util.ArrayList;
 
@@ -18,20 +18,42 @@ public class Game implements DailyUpdate, HourUpdate {
     private final DateTime dateTime = new DateTime();
     private int turn;
 
-    private final ArrayList<PlayerRelationship> playerRelationships;
+    private final ArrayList<Relationship> relationships;
 
     public Game(World world, Player[] players) {
         this.world = world;
         this.players = players;
-        this.playerRelationships = new ArrayList<>();
+        this.relationships = new ArrayList<>();
+
         for (int i = 0; i < players.length; i++) {
-            for (int j = i+1; j < players.length; j++) {
-                playerRelationships.add(new PlayerRelationship(players[i], players[j]));
+            for (int j = i + 1; j < players.length; j++) {
+                relationships.add(new Relationship(players[i], players[j]));
             }
         }
     }
-    public ArrayList<PlayerRelationship> getPlayerRelationships() {
-        return playerRelationships;
+
+    public ArrayList<Relationship> getRelationships() {
+        return relationships;
+    }
+
+    public ArrayList<Relationship> getRelationshipsOf(Player player) {
+        ArrayList<Relationship> relationshipsOfPlayer = new ArrayList<>();
+        for (Relationship relationship : relationships) {
+            if (relationship.getPlayer1().equals(player) || relationship.getPlayer2().equals(player))
+                relationshipsOfPlayer.add(relationship);
+        }
+
+        return relationshipsOfPlayer;
+    }
+
+    public Relationship getRelationship(Player player1, Player player2) {
+        for (Relationship relationship : relationships) {
+            if ((relationship.getPlayer1().equals(player1) && relationship.getPlayer2().equals(player2))
+                    || (relationship.getPlayer1().equals(player2) && relationship.getPlayer2().equals(player1)))
+                return relationship;
+        }
+
+        return null;
     }
 
     public SubMenu getSubMenu() {
@@ -67,7 +89,7 @@ public class Game implements DailyUpdate, HourUpdate {
             player.nextDayUpdate();
         }
 
-        for (PlayerRelationship relationship : playerRelationships) {
+        for (Relationship relationship : relationships) {
             relationship.reset();
         }
 
@@ -75,7 +97,6 @@ public class Game implements DailyUpdate, HourUpdate {
 
         CommonGameController.nextDayMoney();
         //TODO in every turn check the gifts trades etc
-        //TODO fill the shops
     }
 
     @Override
@@ -113,7 +134,7 @@ public class Game implements DailyUpdate, HourUpdate {
 
     public Player getPlayerByUsername(String username) {
         for (Player player : players) {
-            if(player.getName().equals(username)) {
+            if (player.getName().equals(username)) {
                 return player;
             }
         }

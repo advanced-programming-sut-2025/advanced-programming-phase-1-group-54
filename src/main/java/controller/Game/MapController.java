@@ -2,6 +2,7 @@ package controller.Game;
 
 import model.App;
 import model.Placeable;
+import model.enums.Symbol;
 import model.map.Building;
 import model.map.GreenHouse;
 import model.Game;
@@ -17,7 +18,6 @@ import model.map.World;
 import java.util.ArrayList;
 
 public class MapController {
-
     public static Result buildGreenhouse() {
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
@@ -149,10 +149,6 @@ public class MapController {
         return new Result(true, message.toString());
     }
 
-    public static Result buildAnimalHouse(String buildingName, Location location) {
-        return null;
-    }
-
     static boolean isNear(Location location, Placeable placeable) {
         World world = App.getCurrentGame().getWorld();
         for (Direction direction : Direction.values()) {
@@ -166,4 +162,11 @@ public class MapController {
         return false;
     }
 
+    public static Result helpReadMap() {
+        StringBuilder message = new StringBuilder();
+        for (Symbol symbol : Symbol.values()) {
+            message.append(symbol.name().toLowerCase()).append(": ").append(symbol).append("\n");
+        }
+        return new Result(true, message.toString());
+    }
 }

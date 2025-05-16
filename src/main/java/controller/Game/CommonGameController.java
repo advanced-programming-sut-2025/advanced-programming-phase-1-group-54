@@ -5,6 +5,8 @@ import model.Game;
 import model.items.plants.Crop;
 import model.lives.Animal;
 import model.map.*;
+import model.enums.ToolType;
+import model.map.Refrigerator;
 import model.Result;
 import model.lives.Player;
 import model.enums.ProduceQuality;
@@ -31,15 +33,18 @@ public class CommonGameController {
 
     public static Result passOut() {
         App.getCurrentGame().getCurrentPlayer().setEnergy(0);
-        return new Result(true, "you passed out!" + nextTurn().message());
+        return new Result(true, "you passed out!\n" + nextTurn().message());
     }
 
     public static Result nextTurn() {
         Game game = App.getCurrentGame();
         game.nextTurn();
-        String notification = getNotification();
-        return new Result(true, String.format("it is %s's turn",
-                game.getCurrentPlayer().getControllingUser().getUsername()) + notification);
+
+        StringBuilder message = new StringBuilder(String.format("it is %s's turn",
+                game.getCurrentPlayer().getName()));
+
+        // TODO
+        return new Result(true, message.toString());
     }
 
     private static String getNotification() {
@@ -104,8 +109,26 @@ public class CommonGameController {
         return new Result(true, String.format("you have %d energy left.", player.getEnergy()));
     }
 
+    public static Result showCurrentTool() {
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
 
-    public static Item findItem(String ItemName){
+        return new Result(true, player.getEquippedTool().toString());
+    }
+
+    public static Result showAvailableTools() {
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+
+        StringBuilder messageBuilder = new StringBuilder();
+        for (ToolType toolType : ToolType.values()) {
+            messageBuilder.append(toolType.toString()).append(": ").append(player.getTool(toolType).toString());
+        }
+        return new Result(true, messageBuilder.toString());
+    }
+
+
+    static Item findItem(String ItemName) {
 
         Seed seed = Seed.getSeed(ItemName);
         if(seed != null){
@@ -170,7 +193,7 @@ public class CommonGameController {
         return null;
     }
 
-    public static int numberOfItemInBackPack(String ItemName){
+    static int numberOfItemInBackPack(String ItemName) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Integer number = 0;
         if(ItemName.equals("fish")){
@@ -244,7 +267,7 @@ public class CommonGameController {
 
     }
 
-    public static void removeItemFromBackPack(String ItemName, int number){
+    static void removeItemFromBackPack(String ItemName, int number) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         BackPack backPack = player.getBackpack();
         Refrigerator refrigerator = player.getRefrigerator();
@@ -436,7 +459,7 @@ public class CommonGameController {
         }
     }
 
-    public static boolean removeItemFromInventory(Item item, int number){
+    static boolean removeItemFromInventory(Item item, int number) {
 
         Player player = App.getCurrentGame().getCurrentPlayer();
         int amount = player.getBackpack().getNumberOfItemInBackPack().getOrDefault(item,0);
@@ -506,20 +529,14 @@ public class CommonGameController {
     }
 
 
-    public static void getregectedInMarriage(Player player){
-        player.setHeartBroken(7);
-    }
 
-    public static void acceptMarriage(Player player){
-        //TODO zaminashono ok kon @korosh
-    }
     //TODO check baghal ham. ham bra player ham bra satl
     public static Result sell(String product, int count) {
         //next to each other
         Fish fish = Fish.getFish(product);
         if (fish != null) {
             if (count != 1) {
-                if (removeItemFromInventory(fish,count) == false){
+                if (!removeItemFromInventory(fish, count)){
                     return new Result(false,"not enough products");
                 }
             }
@@ -567,8 +584,8 @@ public class CommonGameController {
         Food food = Food.getFood(product);
         if (food != null) {
             if (count != 1) {
-                if (removeItemFromInventory(food,count) == false){
-                    return new Result(false,"not enough products");
+                if (!removeItemFromInventory(food, count)) {
+                    return new Result(false, "not enough products");
                 }
             }
             else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food) == 0){
@@ -640,4 +657,9 @@ public class CommonGameController {
             player.setNextDayMoney(0);
         }
     }
+
+    static Result playerNotFound() {
+        return new Result(false, "there is no player with this name");
+    }
+
 }

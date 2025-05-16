@@ -116,7 +116,7 @@ public class FoodController {
         Refrigerator refrigerator = cabin.getRefrigerator();
         BackPack backPack = App.getCurrentGame().getCurrentPlayer().getBackpack();
 
-        if(! refrigerator.addItem(item,number).success()){
+        if(! refrigerator.addItem(item,number)){
             return new Result(-1,"Item isn't edible");
         }
 
@@ -144,7 +144,7 @@ public class FoodController {
             return new Result(-1,"Backpack is full");
         }
 
-        if(! refrigerator.removeItem(item,number).success()){
+        if(! refrigerator.removeItem(item,number)){
             backPack.removeItem(item,number);
             return new Result(-1 ,"you don't have enough " + itemName + " in your refrigerator");
         }

@@ -15,33 +15,34 @@ import java.util.HashMap;
 
 public class PlantsController {
 
-    public static String showInfo(String plantName) {
-
+    public static Result showInfo(String plantName) {
         Crop crop = Crop.getCrop(plantName);
         if (crop != null) {
-            return crop.toString();
+            return new Result(true, crop.toString());
         }
 
         Tree tree = Tree.getTree(plantName);
         if (tree != null) {
-            return tree.toString();
+            return new Result(true, tree.toString());
         }
 
         Fruit fruit = Fruit.getFruit(plantName);
         if (fruit != null) {
-            return fruit.toString();
+            return new Result(true, fruit.toString());
         }
 
         Seed seed = Seed.getSeed(plantName);
         if (seed != null) {
-            return seed.toString();
+            return new Result(true, seed.toString());
         }
 
-        return "Plant does not exist";
+        return new Result(false, "Plant does not exist");
 
     }
 
     public static Result planting(String seedName, Direction direction) {
+        if (direction == null)
+            return new Result(false, "invalid direction");
 
         Seed seed;
         if (seedName.equals("Mixed Seeds")) {
@@ -211,6 +212,9 @@ public class PlantsController {
     }
 
     public static Result fertilizePlant(String fertilizeName, Direction direction) {
+        if (direction == null)
+            return new Result(false, "invalid direction");
+
         Player player = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
         if (farm == null) {

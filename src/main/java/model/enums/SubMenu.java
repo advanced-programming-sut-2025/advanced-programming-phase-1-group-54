@@ -2,11 +2,13 @@ package model.enums;
 
 import view.game.DefaultMenu;
 import view.game.GameSubMenu;
+import view.game.TradingMenu;
 
 import java.util.Scanner;
 
 public enum SubMenu {
     DEFAULT(new DefaultMenu()),
+    TRADING(new TradingMenu())
     ;
 
     private final GameSubMenu menu;

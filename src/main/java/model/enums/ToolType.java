@@ -1,5 +1,7 @@
 package model.enums;
 
+import model.items.tools.Tool;
+
 public enum ToolType {
     AXE,
     PICKAXE,
@@ -9,23 +11,17 @@ public enum ToolType {
     SHEAR,
     WATERING_CAN;
 
-    public static ToolType fromString(String toolType) {
-        switch (toolType) {
-            case "axe":
-                return ToolType.AXE;
-            case "pickaxe":
-                return ToolType.PICKAXE;
-            case "hoe":
-                return ToolType.HOE;
-            case "milk pail":
-                return ToolType.MILK_PAIL;
-            case "scythe":
-                return ToolType.SCYTHE;
-            case "shear":
-                return ToolType.SHEAR;
-            case "watering can":
-                return ToolType.WATERING_CAN;
+    public static ToolType fromString(String string) {
+        for (ToolType toolType : ToolType.values()) {
+            if (toolType.toString().equals(string)) {
+                return toolType;
+            }
         }
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return this.name().toLowerCase().replace("_", " ");
     }
 }

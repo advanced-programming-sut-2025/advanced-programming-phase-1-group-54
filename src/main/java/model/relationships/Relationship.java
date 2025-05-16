@@ -1,12 +1,11 @@
 package model.relationships;
 
-import model.App;
 import model.lives.Player;
 import model.items.UniqueItem;
 
 import java.util.ArrayList;
 
-public class PlayerRelationship extends Friendship {
+public class Relationship extends Friendship {
     private final Player player1;
     private final Player player2;
     private final ArrayList<Talk> talkHistory = new ArrayList<>();
@@ -19,7 +18,7 @@ public class PlayerRelationship extends Friendship {
 
     private UniqueItem ring;
 
-    public PlayerRelationship(Player player1, Player player2) {
+    public Relationship(Player player1, Player player2) {
         super();
         this.player1 = player1;
         this.player2 = player2;
@@ -92,27 +91,27 @@ public class PlayerRelationship extends Friendship {
         return player2;
     }
 
+    public Player getOtherPlayer(Player player) {
+        if (player1.equals(player))
+            return player2;
+
+        return player1;
+    }
+
     public ArrayList<Gift> getGiftHistory() {
         return giftHistory;
     }
 
     //TODO public void setring ()
-    public static ArrayList<PlayerRelationship> getPlayerRelationships(Player player) {
-        ArrayList<PlayerRelationship> playerRelationships = new ArrayList<>();
-        for (PlayerRelationship playerRelationship : App.getCurrentGame().getPlayerRelationships()){
-            if (playerRelationship.getPlayer1().equals(player) || playerRelationship.getPlayer2().equals(player)){
-                playerRelationships.add(playerRelationship);
-            }
-        }
-        return playerRelationships;
-    }
+
     public void reset(){
         this.giftDailyCount = 0;
         this.hugDailyCount = 0;
         this.talkDailyCount = 0;
     }
+
     @Override
-    public void increasXp(int xp) {
+    public void increaseXP(int xp) {
         this.xp += xp;
         if (this.xp > (this.level + 1) * 100 && this.level < 2){
             this.xp = 0;
@@ -125,12 +124,14 @@ public class PlayerRelationship extends Friendship {
             }
         }
     }
+
     public void increasLevel(){
         if (this.level < 4) {
             this.level++;
             this.xp = 0;
         }
     }
+
     public void resetlevel(){
         this.level = 0;
     }

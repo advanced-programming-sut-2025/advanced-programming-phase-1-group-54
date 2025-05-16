@@ -8,7 +8,7 @@ public class Friendship {
         this.level = 0;
     }
 
-    public int getXp() {
+    public int getXP() {
         return xp;
     }
 
@@ -19,7 +19,7 @@ public class Friendship {
     public void setLevel(int level) {
         this.level = level;
     }
-    public void increasXp(int x){
+    public void increaseXP(int x){
         this.xp += x;
         if (this.xp > (this.level + 1) * 100){
             this.xp = 0;

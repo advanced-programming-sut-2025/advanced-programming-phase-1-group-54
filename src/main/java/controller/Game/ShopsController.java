@@ -53,7 +53,7 @@ public class ShopsController {
             return buySomethingFromStardrop(itemName, count);
         }
 
-        return null;
+        return new Result(false, "ERROR: shop was not found!");
     }
 
     public static Result upgradeTool(String toolName) {

@@ -17,6 +17,9 @@ import model.items.crafting.ProducerArtisan;
 import model.items.crafting.FeatureArtisan;
 import model.items.plants.Seed;
 import model.items.recipes.Recipe;
+import model.map.Farm;
+import model.map.Location;
+import model.map.Tile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -98,14 +101,10 @@ public class CraftingController {
 
     }
 
-    public static Result placeArtisan(String artisanName,String directionString){
-
-        Direction direction;
-        try{
-            direction = Direction.valueOf(directionString);
-        }catch(IllegalArgumentException e){
-            return new Result(-1,"Invalid direction");
-        }
+    // TODO
+    public static Result placeArtisan(String artisanName, Direction direction){
+        if (direction == null)
+            return new Result(false, "invalid direction");
 
         Player player = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());

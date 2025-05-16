@@ -15,40 +15,39 @@ public class Refrigerator implements Placeable {
         return numberOfItemInRefrigerator;
     }
 
-    public Result addItem(Item item, Integer number) {
+    public boolean addItem(Item item, Integer number) {
 
         Integer numberOfItem = numberOfItemInRefrigerator.get(item);
         if(numberOfItem != null) {
             numberOfItemInRefrigerator.put(item, numberOfItem + number);
-            return new Result(1, number + " " + item.getName() + " added to Refrigerator");
+            return true;
         }
         else if(item.isEdible()){
             numberOfItemInRefrigerator.put(item,number);
-            return new Result(1,number + " " + item.getName() + " added to Refrigerator");
+            return true;
         }
         else {
-            return new Result(-1,item.getName() + " is not edible");
+            return false;
         }
     }
 
-    public Result removeItem(Item item,Integer number) {
+    public boolean removeItem(Item item,Integer number) {
 
         Integer numberOfItem = numberOfItemInRefrigerator.get(item);
 
         if(numberOfItem == null){
-            return new Result(-1,"You do not have " + item.getName() + " in your refrigerator");
+            return false;
         }
         if(numberOfItem.equals(number)){
             numberOfItemInRefrigerator.remove(item);
-            return new Result(1,number + " " + item.getName() + " removed from Refrigerator completely");
+            return true;
         }
         else if(numberOfItem > number){
             numberOfItemInRefrigerator.put(item,numberOfItem - number);
-            return new Result(1,number + " " + item.getName() + " removed from Refrigerator");
+            return true;
         }
         else {
-            return new Result(-1,"You do not have enough number of " + item.getName() +
-                    " in your Refrigerator");
+            return false;
         }
 
     }

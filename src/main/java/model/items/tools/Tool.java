@@ -75,4 +75,9 @@ public class Tool {
         if (isUpgradable())
             toolLevel = ToolLevel.values()[toolLevel.ordinal() + 1];
     }
+
+    @Override
+    public String toString() {
+        return toolLevel.toString() + " " + toolType.toString();
+    }
 }
