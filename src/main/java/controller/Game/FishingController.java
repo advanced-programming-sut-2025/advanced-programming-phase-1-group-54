@@ -15,9 +15,14 @@ import model.map.Lake;
 import static controller.Game.ToolsController.addToBackPack;
 
 public class FishingController {
+
     public static Result fishing(String fishingPoleName) {
         Player player = App.getCurrentGame().getCurrentPlayer();
-        Farm farm = player.getFarm();
+        Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
+
+        if(farm == null){
+            return new Result(1,"You aren't in any farm");
+        }
 
         boolean isNearLake = false;
         for (Lake lake : farm.getLakes()) {

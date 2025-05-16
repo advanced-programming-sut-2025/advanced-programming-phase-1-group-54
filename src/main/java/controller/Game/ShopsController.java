@@ -107,7 +107,8 @@ public class ShopsController {
     }
 
     public static Result buildAnimalHouse(String buildingName, Location location) {
-        for (CarpenterShop.ItemsinCarpenterShop item : ((CarpenterShop) (App.getCurrentGame().getWorld().getShops().get(3))).getFarmBuildings()) {
+        for (CarpenterShop.ItemsinCarpenterShop item : ((CarpenterShop) (App.getCurrentGame().getWorld().
+                getShops().get(3))).getFarmBuildings()) {
             if (item.getName().equals(buildingName)) {
                 return buyFarmBuilding(item, location);
             }

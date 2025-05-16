@@ -64,7 +64,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
         ArrayList<String> produces;
 
 
-        artisan = new UnProducerArtisan(
+        artisan = new FeatureArtisan(
                 "Cherry Bomb",
                 "Cherry Bomb Recipe",
                 50,
@@ -74,7 +74,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
         artisansType.put(artisan.getName(), artisan);
 
 
-        artisan = new UnProducerArtisan(
+        artisan = new FeatureArtisan(
                 "Bomb",
                 "Bomb Recipe",
                 50,
@@ -84,7 +84,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
         artisansType.put(artisan.getName(), artisan);
 
 
-        artisan = new UnProducerArtisan(
+        artisan = new FeatureArtisan(
                 "Mega Bomb",
                 "Mega Bomb Recipe",
                 50,
@@ -94,7 +94,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
         artisansType.put(artisan.getName(), artisan);
 
 
-        artisan = new UnProducerArtisan(
+        artisan = new FeatureArtisan(
                 "Sprinkler",
                 "Sprinkler Recipe",
                 0,
@@ -104,7 +104,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
         artisansType.put(artisan.getName(), artisan);
 
 
-        artisan = new UnProducerArtisan(
+        artisan = new FeatureArtisan(
                 "Quality Sprinkler",
                 "Quality Sprinkler Recipe",
                 0,
@@ -114,7 +114,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
         artisansType.put(artisan.getName(), artisan);
 
 
-        artisan = new UnProducerArtisan(
+        artisan = new FeatureArtisan(
                 "Iridium Sprinkler",
                 "Iridium Sprinkler Recipe",
                 0,
@@ -126,7 +126,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
 
         produces = new ArrayList<>();
 
-        artisan = new UnProducerArtisan(
+        artisan = new FeatureArtisan(
                 "Scarecrow",
                 "Scarecrow Recipe",
                 0,
@@ -138,7 +138,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
 
         produces = new ArrayList<>();
 
-        artisan = new UnProducerArtisan(
+        artisan = new FeatureArtisan(
                 "Deluxe Scarecrow",
                 "Deluxe Scarecrow Recipe",
                 0,
@@ -148,7 +148,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
         artisansType.put(artisan.getName(), artisan);
 
 
-        artisan = new UnProducerArtisan(
+        artisan = new FeatureArtisan(
                 "Grass Starter",
                 "Grass Starter Recipe",
                 0,
@@ -468,7 +468,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
         artisansType.put(artisan.getName(), artisan);
 
 
-        artisan = new UnProducerArtisan(
+        artisan = new FeatureArtisan(
                 "Mystic Tree Seeds",
                 "Mystic Tree Seeds Recipe",
                 0,

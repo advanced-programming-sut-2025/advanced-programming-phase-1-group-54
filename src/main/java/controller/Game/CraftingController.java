@@ -2,7 +2,10 @@ package controller.Game;
 
 import model.App;
 import model.DateTime;
-import model.map.Cabin;
+import model.items.plants.Crop;
+import model.items.plants.Plant;
+import model.lives.Animal;
+import model.map.*;
 import model.Result;
 import model.lives.Player;
 import model.enums.Direction;
@@ -11,14 +14,12 @@ import model.items.Item;
 import model.items.crafting.Artisan;
 import model.items.crafting.Produce;
 import model.items.crafting.ProducerArtisan;
-import model.items.crafting.UnProducerArtisan;
+import model.items.crafting.FeatureArtisan;
 import model.items.plants.Seed;
 import model.items.recipes.Recipe;
-import model.map.Farm;
-import model.map.Location;
-import model.map.Tile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CraftingController {
 
@@ -57,7 +58,7 @@ public class CraftingController {
 
         Artisan artisan = ProducerArtisan.getProducerArtisan(artisanName);
         if(artisan == null){
-            artisan = UnProducerArtisan.getUnProducerArtisan(artisanName);
+            artisan = FeatureArtisan.getUnProducerArtisan(artisanName);
             if(artisan == null){
                 return new Result(-1,"Artisan dose not exist");
             }
@@ -97,7 +98,6 @@ public class CraftingController {
 
     }
 
-    // TODO
     public static Result placeArtisan(String artisanName,String directionString){
 
         Direction direction;
@@ -108,7 +108,12 @@ public class CraftingController {
         }
 
         Player player = App.getCurrentGame().getCurrentPlayer();
-        Farm farm = App.getCurrentGame().getWorld().getFarm(player);
+        Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
+
+        if(farm == null){
+            return new Result(-1,"You aren't in any farm");
+        }
+
         Tile tile = farm.getTileAt(player.getCurrentLocation().getLocationAt(direction).delta(farm.getLocation()));
 
         if(tile.getThingOnTile() != null){
@@ -126,25 +131,33 @@ public class CraftingController {
 
             return new Result(1,"Artisan placed successfully");
         }
-        UnProducerArtisan unProducerArtisan = UnProducerArtisan.getUnProducerArtisan(artisanName);
-        if(unProducerArtisan == null){
+        FeatureArtisan featureArtisan = FeatureArtisan.getUnProducerArtisan(artisanName);
+        if(featureArtisan == null){
             return new Result(-1,"Artisan dose not exist");
         }
 
         Location location = player.getCurrentLocation().delta(farm.getLocation());
 
-        if(unProducerArtisan.getFeature().equals(Feature.DESTROYED)){
+        if(featureArtisan.getFeature().equals(Feature.DESTROYED)){
 
-            // TODO Destroy
-
-        }
-        else{
-            for(int i = -unProducerArtisan.getRadius();i < unProducerArtisan.getRadius();i++){
-                for(int j = -unProducerArtisan.getRadius(); j < unProducerArtisan.getRadius();j++){
+            for(int i = -featureArtisan.getRadius(); i <= featureArtisan.getRadius(); i++){
+                for(int j = -featureArtisan.getRadius(); j <= featureArtisan.getRadius(); j++){
                     Location location1 = location.delta(new Location(location.row() + i,location.column() + j));
                     Tile tile1 =  farm.getTileAt(location1);
                     if(tile1 != null){
-                        tile.getFeatures().add(unProducerArtisan.getFeature());
+                        CommonGameController.deleteThingOnTile(tile1,farm);
+                    }
+                }
+            }
+
+        }
+        else{
+            for(int i = -featureArtisan.getRadius(); i <= featureArtisan.getRadius(); i++){
+                for(int j = -featureArtisan.getRadius(); j <= featureArtisan.getRadius(); j++){
+                    Location location1 = location.delta(new Location(location.row() + i,location.column() + j));
+                    Tile tile1 =  farm.getTileAt(location1);
+                    if(tile1 != null){
+                        tile.getFeatures().add(featureArtisan.getFeature());
                     }
                 }
             }
@@ -257,5 +270,6 @@ public class CraftingController {
 
         return new Result(1,"You got the produce");
     }
+
 
 }

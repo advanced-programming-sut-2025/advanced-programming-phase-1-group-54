@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-public class UnProducerArtisan extends Artisan implements Cloneable{
+public class FeatureArtisan extends Artisan implements Cloneable{
 
-    private final static HashMap<String, UnProducerArtisan> unProducerArtisans;
+    private final static HashMap<String, FeatureArtisan> unProducerArtisans;
 
     static{
         Gson gson = new Gson();
@@ -25,17 +25,17 @@ public class UnProducerArtisan extends Artisan implements Cloneable{
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        Type type = new TypeToken<HashMap<String, UnProducerArtisan>>(){}.getType();
+        Type type = new TypeToken<HashMap<String, FeatureArtisan>>(){}.getType();
          unProducerArtisans = gson.fromJson(file,type);
     }
 
-    public static UnProducerArtisan getUnProducerArtisan(String Name) {
-        UnProducerArtisan unProducerArtisan = unProducerArtisans.get(Name);
-        if (unProducerArtisan == null) {
+    public static FeatureArtisan getUnProducerArtisan(String Name) {
+        FeatureArtisan featureArtisan = unProducerArtisans.get(Name);
+        if (featureArtisan == null) {
             return null;
         }
         else {
-            return unProducerArtisan.clone();
+            return featureArtisan.clone();
         }
     }
 
@@ -43,7 +43,7 @@ public class UnProducerArtisan extends Artisan implements Cloneable{
     private final int radius;
     private final Feature feature;
 
-    public UnProducerArtisan(String name, String recipeName, int sellPrice, int radius, Feature feature) {
+    public FeatureArtisan(String name, String recipeName, int sellPrice, int radius, Feature feature) {
         super(name, recipeName);
         this.sellPrice = sellPrice;
         this.radius = radius;
@@ -63,123 +63,123 @@ public class UnProducerArtisan extends Artisan implements Cloneable{
     }
 
     @Override
-    protected UnProducerArtisan clone() {
-        return (UnProducerArtisan) super.clone();
+    protected FeatureArtisan clone() {
+        return (FeatureArtisan) super.clone();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof UnProducerArtisan unProducerArtisan) {
-            return this.getName().equals(unProducerArtisan.getName());
+        if (obj instanceof FeatureArtisan featureArtisan) {
+            return this.getName().equals(featureArtisan.getName());
         }
         return false;
     }
 
     public static void writeToJson(){
 
-        HashMap<String,UnProducerArtisan> UnProducerArtisansType = new HashMap<>();
+        HashMap<String, FeatureArtisan> UnProducerArtisansType = new HashMap<>();
 
-        UnProducerArtisan unProducerArtisan;
+        FeatureArtisan featureArtisan;
 
 
-        unProducerArtisan = new UnProducerArtisan(
+        featureArtisan = new FeatureArtisan(
                 "Cherry Bomb",
                 "Cherry Bomb Recipe",
                 50,
                 3,
                 Feature.DESTROYED
         );
-        UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
+        UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 
 
-        unProducerArtisan = new UnProducerArtisan(
+        featureArtisan = new FeatureArtisan(
                 "Bomb",
                 "Bomb Recipe",
                 50,
                 5,
                 Feature.DESTROYED
         );
-        UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
+        UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 
 
-        unProducerArtisan = new UnProducerArtisan(
+        featureArtisan = new FeatureArtisan(
                 "Mega Bomb",
                 "Mega Bomb Recipe",
                 50,
                 7,
                 Feature.DESTROYED
         );
-        UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
+        UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 
 
-        unProducerArtisan = new UnProducerArtisan(
+        featureArtisan = new FeatureArtisan(
                 "Sprinkler",
                 "Sprinkler Recipe",
                 0,
                 4,
                 Feature.WATER
         );
-        UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
+        UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 
 
-        unProducerArtisan = new UnProducerArtisan(
+        featureArtisan = new FeatureArtisan(
                 "Quality Sprinkler",
                 "Quality Sprinkler Recipe",
                 0,
                 8,
                 Feature.WATER
         );
-        UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
+        UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 
 
-        unProducerArtisan = new UnProducerArtisan(
+        featureArtisan = new FeatureArtisan(
                 "Iridium Sprinkler",
                 "Iridium Sprinkler Recipe",
                 0,
                 24,
                 Feature.WATER
         );
-        UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
+        UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 
 
-        unProducerArtisan = new UnProducerArtisan(
+        featureArtisan = new FeatureArtisan(
                 "Scarecrow",
                 "Scarecrow Recipe",
                 0,
                 8,
                 Feature.PROTECTED
         );
-        UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
+        UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 
 
-        unProducerArtisan = new UnProducerArtisan(
+        featureArtisan = new FeatureArtisan(
                 "Deluxe Scarecrow",
                 "Deluxe Scarecrow Recipe",
                 0,
                 12,
                 Feature.PROTECTED
         );
-        UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
+        UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 
 
-        unProducerArtisan = new UnProducerArtisan(
+        featureArtisan = new FeatureArtisan(
                 "Grass Starter",
                 "Grass Starter Recipe",
                 0,
                 0,
                 Feature.GRASS
         );
-        UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
+        UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 
 
-        unProducerArtisan = new UnProducerArtisan(
+        featureArtisan = new FeatureArtisan(
                 "Mystic Tree Seeds",
                 "Mystic Tree Seeds Recipe",
                 0,
                 0,
                 null
         );
-        UnProducerArtisansType.put(unProducerArtisan.getName(), unProducerArtisan);
+        UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 
 
 

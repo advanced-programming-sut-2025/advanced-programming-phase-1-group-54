@@ -4,24 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit planting and harvest method for fertilize and harvest foraging crops">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit UniqueItems and edit controllers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/materials.json" beforeDir="false" afterPath="$PROJECT_DIR$/materials.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/AnimalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/AnimalController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/MapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/MapController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fertilize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fertilize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/UniqueItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/UniqueItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/ShopsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/ShopsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Artisan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/lives/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/lives/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/UnProducerArtisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/FeatureArtisan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,14 +139,6 @@
       <workItem from="1747218633483" duration="198000" />
       <workItem from="1747307134131" duration="367000" />
       <workItem from="1747402748365" duration="913000" />
-    </task>
-    <task id="LOCAL-00010" summary="edit ForagingMineral Constructor">
-      <option name="closed" value="true" />
-      <created>1746055812887</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1746055812887</updated>
     </task>
     <task id="LOCAL-00011" summary="write Produce until Loom Artisan">
       <option name="closed" value="true" />
@@ -542,7 +524,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747406563185</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="edit UniqueItems and edit controllers">
+      <option name="closed" value="true" />
+      <created>1747415191394</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1747415191394</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +562,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="merge branches" />
     <MESSAGE value="make code runaAble" />
     <MESSAGE value="make produces json and write some controller" />
     <MESSAGE value="edit quality in some models and write animalProduces in to json" />
@@ -597,7 +586,8 @@
     <MESSAGE value="write get method for animal and animalHouse and put baseSellPrice in Item" />
     <MESSAGE value="merge" />
     <MESSAGE value="edit planting and harvest method for fertilize and harvest foraging crops" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit planting and harvest method for fertilize and harvest foraging crops" />
+    <MESSAGE value="edit UniqueItems and edit controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit UniqueItems and edit controllers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
