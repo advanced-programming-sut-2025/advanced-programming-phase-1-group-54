@@ -18,6 +18,7 @@ import model.items.tools.TrashCan;
 import model.map.Farm;
 import model.map.Location;
 import model.relationships.Gift;
+import model.relationships.NPCFriendship;
 import model.relationships.Trade;
 
 import java.util.ArrayList;
@@ -51,6 +52,8 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     private Tool equippedTool;
 
     private Location currentLocation;
+
+    private ArrayList<NPCFriendship> npcFriendships;
 
     private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>() {{
         add(Recipe.foodRecipes.get("Fried Egg Recipe"));

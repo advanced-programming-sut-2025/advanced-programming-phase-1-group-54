@@ -333,7 +333,7 @@ public class ShopsController {
             return new Result(true, "Item purchased");
 
         } else if (item.getName().contains(" (Recipe)")) {
-            String temp = item.getName().split(" \\(Recipe\\)")[0];
+            String temp = item.getName().split("\\(Recipe\\)")[0];
             Recipe temp1 = Recipe.craftRecipes.get(temp);
             App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes().add(temp1);
             App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
