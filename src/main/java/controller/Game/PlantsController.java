@@ -11,6 +11,8 @@ import model.enums.Feature;
 import model.items.Fertilize;
 import model.items.plants.*;
 
+import java.util.HashMap;
+
 public class PlantsController {
 
     public static String showInfo(String plantName) {
@@ -101,11 +103,23 @@ public class PlantsController {
             return new Result(-1, "Does not exist any plant on the tile");
         }
 
+        if (placeable instanceof Fruit fruit) {
+            Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().
+                    getBackpack(), fruit, 1);
+            if(addedToBackPack.success()){
+                tile.setThingOnTile(null);
+            }
+            return addedToBackPack;
+        }
+
         if (placeable instanceof Tree tree) {
             if (tree.isFruitIsRipen()) {
-                Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(), Fruit.getFruit(tree.getFruit()), 1);
+                Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(),
+                        Fruit.getFruit(tree.getFruit()), 1);
 
-                tree.setFruitIsRipen(false);
+                if(addedToBackPack.success()){
+                    tree.setFruitIsRipen(false);
+                }
 
                 return addedToBackPack;
             }
@@ -116,22 +130,48 @@ public class PlantsController {
         if (placeable instanceof Crop crop) {
             if (crop.isFruitIsRipen()) {
                 if (crop.getGiantDirection() != null) {
-                    Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(), Fruit.getFruit(crop.getFruit()), 10);
+                    Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(),
+                            Fruit.getFruit(crop.getFruit()), 10);
 
-                    crop.setFruitIsRipen(false);
-                    crop = (Crop) game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
-                    crop.setFruitIsRipen(false);
-                    crop = (Crop) game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
-                    crop.setFruitIsRipen(false);
-                    crop = (Crop) game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
-                    crop.setFruitIsRipen(false);
+                    if(addedToBackPack.success()){
+                        crop.setFruitIsRipen(false);
+                        if(crop.isOneTime()){
+                            tile.setThingOnTile(null);
+                        }
 
+                        HashMap<Plant,Tile> plants = farm.getPlants();
+
+                        crop = (Crop) game.getWorld().
+                                getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
+                        crop.setFruitIsRipen(false);
+                        if(crop.isOneTime()){
+                            plants.get(crop).setThingOnTile(null);
+                        }
+
+                        crop = (Crop) game.getWorld().
+                                getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
+                        crop.setFruitIsRipen(false);
+                        if(crop.isOneTime()){
+                            plants.get(crop).setThingOnTile(null);
+                        }
+
+                        crop = (Crop) game.getWorld().
+                                getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
+                        crop.setFruitIsRipen(false);
+                        if(crop.isOneTime()){
+                            plants.get(crop).setThingOnTile(null);
+                        }
+                    }
 
                     return addedToBackPack;
                 } else {
                     Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(), Fruit.getFruit(crop.getFruit()), 1);
-
-                    crop.setFruitIsRipen(false);
+                    if(addedToBackPack.success()){
+                        crop.setFruitIsRipen(false);
+                        if(crop.isOneTime()){
+                            tile.setThingOnTile(null);
+                        }
+                    }
 
                     return addedToBackPack;
                 }
@@ -239,7 +279,7 @@ public class PlantsController {
             return new Result(-1, "You do not have Seed");
         }
 
-        if (tile.getThingOnTile() instanceof GreenHouse greenHouse) {
+        if (tile.getThingOnTile() instanceof GreenHouse ) {
             tile = tile.getTop();
         }
 
@@ -255,18 +295,35 @@ public class PlantsController {
 
         Tree tree = Tree.getTree(seed.getPlant());
         if (tree != null) {
+            if(tile.hasFeature(Feature.SPEEDFERTILIZE)){
+                tree.nextDayUpdate();
+                tile.removeFeature(Feature.SPEEDFERTILIZE);
+            }
+            if(tile.hasFeature(Feature.WATERFERTILIZE)){
+                tree.setFertilized(true);
+                tile.removeFeature(Feature.WATERFERTILIZE);
+            }
             tile.setThingOnTile(tree);
         }
 
         Crop crop = Crop.getCrop(seed.getPlant());
         if (crop != null) {
+            if(tile.hasFeature(Feature.SPEEDFERTILIZE)){
+                crop.nextDayUpdate();
+                tile.removeFeature(Feature.SPEEDFERTILIZE);
+            }
+            if(tile.hasFeature(Feature.WATERFERTILIZE)){
+                crop.setFertilized(true);
+                tile.removeFeature(Feature.WATERFERTILIZE);
+            }
             if (!cropCanBeGiant(crop, location)) {
                 tile.setThingOnTile(crop);
             }
         }
 
-        System.out.println("EROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOR");
-        return null;
+        tile.removeFeature(Feature.PLOWED);
+
+        return new Result(1,"Planted seed successfully");
     }
 
     private static boolean cropCanBeGiant(Crop crop, Location location) {

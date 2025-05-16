@@ -297,6 +297,6 @@ public class ToolsController {
             return new Result(true,  number + " of " + item.getName() + " added to backpack");
         }
 
-        return new Result(true, "you gained " + number + " of " + item.getName() + ", but your backpack is full");
+        return new Result(false, "you gained " + number + " of " + item.getName() + ", but your backpack is full");
     }
 }
