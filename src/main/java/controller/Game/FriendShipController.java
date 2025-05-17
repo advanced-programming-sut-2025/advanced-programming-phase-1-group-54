@@ -325,11 +325,17 @@ public class FriendShipController {
             currentPlayer.setPartner(player);
             player.setPartner(App.getCurrentGame().getCurrentPlayer());
             currentPlayer.getBackpack().addItem(relationship.getRing(), 1);
+            currentPlayer.getAskedForMarriage().clear();
             return new Result(true, "successfully accepted");
         } else {
             relationship.resetlevel();
-
             player.getBackpack().addItem(relationship.getRing(), 1);
+            player.setHeartBreakDaysRemaining(7);
+            for (int i = 0; i < currentPlayer.getAskedForMarriage().size(); i++) {
+                if(player.equals(currentPlayer.getAskedForMarriage().get(i))) {
+                    currentPlayer.getAskedForMarriage().remove(i);
+                }
+            }
             return new Result(true, "successfully rejected");
         }
     }
