@@ -95,6 +95,7 @@ public class App {
 
     public static void addUser(User user) {
         users.add(user);
+        saveUsers();
     }
 
     public static void saveUsers() {
