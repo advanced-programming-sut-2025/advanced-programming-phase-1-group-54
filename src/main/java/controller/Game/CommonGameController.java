@@ -34,7 +34,7 @@ public class CommonGameController {
 
         String message = "vote added.";
         if (game.getVotes() < game.getPlayers().length) {
-            return new Result(0,  message);
+            return new Result(true,  message);
         }
 
         boolean success = game.getDeleteVotes() == game.getVotes();
@@ -54,7 +54,7 @@ public class CommonGameController {
     }
 
 
-    public static Result passOut() {
+    static Result passOut() {
         App.getCurrentGame().getCurrentPlayer().setEnergy(0);
         return new Result(true, "you passed out!\n" + nextTurn().message());
     }
@@ -563,7 +563,6 @@ public class CommonGameController {
         }
 
         return new Result(true,count + " of item sold successfully");
-        // TODO sell is wrong, fix this !!!
 
 //        Fish fish = Fish.getFish(product);
 //        if (fish != null) {
