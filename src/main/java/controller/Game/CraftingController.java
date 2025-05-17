@@ -259,6 +259,10 @@ public class CraftingController {
             return new Result(-1,"Produce isn't ready");
         }
 
+        if(! MapController.isNear(player.getCurrentLocation(),producerArtisan)){
+            return new Result(-1,"You aren't near artisan " + producerArtisan.getName());
+        }
+
         if(! player.getBackpack().addItem(producerArtisan.getProcessingProduce(),1)){
             return new Result(-1,"Backpack is full");
         }

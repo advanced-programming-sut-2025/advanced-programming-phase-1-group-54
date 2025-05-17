@@ -41,8 +41,9 @@ public class FoodController {
             return new Result(-1,"You are not in Cabin");
         }
 
+        boolean passOut = false;
         if(! player.checkEnergy(3, null)){
-            return new Result(-1,"You don't have enough energy to cook");
+            passOut = true;
         }
 
         if(food == null){
@@ -71,7 +72,13 @@ public class FoodController {
         player.decreaseEnergy(3,null);
         player.getBackpack().addItem(food, 1);
 
+        if(passOut){
+            return new Result(1,foodName + " cooked successfully. " +
+                    CommonGameController.passOut().message());
+        }
+
         return new Result(1,foodName + " cooked successfully");
+
     }
 
     public static Result eatFood(String foodName){

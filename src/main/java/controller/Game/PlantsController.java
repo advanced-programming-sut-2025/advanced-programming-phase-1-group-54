@@ -282,7 +282,9 @@ public class PlantsController {
             return new Result(-1, "tile is not in this farm");
         }
 
+        boolean inGreenHouse = false;
         if (tile.getThingOnTile() instanceof GreenHouse) {
+            inGreenHouse = true;
             tile = tile.getTop();
         }
 
@@ -296,6 +298,11 @@ public class PlantsController {
 
         Tree tree = Tree.getTree(seed.getPlant());
         if (tree != null) {
+            if(! inGreenHouse){
+                if(tree.containSeason(App.getCurrentGame().getDateTime().getSeason())) {
+                    return new Result(-1, "You can't plant this plant in this season");
+                }
+            }
             if (tile.hasFeature(Feature.SPEEDFERTILIZE)) {
                 tree.nextDayUpdate();
                 tile.removeFeature(Feature.SPEEDFERTILIZE);
@@ -309,6 +316,11 @@ public class PlantsController {
 
         Crop crop = Crop.getCrop(seed.getPlant());
         if (crop != null) {
+            if(! inGreenHouse){
+                if(crop.containSeason(App.getCurrentGame().getDateTime().getSeason())) {
+                    return new Result(-1, "You can't plant this plant in this season");
+                }
+            }
             if (tile.hasFeature(Feature.SPEEDFERTILIZE)) {
                 crop.nextDayUpdate();
                 tile.removeFeature(Feature.SPEEDFERTILIZE);

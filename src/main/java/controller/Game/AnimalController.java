@@ -76,6 +76,7 @@ public class AnimalController {
             deleteAnimalFromFarm(animal);
             tile.setThingOnTile(animal);
             animal.setLocation(locationInFarm);
+            animal.setGoneOut(true);
         }
         else if(tile.getThingOnTile() instanceof AnimalHouse animalHouse){
             if(animalHouse.getSize() > animalHouse.getNumberOfAnimals() && tile.getTop().getThingOnTile() == null){

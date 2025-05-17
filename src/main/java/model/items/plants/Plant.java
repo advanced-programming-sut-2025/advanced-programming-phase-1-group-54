@@ -72,8 +72,13 @@ public abstract class Plant implements Placeable, DailyUpdate {
         return regrowthTime;
     }
 
-    public Season[] getSeasons() {
-        return seasons;
+    public boolean containSeason(Season season) {
+        for (Season value : seasons) {
+            if (value == season) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isFruitIsRipen() {
