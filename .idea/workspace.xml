@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="set farm number fix">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Game/TradingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="write trade menu and put methods in right packages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/FriendShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FriendShipController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/game/TradingMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/TradingMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,14 +132,7 @@
       <workItem from="1747165191149" duration="7057000" />
       <workItem from="1747233139067" duration="41485000" />
       <workItem from="1747303498996" duration="9253000" />
-    </task>
-    <task id="LOCAL-00016" summary="read and write Fishes Json And add constructor to Item Class Babies :)">
-      <option name="closed" value="true" />
-      <created>1746134471763</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1746134471763</updated>
+      <workItem from="1747512763721" duration="190000" />
     </task>
     <task id="LOCAL-00017" summary="write writeToJson method Of Recipe Class">
       <option name="closed" value="true" />
@@ -530,7 +518,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747480394324</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="write trade menu and put methods in right packages">
+      <option name="closed" value="true" />
+      <created>1747493141336</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1747493141336</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -560,7 +556,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="gifts added to player" />
     <MESSAGE value="xml changes" />
     <MESSAGE value="method get player relainship added" />
     <MESSAGE value="gift menu added and gift class changed" />
@@ -585,7 +580,8 @@
     <MESSAGE value="delete comment" />
     <MESSAGE value="save users fix" />
     <MESSAGE value="set farm number fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="set farm number fix" />
+    <MESSAGE value="write trade menu and put methods in right packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="write trade menu and put methods in right packages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
