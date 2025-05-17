@@ -1,6 +1,7 @@
 package model;
 
 import controller.Game.CommonGameController;
+import controller.Game.NpcController;
 import model.lives.Player;
 import model.enums.SubMenu;
 import model.enums.Weather;
@@ -108,6 +109,9 @@ public class Game implements DailyUpdate, HourUpdate {
         }
 
         dateTime.increaseDay(1);
+
+        CommonGameController.nextDayMoney();
+        NpcController.resetNpcEveryDay();
     }
 
     @Override

@@ -1,14 +1,13 @@
 package model.enums;
 
-import view.game.DefaultMenu;
-import view.game.GameSubMenu;
-import view.game.TradingMenu;
+import view.game.*;
 
 import java.util.Scanner;
 
 public enum SubMenu {
     DEFAULT(new DefaultMenu()),
-    TRADING(new TradingMenu())
+    TRADING(new TradingMenu()),
+    NPCMenu(new NPCMenu()),
     ;
 
     private final GameSubMenu menu;

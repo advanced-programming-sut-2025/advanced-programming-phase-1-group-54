@@ -136,7 +136,7 @@ public class FriendShipController {
                         .append(gift.getItemName())
                         .append(" as gift and you gave rating")
                         .append(gift.getRate())
-                        .append("/5 to it. ").append("(").append(gift.getTimeStamp()).append(")")
+                        .append("/5 to it.")
                         .append("\n");
             } else {
                 if (gift.getRate() == 0) {
@@ -149,7 +149,7 @@ public class FriendShipController {
                             .append(gift.getItemName())
                             .append(" and ")
                             .append(player.getName())
-                            .append(" has not seen it yet. ").append("(").append(gift.getTimeStamp()).append(")")
+                            .append(" has not seen it yet.")
                             .append("\n");
 
                 } else {
@@ -164,7 +164,7 @@ public class FriendShipController {
                             .append(player.getName())
                             .append(" gave ")
                             .append(gift.getRate())
-                            .append("/5 to it. ").append("(").append(gift.getTimeStamp()).append(")")
+                            .append("/5 to it.")
                             .append("\n");
                 }
             }
@@ -337,14 +337,19 @@ public class FriendShipController {
             currentPlayer.setMarriage(relationship);
             relationship.setSharedMoney(totalMoney);
             currentPlayer.getBackpack().addItem(relationship.getRing(), 1);
+            currentPlayer.getAskedForMarriage().clear();
             return new Result(true, "successfully accepted");
+        } else {
+            relationship.resetlevel();
+            player.getBackpack().addItem(relationship.getRing(), 1);
+            player.setHeartBreakDaysRemaining(7);
+            for (int i = 0; i < currentPlayer.getAskedForMarriage().size(); i++) {
+                if(player.equals(currentPlayer.getAskedForMarriage().get(i))) {
+                    currentPlayer.getAskedForMarriage().remove(i);
+                }
+            }
+            return new Result(true, "successfully rejected");
         }
-
-        relationship.resetLevel();
-        player.setHeartBreakDaysRemaining(7);
-        player.getBackpack().addItem(relationship.getRing(), 1);
-        return new Result(true, "successfully rejected");
-
     }
 
     public static Result tradeRequest(String username, String itemName, int amount) {

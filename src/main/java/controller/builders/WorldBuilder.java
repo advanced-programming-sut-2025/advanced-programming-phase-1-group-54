@@ -121,13 +121,13 @@ public class WorldBuilder {
         npc2.getFavoriteItems().add("Pickle");
         npc2.getFavoriteItems().add("Wine");
 
-        quest = new Quest(npc2,"Tree",12,"Coin",750,true);
+        quest = new Quest(npc2,"Apple Tree",12,"Coin",750,true);
         npc2.getAllQuests().add(quest);
 
         quest = new Quest(npc2,"Salmon",1,"friendShip",1,false);
         npc2.getAllQuests().add(quest);
 
-        quest = new Quest(npc2,"Wine",1,"Salad",5,false);
+        quest = new Quest(npc2,"Grape Wine",1,"Salad",5,false);
         npc2.getAllQuests().add(quest);
 
         npcHouses.add(new NPCHouse(npc2, npcHouseAreas[2]));

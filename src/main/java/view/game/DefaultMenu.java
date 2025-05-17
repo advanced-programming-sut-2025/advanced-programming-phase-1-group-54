@@ -8,7 +8,11 @@ import model.enums.commands.Command;
 import model.enums.commands.GameCommand;
 import model.map.Location;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import static controller.Game.NpcController.friendShipNpcList;
+import static controller.GameController.meetNPC;
 
 public class DefaultMenu implements GameSubMenu {
     @Override
@@ -141,10 +145,41 @@ public class DefaultMenu implements GameSubMenu {
             handleAskMarriage(input);
         else if (GameCommand.START_TRADING.matches(input))
             goToMenu(SubMenu.TRADING);
+        else  if(GameCommand.FRIENDSHIP_NPC_LIST.matches(input))
+            handleShowFriendShipNpcList();
+        else if(GameCommand.MEET_NPC.matches(input))
+            handleMeetNpc(input);
+        else if(GameCommand.GIFT_NPC.matches(input))
+            handlegiftNpc(input);
         else
             return false;
 
         return true;
+    }
+
+    private void handlegiftNpc(String input) {
+        Command command = GameCommand.GIFT_NPC;
+        String npcName = command.getGroup(input,"npc_name");
+        String item = command.getGroup(input,"item");
+        Result result = NpcController.giftNpc(npcName,item);
+    }
+
+    private void handleMeetNpc(String input) {
+        Command command = GameCommand.MEET_NPC;
+        String npcName = command.getGroup(input, "npc_name");
+        Result result = NpcController.meetsNpc(npcName);
+        if(result.success()){
+            goToMenu(SubMenu.NPCMenu);
+            NPCMenu.setNpc(NpcController.getNPCByName(npcName));
+        }
+        System.out.println(result.message());
+    }
+
+    private void handleShowFriendShipNpcList() {
+        ArrayList<String> list = NpcController.friendShipNpcList();
+        for(String s : list){
+            System.out.println(s);
+        }
     }
 
     private boolean checkCheatCode(String input, Scanner scanner) {
@@ -157,6 +192,12 @@ public class DefaultMenu implements GameSubMenu {
 
     private void handleNextTurn(Scanner scanner) {
         showResult(CommonGameController.nextTurn());
+        if(!App.getCurrentGame().getCurrentPlayer().getReceivedGifts().isEmpty()){
+            System.out.println("you have some gifts");
+        }
+        if(!App.getCurrentGame().getCurrentPlayer().getAskedForMarriage().isEmpty()){
+            System.out.println("you have some marriage request");
+        }
         // TODO handle Marriage, handle Gift (VIEW)
     }
 

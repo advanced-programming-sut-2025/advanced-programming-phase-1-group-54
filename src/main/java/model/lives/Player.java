@@ -1,5 +1,6 @@
 package model.lives;
 
+import controller.builders.PlayerBuilder;
 import model.DailyUpdate;
 import model.DateTime;
 import model.HourUpdate;
@@ -7,8 +8,16 @@ import model.enums.*;
 import model.items.tools.*;
 import model.map.Refrigerator;
 import model.User;
+import model.enums.FishingPoleType;
+import model.enums.SkillType;
+import model.enums.Symbol;
+import model.enums.ToolType;
 import model.items.crafting.ProducerArtisan;
 import model.items.recipes.Recipe;
+import model.items.tools.BackPack;
+import model.items.tools.FishingPole;
+import model.items.tools.Tool;
+import model.items.tools.TrashCan;
 import model.map.Farm;
 import model.map.Location;
 import model.relationships.Gift;
@@ -188,7 +197,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         if (!unlimitedEnergy) {
             if (energy <= MAXIMUM_ENERGY)
                 this.energy = energy;
-        }
+            }
     }
 
     public int getMoney() {
@@ -212,6 +221,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         else
             this.money -= money;
     }
+
 
     public void decreaseEnergy(int amount) {
         if (!unlimitedEnergy) {
@@ -273,6 +283,14 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
+    }
+
+    public ArrayList<NPCFriendship> getNpcFriendships() {
+        return npcFriendships;
+    }
+
+    public void setNpcFriendships(ArrayList<NPCFriendship> npcFriendships) {
+        this.npcFriendships = npcFriendships;
     }
 
     @Override

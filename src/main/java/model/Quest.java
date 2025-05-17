@@ -24,6 +24,7 @@ public class Quest {
         this.reward = reward;
         this.rewardCount = rewardCount;
         this.isActive = isActive;
+        this.completed = false;
     }
 
     public NPC getQuestGiver() {
@@ -67,6 +68,7 @@ public class Quest {
     }
 
     public boolean isActive() {
+
         return isActive;
     }
 

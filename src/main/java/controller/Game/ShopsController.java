@@ -32,24 +32,57 @@ public class ShopsController {
         }
 
         if (shop.getOwner().getName().equals("Clint")) {
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(0).getOpeningHours()
+                || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(0).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromBlacksmith(itemName, count);
         }
         if (shop.getOwner().getName().equals("Morris")) {
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(1).getOpeningHours()
+                    || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(1).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromJojaMart(itemName, count);
         }
         if (shop.getOwner().getName().equals("Pierre")) {
+
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(2).getOpeningHours()
+                    || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(2).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromPierre(itemName, count);
         }
         if (shop.getOwner().getName().equals("Robin")) {
+
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(3).getOpeningHours()
+                    || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(3).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromCarpenter(itemName, count);
         }
         if (shop.getOwner().getName().equals("Willy")) {
+
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(4).getOpeningHours()
+                    || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(4).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromFishShop(itemName, count);
         }
         if (shop.getOwner().getName().equals("Marnie")) {
+
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(5).getOpeningHours()
+                    || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(5).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromMarnie(itemName, count);
         }
         if (shop.getOwner().getName().equals("Gus")) {
+
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(6).getOpeningHours()
+                    || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(6).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromStardrop(itemName, count);
         }
 
