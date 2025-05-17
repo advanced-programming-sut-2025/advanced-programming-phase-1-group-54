@@ -90,6 +90,9 @@ public enum GameCommand implements Command {
 
     // TRADING MENU COMMANDS
     START_TRADING("start trade"),
+    TRADE("^\\s*trade\\s+-u\\s+(?<username>\\S+)\\s+-t\\s+(?<type>offer|request)\\s+-i\\s+(?<item>.+)" +
+            "\\s+-a\\s+(?<amount>\\d+)\\s+((-p\\s+(?<price>\\d+))|(-ti\\s+(?<targetItem>.*)\\s+-ta\\s+" +
+            "(?<targetAmount>\\d+)))?\\s*$"),
     SHOW_TRADES_LIST("trade list"),
     TRADING_RESPONSE("trade response -(?<answer>(accept|reject)) -i (?<id>\\d+)"),
     SHOW_TRADES_HISTORY("trade history"),

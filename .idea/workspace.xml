@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="complete unit test methods">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="edit sell faction in controller">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestMenus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestMenus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,15 +183,7 @@
       <workItem from="1747402748365" duration="913000" />
       <workItem from="1747479034570" duration="2100000" />
       <workItem from="1747481554826" duration="999000" />
-      <workItem from="1747483619609" duration="1008000" />
-    </task>
-    <task id="LOCAL-00019" summary="write writeToJson method Of Material Class">
-      <option name="closed" value="true" />
-      <created>1746208780315</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1746208780315</updated>
+      <workItem from="1747483619609" duration="4058000" />
     </task>
     <task id="LOCAL-00020" summary="write writeToJson method Of Seed Class">
       <option name="closed" value="true" />
@@ -577,7 +569,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747483768360</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="edit sell faction in controller">
+      <option name="closed" value="true" />
+      <created>1747486153995</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1747486153995</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,7 +607,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="xml changes" />
     <MESSAGE value="method get player relainship added" />
     <MESSAGE value="gift menu added and gift class changed" />
     <MESSAGE value="Friendship between players handled" />
@@ -632,7 +631,8 @@
     <MESSAGE value="write unit test for menus" />
     <MESSAGE value="merge" />
     <MESSAGE value="complete unit test methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete unit test methods" />
+    <MESSAGE value="edit sell faction in controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit sell faction in controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
