@@ -80,6 +80,11 @@ public enum GameCommand implements Command {
     GIVE_FLOWER("flower -u (?<username>\\S+)"),
     ASK_MARRIAGE("ask marriage -u (?<username>\\S+) -r (?<ringName>.+)"),
     RESPOND_MARRIAGE("respond -(?<answer>(accept|reject)) -u (?<username>\\S+)"),
+    FRIENDSHIP_NPC_LIST("friendship NPC list"),
+    MEET_NPC("meet NPC (?<npc_name>\\S)"),
+    GIFT_NPC("gift NPC 9?<npc_name>\\S) -i (?<item>\\S)"),
+    QUESTS_LIST("quests list"),
+    QUESTS_FINISH("quests finish -i (?<index>\\S)"),
 
     // TRADING MENU COMMANDS
     START_TRADING("start trade"),
