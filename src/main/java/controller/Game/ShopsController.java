@@ -131,7 +131,7 @@ public class ShopsController {
         String itemName = nextLevel.toString() + " " + upgradeType;
 
         for (BlackSmithShop.UpgradeToolBlackSmith item : ((BlackSmithShop) (App.getCurrentGame().getWorld().getShops().get(0))).getUpgradeTools()) {
-            if (item.getName().equals(toolName)) {
+            if (item.getName().equals(itemName)) {
                 return buyUpgradeToolsInBlackSmith(item, 1);
             }
         }

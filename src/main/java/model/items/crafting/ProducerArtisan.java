@@ -94,6 +94,11 @@ public class ProducerArtisan extends Artisan implements HourUpdate, DailyUpdate,
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
     public static void writeToJson() {
 
         HashMap<String, ProducerArtisan> producerArtisanType = new HashMap<>();

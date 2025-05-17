@@ -47,7 +47,8 @@ public class Farm implements DailyUpdate, HourUpdate {
         this.greenhouse = greenhouse;
         this.cabin = cabin;
         this.quarry = quarry;
-        this.lakes = lakes;
+
+        System.arraycopy(lakes, 0, this.lakes = new GenericWall[lakes.length], 0, lakes.length);
     }
 
     public Location getLocation() {

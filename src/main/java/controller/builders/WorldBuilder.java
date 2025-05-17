@@ -20,7 +20,7 @@ public class WorldBuilder {
             new Location(0, World.getNumberOfColumns() - Farm.getNumberOfColumns())
     };
 
-    private static Farm[] playerFarms = new Farm[4];
+    private static Farm[] playerFarms;
     private static Tile[][] tiles;
 
     static Location getFarmLocation(int i) {
@@ -33,6 +33,7 @@ public class WorldBuilder {
     }
 
     public static void setPlayerFarms(Farm[] playerFarms) {
+        WorldBuilder.playerFarms = new Farm[playerFarms.length];
         System.arraycopy(playerFarms, 0, WorldBuilder.playerFarms, 0, playerFarms.length);
     }
 
@@ -41,13 +42,11 @@ public class WorldBuilder {
 
         // put farms in corners\
 
-        for (int t = 0; t < 4; t++) {
-            if (playerFarms[t] != null) {
-                for (int i = 0; i < Farm.getNumberOfRows(); i++) {
-                    for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
-                        Location location = new Location(i, j);
-                        tiles[farmLocation[t].row() + i][farmLocation[t].column() + j] = playerFarms[t].getTileAt(location);
-                    }
+        for (int t = 0; t < playerFarms.length; t++) {
+            for (int i = 0; i < Farm.getNumberOfRows(); i++) {
+                for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
+                    Location location = new Location(i, j);
+                    tiles[farmLocation[t].row() + i][farmLocation[t].column() + j] = playerFarms[t].getTileAt(location);
                 }
             }
         }
@@ -89,98 +88,95 @@ public class WorldBuilder {
     };
 
 
-
     public static ArrayList<NPCHouse> buildNPCHouses() {
         ArrayList<NPCHouse> npcHouses = new ArrayList<>();
-        NPC npc = new NPC("Artisan","Sebastian");
+        NPC npc = new NPC("Artisan", "Sebastian");
 
         npc.getFavoriteItems().add("Wool");
         npc.getFavoriteItems().add("Pumpkin pie");
         npc.getFavoriteItems().add("Pizza");
 
 
-        Quest quest = new Quest(npc,"Iron Ore",50,"Diamond",2,true);
+        Quest quest = new Quest(npc, "Iron Ore", 50, "Diamond", 2, true);
         npc.getAllQuests().add(quest);
 
 
-        quest = new Quest(npc,"Pumpkin pie",1,"Coin",5000,false);
+        quest = new Quest(npc, "Pumpkin pie", 1, "Coin", 5000, false);
         npc.getAllQuests().add(quest);
 
 
-        quest = new Quest(npc,"Stone",150,"Quartz",50,false);
+        quest = new Quest(npc, "Stone", 150, "Quartz", 50, false);
         npc.getAllQuests().add(quest);
 
         npcHouses.add(new NPCHouse(npc, npcHouseAreas[0]));
 
-        NPC npc1 = new NPC("Miner","Abigail");
+        NPC npc1 = new NPC("Miner", "Abigail");
 
         npc1.getFavoriteItems().add("Stone");
         npc1.getFavoriteItems().add("Iron Ore");
         npc1.getFavoriteItems().add("Coffee");
 
-        quest = new Quest(npc1,"Gold Bar",1,"friendShip",1,true);
+        quest = new Quest(npc1, "Gold Bar", 1, "friendShip", 1, true);
         npc1.getAllQuests().add(quest);
 
-        quest = new Quest(npc1,"Pumpkin",1,"Coin",500,false);
+        quest = new Quest(npc1, "Pumpkin", 1, "Coin", 500, false);
         npc1.getAllQuests().add(quest);
 
-        quest = new Quest(npc1,"Wheat",50,"Iridium Sprinkler",1,false);
+        quest = new Quest(npc1, "Wheat", 50, "Iridium Sprinkler", 1, false);
         npc1.getAllQuests().add(quest);
 
         npcHouses.add(new NPCHouse(npc1, npcHouseAreas[1]));
 
 
-
-        NPC npc2 = new NPC("Baker","Harvey");
+        NPC npc2 = new NPC("Baker", "Harvey");
 
         npc2.getFavoriteItems().add("Coffee");
         npc2.getFavoriteItems().add("Pickle");
         npc2.getFavoriteItems().add("Wine");
 
-        quest = new Quest(npc2,"Apple Tree",12,"Coin",750,true);
+        quest = new Quest(npc2, "Apple Tree", 12, "Coin", 750, true);
         npc2.getAllQuests().add(quest);
 
-        quest = new Quest(npc2,"Salmon",1,"friendShip",1,false);
+        quest = new Quest(npc2, "Salmon", 1, "friendShip", 1, false);
         npc2.getAllQuests().add(quest);
 
-        quest = new Quest(npc2,"Grape Wine",1,"Salad",5,false);
+        quest = new Quest(npc2, "Grape Wine", 1, "Salad", 5, false);
         npc2.getAllQuests().add(quest);
 
         npcHouses.add(new NPCHouse(npc2, npcHouseAreas[2]));
 
 
-
-        NPC npc3 = new NPC("Chef","Lia");
+        NPC npc3 = new NPC("Chef", "Lia");
 
         npc3.getFavoriteItems().add("Salad");
         npc3.getFavoriteItems().add("Coffee");
         npc3.getFavoriteItems().add("Wine");
 
-        quest = new Quest(npc3,"Wood",50,"Coin",500,true);
+        quest = new Quest(npc3, "Wood", 50, "Coin", 500, true);
         npc3.getAllQuests().add(quest);
 
-        quest = new Quest(npc3,"Salmon",1,"Salmon Dinner Recipe",1,false);
+        quest = new Quest(npc3, "Salmon", 1, "Salmon Dinner Recipe", 1, false);
         npc3.getAllQuests().add(quest);
 
-        quest = new Quest(npc3,"Wood",200,"Deluxe Scarecrow",3,false);
+        quest = new Quest(npc3, "Wood", 200, "Deluxe Scarecrow", 3, false);
         npc3.getAllQuests().add(quest);
 
         npcHouses.add(new NPCHouse(npc3, npcHouseAreas[3]));
 
 
-        NPC npc4 = new NPC("Blacksmith","Robin");
+        NPC npc4 = new NPC("Blacksmith", "Robin");
 
         npc4.getFavoriteItems().add("Spaghetti");
         npc4.getFavoriteItems().add("Wood");
         npc4.getFavoriteItems().add("Iron Bar");
 
-        quest = new Quest(npc4,"Wood",80,"Coin",1000,true);
+        quest = new Quest(npc4, "Wood", 80, "Coin", 1000, true);
         npc4.getAllQuests().add(quest);
 
-        quest = new Quest(npc4,"Iron Bar",10,"Bee House",3,false);
+        quest = new Quest(npc4, "Iron Bar", 10, "Bee House", 3, false);
         npc4.getAllQuests().add(quest);
 
-        quest = new Quest(npc4,"Wood",1000,"Coin",25000,false);
+        quest = new Quest(npc4, "Wood", 1000, "Coin", 25000, false);
         npc4.getAllQuests().add(quest);
 
         npcHouses.add(new NPCHouse(npc4, npcHouseAreas[4]));
@@ -199,7 +195,7 @@ public class WorldBuilder {
     private static ArrayList<Shop> buildShops() {
         ArrayList<Shop> shops = new ArrayList<>();
         //creating blacksmith shop
-        NPC human = new NPC("Shop Keeper","Clint");
+        NPC human = new NPC("Shop Keeper", "Clint");
         BlackSmithShop blackSmithShop = new BlackSmithShop(human, shopAreas[0]);
         shops.add(blackSmithShop);
         JSONArray jsonArray = DataBaseController.loadJsonArray("BlacksmithStock.json");
@@ -223,7 +219,7 @@ public class WorldBuilder {
 
 
         //creating JojoMart shop
-        NPC human1 = new NPC("Shop keeper","Morris");
+        NPC human1 = new NPC("Shop keeper", "Morris");
         JojoMartShop jojoMartShop = new JojoMartShop(human1, shopAreas[1]);
         shops.add(jojoMartShop);
         jsonArray = DataBaseController.loadJsonArray("JojoMartPermanent.json");
@@ -276,7 +272,7 @@ public class WorldBuilder {
 
 
         //creating Pierre General Shop
-        NPC human2 = new NPC("Shop keeper","Pierre");
+        NPC human2 = new NPC("Shop keeper", "Pierre");
         PierreGeneralShop pierreGeneralShop = new PierreGeneralShop(human2, shopAreas[2]);
         shops.add(pierreGeneralShop);
         jsonArray = DataBaseController.loadJsonArray("PierreYearRound.json");
@@ -332,7 +328,7 @@ public class WorldBuilder {
 
 
         //creating Carpenter’s Shop
-        NPC human3 = new NPC("Shop keeper","Robin");
+        NPC human3 = new NPC("Shop keeper", "Robin");
         CarpenterShop carpenterShop = new CarpenterShop(human3, shopAreas[3]);
         shops.add(carpenterShop);
         jsonArray = DataBaseController.loadJsonArray("CarpenterPermanent.json");
@@ -360,7 +356,7 @@ public class WorldBuilder {
 
 
         //creating Fish Shop
-        NPC human4 = new NPC("Shop keeper","Willy");
+        NPC human4 = new NPC("Shop keeper", "Willy");
         FishShop fishShop = new FishShop(human4, shopAreas[4]);
         shops.add(fishShop);
         jsonArray = DataBaseController.loadJsonArray("FishStock.json");
@@ -376,7 +372,7 @@ public class WorldBuilder {
 
 
         //crating Marnie’s Ranch
-        NPC human5 = new NPC("Shop keeper","Marnie");
+        NPC human5 = new NPC("Shop keeper", "Marnie");
         MarnieRanch marnieRanch = new MarnieRanch(human5, shopAreas[5]);
         shops.add(marnieRanch);
         jsonArray = DataBaseController.loadJsonArray("MarnieRanchInventory.json");
@@ -401,7 +397,7 @@ public class WorldBuilder {
 
 
         //creating :The Stardrop Saloon
-        NPC human6 = new NPC("Shop keeper","Gus");
+        NPC human6 = new NPC("Shop keeper", "Gus");
         TheStardropSaloonShop theStardropSaloonShop = new TheStardropSaloonShop(human6, shopAreas[6]);
         shops.add(theStardropSaloonShop);
         jsonArray = DataBaseController.loadJsonArray("TheStarDropSaloon.json");

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class BackPack {
-    private BackPackLevel level;
+    private BackPackLevel level = BackPackLevel.NORMAL;
     private final HashMap<Item, Integer> numberOfItemInBackPack = new HashMap<>();
 
 
@@ -17,6 +17,10 @@ public class BackPack {
         if(numberOfItem == null) {
             if(numberOfItemInBackPack.size() < level.getSize()) {
                 numberOfItemInBackPack.put(item, number);
+                System.out.println(item.getName() + " added to backpack " + number);
+
+
+
                 return true;
             }
             return false;

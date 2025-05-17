@@ -79,6 +79,11 @@ public class Material extends Item implements Placeable,Cloneable {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
     public static void writeToJson(){
 
         HashMap<String, Material> materialsType = new HashMap<String, Material>();

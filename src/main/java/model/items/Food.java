@@ -86,6 +86,11 @@ public class Food extends Item implements Cloneable {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
     public static void writeToJson() {
 
         HashMap<String, Food> foodsType = new HashMap<>();

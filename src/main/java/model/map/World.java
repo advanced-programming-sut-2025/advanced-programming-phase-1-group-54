@@ -27,8 +27,8 @@ public class World implements DailyUpdate, HourUpdate {
 
     private final Map map;
 
-    private Weather currentWeather;
-    private Weather tomorrowWeather;
+    private Weather currentWeather = Weather.SUNNY;
+    private Weather tomorrowWeather = Weather.SUNNY;
 
     private final ArrayList<Shop> shops;
     private final ArrayList<NPCHouse> npcHouses;
@@ -42,7 +42,8 @@ public class World implements DailyUpdate, HourUpdate {
     }
 
     public World(Farm[] playerFarms, ArrayList<Shop> shops, ArrayList<NPCHouse> npcHouses, Map map) {
-        this.playerFarms = playerFarms;
+        this.playerFarms = new Farm[playerFarms.length];
+        System.arraycopy(playerFarms, 0, this.playerFarms, 0, playerFarms.length);
         this.map = map;
         this.shops = shops;
         this.npcHouses = npcHouses;
@@ -231,12 +232,12 @@ public class World implements DailyUpdate, HourUpdate {
 
         //creating Carpenter’s Shop
         CarpenterShop carpenterShop = (CarpenterShop) shops.get(3);
-        jsonArray = DataBaseController.loadJsonArray("CarpanterPermanent.json");
+        jsonArray = DataBaseController.loadJsonArray("CarpenterPermanent.json");
         for (int i = 0; i < jsonArray.length(); i++) {
             int count = jsonArray.getJSONObject(i).getInt("Count");
             carpenterShop.getPermanentStock().get(i).setCount(count);
         }
-        jsonArray = DataBaseController.loadJsonArray("CarpanterFarmBuilding.json");
+        jsonArray = DataBaseController.loadJsonArray("CarpenterFarmBuilding.json");
         for (int i = 0; i < jsonArray.length(); i++) {
             int count = jsonArray.getJSONObject(i).getInt("Count");
             carpenterShop.getFarmBuildings().get(i).setCount(count);

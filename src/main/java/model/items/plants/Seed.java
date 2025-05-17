@@ -126,6 +126,11 @@ public class Seed extends Item implements Placeable, Cloneable{
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
     public static void writeToJson(){
         HashMap<String ,Seed> seedTypes = new HashMap<String,Seed>();
 

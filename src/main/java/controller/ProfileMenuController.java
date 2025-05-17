@@ -70,6 +70,6 @@ public class ProfileMenuController {
         message += "Number of Games: " + currentUser.getNumberOfPlayedGames() + "\n";
         message += "Largest Money in All Games: " + currentUser.getMaximumMoney();
 
-        return new Result(true, null);
+        return new Result(true, message);
     }
 }
