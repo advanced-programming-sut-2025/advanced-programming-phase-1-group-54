@@ -1,5 +1,6 @@
 package model.lives;
 
+import controller.builders.PlayerBuilder;
 import model.DailyUpdate;
 import model.DateTime;
 import model.HourUpdate;
@@ -94,6 +95,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         for (SkillType skilltype : SkillType.values()) {
             skills[skilltype.ordinal()] = new Skill(skilltype);
         }
+        this.npcFriendships = PlayerBuilder.npcFriendshipBuilder();
         // TODO
     }
 
@@ -299,6 +301,14 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
+    }
+
+    public ArrayList<NPCFriendship> getNpcFriendships() {
+        return npcFriendships;
+    }
+
+    public void setNpcFriendships(ArrayList<NPCFriendship> npcFriendships) {
+        this.npcFriendships = npcFriendships;
     }
 
     public boolean isInGiftList() {
