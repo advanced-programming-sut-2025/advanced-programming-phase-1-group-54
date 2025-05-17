@@ -50,7 +50,8 @@ public class RegisterMenu implements AppMenu {
 
         if (result.success()) {
             showSecurityQuestions();
-            getSecurityQuestionAnswer(scanner);
+            String question = scanner.nextLine();
+            getSecurityQuestionAnswer(question);
 
             showResult(RegisterMenuController.saveNewUser());
         }
@@ -65,11 +66,11 @@ public class RegisterMenu implements AppMenu {
         }
     }
 
-    private void getSecurityQuestionAnswer(Scanner scanner) {
+    private void getSecurityQuestionAnswer(String input) {
         Result result = new Result(false, null);
         RegisterMenuCommand command = RegisterMenuCommand.PICK_QUESTION;
         do {
-            String input = scanner.nextLine();
+//            String input = scanner.nextLine();
             if (!command.matches(input)) {
                 invalidCommand();
                 continue;

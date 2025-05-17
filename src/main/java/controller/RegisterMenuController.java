@@ -7,7 +7,9 @@ import model.User;
 import model.enums.Gender;
 
 public class RegisterMenuController {
-    public static Result register(String username, String password, String confirmPassword, String nickname, String email, Gender gender) {
+
+    public static Result register(String username, String password, String confirmPassword, String nickname,
+                                  String email, Gender gender) {
         boolean usernameTaken = !isUsernameUnique(username);
         boolean randomPassword = password == null || confirmPassword == null;
 
