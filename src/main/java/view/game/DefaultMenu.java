@@ -480,7 +480,7 @@ public class DefaultMenu implements GameSubMenu {
         Command command = GameCommand.SELLING;
         String productName = command.getGroup(input, "productName");
         String countString = command.getGroup(input, "count");
-        int count = (countString != null ? Integer.parseInt(countString) : 1);
+        int count = (countString != null ? Integer.parseInt(countString) : -1);
         showResult(CommonGameController.sell(productName, count));
     }
 

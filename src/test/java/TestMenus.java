@@ -8,6 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TestMenus {
+
     @Test
     public void testRegisterMenu(){
 
