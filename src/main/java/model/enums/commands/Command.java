@@ -10,7 +10,7 @@ public interface Command {
         return input.matches(getRegex());
     }
 
-    default Matcher getMatcher(String input) {
+    private Matcher getMatcher(String input) {
         Matcher matcher = Pattern.compile(getRegex()).matcher(input);
         if (matcher.matches())
             return matcher;
