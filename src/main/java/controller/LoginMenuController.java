@@ -6,6 +6,7 @@ import model.Result;
 import model.User;
 
 public class LoginMenuController {
+
     public static Result login(String username, String password, boolean stayLoggedIn) {
         User user = App.getUserByUsername(username);
         if (user == null)

@@ -19,28 +19,41 @@ public class App {
     private static final File loggedInUserFile = new File(savesDir, "loggedInUser.json");
     private static final File gamesFile = new File(savesDir, "games.json");
 
-    private static ArrayList<User> users = new ArrayList<>();
+    private static ArrayList<User> users;
 
     private static User loggedInUser;
     private static Game currentGame;
 
     static {
-        try {
-            savesDir.mkdir();
-            usersFile.createNewFile();
-            gamesFile.createNewFile();
-            loggedInUserFile.createNewFile();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (!savesDir.mkdir()) {
+            try {
+                if (!usersFile.createNewFile())
+                    readUsers();
+                if (!loggedInUserFile.createNewFile())
+                    readLoggedInUser();
+                gamesFile.createNewFile();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
+        if (App.getLoggedInUser() != null)
+            App.setCurrentMenu(Menu.MAIN);
+    }
+
+    private static void readUsers() {
         try (FileReader reader = new FileReader(usersFile)) {
             Gson gson = new Gson();
             users = new ArrayList<>(List.of(gson.fromJson(reader, User[].class)));
-        } catch (IOException e) {
+        } catch (NullPointerException ignored) {
+            users = new ArrayList<>();
+        }
+        catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    private static void readLoggedInUser() {
         try (FileReader reader = new FileReader(loggedInUserFile)) {
             Gson gson = new Gson();
             String username = gson.fromJson(reader, String.class);
@@ -48,9 +61,6 @@ public class App {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        if (App.getLoggedInUser() != null)
-            App.setCurrentMenu(Menu.MAIN);
     }
 
     public static Menu getCurrentMenu() {

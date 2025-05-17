@@ -24,7 +24,7 @@ public class User {
         try (InputStream inputStream = User.class.getClassLoader().getResourceAsStream("securityQuestions.json");
              BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             Gson gson = new Gson();
-            return gson.fromJson(reader.readLine(), String[].class);
+            return gson.fromJson(reader, String[].class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
