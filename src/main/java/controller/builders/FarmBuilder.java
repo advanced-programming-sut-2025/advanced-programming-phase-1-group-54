@@ -61,11 +61,11 @@ public class FarmBuilder {
     }
 
 
-    public static void setFarmNumber(int number) {
+    public static void setFarmNumber(int index) {
         try (InputStream inputStream = FarmBuilder.class.getClassLoader().getResourceAsStream("farms.json"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-            JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonArray().get(number - 1).getAsJsonObject();
+            JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonArray().get(index).getAsJsonObject();
             setCabinLocation(gson.fromJson(jsonObject.get("cabinLocation"), Location.class));
             setGreenHouseLocation(gson.fromJson(jsonObject.get("greenHouseLocation"), Location.class));
             setLakeAreas(gson.fromJson(jsonObject.get("lakeAreas"), Area[].class));
