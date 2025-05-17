@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="fix read user and question from json">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="merge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProfileMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestMenus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestMenus.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +81,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.TestMenus">
+  <component name="RunManager" selected="JUnit.TestMenus.testProfileMenu">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="advanced-programming-phase-1-group-54" />
@@ -131,10 +130,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestMenus" />
         <item itemvalue="JUnit.TestMenus.testProfileMenu" />
-        <item itemvalue="JUnit.TestMenus.testRegisterMenu" />
         <item itemvalue="JUnit.TestMenus.testLoginMenu" />
+        <item itemvalue="JUnit.TestMenus.testRegisterMenu" />
+        <item itemvalue="JUnit.TestMenus" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -183,23 +182,7 @@
       <workItem from="1747307134131" duration="367000" />
       <workItem from="1747402748365" duration="913000" />
       <workItem from="1747479034570" duration="2100000" />
-      <workItem from="1747481554826" duration="320000" />
-    </task>
-    <task id="LOCAL-00016" summary="read and write Fishes Json And add constructor to Item Class Babies :)">
-      <option name="closed" value="true" />
-      <created>1746134471763</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1746134471763</updated>
-    </task>
-    <task id="LOCAL-00017" summary="write writeToJson method Of Recipe Class">
-      <option name="closed" value="true" />
-      <created>1746189858955</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1746189858955</updated>
+      <workItem from="1747481554826" duration="999000" />
     </task>
     <task id="LOCAL-00018" summary="write writeToJson method Of Artisan Class and Produce Class">
       <option name="closed" value="true" />
@@ -577,7 +560,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747479812686</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="write unit test for menus">
+      <option name="closed" value="true" />
+      <created>1747482044096</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1747482044096</updated>
+    </task>
+    <task id="LOCAL-00066" summary="merge">
+      <option name="closed" value="true" />
+      <created>1747482106987</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1747482106987</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,7 +606,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="String available added" />
     <MESSAGE value="gifts added to player" />
     <MESSAGE value="xml changes" />
     <MESSAGE value="method get player relainship added" />
@@ -628,11 +626,12 @@
     <MESSAGE value="edit UniqueItems and edit controllers" />
     <MESSAGE value="add skill and pass out to controller methods" />
     <MESSAGE value="edit controller" />
-    <MESSAGE value="merge" />
     <MESSAGE value="add unit test package to project and edit menus to be able to test the code" />
     <MESSAGE value="try to make code run able" />
     <MESSAGE value="fix read user and question from json" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix read user and question from json" />
+    <MESSAGE value="write unit test for menus" />
+    <MESSAGE value="merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
