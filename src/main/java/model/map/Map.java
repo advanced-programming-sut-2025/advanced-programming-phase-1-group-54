@@ -18,8 +18,7 @@ public class Map {
         tiles = new Tile[numberOfRows][numberOfColumns];
         for (int row = 0; row < numberOfRows; row++) {
             for (int column = 0; column < numberOfColumns; column++) {
-                tiles[row][column] = new Tile();
-                tiles[row][column].setLocation(new Location(row, column));
+                tiles[row][column] = new Tile(new Location(row, column));
             }
         }
     }
@@ -27,7 +26,10 @@ public class Map {
     public Map(int numberOfRows, int numberOfColumns, Tile[][] tiles) {
         this.numberOfRows = numberOfRows;
         this.numberOfColumns = numberOfColumns;
-        this.tiles = tiles;
+        this.tiles = new Tile[numberOfRows][numberOfColumns];
+        for (int row = 0; row < numberOfRows; row++) {
+            System.arraycopy(tiles[row], 0, this.tiles[row], 0, numberOfColumns);
+        }
     }
 
     public Tile getTileAt(Location location) {

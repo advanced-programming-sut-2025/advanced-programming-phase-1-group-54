@@ -173,6 +173,9 @@ public class FriendShipController {
     }
 
     public static Result showGiftList() {
+        if (App.getCurrentGame().getCurrentPlayer().getReceivedGifts().isEmpty()) {
+            return new Result(false, "You have no more gifts to open.");
+        }
         StringBuilder messageBuilder = new StringBuilder();
         int i = 1;
         for (Gift gift : App.getCurrentGame().getCurrentPlayer().getReceivedGifts()) {
@@ -213,7 +216,9 @@ public class FriendShipController {
         }
         App.getCurrentGame().getCurrentPlayer().getReceivedGifts().remove(number - 1);
         gift.setRate(rate);
-        return new Result(true, "done successfully");
+        Result result = showGiftList();
+
+        return new Result(result.success() ? 0 : 1, "rating set!\n" + result);
     }
 
     public static Result hug(String username) {
@@ -329,6 +334,8 @@ public class FriendShipController {
             return new Result(false, player.getName() + "isn't asking for your hand in marriage");
         }
 
+        String message;
+
         if (marriage) {
             relationship.increaseLevel();
             int totalMoney = currentPlayer.getMoney() + player.getMoney();
@@ -337,19 +344,39 @@ public class FriendShipController {
             currentPlayer.setMarriage(relationship);
             relationship.setSharedMoney(totalMoney);
             currentPlayer.getBackpack().addItem(relationship.getRing(), 1);
+
             currentPlayer.getAskedForMarriage().clear();
-            return new Result(true, "successfully accepted");
+            player.getAskedForMarriage().clear();
+
+            message = "Congratulations! You are married to " + player.getName();
         } else {
             relationship.resetLevel();
             player.getBackpack().addItem(relationship.getRing(), 1);
             player.setHeartBreakDaysRemaining(7);
-            for (int i = 0; i < currentPlayer.getAskedForMarriage().size(); i++) {
-                if(player.equals(currentPlayer.getAskedForMarriage().get(i))) {
-                    currentPlayer.getAskedForMarriage().remove(i);
-                }
-            }
-            return new Result(true, "successfully rejected");
+
+            currentPlayer.getAskedForMarriage().remove(player);
+
+            message = "You rejected " + player.getName() + "marriage proposal, now they're depressed :(";
         }
+
+        Result result = showMarriageProposals();
+        message += "\n" + showMarriageProposals().message();
+
+        return new Result((result.success() ? 0 : 1), message);
+    }
+
+    private static Result showMarriageProposals() {
+        Game game = App.getCurrentGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        if (currentPlayer.getAskedForMarriage().isEmpty()) {
+            return new Result(false, "You have no marriage proposals left!");
+        }
+
+        StringBuilder builder = new StringBuilder();
+        for (Player player : currentPlayer.getAskedForMarriage()) {
+            builder.append(player.getName()).append(" is asking for your hand in marriage!\n");
+        }
+        return new Result(true, builder.toString());
     }
 
     public static Result tradeRequest(String username, String itemName, int amount) {
@@ -361,7 +388,7 @@ public class FriendShipController {
             return new Result(false, "item not found");
         }
         if (amount < 1) {
-            return new Result(false, "amount shpuld be positive");
+            return new Result(false, "amount should be positive");
         }
         if (!App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(item, amount)) {
             return new Result(false, "not enough product");
@@ -380,10 +407,10 @@ public class FriendShipController {
             return new Result(false, "item not found");
         }
         if (amount < 1) {
-            return new Result(false, "amount shpuld be positive");
+            return new Result(false, "amount should be positive");
         }
         if (price < 1) {
-            return new Result(false, "price shpuld be positive");
+            return new Result(false, "price should be positive");
         }
         if (App.getCurrentGame().getCurrentPlayer().getMoney() < price) {
             return new Result(false, "not enough money");

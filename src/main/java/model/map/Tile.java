@@ -11,18 +11,19 @@ import model.items.plants.Plant;
 import java.util.ArrayList;
 
 public class Tile implements DailyUpdate {
-    private Location location;
+    private final Location location;
 
     private Placeable thingOnTile = null;
     private final ArrayList<Feature> features = new ArrayList<>();
+
+    public Tile(Location location) {
+        this.location = location;
+    }
 
     public Location getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
-    }
     public boolean isWalkable() {
         if (thingOnTile == null)
             return true;
@@ -34,9 +35,10 @@ public class Tile implements DailyUpdate {
     }
 
     public Tile getTop() {
-        if (thingOnTile instanceof Building building)
-            return building.getTileAt(location.delta(building.getLocation()));
-
+        if (thingOnTile instanceof Building building) {
+            Tile out = building.getTileAt(location.delta(building.getLocation()));
+            return out;
+        }
         return this;
     }
 
