@@ -57,7 +57,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     private Location currentLocation;
 
-    private ArrayList<NPCFriendship> npcFriendships;
+    private final ArrayList<NPCFriendship> npcFriendships = new ArrayList<>();
 
     private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>() {{
         add(Recipe.foodRecipes.get("Fried Egg Recipe"));
@@ -100,6 +100,8 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         this.setTool(ToolType.AXE, new Tool(ToolType.AXE));
         this.setTool(ToolType.SCYTHE, new Tool(ToolType.SCYTHE));
         this.setTool(ToolType.WATERING_CAN, new WateringCan());
+
+        this.setEquippedTool(this.getTool(ToolType.HOE));
 
         this.setFishingPole(FishingPoleType.TRAINING, new FishingPole(FishingPoleType.TRAINING));
     }
@@ -291,10 +293,6 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     public ArrayList<NPCFriendship> getNpcFriendships() {
         return npcFriendships;
-    }
-
-    public void setNpcFriendships(ArrayList<NPCFriendship> npcFriendships) {
-        this.npcFriendships = npcFriendships;
     }
 
     @Override

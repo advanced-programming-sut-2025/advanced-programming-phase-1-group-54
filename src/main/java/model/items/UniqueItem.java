@@ -46,4 +46,9 @@ public class UniqueItem extends Item {
         }
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }

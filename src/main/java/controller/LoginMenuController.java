@@ -52,6 +52,7 @@ public class LoginMenuController {
             return checkPasswordResult;
 
         user.setPasswordHash(UserBuilder.hash(password));
+        App.saveUsers();
         return new Result(true, "Password changed successfully");
     }
 
@@ -62,6 +63,7 @@ public class LoginMenuController {
 
         String password = RegisterMenuController.getRandomPassword();
         user.setPasswordHash(UserBuilder.hash(password));
+        App.saveUsers();
         return new Result(true, "Password changed successfully. your new password is: " + password);
     }
 

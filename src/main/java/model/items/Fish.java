@@ -129,6 +129,11 @@ public class Fish extends Item implements Cloneable {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
     public static void writeToJson() {
 
         HashMap<String, Fish> fishesType = new HashMap<String, Fish>();

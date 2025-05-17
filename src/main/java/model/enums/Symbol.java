@@ -23,7 +23,7 @@ public enum Symbol {
     ROCK(Color.MAGENTA_FONT + "@" + Color.DEFAULT),
     WOOD(Color.RED_FONT + "|" + Color.DEFAULT),
 
-    SHOP(Color.YELLOW_FONT + "S" + Color.DEFAULT),
+    SHOP(Color.RED_FONT + "S" + Color.DEFAULT),
     NPC(Color.BLUE_FONT + "N" + Color.DEFAULT),
     REFRIGERATOR(Color.CYAN_FONT + "R" + Color.DEFAULT),
     ARTISAN(Color.CYAN_FONT + "A" + Color.DEFAULT)

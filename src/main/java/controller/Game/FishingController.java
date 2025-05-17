@@ -26,6 +26,8 @@ public class FishingController {
 
         boolean isNearLake = false;
         for (GenericWall lake : farm.getLakes()) {
+            System.out.println(lake);
+            System.out.println(player.getCurrentLocation());
             if (MapController.isNear(player.getCurrentLocation(), lake)) {
                 isNearLake = true;
             }
@@ -54,7 +56,7 @@ public class FishingController {
         double weatherFactor = App.getCurrentGame().getCurrentWeather().getFishingFactor();
 
         int numberOfFishes = Math.min((int) Math.ceil(Math.random() * weatherFactor * (skillLevel + 2)), 6);
-        double poleFactor = player.getFishingPole(FishingPoleType.valueOf(fishingPoleName)).getPoleFactor();
+        double poleFactor = player.getFishingPole(FishingPoleType.fromString(fishingPoleName)).getPoleFactor();
 
         StringBuilder message = new StringBuilder("Starting fishing ...");
 

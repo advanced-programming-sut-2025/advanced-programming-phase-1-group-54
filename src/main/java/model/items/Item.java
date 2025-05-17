@@ -30,4 +30,12 @@ public abstract class Item {
     public int getBaseSellPrice() {
         return baseSellPrice;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Item item) {
+            return this.name.equals(item.getName());
+        }
+        return false;
+    }
 }

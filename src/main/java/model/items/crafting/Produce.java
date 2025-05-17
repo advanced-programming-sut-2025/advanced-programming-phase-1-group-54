@@ -104,6 +104,11 @@ public class Produce extends Item implements Cloneable{
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
     public static void writeToJson(){
 
         HashMap<String, Produce> produceTypes = new HashMap<String, Produce>();

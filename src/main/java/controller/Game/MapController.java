@@ -3,6 +3,7 @@ package controller.Game;
 import model.App;
 import model.Placeable;
 import model.enums.Symbol;
+import model.items.Item;
 import model.map.Building;
 import model.map.GreenHouse;
 import model.Game;
@@ -36,7 +37,7 @@ public class MapController {
 
         Material wood = Material.getMaterial("Wood");
 
-        boolean hasWood = player.getBackpack().getNumberOfItemInBackPack().get(wood) >
+        boolean hasWood = player.getBackpack().getNumberOfItemInBackPack().get(wood) >=
                 GreenHouse.getNeededWood();
 
         if (!hasWood) {
@@ -135,9 +136,11 @@ public class MapController {
                 Location tileLocation = new Location(location.row() + dRow, location.column() + dColumn);
                 Tile tile = world.getTileAt(tileLocation);
 
+                if (tile == null)
+                    return new Result(false, "invalid location and size");
+
                 if (tile.getThingOnTile() != null && tile.getThingOnTile().equals(currentBuilding))
-                    tile = currentBuilding.getTileAt(new Location(tileLocation.row() - currentBuilding.getLocation().row(),
-                            tileLocation.column() - currentBuilding.getLocation().column()));
+                    tile = tile.getTop();
 
                 message.append(tile.toString());
             }
@@ -148,15 +151,19 @@ public class MapController {
 
     static boolean isNear(Location location, Placeable placeable) {
         World world = App.getCurrentGame().getWorld();
+
+        boolean flag = false;
         for (Direction direction : Direction.values()) {
             Location nearLocation = location.getLocationAt(direction);
-            if (world.getTileAt(nearLocation).getTop().getThingOnTile().equals(placeable)) {
-                return (!(world.getTileAt(location).getThingOnTile() instanceof Building building)
-                        || world.getTileAt(nearLocation).getThingOnTile().equals(building))
-                        && (!(world.getTileAt(nearLocation).getThingOnTile() instanceof Building));
+            if (world.getTileAt(nearLocation).getThingOnTile() != null &&
+                    world.getTileAt(nearLocation).getThingOnTile().equals(placeable)) {
+//                if ((!(world.getTileAt(location).getThingOnTile() instanceof Building building)
+//                        || world.getTileAt(nearLocation).getThingOnTile().equals(building))
+//                        && (!(world.getTileAt(nearLocation).getThingOnTile() instanceof Building)))
+                    flag = true;
             }
         }
-        return false;
+        return flag;
     }
 
     public static Result helpReadMap() {

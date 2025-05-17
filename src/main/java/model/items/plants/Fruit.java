@@ -114,6 +114,11 @@ public class Fruit extends Item implements Cloneable, Placeable {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
     public static void writeToJson() {
 
         HashMap<String, Fruit> fruitTypes = new HashMap<String, Fruit>();

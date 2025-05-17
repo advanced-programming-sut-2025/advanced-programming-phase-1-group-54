@@ -1,11 +1,9 @@
 package view.game;
 
 import controller.Game.*;
-import model.App;
 import model.Result;
 import model.enums.Direction;
 import model.enums.SubMenu;
-import model.enums.Weather;
 import model.enums.commands.CheatCode;
 import model.enums.commands.Command;
 import model.enums.commands.GameCommand;
@@ -276,14 +274,32 @@ public class DefaultMenu implements GameSubMenu {
 
     private void handleNextTurn(Scanner scanner) {
         Result result = CommonGameController.nextTurn();
+        showResult(result);
+        if (result.code() % 2 == 1) {
+            String input;
+            boolean finished = false;
+            do {
+                input = scanner.nextLine();
+                if (GameCommand.SHOW_GIFT_LIST.matches(input))
+                    handleShowGiftList();
+                else if (GameCommand.SHOW_GIFT_LIST.matches(input))
+                    finished = handleRateGift(input);
+                else
+                    invalidCommand();
+            } while (!finished);
+        }
 
-        if(!App.getCurrentGame().getCurrentPlayer().getReceivedGifts().isEmpty()){
-            System.out.println("you have some gifts");
+        if (result.code() / 2 == 1) {
+            String input;
+            boolean finished = false;
+            do {
+                input = scanner.nextLine();
+                if (GameCommand.RESPOND_MARRIAGE.matches(input))
+                    finished = handleRespondMarriage(input);
+                else
+                    invalidCommand();
+            } while (!finished);
         }
-        if(!App.getCurrentGame().getCurrentPlayer().getAskedForMarriage().isEmpty()){
-            System.out.println("you have some marriage request");
-        }
-        // TODO handle Marriage, handle Gift (VIEW)
     }
 
     private void handleShowDate() {
@@ -593,11 +609,13 @@ public class DefaultMenu implements GameSubMenu {
         showResult(FriendShipController.gift(username, itemName, amount));
     }
 
-    private void handleRateGift(String input) {
+    private boolean handleRateGift(String input) {
         Command command = GameCommand.RATE_GIFT;
         int number = Integer.parseInt(command.getGroup(input, "number"));
         int rate = Integer.parseInt(command.getGroup(input, "rate"));
-        showResult(FriendShipController.rateGift(number, rate));
+        Result result = FriendShipController.rateGift(number, rate);
+        showResult(result);
+        return (result.code() == 1);
     }
 
     private void handleShowGiftList() {
@@ -627,6 +645,15 @@ public class DefaultMenu implements GameSubMenu {
         String username = command.getGroup(input, "username");
         String ringName = command.getGroup(input, "ringName");
         showResult(FriendShipController.askMarriage(username, ringName));
+    }
+
+    private boolean handleRespondMarriage(String input) {
+        Command command = GameCommand.RESPOND_MARRIAGE;
+        String answer = command.getGroup(input, "answer");
+        String username = command.getGroup(input, "username");
+        Result result = FriendShipController.respondToMarriage(username, answer);
+        showResult(result);
+        return (result.code() == 1);
     }
 
 }

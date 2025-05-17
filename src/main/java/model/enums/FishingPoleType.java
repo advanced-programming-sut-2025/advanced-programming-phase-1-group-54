@@ -7,17 +7,16 @@ public enum FishingPoleType {
     IRIDIUM;
 
     public static FishingPoleType fromString(String fishingPoleName) {
-        switch (fishingPoleName) {
-            case "training":
-                return TRAINING;
-            case "bamboo":
-                return BAMBOO;
-            case "fiberglass":
-                return FIBERGLASS;
-            case "iridium":
-                return IRIDIUM;
-            default:
-                return null;
+        for (FishingPoleType type : FishingPoleType.values()) {
+            if (type.toString().equals(fishingPoleName)) {
+                return type;
+            }
         }
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return this.name().toLowerCase();
     }
 }
