@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="try to make code run able">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="fix read user and question from json">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProfileMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestMenus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestMenus.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,33 +57,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestMenus.testProfileMenu.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestMenus.testRegisterMenu.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Asus/libgdx_Projects&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "JUnit.TestMenus.executor": "Run",
+    "JUnit.TestMenus.testLoginMenu.executor": "Run",
+    "JUnit.TestMenus.testProfileMenu.executor": "Run",
+    "JUnit.TestMenus.testRegisterMenu.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Asus/libgdx_Projects",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="JUnit.TestMenus.testRegisterMenu">
+}]]></component>
+  <component name="RunManager" selected="JUnit.TestMenus">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="advanced-programming-phase-1-group-54" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestMenus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="advanced-programming-phase-1-group-54" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestMenus" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestMenus.testLoginMenu" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="advanced-programming-phase-1-group-54" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestMenus" />
+      <option name="METHOD_NAME" value="testLoginMenu" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -110,9 +131,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestMenus.testRegisterMenu" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.TestMenus" />
         <item itemvalue="JUnit.TestMenus.testProfileMenu" />
+        <item itemvalue="JUnit.TestMenus.testRegisterMenu" />
+        <item itemvalue="JUnit.TestMenus.testLoginMenu" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -159,15 +182,8 @@
       <workItem from="1747218633483" duration="198000" />
       <workItem from="1747307134131" duration="367000" />
       <workItem from="1747402748365" duration="913000" />
-      <workItem from="1747479034570" duration="337000" />
-    </task>
-    <task id="LOCAL-00015" summary="read and write Fishes Json And add constructor to Item Class Babies :)">
-      <option name="closed" value="true" />
-      <created>1746134408448</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1746134408448</updated>
+      <workItem from="1747479034570" duration="2100000" />
+      <workItem from="1747481554826" duration="320000" />
     </task>
     <task id="LOCAL-00016" summary="read and write Fishes Json And add constructor to Item Class Babies :)">
       <option name="closed" value="true" />
@@ -553,7 +569,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747472006857</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="fix read user and question from json">
+      <option name="closed" value="true" />
+      <created>1747479812685</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1747479812686</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,7 +607,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="buy item(some peoduct are not completed) and show item" />
     <MESSAGE value="String available added" />
     <MESSAGE value="gifts added to player" />
     <MESSAGE value="xml changes" />
@@ -608,7 +631,8 @@
     <MESSAGE value="merge" />
     <MESSAGE value="add unit test package to project and edit menus to be able to test the code" />
     <MESSAGE value="try to make code run able" />
-    <option name="LAST_COMMIT_MESSAGE" value="try to make code run able" />
+    <MESSAGE value="fix read user and question from json" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix read user and question from json" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
