@@ -5,6 +5,8 @@ import model.App;
 import model.Result;
 import model.enums.Direction;
 import model.enums.SubMenu;
+import model.enums.Weather;
+import model.enums.commands.CheatCode;
 import model.enums.commands.Command;
 import model.enums.commands.GameCommand;
 import model.map.Location;
@@ -23,7 +25,7 @@ public class DefaultMenu implements GameSubMenu {
         if (checkGameCommand(input, scanner))
             return;
 
-        if (checkCheatCode(input, scanner))
+        if (checkCheatCode(input))
             return;
 
         invalidCommand();
@@ -158,16 +160,100 @@ public class DefaultMenu implements GameSubMenu {
         return true;
     }
 
+    private boolean checkCheatCode(String input) {
+        if (CheatCode.ADVANCE_TIME.matches(input))
+            handleAdvanceTime(input);
+        else if (CheatCode.ADVANCE_DATE.matches(input))
+            handleAdvanceDate(input);
+        else if (CheatCode.THOR.matches(input))
+            handleThor(input);
+        else if (CheatCode.SET_WEATHER.matches(input))
+            handleSetWeather(input);
+        else if (CheatCode.SET_ENERGY.matches(input))
+            handleSetEnergy(input);
+        else if (CheatCode.SET_UNLIMITED_ENERGY.matches(input))
+            handleSetUnlimitedEnergy();
+        else if (CheatCode.ADD_ITEM.matches(input))
+            handleAddItem(input);
+        else if (CheatCode.SET_FRIENDSHIP.matches(input))
+            handleSetFriendship(input);
+        else if (CheatCode.ADD_MONEY.matches(input))
+            handleAddMoney(input);
+        else
+            return false;
+
+        return true;
+    }
+
+    // Cheat Codes
+
+    private void handleAdvanceTime(String input) {
+        Command command = CheatCode.ADVANCE_TIME;
+        int x = Integer.parseInt(command.getGroup(input, "x"));
+        showResult(CheatController.advanceTime(x));
+    }
+
+    private void handleAdvanceDate(String input) {
+        Command command = CheatCode.ADVANCE_DATE;
+        int x = Integer.parseInt(command.getGroup(input, "x"));
+        showResult(CheatController.advanceDate(x));
+    }
+
+    private void handleThor(String input) {
+        Command command = CheatCode.THOR;
+        Location location = new Location(Integer.parseInt(command.getGroup(input, "x")),
+                Integer.parseInt(command.getGroup(input, "y")));
+        showResult(CheatController.thunderStrike(location));
+    }
+
+    private void handleSetWeather(String input) {
+        Command command = CheatCode.SET_WEATHER;
+        String weatherName = command.getGroup(input, "weatherName");
+        showResult(CheatController.setWeather(weatherName));
+    }
+
+    private void handleSetEnergy(String input) {
+        Command command = CheatCode.SET_ENERGY;
+        int value = Integer.parseInt(command.getGroup(input, "value"));
+        showResult(CheatController.setEnergy(value));
+    }
+
+    private void handleSetUnlimitedEnergy() {
+        showResult(CheatController.setUnlimitedEnergy());
+    }
+
+    private void handleAddItem(String input) {
+        Command command = CheatCode.ADD_ITEM;
+        String itemName = command.getGroup(input, "itemName");
+        int count = Integer.parseInt(command.getGroup(input, "count"));
+        showResult(CheatController.addItem(itemName, count));
+    }
+
+    private void handleSetFriendship(String input) {
+        Command command = CheatCode.SET_FRIENDSHIP;
+        String animalName = command.getGroup(input, "animalName");
+        int amount = Integer.parseInt(command.getGroup(input, "amount"));
+        showResult(CheatController.setAnimalFriendship(animalName, amount));
+    }
+
+    private void handleAddMoney(String input) {
+        Command command = CheatCode.ADD_MONEY;
+        int amount = Integer.parseInt(command.getGroup(input, "amount"));
+        showResult(CheatController.addMoney(amount));
+    }
+
+    // Game Commands
+
     private void handlegiftNpc(String input) {
         Command command = GameCommand.GIFT_NPC;
-        String npcName = command.getGroup(input,"npc_name");
+        String npcName = command.getGroup(input,"npcName");
         String item = command.getGroup(input,"item");
         Result result = NpcController.giftNpc(npcName,item);
     }
 
     private void handleMeetNpc(String input) {
         Command command = GameCommand.MEET_NPC;
-        String npcName = command.getGroup(input, "npc_name");
+        String npcName = command.getGroup(input, "npcName");
         Result result = NpcController.meetsNpc(npcName);
         if(result.success()){
             goToMenu(SubMenu.NPCMenu);
@@ -183,16 +269,14 @@ public class DefaultMenu implements GameSubMenu {
         }
     }
 
-    private boolean checkCheatCode(String input, Scanner scanner) {
-        return false;
-    }
 
     private void handleExitGame() {
         showResult(CommonGameController.exitGame());
     }
 
     private void handleNextTurn(Scanner scanner) {
-        showResult(CommonGameController.nextTurn());
+        Result result = CommonGameController.nextTurn();
+
         if(!App.getCurrentGame().getCurrentPlayer().getReceivedGifts().isEmpty()){
             System.out.println("you have some gifts");
         }

@@ -5,8 +5,10 @@ package model.map;
  */
 
 import controller.Game.DataBaseController;
+import controller.Game.PlantsController;
 import model.DailyUpdate;
 import model.HourUpdate;
+import model.enums.Season;
 import model.lives.NPC;
 import model.lives.Player;
 import model.enums.Direction;
@@ -111,6 +113,13 @@ public class World implements DailyUpdate, HourUpdate {
             npcs.add(npcHouse.getNpc());
         }
         return npcs;
+    }
+
+    public void foraging(Season season) {
+        for (Farm farm : playerFarms) {
+            farm.foragingCrop(season);
+            PlantsController.foragingSeed(farm, season);
+        }
     }
 
     @Override

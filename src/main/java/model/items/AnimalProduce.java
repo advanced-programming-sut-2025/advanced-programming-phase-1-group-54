@@ -27,7 +27,6 @@ public class AnimalProduce extends Item implements Cloneable {
         Type type = new TypeToken<HashMap<String, AnimalProduce>>() {
         }.getType();
         animalProduces = gson.fromJson(file, type);
-        System.out.println(animalProduces.size());
     }
 
     public static AnimalProduce getAnimalProduce(String name) {

@@ -8,6 +8,7 @@ import controller.Game.PlantsController;
 import model.DailyUpdate;
 import model.HourUpdate;
 import model.enums.Feature;
+import model.enums.Season;
 import model.items.plants.Crop;
 import model.items.plants.Fruit;
 import model.items.plants.Plant;
@@ -89,12 +90,12 @@ public class Farm implements DailyUpdate, HourUpdate {
         tile.setThingOnTile(null);
     }
 
-    public void foragingCrop() {
+    public void foragingCrop(Season season) {
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
                 Tile tile = getTileAt(new Location(i, j));
                 if (Math.random() <= 0.01 && tile.getThingOnTile() == null) {
-                    tile.setThingOnTile(Fruit.getForagingCrop());
+                    tile.setThingOnTile(Fruit.getForagingCrop(season));
                 }
             }
         }
@@ -164,8 +165,6 @@ public class Farm implements DailyUpdate, HourUpdate {
         quarry.nextDayUpdate();
 
         crow();
-        foragingCrop();
-        PlantsController.foragingSeed(this);
     }
 
     @Override

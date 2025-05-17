@@ -36,7 +36,7 @@ public class NPCMenu implements GameSubMenu{
     private void handleQuestFinish(String input) {
         Command command = GameCommand.QUESTS_FINISH;
         String index = command.getGroup(input,"index");
-        Result result = NpcController.questFinish(Integer.parseInt(index));
+        showResult(NpcController.questFinish(Integer.parseInt(index)));
     }
 
     public static void setNpc(NPC temp) {

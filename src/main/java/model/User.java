@@ -15,7 +15,6 @@ public class User {
 
     private long maximumMoney;
     private long numberOfPlayedGames;
-    private boolean inGame;
 
     private final int securityQuestionNumber;
     private final String answerHash;
@@ -104,10 +103,6 @@ public class User {
     }
 
     public boolean isInGame() {
-        return inGame;
-    }
-
-    public void setInGame(boolean inGame) {
-        this.inGame = inGame;
+        return App.getGameDataOf(this) != null;
     }
 }

@@ -82,11 +82,13 @@ public enum GameCommand implements Command {
     GIVE_FLOWER("flower -u (?<username>\\S+)"),
     ASK_MARRIAGE("ask marriage -u (?<username>\\S+) -r (?<ringName>.+)"),
     RESPOND_MARRIAGE("respond -(?<answer>(accept|reject)) -u (?<username>\\S+)"),
+
+    // NPC
     FRIENDSHIP_NPC_LIST("friendship NPC list"),
-    MEET_NPC("meet NPC (?<npc_name>\\S)"),
-    GIFT_NPC("gift NPC 9?<npc_name>\\S) -i (?<item>\\S)"),
+    MEET_NPC("meet NPC (?<npcName>.+)"),
+    GIFT_NPC("gift NPC (?<npcName>.+) -i (?<item>.+)"),
     QUESTS_LIST("quests list"),
-    QUESTS_FINISH("quests finish -i (?<index>\\S)"),
+    QUESTS_FINISH("quests finish -i (?<index>.+)"),
 
     // TRADING MENU COMMANDS
     START_TRADING("start trade"),
@@ -94,8 +96,6 @@ public enum GameCommand implements Command {
     TRADING_RESPONSE("trade response -(?<answer>(accept|reject)) -i (?<id>\\d+)"),
     SHOW_TRADES_HISTORY("trade history"),
     STOP_TRADING("stop trade"),
-
-    // TODO NPC
     ;
 
     private final String regex;

@@ -4,10 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="try to make code run able">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="set farm number fix">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/MapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/MapController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/FarmBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/FarmBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/GameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/GameBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/WorldBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestMenus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestMenus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/DateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/lives/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/lives/NPC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/lives/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/lives/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Farm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Farm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/game/NPCMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/NPCMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,10 +41,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
-        <option value="Interface" />
         <option value="Record" />
-        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -42,7 +65,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54&quot;,
-    &quot;accountId&quot;: &quot;71d33bb1-166c-4fdb-8d69-d035d6644229&quot;
+    &quot;accountId&quot;: &quot;ba300db7-7910-41b6-8de7-53faa46dff5f&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -60,27 +83,25 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestMenus.testProfileMenu.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestMenus.testRegisterMenu.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Asus/libgdx_Projects&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Asus/IdeaProjects/advanced-programming-phase-1-group-54&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.TestMenus.testRegisterMenu">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="advanced-programming-phase-1-group-54" />
@@ -88,31 +109,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestMenus.testProfileMenu" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="advanced-programming-phase-1-group-54" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestMenus" />
-      <option name="METHOD_NAME" value="testProfileMenu" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestMenus.testRegisterMenu" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="advanced-programming-phase-1-group-54" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestMenus" />
-      <option name="METHOD_NAME" value="testRegisterMenu" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestMenus.testRegisterMenu" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.TestMenus.testProfileMenu" />
       </list>
     </recent_temporary>
   </component>
@@ -155,19 +154,9 @@
       <workItem from="1747054765525" duration="708000" />
       <workItem from="1747056717632" duration="490000" />
       <workItem from="1747161513398" duration="2176000" />
-      <workItem from="1747167250527" duration="426000" />
-      <workItem from="1747218633483" duration="198000" />
-      <workItem from="1747307134131" duration="367000" />
-      <workItem from="1747402748365" duration="913000" />
-      <workItem from="1747479034570" duration="337000" />
-    </task>
-    <task id="LOCAL-00015" summary="read and write Fishes Json And add constructor to Item Class Babies :)">
-      <option name="closed" value="true" />
-      <created>1746134408448</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1746134408448</updated>
+      <workItem from="1747165191149" duration="7057000" />
+      <workItem from="1747233139067" duration="41485000" />
+      <workItem from="1747303498996" duration="9253000" />
     </task>
     <task id="LOCAL-00016" summary="read and write Fishes Json And add constructor to Item Class Babies :)">
       <option name="closed" value="true" />
@@ -497,63 +486,71 @@
       <option name="project" value="LOCAL" />
       <updated>1747142344516</updated>
     </task>
-    <task id="LOCAL-00057" summary="merge">
+    <task id="LOCAL-00057" summary="npc shpo controller added">
       <option name="closed" value="true" />
-      <created>1747164468825</created>
+      <created>1747165595789</created>
       <option name="number" value="00057" />
       <option name="presentableId" value="LOCAL-00057" />
       <option name="project" value="LOCAL" />
-      <updated>1747164468825</updated>
+      <updated>1747165595789</updated>
     </task>
-    <task id="LOCAL-00058" summary="edit planting and harvest method for fertilize and harvest foraging crops">
+    <task id="LOCAL-00058" summary="some changes">
       <option name="closed" value="true" />
-      <created>1747406563185</created>
+      <created>1747233014633</created>
       <option name="number" value="00058" />
       <option name="presentableId" value="LOCAL-00058" />
       <option name="project" value="LOCAL" />
-      <updated>1747406563185</updated>
+      <updated>1747233014633</updated>
     </task>
-    <task id="LOCAL-00059" summary="edit UniqueItems and edit controllers">
+    <task id="LOCAL-00059" summary="major updates">
       <option name="closed" value="true" />
-      <created>1747415191394</created>
+      <created>1747258598773</created>
       <option name="number" value="00059" />
       <option name="presentableId" value="LOCAL-00059" />
       <option name="project" value="LOCAL" />
-      <updated>1747415191394</updated>
+      <updated>1747258598773</updated>
     </task>
-    <task id="LOCAL-00060" summary="add skill and pass out to controller methods">
+    <task id="LOCAL-00060" summary="save users">
       <option name="closed" value="true" />
-      <created>1747428081293</created>
+      <created>1747479958818</created>
       <option name="number" value="00060" />
       <option name="presentableId" value="LOCAL-00060" />
       <option name="project" value="LOCAL" />
-      <updated>1747428081293</updated>
+      <updated>1747479958818</updated>
     </task>
-    <task id="LOCAL-00061" summary="edit controller">
+    <task id="LOCAL-00061" summary="shop updates">
       <option name="closed" value="true" />
-      <created>1747464166045</created>
+      <created>1747479996657</created>
       <option name="number" value="00061" />
       <option name="presentableId" value="LOCAL-00061" />
       <option name="project" value="LOCAL" />
-      <updated>1747464166045</updated>
+      <updated>1747479996657</updated>
     </task>
-    <task id="LOCAL-00062" summary="add unit test package to project and edit menus to be able to test the code">
+    <task id="LOCAL-00062" summary="delete comment">
       <option name="closed" value="true" />
-      <created>1747470398823</created>
+      <created>1747480014960</created>
       <option name="number" value="00062" />
       <option name="presentableId" value="LOCAL-00062" />
       <option name="project" value="LOCAL" />
-      <updated>1747470398823</updated>
+      <updated>1747480014961</updated>
     </task>
-    <task id="LOCAL-00063" summary="try to make code run able">
+    <task id="LOCAL-00063" summary="save users fix">
       <option name="closed" value="true" />
-      <created>1747472006857</created>
+      <created>1747480350686</created>
       <option name="number" value="00063" />
       <option name="presentableId" value="LOCAL-00063" />
       <option name="project" value="LOCAL" />
-      <updated>1747472006857</updated>
+      <updated>1747480350686</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="set farm number fix">
+      <option name="closed" value="true" />
+      <created>1747480394324</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1747480394324</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,8 +580,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="buy item(some peoduct are not completed) and show item" />
-    <MESSAGE value="String available added" />
     <MESSAGE value="gifts added to player" />
     <MESSAGE value="xml changes" />
     <MESSAGE value="method get player relainship added" />
@@ -599,16 +594,18 @@
     <MESSAGE value="some fixes" />
     <MESSAGE value="added features arraylist" />
     <MESSAGE value="write some TODO in controller methods and write fertilize Class" />
-    <MESSAGE value="complete foraging minerals method" />
-    <MESSAGE value="write get method for animal and animalHouse and put baseSellPrice in Item" />
-    <MESSAGE value="edit planting and harvest method for fertilize and harvest foraging crops" />
-    <MESSAGE value="edit UniqueItems and edit controllers" />
-    <MESSAGE value="add skill and pass out to controller methods" />
-    <MESSAGE value="edit controller" />
     <MESSAGE value="merge" />
-    <MESSAGE value="add unit test package to project and edit menus to be able to test the code" />
-    <MESSAGE value="try to make code run able" />
-    <option name="LAST_COMMIT_MESSAGE" value="try to make code run able" />
+    <MESSAGE value="complete foraging minerals method" />
+    <MESSAGE value="beautify code" />
+    <MESSAGE value="npc shpo controller added" />
+    <MESSAGE value="some changes" />
+    <MESSAGE value="major updates" />
+    <MESSAGE value="save users" />
+    <MESSAGE value="shop updates" />
+    <MESSAGE value="delete comment" />
+    <MESSAGE value="save users fix" />
+    <MESSAGE value="set farm number fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="set farm number fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

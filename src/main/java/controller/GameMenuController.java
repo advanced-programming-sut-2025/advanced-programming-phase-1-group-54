@@ -47,7 +47,7 @@ public class GameMenuController {
             return new Result(false, "Map number must be between 1 and " + FarmBuilder.getNumberOfFarms());
 
         boolean isFinished = GameBuilder.setNextPlayerFarm(number);
-        return new Result((isFinished? 0 : 1), "Map number " + number + " chosen");
+        return new Result((isFinished? 1 : 0), "Map number " + number + " chosen");
     }
 
     public static Result createNewGame() {

@@ -28,7 +28,6 @@ public class Crop extends Plant implements Cloneable{
         }
         Type type = new TypeToken<HashMap<String,Crop>>(){}.getType();
         crops = gson.fromJson(file,type);
-        System.out.println(crops.size());
     }
 
     public static Crop getCrop(String name){

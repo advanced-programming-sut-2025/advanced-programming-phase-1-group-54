@@ -1,6 +1,5 @@
 package model;
 
-import controller.Game.CommonGameController;
 import controller.Game.NpcController;
 import model.lives.Player;
 import model.enums.SubMenu;
@@ -19,7 +18,8 @@ public class Game implements DailyUpdate, HourUpdate {
     private final DateTime dateTime = new DateTime();
     private int turn;
 
-    private int numberOfDeleteVotes;
+    private int votes;
+    private int deleteVotes;
 
     private final ArrayList<Relationship> relationships;
 
@@ -35,17 +35,30 @@ public class Game implements DailyUpdate, HourUpdate {
         }
     }
 
-    public int getNumberOfDeleteVotes() {
-        return numberOfDeleteVotes;
+    public int getDeleteVotes() {
+        return deleteVotes;
     }
 
-    private void setNumberOfDeleteVotes(int numberOfDeleteVotes) {
-        this.numberOfDeleteVotes = numberOfDeleteVotes;
+    public void setDeleteVotes(int deleteVotes) {
+        this.deleteVotes = deleteVotes;
     }
 
-    private void increaseNumberOfDeleteVotes() {
-        this.numberOfDeleteVotes++;
+    public void increaseDeleteVotes() {
+        this.deleteVotes++;
     }
+
+    public int getVotes() {
+        return votes;
+    }
+
+    public void setVotes(int votes) {
+        this.votes = votes;
+    }
+
+    public void increaseVotes() {
+        this.votes++;
+    }
+
 
     public ArrayList<Relationship> getRelationships() {
         return relationships;
@@ -95,10 +108,12 @@ public class Game implements DailyUpdate, HourUpdate {
         return players[turn];
     }
 
+
     @Override
     public void nextDayUpdate() {
         world.nextDayUpdate();
         world.setTomorrowWeather(Weather.getRandom(dateTime.getSeason()));
+        world.foraging(dateTime.getSeason());
 
         for (Player player : players) {
             player.nextDayUpdate();
@@ -109,7 +124,6 @@ public class Game implements DailyUpdate, HourUpdate {
         }
 
         dateTime.increaseDay(1);
-
         NpcController.resetNpcEveryDay();
     }
 

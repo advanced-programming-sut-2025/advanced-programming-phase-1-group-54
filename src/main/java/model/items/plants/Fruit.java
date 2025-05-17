@@ -36,7 +36,6 @@ public class Fruit extends Item implements Cloneable, Placeable {
         Type type = new TypeToken<HashMap<String, Fruit>>() {
         }.getType();
         fruits = gson.fromJson(file, type);
-        System.out.println(fruits.size());
 
         try {
             file = new FileReader("foragingCrops.json");
@@ -46,7 +45,6 @@ public class Fruit extends Item implements Cloneable, Placeable {
         type = new TypeToken<HashMap<Season, ArrayList<String>>>() {
         }.getType();
         foragingCrops = gson.fromJson(file, type);
-        System.out.println(foragingCrops.size());
 
     }
 
@@ -59,8 +57,7 @@ public class Fruit extends Item implements Cloneable, Placeable {
         }
     }
 
-    public static Fruit getForagingCrop() {
-        Season season = App.getCurrentGame().getDateTime().getSeason();
+    public static Fruit getForagingCrop(Season season) {
         Random rand = new Random();
         String foragingCropName = foragingCrops.get(season).get(rand.nextInt(foragingCrops.size()));
         return Fruit.getFruit(foragingCropName);

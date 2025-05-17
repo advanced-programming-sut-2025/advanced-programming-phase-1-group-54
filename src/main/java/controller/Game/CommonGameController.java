@@ -2,6 +2,7 @@ package controller.Game;
 
 import model.App;
 import model.Game;
+import model.User;
 import model.enums.*;
 import model.items.plants.Crop;
 import model.lives.Animal;
@@ -24,11 +25,34 @@ public class CommonGameController {
         return new Result(true, "exited game");
     }
 
-    public static Result startDeleteGameVote() {
-        return null;
+    public static Result deleteGameVote(boolean vote) {
+        Game game = App.getCurrentGame();
+        game.increaseVotes();
+        if (vote) {
+            game.increaseDeleteVotes();
+        }
+
+        String message = "vote added.";
+        if (game.getVotes() < game.getPlayers().length) {
+            return new Result(0,  message);
+        }
+
+        boolean success = game.getDeleteVotes() == game.getVotes();
+        message += "\nVotes result : " + (success? "Success" : "Failure");
+        if (success) {
+            message += "\nGame was finished. bye bye :)";
+
+            for (Player player : game.getPlayers()) {
+                User user = player.getControllingUser();
+                user.increaseNumberOfPlayedGames();
+                if (player.getMoney() > user.getMaximumMoney())
+                    user.setMaximumMoney(player.getMoney());
+            }
+        }
+
+        return new Result(true, message);
     }
 
-    // TODO add functions for "force terminate"
 
     public static Result passOut() {
         App.getCurrentGame().getCurrentPlayer().setEnergy(0);
@@ -38,12 +62,21 @@ public class CommonGameController {
     public static Result nextTurn() {
         Game game = App.getCurrentGame();
         game.nextTurn();
+        Player player = game.getCurrentPlayer();
 
         StringBuilder message = new StringBuilder(String.format("it is %s's turn",
-                game.getCurrentPlayer().getName()));
+                player.getName()));
 
-        // TODO
-        return new Result(true, message.toString());
+        int code = 0;
+        if(!player.getReceivedGifts().isEmpty()){
+            code += 1;
+            message.append("\nYou received some gifts. You should open them.");
+        }
+        if(!player.getAskedForMarriage().isEmpty()){
+            code += 2;
+            message.append("\nYou received some marriage request. You should respond to them.");
+        }
+        return new Result(code, message.toString());
     }
 
     private static String getNotification() {

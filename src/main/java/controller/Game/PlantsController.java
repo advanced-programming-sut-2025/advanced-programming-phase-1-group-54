@@ -1,6 +1,7 @@
 package controller.Game;
 
 import model.App;
+import model.enums.Season;
 import model.enums.SkillType;
 import model.map.*;
 import model.Game;
@@ -248,12 +249,12 @@ public class PlantsController {
         return new Result(1, "Tile fertilized successfully");
     }
 
-    public static void foragingSeed(Farm farm) {
+    public static void foragingSeed(Farm farm, Season season) {
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
                 Tile tile = farm.getTileAt(new Location(i, j));
                 if (Math.random() <= 0.01 && tile.getThingOnTile() == null && tile.getFeatures().contains(Feature.PLOWED)) {
-                    Crop crop = Crop.getCrop(Seed.getForagingSeed().getPlant());
+                    Crop crop = Crop.getCrop(Seed.getForagingSeed(season).getPlant());
                     if (!cropCanBeGiant(crop, tile.getLocation())) {
                         tile.setThingOnTile(crop);
                     }

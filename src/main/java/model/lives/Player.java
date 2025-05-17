@@ -39,7 +39,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     private int money;
     private int nextDayMoney = 0;
 
-    private final Gender gender;
+    private final User controllingUser;
     private final Farm farm;
 
     private int energy;
@@ -85,7 +85,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     public Player(User controllingUser, Farm farm) {
         super(controllingUser.getUsername());
-        this.gender = controllingUser.getGender();
+        this.controllingUser = controllingUser;
         this.farm = farm;
         this.money = 0;
         this.heartBreakDaysRemaining = 0;
@@ -104,8 +104,12 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         this.setFishingPole(FishingPoleType.TRAINING, new FishingPole(FishingPoleType.TRAINING));
     }
 
+    public User getControllingUser() {
+        return controllingUser;
+    }
+
     public Gender getGender() {
-        return gender;
+        return controllingUser.getGender();
     }
 
     public Farm getFarm() {

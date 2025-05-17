@@ -47,8 +47,7 @@ public class App {
             users = new ArrayList<>(List.of(gson.fromJson(reader, User[].class)));
         } catch (NullPointerException ignored) {
             users = new ArrayList<>();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -61,6 +60,20 @@ public class App {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static ArrayList<GameData> readGames() {
+        ArrayList<GameData> games;
+        try (FileReader reader = new FileReader(gamesFile)) {
+            Gson gson = new Gson();
+            games = new ArrayList<>(List.of(gson.fromJson(reader, GameData[].class)));
+        } catch (NullPointerException ignored) {
+            games = new ArrayList<>();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return games;
     }
 
     public static Menu getCurrentMenu() {
@@ -97,7 +110,7 @@ public class App {
 
     public static User getUserByUsername(String username) {
         for (User user : users) {
-            if(user.getUsername().equals(username))
+            if (user.getUsername().equals(username))
                 return user;
         }
         return null;
@@ -126,33 +139,21 @@ public class App {
     }
 
     public static GameData getGameDataOf(User user) {
-        try (FileReader reader = new FileReader(gamesFile)) {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-            ArrayList<GameData> games = new ArrayList<>(List.of(gson.fromJson(reader, GameData[].class)));
-            for (GameData game : games) {
-                for (String username : game.playerNames())
-                    if (user.getUsername().equals(username))
-                        return game;
-            }
-            return null;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        ArrayList<GameData> games = readGames();
+        for (GameData game : games) {
+            for (String username : game.playerNames())
+                if (user.getUsername().equals(username))
+                    return game;
         }
+        return null;
     }
 
     public static void addGameData(GameData gameData) {
-        try (FileReader reader = new FileReader(gamesFile);
-             FileWriter writer = new FileWriter(gamesFile)) {
+        try (FileWriter writer = new FileWriter(gamesFile)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 
-            ArrayList<GameData> games;
-            try {
-                games = new ArrayList<>(List.of(gson.fromJson(reader, GameData[].class)));
-            } catch (NullPointerException ignored) {
-                games = new ArrayList<>();
-            }
+            ArrayList<GameData> games = readGames();
 
             games.add(gameData);
             writer.write(gson.toJson(games));
@@ -162,16 +163,10 @@ public class App {
     }
 
     public static void deleteGameData(GameData gameData) {
-        try (FileReader reader = new FileReader(gamesFile);
-             FileWriter writer = new FileWriter(gamesFile)) {
+        try (FileWriter writer = new FileWriter(gamesFile)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-            ArrayList<GameData> games;
-            try {
-                games = new ArrayList<>(List.of(gson.fromJson(reader, GameData[].class)));
-            } catch (NullPointerException ignored) {
-                games = new ArrayList<>();
-            }
+            ArrayList<GameData> games = readGames();
 
             games.remove(gameData);
 

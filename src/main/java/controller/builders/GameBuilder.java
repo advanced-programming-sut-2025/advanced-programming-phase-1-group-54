@@ -31,17 +31,12 @@ public class GameBuilder {
                 return (i == users.length - 1);
             }
         }
-        return false;
+        return true;
     }
 
 
     public static Game getResult() {
         Farm[] playerFarms = new Farm[users.length];
-
-        for (User user : users) {
-            user.setInGame(true);
-        }
-        App.saveUsers();
 
         for (int i = 0; i < users.length; i++) {
             FarmBuilder.reset();
@@ -86,7 +81,7 @@ public class GameBuilder {
         }
 
         int[] playerFarms = new int[playerFarmNumbers.length];
-        System.arraycopy(playerFarms, 0, playerFarmNumbers, 0, playerFarmNumbers.length);
+        System.arraycopy(playerFarmNumbers, 0, playerFarms, 0, playerFarmNumbers.length);
 
         return new GameData(playerNames, playerFarms);
     }
@@ -100,6 +95,6 @@ public class GameBuilder {
         }
 
         playerFarmNumbers = new int[gameData.playerFarms().length];
-        System.arraycopy(playerFarmNumbers, 0, gameData.playerFarms(), 0, gameData.playerNames().length);
+        System.arraycopy(gameData.playerFarms(), 0, playerFarmNumbers, 0, gameData.playerNames().length);
     }
 }

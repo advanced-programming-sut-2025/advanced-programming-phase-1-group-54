@@ -34,7 +34,7 @@ public class Tile implements DailyUpdate {
     }
 
     public Tile getTop() {
-        if (thingOnTile != null && thingOnTile instanceof Building building)
+        if (thingOnTile instanceof Building building)
             return building.getTileAt(location.delta(building.getLocation()));
 
         return this;

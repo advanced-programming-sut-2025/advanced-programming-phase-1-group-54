@@ -74,9 +74,6 @@ public class MapController {
             }
         }
 
-        System.out.println(distance);
-        System.out.println(inOthersFarm);
-
         if (distance == Integer.MAX_VALUE || inOthersFarm)
             return new Result(false, "Location unreachable from here!");
 

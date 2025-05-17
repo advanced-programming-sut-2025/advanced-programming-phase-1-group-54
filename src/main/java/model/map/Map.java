@@ -65,8 +65,6 @@ public class Map {
 
         while (!nodes.isEmpty()) {
             Node node = nodes.pollFirst();
-            System.out.println(nodes.size());
-            System.out.println(node.distance() + " " + node.location() + " " + node.direction());
 
             for (Direction direction : Direction.values()) {
                 Location newLocation = node.location().getLocationAt(direction);

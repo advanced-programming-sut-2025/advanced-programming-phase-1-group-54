@@ -9,14 +9,12 @@ import java.util.Random;
 
 public class NPC extends Live {
     private static Random rand = new Random();
-
-
     private String job;
 
 
-    private ArrayList<String> favoriteItems;
+    private final ArrayList<String> favoriteItems = new ArrayList<>();
 
-    private ArrayList<Quest> allQuests;
+    private final ArrayList<Quest> allQuests = new ArrayList<>();
 
     private int newQuestCounter;
     public NPC(String job, String name) {
@@ -42,17 +40,10 @@ public class NPC extends Live {
         return favoriteItems;
     }
 
-    public void setFavoriteItems(ArrayList<String> favoriteItems) {
-        this.favoriteItems = favoriteItems;
-    }
-
     public ArrayList<Quest> getAllQuests() {
         return allQuests;
     }
 
-    public void setAllQuests(ArrayList<Quest> allQuests) {
-        this.allQuests = allQuests;
-    }
     public  void checkCounter(){
         if (this.newQuestCounter == 0){
             this.allQuests.get(2).setActive(true);

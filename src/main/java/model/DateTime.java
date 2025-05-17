@@ -19,6 +19,8 @@ public class DateTime {
     private static final int DAYS_IN_SEASON = 28;
     private static final int SEASONS_IN_YEAR = Season.values().length;
 
+    private static final Season STARTING_SEASON = Season.SPRING;
+
     public int getYear() {
         return year;
     }
@@ -71,6 +73,10 @@ public class DateTime {
         return SEASONS_IN_YEAR;
     }
 
+    public static Season getStartingSeason() {
+        return STARTING_SEASON;
+    }
+
     public void increaseDay(int amount) {
         weekDay = WeekDay.values()[(amount + weekDay.ordinal()) % DAYS_IN_WEEK];
         year += (((amount + day) / DAYS_IN_SEASON) + season.ordinal()) / SEASONS_IN_YEAR;
@@ -91,7 +97,7 @@ public class DateTime {
         this.day = 1;
         this.hour = 9;
         this.weekDay = WeekDay.MONDAY;
-        this.season = Season.SPRING;
+        this.season = STARTING_SEASON;
     }
 
     public DateTime(DateTime dateTime) { // basically clone()

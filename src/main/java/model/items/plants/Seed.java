@@ -35,7 +35,6 @@ public class Seed extends Item implements Placeable, Cloneable{
         }
         Type type = new TypeToken<HashMap<String,Seed>>(){}.getType();
         seeds = gson.fromJson(file,type);
-        System.out.println(seeds.size());
 
         try {
             file = new FileReader("foragingSeeds.json");
@@ -73,8 +72,7 @@ public class Seed extends Item implements Placeable, Cloneable{
         }
     }
 
-    public static Seed getForagingSeed(){
-        Season season = App.getCurrentGame().getDateTime().getSeason();
+    public static Seed getForagingSeed(Season season){
         ArrayList<String> foragingSeed = foragingSeeds.get(season);
         Random rand = new Random();
         String foragingSeedName = foragingSeed.get(rand.nextInt(foragingSeed.size()));

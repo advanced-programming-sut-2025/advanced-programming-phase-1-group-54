@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import model.DateTime;
 import model.enums.Symbol;
 import model.items.Material;
 import model.map.Cabin;
@@ -19,7 +20,6 @@ import java.io.InputStreamReader;
 
 public class FarmBuilder {
     private static final int NUMBER_OF_FORAGING_MATERIAL = 2;
-    private static final int NUMBER_OF_FORAGING_CROP = 10;
 
     private static Location location;
 
@@ -61,11 +61,11 @@ public class FarmBuilder {
     }
 
 
-    public static void setFarmNumber(int index) {
+    public static void setFarmNumber(int number) {
         try (InputStream inputStream = FarmBuilder.class.getClassLoader().getResourceAsStream("farms.json"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-            JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonArray().get(index).getAsJsonObject();
+            JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonArray().get(number - 1).getAsJsonObject();
             setCabinLocation(gson.fromJson(jsonObject.get("cabinLocation"), Location.class));
             setGreenHouseLocation(gson.fromJson(jsonObject.get("greenHouseLocation"), Location.class));
             setLakeAreas(gson.fromJson(jsonObject.get("lakeAreas"), Area[].class));
@@ -137,14 +137,19 @@ public class FarmBuilder {
     }
 
     public static void placeRandomStuff(Farm farm) {
-        for (int i = 1; i <= NUMBER_OF_FORAGING_CROP; i++) {
-            farm.foragingCrop();
-        }
-
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
                 if ((int) (Math.random() * 100) < 5) {
-                    tiles[i][j].setThingOnTile(Material.getMaterial("Wood"));
+                    if (tiles[i][j].getThingOnTile() == null)
+                        tiles[i][j].setThingOnTile(Material.getMaterial("Wood"));
+                }
+            }
+        }
+        for (int i = 0; i < Farm.getNumberOfRows(); i++) {
+            for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
+                if ((int) (Math.random() * 100) < 5) {
+                    if (tiles[i][j].getThingOnTile() == null)
+                        tiles[i][j].setThingOnTile(Material.getMaterial("Stone"));
                 }
             }
         }

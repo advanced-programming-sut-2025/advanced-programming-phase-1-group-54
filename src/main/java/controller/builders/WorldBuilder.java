@@ -18,6 +18,7 @@ public class WorldBuilder {
     };
 
     private static Farm[] playerFarms = new Farm[4];
+    private static Tile[][] tiles;
 
     static Location getFarmLocation(int i) {
         return farmLocation[i];
@@ -25,6 +26,7 @@ public class WorldBuilder {
 
     public static void reset() {
         playerFarms = new Farm[4];
+        tiles = null;
     }
 
     public static void setPlayerFarms(Farm[] playerFarms) {
@@ -32,7 +34,7 @@ public class WorldBuilder {
     }
 
     public static World getResult() {
-        Tile[][] tiles = new Tile[World.getNumberOfRows()][World.getNumberOfColumns()];
+        tiles = new Tile[World.getNumberOfRows()][World.getNumberOfColumns()];
 
         // put farms in corners\
 
@@ -57,19 +59,19 @@ public class WorldBuilder {
             }
         }
 
-      //  ArrayList<Shop> shops = buildShops();
-      //  ArrayList<NPCHouse> NPCHouses = buildNPCHouses();
-        World world = new World(playerFarms, null, null, new Map(World.getNumberOfRows(), World.getNumberOfColumns(), tiles));
+//        ArrayList<Shop> shops = buildShops();
+        ArrayList<NPCHouse> NPCHouses = buildNPCHouses();
+        World world = new World(playerFarms, null, NPCHouses, new Map(World.getNumberOfRows(), World.getNumberOfColumns(), tiles));
         WorldBuilder.reset();
         return world;
     }
 
 
     private static final Area[] npcHouseAreas = {
-            new Area(new Location(1, 36), new Location(4, 41)),
-            new Area(new Location(36, 1), new Location(41, 4)),
-            new Area(new Location(66, 36), new Location(69, 41)),
-            new Area(new Location(36, 66), new Location(41, 69)),
+            new Area(new Location(31, 36), new Location(34, 41)),
+            new Area(new Location(36, 31), new Location(41, 34)),
+            new Area(new Location(46, 36), new Location(49, 41)),
+            new Area(new Location(36, 46), new Location(41, 49)),
             new Area(new Location(50, 50), new Location(54, 54)),
     };
 
@@ -168,6 +170,15 @@ public class WorldBuilder {
         npc4.getAllQuests().add(quest);
 
         npcHouses.add(new NPCHouse(npc4, npcHouseAreas[4]));
+
+        for (NPCHouse npcHouse : npcHouses) {
+            for (int i = 0; i < npcHouse.getNumberOfRows(); i++) {
+                for (int j = 0; j < npcHouse.getNumberOfColumns(); j++) {
+                    tiles[npcHouse.getLocation().row() + i][npcHouse.getLocation().column() + j].setThingOnTile(npcHouse);
+                }
+            }
+        }
+
         return npcHouses;
     }
 
