@@ -105,6 +105,7 @@ public class App {
 
     public static void addUser(User user) {
         users.add(user);
+        saveUsers();
     }
 
     public static void saveUsers() {
@@ -145,9 +146,15 @@ public class App {
              FileWriter writer = new FileWriter(gamesFile)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-            ArrayList<GameData> games = new ArrayList<>(List.of(gson.fromJson(reader, GameData[].class)));
-            games.add(gameData);
 
+            ArrayList<GameData> games;
+            try {
+                games = new ArrayList<>(List.of(gson.fromJson(reader, GameData[].class)));
+            } catch (NullPointerException ignored) {
+                games = new ArrayList<>();
+            }
+
+            games.add(gameData);
             writer.write(gson.toJson(games));
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -159,7 +166,13 @@ public class App {
              FileWriter writer = new FileWriter(gamesFile)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-            ArrayList<GameData> games = new ArrayList<>(List.of(gson.fromJson(reader, GameData[].class)));
+            ArrayList<GameData> games;
+            try {
+                games = new ArrayList<>(List.of(gson.fromJson(reader, GameData[].class)));
+            } catch (NullPointerException ignored) {
+                games = new ArrayList<>();
+            }
+
             games.remove(gameData);
 
             writer.write(gson.toJson(games));

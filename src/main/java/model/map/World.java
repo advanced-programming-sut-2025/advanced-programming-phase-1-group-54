@@ -121,6 +121,10 @@ public class World implements DailyUpdate, HourUpdate {
             farm.nextDayUpdate();
         }
 
+        for (Shop shop : shops) {
+            shop.nextDayUpdate();
+        }
+
         if (currentWeather == Weather.RAIN || currentWeather == Weather.STORM) {
             rain();
         }
@@ -136,6 +140,10 @@ public class World implements DailyUpdate, HourUpdate {
     public void nextHourUpdate() {
         for (Farm farm : playerFarms) {
             farm.nextHourUpdate();
+        }
+
+        for (Shop shop : shops) {
+            shop.nextHourUpdate();
         }
     }
 
