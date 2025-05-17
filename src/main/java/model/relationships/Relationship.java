@@ -1,21 +1,24 @@
 package model.relationships;
 
+import model.DailyUpdate;
 import model.lives.Player;
 import model.items.UniqueItem;
 
 import java.util.ArrayList;
 
-public class Relationship extends Friendship {
+public class Relationship extends Friendship implements DailyUpdate {
     private final Player player1;
     private final Player player2;
     private final ArrayList<Talk> talkHistory = new ArrayList<>();
     private final ArrayList<Gift> giftHistory = new ArrayList<>();
     private final ArrayList<Trade> tradeHistory = new ArrayList<>();
+
     private int giftDailyCount;
     private int hugDailyCount;
     private int talkDailyCount;
     private int partnerDailyCount;
 
+    private int sharedMoney;
     private UniqueItem ring;
 
     public Relationship(Player player1, Player player2) {
@@ -38,6 +41,7 @@ public class Relationship extends Friendship {
     public int getPartnerDailyCount() {
         return partnerDailyCount;
     }
+
     public void increasePartnerDailyCount() {
         this.partnerDailyCount++;
     }
@@ -49,22 +53,6 @@ public class Relationship extends Friendship {
     }
     public void increaseTalkDailyCount() {
         talkDailyCount++;
-    }
-
-    public void setGiftDailyCount(int giftDailyCount) {
-        this.giftDailyCount = giftDailyCount;
-    }
-
-    public void setHugDailyCount(int hugDailyCount) {
-        this.hugDailyCount = hugDailyCount;
-    }
-
-    public void setTalkDailyCount(int talkDailyCount) {
-        this.talkDailyCount = talkDailyCount;
-    }
-
-    public void setPartnerDailyCount(int partnerDailyCount) {
-        this.partnerDailyCount = partnerDailyCount;
     }
 
     public UniqueItem getRing() {
@@ -102,9 +90,8 @@ public class Relationship extends Friendship {
         return giftHistory;
     }
 
-    //TODO public void setring ()
-
-    public void reset(){
+    @Override
+    public void nextDayUpdate(){
         this.giftDailyCount = 0;
         this.hugDailyCount = 0;
         this.talkDailyCount = 0;
@@ -125,14 +112,30 @@ public class Relationship extends Friendship {
         }
     }
 
-    public void increasLevel(){
+    public void increaseLevel(){
         if (this.level < 4) {
             this.level++;
             this.xp = 0;
         }
     }
 
-    public void resetlevel(){
+    public void resetLevel(){
         this.level = 0;
+    }
+
+    public int getSharedMoney() {
+        return sharedMoney;
+    }
+
+    public void setSharedMoney(int sharedMoney) {
+        this.sharedMoney = sharedMoney;
+    }
+
+    public void increaseSharedMoney(int sharedMoney) {
+        this.sharedMoney += sharedMoney;
+    }
+
+    public void decreaseSharedMoney(int sharedMoney) {
+        this.sharedMoney -= sharedMoney;
     }
 }

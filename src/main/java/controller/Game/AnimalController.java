@@ -15,40 +15,21 @@ public class AnimalController {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Animal animal = player.getAnimals().get(animalName);
         if(animal == null) {
-            return new Result(-1, "Animal " + animalName + " not found");
+            return new Result(-1, "You don't have any animal named " + animalName);
         }
         if(! MapController.isNear(player.getCurrentLocation(),animal)){
-            return new Result(-1, "Animal " + animalName + " is not near you");
+            return new Result(-1, animal + " is not near you");
         }
         animal.increaseFriendshipLevel(15);
         animal.setCaressed(true);
-        return new Result(1,"Animal " + animalName + " has petted");
-    }
-
-    public static Result cheatCodeSetAnimalFriendship(String animalName,String friendshipScoreString) {
-        int friendshipScore;
-        try{
-            friendshipScore = Integer.parseInt(friendshipScoreString);
-        } catch (NumberFormatException e) {
-            return new Result(-1, "Invalid friendship score format");
-        }
-
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        Animal animal = player.getAnimals().get(animalName);
-        if(animal == null) {
-            return new Result(-1, "Animal " + animalName + " not found");
-        }
-
-        animal.setFriendshipLevel(friendshipScore);
-        return new Result(1,"Friendship set successfully");
+        return new Result(1,animal + " slightly likes you more!");
     }
 
     public static Result showAnimals() {
         Player player = App.getCurrentGame().getCurrentPlayer();
         StringBuilder output = new StringBuilder();
         for(Animal animal : player.getAnimals().values()) {
-            output.append(animal.getAnimalName()).append(" ").
-                    append(animal.getName()).append("\n").
+            output.append(animal).append("\n").
                     append("friendship level: ").append(animal.getFriendshipLevel()).append("\n").
                     append("caressed: ").append(animal.isCaressed()).append("\n").
                     append("hungry").append(animal.isHungry()).append("\n").
@@ -85,10 +66,12 @@ public class AnimalController {
                 animal.setLocation(locationInFarm);
                 tile.getTop().setThingOnTile(animal);
             }
+
+            return new Result(false, "Sorry, but there is no room for " + animal);
         }
 
 
-        return new Result(1,"Animal " + animalName + " has moved successfully");
+        return new Result(1,animal + " was moved successfully");
     }
 
     private static void deleteAnimalFromFarm(Animal animal) {
@@ -120,7 +103,7 @@ public class AnimalController {
 
         animal.setHungry(false);
 
-        return new Result(1,"animal " + animalName + " was fed successfully");
+        return new Result(1,animal + " was fed successfully");
     }
 
     public static Result showProducedAnimals() {
@@ -128,8 +111,7 @@ public class AnimalController {
         StringBuilder output = new StringBuilder();
         for(Animal animal : player.getAnimals().values()) {
             if(animal.getProduce() != null){
-                output.append(animal.getAnimalName()).append("\n").
-                        append(animal.getName()).append("\n").
+                output.append(animal).append("\n").
                         append(animal.getProduce().getName()).append("\n").
                         append("-------------------");
             }
@@ -145,7 +127,7 @@ public class AnimalController {
         }
 
         if(animal.getProduce() == null) {
-            return new Result(-1, "Animal " + animalName + " hasn't any produce");
+            return new Result(-1, animal + " doesn't have any produce");
         }
 
         boolean enoughEnergy = true;

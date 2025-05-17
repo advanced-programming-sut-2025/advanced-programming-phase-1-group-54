@@ -72,17 +72,6 @@ public class ToolsController {
         return new Result(false, "tool equipped!");
     }
 
-    public static Result upgradeTool(String toolName) {
-        Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
-        World world = game.getWorld();
-
-        Location playerLocation = player.getCurrentLocation();
-        // TODO if (world.getTileAt(playerLocation).getThingOnTile() instanceof )
-
-        return null;
-    }
-
     public static Result useTool(Direction direction) {
         if (direction == null)
             return new Result(false, "invalid direction");
@@ -147,7 +136,8 @@ public class ToolsController {
         Player player = game.getCurrentPlayer();
         World world = game.getWorld();
 
-        Tile tile = world.getTileAt(player.getCurrentLocation().getLocationAt(direction));
+        Location location = player.getCurrentLocation().getLocationAt(direction);
+        Tile tile = world.getTileAt(location);
 
         BackPack backpack = player.getBackpack();
         Tool tool = player.getEquippedTool();
@@ -156,7 +146,7 @@ public class ToolsController {
             case HOE:
                 return useHoe(tile);
             case WATERING_CAN:
-                return useWateringCan(tool, tile, direction);
+                return useWateringCan(tool, tile, location);
             case SCYTHE:
                 return PlantsController.harvestPlant(direction);
             case AXE:
@@ -188,15 +178,14 @@ public class ToolsController {
         return new Result(true, "This tile has been plowed");
     }
 
-    private static Result useWateringCan(Tool tool, Tile tile, Direction direction) {
-        tile = tile.getTop();
+    private static Result useWateringCan(Tool tool, Tile tile, Location location) {
         WateringCan wateringCan = (WateringCan) tool;
 
         if (tile.hasFeature(Feature.WATER))
             return new Result(true, "water increased by 1");
 
         if (wateringCan.getCurrentWater() > 0) {
-            return PlantsController.giveWater(direction);
+            return PlantsController.giveWater(location);
         }
 
         return new Result(false, "watering can is empty");
@@ -237,51 +226,63 @@ public class ToolsController {
     }
 
     private static Result usePickaxe(Player player, Tool tool, BackPack backpack, Tile tile) {
-        if (tile.getThingOnTile() instanceof Item) {
-            if (tile.getThingOnTile() instanceof Material rock) {
-                switch (rock.getName()) {
-                    case "Wood":
-                        player.getSkill(SkillType.MINING).addXP(10);
-                        return new Result(true, "item on tile destroyed");
-                    case "Stone", "Coal", "Copper Ore":
-                        break;
-                    case "Iron Ore":
-                        if (tool.getToolLevel() == ToolLevel.NORMAL) {
-                            player.getSkill(SkillType.MINING).addXP(10);
-                            return new Result(false, "Iron Ore can be mined with Copper or higher pickaxe");
-                        }
-                        break;
-                    case "Iridium Ore":
-                        if (tool.getToolLevel() == ToolLevel.NORMAL ||
-                                tool.getToolLevel() == ToolLevel.COPPER ||
-                                tool.getToolLevel() == ToolLevel.IRON) {
-                            player.getSkill(SkillType.MINING).addXP(10);
-                            return new Result(false, "Iridium Ore can be mined with Gold or higher pickaxe");
-                        }
-                        break;
-                    default:
-                        if (tool.getToolLevel() == ToolLevel.NORMAL ||
-                                tool.getToolLevel() == ToolLevel.COPPER) {
-                            player.getSkill(SkillType.MINING).addXP(10);
-                            return new Result(false, rock.getName() + " can be mined with Iron or higher pickaxe");
-                        }
-                        break;
-                }
+        World world = App.getCurrentGame().getWorld();
 
-               Result result = addToBackPack(player.getBackpack(), rock, 1);
+        Result result = null;
 
-                if (player.getSkill(SkillType.MINING).getLevel() >= 2) {
-                    Material material = Material.getForagingMaterial();
-                    Result materialAddedResult = addToBackPack(backpack, material, 1);
-                    result = new Result(true, result.message() + "\n" + materialAddedResult.message());
-                }
-            }
-
-            return new Result(true, "item on tile destroyed");
+        if (tile.hasFeature(Feature.PLOWED)) {
+            tile.removeFeature(Feature.PLOWED);
         }
 
+        if (tile.getThingOnTile() instanceof Material rock) {
+            switch (rock.getName()) {
+                case "Wood":
+                    player.getSkill(SkillType.MINING).addXP(10);
+                    new Result(true, "item on tile destroyed");
+                case "Stone", "Coal", "Copper Ore":
+                    break;
+                case "Iron Ore":
+                    if (tool.getToolLevel() == ToolLevel.NORMAL) {
+                        player.getSkill(SkillType.MINING).addXP(10);
+                        return new Result(false, "Iron Ore can be mined with Copper or higher pickaxe");
+                    }
+                    break;
+                case "Iridium Ore":
+                    if (tool.getToolLevel() == ToolLevel.NORMAL ||
+                            tool.getToolLevel() == ToolLevel.COPPER ||
+                            tool.getToolLevel() == ToolLevel.IRON) {
+                        player.getSkill(SkillType.MINING).addXP(10);
+                        return new Result(false, "Iridium Ore can be mined with Gold or higher pickaxe");
+                    }
+                    break;
+                default:
+                    if (tool.getToolLevel() == ToolLevel.NORMAL ||
+                            tool.getToolLevel() == ToolLevel.COPPER) {
+                        player.getSkill(SkillType.MINING).addXP(10);
+                        return new Result(false, rock.getName() + " can be mined with Iron or higher pickaxe");
+                    }
+                    break;
+            }
 
-        return new Result(true, "nothing happened");
+            result = addToBackPack(player.getBackpack(), rock, 1);
+
+            if (player.getSkill(SkillType.MINING).getLevel() >= 2) {
+                Material material = Material.getForagingMaterial();
+                Result materialAddedResult = addToBackPack(backpack, material, 1);
+                result = new Result(true, result.message() + "\n" + materialAddedResult.message());
+            }
+        }
+
+        boolean itemDestroyed = CommonGameController.deleteThingOnTile(tile, world.getFarmAt(player.getCurrentLocation()));
+
+        if (result != null) {
+            return result;
+        }
+
+        if (itemDestroyed)
+            return new Result(true, "item on tile destroyed");
+
+        return new Result(true, "nothing happened!");
     }
 
     public static Result howMuchWater() {
@@ -294,7 +295,7 @@ public class ToolsController {
 
     static Result addToBackPack(BackPack backPack, Item item, int number) {
         if (backPack.addItem(item, number)) {
-            return new Result(true,  number + " of " + item.getName() + " added to backpack");
+            return new Result(true, number + " of " + item.getName() + " added to backpack");
         }
 
         return new Result(false, "you gained " + number + " of " + item.getName() + ", but your backpack is full");

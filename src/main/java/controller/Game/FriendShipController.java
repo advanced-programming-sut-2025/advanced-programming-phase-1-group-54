@@ -111,7 +111,7 @@ public class FriendShipController {
         if (!player.getBackpack().addItem(item, count)) {
             return new Result(false, "not enough in " + player.getName() + " back pack");
         }
-        Gift gift = new Gift(App.getCurrentGame().getCurrentPlayer(), itemName, count);
+        Gift gift = new Gift(App.getCurrentGame().getCurrentPlayer(), itemName, count, new DateTime(App.getCurrentGame().getDateTime()));
         player.getReceivedGifts().add(gift);
         relationship.getGiftHistory().add(gift);
         return new Result(true, "gift sent");
@@ -274,7 +274,7 @@ public class FriendShipController {
                         App.getCurrentGame().getCurrentPlayer().getEnergy());
             }
         }
-        relationship.increasLevel();
+        relationship.increaseLevel();
         App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(uniqueItem, 1);
         return new Result(true, "flower sent");
     }
@@ -290,6 +290,9 @@ public class FriendShipController {
         if (player.getPartner() != null) {
             return new Result(false, "this player is already married.");
         }
+        if (App.getCurrentGame().getCurrentPlayer().getGender().equals(player.getGender())) {
+            return new Result(true, "Sorry, we don't support gays.");
+        }
         if (relationship.getLevel() < 3 && relationship.getXP() < 400) {
             return new Result(false, "Wait, it's too soon!  your relationship should be level 3 with at least 400XP for marriage proposal");
         }
@@ -301,6 +304,10 @@ public class FriendShipController {
         // TODO why is ringName unused ?
 
         UniqueItem ring = UniqueItem.getUniqueItem("Wedding Ring");
+        if (ring == null) {
+            return new Result(false, "ERROR: ring doesn't exist in items");
+        }
+
         if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(ring) == 0) {
             return new Result(false, "you don't have " + ring.getName());
         }
@@ -309,7 +316,7 @@ public class FriendShipController {
         return new Result(true, "You have asked this player for marriage, wait for their response");
     }
 
-    public static Result respondForMarriage(String otherPlayerName, String answer) {
+    public static Result respondToMarriage(String otherPlayerName, String answer) {
         Game game = App.getCurrentGame();
         Player currentPlayer = game.getCurrentPlayer();
         Player player = game.getPlayerByUsername(otherPlayerName);
@@ -319,17 +326,28 @@ public class FriendShipController {
         Relationship relationship = game.getRelationship(currentPlayer, player);
         boolean marriage = answer.equals("accept");
         if (!App.getCurrentGame().getCurrentPlayer().getAskedForMarriage().contains(player)) {
-            return new Result(false, player.getName() + " not asking marriage");
-        } else if (marriage) {
-            relationship.increasLevel();
-            currentPlayer.setPartner(player);
-            player.setPartner(App.getCurrentGame().getCurrentPlayer());
+            return new Result(false, player.getName() + "isn't asking for your hand in marriage");
+        }
+
+        if (marriage) {
+            relationship.increaseLevel();
+            int totalMoney = currentPlayer.getMoney() + player.getMoney();
+            player.decreaseMoney(player.getMoney());
+            currentPlayer.decreaseMoney(currentPlayer.getMoney());
+            currentPlayer.setMarriage(relationship);
+            relationship.setSharedMoney(totalMoney);
             currentPlayer.getBackpack().addItem(relationship.getRing(), 1);
+            currentPlayer.getAskedForMarriage().clear();
             return new Result(true, "successfully accepted");
         } else {
             relationship.resetlevel();
-
             player.getBackpack().addItem(relationship.getRing(), 1);
+            player.setHeartBreakDaysRemaining(7);
+            for (int i = 0; i < currentPlayer.getAskedForMarriage().size(); i++) {
+                if(player.equals(currentPlayer.getAskedForMarriage().get(i))) {
+                    currentPlayer.getAskedForMarriage().remove(i);
+                }
+            }
             return new Result(true, "successfully rejected");
         }
     }
@@ -393,7 +411,7 @@ public class FriendShipController {
         if (targetAmount < 1) {
             return new Result(false, "targetAmount shpuld be positive");
         }
-        if (App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(item, amount) == false) {
+        if (!App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(item, amount)) {
             return new Result(false, "not enough product");
         }
         Trade trade = new Trade(App.getCurrentGame().getCurrentPlayer(), App.getCurrentGame().getPlayerByUsername(username), "request", itemName, amount, 0, "", targetAmount);
@@ -429,7 +447,7 @@ public class FriendShipController {
                     } else if (!App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(item, trade.getAmount())) {
                         return new Result(false, "not enough space in backpack");
                     } else {
-                        App.getCurrentGame().getCurrentPlayer().spentMoney(trade.getPrice());
+                        App.getCurrentGame().getCurrentPlayer().decreaseMoney(trade.getPrice());
                         Trade temp = new Trade(trade.getSender(), trade.getReceiver(), trade.getType(), trade.getItem(), trade.getAmount(), trade.getPrice(), trade.getTargetItem(), trade.getTargetAmount());
                         temp.setAccepted(true);
                         relationship.getTradeHistory().add(temp);

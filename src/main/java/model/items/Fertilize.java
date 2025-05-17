@@ -7,8 +7,8 @@ import java.util.HashMap;
 public class Fertilize extends Item {
 
     private static final HashMap<String, Fertilize> fertilizers = new HashMap<>() {{
-        put("Speed-Gro", new Fertilize("Speed-Gro", false, Feature.SPEEDFERTILIZE));
-        put("Deluxe Retaining Soil", new Fertilize("Deluxe Retaining Soil", false, Feature.WATERFERTILIZE));
+        put("Speed-Gro", new Fertilize("Speed-Gro", false, Feature.SPEED_FERTILIZE));
+        put("Deluxe Retaining Soil", new Fertilize("Deluxe Retaining Soil", false, Feature.WATER_FERTILIZE));
     }};
 
     public static Fertilize getFertilizer(String fertilizeName) {

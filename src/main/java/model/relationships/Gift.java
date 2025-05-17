@@ -10,12 +10,12 @@ public class Gift {
     private final DateTime timeStamp;
     private final int amount;
     private int rate;
-    public Gift(Player payer, String itemName, int amount) {
+    public Gift(Player payer, String itemName, int amount, DateTime timeStamp) {
         this.payer = payer;
         this.itemName = itemName;
         this.amount = amount;
         this.rate = 0;
-        this.timeStamp = App.getCurrentGame().getDateTime();
+        this.timeStamp = timeStamp;
     }
 
     public Player getPayer() {

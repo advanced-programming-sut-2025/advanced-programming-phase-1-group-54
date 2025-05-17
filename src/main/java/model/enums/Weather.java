@@ -12,6 +12,8 @@ public enum Weather {
         this.fishingFactor = fishingFactor;
     }
 
+
+
     public double getFishingFactor() {
         return fishingFactor;
     }
@@ -25,5 +27,17 @@ public enum Weather {
             default:
                 return null;
         }
+    }
+
+    public static Weather fromString(String weatherType) {
+        for (Weather weather: Weather.values()) {
+            if (weather.toString().equals(weatherType))
+                return weather;
+        }
+        return null;
+    }
+    @Override
+    public String toString() {
+        return this.name().toLowerCase();
     }
 }

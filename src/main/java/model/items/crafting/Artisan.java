@@ -99,7 +99,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
                 "Sprinkler Recipe",
                 0,
                 4,
-                Feature.WATER
+                Feature.AUTO_WATER
         );
         artisansType.put(artisan.getName(), artisan);
 
@@ -109,7 +109,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
                 "Quality Sprinkler Recipe",
                 0,
                 8,
-                Feature.WATER
+                Feature.AUTO_WATER
         );
         artisansType.put(artisan.getName(), artisan);
 
@@ -119,7 +119,7 @@ public class Artisan extends Item implements Placeable, Cloneable {
                 "Iridium Sprinkler Recipe",
                 0,
                 24,
-                Feature.WATER
+                Feature.AUTO_WATER
         );
         artisansType.put(artisan.getName(), artisan);
 

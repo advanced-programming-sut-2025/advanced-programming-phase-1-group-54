@@ -11,8 +11,9 @@ public enum Symbol {
     BARN(Color.CYAN_FONT + "B" + Color.DEFAULT),
     COOP(Color.CYAN_FONT + "C" + Color.DEFAULT),
 
-    WATER(Color.GRAY_FONT + "~" + Color.DEFAULT),
-    WATER_TANK(Color.BLUE_FONT + "W" + Color.DEFAULT),
+    LAKE(Color.BLUE_FONT + "~" + Color.DEFAULT),
+    WELL(Color.BLUE_FONT + "W" + Color.DEFAULT),
+    SELLING(Color.YELLOW_FONT + "$" + Color.DEFAULT),
     TREE(Color.GREEN_FONT + "T" + Color.DEFAULT),
     ANIMAL(Color.RED_FONT + "A" + Color.DEFAULT),
 
@@ -22,8 +23,8 @@ public enum Symbol {
     ROCK(Color.MAGENTA_FONT + "@" + Color.DEFAULT),
     WOOD(Color.RED_FONT + "|" + Color.DEFAULT),
 
-    SHOP(Color.RED_FONT + "S" + Color.DEFAULT),
-    NPC(Color.RED_FONT + "N" + Color.DEFAULT),
+    SHOP(Color.YELLOW_FONT + "S" + Color.DEFAULT),
+    NPC(Color.BLUE_FONT + "N" + Color.DEFAULT),
     REFRIGERATOR(Color.CYAN_FONT + "R" + Color.DEFAULT),
     ARTISAN(Color.CYAN_FONT + "A" + Color.DEFAULT)
     ;

@@ -69,6 +69,6 @@ public class ProfileMenu implements AppMenu {
     }
 
     private void showUserInfo() {
-        // TODO
+        showResult(ProfileMenuController.showUserInfo());
     }
 }

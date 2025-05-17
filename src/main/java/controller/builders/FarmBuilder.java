@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import model.enums.Symbol;
 import model.items.Material;
 import model.map.Cabin;
 import model.map.GreenHouse;
@@ -21,7 +22,6 @@ public class FarmBuilder {
     private static final int NUMBER_OF_FORAGING_CROP = 10;
 
     private static Location location;
-    private static Player owner;
 
     private static Location cabinLocation;
     private static Location greenHouseLocation;
@@ -32,7 +32,6 @@ public class FarmBuilder {
 
     public static void reset() {
         location = null;
-        owner = null;
         cabinLocation = null;
         greenHouseLocation = null;
         lakeAreas = null;
@@ -43,10 +42,6 @@ public class FarmBuilder {
 
     public static void setLocation(Location location) {
         FarmBuilder.location = location;
-    }
-
-    public static void setOwner(Player owner) {
-        FarmBuilder.owner = owner;
     }
 
     public static void setCabinLocation(Location cabinLocation) {
@@ -111,10 +106,10 @@ public class FarmBuilder {
         return greenHouse;
     }
 
-    private static Lake[] buildLakes() {
-        Lake[] lakes = new Lake[lakeAreas.length];
+    private static GenericWall[] buildLakes() {
+        GenericWall[] lakes = new GenericWall[lakeAreas.length];
         for (int t = 0; t < lakeAreas.length; t++) {
-            lakes[t] = new Lake(lakeAreas[t]);
+            lakes[t] = new GenericWall(lakeAreas[t], Symbol.LAKE);
             for (int row = lakeAreas[t].upperLeftLocation().row(); row <= lakeAreas[t].lowerRightLocation().row(); row++) {
                 for (int column = lakeAreas[t].upperLeftLocation().column(); column <= lakeAreas[t].lowerRightLocation().column(); column++) {
                     tiles[row][column].setThingOnTile(lakes[t]);
@@ -164,7 +159,7 @@ public class FarmBuilder {
 
         Cabin cabin = buildCabin();
         GreenHouse greenHouse = buildGreenHouse();
-        Lake[] lakes = buildLakes();
+        GenericWall[] lakes = buildLakes();
         Quarry quarry = buildQuarry();
 
         Farm farm = new Farm(location, greenHouse, cabin, quarry, lakes, new Map(Farm.getNumberOfRows(), Farm.getNumberOfColumns(), tiles));

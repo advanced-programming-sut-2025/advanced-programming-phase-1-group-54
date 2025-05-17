@@ -3,7 +3,6 @@ package view.app;
 import controller.GameMenuController;
 import model.Result;
 import model.enums.commands.GameMenuCommand;
-import view.GenericMenu;
 import view.GameView;
 
 import java.util.Scanner;
@@ -34,12 +33,12 @@ public class GameMenu implements AppMenu {
         GameMenuCommand command = GameMenuCommand.NEW_GAME;
         String[] usernames = command.getGroup(input, "usernames").split(" ");
 
-        Result result = GameMenuController.newGame(usernames);
+        Result result = GameMenuController.selectNewGameUsers(usernames);
         showResult(result);
 
         if (result.success()) {
             chooseMaps(scanner);
-            showResult(GameMenuController.saveNewGame());
+            showResult(GameMenuController.createNewGame());
             showResult(GameMenuController.loadGame());
             startGameView(scanner);
         }
@@ -48,19 +47,20 @@ public class GameMenu implements AppMenu {
     private void chooseMaps(Scanner scanner) {
         System.out.println("Choose your maps:");
         GameMenuCommand command = GameMenuCommand.CHOOSE_MAP;
-        for (int i = 0; i < GameMenuController.getNewGameNumberOfPlayers(); i++) {
-            Result result = new Result(false, null);
+        Result result;
+        do {
             do {
+                result = new Result(false, null);
                 String input = scanner.nextLine();
                 if (!command.matches(input)) {
                     invalidCommand();
                     continue;
                 }
                 int number = Integer.parseInt(command.getGroup(input, "number"));
-                result = GameMenuController.chooseMap(number);
+                result = GameMenuController.chooseNewGameMap(number);
                 showResult(result);
             } while (!result.success());
-        }
+        } while (result.code() != 1);
     }
 
     private void handleLoadGame(Scanner scanner) {

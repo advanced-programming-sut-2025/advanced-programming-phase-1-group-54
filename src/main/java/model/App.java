@@ -1,36 +1,56 @@
 package model;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import model.lives.Player;
 import model.enums.Menu;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
     private static Menu currentMenu = Menu.LOGIN;
 
     private static final File savesDir = new File(System.getProperty("user.home") + "/Desktop/StardewValley/");
-
     private static final File usersFile = new File(savesDir, "users.json");
-    private static final File loggedInUserFile = new File(savesDir, "loggedInUser.txt");
-    private static User loggedInUser;
-
+    private static final File loggedInUserFile = new File(savesDir, "loggedInUser.json");
     private static final File gamesFile = new File(savesDir, "games.json");
 
-    private static final ArrayList<Game> games = new ArrayList<>(); // TODO : remove
+    private static ArrayList<User> users = new ArrayList<>();
+
+    private static User loggedInUser;
     private static Game currentGame;
 
     static {
-        savesDir.mkdir();
-        try (Scanner scanner = new Scanner(loggedInUserFile)) {
-            if (scanner.hasNextLine())
-                App.setLoggedInUser(App.getUserByUsername(scanner.nextLine()));
-            if (App.getLoggedInUser() != null)
-                App.setCurrentMenu(Menu.MAIN);
-        } catch (FileNotFoundException ignored) {
+        try {
+            savesDir.mkdir();
+            usersFile.createNewFile();
+            gamesFile.createNewFile();
+            loggedInUserFile.createNewFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
+        try (FileReader reader = new FileReader(usersFile)) {
+            Gson gson = new Gson();
+            users = new ArrayList<>(List.of(gson.fromJson(reader, User[].class)));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try (FileReader reader = new FileReader(loggedInUserFile)) {
+            Gson gson = new Gson();
+            String username = gson.fromJson(reader, String.class);
+            App.setLoggedInUser(App.getUserByUsername(username));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (App.getLoggedInUser() != null)
+            App.setCurrentMenu(Menu.MAIN);
     }
 
     public static Menu getCurrentMenu() {
@@ -52,6 +72,12 @@ public class App {
     }
 
     public static void saveLoggedInUser() {
+        try {
+            loggedInUserFile.createNewFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         try (FileWriter writer = new FileWriter(loggedInUserFile)) {
             writer.write(loggedInUser.getUsername());
         } catch (IOException e) {
@@ -60,27 +86,21 @@ public class App {
     }
 
     public static User getUserByUsername(String username) {
-        try (Scanner scanner = new Scanner(usersFile)) {
-            Gson gson = new Gson();
-            for (User user : gson.fromJson(scanner.nextLine(), User[].class)) {
-                if (user.getUsername().equals(username))
-                    return user;
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+        for (User user : users) {
+            if(user.getUsername().equals(username))
+                return user;
         }
         return null;
     }
 
     public static void addUser(User user) {
-        try (Scanner scanner = new Scanner(usersFile);
-             FileWriter writer = new FileWriter(usersFile)) {
-            Gson gson = new Gson();
-            User[] users = gson.fromJson(scanner.nextLine(), User[].class);
-            User[] newUsers = new User[users.length + 1];
-            System.arraycopy(users, 0, newUsers, 0, users.length);
-            newUsers[users.length] = user;
-            writer.write(gson.toJson(newUsers));
+        users.add(user);
+    }
+
+    public static void saveUsers() {
+        try (FileWriter writer = new FileWriter(usersFile)) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            writer.write(gson.toJson(users));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -94,29 +114,47 @@ public class App {
         App.currentGame = currentGame;
     }
 
-    public static void addGame(Game game) {
-        try (FileWriter writer = new FileWriter(gamesFile, true)) {
-            // TODO
+    public static GameData getGameDataOf(User user) {
+        try (FileReader reader = new FileReader(gamesFile)) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            ArrayList<GameData> games = new ArrayList<>(List.of(gson.fromJson(reader, GameData[].class)));
+            for (GameData game : games) {
+                for (String username : game.playerNames())
+                    if (user.getUsername().equals(username))
+                        return game;
+            }
+            return null;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        games.add(game);
     }
 
-    public static Game getGameByUser(User user) {
-        try (Scanner scanner = new Scanner(gamesFile)) {
-            // TODO
+    public static void addGameData(GameData gameData) {
+        try (FileReader reader = new FileReader(gamesFile);
+             FileWriter writer = new FileWriter(gamesFile)) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            ArrayList<GameData> games = new ArrayList<>(List.of(gson.fromJson(reader, GameData[].class)));
+            games.add(gameData);
+
+            writer.write(gson.toJson(games));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
-        for (Game game : games) {
-            for (Player player : game.getPlayers()) {
-                if (player.getControllingUser().equals(user))
-                    return game;
-            }
+    public static void deleteGameData(GameData gameData) {
+        try (FileReader reader = new FileReader(gamesFile);
+             FileWriter writer = new FileWriter(gamesFile)) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            ArrayList<GameData> games = new ArrayList<>(List.of(gson.fromJson(reader, GameData[].class)));
+            games.remove(gameData);
+
+            writer.write(gson.toJson(games));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        return null;
     }
 }

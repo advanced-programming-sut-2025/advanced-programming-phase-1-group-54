@@ -12,6 +12,8 @@ public class GreenHouse extends Building implements DailyUpdate {
 
     private boolean built;
 
+    private final GenericWall waterTank;
+
     public static int getNeededMoney() {
         return NEEDED_MONEY;
     }
@@ -29,7 +31,7 @@ public class GreenHouse extends Building implements DailyUpdate {
             }
         }
 
-        Lake waterTank = new Lake(new Area(new Location(0, 0), new Location(0, NUMBER_OF_COLUMNS - 1)));
+        waterTank = new GenericWall(new Area(new Location(0, 0), new Location(0, NUMBER_OF_COLUMNS - 1)), Symbol.WELL);
         for (int j = 0; j < NUMBER_OF_COLUMNS; j++) {
             this.getTileAt(new Location(0, j)).setThingOnTile(waterTank);
             this.getTileAt(new Location(0, j)).addFeature(Feature.WATER);
@@ -42,6 +44,10 @@ public class GreenHouse extends Building implements DailyUpdate {
 
     public void setBuilt(boolean built) {
         this.built = built;
+    }
+
+    public GenericWall getWaterTank() {
+        return waterTank;
     }
 
     @Override

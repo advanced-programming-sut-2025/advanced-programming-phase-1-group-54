@@ -17,8 +17,8 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 
 public class World implements DailyUpdate, HourUpdate {
-    private static final int NUMBER_OF_ROWS = 50;
-    private static final int NUMBER_OF_COLUMNS = 50;
+    private static final int NUMBER_OF_ROWS = 100;
+    private static final int NUMBER_OF_COLUMNS = 100;
     private static final int NUMBER_OF_THUNDER = 3;
 
     private final Farm[] playerFarms;
@@ -29,7 +29,7 @@ public class World implements DailyUpdate, HourUpdate {
     private Weather tomorrowWeather;
 
     private final ArrayList<Shop> shops;
-    private final ArrayList<NPC> npcs;
+    private final ArrayList<NPCHouse> npcHouses;
 
     public static int getNumberOfRows() {
         return NUMBER_OF_ROWS;
@@ -39,11 +39,11 @@ public class World implements DailyUpdate, HourUpdate {
         return NUMBER_OF_COLUMNS;
     }
 
-    public World(Farm[] playerFarms, ArrayList<Shop> shops, ArrayList<NPC> npcs, Map map) {
+    public World(Farm[] playerFarms, ArrayList<Shop> shops, ArrayList<NPCHouse> npcHouses, Map map) {
         this.playerFarms = playerFarms;
         this.map = map;
         this.shops = shops;
-        this.npcs = npcs;
+        this.npcHouses = npcHouses;
     }
 
     public Tile getTileAt(Location location) {
@@ -75,8 +75,8 @@ public class World implements DailyUpdate, HourUpdate {
         return shops;
     }
 
-    public ArrayList<NPC> getNpcs() {
-        return npcs;
+    public ArrayList<NPCHouse> getNpcHouses() {
+        return npcHouses;
     }
 
     public void setTomorrowWeather(Weather tomorrowWeather) {

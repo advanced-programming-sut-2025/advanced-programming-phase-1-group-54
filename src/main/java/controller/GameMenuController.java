@@ -5,7 +5,7 @@ import controller.builders.GameBuilder;
 import model.*;
 
 public class GameMenuController {
-    public static Result newGame(String[] usernames) {
+    public static Result selectNewGameUsers(String[] usernames) {
         User loggedInUser = App.getLoggedInUser();
         User[] users = new User[usernames.length];
 
@@ -21,11 +21,11 @@ public class GameMenuController {
         if (users.length > 3)
             return new Result(false, "You can enter at most three users to play with");
 
-        if (App.getGameByUser(loggedInUser) != null)
+        if (loggedInUser.isInGame())
             return new Result(false, "You are already in a game, you can't enter any other games.");
 
         for (int i = 0; i < users.length; i++) {
-            if (App.getGameByUser(users[i]) != null)
+            if (users[i].isInGame())
                 return new Result(false, "User " + usernames[i] + " is already in a game. you can't play with them");
 
             if (users[i].equals(loggedInUser))
@@ -42,32 +42,31 @@ public class GameMenuController {
         return new Result(true, "Players registered.");
     }
 
-    public static Result chooseMap(int number) {
+    public static Result chooseNewGameMap(int number) {
         if (number < 1 || number > FarmBuilder.getNumberOfFarms())
             return new Result(false, "Map number must be between 1 and " + FarmBuilder.getNumberOfFarms());
 
-        GameBuilder.setNextPlayerFarm(number);
-        return new Result(true, "Map number " + number + " chosen");
+        boolean isFinished = GameBuilder.setNextPlayerFarm(number);
+        return new Result((isFinished? 0 : 1), "Map number " + number + " chosen");
     }
 
-    public static Result saveNewGame() {
-        // TODO
-        Game game = GameBuilder.getResult();
-        App.addGame(game);
+    public static Result createNewGame() {
+        GameData gameData = GameBuilder.getGameData();
+        App.addGameData(gameData);
         return new Result(true, "Successfully created game!");
     }
 
     public static Result loadGame() {
         User loggedInUser = App.getLoggedInUser();
-        Game game = App.getGameByUser(loggedInUser);
-        if (game == null)
-            return new Result(false, "You are not in a game!");
+        GameData gameData = App.getGameDataOf(loggedInUser);
 
+        if (gameData == null)
+            return new Result(false, "You are not in any game! you must first create a new game!");
+
+        GameBuilder.reset();
+        GameBuilder.setGameData(gameData);
+        Game game = GameBuilder.getResult();
         App.setCurrentGame(game);
         return new Result(true, "Loading... Done!");
-    }
-
-    public static int getNewGameNumberOfPlayers() {
-        return GameBuilder.getNumberOfPlayers();
     }
 }

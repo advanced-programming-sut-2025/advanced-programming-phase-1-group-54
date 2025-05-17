@@ -318,4 +318,9 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
     public Symbol getSymbol() {
         return Symbol.ANIMAL;
     }
+
+    @Override
+    public String toString() {
+        return getAnimalName() + " " + getName();
+    }
 }

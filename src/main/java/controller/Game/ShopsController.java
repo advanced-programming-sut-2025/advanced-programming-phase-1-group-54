@@ -32,24 +32,57 @@ public class ShopsController {
         }
 
         if (shop.getOwner().getName().equals("Clint")) {
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(0).getOpeningHours()
+                || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(0).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromBlacksmith(itemName, count);
         }
         if (shop.getOwner().getName().equals("Morris")) {
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(1).getOpeningHours()
+                    || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(1).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromJojaMart(itemName, count);
         }
         if (shop.getOwner().getName().equals("Pierre")) {
+
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(2).getOpeningHours()
+                    || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(2).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromPierre(itemName, count);
         }
         if (shop.getOwner().getName().equals("Robin")) {
+
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(3).getOpeningHours()
+                    || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(3).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromCarpenter(itemName, count);
         }
         if (shop.getOwner().getName().equals("Willy")) {
+
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(4).getOpeningHours()
+                    || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(4).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromFishShop(itemName, count);
         }
         if (shop.getOwner().getName().equals("Marnie")) {
+
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(5).getOpeningHours()
+                    || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(5).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromMarnie(itemName, count);
         }
         if (shop.getOwner().getName().equals("Gus")) {
+
+            if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(6).getOpeningHours()
+                    || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(6).getClosingHours()) {
+                return new Result(false, "shop is closed");
+            }
             return buySomethingFromStardrop(itemName, count);
         }
 
@@ -106,7 +139,7 @@ public class ShopsController {
         return new Result(false, "ERROR: wrong upgrade name");
     }
 
-    public static Result buildAnimalHouse(String buildingName, Location location) {
+    public static Result buildBuilding(String buildingName, Location location) {
         for (CarpenterShop.ItemsinCarpenterShop item : ((CarpenterShop) (App.getCurrentGame().getWorld().
                 getShops().get(3))).getFarmBuildings()) {
             if (item.getName().equals(buildingName)) {
@@ -319,7 +352,7 @@ public class ShopsController {
         if (item.getName().equals("Milk Pail")) {
             Tool milkPail = new Tool(ToolType.MILK_PAIL);
             App.getCurrentGame().getCurrentPlayer().setTool(ToolType.MILK_PAIL, milkPail);
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -327,17 +360,17 @@ public class ShopsController {
         } else if (item.getName().equals("Shears")) {
             Tool shear = new Tool(ToolType.SHEAR);
             App.getCurrentGame().getCurrentPlayer().setTool(ToolType.SHEAR, shear);
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
             return new Result(true, "Item purchased");
 
         } else if (item.getName().contains(" (Recipe)")) {
-            String temp = item.getName().split(" \\(Recipe\\)")[0];
+            String temp = item.getName().split("\\(Recipe\\)")[0];
             Recipe temp1 = Recipe.craftRecipes.get(temp);
             App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes().add(temp1);
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -347,7 +380,7 @@ public class ShopsController {
             String temp = item.getName().split(" Recipe")[0];
             Recipe temp1 = Recipe.foodRecipes.get(temp);
             App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes().add(temp1);
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -360,7 +393,7 @@ public class ShopsController {
                 if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(uniqueItem, count) == false) {
                     return new Result(false, "No space in Backpack.");
                 }
-                App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+                App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
                 if (item.getCount() != -1) {
                     item.setCount(item.getCount() - 1);
                 }
@@ -369,7 +402,7 @@ public class ShopsController {
                 if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, count) == false) {
                     return new Result(false, "No space in Backpack.");
                 }
-                App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+                App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
                 if (item.getCount() != -1) {
                     item.setCount(item.getCount() - 1);
                 }
@@ -392,7 +425,7 @@ public class ShopsController {
         if (!App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(temp, count)) {
             return new Result(false, "Not enough " + item.getIngredientString());
         }
-        App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+        App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
         //trashcan handle
         if (item.getName().contains("Trash")) {
             if (item.getName().contains("Copper")) {
@@ -446,7 +479,7 @@ public class ShopsController {
             return new Result(false, "You should buy Large Backpack first.");
         }
         App.getCurrentGame().getCurrentPlayer().getBackpack().upgrade();
-        App.getCurrentGame().getCurrentPlayer().spentMoney(count * item.getPrice());
+        App.getCurrentGame().getCurrentPlayer().decreaseMoney(count * item.getPrice());
         item.setCount(item.getCount() - 1);
         return new Result(true, "God willing, wear it in joy.");
     }
@@ -468,7 +501,7 @@ public class ShopsController {
         if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, count) == false) {
             return new Result(false, "No space in Backpack.");
         }
-        App.getCurrentGame().getCurrentPlayer().spentMoney(price * item.getCount());
+        App.getCurrentGame().getCurrentPlayer().decreaseMoney(price * item.getCount());
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }
@@ -494,8 +527,24 @@ public class ShopsController {
         }
 
         AnimalHousePrototype prototype = AnimalHousePrototype.getAnimalHousePrototype(item.getName());
+        int numberOfRows;
+        int numberOfColumns;
+        boolean isWell = item.getName().equals("Well");
+        boolean isShippingBin = item.getName().equals("Shipping Bin");
         if (prototype == null) {
-            return new Result(false, "No animal house found.");
+            if (isWell) {
+                numberOfRows = 3;
+                numberOfColumns = 3;
+            } else if (isShippingBin) {
+                numberOfRows = 1;
+                numberOfColumns = 1;
+            } else {
+                return new Result(false, "ERROR: No building found.");
+            }
+        }
+        else {
+            numberOfRows = prototype.getNumberOfRows();
+            numberOfColumns = prototype.getNumberOfColumns();
         }
 
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(location);
@@ -503,23 +552,35 @@ public class ShopsController {
             return new Result(false, "You can only build this in a farm.");
         }
 
-        if (App.getCurrentGame().getWorld()
-                .getFarmAt(location.add(new Location(prototype.getNumberOfRows(), prototype.getNumberOfColumns())))
-                == null) {
-
-            return new Result(false, "You can't build this at that location");
+        for (int i = 0; i < numberOfRows; i++) {
+            for (int j = 0; j < numberOfColumns; j++) {
+                Tile tile = farm.getTileAt(location.add(new Location(i, j)));
+                if (tile == null || tile.getThingOnTile() != null) {
+                    return new Result(false, "You can't build this at that location");
+                }
+            }
         }
 
-        App.getCurrentGame().getCurrentPlayer().spentMoney(count * item.getPrice());
+        App.getCurrentGame().getCurrentPlayer().decreaseMoney(count * item.getPrice());
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }
-        AnimalHouse animalHouse = new AnimalHouse(prototype, location);
 
+        Building building;
+        if (prototype != null) {
+            building = new AnimalHouse(prototype, location);
+        }
+        else {
+            building = new GenericWall(new Area(location, location.add(new Location(numberOfRows, numberOfColumns))),
+                    (isWell? Symbol.WELL : Symbol.SELLING));
+        }
 
-        for (int i = 0; i < animalHouse.getNumberOfRows(); i++) {
-            for (int j = 0; j < animalHouse.getNumberOfColumns(); j++) {
-                farm.getTileAt(location.add(new Location(i, j))).setThingOnTile(animalHouse);
+        for (int i = 0; i < building.getNumberOfRows(); i++) {
+            for (int j = 0; j < building.getNumberOfColumns(); j++) {
+                Tile tile = farm.getTileAt(location.add(new Location(i, j)));
+                tile.setThingOnTile(building);
+                if (isWell) tile.addFeature(Feature.WATER);
+                if (isShippingBin) tile.addFeature(Feature.SELLING);
             }
         }
 
@@ -539,7 +600,7 @@ public class ShopsController {
         if (item.getName().contains("Recipe")) {
             Recipe recipe = Recipe.craftRecipes.get("Fish Smoker");
             App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes().add(recipe);
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -558,7 +619,7 @@ public class ShopsController {
                 return null;
             }
 
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -569,7 +630,7 @@ public class ShopsController {
             if (!App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, count)) {
                 return new Result(false, "No space in Backpack.");
             }
-            App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -597,7 +658,7 @@ public class ShopsController {
         if (!temp) {
             return new Result(false, "building required");
         }
-        App.getCurrentGame().getCurrentPlayer().spentMoney(item.getPrice() * item.getCount());
+        App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }

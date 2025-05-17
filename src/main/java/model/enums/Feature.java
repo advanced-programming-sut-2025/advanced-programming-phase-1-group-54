@@ -3,9 +3,11 @@ package model.enums;
 public enum Feature {
     PROTECTED,
     WATER,
+    SELLING,
+    AUTO_WATER,
     DESTROYED,
     GRASS,
     PLOWED,
-    SPEEDFERTILIZE,
-    WATERFERTILIZE
+    SPEED_FERTILIZE,
+    WATER_FERTILIZE
 }

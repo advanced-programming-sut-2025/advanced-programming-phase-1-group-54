@@ -1,6 +1,7 @@
 package model;
 
 import controller.Game.CommonGameController;
+import controller.Game.NpcController;
 import model.lives.Player;
 import model.enums.SubMenu;
 import model.enums.Weather;
@@ -18,6 +19,8 @@ public class Game implements DailyUpdate, HourUpdate {
     private final DateTime dateTime = new DateTime();
     private int turn;
 
+    private int numberOfDeleteVotes;
+
     private final ArrayList<Relationship> relationships;
 
     public Game(World world, Player[] players) {
@@ -30,6 +33,18 @@ public class Game implements DailyUpdate, HourUpdate {
                 relationships.add(new Relationship(players[i], players[j]));
             }
         }
+    }
+
+    public int getNumberOfDeleteVotes() {
+        return numberOfDeleteVotes;
+    }
+
+    private void setNumberOfDeleteVotes(int numberOfDeleteVotes) {
+        this.numberOfDeleteVotes = numberOfDeleteVotes;
+    }
+
+    private void increaseNumberOfDeleteVotes() {
+        this.numberOfDeleteVotes++;
     }
 
     public ArrayList<Relationship> getRelationships() {
@@ -90,13 +105,13 @@ public class Game implements DailyUpdate, HourUpdate {
         }
 
         for (Relationship relationship : relationships) {
-            relationship.reset();
+            relationship.nextDayUpdate();
         }
 
         dateTime.increaseDay(1);
 
         CommonGameController.nextDayMoney();
-        //TODO in every turn check the gifts trades etc
+        NpcController.resetNpcEveryDay();
     }
 
     @Override

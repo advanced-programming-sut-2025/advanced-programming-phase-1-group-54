@@ -1,8 +1,6 @@
 package view;
 
-import controller.GameController;
 import model.App;
-import model.enums.commands.GameCommand;
 
 import java.util.Scanner;
 

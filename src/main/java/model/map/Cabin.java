@@ -11,7 +11,7 @@ public class Cabin extends Building {
     public Cabin(Location location) {
         super(location, new Map(NUMBER_OF_ROWS, NUMBER_OF_COLUMNS));
 
-        this.getTileAt(new Location(0, 0)).setThingOnTile(refrigerator);
+        this.getTileAt(getRandomLocation()).setThingOnTile(refrigerator);
     }
 
     public Refrigerator getRefrigerator() {

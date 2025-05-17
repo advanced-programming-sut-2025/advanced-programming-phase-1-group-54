@@ -12,8 +12,6 @@ import model.enums.Feature;
 import model.items.Fertilize;
 import model.items.plants.*;
 
-import java.util.HashMap;
-
 public class PlantsController {
 
     public static Result showInfo(String plantName) {
@@ -189,9 +187,8 @@ public class PlantsController {
 
     }
 
-    static Result giveWater(Direction direction) {
+    public static Result giveWater(Location location) {
         Game game = App.getCurrentGame();
-        Location location = game.getCurrentPlayer().getCurrentLocation().getLocationAt(direction);
         Farm farm = game.getWorld().getFarmAt(game.getCurrentPlayer().getCurrentLocation());
         Tile tile = farm.getTileAt(location.delta(farm.getLocation()));
 
@@ -303,13 +300,13 @@ public class PlantsController {
                     return new Result(-1, "You can't plant this plant in this season");
                 }
             }
-            if (tile.hasFeature(Feature.SPEEDFERTILIZE)) {
+            if (tile.hasFeature(Feature.SPEED_FERTILIZE)) {
                 tree.nextDayUpdate();
-                tile.removeFeature(Feature.SPEEDFERTILIZE);
+                tile.removeFeature(Feature.SPEED_FERTILIZE);
             }
-            if (tile.hasFeature(Feature.WATERFERTILIZE)) {
+            if (tile.hasFeature(Feature.WATER_FERTILIZE)) {
                 tree.setFertilized(true);
-                tile.removeFeature(Feature.WATERFERTILIZE);
+                tile.removeFeature(Feature.WATER_FERTILIZE);
             }
             tile.setThingOnTile(tree);
         }
@@ -321,13 +318,13 @@ public class PlantsController {
                     return new Result(-1, "You can't plant this plant in this season");
                 }
             }
-            if (tile.hasFeature(Feature.SPEEDFERTILIZE)) {
+            if (tile.hasFeature(Feature.SPEED_FERTILIZE)) {
                 crop.nextDayUpdate();
-                tile.removeFeature(Feature.SPEEDFERTILIZE);
+                tile.removeFeature(Feature.SPEED_FERTILIZE);
             }
-            if (tile.hasFeature(Feature.WATERFERTILIZE)) {
+            if (tile.hasFeature(Feature.WATER_FERTILIZE)) {
                 crop.setFertilized(true);
-                tile.removeFeature(Feature.WATERFERTILIZE);
+                tile.removeFeature(Feature.WATER_FERTILIZE);
             }
             if (!cropCanBeGiant(crop, location)) {
                 tile.setThingOnTile(crop);

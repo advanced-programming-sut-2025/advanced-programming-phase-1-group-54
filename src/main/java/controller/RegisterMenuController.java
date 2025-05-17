@@ -6,8 +6,6 @@ import model.Result;
 import model.User;
 import model.enums.Gender;
 
-import java.util.ArrayList;
-
 public class RegisterMenuController {
     public static Result register(String username, String password, String confirmPassword, String nickname, String email, Gender gender) {
         boolean usernameTaken = !isUsernameUnique(username);
@@ -178,7 +176,7 @@ public class RegisterMenuController {
     }
 
     public static Result saveNewUser() {
-        User user = UserBuilder.getUser();
+        User user = UserBuilder.getResult();
         App.addUser(user);
         return new Result(true, "Successfully registered!");
     }

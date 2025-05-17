@@ -1,8 +1,11 @@
 package model.lives;
 
+import controller.builders.PlayerBuilder;
 import model.DailyUpdate;
 import model.DateTime;
 import model.HourUpdate;
+import model.enums.*;
+import model.items.tools.*;
 import model.map.Refrigerator;
 import model.User;
 import model.enums.FishingPoleType;
@@ -18,6 +21,8 @@ import model.items.tools.TrashCan;
 import model.map.Farm;
 import model.map.Location;
 import model.relationships.Gift;
+import model.relationships.NPCFriendship;
+import model.relationships.Relationship;
 import model.relationships.Trade;
 
 import java.util.ArrayList;
@@ -34,7 +39,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     private int money;
     private int nextDayMoney = 0;
 
-    private final User controllingUser;
+    private final Gender gender;
     private final Farm farm;
 
     private int energy;
@@ -52,6 +57,8 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     private Location currentLocation;
 
+    private ArrayList<NPCFriendship> npcFriendships;
+
     private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>() {{
         add(Recipe.foodRecipes.get("Fried Egg Recipe"));
     }};
@@ -67,7 +74,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     private final ArrayList<Trade> receivedTrades = new ArrayList<>();
     private final ArrayList<Trade> receivedRequests = new ArrayList<>();
     private final ArrayList<Player> askedForMarriage = new ArrayList<>();
-    private Player partner = null;
+    private Relationship marriage = null;
 
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
@@ -76,22 +83,29 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     private SkillType buffSkill;
     private int buffHours;
 
-
-    private boolean isInGiftList;
-
     public Player(User controllingUser, Farm farm) {
         super(controllingUser.getUsername());
-        this.controllingUser = controllingUser;
+        this.gender = controllingUser.getGender();
         this.farm = farm;
         this.money = 0;
-        this.isInGiftList = false;
         this.heartBreakDaysRemaining = 0;
         this.energy = MAXIMUM_ENERGY;
 
         for (SkillType skilltype : SkillType.values()) {
-            skills[skilltype.ordinal()] = new Skill(skilltype);
+            this.skills[skilltype.ordinal()] = new Skill(skilltype);
         }
-        // TODO
+
+        this.setTool(ToolType.HOE, new Tool(ToolType.HOE));
+        this.setTool(ToolType.PICKAXE, new Tool(ToolType.PICKAXE));
+        this.setTool(ToolType.AXE, new Tool(ToolType.AXE));
+        this.setTool(ToolType.SCYTHE, new Tool(ToolType.SCYTHE));
+        this.setTool(ToolType.WATERING_CAN, new WateringCan());
+
+        this.setFishingPole(FishingPoleType.TRAINING, new FishingPole(FishingPoleType.TRAINING));
+    }
+
+    public Gender getGender() {
+        return gender;
     }
 
     public Farm getFarm() {
@@ -114,23 +128,8 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         fishingPoles[fishingPoleType.ordinal()] = fishingPole;
     }
 
-    public int getMoney() {
-        return money;
-    }
-
-    public void spentMoney(int spent) {
-        money -= spent;
-        if (partner != null) {
-            partner.setMoney(money);
-        }
-    }
-
     public Skill getSkill(SkillType skillType) {
         return skills[skillType.ordinal()];
-    }
-
-    public User getControllingUser() {
-        return controllingUser;
     }
 
     public int getEnergy() {
@@ -181,19 +180,13 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     }
 
     public Player getPartner() {
-        return partner;
+        if (marriage == null)
+            return null;
+        return marriage.getOtherPlayer(this);
     }
 
-    public void setPartner(Player partner) {
-        this.partner = partner;
-    }
-
-    public int getNextDayMoney() {
-        return nextDayMoney;
-    }
-
-    public void setNextDayMoney(int nextDayMoney) {
-        this.nextDayMoney = nextDayMoney;
+    public void setMarriage(Relationship marriage) {
+        this.marriage = marriage;
     }
 
     public void increaseNextDayMoney(int count) {
@@ -207,30 +200,28 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
             }
     }
 
+    public int getMoney() {
+        if (marriage != null)
+            return marriage.getSharedMoney();
+        return money;
+    }
+
+
     public void increaseMoney(int money) {
-        if (partner != null) {
-            partner.increaseMoney(money);
-        }
-        this.money += money;
+        if (marriage != null)
+            marriage.increaseSharedMoney(money);
+        else
+            this.money += money;
+
     }
 
-    public boolean decreaseMoney(int money) {
-        if (this.money < money) {
-            return false;
-        }
-        this.money -= money;
-        if (partner != null) {
-            partner.decreaseMoney(money);
-        }
-        return true;
+    public void decreaseMoney(int money) {
+        if (marriage != null)
+            marriage.decreaseSharedMoney(money);
+        else
+            this.money -= money;
     }
 
-    public void setMoney(int money) {
-        if (partner != null) {
-            partner.setMoney(money);
-        }
-        this.money = money;
-    }
 
     public void decreaseEnergy(int amount) {
         if (!unlimitedEnergy) {
@@ -256,10 +247,6 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     public void setHeartBreakDaysRemaining(int heartBreakDaysRemaining) {
         this.heartBreakDaysRemaining = heartBreakDaysRemaining;
-    }
-
-    public void decreaseHeartBroken() {
-        heartBreakDaysRemaining--;
     }
 
     public void setBuffSkill(SkillType buffSkill) {
@@ -298,12 +285,12 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         this.currentLocation = currentLocation;
     }
 
-    public boolean isInGiftList() {
-        return isInGiftList;
+    public ArrayList<NPCFriendship> getNpcFriendships() {
+        return npcFriendships;
     }
 
-    public void setInGiftList(boolean inGiftList) {
-        isInGiftList = inGiftList;
+    public void setNpcFriendships(ArrayList<NPCFriendship> npcFriendships) {
+        this.npcFriendships = npcFriendships;
     }
 
     @Override
@@ -325,8 +312,11 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
         if (heartBreakDaysRemaining > 0) {
             energy /= 2;
-            decreaseHeartBroken();
+            heartBreakDaysRemaining--;
         }
+
+        this.increaseMoney(nextDayMoney);
+        nextDayMoney = 0;
     }
 
 
