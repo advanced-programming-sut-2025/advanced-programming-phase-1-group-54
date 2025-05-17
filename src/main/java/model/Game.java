@@ -110,7 +110,6 @@ public class Game implements DailyUpdate, HourUpdate {
 
         dateTime.increaseDay(1);
 
-        CommonGameController.nextDayMoney();
         NpcController.resetNpcEveryDay();
     }
 

@@ -1,6 +1,7 @@
 package view.game;
 
 import controller.Game.*;
+import model.App;
 import model.Result;
 import model.enums.Direction;
 import model.enums.SubMenu;
@@ -11,8 +12,8 @@ import model.map.Location;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static controller.Game.NpcController.friendShipNpcList;
-import static controller.GameController.meetNPC;
+//import static controller.Game.NpcController.friendShipNpcList;
+//import static controller.GameController.meetNPC;
 
 public class DefaultMenu implements GameSubMenu {
     @Override

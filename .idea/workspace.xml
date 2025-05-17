@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="merge">
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestMenus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="add unit test package to project and edit menus to be able to test the code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/FriendShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FriendShipController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RegisterMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RegisterMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/PlayerBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/PlayerBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/lives/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/lives/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/World.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/app/RegisterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/app/RegisterMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" afterDir="false" />
     </list>
@@ -144,14 +138,6 @@
       <workItem from="1747218633483" duration="198000" />
       <workItem from="1747307134131" duration="367000" />
       <workItem from="1747402748365" duration="913000" />
-    </task>
-    <task id="LOCAL-00013" summary="edit write Produce until Preservers Jar Artisan">
-      <option name="closed" value="true" />
-      <created>1746123476875</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1746123476875</updated>
     </task>
     <task id="LOCAL-00014" summary="write writeToJson method of Fish class">
       <option name="closed" value="true" />
@@ -537,7 +523,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747464166045</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="add unit test package to project and edit menus to be able to test the code">
+      <option name="closed" value="true" />
+      <created>1747470398823</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1747470398823</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,7 +561,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edit quality in some models and write animalProduces in to json" />
     <MESSAGE value="shops updated" />
     <MESSAGE value="buy item(some peoduct are not completed) and show item" />
     <MESSAGE value="String available added" />
@@ -592,7 +585,8 @@
     <MESSAGE value="add skill and pass out to controller methods" />
     <MESSAGE value="edit controller" />
     <MESSAGE value="merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge" />
+    <MESSAGE value="add unit test package to project and edit menus to be able to test the code" />
+    <option name="LAST_COMMIT_MESSAGE" value="add unit test package to project and edit menus to be able to test the code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

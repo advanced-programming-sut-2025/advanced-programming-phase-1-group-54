@@ -105,6 +105,14 @@ public class World implements DailyUpdate, HourUpdate {
         return map.getShortestPath(A, B);
     }
 
+    public ArrayList<NPC> getNpcs() {
+        ArrayList<NPC> npcs = new ArrayList<>();
+        for(NPCHouse npcHouse : npcHouses) {
+            npcs.add(npcHouse.getNpc());
+        }
+        return npcs;
+    }
+
     @Override
     public void nextDayUpdate() {
         currentWeather = tomorrowWeather;

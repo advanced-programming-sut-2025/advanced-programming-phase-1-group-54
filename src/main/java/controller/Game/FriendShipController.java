@@ -340,7 +340,7 @@ public class FriendShipController {
             currentPlayer.getAskedForMarriage().clear();
             return new Result(true, "successfully accepted");
         } else {
-            relationship.resetlevel();
+            relationship.resetLevel();
             player.getBackpack().addItem(relationship.getRing(), 1);
             player.setHeartBreakDaysRemaining(7);
             for (int i = 0; i < currentPlayer.getAskedForMarriage().size(); i++) {
