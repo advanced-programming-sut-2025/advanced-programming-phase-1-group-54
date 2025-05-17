@@ -159,10 +159,6 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
         this.caressed = caressed;
     }
 
-    public void setGoneOut(boolean goneOut) {
-        this.goneOut = goneOut;
-    }
-
     public void setProduce(AnimalProduce produce) {
         this.produce = produce;
     }
@@ -317,5 +313,10 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
     @Override
     public Symbol getSymbol() {
         return Symbol.ANIMAL;
+    }
+
+    @Override
+    public String toString() {
+        return getAnimalName() + " " + getName();
     }
 }

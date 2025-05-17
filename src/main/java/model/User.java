@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import model.enums.Gender;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class User {
@@ -13,8 +12,10 @@ public class User {
     private String nickname;
     private String email;
     private final Gender gender;
-    private long maximumScore;
+
+    private long maximumMoney;
     private long numberOfPlayedGames;
+    private boolean inGame;
 
     private final int securityQuestionNumber;
     private final String answerHash;
@@ -36,7 +37,7 @@ public class User {
         this.nickname = nickname;
         this.email = email;
         this.gender = gender;
-        this.maximumScore = 0;
+        this.maximumMoney = 0;
         this.numberOfPlayedGames = 0;
         this.securityQuestionNumber = securityQuestionNumber;
         this.answerHash = answerHash;
@@ -78,12 +79,12 @@ public class User {
         return gender;
     }
 
-    public long getMaximumScore() {
-        return maximumScore;
+    public long getMaximumMoney() {
+        return maximumMoney;
     }
 
-    public void setMaximumScore(long maximumScore) {
-        this.maximumScore = maximumScore;
+    public void setMaximumMoney(long maximumMoney) {
+        this.maximumMoney = maximumMoney;
     }
 
     public long getNumberOfPlayedGames() {
@@ -102,10 +103,11 @@ public class User {
         return answerHash;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(username, user.username);
+    public boolean isInGame() {
+        return inGame;
+    }
+
+    public void setInGame(boolean inGame) {
+        this.inGame = inGame;
     }
 }

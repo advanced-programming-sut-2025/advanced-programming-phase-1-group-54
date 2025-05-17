@@ -10,7 +10,7 @@ import model.enums.SkillType;
 import model.items.Fish;
 import model.items.tools.FishingPole;
 import model.map.Farm;
-import model.map.Lake;
+import model.map.GenericWall;
 
 import static controller.Game.ToolsController.addToBackPack;
 
@@ -25,7 +25,7 @@ public class FishingController {
         }
 
         boolean isNearLake = false;
-        for (Lake lake : farm.getLakes()) {
+        for (GenericWall lake : farm.getLakes()) {
             if (MapController.isNear(player.getCurrentLocation(), lake)) {
                 isNearLake = true;
             }

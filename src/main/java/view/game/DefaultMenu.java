@@ -5,16 +5,10 @@ import model.Result;
 import model.enums.Direction;
 import model.enums.SubMenu;
 import model.enums.commands.Command;
-import model.App;
-import model.lives.Player;
 import model.enums.commands.GameCommand;
 import model.map.Location;
-import model.relationships.Friendship;
-import model.relationships.Relationship;
-import model.relationships.Trade;
 
 import java.util.Scanner;
-import java.util.regex.Matcher;
 
 public class DefaultMenu implements GameSubMenu {
     @Override
@@ -34,7 +28,7 @@ public class DefaultMenu implements GameSubMenu {
         if (GameCommand.EXIT_GAME.matches(input))
             handleExitGame();
         else if (GameCommand.NEXT_TURN.matches(input))
-            handleNextTurn();
+            handleNextTurn(scanner);
         else if (GameCommand.TIME.matches(input))
             handleShowTime();
         else if (GameCommand.DATE.matches(input))
@@ -59,6 +53,8 @@ public class DefaultMenu implements GameSubMenu {
             handleHelpReadMap();
         else if (GameCommand.SHOW_ENERGY.matches(input))
             handleShowEnergy();
+        else if (GameCommand.SHOW_INVENTORY.matches(input))
+            handleShowInventory();
         else if (GameCommand.THROW_IN_TRASH.matches(input))
             handleThrowInTrash(input);
         else if (GameCommand.EQUIP_TOOL.matches(input))
@@ -69,6 +65,8 @@ public class DefaultMenu implements GameSubMenu {
             handleShowAvailableTools();
         else if (GameCommand.USE_TOOL.matches(input))
             handleUseTool(input);
+        else if (GameCommand.UPGRADE_TOOL.matches(input))
+            handleUpgradeTool(input);
         else if (GameCommand.SHOW_PLANT_INFO.matches(input))
             handleShowPlantInfo(input);
         else if (GameCommand.PLANTING.matches(input))
@@ -101,6 +99,8 @@ public class DefaultMenu implements GameSubMenu {
             handlePetAnimal(input);
         else if (GameCommand.SHOW_ANIMALS.matches(input))
             handleShowAnimals();
+        else if (GameCommand.FEED_ANIMAL.matches(input))
+            handleFeedAnimal(input);
         else if (GameCommand.MOVE_ANIMAL.matches(input))
             handleMoveAnimal(input);
         else if (GameCommand.SHOW_ANIMAL_PRODUCES.matches(input))
@@ -151,83 +151,11 @@ public class DefaultMenu implements GameSubMenu {
         return false;
     }
 
-    private void tradeHistory() {
-        System.out.println("sender      receiver         type        item        amount      price       target item      target amount       is Accepted");
-        for (Player player : App.getCurrentGame().getPlayers()) {
-            if (!player.equals(App.getCurrentGame().getCurrentPlayer())) {
-                Relationship relationship = App.getCurrentGame().getRelationship(player, App.getCurrentGame().getCurrentPlayer());
-                if (relationship.getTradeHistory() == null) {
-                    continue;
-                }
-                for (Trade trade : relationship.getTradeHistory()) {
-                    System.out.println(trade.getSender().getName() + "      " + trade.getReceiver().getName() + "      " + trade.getType() + "      "
-                            + trade.getItem() + "      " + trade.getAmount() + "     " + trade.getPrice() + "      " + trade.getTargetItem() + "      "
-                            + trade.getTargetAmount() + "      " + trade.isAccepted());
-                }
-            }
-        }
-    }
-
-    private void tradeResponse(Matcher matcher) {
-        String answer = matcher.group("answer");
-        String temp = matcher.group("id");
-        int id = Integer.parseInt(temp);
-        showResult(FriendShipController.tradeResponse(answer.equals("accept"), id));
-    }
-
-    private void tradeList() {
-        for (int i = 0; i < App.getCurrentGame().getCurrentPlayer().getReceivedTrades().size(); i++) {
-            Trade trade = App.getCurrentGame().getCurrentPlayer().getReceivedTrades().get(i);
-            if (trade.getType().equals("offer")) {
-                String string = trade.getSender().getName() + "whants " + trade.getTargetItem() + " " + trade.getTargetAmount();
-            } else if (trade.getType().equals("request")) {
-                if (trade.getPrice() == 0) {
-                    String st = trade.getSender().getName() + "whants " + trade.getTargetItem() + " " + trade.getTargetAmount() + " and gives " + trade.getAmount() + " " + trade.getItem();
-                    System.out.println(i + ": " + st);
-                } else {
-                    String st = trade.getSender().getName() + "whants " + trade.getTargetItem() + " " + trade.getTargetAmount() + " and gives " + trade.getPrice();
-                    System.out.println(i + ": " + st);
-                }
-            }
-        }
-    }
-
-    private void tradeWithProduct(Matcher matcher) {
-        String username = matcher.group("username");
-        String itemName = matcher.group("item");
-        String temp1 = matcher.group("amount");
-        int amount = Integer.parseInt(temp1);
-        String targetItem = matcher.group("targetItem");
-        String temp2 = matcher.group("targetAmount");
-        int targetAmount = Integer.parseInt(temp2);
-        Result result = FriendShipController.tradeWithProduct(username, itemName, amount, targetItem, targetAmount);
-    }
-
-    private void tradeRequest(Matcher matcher) {
-        String username = matcher.group("username");
-        String item = matcher.group("item");
-        String temp1 = matcher.group("amount");
-        int amount = Integer.parseInt(temp1);
-        Result result = FriendShipController.tradeRequest(username, item, amount);
-        System.out.println(result.message());
-    }
-
-    private void tradeWithMoney(Matcher matcher) {
-        String username = matcher.group("username");
-        String item = matcher.group("item");
-        String temp1 = matcher.group("amount");
-        int amount = Integer.parseInt(temp1);
-        String temp2 = matcher.group("price");
-        int price = Integer.parseInt(temp2);
-        Result result = FriendShipController.tradeWithMoney(username, item, amount, price);
-        System.out.println(result.message());
-    }
-
     private void handleExitGame() {
         showResult(CommonGameController.exitGame());
     }
 
-    private void handleNextTurn() {
+    private void handleNextTurn(Scanner scanner) {
         showResult(CommonGameController.nextTurn());
         // TODO handle Marriage, handle Gift (VIEW)
     }
@@ -298,6 +226,10 @@ public class DefaultMenu implements GameSubMenu {
         showResult(CommonGameController.showEnergy());
     }
 
+    private void handleShowInventory() {
+        showResult(ToolsController.showInventory());
+    }
+
     private void handleThrowInTrash(String input) {
         Command command = GameCommand.THROW_IN_TRASH;
         String itemName = command.getGroup(input, "itemName");
@@ -324,6 +256,13 @@ public class DefaultMenu implements GameSubMenu {
         Direction direction = Direction.fromString(command.getGroup(input, "direction"));
         showResult(ToolsController.useTool(direction));
     }
+
+    private void handleUpgradeTool(String input) {
+        Command command = GameCommand.UPGRADE_TOOL;
+        String toolName = command.getGroup(input, "toolName");
+        showResult(ShopsController.upgradeTool(toolName));
+    }
+
 
     private void handleShowPlantInfo(String input) {
         Command command = GameCommand.SHOW_PLANT_INFO;
@@ -408,7 +347,7 @@ public class DefaultMenu implements GameSubMenu {
                 Integer.parseInt(command.getGroup(input, "x")),
                 Integer.parseInt(command.getGroup(input, "y"))
         );
-        showResult(ShopsController.buildAnimalHouse(buildingName, location));
+        showResult(ShopsController.buildBuilding(buildingName, location));
     }
 
     private void handleBuyAnimal(String input) {
@@ -422,6 +361,12 @@ public class DefaultMenu implements GameSubMenu {
         Command command = GameCommand.PET_ANIMAL;
         String name = command.getGroup(input, "name");
         showResult(AnimalController.pet(name));
+    }
+
+    private void handleFeedAnimal(String input) {
+        Command command = GameCommand.FEED_ANIMAL;
+        String animalName = command.getGroup(input, "animalName");
+        showResult(AnimalController.feedAnimal(animalName));
     }
 
     private void handleShowAnimals() {

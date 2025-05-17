@@ -26,6 +26,7 @@ public enum GameCommand implements Command {
     SHOW_CURRENT_TOOL("tools show current"),
     SHOW_AVAILABLE_TOOLS("tools show available"),
     USE_TOOL("tools use -d (?<direction>.+)"),
+    UPGRADE_TOOL("tools upgrade (?<toolName>.+)"),
 
     // Farming commands
     SHOW_PLANT_INFO("craftinfo -n (?<plantName>.+)"),
@@ -49,6 +50,7 @@ public enum GameCommand implements Command {
     BUILD_ANIMAL_HOUSE("build -a (?<buildingName>.+) -l (?<x>[-+]?\\d+) (?<y>[-+]?\\d+)"),
     BUY_ANIMAL("buy animal -a (?<animalName>.+) -n (?<name>.+)"),
     PET_ANIMAL("pet -a (?<name>.+)"),
+    FEED_ANIMAL("feed hay -n (?<animalName>.+) -l (?<x>[-+]?\\d+) (?<y>[-+]?\\d+)"),
     SHOW_ANIMALS("animals"),
     MOVE_ANIMAL("shepherd animals -n (?<name>.+) -l (?<x>[-+]?\\d+) (?<y>[-+]?\\d+)"),
     SHOW_ANIMAL_PRODUCES("produces"),

@@ -1,5 +1,7 @@
 package controller.builders;
 
+import model.App;
+import model.GameData;
 import model.map.Cabin;
 import model.Game;
 import model.User;
@@ -22,29 +24,28 @@ public class GameBuilder {
         playerFarmNumbers = new int[users.length];
     }
 
-    public static int getNumberOfPlayers() {
-        return GameBuilder.users.length;
-    }
-
-    public static void setNextPlayerFarm(int number) {
+    public static boolean setNextPlayerFarm(int number) {
         for (int i = 0; i < users.length; i++) {
             if (playerFarmNumbers[i] == 0) {
                 playerFarmNumbers[i] = number;
-                break;
+                return (i == users.length - 1);
             }
         }
+        return false;
     }
 
-    public static void setPlayerFarmNumbers(int[] numbers) {
-        playerFarmNumbers = numbers;
-    }
 
     public static Game getResult() {
         Farm[] playerFarms = new Farm[users.length];
 
+        for (User user : users) {
+            user.setInGame(true);
+        }
+        App.saveUsers();
+
         for (int i = 0; i < users.length; i++) {
             FarmBuilder.reset();
-            FarmBuilder.setLocation(WorldBuilder.farmLocation[i]);
+            FarmBuilder.setLocation(WorldBuilder.getFarmLocation(i));
             FarmBuilder.setFarmNumber(playerFarmNumbers[i]);
             playerFarms[i] = FarmBuilder.getResult();
         }
@@ -76,5 +77,29 @@ public class GameBuilder {
         Game game = new Game(world, players);
         GameBuilder.reset();
         return game;
+    }
+
+    public static GameData getGameData() {
+        String[] playerNames = new String[users.length];
+        for (int i = 0; i < playerNames.length; i++) {
+            playerNames[i] = users[i].getUsername();
+        }
+
+        int[] playerFarms = new int[playerFarmNumbers.length];
+        System.arraycopy(playerFarms, 0, playerFarmNumbers, 0, playerFarmNumbers.length);
+
+        return new GameData(playerNames, playerFarms);
+    }
+
+    public static void setGameData(GameData gameData) {
+        GameBuilder.reset();
+
+        users = new User[gameData.playerNames().length];
+        for (int i = 0; i < gameData.playerNames().length; i++) {
+            users[i] = App.getUserByUsername(gameData.playerNames()[i]);
+        }
+
+        playerFarmNumbers = new int[gameData.playerFarms().length];
+        System.arraycopy(playerFarmNumbers, 0, gameData.playerFarms(), 0, gameData.playerNames().length);
     }
 }

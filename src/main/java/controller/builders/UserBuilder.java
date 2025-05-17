@@ -37,7 +37,7 @@ public class UserBuilder {
         UserBuilder.answerToSecurityQuestion = answer;
     }
 
-    public static User getUser() {
+    public static User getResult() {
         User user = new User(username, hash(password), nickname, email, gender, chosenSecurityQuestionNumber, hash(answerToSecurityQuestion));
         UserBuilder.reset();
         return user;

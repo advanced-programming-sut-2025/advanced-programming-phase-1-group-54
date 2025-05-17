@@ -2,14 +2,13 @@ package controller.Game;
 
 import model.App;
 import model.Game;
+import model.enums.*;
 import model.items.plants.Crop;
 import model.lives.Animal;
 import model.map.*;
-import model.enums.ToolType;
 import model.map.Refrigerator;
 import model.Result;
 import model.lives.Player;
-import model.enums.ProduceQuality;
 import model.items.*;
 import model.items.crafting.Produce;
 import model.items.crafting.ProducerArtisan;
@@ -25,7 +24,7 @@ public class CommonGameController {
         return new Result(true, "exited game");
     }
 
-    public static Result deleteGame() {
+    public static Result startDeleteGameVote() {
         return null;
     }
 
@@ -53,13 +52,13 @@ public class CommonGameController {
 
         StringBuilder messageBuilder = new StringBuilder();
 
-        if (!player.getReceivedTrades().isEmpty()){
+        if (!player.getReceivedTrades().isEmpty()) {
             messageBuilder.append("\nYou have some trade to do");
         }
-        if (!player.getReceivedGifts().isEmpty()){
+        if (!player.getReceivedGifts().isEmpty()) {
             messageBuilder.append("\nYou have some gift to open");
         }
-        if (!(player.getReceivedRequests()).isEmpty()){
+        if (!(player.getReceivedRequests()).isEmpty()) {
             messageBuilder.append("\nYou have some marriage proposal");
         }
 
@@ -131,12 +130,12 @@ public class CommonGameController {
     static Item findItem(String ItemName) {
 
         Seed seed = Seed.getSeed(ItemName);
-        if(seed != null){
+        if (seed != null) {
             return seed;
         }
 
         Fruit fruit = Fruit.getFruit(ItemName);
-        if(fruit != null){
+        if (fruit != null) {
             return fruit;
         }
 
@@ -146,47 +145,47 @@ public class CommonGameController {
 //        }
 
         ProducerArtisan producerArtisan = ProducerArtisan.getProducerArtisan(ItemName);
-        if(producerArtisan != null){
+        if (producerArtisan != null) {
             return producerArtisan;
         }
 
-        FeatureArtisan featureArtisan = FeatureArtisan.getUnProducerArtisan(ItemName);
-        if(featureArtisan != null){
+        FeatureArtisan featureArtisan = FeatureArtisan.getFeatureArtisan(ItemName);
+        if (featureArtisan != null) {
             return featureArtisan;
         }
 
         Fish fish = Fish.getFish(ItemName);
-        if(fish != null){
+        if (fish != null) {
             return fish;
         }
 
         Food food = Food.getFood(ItemName);
-        if(food != null){
+        if (food != null) {
             return food;
         }
 
         Material material = Material.getMaterial(ItemName);
-        if(material != null){
+        if (material != null) {
             return material;
         }
 
         Produce produce = Produce.getProduce(ItemName);
-        if(produce != null){
+        if (produce != null) {
             return produce;
         }
 
         AnimalProduce animalProduce = AnimalProduce.getAnimalProduce(ItemName);
-        if(animalProduce != null){
+        if (animalProduce != null) {
             return animalProduce;
         }
 
         Fertilize fertilize = Fertilize.getFertilizer(ItemName);
-        if(fertilize != null){
+        if (fertilize != null) {
             return fertilize;
         }
 
         UniqueItem uniqueItem = UniqueItem.getUniqueItem(ItemName);
-        if(uniqueItem != null){
+        if (uniqueItem != null) {
             return uniqueItem;
         }
 
@@ -196,69 +195,62 @@ public class CommonGameController {
     static int numberOfItemInBackPack(String ItemName) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Integer number = 0;
-        if(ItemName.equals("fish")){
-            for(Fish fish : Fish.getFishesValues()){
-                for(ProduceQuality quality : ProduceQuality.values()){
+        if (ItemName.equals("fish")) {
+            for (Fish fish : Fish.getFishesValues()) {
+                for (ProduceQuality quality : ProduceQuality.values()) {
                     fish.setQuality(quality);
-                    number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(fish,0);
-                    number += player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(fish,0);
+                    number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(fish, 0);
+                    number += player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(fish, 0);
                 }
             }
-        }
-        else if(ItemName.equals("Cheese") || ItemName.equals("Goat Cheese") || ItemName.equals("Mayonnaise") ){
+        } else if (ItemName.equals("Cheese") || ItemName.equals("Goat Cheese") || ItemName.equals("Mayonnaise")) {
             number += player.getBackpack().getNumberOfItemInBackPack().
-                    getOrDefault(Produce.getProduce(ItemName),0);
+                    getOrDefault(Produce.getProduce(ItemName), 0);
             number += player.getRefrigerator().getNumberOfItemInRefrigerator().
-                    getOrDefault(Produce.getProduce(ItemName),0);
+                    getOrDefault(Produce.getProduce(ItemName), 0);
             number += player.getBackpack().getNumberOfItemInBackPack().
-                    getOrDefault(Produce.getProduce("Large " +ItemName),0);
+                    getOrDefault(Produce.getProduce("Large " + ItemName), 0);
             number += player.getRefrigerator().getNumberOfItemInRefrigerator().
-                    getOrDefault(Produce.getProduce("Large " +ItemName),0);
-        }
-        else if(ItemName.equals("Oil")){
+                    getOrDefault(Produce.getProduce("Large " + ItemName), 0);
+        } else if (ItemName.equals("Oil")) {
             number += player.getBackpack().getNumberOfItemInBackPack().
-                    getOrDefault(Produce.getProduce("Corn " + ItemName),0);
+                    getOrDefault(Produce.getProduce("Corn " + ItemName), 0);
             number += player.getRefrigerator().getNumberOfItemInRefrigerator().
-                    getOrDefault(Produce.getProduce("Corn " + ItemName),0);
+                    getOrDefault(Produce.getProduce("Corn " + ItemName), 0);
             number += player.getBackpack().getNumberOfItemInBackPack().
-                    getOrDefault(Produce.getProduce("Sunflower Seed " + ItemName),0);
+                    getOrDefault(Produce.getProduce("Sunflower Seed " + ItemName), 0);
             number += player.getRefrigerator().getNumberOfItemInRefrigerator().
-                    getOrDefault(Produce.getProduce("Sunflower Seed " + ItemName),0);
+                    getOrDefault(Produce.getProduce("Sunflower Seed " + ItemName), 0);
             number += player.getBackpack().getNumberOfItemInBackPack().
-                    getOrDefault(Produce.getProduce("Sunflower " + ItemName),0);
+                    getOrDefault(Produce.getProduce("Sunflower " + ItemName), 0);
             number += player.getRefrigerator().getNumberOfItemInRefrigerator().
-                    getOrDefault( Produce.getProduce("Sunflower " + ItemName),0);
-        }
-        else {
+                    getOrDefault(Produce.getProduce("Sunflower " + ItemName), 0);
+        } else {
             Item item = findItem(ItemName);
-            if(item == null){
+            if (item == null) {
                 return 0;
-            }
-            else if(item instanceof Fish fish){
-                for(ProduceQuality quality : ProduceQuality.values()){
+            } else if (item instanceof Fish fish) {
+                for (ProduceQuality quality : ProduceQuality.values()) {
                     fish.setQuality(quality);
-                    number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(fish,0);
-                    number += player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(fish,0);
+                    number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(fish, 0);
+                    number += player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(fish, 0);
                 }
-            }
-            else if(item instanceof Fruit fruit){
-                for(ProduceQuality quality : ProduceQuality.values()){
+            } else if (item instanceof Fruit fruit) {
+                for (ProduceQuality quality : ProduceQuality.values()) {
                     fruit.setQuality(quality);
-                    number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(fruit,0);
-                    number += player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(fruit,0);
+                    number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(fruit, 0);
+                    number += player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(fruit, 0);
                 }
-            }
-            else if(item instanceof AnimalProduce animalProduce){
-                for(ProduceQuality quality : ProduceQuality.values()){
+            } else if (item instanceof AnimalProduce animalProduce) {
+                for (ProduceQuality quality : ProduceQuality.values()) {
                     animalProduce.setQuality(quality);
-                    number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(animalProduce,0);
+                    number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(animalProduce, 0);
                     number += player.getRefrigerator().getNumberOfItemInRefrigerator().
-                            getOrDefault(animalProduce,0);
+                            getOrDefault(animalProduce, 0);
                 }
-            }
-            else {
-                number = player.getBackpack().getNumberOfItemInBackPack().getOrDefault(item,0);
-                number += player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(item,0);
+            } else {
+                number = player.getBackpack().getNumberOfItemInBackPack().getOrDefault(item, 0);
+                number += player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(item, 0);
             }
 
         }
@@ -272,189 +264,172 @@ public class CommonGameController {
         BackPack backPack = player.getBackpack();
         Refrigerator refrigerator = player.getRefrigerator();
 
-        int amount ;
-        if(ItemName.equals("fish")){
+        int amount;
+        if (ItemName.equals("fish")) {
             boolean isDone = false;
-            for(Fish fish : Fish.getFishesValues()){
-                for(ProduceQuality quality : ProduceQuality.values()){
+            for (Fish fish : Fish.getFishesValues()) {
+                for (ProduceQuality quality : ProduceQuality.values()) {
                     fish.setQuality(quality);
 
-                    amount = backPack.getNumberOfItemInBackPack().getOrDefault(fish,0);
-                    if(amount <= number){
-                        backPack.removeItem(fish,amount);
+                    amount = backPack.getNumberOfItemInBackPack().getOrDefault(fish, 0);
+                    if (amount <= number) {
+                        backPack.removeItem(fish, amount);
                         number -= amount;
-                    }
-                    else {
-                        backPack.removeItem(fish,number);
+                    } else {
+                        backPack.removeItem(fish, number);
                         number = 0;
                     }
-                    if(number == 0){
+                    if (number == 0) {
                         isDone = true;
                         break;
                     }
 
-                    amount = refrigerator.getNumberOfItemInRefrigerator().getOrDefault(fish,0);
-                    if(amount <= number){
-                        refrigerator.removeItem(fish,amount);
+                    amount = refrigerator.getNumberOfItemInRefrigerator().getOrDefault(fish, 0);
+                    if (amount <= number) {
+                        refrigerator.removeItem(fish, amount);
                         number -= amount;
-                    }
-                    else {
-                        refrigerator.removeItem(fish,number);
+                    } else {
+                        refrigerator.removeItem(fish, number);
                         number = 0;
                     }
-                    if(number == 0){
+                    if (number == 0) {
                         isDone = true;
                         break;
                     }
                 }
-                if(isDone){
+                if (isDone) {
                     break;
                 }
             }
-        }
-        else if(ItemName.equals("Cheese") || ItemName.equals("Goat Cheese") || ItemName.equals("Mayonnaise")){
+        } else if (ItemName.equals("Cheese") || ItemName.equals("Goat Cheese") || ItemName.equals("Mayonnaise")) {
             Produce produce = Produce.getProduce(ItemName);
-            amount = backPack.getNumberOfItemInBackPack().getOrDefault(produce,0);
-            amount += refrigerator.getNumberOfItemInRefrigerator().getOrDefault(produce,0);
+            amount = backPack.getNumberOfItemInBackPack().getOrDefault(produce, 0);
+            amount += refrigerator.getNumberOfItemInRefrigerator().getOrDefault(produce, 0);
 
-            if(number > amount){
-                removeItemFromInventory(produce,amount);
+            if (number > amount) {
+                removeItemFromInventory(produce, amount);
                 number -= amount;
-                removeItemFromInventory(Produce.getProduce("Large " + ItemName),number);
+                removeItemFromInventory(Produce.getProduce("Large " + ItemName), number);
+            } else {
+                removeItemFromInventory(produce, number);
             }
-            else {
-                removeItemFromInventory(produce,number);
-            }
-        }
-        else if(ItemName.equals("Oil")){
+        } else if (ItemName.equals("Oil")) {
             Produce produce = Produce.getProduce("Corn " + ItemName);
-            amount = backPack.getNumberOfItemInBackPack().getOrDefault(produce,0);
-            amount += refrigerator.getNumberOfItemInRefrigerator().getOrDefault(produce,0);
-            if(number > amount){
-                removeItemFromInventory(produce,amount);
+            amount = backPack.getNumberOfItemInBackPack().getOrDefault(produce, 0);
+            amount += refrigerator.getNumberOfItemInRefrigerator().getOrDefault(produce, 0);
+            if (number > amount) {
+                removeItemFromInventory(produce, amount);
                 number -= amount;
                 produce = Produce.getProduce("Sunflower Seed " + ItemName);
-                amount = backPack.getNumberOfItemInBackPack().getOrDefault(produce,0);
-                amount += refrigerator.getNumberOfItemInRefrigerator().getOrDefault(produce,0);
-                if(number > amount){
-                    removeItemFromInventory(produce,amount);
+                amount = backPack.getNumberOfItemInBackPack().getOrDefault(produce, 0);
+                amount += refrigerator.getNumberOfItemInRefrigerator().getOrDefault(produce, 0);
+                if (number > amount) {
+                    removeItemFromInventory(produce, amount);
                     number -= amount;
-                    removeItemFromInventory(Produce.getProduce("Sunflower " + ItemName),number);
+                    removeItemFromInventory(Produce.getProduce("Sunflower " + ItemName), number);
+                } else {
+                    removeItemFromInventory(produce, number);
                 }
-                else {
-                    removeItemFromInventory(produce,number);
-                }
+            } else {
+                removeItemFromInventory(produce, number);
             }
-            else{
-                removeItemFromInventory(produce,number);
-            }
-        }
-        else {
+        } else {
             Item item = findItem(ItemName);
-            if(item instanceof Fish fish){
-                for(ProduceQuality quality : ProduceQuality.values()){
+            if (item instanceof Fish fish) {
+                for (ProduceQuality quality : ProduceQuality.values()) {
                     fish.setQuality(quality);
-                    amount = backPack.getNumberOfItemInBackPack().getOrDefault(fish,0);
-                    if(amount <= number){
-                        backPack.removeItem(fish,amount);
+                    amount = backPack.getNumberOfItemInBackPack().getOrDefault(fish, 0);
+                    if (amount <= number) {
+                        backPack.removeItem(fish, amount);
                         number -= amount;
-                    }
-                    else {
-                        backPack.removeItem(fish,number);
+                    } else {
+                        backPack.removeItem(fish, number);
                         number = 0;
                     }
 
-                    if(number == 0){
+                    if (number == 0) {
                         break;
                     }
 
-                    amount = refrigerator.getNumberOfItemInRefrigerator().getOrDefault(fish,0);
-                    if(amount <= number){
-                        refrigerator.removeItem(fish,amount);
+                    amount = refrigerator.getNumberOfItemInRefrigerator().getOrDefault(fish, 0);
+                    if (amount <= number) {
+                        refrigerator.removeItem(fish, amount);
                         number -= amount;
-                    }
-                    else {
-                        refrigerator.removeItem(fish,number);
+                    } else {
+                        refrigerator.removeItem(fish, number);
                         number = 0;
                     }
 
-                    if(number == 0){
+                    if (number == 0) {
                         break;
                     }
                 }
-            }
-            else if(item instanceof Fruit fruit){
-                for(ProduceQuality quality : ProduceQuality.values()){
+            } else if (item instanceof Fruit fruit) {
+                for (ProduceQuality quality : ProduceQuality.values()) {
                     fruit.setQuality(quality);
-                    amount = backPack.getNumberOfItemInBackPack().getOrDefault(fruit,0);
-                    if(amount <= number){
-                        backPack.removeItem(fruit,amount);
+                    amount = backPack.getNumberOfItemInBackPack().getOrDefault(fruit, 0);
+                    if (amount <= number) {
+                        backPack.removeItem(fruit, amount);
                         number -= amount;
-                    }
-                    else{
-                        backPack.removeItem(fruit,number);
+                    } else {
+                        backPack.removeItem(fruit, number);
                         number = 0;
                     }
 
-                    if(number == 0){
+                    if (number == 0) {
                         break;
                     }
 
-                    amount = refrigerator.getNumberOfItemInRefrigerator().getOrDefault(fruit,0);
-                    if(amount <= number){
-                        refrigerator.removeItem(fruit,amount);
+                    amount = refrigerator.getNumberOfItemInRefrigerator().getOrDefault(fruit, 0);
+                    if (amount <= number) {
+                        refrigerator.removeItem(fruit, amount);
                         number -= amount;
-                    }
-                    else {
-                        refrigerator.removeItem(fruit,number);
+                    } else {
+                        refrigerator.removeItem(fruit, number);
                         number = 0;
                     }
 
-                    if(number == 0){
+                    if (number == 0) {
                         break;
                     }
                 }
-            }
-            else if(item instanceof AnimalProduce animalProduce){
-                for(ProduceQuality quality : ProduceQuality.values()){
+            } else if (item instanceof AnimalProduce animalProduce) {
+                for (ProduceQuality quality : ProduceQuality.values()) {
                     animalProduce.setQuality(quality);
-                    amount = backPack.getNumberOfItemInBackPack().getOrDefault(animalProduce,0);
-                    if(amount <= number){
-                        backPack.removeItem(animalProduce,amount);
+                    amount = backPack.getNumberOfItemInBackPack().getOrDefault(animalProduce, 0);
+                    if (amount <= number) {
+                        backPack.removeItem(animalProduce, amount);
                         number -= amount;
-                    }
-                    else {
-                        backPack.removeItem(animalProduce,number);
+                    } else {
+                        backPack.removeItem(animalProduce, number);
                         number = 0;
                     }
 
-                    if(number == 0){
+                    if (number == 0) {
                         break;
                     }
 
-                    amount = refrigerator.getNumberOfItemInRefrigerator().getOrDefault(animalProduce,0);
-                    if (amount <= number){
-                        refrigerator.removeItem(animalProduce,amount);
+                    amount = refrigerator.getNumberOfItemInRefrigerator().getOrDefault(animalProduce, 0);
+                    if (amount <= number) {
+                        refrigerator.removeItem(animalProduce, amount);
                         number -= amount;
-                    }
-                    else {
-                        refrigerator.removeItem(animalProduce,number);
+                    } else {
+                        refrigerator.removeItem(animalProduce, number);
                         number = 0;
                     }
 
-                    if(number == 0){
+                    if (number == 0) {
                         break;
                     }
                 }
-            }
-            else{
-                amount = backPack.getNumberOfItemInBackPack().getOrDefault(item,0);
-                if(amount <= number){
-                    backPack.removeItem(item,amount);
+            } else {
+                amount = backPack.getNumberOfItemInBackPack().getOrDefault(item, 0);
+                if (amount <= number) {
+                    backPack.removeItem(item, amount);
                     number -= amount;
-                    refrigerator.removeItem(item,number);
+                    refrigerator.removeItem(item, number);
                 }
-                backPack.removeItem(item,number);
+                backPack.removeItem(item, number);
             }
         }
     }
@@ -462,203 +437,181 @@ public class CommonGameController {
     static boolean removeItemFromInventory(Item item, int number) {
 
         Player player = App.getCurrentGame().getCurrentPlayer();
-        int amount = player.getBackpack().getNumberOfItemInBackPack().getOrDefault(item,0);
-        if(number - amount > player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(item,0)){
+        int amount = player.getBackpack().getNumberOfItemInBackPack().getOrDefault(item, 0);
+        if (number - amount > player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(item, 0)) {
             return false;
-        }
-        else if(amount < number){
-            player.getBackpack().removeItem(item,amount);
+        } else if (amount < number) {
+            player.getBackpack().removeItem(item, amount);
             number -= amount;
-            player.getRefrigerator().removeItem(item,number);
+            player.getRefrigerator().removeItem(item, number);
         }
-        player.getBackpack().removeItem(item,number);
+        player.getBackpack().removeItem(item, number);
         return true;
 
     }
 
-    public static ProduceQuality giveQuality(double quality){
-        if(quality >= 0 && quality < 0.5){
-            return ProduceQuality.NORMAL;
-        }
-        else if(quality >= 0.5 && quality < 0.7){
-            return ProduceQuality.SILVER;
-        }
-        else if(quality >= 0.7 && quality < 0.9){
-            return ProduceQuality.GOLD;
-        }
-        else{
-            return ProduceQuality.IRIDIUM;
-        }
-    }
-
-    public static void deleteThingOnTile(Tile tile, Farm farm){
+    static boolean deleteThingOnTile(Tile tile, Farm farm) {
         Player player = App.getCurrentGame().getCurrentPlayer();
 
         Location location = player.getCurrentLocation().delta(farm.getLocation());
 
-        if(tile.getThingOnTile() instanceof FeatureArtisan featureArtisan){
-            for(int i = -featureArtisan.getRadius() ; i <= featureArtisan.getRadius() ; i++){
-                for(int j = -featureArtisan.getRadius() ; j <= featureArtisan.getRadius() ; j++){
+        if (tile.getThingOnTile() instanceof FeatureArtisan featureArtisan) {
+            for (int i = -featureArtisan.getRadius(); i <= featureArtisan.getRadius(); i++) {
+                for (int j = -featureArtisan.getRadius(); j <= featureArtisan.getRadius(); j++) {
                     Location location1 = location.delta(new Location(location.row() + i, location.column() + j));
                     Tile tile1 = farm.getTileAt(location1);
-                    if(tile1 != null){
+                    if (tile1 != null) {
                         tile.getFeatures().remove(featureArtisan.getFeature());
                     }
                 }
             }
-        }
-        else if(tile.getThingOnTile() instanceof ProducerArtisan producerArtisan){
+        } else if (tile.getThingOnTile() instanceof ProducerArtisan producerArtisan) {
             tile.setThingOnTile(null);
             player.getPlacedArtisans().remove(producerArtisan);
-        }
-        else if(tile.getThingOnTile() instanceof Crop crop && crop.getGiantDirection() != null){
+        } else if (tile.getThingOnTile() instanceof Crop crop && crop.getGiantDirection() != null) {
             tile.setThingOnTile(null);
-            for(int i = 0 ; i < 3 ; i++){
+            for (int i = 0; i < 3; i++) {
                 tile = App.getCurrentGame().getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection()));
                 crop = (Crop) tile.getThingOnTile();
                 tile.setThingOnTile(null);
             }
-        }
-        else if(tile.getThingOnTile() instanceof Building){
-            deleteThingOnTile(tile.getTop(),farm);
-        }
-        else if(! (tile.getThingOnTile() instanceof Animal)){
+        } else if (tile.getThingOnTile() instanceof Building) {
+            return deleteThingOnTile(tile.getTop(), farm);
+        } else if (!(tile.getThingOnTile() instanceof Animal)) {
             tile.setThingOnTile(null);
+        } else {
+            return false;
         }
-
+        return true;
     }
 
-
-
-    //TODO check baghal ham. ham bra player ham bra satl
     public static Result sell(String product, int count) {
-        //next to each other
+        Game game = App.getCurrentGame();
+        Player currentPlayer = game.getCurrentPlayer();
+
+        if (!isNearShippingBin(currentPlayer.getCurrentLocation()))
+            return new Result(false, "No shipping bin nearby!");
+
+        // TODO sell is wrong, fix this !!!
+
         Fish fish = Fish.getFish(product);
         if (fish != null) {
-            if (count != 1) {
-                if (!removeItemFromInventory(fish, count)){
-                    return new Result(false,"not enough products");
+            if (count != -1) {
+                if (!removeItemFromInventory(fish, count)) {
+                    return new Result(false, "not enough products");
                 }
-            }
-            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish) == 0){
-                return new Result(false,"not enough products");
-            }
-            else{
-                int money = 0;
-                if(count == -1){
-                     money = (int)(fish.getBaseSellPrice() * fish.getQuality().getValue())
+            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish) == 0) {
+                return new Result(false, "not enough products");
+            } else {
+                int money;
+                if (count == -1) {
+                    money = (int) (fish.getBaseSellPrice() * fish.getQuality().getValue())
                             * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish);
-                }
-                else{
-                     money = (int)(fish.getBaseSellPrice() * fish.getQuality().getValue()) * count;
+                } else {
+                    money = (int) (fish.getBaseSellPrice() * fish.getQuality().getValue()) * count;
                 }
                 App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
-                return new Result(true,"item sold successfully");
+                return new Result(true, "item sold successfully");
             }
         }
         Fruit fruit = Fruit.getFruit(product);
         if (fruit != null) {
-            if (count != 1) {
-                if (removeItemFromInventory(fruit,count) == false){
-                    return new Result(false,"not enough products");
+            if (count != -1) {
+                if (!removeItemFromInventory(fruit, count)) {
+                    return new Result(false, "not enough products");
                 }
-            }
-            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit) == 0){
-                return new Result(false,"not enough products");
-            }
-            else{
+            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit) == 0) {
+                return new Result(false, "not enough products");
+            } else {
                 int money = 0;
-                if(count == -1){
-                    money = (int)(fruit.getBaseSellPrice() * fruit.getQuality().getValue())
+                if (count == -1) {
+                    money = (int) (fruit.getBaseSellPrice() * fruit.getQuality().getValue())
                             * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit);
-                }
-                else{
-                    money = (int)(fish.getBaseSellPrice() * fruit.getQuality().getValue()) * count;
+                } else {
+                    money = (int) (fish.getBaseSellPrice() * fruit.getQuality().getValue()) * count;
                 }
                 App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
-                return new Result(true,"item sold successfully");
+                return new Result(true, "item sold successfully");
             }
         }
 
         //Artisan artisan =
         Food food = Food.getFood(product);
         if (food != null) {
-            if (count != 1) {
+            if (count != -1) {
                 if (!removeItemFromInventory(food, count)) {
                     return new Result(false, "not enough products");
                 }
-            }
-            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food) == 0){
-                return new Result(false,"not enough products");
-            }
-            else{
+            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food) == 0) {
+                return new Result(false, "not enough products");
+            } else {
                 int money = 0;
-                if(count == -1){
+                if (count == -1) {
                     money = food.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food);
-                }
-                else{
+                } else {
                     money = food.getBaseSellPrice() * count;
                 }
                 App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
-                return new Result(true,"item sold successfully");
+                return new Result(true, "item sold successfully");
             }
         }
         Produce produce = Produce.getProduce(product);
         if (produce != null) {
-            if (count != 1) {
-                if (removeItemFromInventory(produce,count) == false){
-                    return new Result(false,"not enough products");
+            if (count != -1) {
+                if (!removeItemFromInventory(produce, count)) {
+                    return new Result(false, "not enough products");
                 }
-            }
-            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce) == 0){
-                return new Result(false,"not enough products");
-            }
-            else{
+            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce) == 0) {
+                return new Result(false, "not enough products");
+            } else {
                 int money = 0;
-                if(count == -1){
+                if (count == -1) {
                     money = produce.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce);
-                }
-                else{
+                } else {
                     money = produce.getBaseSellPrice() * count;
                 }
                 App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
-                return new Result(true,"item sold successfully");
+                return new Result(true, "item sold successfully");
             }
         }
-        FeatureArtisan unproduce = FeatureArtisan.getUnProducerArtisan(product);
-        if (unproduce != null) {
-            if (count != 1) {
-                if (removeItemFromInventory(unproduce,count) == false){
-                    return new Result(false,"not enough products");
+        FeatureArtisan featureArtisan = FeatureArtisan.getFeatureArtisan(product);
+        if (featureArtisan != null) {
+            if (count != -1) {
+                if (!removeItemFromInventory(featureArtisan, count)) {
+                    return new Result(false, "not enough products");
                 }
-            }
-            else if(App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(unproduce) == 0){
-                return new Result(false,"not enough products");
-            }
-            else{
+            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(featureArtisan) == 0) {
+                return new Result(false, "not enough products");
+            } else {
 
                 int money = 0;
-                if(count == -1){
-                    money = unproduce.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(unproduce);
-                }
-                else{
-                    money = unproduce.getBaseSellPrice() * count;
+                if (count == -1) {
+                    money = featureArtisan.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(featureArtisan);
+                } else {
+                    money = featureArtisan.getBaseSellPrice() * count;
                 }
                 App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
-                return new Result(false,"item sold successfully");
+                return new Result(false, "item sold successfully");
             }
         }
-        return new Result(false,"you can't sell this product");
-    }
-
-    public static void nextDayMoney() {
-        for(Player player : App.getCurrentGame().getPlayers()){
-
-        }
+        return new Result(false, "you can't sell this product");
     }
 
     static Result playerNotFound() {
         return new Result(false, "there is no player with this name");
+    }
+
+    private static boolean isNearShippingBin(Location location) {
+        World world = App.getCurrentGame().getWorld();
+        for (Direction direction : Direction.values()) {
+            Location nearLocation = location.getLocationAt(direction);
+            if (world.getTileAt(nearLocation).getTop().hasFeature(Feature.SELLING)) {
+                return (!(world.getTileAt(location).getThingOnTile() instanceof Building building)
+                        || world.getTileAt(nearLocation).getThingOnTile().equals(building))
+                        && (!(world.getTileAt(nearLocation).getThingOnTile() instanceof Building));
+            }
+        }
+        return false;
     }
 
 }

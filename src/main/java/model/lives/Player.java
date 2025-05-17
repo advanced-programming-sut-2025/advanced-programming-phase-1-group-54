@@ -3,18 +3,12 @@ package model.lives;
 import model.DailyUpdate;
 import model.DateTime;
 import model.HourUpdate;
+import model.enums.*;
+import model.items.tools.*;
 import model.map.Refrigerator;
 import model.User;
-import model.enums.FishingPoleType;
-import model.enums.SkillType;
-import model.enums.Symbol;
-import model.enums.ToolType;
 import model.items.crafting.ProducerArtisan;
 import model.items.recipes.Recipe;
-import model.items.tools.BackPack;
-import model.items.tools.FishingPole;
-import model.items.tools.Tool;
-import model.items.tools.TrashCan;
 import model.map.Farm;
 import model.map.Location;
 import model.relationships.Gift;
@@ -36,7 +30,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     private int money;
     private int nextDayMoney = 0;
 
-    private final User controllingUser;
+    private final Gender gender;
     private final Farm farm;
 
     private int energy;
@@ -80,22 +74,29 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     private SkillType buffSkill;
     private int buffHours;
 
-
-    private boolean isInGiftList;
-
     public Player(User controllingUser, Farm farm) {
         super(controllingUser.getUsername());
-        this.controllingUser = controllingUser;
+        this.gender = controllingUser.getGender();
         this.farm = farm;
         this.money = 0;
-        this.isInGiftList = false;
         this.heartBreakDaysRemaining = 0;
         this.energy = MAXIMUM_ENERGY;
 
         for (SkillType skilltype : SkillType.values()) {
-            skills[skilltype.ordinal()] = new Skill(skilltype);
+            this.skills[skilltype.ordinal()] = new Skill(skilltype);
         }
-        // TODO
+
+        this.setTool(ToolType.HOE, new Tool(ToolType.HOE));
+        this.setTool(ToolType.PICKAXE, new Tool(ToolType.PICKAXE));
+        this.setTool(ToolType.AXE, new Tool(ToolType.AXE));
+        this.setTool(ToolType.SCYTHE, new Tool(ToolType.SCYTHE));
+        this.setTool(ToolType.WATERING_CAN, new WateringCan());
+
+        this.setFishingPole(FishingPoleType.TRAINING, new FishingPole(FishingPoleType.TRAINING));
+    }
+
+    public Gender getGender() {
+        return gender;
     }
 
     public Farm getFarm() {
@@ -120,10 +121,6 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     public Skill getSkill(SkillType skillType) {
         return skills[skillType.ordinal()];
-    }
-
-    public User getControllingUser() {
-        return controllingUser;
     }
 
     public int getEnergy() {
@@ -195,6 +192,8 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     }
 
     public int getMoney() {
+        if (marriage != null)
+            return marriage.getSharedMoney();
         return money;
     }
 
@@ -274,14 +273,6 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
-    }
-
-    public boolean isInGiftList() {
-        return isInGiftList;
-    }
-
-    public void setInGiftList(boolean inGiftList) {
-        isInGiftList = inGiftList;
     }
 
     @Override

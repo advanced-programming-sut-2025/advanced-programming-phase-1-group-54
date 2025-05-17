@@ -7,20 +7,19 @@ import model.items.Item;
 import java.util.ArrayList;
 
 public class NPC extends Live {
-    private String job;
-    private String name;
+    private final String job;
     private ArrayList<String> springDialogs = new ArrayList<>();
     private ArrayList<String> summerDialogs = new ArrayList<>();
     private ArrayList<String> fallDialogs = new ArrayList<>();
     private ArrayList<String> winterDialogs = new ArrayList<>();
 
 
-    private ArrayList<String> favoriteItems;
+    private ArrayList<String> favoriteItems = new ArrayList<>();
 
-    private ArrayList<Quest> allQuests;
+    private ArrayList<Quest> allQuests = new ArrayList<>();
 
     public NPC(String job, String name) {
-        this.name = name;
+        super(name);
         this.job = job;
     }
     public void activateQuest(Quest quest) {
@@ -33,19 +32,6 @@ public class NPC extends Live {
         return job;
     }
 
-    public void setJob(String job) {
-        this.job = job;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public ArrayList<String> getSpringDialogs() {
         return springDialogs;

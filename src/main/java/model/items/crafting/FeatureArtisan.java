@@ -29,7 +29,7 @@ public class FeatureArtisan extends Artisan implements Cloneable{
          unProducerArtisans = gson.fromJson(file,type);
     }
 
-    public static FeatureArtisan getUnProducerArtisan(String Name) {
+    public static FeatureArtisan getFeatureArtisan(String Name) {
         FeatureArtisan featureArtisan = unProducerArtisans.get(Name);
         if (featureArtisan == null) {
             return null;
@@ -117,7 +117,7 @@ public class FeatureArtisan extends Artisan implements Cloneable{
                 "Sprinkler Recipe",
                 0,
                 4,
-                Feature.WATER
+                Feature.AUTO_WATER
         );
         UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 
@@ -127,7 +127,7 @@ public class FeatureArtisan extends Artisan implements Cloneable{
                 "Quality Sprinkler Recipe",
                 0,
                 8,
-                Feature.WATER
+                Feature.AUTO_WATER
         );
         UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 
@@ -137,7 +137,7 @@ public class FeatureArtisan extends Artisan implements Cloneable{
                 "Iridium Sprinkler Recipe",
                 0,
                 24,
-                Feature.WATER
+                Feature.AUTO_WATER
         );
         UnProducerArtisansType.put(featureArtisan.getName(), featureArtisan);
 

@@ -21,12 +21,12 @@
     "lakeAreas": [
       {
         "upperLeftLocation": {
-          "row": 19,
-          "column": 9
+          "row": 29,
+          "column": 19
         },
         "lowerRightLocation": {
-          "row": 24,
-          "column": 15
+          "row": 34,
+          "column": 25
         }
       }
     ]
@@ -43,22 +43,22 @@
     "quarryArea": {
       "upperLeftLocation": {
         "row": 0,
-        "column": 14
+        "column": 24
       },
       "lowerRightLocation": {
         "row": 7,
-        "column": 24
+        "column": 34
       }
     },
     "lakeAreas": [
       {
         "upperLeftLocation": {
-          "row": 9,
-          "column": 22
+          "row": 19,
+          "column": 32
         },
         "lowerRightLocation": {
-          "row": 24,
-          "column": 24
+          "row": 34,
+          "column": 34
         }
       }
     ]

@@ -1,5 +1,6 @@
 package model.map;
 
+import controller.Game.PlantsController;
 import model.DailyUpdate;
 import model.Placeable;
 import model.enums.Color;
@@ -73,7 +74,7 @@ public class Tile implements DailyUpdate {
             out = getThingOnTile().getSymbol().toString();
 
         if (features.contains(Feature.WATER))
-            out = Symbol.WATER.toString();
+            out = Symbol.LAKE.toString();
 
         else if (features.contains(Feature.PROTECTED))
             out = Color.YELLOW_BACKGROUND + out + Color.DEFAULT;
@@ -88,6 +89,9 @@ public class Tile implements DailyUpdate {
         }
 
         if (thingOnTile instanceof Plant plant) {
+            if (this.hasFeature(Feature.AUTO_WATER))
+                PlantsController.giveWater(this.getLocation());
+
             if (plant.isDead()) {
                 setThingOnTile(null);
             }

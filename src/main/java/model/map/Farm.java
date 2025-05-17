@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Farm implements DailyUpdate, HourUpdate {
-    private static final int NUMBER_OF_ROWS = 25;
-    private static final int NUMBER_OF_COLUMNS = 25;
+    private static final int NUMBER_OF_ROWS = 35;
+    private static final int NUMBER_OF_COLUMNS = 35;
 
     private final Location location;
     private final Map map;
@@ -27,7 +27,7 @@ public class Farm implements DailyUpdate, HourUpdate {
     private final GreenHouse greenhouse;
     private final Cabin cabin;
     private final Quarry quarry;
-    private final Lake[] lakes;
+    private final GenericWall[] lakes;
 
     private final ArrayList<AnimalHouse> animalHouses = new ArrayList<>();
 
@@ -39,7 +39,7 @@ public class Farm implements DailyUpdate, HourUpdate {
         return NUMBER_OF_COLUMNS;
     }
 
-    public Farm(Location location, GreenHouse greenhouse, Cabin cabin, Quarry quarry, Lake[] lakes, Map map) {
+    public Farm(Location location, GreenHouse greenhouse, Cabin cabin, Quarry quarry, GenericWall[] lakes, Map map) {
         this.location = location;
         this.map = map;
 
@@ -69,7 +69,7 @@ public class Farm implements DailyUpdate, HourUpdate {
         return quarry;
     }
 
-    public Lake[] getLakes() {
+    public GenericWall[] getLakes() {
         return lakes;
     }
 

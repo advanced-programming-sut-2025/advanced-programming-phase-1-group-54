@@ -106,7 +106,7 @@ public class ShopsController {
         return new Result(false, "ERROR: wrong upgrade name");
     }
 
-    public static Result buildAnimalHouse(String buildingName, Location location) {
+    public static Result buildBuilding(String buildingName, Location location) {
         for (CarpenterShop.ItemsinCarpenterShop item : ((CarpenterShop) (App.getCurrentGame().getWorld().
                 getShops().get(3))).getFarmBuildings()) {
             if (item.getName().equals(buildingName)) {
@@ -494,8 +494,24 @@ public class ShopsController {
         }
 
         AnimalHousePrototype prototype = AnimalHousePrototype.getAnimalHousePrototype(item.getName());
+        int numberOfRows;
+        int numberOfColumns;
+        boolean isWell = item.getName().equals("Well");
+        boolean isShippingBin = item.getName().equals("Shipping Bin");
         if (prototype == null) {
-            return new Result(false, "No animal house found.");
+            if (isWell) {
+                numberOfRows = 3;
+                numberOfColumns = 3;
+            } else if (isShippingBin) {
+                numberOfRows = 1;
+                numberOfColumns = 1;
+            } else {
+                return new Result(false, "ERROR: No building found.");
+            }
+        }
+        else {
+            numberOfRows = prototype.getNumberOfRows();
+            numberOfColumns = prototype.getNumberOfColumns();
         }
 
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(location);
@@ -503,23 +519,35 @@ public class ShopsController {
             return new Result(false, "You can only build this in a farm.");
         }
 
-        if (App.getCurrentGame().getWorld()
-                .getFarmAt(location.add(new Location(prototype.getNumberOfRows(), prototype.getNumberOfColumns())))
-                == null) {
-
-            return new Result(false, "You can't build this at that location");
+        for (int i = 0; i < numberOfRows; i++) {
+            for (int j = 0; j < numberOfColumns; j++) {
+                Tile tile = farm.getTileAt(location.add(new Location(i, j)));
+                if (tile == null || tile.getThingOnTile() != null) {
+                    return new Result(false, "You can't build this at that location");
+                }
+            }
         }
 
         App.getCurrentGame().getCurrentPlayer().decreaseMoney(count * item.getPrice());
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }
-        AnimalHouse animalHouse = new AnimalHouse(prototype, location);
 
+        Building building;
+        if (prototype != null) {
+            building = new AnimalHouse(prototype, location);
+        }
+        else {
+            building = new GenericWall(new Area(location, location.add(new Location(numberOfRows, numberOfColumns))),
+                    (isWell? Symbol.WELL : Symbol.SELLING));
+        }
 
-        for (int i = 0; i < animalHouse.getNumberOfRows(); i++) {
-            for (int j = 0; j < animalHouse.getNumberOfColumns(); j++) {
-                farm.getTileAt(location.add(new Location(i, j))).setThingOnTile(animalHouse);
+        for (int i = 0; i < building.getNumberOfRows(); i++) {
+            for (int j = 0; j < building.getNumberOfColumns(); j++) {
+                Tile tile = farm.getTileAt(location.add(new Location(i, j)));
+                tile.setThingOnTile(building);
+                if (isWell) tile.addFeature(Feature.WATER);
+                if (isShippingBin) tile.addFeature(Feature.SELLING);
             }
         }
 

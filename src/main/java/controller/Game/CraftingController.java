@@ -2,9 +2,6 @@ package controller.Game;
 
 import model.App;
 import model.DateTime;
-import model.items.plants.Crop;
-import model.items.plants.Plant;
-import model.lives.Animal;
 import model.map.*;
 import model.Result;
 import model.lives.Player;
@@ -22,7 +19,6 @@ import model.map.Location;
 import model.map.Tile;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CraftingController {
 
@@ -61,7 +57,7 @@ public class CraftingController {
 
         Artisan artisan = ProducerArtisan.getProducerArtisan(artisanName);
         if(artisan == null){
-            artisan = FeatureArtisan.getUnProducerArtisan(artisanName);
+            artisan = FeatureArtisan.getFeatureArtisan(artisanName);
             if(artisan == null){
                 return new Result(-1,"Artisan dose not exist");
             }
@@ -130,7 +126,7 @@ public class CraftingController {
 
             return new Result(1,"Artisan placed successfully");
         }
-        FeatureArtisan featureArtisan = FeatureArtisan.getUnProducerArtisan(artisanName);
+        FeatureArtisan featureArtisan = FeatureArtisan.getFeatureArtisan(artisanName);
         if(featureArtisan == null){
             return new Result(-1,"Artisan dose not exist");
         }

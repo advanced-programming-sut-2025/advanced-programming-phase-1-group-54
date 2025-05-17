@@ -6,8 +6,6 @@ import model.Result;
 import model.User;
 
 public class ProfileMenuController {
-    // TODO : save changes to file
-
     public static Result changeUsername(String username) {
         User currentUser = App.getLoggedInUser();
 
@@ -19,6 +17,7 @@ public class ProfileMenuController {
             return checkUsernameResult;
 
         currentUser.setUsername(username);
+        App.saveUsers();
         return new Result(true, "Username changed successfully.");
     }
 
@@ -34,6 +33,8 @@ public class ProfileMenuController {
         if (!checkPasswordResult.success())
             return checkPasswordResult;
 
+        currentUser.setPasswordHash(UserBuilder.hash(newPassword));
+        App.saveUsers();
         return new Result(true, "Password changed successfully.");
     }
 
@@ -43,6 +44,7 @@ public class ProfileMenuController {
             return new Result(false, "Please enter a new nickname");
 
         currentUser.setNickname(nickname);
+        App.saveUsers();
         return new Result(true, "Nickname changed successfully.");
     }
 
@@ -56,11 +58,17 @@ public class ProfileMenuController {
             return checkEmailResult;
 
         currentUser.setEmail(email);
+        App.saveUsers();
         return new Result(true, "Email changed successfully.");
     }
 
     public static Result showUserInfo() {
-        // TODO
-        return null;
+        User currentUser = App.getLoggedInUser();
+        String message = "Username: " + currentUser.getUsername() + "\n";
+        message += "Nickname: " + currentUser.getNickname() + "\n";
+        message += "Number of Games: " + currentUser.getNumberOfPlayedGames() + "\n";
+        message += "Largest Money in All Games: " + currentUser.getMaximumMoney();
+
+        return new Result(true, null);
     }
 }
