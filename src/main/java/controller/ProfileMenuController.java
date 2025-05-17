@@ -6,6 +6,7 @@ import model.Result;
 import model.User;
 
 public class ProfileMenuController {
+
     public static Result changeUsername(String username) {
         User currentUser = App.getLoggedInUser();
 

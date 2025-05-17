@@ -525,109 +525,148 @@ public class CommonGameController {
         if (!isNearShippingBin(currentPlayer.getCurrentLocation()))
             return new Result(false, "No shipping bin nearby!");
 
+
+        Item item = findItem(product);
+
+        if(item == null){
+            return new Result(false, "Doesn't exist such item!");
+        }
+
+        int numberOfItem = currentPlayer.getBackpack().getNumberOfItemInBackPack().get(item);
+
+        if(count == -1){
+            count = numberOfItem;
+        }
+        else if(count > numberOfItem){
+            return new Result(false,"You do not have enough item!");
+        }
+
+        currentPlayer.getBackpack().removeItem(item, count);
+
+        if(item instanceof Fruit fruit){
+            currentPlayer.increaseNextDayMoney((int) Math.floor(count * item.getBaseSellPrice() *
+                    fruit.getQuality().getValue()));
+        }
+        else if(item instanceof AnimalProduce animalProduce){
+            currentPlayer.increaseNextDayMoney((int) Math.floor(count * item.getBaseSellPrice() *
+                    animalProduce.getQuality().getValue()));
+        }
+        else if(item instanceof Fish fish){
+            currentPlayer.increaseNextDayMoney((int) Math.floor(count * item.getBaseSellPrice() *
+                    fish.getQuality().getValue()));
+        }
+        else{
+            if(item.getBaseSellPrice() == 0){
+                return new Result(false,"You can't sell this item!");
+            }
+            currentPlayer.increaseNextDayMoney( count * item.getBaseSellPrice());
+        }
+
+        return new Result(true,count + " of item sold successfully");
         // TODO sell is wrong, fix this !!!
 
-        Fish fish = Fish.getFish(product);
-        if (fish != null) {
-            if (count != -1) {
-                if (!removeItemFromInventory(fish, count)) {
-                    return new Result(false, "not enough products");
-                }
-            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish) == 0) {
-                return new Result(false, "not enough products");
-            } else {
-                int money;
-                if (count == -1) {
-                    money = (int) (fish.getBaseSellPrice() * fish.getQuality().getValue())
-                            * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish);
-                } else {
-                    money = (int) (fish.getBaseSellPrice() * fish.getQuality().getValue()) * count;
-                }
-                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
-                return new Result(true, "item sold successfully");
-            }
-        }
-        Fruit fruit = Fruit.getFruit(product);
-        if (fruit != null) {
-            if (count != -1) {
-                if (!removeItemFromInventory(fruit, count)) {
-                    return new Result(false, "not enough products");
-                }
-            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit) == 0) {
-                return new Result(false, "not enough products");
-            } else {
-                int money = 0;
-                if (count == -1) {
-                    money = (int) (fruit.getBaseSellPrice() * fruit.getQuality().getValue())
-                            * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit);
-                } else {
-                    money = (int) (fish.getBaseSellPrice() * fruit.getQuality().getValue()) * count;
-                }
-                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
-                return new Result(true, "item sold successfully");
-            }
-        }
+//        Fish fish = Fish.getFish(product);
+//        if (fish != null) {
+//            if (count != -1) {
+//                if (!removeItemFromInventory(fish, count)) {
+//                    return new Result(false, "not enough products");
+//                }
+//            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish) == 0) {
+//                return new Result(false, "not enough products");
+//            } else {
+//                int money;
+//                if (count == -1) {
+//                    money = (int) (fish.getBaseSellPrice() * fish.getQuality().getValue())
+//                            * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish);
+//                } else {
+//                    money = (int) (fish.getBaseSellPrice() * fish.getQuality().getValue()) * count;
+//                }
+//                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+//                return new Result(true, "item sold successfully");
+//            }
+//        }
+//        Fruit fruit = Fruit.getFruit(product);
+//        if (fruit != null) {
+//            if (count != -1) {
+//                if (!removeItemFromInventory(fruit, count)) {
+//                    return new Result(false, "not enough products");
+//                }
+//            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit) == 0) {
+//                return new Result(false, "not enough products");
+//            } else {
+//                int money = 0;
+//                if (count == -1) {
+//                    money = (int) (fruit.getBaseSellPrice() * fruit.getQuality().getValue())
+//                            * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit);
+//                } else {
+//                    money = (int) (fish.getBaseSellPrice() * fruit.getQuality().getValue()) * count;
+//                }
+//                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+//                return new Result(true, "item sold successfully");
+//            }
+//        }
+//
+//        //Artisan artisan =
+//        Food food = Food.getFood(product);
+//        if (food != null) {
+//            if (count != -1) {
+//                if (!removeItemFromInventory(food, count)) {
+//                    return new Result(false, "not enough products");
+//                }
+//            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food) == 0) {
+//                return new Result(false, "not enough products");
+//            } else {
+//                int money = 0;
+//                if (count == -1) {
+//                    money = food.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food);
+//                } else {
+//                    money = food.getBaseSellPrice() * count;
+//                }
+//                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+//                return new Result(true, "item sold successfully");
+//            }
+//        }
+//        Produce produce = Produce.getProduce(product);
+//        if (produce != null) {
+//            if (count != -1) {
+//                if (!removeItemFromInventory(produce, count)) {
+//                    return new Result(false, "not enough products");
+//                }
+//            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce) == 0) {
+//                return new Result(false, "not enough products");
+//            } else {
+//                int money = 0;
+//                if (count == -1) {
+//                    money = produce.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce);
+//                } else {
+//                    money = produce.getBaseSellPrice() * count;
+//                }
+//                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+//                return new Result(true, "item sold successfully");
+//            }
+//        }
+//        FeatureArtisan featureArtisan = FeatureArtisan.getFeatureArtisan(product);
+//        if (featureArtisan != null) {
+//            if (count != -1) {
+//                if (!removeItemFromInventory(featureArtisan, count)) {
+//                    return new Result(false, "not enough products");
+//                }
+//            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(featureArtisan) == 0) {
+//                return new Result(false, "not enough products");
+//            } else {
+//
+//                int money = 0;
+//                if (count == -1) {
+//                    money = featureArtisan.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(featureArtisan);
+//                } else {
+//                    money = featureArtisan.getBaseSellPrice() * count;
+//                }
+//                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+//                return new Result(false, "item sold successfully");
+//            }
+//        }
+//        return new Result(false, "you can't sell this product");
 
-        //Artisan artisan =
-        Food food = Food.getFood(product);
-        if (food != null) {
-            if (count != -1) {
-                if (!removeItemFromInventory(food, count)) {
-                    return new Result(false, "not enough products");
-                }
-            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food) == 0) {
-                return new Result(false, "not enough products");
-            } else {
-                int money = 0;
-                if (count == -1) {
-                    money = food.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food);
-                } else {
-                    money = food.getBaseSellPrice() * count;
-                }
-                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
-                return new Result(true, "item sold successfully");
-            }
-        }
-        Produce produce = Produce.getProduce(product);
-        if (produce != null) {
-            if (count != -1) {
-                if (!removeItemFromInventory(produce, count)) {
-                    return new Result(false, "not enough products");
-                }
-            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce) == 0) {
-                return new Result(false, "not enough products");
-            } else {
-                int money = 0;
-                if (count == -1) {
-                    money = produce.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce);
-                } else {
-                    money = produce.getBaseSellPrice() * count;
-                }
-                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
-                return new Result(true, "item sold successfully");
-            }
-        }
-        FeatureArtisan featureArtisan = FeatureArtisan.getFeatureArtisan(product);
-        if (featureArtisan != null) {
-            if (count != -1) {
-                if (!removeItemFromInventory(featureArtisan, count)) {
-                    return new Result(false, "not enough products");
-                }
-            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(featureArtisan) == 0) {
-                return new Result(false, "not enough products");
-            } else {
-
-                int money = 0;
-                if (count == -1) {
-                    money = featureArtisan.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(featureArtisan);
-                } else {
-                    money = featureArtisan.getBaseSellPrice() * count;
-                }
-                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
-                return new Result(false, "item sold successfully");
-            }
-        }
-        return new Result(false, "you can't sell this product");
     }
 
     static Result playerNotFound() {
