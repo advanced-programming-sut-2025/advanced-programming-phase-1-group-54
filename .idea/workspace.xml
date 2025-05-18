@@ -6,16 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="debug code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animalProduces.json" beforeDir="false" afterPath="$PROJECT_DIR$/animalProduces.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CheatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CheatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CraftingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FoodController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/FriendShipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/FriendShipController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/UniqueItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/UniqueItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/DefaultMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,15 +133,7 @@
       <workItem from="1747233139067" duration="41485000" />
       <workItem from="1747303498996" duration="9253000" />
       <workItem from="1747512763721" duration="190000" />
-      <workItem from="1747549737006" duration="7645000" />
-    </task>
-    <task id="LOCAL-00019" summary="write writeToJson method Of Material Class">
-      <option name="closed" value="true" />
-      <created>1746208780315</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1746208780315</updated>
+      <workItem from="1747549737006" duration="8304000" />
     </task>
     <task id="LOCAL-00020" summary="write writeToJson method Of Seed Class">
       <option name="closed" value="true" />
@@ -537,7 +519,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747526442012</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="debug code">
+      <option name="closed" value="true" />
+      <created>1747557634362</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1747557634362</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

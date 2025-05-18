@@ -435,7 +435,7 @@ public class DefaultMenu implements GameSubMenu {
     private void handleFertilize(String input) {
         Command command = GameCommand.FERTILIZE;
         String fertilizer = command.getGroup(input, "fertilizer");
-        Direction direction = Direction.fromString(input);
+        Direction direction = Direction.fromString(command.getGroup(input, "direction"));
         showResult(PlantsController.fertilizePlant(fertilizer, direction));
     }
 
