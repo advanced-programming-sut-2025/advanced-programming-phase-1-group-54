@@ -1,6 +1,5 @@
 {
   "Summer Squash Pickles": {
-    "sellPrice": 140,
     "edible": true,
     "energy": 110,
     "processingHours": 6,
@@ -12,10 +11,10 @@
       "Summer Squash": 1
     },
     "name": "Summer Squash Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 140
   },
   "Dried Red Mushroom": {
-    "sellPrice": 562,
     "edible": true,
     "energy": 50,
     "processingHours": 0,
@@ -27,10 +26,10 @@
       "Red Mushroom": 5
     },
     "name": "Dried Red Mushroom",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 562
   },
   "Pumpkin Juice": {
-    "sellPrice": 720,
     "edible": true,
     "energy": 0,
     "processingHours": 96,
@@ -42,10 +41,10 @@
       "Pumpkin": 1
     },
     "name": "Pumpkin Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 720
   },
   "Dried Common Mushroom": {
-    "sellPrice": 300,
     "edible": true,
     "energy": 50,
     "processingHours": 0,
@@ -57,10 +56,10 @@
       "Common Mushroom": 5
     },
     "name": "Dried Common Mushroom",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 300
   },
   "Dried Morel": {
-    "sellPrice": 1125,
     "edible": true,
     "energy": 50,
     "processingHours": 0,
@@ -72,10 +71,10 @@
       "Morel": 5
     },
     "name": "Dried Morel",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1125
   },
   "Dried Banana": {
-    "sellPrice": 1125,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -87,10 +86,10 @@
       "Banana": 5
     },
     "name": "Dried Banana",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1125
   },
   "Banana Wine": {
-    "sellPrice": 450,
     "edible": true,
     "energy": 131,
     "processingHours": 168,
@@ -102,10 +101,10 @@
       "Banana": 1
     },
     "name": "Banana Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 450
   },
   "Starfruit Jelly": {
-    "sellPrice": 1550,
     "edible": true,
     "energy": 250,
     "processingHours": 72,
@@ -117,10 +116,10 @@
       "Starfruit": 1
     },
     "name": "Starfruit Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1550
   },
   "Vinegar": {
-    "sellPrice": 100,
     "edible": true,
     "energy": 13,
     "processingHours": 10,
@@ -132,10 +131,10 @@
       "Rice": 1
     },
     "name": "Vinegar",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 100
   },
   "Dried Mango": {
-    "sellPrice": 975,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -147,10 +146,10 @@
       "Mango": 5
     },
     "name": "Dried Mango",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 975
   },
   "Spice Berry Jelly": {
-    "sellPrice": 210,
     "edible": true,
     "energy": 50,
     "processingHours": 72,
@@ -162,10 +161,10 @@
       "Spice Berry": 1
     },
     "name": "Spice Berry Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 210
   },
   "Amaranth Juice": {
-    "sellPrice": 337,
     "edible": true,
     "energy": 100,
     "processingHours": 96,
@@ -177,10 +176,10 @@
       "Amaranth": 1
     },
     "name": "Amaranth Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 337
   },
   "Beet Juice": {
-    "sellPrice": 225,
     "edible": true,
     "energy": 60,
     "processingHours": 96,
@@ -192,10 +191,10 @@
       "Beet": 1
     },
     "name": "Beet Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 225
   },
   "Kale Pickles": {
-    "sellPrice": 270,
     "edible": true,
     "energy": 87,
     "processingHours": 6,
@@ -207,10 +206,10 @@
       "Kale": 1
     },
     "name": "Kale Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 270
   },
   "Corn Juice": {
-    "sellPrice": 112,
     "edible": true,
     "energy": 50,
     "processingHours": 96,
@@ -222,10 +221,10 @@
       "Corn": 1
     },
     "name": "Corn Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 112
   },
   "Green Bean Pickles": {
-    "sellPrice": 130,
     "edible": true,
     "energy": 43,
     "processingHours": 6,
@@ -237,10 +236,10 @@
       "Green Bean": 1
     },
     "name": "Green Bean Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 130
   },
   "Radish Pickles": {
-    "sellPrice": 230,
     "edible": true,
     "energy": 78,
     "processingHours": 6,
@@ -252,10 +251,10 @@
       "Radish": 1
     },
     "name": "Radish Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 230
   },
   "Green Bean Juice": {
-    "sellPrice": 90,
     "edible": true,
     "energy": 50,
     "processingHours": 96,
@@ -267,10 +266,10 @@
       "Green Bean": 1
     },
     "name": "Green Bean Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 90
   },
   "Cloth": {
-    "sellPrice": 470,
     "edible": false,
     "energy": 0,
     "processingHours": 4,
@@ -282,10 +281,10 @@
       "Wool": 1
     },
     "name": "Cloth",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 470
   },
   "Pumpkin Pickles": {
-    "sellPrice": 690,
     "edible": true,
     "energy": 0,
     "processingHours": 6,
@@ -297,10 +296,10 @@
       "Pumpkin": 1
     },
     "name": "Pumpkin Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 690
   },
   "Red Cabbage Juice": {
-    "sellPrice": 585,
     "edible": true,
     "energy": 150,
     "processingHours": 96,
@@ -312,10 +311,10 @@
       "Red Cabbage": 1
     },
     "name": "Red Cabbage Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 585
   },
   "Melon Wine": {
-    "sellPrice": 750,
     "edible": true,
     "energy": 197,
     "processingHours": 168,
@@ -327,10 +326,10 @@
       "Melon": 1
     },
     "name": "Melon Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 750
   },
   "Amaranth Pickles": {
-    "sellPrice": 350,
     "edible": true,
     "energy": 87,
     "processingHours": 6,
@@ -342,10 +341,10 @@
       "Amaranth": 1
     },
     "name": "Amaranth Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 350
   },
   "Red Cabbage Pickles": {
-    "sellPrice": 570,
     "edible": true,
     "energy": 131,
     "processingHours": 6,
@@ -357,10 +356,10 @@
       "Red Cabbage": 1
     },
     "name": "Red Cabbage Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 570
   },
   "Apricot Jelly": {
-    "sellPrice": 168,
     "edible": true,
     "energy": 76,
     "processingHours": 72,
@@ -372,10 +371,10 @@
       "Apricot": 1
     },
     "name": "Apricot Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 168
   },
   "Dried Cherry": {
-    "sellPrice": 600,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -387,10 +386,10 @@
       "Cherry": 5
     },
     "name": "Dried Cherry",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 600
   },
   "Dried Melon": {
-    "sellPrice": 1875,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -402,10 +401,10 @@
       "Melon": 5
     },
     "name": "Dried Melon",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1875
   },
   "Pale Ale": {
-    "sellPrice": 300,
     "edible": true,
     "energy": 50,
     "processingHours": 72,
@@ -417,10 +416,10 @@
       "Hops": 1
     },
     "name": "Pale Ale",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 300
   },
   "Wild Plum Jelly": {
-    "sellPrice": 210,
     "edible": true,
     "energy": 50,
     "processingHours": 72,
@@ -432,10 +431,10 @@
       "Wild Plum": 1
     },
     "name": "Wild Plum Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 210
   },
   "Parsnip Pickles": {
-    "sellPrice": 120,
     "edible": true,
     "energy": 43,
     "processingHours": 6,
@@ -447,10 +446,10 @@
       "Parsnip": 1
     },
     "name": "Parsnip Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 120
   },
   "Smoked Flounder": {
-    "sellPrice": 200,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -464,10 +463,10 @@
       "Flounder": 1
     },
     "name": "Smoked Flounder",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 200
   },
   "Sunflower Seed Oil": {
-    "sellPrice": 1065,
     "edible": true,
     "energy": 13,
     "processingHours": 48,
@@ -479,10 +478,10 @@
       "Sunflower Seed": 1
     },
     "name": "Sunflower Seed Oil",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1065
   },
   "Peach Wine": {
-    "sellPrice": 420,
     "edible": true,
     "energy": 66,
     "processingHours": 168,
@@ -494,10 +493,10 @@
       "Peach": 1
     },
     "name": "Peach Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 420
   },
   "Dried Powdermelon": {
-    "sellPrice": 450,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -509,10 +508,10 @@
       "Powdermelon": 5
     },
     "name": "Dried Powdermelon",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 450
   },
   "Radish Juice": {
-    "sellPrice": 202,
     "edible": true,
     "energy": 90,
     "processingHours": 96,
@@ -524,10 +523,10 @@
       "Radish": 1
     },
     "name": "Radish Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 202
   },
   "Dried Rhubarb": {
-    "sellPrice": 1650,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -539,10 +538,10 @@
       "Rhubarb": 5
     },
     "name": "Dried Rhubarb",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1650
   },
   "Honey": {
-    "sellPrice": 350,
     "edible": true,
     "energy": 75,
     "processingHours": 96,
@@ -550,10 +549,10 @@
     "ingredientsNames": [],
     "ingredientsNumber": {},
     "name": "Honey",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 350
   },
   "Apricot Wine": {
-    "sellPrice": 177,
     "edible": true,
     "energy": 66,
     "processingHours": 168,
@@ -565,10 +564,10 @@
       "Apricot": 1
     },
     "name": "Apricot Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 177
   },
   "Corn Oil": {
-    "sellPrice": 100,
     "edible": true,
     "energy": 13,
     "processingHours": 6,
@@ -580,10 +579,10 @@
       "Corn": 1
     },
     "name": "Corn Oil",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 100
   },
   "Pomegranate Jelly": {
-    "sellPrice": 330,
     "edible": true,
     "energy": 76,
     "processingHours": 72,
@@ -595,10 +594,10 @@
       "Pomegranate": 1
     },
     "name": "Pomegranate Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 330
   },
   "Dried pomegranate": {
-    "sellPrice": 1050,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -610,10 +609,10 @@
       "Pomegranate": 5
     },
     "name": "Dried pomegranate",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1050
   },
   "Smoked Shad": {
-    "sellPrice": 120,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -627,10 +626,10 @@
       "Shad": 1
     },
     "name": "Smoked Shad",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 120
   },
   "Large Goat Cheese": {
-    "sellPrice": 600,
     "edible": true,
     "energy": 100,
     "processingHours": 3,
@@ -642,10 +641,10 @@
       "Large Goat Milk": 1
     },
     "name": "Large Goat Cheese",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 600
   },
   "Goat Cheese": {
-    "sellPrice": 400,
     "edible": true,
     "energy": 100,
     "processingHours": 3,
@@ -657,10 +656,10 @@
       "Goat Milk": 1
     },
     "name": "Goat Cheese",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 400
   },
   "Yam Pickles": {
-    "sellPrice": 370,
     "edible": true,
     "energy": 78,
     "processingHours": 6,
@@ -672,10 +671,10 @@
       "Yam": 1
     },
     "name": "Yam Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 370
   },
   "Spice Berry Wine": {
-    "sellPrice": 240,
     "edible": true,
     "energy": 43,
     "processingHours": 168,
@@ -687,10 +686,10 @@
       "Spice Berry": 1
     },
     "name": "Spice Berry Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 240
   },
   "Potato Pickles": {
-    "sellPrice": 210,
     "edible": true,
     "energy": 43,
     "processingHours": 6,
@@ -702,10 +701,10 @@
       "Potato": 1
     },
     "name": "Potato Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 210
   },
   "Wild Plum Wine": {
-    "sellPrice": 240,
     "edible": true,
     "energy": 43,
     "processingHours": 168,
@@ -717,10 +716,10 @@
       "Wild Plum": 1
     },
     "name": "Wild Plum Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 240
   },
   "Smoked Angler": {
-    "sellPrice": 1800,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -734,10 +733,10 @@
       "Coal": 1
     },
     "name": "Smoked Angler",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1800
   },
   "Ancient Fruit Wine": {
-    "sellPrice": 1650,
     "edible": true,
     "energy": 0,
     "processingHours": 168,
@@ -749,10 +748,10 @@
       "Ancient Fruit": 1
     },
     "name": "Ancient Fruit Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1650
   },
   "Dried Wild Plum": {
-    "sellPrice": 600,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -764,10 +763,10 @@
       "Wild Plum": 5
     },
     "name": "Dried Wild Plum",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 600
   },
   "Coffee": {
-    "sellPrice": 150,
     "edible": true,
     "energy": 75,
     "processingHours": 2,
@@ -779,10 +778,10 @@
       "Coffee Bean": 5
     },
     "name": "Coffee",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 150
   },
   "Wheat Pickles": {
-    "sellPrice": 100,
     "edible": true,
     "energy": 0,
     "processingHours": 6,
@@ -794,10 +793,10 @@
       "Wheat": 1
     },
     "name": "Wheat Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 100
   },
   "Dried Salmonberry": {
-    "sellPrice": 37,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -809,10 +808,10 @@
       "Salmonberry": 5
     },
     "name": "Dried Salmonberry",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 37
   },
   "Beer": {
-    "sellPrice": 200,
     "edible": true,
     "energy": 50,
     "processingHours": 24,
@@ -824,10 +823,10 @@
       "Wheat": 1
     },
     "name": "Beer",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 200
   },
   "Corn Pickles": {
-    "sellPrice": 150,
     "edible": true,
     "energy": 43,
     "processingHours": 6,
@@ -839,10 +838,10 @@
       "Corn": 1
     },
     "name": "Corn Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 150
   },
   "Smoked Tilapia": {
-    "sellPrice": 150,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -856,10 +855,10 @@
       "Tilapia": 1
     },
     "name": "Smoked Tilapia",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 150
   },
   "Smoked Perch": {
-    "sellPrice": 110,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -873,10 +872,10 @@
       "Coal": 1
     },
     "name": "Smoked Perch",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 110
   },
   "Smoked Lionfish": {
-    "sellPrice": 200,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -890,10 +889,10 @@
       "Lionfish": 1
     },
     "name": "Smoked Lionfish",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 200
   },
   "Cherry Jelly": {
-    "sellPrice": 210,
     "edible": true,
     "energy": 76,
     "processingHours": 72,
@@ -905,10 +904,10 @@
       "Cherry": 1
     },
     "name": "Cherry Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 210
   },
   "Mango Wine": {
-    "sellPrice": 390,
     "edible": true,
     "energy": 175,
     "processingHours": 168,
@@ -920,10 +919,10 @@
       "Mango": 1
     },
     "name": "Mango Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 390
   },
   "Dried Crystal Fruit": {
-    "sellPrice": 1125,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -935,10 +934,10 @@
       "Crystal Fruit": 5
     },
     "name": "Dried Crystal Fruit",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1125
   },
   "Dried Apple": {
-    "sellPrice": 750,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -950,10 +949,10 @@
       "Apple": 5
     },
     "name": "Dried Apple",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 750
   },
   "Summer Squash Juice": {
-    "sellPrice": 101,
     "edible": true,
     "energy": 126,
     "processingHours": 96,
@@ -965,10 +964,10 @@
       "Summer Squash": 1
     },
     "name": "Summer Squash Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 101
   },
   "Orange Jelly": {
-    "sellPrice": 250,
     "edible": true,
     "energy": 76,
     "processingHours": 72,
@@ -980,10 +979,10 @@
       "Orange": 1
     },
     "name": "Orange Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 250
   },
   "Copper Bar": {
-    "sellPrice": 0,
     "edible": false,
     "energy": 0,
     "processingHours": 4,
@@ -997,10 +996,10 @@
       "Copper Ore": 5
     },
     "name": "Copper Bar",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 0
   },
   "Smoked Sardine": {
-    "sellPrice": 80,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -1014,10 +1013,10 @@
       "Coal": 1
     },
     "name": "Smoked Sardine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 80
   },
   "Kale Juice": {
-    "sellPrice": 247,
     "edible": true,
     "energy": 100,
     "processingHours": 96,
@@ -1029,10 +1028,10 @@
       "Kale": 1
     },
     "name": "Kale Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 247
   },
   "Strawberry Jelly": {
-    "sellPrice": 290,
     "edible": true,
     "energy": 100,
     "processingHours": 72,
@@ -1044,10 +1043,10 @@
       "Strawberry": 1
     },
     "name": "Strawberry Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 290
   },
   "Orange Wine": {
-    "sellPrice": 300,
     "edible": true,
     "energy": 66,
     "processingHours": 168,
@@ -1059,10 +1058,10 @@
       "Orange": 1
     },
     "name": "Orange Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 300
   },
   "Salmonberry Wine": {
-    "sellPrice": 15,
     "edible": true,
     "energy": 43,
     "processingHours": 168,
@@ -1074,10 +1073,10 @@
       "Salmonberry": 1
     },
     "name": "Salmonberry Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 15
   },
   "Hot Pepper Jelly": {
-    "sellPrice": 130,
     "edible": true,
     "energy": 26,
     "processingHours": 72,
@@ -1089,10 +1088,10 @@
       "Hot Pepper": 1
     },
     "name": "Hot Pepper Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 130
   },
   "Iridium Bar": {
-    "sellPrice": 0,
     "edible": false,
     "energy": 0,
     "processingHours": 4,
@@ -1106,10 +1105,10 @@
       "Iridium Ore": 5
     },
     "name": "Iridium Bar",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 0
   },
   "Rhubarb Wine": {
-    "sellPrice": 660,
     "edible": true,
     "energy": 0,
     "processingHours": 168,
@@ -1121,10 +1120,10 @@
       "Rhubarb": 1
     },
     "name": "Rhubarb Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 660
   },
   "Hops Pickles": {
-    "sellPrice": 100,
     "edible": true,
     "energy": 78,
     "processingHours": 6,
@@ -1136,10 +1135,10 @@
       "Hops": 1
     },
     "name": "Hops Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 100
   },
   "Cranberries Wine": {
-    "sellPrice": 225,
     "edible": true,
     "energy": 66,
     "processingHours": 168,
@@ -1151,10 +1150,10 @@
       "Cranberries": 1
     },
     "name": "Cranberries Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 225
   },
   "Gold Bar": {
-    "sellPrice": 0,
     "edible": false,
     "energy": 0,
     "processingHours": 4,
@@ -1168,10 +1167,10 @@
       "Coal": 1
     },
     "name": "Gold Bar",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 0
   },
   "Dried Blackberry": {
-    "sellPrice": 187,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -1183,10 +1182,10 @@
       "Blackberry": 5
     },
     "name": "Dried Blackberry",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 187
   },
   "Blackberry Wine": {
-    "sellPrice": 75,
     "edible": true,
     "energy": 43,
     "processingHours": 168,
@@ -1198,10 +1197,10 @@
       "Blackberry": 1
     },
     "name": "Blackberry Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 75
   },
   "Duck Mayonnaise": {
-    "sellPrice": 37,
     "edible": true,
     "energy": 75,
     "processingHours": 3,
@@ -1213,10 +1212,10 @@
       "Duck Egg": 1
     },
     "name": "Duck Mayonnaise",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 37
   },
   "Blueberry Jelly": {
-    "sellPrice": 150,
     "edible": true,
     "energy": 50,
     "processingHours": 72,
@@ -1228,10 +1227,10 @@
       "Blueberry": 1
     },
     "name": "Blueberry Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 150
   },
   "Dried Peach": {
-    "sellPrice": 1050,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -1243,10 +1242,10 @@
       "Peach": 5
     },
     "name": "Dried Peach",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1050
   },
   "Hot Pepper Wine": {
-    "sellPrice": 120,
     "edible": true,
     "energy": 22,
     "processingHours": 168,
@@ -1258,10 +1257,10 @@
       "Hot Pepper": 1
     },
     "name": "Hot Pepper Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 120
   },
   "Large Mayonnaise": {
-    "sellPrice": 237,
     "edible": true,
     "energy": 50,
     "processingHours": 3,
@@ -1273,10 +1272,10 @@
       "Large Egg": 1
     },
     "name": "Large Mayonnaise",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 237
   },
   "Unmilled Rice Pickles": {
-    "sellPrice": 110,
     "edible": true,
     "energy": 5,
     "processingHours": 6,
@@ -1288,10 +1287,10 @@
       "Unmilled Rice": 1
     },
     "name": "Unmilled Rice Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 110
   },
   "Cranberries Jelly": {
-    "sellPrice": 200,
     "edible": true,
     "energy": 76,
     "processingHours": 72,
@@ -1303,10 +1302,10 @@
       "Cranberries": 1
     },
     "name": "Cranberries Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 200
   },
   "Truffle Oil": {
-    "sellPrice": 1065,
     "edible": true,
     "energy": 38,
     "processingHours": 6,
@@ -1318,10 +1317,10 @@
       "Truffle": 1
     },
     "name": "Truffle Oil",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1065
   },
   "Fiddlehead Fern Pickles": {
-    "sellPrice": 230,
     "edible": true,
     "energy": 43,
     "processingHours": 6,
@@ -1333,10 +1332,10 @@
       "Fiddlehead Fern": 1
     },
     "name": "Fiddlehead Fern Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 230
   },
   "Eggplant Pickles": {
-    "sellPrice": 170,
     "edible": true,
     "energy": 35,
     "processingHours": 6,
@@ -1348,10 +1347,10 @@
       "Eggplant": 1
     },
     "name": "Eggplant Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 170
   },
   "Potato Juice": {
-    "sellPrice": 180,
     "edible": true,
     "energy": 50,
     "processingHours": 96,
@@ -1363,10 +1362,10 @@
       "Potato": 1
     },
     "name": "Potato Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 180
   },
   "Smoked Ghostfish": {
-    "sellPrice": 90,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -1380,10 +1379,10 @@
       "Ghostfish": 1
     },
     "name": "Smoked Ghostfish",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 90
   },
   "Beet Pickles": {
-    "sellPrice": 250,
     "edible": true,
     "energy": 52,
     "processingHours": 6,
@@ -1395,10 +1394,10 @@
       "Beet": 1
     },
     "name": "Beet Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 250
   },
   "Pomegranate Wine": {
-    "sellPrice": 420,
     "edible": true,
     "energy": 66,
     "processingHours": 168,
@@ -1410,10 +1409,10 @@
       "Pomegranate": 1
     },
     "name": "Pomegranate Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 420
   },
   "Cauliflower Pickles": {
-    "sellPrice": 400,
     "edible": true,
     "energy": 131,
     "processingHours": 6,
@@ -1425,10 +1424,10 @@
       "Cauliflower": 1
     },
     "name": "Cauliflower Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 400
   },
   "Apple Jelly": {
-    "sellPrice": 250,
     "edible": true,
     "energy": 76,
     "processingHours": 72,
@@ -1440,10 +1439,10 @@
       "Apple": 1
     },
     "name": "Apple Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 250
   },
   "Mango Jelly": {
-    "sellPrice": 310,
     "edible": true,
     "energy": 200,
     "processingHours": 72,
@@ -1455,10 +1454,10 @@
       "Mango": 1
     },
     "name": "Mango Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 310
   },
   "Coal": {
-    "sellPrice": 50,
     "edible": false,
     "energy": 0,
     "processingHours": 1,
@@ -1470,10 +1469,10 @@
       "Wood": 10
     },
     "name": "Coal",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 50
   },
   "Salmonberry Jelly": {
-    "sellPrice": 60,
     "edible": true,
     "energy": 50,
     "processingHours": 72,
@@ -1485,10 +1484,10 @@
       "Salmonberry": 1
     },
     "name": "Salmonberry Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 60
   },
   "Dried Hot Pepper": {
-    "sellPrice": 300,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -1500,10 +1499,10 @@
       "Hot Pepper": 5
     },
     "name": "Dried Hot Pepper",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 300
   },
   "Smoked Blue Discus": {
-    "sellPrice": 240,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -1517,10 +1516,10 @@
       "Coal": 1
     },
     "name": "Smoked Blue Discus",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 240
   },
   "Smoked Legend": {
-    "sellPrice": 10000,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -1534,10 +1533,10 @@
       "Coal": 1
     },
     "name": "Smoked Legend",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 10000
   },
   "Smoked Glacierfish": {
-    "sellPrice": 2000,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -1551,10 +1550,10 @@
       "Glacierfish": 1
     },
     "name": "Smoked Glacierfish",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 2000
   },
   "Dried Apricot": {
-    "sellPrice": 442,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -1566,10 +1565,10 @@
       "Apricot": 5
     },
     "name": "Dried Apricot",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 442
   },
   "Smoked Dorado": {
-    "sellPrice": 200,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -1583,10 +1582,10 @@
       "Dorado": 1
     },
     "name": "Smoked Dorado",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 200
   },
   "Garlic Juice": {
-    "sellPrice": 135,
     "edible": true,
     "energy": 40,
     "processingHours": 96,
@@ -1598,10 +1597,10 @@
       "Garlic": 1
     },
     "name": "Garlic Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 135
   },
   "Garlic Pickles": {
-    "sellPrice": 170,
     "edible": true,
     "energy": 35,
     "processingHours": 6,
@@ -1613,10 +1612,10 @@
       "Garlic": 1
     },
     "name": "Garlic Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 170
   },
   "Dried Starfruit": {
-    "sellPrice": 5625,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -1628,10 +1627,10 @@
       "Starfruit": 5
     },
     "name": "Dried Starfruit",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 5625
   },
   "Powdermelon Wine": {
-    "sellPrice": 180,
     "edible": true,
     "energy": 110,
     "processingHours": 168,
@@ -1643,10 +1642,10 @@
       "Powdermelon": 1
     },
     "name": "Powdermelon Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 180
   },
   "Tomato Juice": {
-    "sellPrice": 135,
     "edible": true,
     "energy": 40,
     "processingHours": 96,
@@ -1658,10 +1657,10 @@
       "Tomato": 1
     },
     "name": "Tomato Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 135
   },
   "Yam Juice": {
-    "sellPrice": 360,
     "edible": true,
     "energy": 90,
     "processingHours": 96,
@@ -1673,10 +1672,10 @@
       "Yam": 1
     },
     "name": "Yam Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 360
   },
   "Dried Purple Mushroom": {
-    "sellPrice": 675,
     "edible": true,
     "energy": 50,
     "processingHours": 0,
@@ -1688,10 +1687,10 @@
       "Purple Mushroom": 5
     },
     "name": "Dried Purple Mushroom",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 675
   },
   "Carrot Juice": {
-    "sellPrice": 78,
     "edible": true,
     "energy": 150,
     "processingHours": 96,
@@ -1703,10 +1702,10 @@
       "Carrot": 1
     },
     "name": "Carrot Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 78
   },
   "Eggplant Juice": {
-    "sellPrice": 135,
     "edible": true,
     "energy": 40,
     "processingHours": 96,
@@ -1718,10 +1717,10 @@
       "Eggplant": 1
     },
     "name": "Eggplant Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 135
   },
   "Banana Jelly": {
-    "sellPrice": 350,
     "edible": true,
     "energy": 150,
     "processingHours": 72,
@@ -1733,10 +1732,10 @@
       "Banana": 1
     },
     "name": "Banana Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 350
   },
   "Mayonnaise": {
-    "sellPrice": 190,
     "edible": true,
     "energy": 50,
     "processingHours": 3,
@@ -1748,10 +1747,10 @@
       "Egg": 1
     },
     "name": "Mayonnaise",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 190
   },
   "Smoked Squid": {
-    "sellPrice": 160,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -1765,10 +1764,10 @@
       "Coal": 1
     },
     "name": "Smoked Squid",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 160
   },
   "Dried Blueberry": {
-    "sellPrice": 375,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -1780,10 +1779,10 @@
       "Blueberry": 5
     },
     "name": "Dried Blueberry",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 375
   },
   "Smoked Herring": {
-    "sellPrice": 60,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -1797,10 +1796,10 @@
       "Coal": 1
     },
     "name": "Smoked Herring",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 60
   },
   "Broccoli Pickles": {
-    "sellPrice": 190,
     "edible": true,
     "energy": 110,
     "processingHours": 6,
@@ -1812,10 +1811,10 @@
       "Broccoli": 1
     },
     "name": "Broccoli Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 190
   },
   "Artichoke Pickles": {
-    "sellPrice": 370,
     "edible": true,
     "energy": 52,
     "processingHours": 6,
@@ -1827,10 +1826,10 @@
       "Artichoke": 1
     },
     "name": "Artichoke Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 370
   },
   "Blueberry Wine": {
-    "sellPrice": 150,
     "edible": true,
     "energy": 43,
     "processingHours": 168,
@@ -1842,10 +1841,10 @@
       "Blueberry": 1
     },
     "name": "Blueberry Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 150
   },
   "Starfruit Wine": {
-    "sellPrice": 2250,
     "edible": true,
     "energy": 218,
     "processingHours": 168,
@@ -1857,10 +1856,10 @@
       "Starfruit": 1
     },
     "name": "Starfruit Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 2250
   },
   "Smoked Tuna": {
-    "sellPrice": 200,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -1874,10 +1873,10 @@
       "Coal": 1
     },
     "name": "Smoked Tuna",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 200
   },
   "Dinosaur Mayonnaise": {
-    "sellPrice": 800,
     "edible": true,
     "energy": 125,
     "processingHours": 3,
@@ -1889,10 +1888,10 @@
       "Dinosaur Egg": 1
     },
     "name": "Dinosaur Mayonnaise",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 800
   },
   "Cheese": {
-    "sellPrice": 230,
     "edible": true,
     "energy": 100,
     "processingHours": 3,
@@ -1904,10 +1903,10 @@
       "Milk": 1
     },
     "name": "Cheese",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 230
   },
   "Apple Wine": {
-    "sellPrice": 300,
     "edible": true,
     "energy": 66,
     "processingHours": 168,
@@ -1919,10 +1918,10 @@
       "Apple": 1
     },
     "name": "Apple Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 300
   },
   "Grape Jelly": {
-    "sellPrice": 210,
     "edible": true,
     "energy": 76,
     "processingHours": 72,
@@ -1934,10 +1933,10 @@
       "Grape": 1
     },
     "name": "Grape Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 210
   },
   "Strawberry Wine": {
-    "sellPrice": 360,
     "edible": true,
     "energy": 87,
     "processingHours": 168,
@@ -1949,10 +1948,10 @@
       "Strawberry": 1
     },
     "name": "Strawberry Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 360
   },
   "Cauliflower Juice": {
-    "sellPrice": 393,
     "edible": true,
     "energy": 150,
     "processingHours": 96,
@@ -1964,10 +1963,10 @@
       "Cauliflower": 1
     },
     "name": "Cauliflower Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 393
   },
   "Cherry Wine": {
-    "sellPrice": 240,
     "edible": true,
     "energy": 66,
     "processingHours": 168,
@@ -1979,10 +1978,10 @@
       "Cherry": 1
     },
     "name": "Cherry Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 240
   },
   "Carrot Pickles": {
-    "sellPrice": 120,
     "edible": true,
     "energy": 131,
     "processingHours": 6,
@@ -1994,10 +1993,10 @@
       "Carrot": 1
     },
     "name": "Carrot Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 120
   },
   "Smoked Rainbow Trout": {
-    "sellPrice": 130,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -2011,10 +2010,10 @@
       "Rainbow Trout": 1
     },
     "name": "Smoked Rainbow Trout",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 130
   },
   "Rhubarb Jelly": {
-    "sellPrice": 490,
     "edible": true,
     "energy": 0,
     "processingHours": 72,
@@ -2026,10 +2025,10 @@
       "Rhubarb": 1
     },
     "name": "Rhubarb Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 490
   },
   "Grape Wine": {
-    "sellPrice": 240,
     "edible": true,
     "energy": 66,
     "processingHours": 168,
@@ -2041,10 +2040,10 @@
       "Grape": 1
     },
     "name": "Grape Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 240
   },
   "Raisins": {
-    "sellPrice": 600,
     "edible": true,
     "energy": 125,
     "processingHours": 0,
@@ -2056,10 +2055,10 @@
       "Grapes": 5
     },
     "name": "Raisins",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 600
   },
   "Crystal Fruit Jelly": {
-    "sellPrice": 350,
     "edible": true,
     "energy": 126,
     "processingHours": 72,
@@ -2071,10 +2070,10 @@
       "Crystal Fruit": 1
     },
     "name": "Crystal Fruit Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 350
   },
   "Unmilled Rice Juice": {
-    "sellPrice": 67,
     "edible": true,
     "energy": 6,
     "processingHours": 96,
@@ -2086,10 +2085,10 @@
       "Unmilled Rice": 1
     },
     "name": "Unmilled Rice Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 67
   },
   "Crystal Fruit Wine": {
-    "sellPrice": 450,
     "edible": true,
     "energy": 110,
     "processingHours": 168,
@@ -2101,10 +2100,10 @@
       "Crystal Fruit": 1
     },
     "name": "Crystal Fruit Wine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 450
   },
   "Parsnip Juice": {
-    "sellPrice": 78,
     "edible": true,
     "energy": 50,
     "processingHours": 96,
@@ -2116,10 +2115,10 @@
       "Parsnip": 1
     },
     "name": "Parsnip Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 78
   },
   "Dried Spice Berry": {
-    "sellPrice": 600,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -2131,10 +2130,10 @@
       "Spice Berry": 5
     },
     "name": "Dried Spice Berry",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 600
   },
   "Artichoke Juice": {
-    "sellPrice": 360,
     "edible": true,
     "energy": 60,
     "processingHours": 96,
@@ -2146,10 +2145,10 @@
       "Artichoke": 1
     },
     "name": "Artichoke Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 360
   },
   "Dried Cranberries": {
-    "sellPrice": 562,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -2161,10 +2160,10 @@
       "Cranberries": 5
     },
     "name": "Dried Cranberries",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 562
   },
   "Bok Choy Pickles": {
-    "sellPrice": 210,
     "edible": true,
     "energy": 43,
     "processingHours": 6,
@@ -2176,10 +2175,10 @@
       "Bok Choy": 1
     },
     "name": "Bok Choy Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 210
   },
   "Blackberry Jelly": {
-    "sellPrice": 100,
     "edible": true,
     "energy": 50,
     "processingHours": 72,
@@ -2191,10 +2190,10 @@
       "Blackberry": 1
     },
     "name": "Blackberry Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 100
   },
   "Large Cheese": {
-    "sellPrice": 345,
     "edible": true,
     "energy": 100,
     "processingHours": 3,
@@ -2206,10 +2205,10 @@
       "Large Milk": 1
     },
     "name": "Large Cheese",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 345
   },
   "Smoked Crimsonfish": {
-    "sellPrice": 3000,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -2223,10 +2222,10 @@
       "Coal": 1
     },
     "name": "Smoked Crimsonfish",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 3000
   },
   "Bok Choy Juice": {
-    "sellPrice": 180,
     "edible": true,
     "energy": 50,
     "processingHours": 96,
@@ -2238,10 +2237,10 @@
       "Bok Choy": 1
     },
     "name": "Bok Choy Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 180
   },
   "Dried Strawberry": {
-    "sellPrice": 900,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -2253,10 +2252,10 @@
       "Strawberry": 5
     },
     "name": "Dried Strawberry",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 900
   },
   "Smoked Sunfish": {
-    "sellPrice": 60,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -2270,10 +2269,10 @@
       "Sunfish": 1
     },
     "name": "Smoked Sunfish",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 60
   },
   "Broccoli Juice": {
-    "sellPrice": 157,
     "edible": true,
     "energy": 126,
     "processingHours": 96,
@@ -2285,10 +2284,10 @@
       "Broccoli": 1
     },
     "name": "Broccoli Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 157
   },
   "Dried Ancient Fruit": {
-    "sellPrice": 4125,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -2300,10 +2299,10 @@
       "Ancient Fruit": 5
     },
     "name": "Dried Ancient Fruit",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 4125
   },
   "Powdermelon Jelly": {
-    "sellPrice": 170,
     "edible": true,
     "energy": 126,
     "processingHours": 72,
@@ -2315,10 +2314,10 @@
       "Powdermelon": 1
     },
     "name": "Powdermelon Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 170
   },
   "Dried Chanterelle": {
-    "sellPrice": 1200,
     "edible": true,
     "energy": 50,
     "processingHours": 0,
@@ -2330,10 +2329,10 @@
       "Chanterelle": 5
     },
     "name": "Dried Chanterelle",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1200
   },
   "Dried Orange": {
-    "sellPrice": 750,
     "edible": true,
     "energy": 75,
     "processingHours": 0,
@@ -2345,10 +2344,10 @@
       "Orange": 5
     },
     "name": "Dried Orange",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 750
   },
   "Sunflower Oil": {
-    "sellPrice": 100,
     "edible": true,
     "energy": 13,
     "processingHours": 1,
@@ -2360,10 +2359,10 @@
       "Sunflower": 1
     },
     "name": "Sunflower Oil",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 100
   },
   "Smoked Midnight Carp": {
-    "sellPrice": 300,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -2377,10 +2376,10 @@
       "Midnight Carp": 1
     },
     "name": "Smoked Midnight Carp",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 300
   },
   "Peach Jelly": {
-    "sellPrice": 330,
     "edible": true,
     "energy": 76,
     "processingHours": 72,
@@ -2392,10 +2391,10 @@
       "Peach": 1
     },
     "name": "Peach Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 330
   },
   "Iron Bar": {
-    "sellPrice": 0,
     "edible": false,
     "energy": 0,
     "processingHours": 4,
@@ -2409,10 +2408,10 @@
       "Iron Ore": 5
     },
     "name": "Iron Bar",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 0
   },
   "Fiddlehead Fern Juice": {
-    "sellPrice": 202,
     "edible": true,
     "energy": 50,
     "processingHours": 96,
@@ -2424,10 +2423,10 @@
       "Fiddlehead Fern": 1
     },
     "name": "Fiddlehead Fern Juice",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 202
   },
   "Smoked Salmon": {
-    "sellPrice": 150,
     "edible": true,
     "energy": 0,
     "processingHours": 1,
@@ -2441,10 +2440,10 @@
       "Coal": 1
     },
     "name": "Smoked Salmon",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 150
   },
   "Tomato Pickles": {
-    "sellPrice": 170,
     "edible": true,
     "energy": 35,
     "processingHours": 6,
@@ -2456,10 +2455,10 @@
       "Tomato": 1
     },
     "name": "Tomato Pickles",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 170
   },
   "Ancient Fruit Jelly": {
-    "sellPrice": 1150,
     "edible": true,
     "energy": 0,
     "processingHours": 72,
@@ -2471,10 +2470,10 @@
       "Ancient Fruit": 1
     },
     "name": "Ancient Fruit Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1150
   },
   "Melon Jelly": {
-    "sellPrice": 550,
     "edible": true,
     "energy": 226,
     "processingHours": 72,
@@ -2486,10 +2485,10 @@
       "Melon": 1
     },
     "name": "Melon Jelly",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 550
   },
   "Mead": {
-    "sellPrice": 300,
     "edible": true,
     "energy": 100,
     "processingHours": 10,
@@ -2501,6 +2500,7 @@
       "Honey": 1
     },
     "name": "Mead",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 300
   }
 }

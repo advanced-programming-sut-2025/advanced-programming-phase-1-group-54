@@ -154,7 +154,14 @@ public class CommonGameController {
 
         StringBuilder messageBuilder = new StringBuilder();
         for (ToolType toolType : ToolType.values()) {
-            messageBuilder.append(toolType.toString()).append(": ").append(player.getTool(toolType).toString());
+            messageBuilder.append(toolType.toString()).append(": ");
+            if(player.getTool(toolType) == null){
+                messageBuilder.append("don't have the tool\n");
+            }
+            else{
+                messageBuilder.append(player.getTool(toolType).toString()).append("\n");
+            }
+
         }
         return new Result(true, messageBuilder.toString());
     }

@@ -35,8 +35,9 @@ public class CraftingController {
         for (Recipe recipe : Recipe.craftRecipes.values()) {
             output.append(recipe.getName()).append(" : ").append(craftingRecipes.contains(recipe)).append("\n");
         }
-        output.deleteCharAt(output.length() - 1);
-
+        if(!output.isEmpty()) {
+            output.deleteCharAt(output.length() - 1);
+        }
         return new Result(1, output.toString());
 
     }

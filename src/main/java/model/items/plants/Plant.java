@@ -74,7 +74,7 @@ public abstract class Plant implements Placeable, DailyUpdate {
 
     public boolean containSeason(Season season) {
         for (Season value : seasons) {
-            if (value == season) {
+            if (value.equals(season)) {
                 return true;
             }
         }

@@ -1,18 +1,6 @@
 {
-  "SPRING": [
-    "Jazz Seeds",
-    "Carrot Seeds",
-    "Cauliflower Seeds",
-    "Coffee Bean",
-    "Garlic Seeds",
-    "Bean Starter",
-    "Kale Seeds",
-    "Parsnip Seeds",
-    "Potato Seeds",
-    "Rhubarb Seeds",
-    "Strawberry Seeds",
-    "Tulip Bulb",
-    "Rice Shoot",
+  "WINTER": [
+    "Powdermelon Seeds",
     "Ancient Seeds"
   ],
   "FALL": [
@@ -30,6 +18,22 @@
     "Rare Seed",
     "Ancient Seeds"
   ],
+  "SPRING": [
+    "Jazz Seeds",
+    "Carrot Seeds",
+    "Cauliflower Seeds",
+    "Coffee Bean",
+    "Garlic Seeds",
+    "Bean Starter",
+    "Kale Seeds",
+    "Parsnip Seeds",
+    "Potato Seeds",
+    "Rhubarb Seeds",
+    "Strawberry Seeds",
+    "Tulip Bulb",
+    "Rice Shoot",
+    "Ancient Seeds"
+  ],
   "SUMMER": [
     "Blueberry Seeds",
     "Corn Seeds",
@@ -45,10 +49,6 @@
     "Sunflower Seeds",
     "Tomato Seeds",
     "Wheat Seeds",
-    "Ancient Seeds"
-  ],
-  "WINTER": [
-    "Powdermelon Seeds",
     "Ancient Seeds"
   ]
 }

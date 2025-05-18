@@ -17,10 +17,6 @@ public class BackPack {
         if(numberOfItem == null) {
             if(numberOfItemInBackPack.size() < level.getSize()) {
                 numberOfItemInBackPack.put(item, number);
-                System.out.println(item.getName() + " added to backpack " + number);
-
-
-
                 return true;
             }
             return false;

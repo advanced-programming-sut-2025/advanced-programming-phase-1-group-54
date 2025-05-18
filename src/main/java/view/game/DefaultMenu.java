@@ -307,11 +307,11 @@ public class DefaultMenu implements GameSubMenu {
     }
 
     private void handleShowDateTime() {
-        showResult(CommonGameController.showTime());
+        showResult(CommonGameController.showDateTime());
     }
 
     private void handleShowTime() {
-        showResult(CommonGameController.showDateTime());
+        showResult(CommonGameController.showTime());
     }
 
     private void handleShowDayOfWeek() {
@@ -375,7 +375,10 @@ public class DefaultMenu implements GameSubMenu {
     private void handleThrowInTrash(String input) {
         Command command = GameCommand.THROW_IN_TRASH;
         String itemName = command.getGroup(input, "itemName");
-        int number = Integer.parseInt(command.getGroup(input, "number"));
+        Integer number = null;
+        if(command.getGroup(input, "number") != null){
+            number = Integer.parseInt(command.getGroup(input, "number"));
+        }
         showResult(ToolsController.throwInTrash(itemName, number));
     }
 
@@ -450,7 +453,7 @@ public class DefaultMenu implements GameSubMenu {
     }
 
     private void handlePlaceItem(String input) {
-        Command command = GameCommand.CRAFTING;
+        Command command = GameCommand.PLACE_ITEM;
         String itemName = command.getGroup(input, "itemName");
         Direction direction = Direction.fromString(command.getGroup(input, "direction"));
         showResult(CraftingController.placeArtisan(itemName, direction));

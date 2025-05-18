@@ -1,38 +1,38 @@
 {
-  "SPRING": [
+  "WINTER": [
     {
-      "baseSellPrice": 5000,
       "energy": 0,
       "quality": "NORMAL",
-      "name": "Legend",
-      "isEdible": true
+      "name": "Glacierfish",
+      "isEdible": true,
+      "baseSellPrice": 1000
     }
   ],
   "FALL": [
     {
-      "baseSellPrice": 900,
       "energy": 0,
       "quality": "NORMAL",
       "name": "Angler",
-      "isEdible": true
+      "isEdible": true,
+      "baseSellPrice": 900
+    }
+  ],
+  "SPRING": [
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Legend",
+      "isEdible": true,
+      "baseSellPrice": 5000
     }
   ],
   "SUMMER": [
     {
-      "baseSellPrice": 1500,
       "energy": 0,
       "quality": "NORMAL",
       "name": "Crimsonfish",
-      "isEdible": true
-    }
-  ],
-  "WINTER": [
-    {
-      "baseSellPrice": 1000,
-      "energy": 0,
-      "quality": "NORMAL",
-      "name": "Glacierfish",
-      "isEdible": true
+      "isEdible": true,
+      "baseSellPrice": 1500
     }
   ]
 }

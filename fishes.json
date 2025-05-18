@@ -1,142 +1,142 @@
 {
   "Sardine": {
-    "baseSellPrice": 40,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Sardine",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 40
   },
   "Legend": {
-    "baseSellPrice": 5000,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Legend",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 5000
   },
   "Crimsonfish": {
-    "baseSellPrice": 1500,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Crimsonfish",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1500
   },
   "Blue Discus": {
-    "baseSellPrice": 120,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Blue Discus",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 120
   },
   "Salmon": {
-    "baseSellPrice": 75,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Salmon",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 75
   },
   "Rainbow Trout": {
-    "baseSellPrice": 65,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Rainbow Trout",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 65
   },
   "Tilapia": {
-    "baseSellPrice": 75,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Tilapia",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 75
   },
   "Flounder": {
-    "baseSellPrice": 100,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Flounder",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 100
   },
   "Sunfish": {
-    "baseSellPrice": 30,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Sunfish",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 30
   },
   "Glacierfish": {
-    "baseSellPrice": 1000,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Glacierfish",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 1000
   },
   "Herring": {
-    "baseSellPrice": 30,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Herring",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 30
   },
   "Tuna": {
-    "baseSellPrice": 100,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Tuna",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 100
   },
   "Squid": {
-    "baseSellPrice": 80,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Squid",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 80
   },
   "Perch": {
-    "baseSellPrice": 55,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Perch",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 55
   },
   "Angler": {
-    "baseSellPrice": 900,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Angler",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 900
   },
   "Lionfish": {
-    "baseSellPrice": 100,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Lionfish",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 100
   },
   "Midnight Carp": {
-    "baseSellPrice": 150,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Midnight Carp",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 150
   },
   "Dorado": {
-    "baseSellPrice": 100,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Dorado",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 100
   },
   "Ghostfish": {
-    "baseSellPrice": 45,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Ghostfish",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 45
   },
   "Shad": {
-    "baseSellPrice": 60,
     "energy": 0,
     "quality": "NORMAL",
     "name": "Shad",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 60
   }
 }

@@ -30,7 +30,7 @@ public class ToolsController {
         return new Result(true, message.toString());
     }
 
-    public static Result throwInTrash(String itemName, int number) {
+    public static Result throwInTrash(String itemName, Integer number) {
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
 
@@ -40,6 +40,9 @@ public class ToolsController {
         Item item = CommonGameController.findItem(itemName);
         if (item == null) {
             return new Result(false, "Item not found");
+        }
+        if(number == null){
+            number = backPack.getNumberOfItemInBackPack().get(item);
         }
         if (backPack.getNumberOfItemInBackPack().get(item) < number) {
             return new Result(false, String.format("You don't have %d of %s in backpack", number, itemName));

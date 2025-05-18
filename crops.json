@@ -1,7 +1,7 @@
 {
   "Blue Jazz Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Blue Jazz Crop",
     "source": "Jazz Seeds",
     "fruit": "Blue Jazz",
@@ -26,7 +26,7 @@
   },
   "Hot Pepper Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Hot Pepper Crop",
     "source": "Pepper Seeds",
     "fruit": "Hot Pepper",
@@ -51,7 +51,7 @@
   },
   "Spangle Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Spangle Crop",
     "source": "Spangle Seeds",
     "fruit": "Summer Spangle",
@@ -75,7 +75,7 @@
   },
   "Wheat Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Wheat Crop",
     "source": "Wheat Seeds",
     "fruit": "Wheat",
@@ -100,7 +100,7 @@
   },
   "Yam Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Yam Crop",
     "source": "Yam Seeds",
     "fruit": "Yam",
@@ -125,7 +125,7 @@
   },
   "Eggplant Crop": {
     "oneTime": false,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Eggplant Crop",
     "source": "Eggplant Seeds",
     "fruit": "Eggplant",
@@ -150,7 +150,7 @@
   },
   "Fairy Rose Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Fairy Rose Crop",
     "source": "Fairy Seeds",
     "fruit": "Fairy Rose",
@@ -175,7 +175,7 @@
   },
   "Rhubarb Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Rhubarb Crop",
     "source": "Rhubarb Seeds",
     "fruit": "Rhubarb",
@@ -199,7 +199,7 @@
   },
   "Powdermelon Crop": {
     "oneTime": true,
-    "canBecomeGiant": true,
+    "isGiantPossible": true,
     "name": "Powdermelon Crop",
     "source": "Powdermelon Seeds",
     "fruit": "Powdermelon",
@@ -225,7 +225,7 @@
   },
   "Red Cabbage Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Red Cabbage Crop",
     "source": "Red Cabbage Seeds",
     "fruit": "Red Cabbage",
@@ -250,7 +250,7 @@
   },
   "Unmilled Rice Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Unmilled Rice Crop",
     "source": "Rice Shoot",
     "fruit": "Unmilled Rice",
@@ -274,7 +274,7 @@
   },
   "Artichoke Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Artichoke Crop",
     "source": "Artichoke Seeds",
     "fruit": "Artichoke",
@@ -299,7 +299,7 @@
   },
   "Tomato Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Tomato Crop",
     "source": "Tomato Seeds",
     "fruit": "Tomato",
@@ -324,7 +324,7 @@
   },
   "Blueberry Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Blueberry Crop",
     "source": "Blueberry Seeds",
     "fruit": "Blueberry",
@@ -349,7 +349,7 @@
   },
   "Amaranth Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Amaranth Crop",
     "source": "Amaranth Seeds",
     "fruit": "Amaranth",
@@ -373,7 +373,7 @@
   },
   "Bok Choy Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Bok Choy Crop",
     "source": "Bok Choy Seeds",
     "fruit": "Bok Choy",
@@ -397,7 +397,7 @@
   },
   "Carrot Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Carrot Crop",
     "source": "Carrot Seeds",
     "fruit": "Carrot",
@@ -421,7 +421,7 @@
   },
   "Hops Crop": {
     "oneTime": false,
-    "canBecomeGiant": true,
+    "isGiantPossible": true,
     "name": "Hops Crop",
     "source": "Hops Starter",
     "fruit": "Hops",
@@ -445,7 +445,7 @@
   },
   "Beet Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Beet Crop",
     "source": "Beet Seeds",
     "fruit": "Beet",
@@ -469,7 +469,7 @@
   },
   "Melon Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Melon Crop",
     "source": "Melon Seeds",
     "fruit": "Melon",
@@ -494,7 +494,7 @@
   },
   "Strawberry Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Strawberry Crop",
     "source": "Strawberry Seeds",
     "fruit": "Strawberry",
@@ -518,7 +518,7 @@
   },
   "Parsnip Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Parsnip Crop",
     "source": "Parsnip Seeds",
     "fruit": "Parsnip",
@@ -542,7 +542,7 @@
   },
   "Corn Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Corn Crop",
     "source": "Corn Seeds",
     "fruit": "Corn",
@@ -568,7 +568,7 @@
   },
   "Cauliflower Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Cauliflower Crop",
     "source": "Cauliflower Seeds",
     "fruit": "Cauliflower",
@@ -594,7 +594,7 @@
   },
   "Grape Crop": {
     "oneTime": false,
-    "canBecomeGiant": true,
+    "isGiantPossible": true,
     "name": "Grape Crop",
     "source": "Grape Starter",
     "fruit": "Grape",
@@ -619,7 +619,7 @@
   },
   "Ancient Fruit Crop": {
     "oneTime": false,
-    "canBecomeGiant": true,
+    "isGiantPossible": true,
     "name": "Ancient Fruit Crop",
     "source": "Ancient Seeds",
     "fruit": "Ancient Fruit",
@@ -647,7 +647,7 @@
   },
   "Green Bean Crop": {
     "oneTime": false,
-    "canBecomeGiant": true,
+    "isGiantPossible": true,
     "name": "Green Bean Crop",
     "source": "Bean Starter",
     "fruit": "Green Bean",
@@ -673,8 +673,8 @@
   },
   "Cranberries Crop": {
     "oneTime": false,
-    "canBecomeGiant": false,
-    "name": "Cranberries Crop",
+    "isGiantPossible": false,
+    "name": "Cranberry Crop",
     "source": "Cranberry Seeds",
     "fruit": "Cranberries",
     "stages": [
@@ -698,7 +698,7 @@
   },
   "Pumpkin Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Pumpkin Crop",
     "source": "Pumpkin Seeds",
     "fruit": "Pumpkin",
@@ -723,7 +723,7 @@
   },
   "Poppy Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Poppy Crop",
     "source": "Poppy Seeds",
     "fruit": "Poppy",
@@ -748,7 +748,7 @@
   },
   "Potato Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Potato Crop",
     "source": "Potato Seeds",
     "fruit": "Potato",
@@ -772,7 +772,7 @@
   },
   "Tulip Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Tulip Crop",
     "source": "Tulip Bulb",
     "fruit": "Tulip",
@@ -796,7 +796,7 @@
   },
   "Sweet Gem Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Sweet Gem Crop",
     "source": "Rare Seed",
     "fruit": "Sweet Gem Berry",
@@ -821,7 +821,7 @@
   },
   "Radish Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Radish Crop",
     "source": "Radish Seeds",
     "fruit": "Radish",
@@ -845,7 +845,7 @@
   },
   "Summer Squash Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Summer Squash Crop",
     "source": "Squash Seeds",
     "fruit": "Summer Squash",
@@ -871,7 +871,7 @@
   },
   "Starfruit Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Starfruit Crop",
     "source": "Starfruit Seeds",
     "fruit": "Starfruit",
@@ -896,7 +896,7 @@
   },
   "Garlic Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Garlic Crop",
     "source": "Garlic Seeds",
     "fruit": "Garlic",
@@ -920,7 +920,7 @@
   },
   "Sunflower Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Sunflower Crop",
     "source": "Sunflower Seeds",
     "fruit": "Sunflower",
@@ -945,7 +945,7 @@
   },
   "Coffee Bean Crop": {
     "oneTime": false,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Coffee Bean Crop",
     "source": "Coffee Bean",
     "fruit": "Coffee Bean",
@@ -972,7 +972,7 @@
   },
   "Kale Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Kale Crop",
     "source": "Kale Seeds",
     "fruit": "Kale",
@@ -997,7 +997,7 @@
   },
   "Broccoli Crop": {
     "oneTime": true,
-    "canBecomeGiant": false,
+    "isGiantPossible": false,
     "name": "Broccoli Crop",
     "source": "Broccoli Seeds",
     "fruit": "Broccoli",

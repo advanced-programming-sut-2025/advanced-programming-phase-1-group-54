@@ -2,10 +2,16 @@ package model.items.recipes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import model.enums.Season;
 import model.items.Item;
+import model.items.plants.Fruit;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -16,8 +22,30 @@ public class Recipe {
     public static final LinkedHashMap<String,Recipe> foodRecipes;
 
     static {
-        craftRecipes = new LinkedHashMap<>();
-        foodRecipes = new LinkedHashMap<>();
+//        craftRecipes = new LinkedHashMap<>();
+//        foodRecipes = new LinkedHashMap<>();
+
+        Gson gson = new Gson();
+        FileReader file = null;
+        try {
+            file = new FileReader("craftRecipes.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        Type type = new TypeToken<LinkedHashMap<String, Recipe>>() {
+        }.getType();
+        craftRecipes = gson.fromJson(file, type);
+
+
+
+        try {
+            file = new FileReader("foodRecipes.json");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        type = new TypeToken<LinkedHashMap<String,Recipe>>() {
+        }.getType();
+        foodRecipes = gson.fromJson(file, type);
     }
 
     private final String name;

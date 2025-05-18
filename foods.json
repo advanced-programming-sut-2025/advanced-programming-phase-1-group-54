@@ -1,170 +1,193 @@
 {
   "Pumpkin Pie": {
     "energy": 225,
-    "sellPrice": 385,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Pumpkin Pie"
+    "name": "Pumpkin Pie",
+    "isEdible": true,
+    "baseSellPrice": 385
   },
   "Cookie": {
     "energy": 90,
-    "sellPrice": 140,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Cookie"
+    "name": "Cookie",
+    "isEdible": true,
+    "baseSellPrice": 140
   },
   "Red Plate": {
     "energy": 240,
-    "sellPrice": 400,
     "energyBuff": 50,
     "buffHours": 3,
-    "name": "Red Plate"
+    "name": "Red Plate",
+    "isEdible": true,
+    "baseSellPrice": 400
   },
   "Salmon Dinner": {
     "energy": 125,
-    "sellPrice": 300,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Salmon Dinner"
+    "name": "Salmon Dinner",
+    "isEdible": true,
+    "baseSellPrice": 300
   },
   "Dish O\u0027 The Sea": {
     "energy": 150,
-    "sellPrice": 220,
     "skillType": "FISHING",
     "energyBuff": 0,
     "buffHours": 5,
-    "name": "Dish O\u0027 The Sea"
+    "name": "Dish O\u0027 The Sea",
+    "isEdible": true,
+    "baseSellPrice": 220
   },
   "Tortilla": {
     "energy": 50,
-    "sellPrice": 50,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Tortilla"
+    "name": "Tortilla",
+    "isEdible": true,
+    "baseSellPrice": 50
   },
   "Omelet": {
     "energy": 100,
-    "sellPrice": 125,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Omelet"
+    "name": "Omelet",
+    "isEdible": true,
+    "baseSellPrice": 125
   },
   "Survival Burger": {
     "energy": 125,
-    "sellPrice": 180,
     "skillType": "FORAGING",
     "energyBuff": 0,
     "buffHours": 5,
-    "name": "Survival Burger"
+    "name": "Survival Burger",
+    "isEdible": true,
+    "baseSellPrice": 180
   },
   "Farmer\u0027s Lunch": {
     "energy": 200,
-    "sellPrice": 150,
     "skillType": "FARMING",
     "energyBuff": 0,
     "buffHours": 5,
-    "name": "Farmer\u0027s Lunch"
+    "name": "Farmer\u0027s Lunch",
+    "isEdible": true,
+    "baseSellPrice": 150
   },
   "Miner\u0027s Treat": {
     "energy": 125,
-    "sellPrice": 200,
     "skillType": "MINING",
     "energyBuff": 0,
     "buffHours": 5,
-    "name": "Miner\u0027s Treat"
+    "name": "Miner\u0027s Treat",
+    "isEdible": true,
+    "baseSellPrice": 200
   },
   "Pancakes": {
     "energy": 90,
-    "sellPrice": 80,
     "skillType": "FORAGING",
     "energyBuff": 0,
     "buffHours": 11,
-    "name": "Pancakes"
+    "name": "Pancakes",
+    "isEdible": true,
+    "baseSellPrice": 80
   },
   "Hash Browns": {
     "energy": 90,
-    "sellPrice": 120,
     "skillType": "FARMING",
     "energyBuff": 0,
     "buffHours": 5,
-    "name": "Hash Browns"
+    "name": "Hash Browns",
+    "isEdible": true,
+    "baseSellPrice": 120
   },
   "Bread": {
     "energy": 50,
-    "sellPrice": 60,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Bread"
+    "name": "Bread",
+    "isEdible": true,
+    "baseSellPrice": 60
   },
   "Pizza": {
     "energy": 150,
-    "sellPrice": 300,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Pizza"
+    "name": "Pizza",
+    "isEdible": true,
+    "baseSellPrice": 300
   },
   "Vegetable Medley": {
     "energy": 165,
-    "sellPrice": 120,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Vegetable Medley"
+    "name": "Vegetable Medley",
+    "isEdible": true,
+    "baseSellPrice": 120
   },
   "Seaform Pudding": {
     "energy": 175,
-    "sellPrice": 300,
     "skillType": "FISHING",
     "energyBuff": 0,
     "buffHours": 10,
-    "name": "Seaform Pudding"
+    "name": "Seaform Pudding",
+    "isEdible": true,
+    "baseSellPrice": 300
   },
   "Triple Shot Espresso": {
     "energy": 200,
-    "sellPrice": 450,
     "energyBuff": 100,
     "buffHours": 5,
-    "name": "Triple Shot Espresso"
+    "name": "Triple Shot Espresso",
+    "isEdible": true,
+    "baseSellPrice": 450
   },
   "Maki Roll": {
     "energy": 100,
-    "sellPrice": 220,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Maki Roll"
+    "name": "Maki Roll",
+    "isEdible": true,
+    "baseSellPrice": 220
   },
   "Baked Fish": {
     "energy": 75,
-    "sellPrice": 100,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Baked Fish"
+    "name": "Baked Fish",
+    "isEdible": true,
+    "baseSellPrice": 100
   },
   "Fried Egg": {
     "energy": 50,
-    "sellPrice": 35,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Fried Egg"
+    "name": "Fried Egg",
+    "isEdible": true,
+    "baseSellPrice": 35
   },
   "Spaghetti": {
     "energy": 75,
-    "sellPrice": 120,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Spaghetti"
+    "name": "Spaghetti",
+    "isEdible": true,
+    "baseSellPrice": 120
   },
   "Fruit Salad": {
     "energy": 263,
-    "sellPrice": 450,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Fruit Salad"
+    "name": "Fruit Salad",
+    "isEdible": true,
+    "baseSellPrice": 450
   },
   "Salad": {
     "energy": 113,
-    "sellPrice": 110,
     "energyBuff": 0,
     "buffHours": 0,
-    "name": "Salad"
+    "name": "Salad",
+    "isEdible": true,
+    "baseSellPrice": 110
   }
 }

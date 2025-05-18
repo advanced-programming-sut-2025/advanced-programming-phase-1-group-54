@@ -1,6 +1,5 @@
 {
   "Mango Tree": {
-    "isBurned": false,
     "name": "Mango Tree",
     "source": "Mango Sapling",
     "fruit": "Mango",
@@ -24,7 +23,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Mushroom Tree": {
-    "isBurned": false,
     "name": "Mushroom Tree",
     "source": "Mushroom Spore",
     "fruit": "Common Mushroom",
@@ -51,7 +49,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Pine Tree": {
-    "isBurned": false,
     "name": "Pine Tree",
     "source": "Pine Cone",
     "fruit": "Pine Tar",
@@ -78,7 +75,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Cherry Tree": {
-    "isBurned": false,
     "name": "Cherry Tree",
     "source": "Cherry Sapling",
     "fruit": "Cherry",
@@ -102,7 +98,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Maple Tree": {
-    "isBurned": false,
     "name": "Maple Tree",
     "source": "Maple Seed",
     "fruit": "Maple Syrup",
@@ -129,7 +124,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Apricot Tree": {
-    "isBurned": false,
     "name": "Apricot Tree",
     "source": "Apricot Sapling",
     "fruit": "Apricot",
@@ -153,7 +147,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Orange Tree": {
-    "isBurned": false,
     "name": "Orange Tree",
     "source": "Orange Sapling",
     "fruit": "Orange",
@@ -177,7 +170,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Pomegranate Tree": {
-    "isBurned": false,
     "name": "Pomegranate Tree",
     "source": "Pomegranate Sapling",
     "fruit": "Pomegranate",
@@ -201,7 +193,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Mystic Tree": {
-    "isBurned": false,
     "name": "Mystic Tree",
     "source": "Mystic Seed",
     "fruit": "Mystic Syrup",
@@ -228,7 +219,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Banana Tree": {
-    "isBurned": false,
     "name": "Banana Tree",
     "source": "Banana Sapling",
     "fruit": "Banana",
@@ -252,7 +242,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Apple Tree": {
-    "isBurned": false,
     "name": "Apple Tree",
     "source": "Apple Sapling",
     "fruit": "Apple",
@@ -276,7 +265,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Sap Tree": {
-    "isBurned": false,
     "name": "Sap Tree",
     "source": "Sap Source",
     "fruit": "Sap",
@@ -303,7 +291,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Peach Tree": {
-    "isBurned": false,
     "name": "Peach Tree",
     "source": "Peach Sapling",
     "fruit": "Peach",
@@ -327,7 +314,6 @@
     "numberOfDaysWithoutWater": 0
   },
   "Oak Tree": {
-    "isBurned": false,
     "name": "Oak Tree",
     "source": "Oak Seed",
     "fruit": "Oak Resin",

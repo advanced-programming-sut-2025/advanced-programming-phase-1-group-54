@@ -1,62 +1,62 @@
 {
   "Large Goat Milk": {
-    "sellPrice": 345,
     "name": "Large Goat Milk",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 345
   },
   "Rabbit Leg": {
-    "sellPrice": 565,
     "name": "Rabbit Leg",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 565
   },
   "Duck Egg": {
-    "sellPrice": 95,
     "name": "Duck Egg",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 95
   },
   "Duck feather": {
-    "sellPrice": 250,
     "name": "Duck feather",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 250
   },
   "Goat Milk": {
-    "sellPrice": 225,
     "name": "Goat Milk",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 225
   },
   "Egg": {
-    "sellPrice": 50,
     "name": "Egg",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 50
   },
   "Large Milk": {
-    "sellPrice": 190,
     "name": "Large Milk",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 190
   },
   "Truffle": {
-    "sellPrice": 625,
     "name": "Truffle",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 625
   },
   "Large Egg": {
-    "sellPrice": 95,
     "name": "Large Egg",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 95
   },
   "Wool": {
-    "sellPrice": 340,
     "name": "Wool",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 340
   },
   "Dinosaur Egg": {
-    "sellPrice": 350,
     "name": "Dinosaur Egg",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 350
   },
   "Milk": {
-    "sellPrice": 125,
     "name": "Milk",
-    "isEdible": true
+    "isEdible": true,
+    "baseSellPrice": 125
   }
 }

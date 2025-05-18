@@ -79,8 +79,8 @@ public class DateTime {
 
     public void increaseDay(int amount) {
         weekDay = WeekDay.values()[(amount + weekDay.ordinal()) % DAYS_IN_WEEK];
-        year += (((amount + day) / DAYS_IN_SEASON) + season.ordinal()) / SEASONS_IN_YEAR;
-        season = Season.values()[(((amount + day) / DAYS_IN_SEASON) + season.ordinal()) % SEASONS_IN_YEAR];
+        year += (((amount + day) / (DAYS_IN_SEASON + 1)) + season.ordinal()) / (SEASONS_IN_YEAR + 1);
+        season = Season.values()[(((amount + day) / (DAYS_IN_SEASON + 1)) + season.ordinal()) % SEASONS_IN_YEAR];
         day = (amount + day) % DAYS_IN_SEASON;
         if (day == 0) {
             day = DAYS_IN_SEASON;

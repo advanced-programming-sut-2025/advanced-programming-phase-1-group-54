@@ -5,14 +5,16 @@
     "feature": "DESTROYED",
     "recipeName": "Cherry Bomb Recipe",
     "name": "Cherry Bomb",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Mystic Tree Seeds": {
     "sellPrice": 0,
     "radius": 0,
     "recipeName": "Mystic Tree Seeds Recipe",
     "name": "Mystic Tree Seeds",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Mega Bomb": {
     "sellPrice": 50,
@@ -20,7 +22,8 @@
     "feature": "DESTROYED",
     "recipeName": "Mega Bomb Recipe",
     "name": "Mega Bomb",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Deluxe Scarecrow": {
     "sellPrice": 0,
@@ -28,7 +31,8 @@
     "feature": "PROTECTED",
     "recipeName": "Deluxe Scarecrow Recipe",
     "name": "Deluxe Scarecrow",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Grass Starter": {
     "sellPrice": 0,
@@ -36,7 +40,8 @@
     "feature": "GRASS",
     "recipeName": "Grass Starter Recipe",
     "name": "Grass Starter",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Scarecrow": {
     "sellPrice": 0,
@@ -44,7 +49,8 @@
     "feature": "PROTECTED",
     "recipeName": "Scarecrow Recipe",
     "name": "Scarecrow",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Bomb": {
     "sellPrice": 50,
@@ -52,30 +58,34 @@
     "feature": "DESTROYED",
     "recipeName": "Bomb Recipe",
     "name": "Bomb",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Sprinkler": {
     "sellPrice": 0,
     "radius": 4,
-    "feature": "WATERED",
+    "feature": "AUTO_WATER",
     "recipeName": "Sprinkler Recipe",
     "name": "Sprinkler",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Quality Sprinkler": {
     "sellPrice": 0,
     "radius": 8,
-    "feature": "WATERED",
+    "feature": "AUTO_WATER",
     "recipeName": "Quality Sprinkler Recipe",
     "name": "Quality Sprinkler",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 0
   },
   "Iridium Sprinkler": {
     "sellPrice": 0,
     "radius": 24,
-    "feature": "WATERED",
+    "feature": "AUTO_WATER",
     "recipeName": "Iridium Sprinkler Recipe",
     "name": "Iridium Sprinkler",
-    "isEdible": false
+    "isEdible": false,
+    "baseSellPrice": 0
   }
 }

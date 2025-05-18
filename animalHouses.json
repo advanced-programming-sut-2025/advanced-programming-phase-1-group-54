@@ -4,7 +4,7 @@
     "animals": [
       "Cow"
     ],
-    "numberOfAnimals": 4
+    "size": 4
   },
   "Big Barn": {
     "name": "Big Barn",
@@ -12,14 +12,14 @@
       "Cow",
       "Goat"
     ],
-    "numberOfAnimals": 8
+    "size": 8
   },
   "Coop": {
     "name": "Coop",
     "animals": [
       "Hen"
     ],
-    "numberOfAnimals": 4
+    "size": 4
   },
   "Deluxe Barn": {
     "name": "Deluxe Barn",
@@ -29,7 +29,7 @@
       "Sheep",
       "Pig"
     ],
-    "numberOfAnimals": 12
+    "size": 12
   },
   "Big Coop": {
     "name": "Big Coop",
@@ -38,7 +38,7 @@
       "Duck",
       "Dinosaur"
     ],
-    "numberOfAnimals": 8
+    "size": 8
   },
   "Deluxe Coop": {
     "name": "Deluxe Coop",
@@ -47,6 +47,6 @@
       "Duck",
       "Rabbit"
     ],
-    "numberOfAnimals": 12
+    "size": 12
   }
 }

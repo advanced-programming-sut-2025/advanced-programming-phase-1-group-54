@@ -1,6 +1,6 @@
 {
   "Hen": {
-    "name": "Hen",
+    "animalName": "Hen",
     "sellPrice": 800,
     "numberOfProducingDays": 1,
     "daysAfterProducing": 0,
@@ -10,10 +10,11 @@
     ],
     "friendshipLevel": 0,
     "hungry": false,
-    "caressed": false
+    "caressed": false,
+    "goneOut": false
   },
   "Dinosaur": {
-    "name": "Dinosaur",
+    "animalName": "Dinosaur",
     "sellPrice": 14000,
     "numberOfProducingDays": 7,
     "daysAfterProducing": 0,
@@ -22,10 +23,11 @@
     ],
     "friendshipLevel": 0,
     "hungry": false,
-    "caressed": false
+    "caressed": false,
+    "goneOut": false
   },
   "Rabbit": {
-    "name": "Rabbit",
+    "animalName": "Rabbit",
     "sellPrice": 8000,
     "numberOfProducingDays": 4,
     "daysAfterProducing": 0,
@@ -35,10 +37,11 @@
     ],
     "friendshipLevel": 0,
     "hungry": false,
-    "caressed": false
+    "caressed": false,
+    "goneOut": false
   },
   "Duck": {
-    "name": "Duck",
+    "animalName": "Duck",
     "sellPrice": 1200,
     "numberOfProducingDays": 2,
     "daysAfterProducing": 0,
@@ -47,10 +50,11 @@
     ],
     "friendshipLevel": 0,
     "hungry": false,
-    "caressed": false
+    "caressed": false,
+    "goneOut": false
   },
   "Sheep": {
-    "name": "Sheep",
+    "animalName": "Sheep",
     "sellPrice": 8000,
     "numberOfProducingDays": 3,
     "daysAfterProducing": 0,
@@ -59,10 +63,11 @@
     ],
     "friendshipLevel": 0,
     "hungry": false,
-    "caressed": false
+    "caressed": false,
+    "goneOut": false
   },
   "Cow": {
-    "name": "Cow",
+    "animalName": "Cow",
     "sellPrice": 1500,
     "numberOfProducingDays": 1,
     "daysAfterProducing": 0,
@@ -72,10 +77,11 @@
     ],
     "friendshipLevel": 0,
     "hungry": false,
-    "caressed": false
+    "caressed": false,
+    "goneOut": false
   },
   "Goat": {
-    "name": "Goat",
+    "animalName": "Goat",
     "sellPrice": 4000,
     "numberOfProducingDays": 2,
     "daysAfterProducing": 0,
@@ -85,10 +91,11 @@
     ],
     "friendshipLevel": 0,
     "hungry": false,
-    "caressed": false
+    "caressed": false,
+    "goneOut": false
   },
   "Pig": {
-    "name": "Pig",
+    "animalName": "Pig",
     "sellPrice": 16000,
     "numberOfProducingDays": -1,
     "daysAfterProducing": 0,
@@ -97,6 +104,7 @@
     ],
     "friendshipLevel": 0,
     "hungry": false,
-    "caressed": false
+    "caressed": false,
+    "goneOut": false
   }
 }
