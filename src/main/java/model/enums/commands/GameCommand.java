@@ -61,7 +61,7 @@ public enum GameCommand implements Command {
     FISHING("fishing -p (?<poleName>.+)"),
 
     // Artisan commands
-    START_PRODUCER_ARTISAN("artisan use (?<artisanName>.+) (?<produceName>.+)"),
+    START_PRODUCER_ARTISAN("artisan use (?<artisanName>.+) -i (?<produceName>.+)"),
     GET_PRODUCT_ARTISAN("artisan get (?<artisanName>.+)"),
 
     // Shop commands
@@ -72,8 +72,8 @@ public enum GameCommand implements Command {
 
     // Friendship Commands
     SHOW_FRIENDSHIPS("friendships"),
-    TALKING(" talk -u (?<username>\\S+) -m (?<message>.+)"),
-    SHOW_TALK_HISTORY("talk history (?<username>\\S+)"),
+    TALKING("talk -u (?<username>\\S+) -m (?<message>.+)"),
+    SHOW_TALK_HISTORY("talk history -u (?<username>\\S+)"),
     GIFT("gift -u (?<username>\\S+) -i (?<itemName>.+) -a (?<amount>\\d+)"),
     SHOW_GIFT_LIST("gift list"),
     RATE_GIFT("gift rate -i (?<number>\\d+) -r (?<rate>\\d+)"),

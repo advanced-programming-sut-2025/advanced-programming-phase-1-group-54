@@ -2,7 +2,7 @@ package model.items;
 
 import java.util.HashMap;
 
-public class UniqueItem extends Item {
+public class UniqueItem extends Item implements Cloneable{
     private final static HashMap<String, UniqueItem> items;
 
     public UniqueItem(String name, boolean isEdible, int sellPrice) {
@@ -19,6 +19,7 @@ public class UniqueItem extends Item {
         items.put("Joja Cola", new UniqueItem("Joja Cola", true, 0));
         items.put("Hay", new UniqueItem("Hay", false, 0));
         items.put("Trout Soup", new UniqueItem("Trout Soup", true, 0));
+        items.put("Ring", new UniqueItem("Ring", false, 0));
     }
 
     public static UniqueItem getUniqueItem(String name) {

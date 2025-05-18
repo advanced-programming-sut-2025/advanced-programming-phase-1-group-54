@@ -82,6 +82,9 @@ public class CheatController {
     public static Result addItem(String itemName, int count) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Item item = CommonGameController.findItem(itemName);
+        if(item == null) {
+            return new Result(-1, "Doesn't exist any item named " + itemName);
+        }
         return ToolsController.addToBackPack(player.getBackpack(), item, count);
     }
 }

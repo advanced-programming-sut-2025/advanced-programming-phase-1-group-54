@@ -297,7 +297,7 @@ public class PlantsController {
         Tree tree = Tree.getTree(seed.getPlant());
         if (tree != null) {
             if(! inGreenHouse){
-                if(tree.containSeason(App.getCurrentGame().getDateTime().getSeason())) {
+                if(! tree.containSeason(App.getCurrentGame().getDateTime().getSeason())) {
                     return new Result(-1, "You can't plant this plant in this season");
                 }
             }
@@ -315,7 +315,7 @@ public class PlantsController {
         Crop crop = Crop.getCrop(seed.getPlant());
         if (crop != null) {
             if(! inGreenHouse){
-                if(crop.containSeason(App.getCurrentGame().getDateTime().getSeason())) {
+                if(! crop.containSeason(App.getCurrentGame().getDateTime().getSeason())) {
                     return new Result(-1, "You can't plant this plant in this season");
                 }
             }
@@ -475,6 +475,7 @@ public class PlantsController {
     private static Crop compareCropsGrowth(Crop crop1, Crop crop2, Crop crop3, Crop crop4) {
 
         Crop[] crops = {crop1, crop2, crop3, crop4};
+
         int[] growth = {0, 0, 0, 0};
         for (int j = 0; j < 4; j++) {
             for (int i = 0; i <= crops[j].getCurrentStage(); i++) {
@@ -483,22 +484,13 @@ public class PlantsController {
             growth[j] += crop1.getDaysInCurrentStage();
         }
 
-        int[] indexes = {0, 0, 0, 0};
-        for (int i = 0; i < crops.length; i++) {
-            for (int j = 0; j < crops.length; j++) {
-                if (growth[i] < growth[j]) {
-                    indexes[i]++;
-                }
+        for(int i = 1;i < 4;i++){
+            if(growth[0] < growth[i]){
+                crops[0] = crops[i];
             }
         }
 
-        for (int i = 0; i < indexes.length; i++) {
-            if (indexes[i] == 0) {
-                return crops[i];
-            }
-        }
-
-        return null;
+        return crops[0];
 
     }
 

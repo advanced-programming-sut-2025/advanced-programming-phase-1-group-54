@@ -40,6 +40,7 @@ public class AnimalProduce extends Item implements Cloneable {
 
     public AnimalProduce(String name, boolean isEdible, int sellPrice) {
         super(name, isEdible, sellPrice);
+        this.quality = ProduceQuality.NORMAL;
     }
 
     private ProduceQuality quality;
@@ -68,6 +69,11 @@ public class AnimalProduce extends Item implements Cloneable {
             return this.getName().equals(animalProduce.getName()) && this.getQuality().equals(animalProduce.getQuality());
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
     }
 
     public static void writeToJson() {

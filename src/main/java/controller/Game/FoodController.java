@@ -51,11 +51,13 @@ public class FoodController {
         }
 
         Recipe recipe = Recipe.foodRecipes.get(food.getName() + " Recipe");
-        if(player.getLearnedFoodRecipes().contains(recipe)){
+        if(! player.getLearnedFoodRecipes().contains(recipe)){
             return new Result(-1,"You don't have enough recipe");
         }
 
         for(String ingredient : recipe.getIngredientsNames()){
+
+
             if(CommonGameController.numberOfItemInBackPack(ingredient) < recipe.getIngredientsNumber().get(ingredient)){
                 return new Result(-1,"You do not have enough ingredients");
             }
@@ -70,7 +72,6 @@ public class FoodController {
         }
 
         player.decreaseEnergy(3,null);
-        player.getBackpack().addItem(food, 1);
 
         if(passOut){
             return new Result(1,foodName + " cooked successfully. " +

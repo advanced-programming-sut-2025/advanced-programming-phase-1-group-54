@@ -1,60 +1,72 @@
 {
   "Large Goat Milk": {
+    "quality": "NORMAL",
     "name": "Large Goat Milk",
     "isEdible": true,
     "baseSellPrice": 345
   },
   "Rabbit Leg": {
+    "quality": "NORMAL",
     "name": "Rabbit Leg",
     "isEdible": false,
     "baseSellPrice": 565
   },
   "Duck Egg": {
+    "quality": "NORMAL",
     "name": "Duck Egg",
     "isEdible": true,
     "baseSellPrice": 95
   },
   "Duck feather": {
+    "quality": "NORMAL",
     "name": "Duck feather",
     "isEdible": false,
     "baseSellPrice": 250
   },
   "Goat Milk": {
+    "quality": "NORMAL",
     "name": "Goat Milk",
     "isEdible": true,
     "baseSellPrice": 225
   },
   "Egg": {
+    "quality": "NORMAL",
     "name": "Egg",
     "isEdible": true,
     "baseSellPrice": 50
   },
   "Large Milk": {
+    "quality": "NORMAL",
     "name": "Large Milk",
     "isEdible": true,
     "baseSellPrice": 190
   },
   "Truffle": {
+    "quality": "NORMAL",
     "name": "Truffle",
     "isEdible": false,
     "baseSellPrice": 625
   },
   "Large Egg": {
+    "quality": "NORMAL",
     "name": "Large Egg",
     "isEdible": true,
     "baseSellPrice": 95
   },
   "Wool": {
+    "quality": "NORMAL",
     "name": "Wool",
     "isEdible": false,
     "baseSellPrice": 340
   },
   "Dinosaur Egg": {
+    "quality": "NORMAL",
     "name": "Dinosaur Egg",
     "isEdible": true,
     "baseSellPrice": 350
   },
   "Milk": {
+    "quality": "NORMAL",
     "name": "Milk",
     "isEdible": true,
     "baseSellPrice": 125

@@ -200,7 +200,7 @@ public class CraftingController {
         }
 
         if(! haveArtisan){
-            return new Result(-1,"You 'don't have the producing artisan");
+            return new Result(-1,"You don't have the producing artisan");
         }
 
         if(producerArtisan == null){
@@ -232,6 +232,10 @@ public class CraftingController {
             producerArtisan.setRemainingHours(produce.getProcessingHours());
         }
 
+        for(String ingredient : produce.getIngredientsNames()){
+            Item item = CommonGameController.findItem(ingredient);
+            player.getBackpack().removeItem(item,produce.getIngredientsNumber().get(ingredient));
+        }
 
         return new Result(1,"Start Producing");
 
@@ -256,9 +260,9 @@ public class CraftingController {
             return new Result(-1,"Produce isn't ready");
         }
 
-        if(! MapController.isNear(player.getCurrentLocation(),producerArtisan)){
-            return new Result(-1,"You aren't near artisan " + producerArtisan.getName());
-        }
+//        if(! MapController.isNear(player.getCurrentLocation(),producerArtisan)){
+//            return new Result(-1,"You aren't near artisan " + producerArtisan.getName());
+//        }
 
         if(! player.getBackpack().addItem(producerArtisan.getProcessingProduce(),1)){
             return new Result(-1,"Backpack is full");

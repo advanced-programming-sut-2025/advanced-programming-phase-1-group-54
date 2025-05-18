@@ -247,6 +247,7 @@ public class DefaultMenu implements GameSubMenu {
         String npcName = command.getGroup(input,"npcName");
         String item = command.getGroup(input,"item");
         Result result = NpcController.giftNpc(npcName,item);
+        showResult(result);
     }
 
     private void handleMeetNpc(String input) {
@@ -282,7 +283,7 @@ public class DefaultMenu implements GameSubMenu {
                 input = scanner.nextLine();
                 if (GameCommand.SHOW_GIFT_LIST.matches(input))
                     handleShowGiftList();
-                else if (GameCommand.SHOW_GIFT_LIST.matches(input))
+                else if (GameCommand.RATE_GIFT.matches(input))
                     finished = handleRateGift(input);
                 else
                     invalidCommand();
