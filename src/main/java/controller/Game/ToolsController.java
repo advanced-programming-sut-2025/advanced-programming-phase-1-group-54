@@ -187,10 +187,13 @@ public class ToolsController {
     private static Result useWateringCan(Tool tool, Tile tile, Location location) {
         WateringCan wateringCan = (WateringCan) tool;
 
-        if (tile.hasFeature(Feature.WATER))
+        if (tile.hasFeature(Feature.WATER)) {
+            wateringCan.increaseWater();
             return new Result(true, "water increased by 1");
+        }
 
         if (wateringCan.getCurrentWater() > 0) {
+            wateringCan.decreaseWater();
             return PlantsController.giveWater(location);
         }
 
