@@ -504,6 +504,12 @@ public class CommonGameController {
             if (tile.getThingOnTile() instanceof DailyUpdate dailyUpdate) {
                 App.getCurrentGame().getDateTime().removeDailyUpdateListener(dailyUpdate);
             }
+            if (tile.getThingOnTile() instanceof HourUpdate hourUpdate) {
+                App.getCurrentGame().getDateTime().removeHourUpdateListener(hourUpdate);
+            }
+            if (tile.getThingOnTile() instanceof HourCheck hourCheck) {
+                App.getCurrentGame().getDateTime().removeHourCheckListener(hourCheck);
+            }
             tile.setThingOnTile(null);
         } else {
             return false;

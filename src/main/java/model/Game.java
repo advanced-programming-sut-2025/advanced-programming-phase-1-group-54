@@ -3,6 +3,7 @@ package model;
 import controller.Game.NpcController;
 import model.enums.SubMenu;
 import model.enums.Weather;
+import model.items.plants.Plant;
 import model.lives.Player;
 import model.map.World;
 import model.relationships.Relationship;
@@ -116,6 +117,14 @@ public class Game implements DailyUpdate {
     public void nextDayUpdate() {
         world.setTomorrowWeather(Weather.getRandom(dateTime.getSeason()));
         world.foraging(dateTime.getSeason());
+
+        for (Player player : players) {
+            for (Plant plant : player.getFarm().getPlants().keySet()) {
+                if (plant.isDead()) {
+                    dateTime.removeDailyUpdateListener(plant);
+                }
+            }
+        }
 
         // TODO this line should not be here.
         NpcController.resetNpcEveryDay();
