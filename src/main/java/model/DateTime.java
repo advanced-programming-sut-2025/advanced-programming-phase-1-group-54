@@ -3,12 +3,18 @@ package model;
 import model.enums.Season;
 import model.enums.WeekDay;
 
+import java.util.ArrayList;
+
 public class DateTime {
     private int year;
     private int day;
     private int hour;
     private WeekDay weekDay;
     private Season season;
+
+    private final ArrayList<DailyUpdate> dailyUpdateListeners = new ArrayList<>();
+    private final ArrayList<HourUpdate> hourUpdateListeners = new ArrayList<>();
+    private final ArrayList<HourCheck> hourCheckListeners = new ArrayList<>();
 
     private static final int START_HOUR = 9;
     private static final int END_HOUR = 22;
@@ -77,6 +83,48 @@ public class DateTime {
         return STARTING_SEASON;
     }
 
+    public void addDailyUpdateListener(DailyUpdate dailyUpdateListener) {
+        dailyUpdateListeners.add(dailyUpdateListener);
+    }
+
+    public void removeDailyUpdateListener(DailyUpdate dailyUpdateListener) {
+        dailyUpdateListeners.remove(dailyUpdateListener);
+    }
+
+    public void addHourUpdateListener(HourUpdate hourUpdateListener) {
+        hourUpdateListeners.add(hourUpdateListener);
+    }
+
+    public void removeHourUpdateListener(HourUpdate hourUpdateListener) {
+        hourUpdateListeners.remove(hourUpdateListener);
+    }
+
+    public void addHourCheckListener(HourCheck hourCheckListener) {
+        hourCheckListeners.add(hourCheckListener);
+    }
+
+    public void removeHourCheckListener(HourCheck hourCheckListener) {
+        hourCheckListeners.remove(hourCheckListener);
+    }
+
+    public void notifyDailyUpdates() {
+        for (DailyUpdate dailyUpdateListener : dailyUpdateListeners) {
+            dailyUpdateListener.nextDayUpdate();
+        }
+    }
+
+    public void notifyHourUpdates(int amount) {
+        for (HourUpdate hourUpdateListener : hourUpdateListeners) {
+            hourUpdateListener.nextHourUpdate(amount);
+        }
+    }
+
+    public void notifyHourChecks(int time) {
+        for (HourCheck hourCheckListener : hourCheckListeners) {
+            hourCheckListener.checkHour(time);
+        }
+    }
+
     public void increaseDay(int amount) {
         weekDay = WeekDay.values()[(amount + weekDay.ordinal()) % DAYS_IN_WEEK];
         year += (((amount + day) / (DAYS_IN_SEASON + 1)) + season.ordinal()) / (SEASONS_IN_YEAR + 1);
@@ -85,11 +133,22 @@ public class DateTime {
         if (day == 0) {
             day = DAYS_IN_SEASON;
         }
+
+        for (int i = 1; i <= amount; i++) {
+            notifyDailyUpdates();
+        }
+
+        notifyHourUpdates(amount * HOURS_IN_DAY + START_HOUR - hour);
+        notifyHourChecks(hour);
     }
 
     public void increaseHour(int amount) {
         increaseDay((amount + hour - START_HOUR) / DAY_TIME);
-        hour = START_HOUR + (amount + hour - START_HOUR) % DAY_TIME;
+        int remainingAmount = (amount + hour - START_HOUR) % DAY_TIME;
+        hour = START_HOUR + remainingAmount;
+
+        notifyHourUpdates(remainingAmount);
+        notifyHourChecks(hour);
     }
 
     public DateTime() {

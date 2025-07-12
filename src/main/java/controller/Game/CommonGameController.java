@@ -81,25 +81,6 @@ public class CommonGameController {
         return new Result(code, message.toString());
     }
 
-    private static String getNotification() {
-        Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
-
-        StringBuilder messageBuilder = new StringBuilder();
-
-        if (!player.getReceivedTrades().isEmpty()) {
-            messageBuilder.append("\nYou have some trade to do");
-        }
-        if (!player.getReceivedGifts().isEmpty()) {
-            messageBuilder.append("\nYou have some gift to open");
-        }
-        if (!(player.getReceivedRequests()).isEmpty()) {
-            messageBuilder.append("\nYou have some marriage proposal");
-        }
-
-        return messageBuilder.toString();
-    }
-
     public static Result showTime() {
         Game game = App.getCurrentGame();
         return new Result(true, String.format("%d o'clock", game.getDateTime().getHour()));

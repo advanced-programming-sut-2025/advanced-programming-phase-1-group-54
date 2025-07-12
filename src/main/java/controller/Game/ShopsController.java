@@ -664,6 +664,7 @@ public class ShopsController {
         }
         Animal animal = Animal.getAnimal(item.getName());
         App.getCurrentGame().getCurrentPlayer().getAnimals().put(name, animal);
+        App.getCurrentGame().getDateTime().addDailyUpdateListener(animal);
         return new Result(true, "animal purchased");
     }
 

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import model.DateTime;
 import model.enums.Feature;
 import model.enums.Symbol;
 import model.items.Material;
@@ -23,6 +24,7 @@ public class FarmBuilder {
     private static Location greenHouseLocation;
     private static Area[] lakeAreas;
     private static Area quarryArea;
+    private static DateTime dateTime;
 
     private static Tile[][] tiles = new Tile[Farm.getNumberOfRows()][Farm.getNumberOfColumns()];
 
@@ -32,7 +34,7 @@ public class FarmBuilder {
         greenHouseLocation = null;
         lakeAreas = null;
         quarryArea = null;
-
+        dateTime = null;
         tiles = new Tile[Farm.getNumberOfRows()][Farm.getNumberOfColumns()];
     }
 
@@ -72,6 +74,10 @@ public class FarmBuilder {
         }
     }
 
+    public static void setDateTime(DateTime dateTime) {
+        FarmBuilder.dateTime = dateTime;
+    }
+
     public static int getNumberOfFarms() {
         try (InputStream inputStream = FarmBuilder.class.getClassLoader().getResourceAsStream("farms.json"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             return JsonParser.parseReader(reader).getAsJsonArray().size();
@@ -95,7 +101,10 @@ public class FarmBuilder {
         GreenHouse greenHouse = new GreenHouse(greenHouseLocation);
         for (int x = 0; x < greenHouse.getNumberOfRows(); x++) {
             for (int y = 0; y < greenHouse.getNumberOfColumns(); y++) {
-                Location location = greenHouseLocation.add(new Location(x, y));
+                Location locationInGreenHouse = new Location(x, y);
+                dateTime.addDailyUpdateListener(greenHouse.getTileAt(locationInGreenHouse));
+
+                Location location = greenHouseLocation.add(locationInGreenHouse);
                 tiles[location.row()][location.column()].setThingOnTile(greenHouse);
             }
         }
@@ -129,6 +138,7 @@ public class FarmBuilder {
             quarry.foragingMaterial();
         }
 
+        dateTime.addDailyUpdateListener(quarry);
         return quarry;
     }
 
@@ -155,6 +165,7 @@ public class FarmBuilder {
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
                 tiles[i][j] = new Tile(new Location(i, j));
+                dateTime.addDailyUpdateListener(tiles[i][j]);
             }
         }
 
@@ -165,8 +176,10 @@ public class FarmBuilder {
 
         Farm farm = new Farm(location, greenHouse, cabin, quarry, lakes, new Map(Farm.getNumberOfRows(), Farm.getNumberOfColumns(), tiles));
         placeRandomStuff(farm);
+        dateTime.addDailyUpdateListener(farm);
 
         FarmBuilder.reset();
         return farm;
     }
+
 }

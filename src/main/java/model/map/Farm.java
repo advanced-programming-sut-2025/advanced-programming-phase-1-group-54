@@ -5,7 +5,6 @@ package model.map;
  */
 
 import model.DailyUpdate;
-import model.HourUpdate;
 import model.enums.Feature;
 import model.enums.Season;
 import model.items.plants.Crop;
@@ -17,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class Farm implements DailyUpdate, HourUpdate {
+public class Farm implements DailyUpdate {
     private static final int NUMBER_OF_ROWS = 35;
     private static final int NUMBER_OF_COLUMNS = 35;
 
@@ -114,7 +113,7 @@ public class Farm implements DailyUpdate, HourUpdate {
         return plants;
     }
 
-    public void crow() {
+    public void crowAttack() {
         HashMap<Plant, Tile> plants = getPlants();
 
         Random rand = new Random();
@@ -153,30 +152,6 @@ public class Farm implements DailyUpdate, HourUpdate {
 
     @Override
     public void nextDayUpdate() {
-        for (int i = 0; i < getNumberOfRows(); i++) {
-            for (int j = 0; j < getNumberOfColumns(); j++) {
-                Location location = new Location(i, j);
-                Tile tile = getTileAt(location);
-                tile.nextDayUpdate();
-            }
-        }
-
-        greenhouse.nextDayUpdate();
-        quarry.nextDayUpdate();
-
-        crow();
-    }
-
-    @Override
-    public void nextHourUpdate() {
-        for (int i = 0; i < getNumberOfRows(); i++) {
-            for (int j = 0; j < getNumberOfColumns(); j++) {
-                Location location = new Location(i, j);
-                Tile tile = getTileAt(location);
-                if (tile.getThingOnTile() instanceof HourUpdate hourUpdate) {
-                    hourUpdate.nextHourUpdate();
-                }
-            }
-        }
+        crowAttack();
     }
 }

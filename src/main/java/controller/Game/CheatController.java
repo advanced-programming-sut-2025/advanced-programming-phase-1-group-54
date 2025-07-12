@@ -13,15 +13,13 @@ import model.map.Location;
 public class CheatController {
     public static Result advanceTime(int x) {
         Game game = App.getCurrentGame();
-        for (int i = 1; i <= x; i++)
-            game.nextHourUpdate();
+        game.getDateTime().increaseHour(x);
         return new Result(true, "it's now " + game.getDateTime().toString());
     }
 
     public static Result advanceDate(int x) {
         Game game = App.getCurrentGame();
-        for (int i = 1; i <= x; i++)
-            game.nextDayUpdate();
+        game.getDateTime().increaseDay(x);
         return new Result(true, "it's now " + game.getDateTime().toString());
     }
 

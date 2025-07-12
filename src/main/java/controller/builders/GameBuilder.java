@@ -1,13 +1,11 @@
 package controller.builders;
 
-import model.App;
-import model.Game;
-import model.GameData;
-import model.User;
+import model.*;
 import model.lives.Player;
 import model.map.Cabin;
 import model.map.Farm;
 import model.map.Location;
+import model.map.Shops.Shop;
 import model.map.World;
 
 public class GameBuilder {
@@ -36,22 +34,28 @@ public class GameBuilder {
 
 
     public static Game getResult() {
+        DateTime dateTime = new DateTime();
+
         Farm[] playerFarms = new Farm[users.length];
 
         for (int i = 0; i < users.length; i++) {
             FarmBuilder.reset();
             FarmBuilder.setLocation(WorldBuilder.getFarmLocation(i));
             FarmBuilder.setFarmNumber(playerFarmNumbers[i]);
+            FarmBuilder.setDateTime(dateTime);
             playerFarms[i] = FarmBuilder.getResult();
         }
 
         WorldBuilder.reset();
         WorldBuilder.setPlayerFarms(playerFarms);
+        WorldBuilder.setDateTime(dateTime);
         World world = WorldBuilder.getResult();
 
         Player[] players = new Player[users.length];
         for (int i = 0; i < users.length; i++) {
             players[i] = new Player(users[i], playerFarms[i]);
+            dateTime.addDailyUpdateListener(players[i]);
+            dateTime.addHourUpdateListener(players[i]);
 
             Cabin cabin = playerFarms[i].getCabin();
 
@@ -69,7 +73,9 @@ public class GameBuilder {
             players[i].setCurrentLocation(location);
         }
 
-        Game game = new Game(world, players);
+        Game game = new Game(dateTime, world, players);
+        dateTime.addDailyUpdateListener(game);
+
         GameBuilder.reset();
         return game;
     }

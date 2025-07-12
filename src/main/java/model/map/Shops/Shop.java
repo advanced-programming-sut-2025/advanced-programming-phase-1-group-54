@@ -1,15 +1,13 @@
 package model.map.Shops;
 
-import model.DailyUpdate;
-import model.DateTime;
-import model.HourUpdate;
+import model.HourCheck;
 import model.enums.Symbol;
 import model.lives.NPC;
 import model.map.Area;
 import model.map.Building;
 import model.map.Map;
 
-public class Shop extends Building implements DailyUpdate, HourUpdate {
+public class Shop extends Building implements HourCheck {
     /* TODO shops don't need subclasses
         save each shop to files
     */
@@ -18,7 +16,6 @@ public class Shop extends Building implements DailyUpdate, HourUpdate {
     private final int closingHours;
 
     private boolean open;
-    private int hoursToOpenOrClose;
 
     public Shop(NPC owner, int openingHours, int closingHours, Area area) {
         super(area.upperLeftLocation(), new Map(area.lowerRightLocation().row() - area.upperLeftLocation().row(),
@@ -28,11 +25,6 @@ public class Shop extends Building implements DailyUpdate, HourUpdate {
         this.closingHours = closingHours;
 
         this.getTileAt(getRandomLocation()).setThingOnTile(owner);
-
-        hoursToOpenOrClose = openingHours - DateTime.getStartHour();
-        if (hoursToOpenOrClose <= 0) {
-            openOrClose();
-        }
     }
     public NPC getOwner() {
         return owner;
@@ -50,22 +42,10 @@ public class Shop extends Building implements DailyUpdate, HourUpdate {
         return open;
     }
 
-    private void openOrClose() {
-        if (!open) {
-            open = true;
-            hoursToOpenOrClose = closingHours - openingHours;
-        }
-        else {
-            open = false;
-            hoursToOpenOrClose = DateTime.getHoursInDay() + openingHours - closingHours;
-        }
-    }
-
     @Override
     public boolean canEnter() {
         return isOpen();
     }
-
 
     @Override
     public Symbol getSymbol() {
@@ -73,17 +53,7 @@ public class Shop extends Building implements DailyUpdate, HourUpdate {
     }
 
     @Override
-    public void nextDayUpdate() {
-        hoursToOpenOrClose -= DateTime.getNightTime();
-        if (hoursToOpenOrClose <= 0) {
-            openOrClose();
-        }
-    }
-
-    @Override
-    public void nextHourUpdate() {
-        hoursToOpenOrClose--;
-        if (hoursToOpenOrClose <= 0)
-            openOrClose();
+    public void checkHour(int time) {
+        open = (openingHours <= time) && (time < closingHours);
     }
 }

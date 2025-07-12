@@ -313,6 +313,7 @@ public class PlantsController {
                 tile.removeFeature(Feature.WATER_FERTILIZE);
             }
             tile.setThingOnTile(tree);
+            App.getCurrentGame().getDateTime().addDailyUpdateListener(tree);
         }
 
         Crop crop = Crop.getCrop(seed.getPlant());
@@ -332,6 +333,7 @@ public class PlantsController {
             }
             if (!cropCanBeGiant(crop, location)) {
                 tile.setThingOnTile(crop);
+                App.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
             }
         }
 
@@ -386,6 +388,11 @@ public class PlantsController {
                     leftTile.setThingOnTile(leftCrop);
                     up_LeftTile.setThingOnTile(upLeftCrop);
 
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(upCrop);
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(leftCrop);
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(upLeftCrop);
+
                     return true;
 
                 }
@@ -408,6 +415,11 @@ public class PlantsController {
                     upTile.setThingOnTile(upCrop);
                     rightTile.setThingOnTile(rightCrop);
                     up_RightTile.setThingOnTile(upRightCrop);
+
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(upCrop);
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(rightCrop);
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(upRightCrop);
 
                     return true;
                 }
@@ -435,6 +447,11 @@ public class PlantsController {
                     leftTile.setThingOnTile(leftCrop);
                     down_LeftTile.setThingOnTile(downLeftCrop);
 
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(downCrop);
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(leftCrop);
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(downLeftCrop);
+
                     return true;
                 }
 
@@ -456,6 +473,12 @@ public class PlantsController {
                     downTile.setThingOnTile(downCrop);
                     rightTile.setThingOnTile(rightCrop);
                     down_RightTile.setThingOnTile(downRightCrop);
+
+
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(downCrop);
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(rightCrop);
+                    App.getCurrentGame().getDateTime().addDailyUpdateListener(downRightCrop);
 
                     return true;
                 }

@@ -1,7 +1,6 @@
 package model.lives;
 
 import model.DailyUpdate;
-import model.DateTime;
 import model.HourUpdate;
 import model.User;
 import model.enums.*;
@@ -194,7 +193,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         if (!unlimitedEnergy) {
             if (energy <= MAXIMUM_ENERGY)
                 this.energy = energy;
-            }
+        }
     }
 
     public int getMoney() {
@@ -288,18 +287,9 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     @Override
     public void nextDayUpdate() {
-        buffHours -= DateTime.getNightTime();
-        if (buffHours <= 0) {
-            buffSkill = null;
-        }
-
-        for (Animal animal : animals.values()) {
-            animal.nextDayUpdate();
-        }
-
-        if (this.isFallen())
+        if (this.isFallen()) {
             energy = 75 * MAXIMUM_ENERGY / 100;
-        else {
+        } else {
             energy = MAXIMUM_ENERGY;
         }
 
@@ -354,10 +344,13 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     }
 
     @Override
-    public void nextHourUpdate() {
-        buffHours--;
-        if (buffHours <= 0) {
-            buffSkill = null;
+    public void nextHourUpdate(int amount) {
+        if (buffSkill != null) {
+            buffHours -= amount;
+            if (buffHours <= 0) {
+                buffHours = 0;
+                buffSkill = null;
+            }
         }
     }
 }

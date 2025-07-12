@@ -9,13 +9,13 @@ import model.relationships.Relationship;
 
 import java.util.ArrayList;
 
-public class Game implements DailyUpdate, HourUpdate {
+public class Game implements DailyUpdate {
     private SubMenu subMenu = SubMenu.DEFAULT;
 
     private final World world;
     private final Player[] players;
 
-    private final DateTime dateTime = new DateTime();
+    private final DateTime dateTime;
     private int turn;
 
     private int votes;
@@ -23,14 +23,17 @@ public class Game implements DailyUpdate, HourUpdate {
 
     private final ArrayList<Relationship> relationships;
 
-    public Game(World world, Player[] players) {
+    public Game(DateTime dateTime, World world, Player[] players) {
+        this.dateTime = dateTime;
         this.world = world;
         this.players = players;
         this.relationships = new ArrayList<>();
 
         for (int i = 0; i < players.length; i++) {
             for (int j = i + 1; j < players.length; j++) {
-                relationships.add(new Relationship(players[i], players[j]));
+                Relationship relationship = new Relationship(players[i], players[j]);
+                relationships.add(relationship);
+                dateTime.addDailyUpdateListener(relationship);
             }
         }
     }
@@ -111,42 +114,20 @@ public class Game implements DailyUpdate, HourUpdate {
 
     @Override
     public void nextDayUpdate() {
-        world.nextDayUpdate();
         world.setTomorrowWeather(Weather.getRandom(dateTime.getSeason()));
         world.foraging(dateTime.getSeason());
 
-        for (Player player : players) {
-            player.nextDayUpdate();
-        }
-
-        for (Relationship relationship : relationships) {
-            relationship.nextDayUpdate();
-        }
-
-        dateTime.increaseDay(1);
+        // TODO this line should not be here.
         NpcController.resetNpcEveryDay();
     }
 
-    @Override
-    public void nextHourUpdate() {
-        world.nextHourUpdate();
-
-        for (Player player : players) {
-            player.nextHourUpdate();
-        }
-
-        dateTime.increaseHour(1);
-        if (dateTime.getHour() == DateTime.getStartHour()) {
-            nextDayUpdate();
-        }
-    }
 
     public void nextTurn() {
         do {
             turn++;
             if (turn >= players.length) {
                 turn = 0;
-                nextHourUpdate();
+                dateTime.increaseHour(1);
             }
         } while (players[turn].isFallen());
 
