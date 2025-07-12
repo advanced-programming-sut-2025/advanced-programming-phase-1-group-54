@@ -68,6 +68,7 @@ public class WorldBuilder {
         ArrayList<Shop> shops = buildShops();
         for (Shop shop : shops) {
             dateTime.addHourCheckListener(shop);
+            shop.checkHour(dateTime.getHour());
         }
 
         ArrayList<NPCHouse> NPCHouses = buildNPCHouses();
