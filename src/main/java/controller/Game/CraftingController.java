@@ -124,6 +124,7 @@ public class CraftingController {
 
             tile.setThingOnTile(producerArtisan);
             player.getPlacedArtisans().add(producerArtisan);
+            App.getCurrentGame().getDateTime().addHourUpdateListener(producerArtisan);
 
             return new Result(1,"Artisan placed successfully");
         }
@@ -160,28 +161,6 @@ public class CraftingController {
         }
 
         return new Result(-1,"Artisan placed successfully");
-    }
-
-    public static Result cheatCodeAddItem(String itemName,String numberString){
-
-        Item item = CommonGameController.findItem(itemName);
-        if(item == null){
-            return new Result(-1,"Item doesn't exist");
-        }
-
-        int number ;
-        try{
-            number = Integer.parseInt(numberString);
-        }catch (NumberFormatException e){
-            return new Result(-1,"Invalid number");
-        }
-
-        if(! App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(item,number)){
-            return new Result(-1,"Backpack is full");
-        }
-
-        return new Result(1,number + " of "+ itemName + " added successfully");
-
     }
 
     public static Result producing(String artisanName,String produceName){

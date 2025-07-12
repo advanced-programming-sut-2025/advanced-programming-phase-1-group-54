@@ -1,9 +1,6 @@
 package controller.Game;
 
-import model.App;
-import model.Game;
-import model.Result;
-import model.User;
+import model.*;
 import model.enums.Direction;
 import model.enums.Feature;
 import model.enums.ProduceQuality;
@@ -491,16 +488,22 @@ public class CommonGameController {
         } else if (tile.getThingOnTile() instanceof ProducerArtisan producerArtisan) {
             tile.setThingOnTile(null);
             player.getPlacedArtisans().remove(producerArtisan);
+            App.getCurrentGame().getDateTime().removeHourUpdateListener(producerArtisan);
         } else if (tile.getThingOnTile() instanceof Crop crop && crop.getGiantDirection() != null) {
             tile.setThingOnTile(null);
+            App.getCurrentGame().getDateTime().removeDailyUpdateListener(crop);
             for (int i = 0; i < 3; i++) {
                 tile = App.getCurrentGame().getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection()));
                 crop = (Crop) tile.getThingOnTile();
                 tile.setThingOnTile(null);
+                App.getCurrentGame().getDateTime().removeDailyUpdateListener(crop);
             }
         } else if (tile.getThingOnTile() instanceof Building) {
             return deleteThingOnTile(tile.getTop(), farm);
         } else if (!(tile.getThingOnTile() instanceof Animal)) {
+            if (tile.getThingOnTile() instanceof DailyUpdate dailyUpdate) {
+                App.getCurrentGame().getDateTime().removeDailyUpdateListener(dailyUpdate);
+            }
             tile.setThingOnTile(null);
         } else {
             return false;
