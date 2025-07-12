@@ -3,7 +3,6 @@ package model.items.plants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import model.App;
 import model.Placeable;
 import model.enums.Season;
 import model.enums.Symbol;

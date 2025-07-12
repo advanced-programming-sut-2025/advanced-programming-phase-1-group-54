@@ -1,7 +1,7 @@
 package model.map.Shops;
 
-import model.lives.NPC;
 import model.items.ShopItem;
+import model.lives.NPC;
 import model.map.Area;
 
 import java.util.ArrayList;

@@ -2,7 +2,6 @@ package model.lives;
 
 import model.Quest;
 import model.enums.Symbol;
-import model.items.Item;
 
 import java.util.ArrayList;
 import java.util.Random;

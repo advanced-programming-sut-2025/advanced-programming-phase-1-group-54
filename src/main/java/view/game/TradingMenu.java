@@ -1,20 +1,11 @@
 package view.game;
 
-import controller.Game.FriendShipController;
 import controller.Game.TradingController;
-import model.App;
-import model.Result;
 import model.enums.SubMenu;
-import model.enums.commands.CheatCode;
 import model.enums.commands.Command;
 import model.enums.commands.GameCommand;
-import model.lives.Player;
-import model.relationships.Relationship;
-import model.relationships.Trade;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
-import java.util.regex.Matcher;
 
 public class TradingMenu implements GameSubMenu {
     @Override

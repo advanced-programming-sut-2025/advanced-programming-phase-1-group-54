@@ -2,9 +2,8 @@ package view.app;
 
 import controller.LoginMenuController;
 import model.Result;
-import model.enums.commands.LoginMenuCommand;
 import model.enums.Menu;
-import view.GenericMenu;
+import model.enums.commands.LoginMenuCommand;
 
 import java.util.Scanner;
 

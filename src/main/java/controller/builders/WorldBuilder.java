@@ -1,7 +1,5 @@
 package controller.builders;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import controller.Game.DataBaseController;
 import model.Quest;
 import model.items.ShopItem;

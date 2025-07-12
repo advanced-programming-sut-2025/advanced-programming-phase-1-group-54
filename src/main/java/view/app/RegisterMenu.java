@@ -4,7 +4,6 @@ import controller.RegisterMenuController;
 import model.Result;
 import model.enums.Gender;
 import model.enums.commands.RegisterMenuCommand;
-import view.GenericMenu;
 
 import java.util.Scanner;
 

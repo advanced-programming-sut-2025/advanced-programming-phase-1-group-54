@@ -1,9 +1,9 @@
 package model;
 
 import controller.Game.NpcController;
-import model.lives.Player;
 import model.enums.SubMenu;
 import model.enums.Weather;
+import model.lives.Player;
 import model.map.World;
 import model.relationships.Relationship;
 

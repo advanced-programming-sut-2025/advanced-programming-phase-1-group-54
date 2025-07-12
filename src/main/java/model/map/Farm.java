@@ -4,7 +4,6 @@ package model.map;
     each player has a farm, at the start player selects one of predefined farms;
  */
 
-import controller.Game.PlantsController;
 import model.DailyUpdate;
 import model.HourUpdate;
 import model.enums.Feature;

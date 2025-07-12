@@ -2,14 +2,13 @@ package controller.Game;
 
 import model.App;
 import model.Game;
+import model.Result;
 import model.enums.Weather;
-import model.enums.commands.Command;
 import model.items.Item;
 import model.lives.Animal;
 import model.lives.Player;
 import model.map.Farm;
 import model.map.Location;
-import model.Result;
 
 public class CheatController {
     public static Result advanceTime(int x) {

@@ -2,21 +2,23 @@ package controller.Game;
 
 import model.App;
 import model.Game;
-import model.User;
-import model.enums.*;
-import model.items.plants.Crop;
-import model.lives.Animal;
-import model.map.*;
-import model.map.Refrigerator;
 import model.Result;
-import model.lives.Player;
+import model.User;
+import model.enums.Direction;
+import model.enums.Feature;
+import model.enums.ProduceQuality;
+import model.enums.ToolType;
 import model.items.*;
+import model.items.crafting.FeatureArtisan;
 import model.items.crafting.Produce;
 import model.items.crafting.ProducerArtisan;
-import model.items.crafting.FeatureArtisan;
+import model.items.plants.Crop;
 import model.items.plants.Fruit;
 import model.items.plants.Seed;
 import model.items.tools.BackPack;
+import model.lives.Animal;
+import model.lives.Player;
+import model.map.*;
 
 
 public class CommonGameController {

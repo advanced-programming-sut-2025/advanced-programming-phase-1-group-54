@@ -1,14 +1,14 @@
 package controller.Game;
 
 import model.App;
-import model.map.Cabin;
-import model.map.Refrigerator;
 import model.Result;
-import model.lives.Player;
 import model.items.Food;
 import model.items.Item;
 import model.items.recipes.Recipe;
 import model.items.tools.BackPack;
+import model.lives.Player;
+import model.map.Cabin;
+import model.map.Refrigerator;
 import model.map.Tile;
 
 import java.util.ArrayList;

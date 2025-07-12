@@ -1,20 +1,14 @@
 package controller.Game;
 
 import model.App;
-import model.Placeable;
-import model.enums.Symbol;
-import model.items.Item;
-import model.map.Building;
-import model.map.GreenHouse;
 import model.Game;
+import model.Placeable;
 import model.Result;
-import model.lives.Player;
 import model.enums.Direction;
+import model.enums.Symbol;
 import model.items.Material;
-import model.map.Farm;
-import model.map.Location;
-import model.map.Tile;
-import model.map.World;
+import model.lives.Player;
+import model.map.*;
 
 import java.util.ArrayList;
 

@@ -1,17 +1,20 @@
 package controller.Game;
 
 import model.App;
-import model.enums.Season;
-import model.enums.SkillType;
-import model.map.*;
 import model.Game;
 import model.Placeable;
 import model.Result;
-import model.lives.Player;
 import model.enums.Direction;
 import model.enums.Feature;
+import model.enums.Season;
+import model.enums.SkillType;
 import model.items.Fertilize;
 import model.items.plants.*;
+import model.lives.Player;
+import model.map.Farm;
+import model.map.GreenHouse;
+import model.map.Location;
+import model.map.Tile;
 
 public class PlantsController {
 

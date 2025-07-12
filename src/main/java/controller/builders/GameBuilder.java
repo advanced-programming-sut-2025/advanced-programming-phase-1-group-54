@@ -1,11 +1,11 @@
 package controller.builders;
 
 import model.App;
-import model.GameData;
-import model.map.Cabin;
 import model.Game;
+import model.GameData;
 import model.User;
 import model.lives.Player;
+import model.map.Cabin;
 import model.map.Farm;
 import model.map.Location;
 import model.map.World;

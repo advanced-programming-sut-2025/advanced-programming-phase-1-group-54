@@ -3,10 +3,10 @@ package model.map.Shops;
 import model.DailyUpdate;
 import model.DateTime;
 import model.HourUpdate;
-import model.lives.NPC;
-import model.map.Building;
 import model.enums.Symbol;
+import model.lives.NPC;
 import model.map.Area;
+import model.map.Building;
 import model.map.Map;
 
 public class Shop extends Building implements DailyUpdate, HourUpdate {

@@ -2,7 +2,6 @@ package model.items.tools;
 
 import model.enums.BackPackLevel;
 import model.items.Item;
-import model.Result;
 
 import java.util.HashMap;
 import java.util.Objects;

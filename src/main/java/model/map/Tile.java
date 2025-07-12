@@ -4,8 +4,8 @@ import controller.Game.PlantsController;
 import model.DailyUpdate;
 import model.Placeable;
 import model.enums.Color;
-import model.enums.Symbol;
 import model.enums.Feature;
+import model.enums.Symbol;
 import model.items.plants.Plant;
 
 import java.util.ArrayList;

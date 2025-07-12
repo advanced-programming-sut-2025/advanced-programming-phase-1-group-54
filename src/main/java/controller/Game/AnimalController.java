@@ -1,13 +1,16 @@
 package controller.Game;
 
-import model.enums.SkillType;
-import model.enums.ToolType;
-import model.map.*;
 import model.App;
 import model.Result;
+import model.enums.SkillType;
+import model.enums.ToolType;
+import model.items.Item;
 import model.lives.Animal;
 import model.lives.Player;
-import model.items.Item;
+import model.map.AnimalHouse;
+import model.map.Farm;
+import model.map.Location;
+import model.map.Tile;
 
 public class AnimalController {
 

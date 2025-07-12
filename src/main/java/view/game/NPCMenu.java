@@ -1,12 +1,9 @@
 package view.game;
 
 import controller.Game.NpcController;
-import model.Quest;
-import model.Result;
 import model.enums.commands.Command;
 import model.enums.commands.GameCommand;
 import model.lives.NPC;
-import model.relationships.NPCFriendship;
 
 import java.util.ArrayList;
 import java.util.Scanner;

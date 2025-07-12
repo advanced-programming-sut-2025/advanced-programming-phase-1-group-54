@@ -1,9 +1,7 @@
 package model.items.tools;
 
-import model.enums.Feature;
 import model.enums.SkillType;
 import model.enums.ToolType;
-import model.map.Tile;
 
 public class WateringCan extends Tool {
     private int currentWater;

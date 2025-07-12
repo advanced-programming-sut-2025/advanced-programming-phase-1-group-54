@@ -4,13 +4,12 @@ import model.App;
 import model.DateTime;
 import model.Game;
 import model.Result;
-import model.lives.Player;
 import model.items.Item;
 import model.items.UniqueItem;
+import model.lives.Player;
 import model.relationships.Gift;
 import model.relationships.Relationship;
 import model.relationships.Talk;
-import model.relationships.Trade;
 
 import java.util.ArrayList;
 

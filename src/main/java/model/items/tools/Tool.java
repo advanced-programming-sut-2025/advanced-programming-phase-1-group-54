@@ -1,12 +1,8 @@
 package model.items.tools;
 
 import model.enums.SkillType;
-import model.enums.ToolType;
-import model.items.Item;
 import model.enums.ToolLevel;
-import model.map.Location;
-import model.map.Node;
-import model.map.Tile;
+import model.enums.ToolType;
 
 public class Tool {
     private ToolLevel toolLevel = ToolLevel.NORMAL;
