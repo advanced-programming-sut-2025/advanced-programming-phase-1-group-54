@@ -2,7 +2,6 @@ package controller.builders;
 
 import model.App;
 import model.lives.NPC;
-import model.map.World;
 import model.relationships.NPCFriendship;
 
 import java.util.ArrayList;

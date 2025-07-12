@@ -2,18 +2,18 @@ package controller.Game;
 
 import model.App;
 import model.DateTime;
-import model.map.*;
 import model.Result;
-import model.lives.Player;
 import model.enums.Direction;
 import model.enums.Feature;
 import model.items.Item;
 import model.items.crafting.Artisan;
+import model.items.crafting.FeatureArtisan;
 import model.items.crafting.Produce;
 import model.items.crafting.ProducerArtisan;
-import model.items.crafting.FeatureArtisan;
 import model.items.plants.Seed;
 import model.items.recipes.Recipe;
+import model.lives.Player;
+import model.map.Cabin;
 import model.map.Farm;
 import model.map.Location;
 import model.map.Tile;
@@ -124,6 +124,7 @@ public class CraftingController {
 
             tile.setThingOnTile(producerArtisan);
             player.getPlacedArtisans().add(producerArtisan);
+            App.getCurrentGame().getDateTime().addHourUpdateListener(producerArtisan);
 
             return new Result(1,"Artisan placed successfully");
         }
@@ -160,28 +161,6 @@ public class CraftingController {
         }
 
         return new Result(-1,"Artisan placed successfully");
-    }
-
-    public static Result cheatCodeAddItem(String itemName,String numberString){
-
-        Item item = CommonGameController.findItem(itemName);
-        if(item == null){
-            return new Result(-1,"Item doesn't exist");
-        }
-
-        int number ;
-        try{
-            number = Integer.parseInt(numberString);
-        }catch (NumberFormatException e){
-            return new Result(-1,"Invalid number");
-        }
-
-        if(! App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(item,number)){
-            return new Result(-1,"Backpack is full");
-        }
-
-        return new Result(1,number + " of "+ itemName + " added successfully");
-
     }
 
     public static Result producing(String artisanName,String produceName){

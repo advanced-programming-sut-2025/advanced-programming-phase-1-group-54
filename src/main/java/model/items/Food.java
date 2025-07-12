@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.enums.SkillType;
-import model.items.plants.Tree;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

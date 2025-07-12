@@ -4,13 +4,13 @@ import model.App;
 import model.Game;
 import model.Result;
 import model.enums.*;
-import model.items.tools.Tool;
-import model.lives.Animal;
 import model.items.Item;
 import model.items.ShopItem;
 import model.items.UniqueItem;
 import model.items.recipes.Recipe;
 import model.items.tools.FishingPole;
+import model.items.tools.Tool;
+import model.lives.Animal;
 import model.lives.Player;
 import model.map.*;
 import model.map.Shops.*;
@@ -664,6 +664,7 @@ public class ShopsController {
         }
         Animal animal = Animal.getAnimal(item.getName());
         App.getCurrentGame().getCurrentPlayer().getAnimals().put(name, animal);
+        App.getCurrentGame().getDateTime().addDailyUpdateListener(animal);
         return new Result(true, "animal purchased");
     }
 

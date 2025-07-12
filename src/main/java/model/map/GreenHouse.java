@@ -1,10 +1,9 @@
 package model.map;
 
-import model.DailyUpdate;
 import model.enums.Feature;
 import model.enums.Symbol;
 
-public class GreenHouse extends Building implements DailyUpdate {
+public class GreenHouse extends Building {
     private final static int NUMBER_OF_ROWS = 5;
     private final static int NUMBER_OF_COLUMNS = 6;
     private final static int NEEDED_MONEY = 1000;
@@ -48,15 +47,6 @@ public class GreenHouse extends Building implements DailyUpdate {
 
     public GenericWall getWaterTank() {
         return waterTank;
-    }
-
-    @Override
-    public void nextDayUpdate() {
-        for (int i = 0; i < NUMBER_OF_ROWS; i++) {
-            for (int j = 0; j < NUMBER_OF_COLUMNS; j++) {
-                this.getTileAt(new Location(i, j)).nextDayUpdate();
-            }
-        }
     }
 
     @Override

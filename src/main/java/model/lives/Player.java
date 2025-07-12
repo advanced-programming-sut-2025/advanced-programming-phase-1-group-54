@@ -1,25 +1,15 @@
 package model.lives;
 
-import controller.builders.PlayerBuilder;
 import model.DailyUpdate;
-import model.DateTime;
 import model.HourUpdate;
-import model.enums.*;
-import model.items.tools.*;
-import model.map.Refrigerator;
 import model.User;
-import model.enums.FishingPoleType;
-import model.enums.SkillType;
-import model.enums.Symbol;
-import model.enums.ToolType;
+import model.enums.*;
 import model.items.crafting.ProducerArtisan;
 import model.items.recipes.Recipe;
-import model.items.tools.BackPack;
-import model.items.tools.FishingPole;
-import model.items.tools.Tool;
-import model.items.tools.TrashCan;
+import model.items.tools.*;
 import model.map.Farm;
 import model.map.Location;
+import model.map.Refrigerator;
 import model.relationships.Gift;
 import model.relationships.NPCFriendship;
 import model.relationships.Relationship;
@@ -203,7 +193,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         if (!unlimitedEnergy) {
             if (energy <= MAXIMUM_ENERGY)
                 this.energy = energy;
-            }
+        }
     }
 
     public int getMoney() {
@@ -297,18 +287,9 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     @Override
     public void nextDayUpdate() {
-        buffHours -= DateTime.getNightTime();
-        if (buffHours <= 0) {
-            buffSkill = null;
-        }
-
-        for (Animal animal : animals.values()) {
-            animal.nextDayUpdate();
-        }
-
-        if (this.isFallen())
+        if (this.isFallen()) {
             energy = 75 * MAXIMUM_ENERGY / 100;
-        else {
+        } else {
             energy = MAXIMUM_ENERGY;
         }
 
@@ -363,10 +344,13 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     }
 
     @Override
-    public void nextHourUpdate() {
-        buffHours--;
-        if (buffHours <= 0) {
-            buffSkill = null;
+    public void nextHourUpdate(int amount) {
+        if (buffSkill != null) {
+            buffHours -= amount;
+            if (buffHours <= 0) {
+                buffHours = 0;
+                buffSkill = null;
+            }
         }
     }
 }

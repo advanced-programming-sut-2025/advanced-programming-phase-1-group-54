@@ -7,18 +7,17 @@ package model.map;
 import controller.Game.DataBaseController;
 import controller.Game.PlantsController;
 import model.DailyUpdate;
-import model.HourUpdate;
+import model.enums.Direction;
 import model.enums.Season;
+import model.enums.Weather;
 import model.lives.NPC;
 import model.lives.Player;
-import model.enums.Direction;
-import model.enums.Weather;
 import model.map.Shops.*;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
 
-public class World implements DailyUpdate, HourUpdate {
+public class World implements DailyUpdate {
     private static final int NUMBER_OF_ROWS = 100;
     private static final int NUMBER_OF_COLUMNS = 100;
     private static final int NUMBER_OF_THUNDER = 3;
@@ -127,14 +126,6 @@ public class World implements DailyUpdate, HourUpdate {
     public void nextDayUpdate() {
         currentWeather = tomorrowWeather;
 
-        for (Farm farm : playerFarms) {
-            farm.nextDayUpdate();
-        }
-
-        for (Shop shop : shops) {
-            shop.nextDayUpdate();
-        }
-
         if (currentWeather == Weather.RAIN || currentWeather == Weather.STORM) {
             rain();
         }
@@ -144,17 +135,6 @@ public class World implements DailyUpdate, HourUpdate {
         }
 
         refillShops();
-    }
-
-    @Override
-    public void nextHourUpdate() {
-        for (Farm farm : playerFarms) {
-            farm.nextHourUpdate();
-        }
-
-        for (Shop shop : shops) {
-            shop.nextHourUpdate();
-        }
     }
 
     private void refillShops() {

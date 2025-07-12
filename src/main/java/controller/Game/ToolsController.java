@@ -3,13 +3,16 @@ package controller.Game;
 import model.App;
 import model.Game;
 import model.Result;
-import model.lives.Player;
 import model.enums.*;
 import model.items.Item;
 import model.items.Material;
 import model.items.plants.Seed;
 import model.items.plants.Tree;
-import model.items.tools.*;
+import model.items.tools.BackPack;
+import model.items.tools.Tool;
+import model.items.tools.TrashCan;
+import model.items.tools.WateringCan;
+import model.lives.Player;
 import model.map.*;
 
 public class ToolsController {
@@ -106,8 +109,6 @@ public class ToolsController {
             if (tile.getThingOnTile() == null || !tile.getThingOnTile().equals(playerBuilding)) {
                 return new Result(false, "you should go out of building to use this tool on this tile");
             }
-        } else if (tile.getThingOnTile() != null && tile.getThingOnTile() instanceof Building) {
-            return new Result(false, "you should go in building to use this tool on this tile");
         }
 
         Tool equippedTool = player.getEquippedTool();

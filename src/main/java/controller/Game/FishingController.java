@@ -2,13 +2,13 @@ package controller.Game;
 
 import model.App;
 import model.Result;
-import model.lives.Skill;
-import model.lives.Player;
 import model.enums.FishingPoleType;
 import model.enums.ProduceQuality;
 import model.enums.SkillType;
 import model.items.Fish;
 import model.items.tools.FishingPole;
+import model.lives.Player;
+import model.lives.Skill;
 import model.map.Farm;
 import model.map.GenericWall;
 

@@ -4,8 +4,8 @@ import controller.Game.PlantsController;
 import model.DailyUpdate;
 import model.Placeable;
 import model.enums.Color;
-import model.enums.Symbol;
 import model.enums.Feature;
+import model.enums.Symbol;
 import model.items.plants.Plant;
 
 import java.util.ArrayList;
@@ -86,10 +86,6 @@ public class Tile implements DailyUpdate {
 
     @Override
     public void nextDayUpdate() {
-        if (thingOnTile instanceof Building) {
-            return;
-        }
-
         if (thingOnTile instanceof Plant plant) {
             if (this.hasFeature(Feature.AUTO_WATER))
                 PlantsController.giveWater(this.getLocation());
@@ -97,12 +93,6 @@ public class Tile implements DailyUpdate {
             if (plant.isDead()) {
                 setThingOnTile(null);
             }
-            else {
-                plant.nextDayUpdate();
-            }
-        }
-        else if (thingOnTile instanceof DailyUpdate updating) {
-            updating.nextDayUpdate();
         }
     }
 }

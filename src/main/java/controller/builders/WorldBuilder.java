@@ -1,8 +1,7 @@
 package controller.builders;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import controller.Game.DataBaseController;
+import model.DateTime;
 import model.Quest;
 import model.items.ShopItem;
 import model.lives.NPC;
@@ -22,6 +21,7 @@ public class WorldBuilder {
 
     private static Farm[] playerFarms;
     private static Tile[][] tiles;
+    private static DateTime dateTime;
 
     static Location getFarmLocation(int i) {
         return farmLocation[i];
@@ -30,11 +30,16 @@ public class WorldBuilder {
     public static void reset() {
         playerFarms = new Farm[4];
         tiles = null;
+        dateTime = null;
     }
 
     public static void setPlayerFarms(Farm[] playerFarms) {
         WorldBuilder.playerFarms = new Farm[playerFarms.length];
         System.arraycopy(playerFarms, 0, WorldBuilder.playerFarms, 0, playerFarms.length);
+    }
+
+    public static void setDateTime(DateTime dateTime) {
+        WorldBuilder.dateTime = dateTime;
     }
 
     public static World getResult() {
@@ -61,6 +66,11 @@ public class WorldBuilder {
         }
 
         ArrayList<Shop> shops = buildShops();
+        for (Shop shop : shops) {
+            dateTime.addHourCheckListener(shop);
+            shop.checkHour(dateTime.getHour());
+        }
+
         ArrayList<NPCHouse> NPCHouses = buildNPCHouses();
         World world = new World(playerFarms, shops, NPCHouses, new Map(World.getNumberOfRows(), World.getNumberOfColumns(), tiles));
         WorldBuilder.reset();

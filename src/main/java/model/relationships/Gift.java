@@ -1,6 +1,5 @@
 package model.relationships;
 
-import model.App;
 import model.DateTime;
 import model.lives.Player;
 

@@ -1,8 +1,8 @@
 package model.relationships;
 
 import model.DailyUpdate;
-import model.lives.Player;
 import model.items.UniqueItem;
+import model.lives.Player;
 
 import java.util.ArrayList;
 

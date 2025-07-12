@@ -1,22 +1,21 @@
 package controller.Game;
 
-import model.App;
-import model.Game;
-import model.User;
-import model.enums.*;
-import model.items.plants.Crop;
-import model.lives.Animal;
-import model.map.*;
-import model.map.Refrigerator;
-import model.Result;
-import model.lives.Player;
+import model.*;
+import model.enums.Direction;
+import model.enums.Feature;
+import model.enums.ProduceQuality;
+import model.enums.ToolType;
 import model.items.*;
+import model.items.crafting.FeatureArtisan;
 import model.items.crafting.Produce;
 import model.items.crafting.ProducerArtisan;
-import model.items.crafting.FeatureArtisan;
+import model.items.plants.Crop;
 import model.items.plants.Fruit;
 import model.items.plants.Seed;
 import model.items.tools.BackPack;
+import model.lives.Animal;
+import model.lives.Player;
+import model.map.*;
 
 
 public class CommonGameController {
@@ -77,25 +76,6 @@ public class CommonGameController {
             message.append("\nYou received some marriage request. You should respond to them.");
         }
         return new Result(code, message.toString());
-    }
-
-    private static String getNotification() {
-        Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
-
-        StringBuilder messageBuilder = new StringBuilder();
-
-        if (!player.getReceivedTrades().isEmpty()) {
-            messageBuilder.append("\nYou have some trade to do");
-        }
-        if (!player.getReceivedGifts().isEmpty()) {
-            messageBuilder.append("\nYou have some gift to open");
-        }
-        if (!(player.getReceivedRequests()).isEmpty()) {
-            messageBuilder.append("\nYou have some marriage proposal");
-        }
-
-        return messageBuilder.toString();
     }
 
     public static Result showTime() {
@@ -508,16 +488,28 @@ public class CommonGameController {
         } else if (tile.getThingOnTile() instanceof ProducerArtisan producerArtisan) {
             tile.setThingOnTile(null);
             player.getPlacedArtisans().remove(producerArtisan);
+            App.getCurrentGame().getDateTime().removeHourUpdateListener(producerArtisan);
         } else if (tile.getThingOnTile() instanceof Crop crop && crop.getGiantDirection() != null) {
             tile.setThingOnTile(null);
+            App.getCurrentGame().getDateTime().removeDailyUpdateListener(crop);
             for (int i = 0; i < 3; i++) {
                 tile = App.getCurrentGame().getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection()));
                 crop = (Crop) tile.getThingOnTile();
                 tile.setThingOnTile(null);
+                App.getCurrentGame().getDateTime().removeDailyUpdateListener(crop);
             }
         } else if (tile.getThingOnTile() instanceof Building) {
             return deleteThingOnTile(tile.getTop(), farm);
         } else if (!(tile.getThingOnTile() instanceof Animal)) {
+            if (tile.getThingOnTile() instanceof DailyUpdate dailyUpdate) {
+                App.getCurrentGame().getDateTime().removeDailyUpdateListener(dailyUpdate);
+            }
+            if (tile.getThingOnTile() instanceof HourUpdate hourUpdate) {
+                App.getCurrentGame().getDateTime().removeHourUpdateListener(hourUpdate);
+            }
+            if (tile.getThingOnTile() instanceof HourCheck hourCheck) {
+                App.getCurrentGame().getDateTime().removeHourCheckListener(hourCheck);
+            }
             tile.setThingOnTile(null);
         } else {
             return false;

@@ -9,7 +9,6 @@ import model.items.Item;
 import model.items.recipes.Recipe;
 import model.lives.NPC;
 import model.lives.Player;
-import model.map.World;
 import model.relationships.NPCFriendship;
 import view.game.NPCMenu;
 

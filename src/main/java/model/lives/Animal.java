@@ -3,12 +3,11 @@ package model.lives;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import controller.Game.CommonGameController;
 import model.DailyUpdate;
-import model.map.AnimalHouse;
 import model.enums.ProduceQuality;
 import model.enums.Symbol;
 import model.items.AnimalProduce;
+import model.map.AnimalHouse;
 import model.map.Farm;
 import model.map.Location;
 

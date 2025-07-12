@@ -3,8 +3,10 @@ package model;
 import com.google.gson.Gson;
 import model.enums.Gender;
 
-import java.io.*;
-import java.util.Objects;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class User {
     private String username;

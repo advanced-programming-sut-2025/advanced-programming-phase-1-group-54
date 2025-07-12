@@ -2,27 +2,24 @@ package controller.Game;
 
 import model.App;
 import model.Game;
+import model.Result;
 import model.enums.Weather;
-import model.enums.commands.Command;
 import model.items.Item;
 import model.lives.Animal;
 import model.lives.Player;
 import model.map.Farm;
 import model.map.Location;
-import model.Result;
 
 public class CheatController {
     public static Result advanceTime(int x) {
         Game game = App.getCurrentGame();
-        for (int i = 1; i <= x; i++)
-            game.nextHourUpdate();
+        game.getDateTime().increaseHour(x);
         return new Result(true, "it's now " + game.getDateTime().toString());
     }
 
     public static Result advanceDate(int x) {
         Game game = App.getCurrentGame();
-        for (int i = 1; i <= x; i++)
-            game.nextDayUpdate();
+        game.getDateTime().increaseDay(x);
         return new Result(true, "it's now " + game.getDateTime().toString());
     }
 

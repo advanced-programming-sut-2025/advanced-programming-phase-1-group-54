@@ -1,6 +1,5 @@
 package model.enums;
 
-import view.*;
 import view.app.*;
 
 import java.util.Scanner;

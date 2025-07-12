@@ -1,6 +1,9 @@
 package model.enums;
 
-import view.game.*;
+import view.game.DefaultMenu;
+import view.game.GameSubMenu;
+import view.game.NPCMenu;
+import view.game.TradingMenu;
 
 import java.util.Scanner;
 

@@ -1,7 +1,5 @@
 package model.enums;
 
-import model.items.tools.Tool;
-
 public enum ToolType {
     AXE,
     PICKAXE,

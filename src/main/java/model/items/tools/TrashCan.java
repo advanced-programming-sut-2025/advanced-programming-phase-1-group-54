@@ -1,7 +1,6 @@
 package model.items.tools;
 
 import model.enums.ToolLevel;
-import model.enums.ToolType;
 import model.items.Item;
 
 public class TrashCan {

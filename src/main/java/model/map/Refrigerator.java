@@ -1,7 +1,6 @@
 package model.map;
 
 import model.Placeable;
-import model.Result;
 import model.enums.Symbol;
 import model.items.Item;
 

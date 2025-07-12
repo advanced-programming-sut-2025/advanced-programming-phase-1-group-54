@@ -3,8 +3,6 @@ package model.items.crafting;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import model.DailyUpdate;
-import model.DateTime;
 import model.HourUpdate;
 
 import java.io.FileNotFoundException;
@@ -15,7 +13,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ProducerArtisan extends Artisan implements HourUpdate, DailyUpdate, Cloneable {
+public class ProducerArtisan extends Artisan implements HourUpdate, Cloneable {
 
     private final static HashMap<String, ProducerArtisan> producerArtisans;
 
@@ -426,20 +424,9 @@ public class ProducerArtisan extends Artisan implements HourUpdate, DailyUpdate,
     }
 
     @Override
-    public void nextHourUpdate() {
+    public void nextHourUpdate(int amount) {
         if (this.getProcessingProduce() != null) {
-            remainingHours--;
-            if (remainingHours <= 0) {
-                produceIsReady = true;
-                remainingHours = 0;
-            }
-        }
-    }
-
-    @Override
-    public void nextDayUpdate() {
-        if (this.getProcessingProduce() != null) {
-            remainingHours -= DateTime.getNightTime();
+            remainingHours -= amount;
             if (remainingHours <= 0) {
                 produceIsReady = true;
                 remainingHours = 0;
