@@ -170,10 +170,10 @@ public class DateTime {
     @Override
     public String toString() {
         return String.format("%s, %d/%s/%d at %d o'clock",
-                this.weekDay,
-                this.day,
-                this.season,
+                this.weekDay.toString().toLowerCase(),
                 this.year,
+                this.season.toString().toLowerCase(),
+                this.day,
                 this.hour);
     }
 }

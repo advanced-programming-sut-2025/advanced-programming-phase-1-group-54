@@ -4,25 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="optimize imports">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="fix watering can fill.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CheatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CheatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/ShopsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/ShopsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/FarmBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/FarmBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/GameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/GameBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/builders/WorldBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/builders/WorldBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/DateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/DateTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/HourUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/HourUpdate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/lives/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/lives/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Farm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Farm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/GreenHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/GreenHouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Shops/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Shops/Shop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,22 +34,22 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
     {
-      "state": "OPEN"
+      &quot;state&quot;: &quot;OPEN&quot;
     }
   ],
-  "lastFilter": {
-    "state": "OPEN"
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54",
-    "accountId": "7ce6bb28-cb79-404a-94a1-2616f8204759"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54&quot;,
+    &quot;accountId&quot;: &quot;7ce6bb28-cb79-404a-94a1-2616f8204759&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -79,27 +62,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Asus/IdeaProjects/advanced-programming-phase-1-group-54",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "editor.preferences.import",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Asus/IdeaProjects/advanced-programming-phase-1-group-54&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model.map.Shops" />
@@ -155,46 +138,6 @@
       <workItem from="1747303498996" duration="9253000" />
       <workItem from="1747512763721" duration="190000" />
       <workItem from="1747549737006" duration="8304000" />
-    </task>
-    <task id="LOCAL-00021" summary="write foraging Trees">
-      <option name="closed" value="true" />
-      <created>1746216305539</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1746216305539</updated>
-    </task>
-    <task id="LOCAL-00022" summary="edit writeToJson method of Seed Class">
-      <option name="closed" value="true" />
-      <created>1746216777704</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1746216777704</updated>
-    </task>
-    <task id="LOCAL-00023" summary=" write to json foragingCrops">
-      <option name="closed" value="true" />
-      <created>1746251040912</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1746251040912</updated>
-    </task>
-    <task id="LOCAL-00024" summary=" write to json Foods">
-      <option name="closed" value="true" />
-      <created>1746252794303</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1746252794303</updated>
-    </task>
-    <task id="LOCAL-00025" summary=" edit some things">
-      <option name="closed" value="true" />
-      <created>1746261370313</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1746261370313</updated>
     </task>
     <task id="LOCAL-00026" summary="complete refigerator and backpack">
       <option name="closed" value="true" />
@@ -548,7 +491,47 @@
       <option name="project" value="LOCAL" />
       <updated>1752345528017</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="add HourCheck and change DateTime to Observer pattern.">
+      <option name="closed" value="true" />
+      <created>1752354420436</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1752354420436</updated>
+    </task>
+    <task id="LOCAL-00071" summary="fix shop open and close">
+      <option name="closed" value="true" />
+      <created>1752354549086</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1752354549086</updated>
+    </task>
+    <task id="LOCAL-00072" summary="correctly add and remove things from DateTime observer.">
+      <option name="closed" value="true" />
+      <created>1752356142748</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1752356142748</updated>
+    </task>
+    <task id="LOCAL-00073" summary="plants are removed from dateTime Observer when dead.">
+      <option name="closed" value="true" />
+      <created>1752357073352</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1752357073352</updated>
+    </task>
+    <task id="LOCAL-00074" summary="fix watering can fill.">
+      <option name="closed" value="true" />
+      <created>1752357565159</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1752357565160</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,11 +561,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Friendship between players handled" />
-    <MESSAGE value="Game file player relainships added to Game" />
-    <MESSAGE value="Commands added" />
-    <MESSAGE value="Map" />
-    <MESSAGE value="updated map, print map, buildings, ..." />
     <MESSAGE value="make code run able ://///////////////" />
     <MESSAGE value="update map &amp; tools" />
     <MESSAGE value="some fixes" />
@@ -603,6 +581,11 @@
     <MESSAGE value="merge" />
     <MESSAGE value="debug code" />
     <MESSAGE value="optimize imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="optimize imports" />
+    <MESSAGE value="add HourCheck and change DateTime to Observer pattern." />
+    <MESSAGE value="fix shop open and close" />
+    <MESSAGE value="correctly add and remove things from DateTime observer." />
+    <MESSAGE value="plants are removed from dateTime Observer when dead." />
+    <MESSAGE value="fix watering can fill." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix watering can fill." />
   </component>
 </project>
