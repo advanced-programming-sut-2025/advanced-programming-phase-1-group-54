@@ -109,8 +109,6 @@ public class ToolsController {
             if (tile.getThingOnTile() == null || !tile.getThingOnTile().equals(playerBuilding)) {
                 return new Result(false, "you should go out of building to use this tool on this tile");
             }
-        } else if (tile.getThingOnTile() != null && tile.getThingOnTile() instanceof Building) {
-            return new Result(false, "you should go in building to use this tool on this tile");
         }
 
         Tool equippedTool = player.getEquippedTool();
