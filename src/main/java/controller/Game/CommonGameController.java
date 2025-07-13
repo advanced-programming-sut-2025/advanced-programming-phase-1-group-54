@@ -90,7 +90,8 @@ public class CommonGameController {
     }
 
     public static Result showDateTime() {
-        return new Result(true, showDate().message() + ' ' + showTime().message());
+        Game game = App.getCurrentGame();
+        return new Result(true, game.getDateTime().toString());
 
     }
 
