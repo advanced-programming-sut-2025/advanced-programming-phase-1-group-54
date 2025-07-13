@@ -86,13 +86,8 @@ public class PlantsController {
             StringBuilder output = new StringBuilder();
             output.append(plant.toString());
             output.append("\ndays until harvest : ");
-            if (plant.isFruitIsRipen()) {
-                output.append("0");
-            } else if (plant.getCurrentStage() > plant.getMaxStages()) {
-                output.append(plant.getRegrowthTime() - plant.getCurrentStage());
-            } else {
-                output.append(plant.getTotalHarvestTime() - plant.getCurrentStage());
-            }
+            int untilHarvest = getUntilHarvest(plant);
+            output.append(untilHarvest);
             output.append("\nCurrent stage : ").append(plant.getCurrentStage());
             output.append("\nWatered today : ").append(plant.isWatered());
             output.append("\nFertilized : ").append(plant.isFertilized());
@@ -160,7 +155,8 @@ public class PlantsController {
                         }
 
                         for (int i = 0; i < 3; i++) {
-                            tile = game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection()));
+                            location = location.getLocationAt(crop.getGiantDirection());
+                            tile = game.getWorld().getTileAt(location);
                             crop = (Crop) tile.getThingOnTile();
                             crop.setFruitIsRipen(false);
                             if (crop.isOneTime()) {
@@ -207,12 +203,11 @@ public class PlantsController {
         plant.setWatered(true);
 
         if (plant instanceof Crop crop && crop.getGiantDirection() != null) {
-            crop = (Crop) game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
-            crop.setWatered(true);
-            crop = (Crop) game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
-            crop.setWatered(true);
-            crop = (Crop) game.getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection())).getThingOnTile();
-            crop.setWatered(true);
+            for(int i = 0 ; i < 3;i++){
+                location = location.getLocationAt(crop.getGiantDirection());
+                crop = (Crop) game.getWorld().getTileAt(location).getThingOnTile();
+                crop.setWatered(true);
+            }
         }
 
         return new Result(true, "You watered the plant on this tile");
@@ -518,6 +513,22 @@ public class PlantsController {
 
         return crops[0];
 
+    }
+
+    private static int getUntilHarvest(Plant plant) {
+        int untilHarvest;
+        if (plant.isFruitIsRipen()) {
+            untilHarvest = 0;
+        } else if (plant.getCurrentStage() >= plant.getMaxStages()) {
+            untilHarvest = plant.getRegrowthTime() - plant.getDaysInCurrentStage();
+        } else {
+            untilHarvest = plant.getTotalHarvestTime() - plant.getDaysInCurrentStage();
+            int [] stages = plant.getStages();
+            for(int i = 0; i < plant.getCurrentStage(); i++) {
+                untilHarvest -= stages[i];
+            }
+        }
+        return untilHarvest;
     }
 
 }

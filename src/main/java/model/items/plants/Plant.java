@@ -140,12 +140,12 @@ public abstract class Plant implements Placeable, DailyUpdate {
 
     @Override
     public void nextDayUpdate() {
-        if(this.currentStage <= this.maxStages){
+        if(this.currentStage < this.maxStages){
             this.daysInCurrentStage++;
             this.daysInCurrentStage = this.daysInCurrentStage % this.stages[this.currentStage];
             if(this.daysInCurrentStage == 0){
                 this.currentStage++;
-                if(this.currentStage > this.maxStages){
+                if(this.currentStage == this.maxStages){
                     this.fruitIsRipen = true;
                 }
             }
@@ -161,6 +161,6 @@ public abstract class Plant implements Placeable, DailyUpdate {
         if (!watered)
             numberOfDaysWithoutWater++;
 
-        watered = false;
+        watered = fertilized;
     }
 }
