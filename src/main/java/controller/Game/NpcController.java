@@ -47,7 +47,7 @@ public class NpcController {
         NPCFriendship npcFriendship = getNPCFriendship(npcName);
         if(npcFriendship.getDailyTalkTime() == 0){
             npcFriendship.increaseXP(20);
-            npcFriendship.incresmentDailyTalkTime();
+            npcFriendship.increaseDailyTalkTime();
         }
         int randomNum = rand.nextInt(4);
         switch (randomNum){

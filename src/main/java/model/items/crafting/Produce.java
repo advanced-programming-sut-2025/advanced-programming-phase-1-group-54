@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Produce extends Item implements Cloneable{
 
@@ -26,7 +27,7 @@ public class Produce extends Item implements Cloneable{
         Gson gson = new Gson();
         FileReader file = null;
         try {
-            file = new FileReader("Produces.json");
+            file = new FileReader(Objects.requireNonNull(Produce.class.getClassLoader().getResource("produces.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

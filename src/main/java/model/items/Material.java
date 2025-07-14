@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Random;
 
 public class Material extends Item implements Placeable,Cloneable {
@@ -24,7 +25,7 @@ public class Material extends Item implements Placeable,Cloneable {
         Gson gson = new Gson();
         FileReader file = null;
         try {
-            file = new FileReader("materials.json");
+            file = new FileReader(Objects.requireNonNull(Material.class.getClassLoader().getResource("materials.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -32,7 +33,7 @@ public class Material extends Item implements Placeable,Cloneable {
         materials = gson.fromJson(file,type);
 
         try {
-            file = new FileReader("foragingMaterials.json");
+            file = new FileReader(Objects.requireNonNull(Material.class.getClassLoader().getResource("foragingMaterials.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

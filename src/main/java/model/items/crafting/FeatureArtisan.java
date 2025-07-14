@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class FeatureArtisan extends Artisan implements Cloneable{
 
@@ -20,7 +21,7 @@ public class FeatureArtisan extends Artisan implements Cloneable{
         Gson gson = new Gson();
         FileReader file = null;
         try {
-            file = new FileReader("unProducerArtisans.json");
+            file = new FileReader(Objects.requireNonNull(FeatureArtisan.class.getClassLoader().getResource("featureArtisans.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -189,7 +190,7 @@ public class FeatureArtisan extends Artisan implements Cloneable{
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        try (FileWriter file = new FileWriter("unProducerArtisans.json")){
+        try (FileWriter file = new FileWriter("featureArtisans.json")){
             gson.toJson(UnProducerArtisansType, file);
         } catch (IOException e) {
             throw new RuntimeException(e);

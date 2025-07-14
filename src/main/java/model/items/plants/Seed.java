@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Random;
 
 public class Seed extends Item implements Placeable, Cloneable{
@@ -28,7 +29,7 @@ public class Seed extends Item implements Placeable, Cloneable{
         Gson gson = new Gson();
         FileReader file = null;
         try {
-            file = new FileReader("seeds.json");
+            file = new FileReader(Objects.requireNonNull(Seed.class.getClassLoader().getResource("seeds.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -36,7 +37,7 @@ public class Seed extends Item implements Placeable, Cloneable{
         seeds = gson.fromJson(file,type);
 
         try {
-            file = new FileReader("foragingSeeds.json");
+            file = new FileReader(Objects.requireNonNull(Seed.class.getClassLoader().getResource("foragingSeeds.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -44,7 +45,7 @@ public class Seed extends Item implements Placeable, Cloneable{
         foragingSeeds = gson.fromJson(file,type);
 
         try {
-            file = new FileReader("mixedSeeds.json");
+            file = new FileReader(Objects.requireNonNull(Seed.class.getClassLoader().getResource("mixedSeeds.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -52,7 +53,7 @@ public class Seed extends Item implements Placeable, Cloneable{
         mixedSeeds = gson.fromJson(file,type);
 
         try {
-            file = new FileReader("foragingTrees.json");
+            file = new FileReader(Objects.requireNonNull(Seed.class.getClassLoader().getResource("foragingTrees.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

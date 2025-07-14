@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Objects;
 
 
 public class Tree extends Plant implements Cloneable{
@@ -29,7 +30,7 @@ public class Tree extends Plant implements Cloneable{
         Gson gson = new Gson();
         FileReader file = null;
         try {
-            file = new FileReader("trees.json");
+            file = new FileReader(Objects.requireNonNull(Tree.class.getClassLoader().getResource("trees.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

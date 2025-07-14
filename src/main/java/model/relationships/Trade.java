@@ -12,6 +12,7 @@ public class Trade {
     private String targetItem;
     private int targetAmount;
     private boolean accepted;
+
     public Trade(Player sender, Player receiver, String type, String item, int amount, int price, String targetItem, int targetAmount) {
         this.sender = sender;
         this.receiver = receiver;
