@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="make NPC and NPCFriendship update daily.">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="merge">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/CommonGameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/NpcController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/NpcController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/enums/commands/GameCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/game/NPCMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/game/NPCMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="fix-shops" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,23 +41,12 @@
     &quot;assignee&quot;: &quot;goodguy-not&quot;
   }
 }</component>
-  <component name="GitHubPullRequestState">{
-  &quot;prStates&quot;: [
-    {
-      &quot;id&quot;: {
-        &quot;id&quot;: &quot;PR_kwDOOUbmsM6exsJD&quot;,
-        &quot;number&quot;: 11
-      },
-      &quot;lastSeen&quot;: 1752489841677
-    }
-  ]
-}</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54",
-    "accountId": "7ce6bb28-cb79-404a-94a1-2616f8204759"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54&quot;,
+    &quot;accountId&quot;: &quot;71d33bb1-166c-4fdb-8d69-d035d6644229&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -100,11 +91,16 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -153,7 +149,8 @@
       <workItem from="1748718393634" duration="7000" />
       <workItem from="1751811081663" duration="151000" />
       <workItem from="1751812560691" duration="483000" />
-      <workItem from="1752444949743" duration="4364000" />
+      <workItem from="1752444949743" duration="5154000" />
+      <workItem from="1752484298630" duration="4040000" />
     </task>
     <task id="LOCAL-00024" summary=" write to json Foods">
       <option name="closed" value="true" />
@@ -531,21 +528,21 @@
       <option name="project" value="LOCAL" />
       <updated>1752408156717</updated>
     </task>
-    <task id="LOCAL-00071" summary="fix npc friendships">
+    <task id="LOCAL-00071" summary="debug plants">
       <option name="closed" value="true" />
-      <created>1752491775337</created>
+      <created>1752450787176</created>
       <option name="number" value="00071" />
       <option name="presentableId" value="LOCAL-00071" />
       <option name="project" value="LOCAL" />
-      <updated>1752491775337</updated>
+      <updated>1752450787176</updated>
     </task>
-    <task id="LOCAL-00072" summary="make NPC and NPCFriendship update daily.">
+    <task id="LOCAL-00072" summary="merge">
       <option name="closed" value="true" />
-      <created>1752495383743</created>
+      <created>1752492204881</created>
       <option name="number" value="00072" />
       <option name="presentableId" value="LOCAL-00072" />
       <option name="project" value="LOCAL" />
-      <updated>1752495383743</updated>
+      <updated>1752492204881</updated>
     </task>
     <option name="localTasksCounter" value="73" />
     <servers />
@@ -564,7 +561,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="move-game-data" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -577,6 +574,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commands added" />
     <MESSAGE value="Map" />
     <MESSAGE value="updated map, print map, buildings, ..." />
     <MESSAGE value="make code run able ://///////////////" />
@@ -598,11 +596,10 @@
     <MESSAGE value="to merge" />
     <MESSAGE value="debug code" />
     <MESSAGE value="w" />
+    <MESSAGE value="debug plants" />
+    <MESSAGE value="ok" />
     <MESSAGE value="merge" />
-    <MESSAGE value="idea" />
-    <MESSAGE value="fix npc friendships" />
-    <MESSAGE value="make NPC and NPCFriendship update daily." />
-    <option name="LAST_COMMIT_MESSAGE" value="make NPC and NPCFriendship update daily." />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

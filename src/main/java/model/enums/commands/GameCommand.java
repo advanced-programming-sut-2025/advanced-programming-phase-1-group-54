@@ -89,6 +89,7 @@ public enum GameCommand implements Command {
     GIFT_NPC("gift NPC (?<npcName>.+) -i (?<item>.+)"),
     QUESTS_LIST("quests list"),
     QUESTS_FINISH("quests finish -i (?<index>.+)"),
+    GoodBye("goodbye"),
 
     // TRADING MENU COMMANDS
     START_TRADING("start trade"),

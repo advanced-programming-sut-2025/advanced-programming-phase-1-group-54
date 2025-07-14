@@ -1,6 +1,7 @@
 package view.game;
 
 import controller.Game.NpcController;
+import model.enums.SubMenu;
 import model.enums.commands.Command;
 import model.enums.commands.GameCommand;
 import model.lives.NPC;
@@ -24,6 +25,8 @@ public class NPCMenu implements GameSubMenu{
             handleQuestList();
         else if(GameCommand.QUESTS_FINISH.matches(input))
             handleQuestFinish(input);
+        else if(GameCommand.GoodBye.matches(input))
+            goToMenu(SubMenu.DEFAULT);
         else{
             return false;
         }
