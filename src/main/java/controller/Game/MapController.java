@@ -146,18 +146,30 @@ public class MapController {
     static boolean isNear(Location location, Placeable placeable) {
         World world = App.getCurrentGame().getWorld();
 
-        boolean flag = false;
+        if (world.getTileAt(location).getThingOnTile() instanceof Building building) {
+            for (Direction direction : Direction.values()) {
+                Location nearLocation = location.getLocationAt(direction);
+                if (world.getTileAt(nearLocation).getThingOnTile() == null ||
+                        !world.getTileAt(nearLocation).getThingOnTile().equals(building))
+                    continue;
+
+                if (world.getTileAt(nearLocation).getTop().getThingOnTile() != null &&
+                        world.getTileAt(nearLocation).getTop().getThingOnTile().equals(placeable)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         for (Direction direction : Direction.values()) {
             Location nearLocation = location.getLocationAt(direction);
             if (world.getTileAt(nearLocation).getThingOnTile() != null &&
                     world.getTileAt(nearLocation).getThingOnTile().equals(placeable)) {
-//                if ((!(world.getTileAt(location).getThingOnTile() instanceof Building building)
-//                        || world.getTileAt(nearLocation).getThingOnTile().equals(building))
-//                        && (!(world.getTileAt(nearLocation).getThingOnTile() instanceof Building)))
-                    flag = true;
+                return true;
             }
         }
-        return flag;
+        return true;
     }
 
     public static Result helpReadMap() {
