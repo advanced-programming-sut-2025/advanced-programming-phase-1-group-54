@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Random;
 
 public class Fruit extends Item implements Cloneable, Placeable {
@@ -28,7 +29,7 @@ public class Fruit extends Item implements Cloneable, Placeable {
         Gson gson = new Gson();
         FileReader file = null;
         try {
-            file = new FileReader("fruits.json");
+            file = new FileReader(Objects.requireNonNull(Fruit.class.getClassLoader().getResource("fruits.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -37,7 +38,7 @@ public class Fruit extends Item implements Cloneable, Placeable {
         fruits = gson.fromJson(file, type);
 
         try {
-            file = new FileReader("foragingCrops.json");
+            file = new FileReader(Objects.requireNonNull(Fruit.class.getClassLoader().getResource("foragingCrops.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

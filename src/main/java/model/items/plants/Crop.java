@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Crop extends Plant implements Cloneable{
     private static final HashMap<String,Crop> crops;
@@ -22,7 +23,7 @@ public class Crop extends Plant implements Cloneable{
         Gson gson = new Gson();
         FileReader file = null;
         try {
-            file = new FileReader("crops.json");
+            file = new FileReader(Objects.requireNonNull(Crop.class.getClassLoader().getResource("crops.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

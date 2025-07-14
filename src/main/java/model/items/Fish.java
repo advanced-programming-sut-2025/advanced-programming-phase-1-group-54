@@ -11,10 +11,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Random;
+import java.util.*;
 
 public class Fish extends Item implements Cloneable {
     private static final HashMap<String, Fish> fishes;
@@ -25,7 +22,7 @@ public class Fish extends Item implements Cloneable {
         Gson gson = new Gson();
         FileReader file = null;
         try {
-            file = new FileReader("fishes.json");
+            file = new FileReader(Objects.requireNonNull(Fish.class.getClassLoader().getResource("fishes.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -34,7 +31,7 @@ public class Fish extends Item implements Cloneable {
         fishes = gson.fromJson(file, type);
 
         try {
-            file = new FileReader("seasonFishes.json");
+            file = new FileReader(Objects.requireNonNull(Fish.class.getClassLoader().getResource("seasonFishes.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -43,7 +40,7 @@ public class Fish extends Item implements Cloneable {
         seasonFishes = gson.fromJson(file, type);
 
         try {
-            file = new FileReader("seasonLegendaryFishes.json");
+            file = new FileReader(Objects.requireNonNull(Fish.class.getClassLoader().getResource("seasonLegendaryFishes.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
