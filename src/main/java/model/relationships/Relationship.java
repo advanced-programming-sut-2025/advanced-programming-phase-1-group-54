@@ -38,6 +38,7 @@ public class Relationship extends Friendship implements DailyUpdate {
     public int getTalkDailyCount() {
         return talkDailyCount;
     }
+
     public int getPartnerDailyCount() {
         return partnerDailyCount;
     }
@@ -45,12 +46,15 @@ public class Relationship extends Friendship implements DailyUpdate {
     public void increasePartnerDailyCount() {
         this.partnerDailyCount++;
     }
+
     public void increaseGiftDailyCount() {
         giftDailyCount++;
     }
+
     public void increaseHugDailyCount() {
         hugDailyCount++;
     }
+
     public void increaseTalkDailyCount() {
         talkDailyCount++;
     }
@@ -91,35 +95,34 @@ public class Relationship extends Friendship implements DailyUpdate {
     }
 
     @Override
-    public void nextDayUpdate(){
+    public void nextDayUpdate() {
         this.giftDailyCount = 0;
         this.hugDailyCount = 0;
         this.talkDailyCount = 0;
     }
 
-    @Override
     public void increaseXP(int xp) {
         this.xp += xp;
-        if (this.xp > (this.level + 1) * 100 && this.level < 2){
+        if (this.xp > (this.level + 1) * 100 && this.level < 2) {
             this.xp = 0;
             this.level++;
         }
-        if (this.xp < 0){
+        if (this.xp < 0) {
             this.xp += this.level * 100;
-            if(this.level > 0) {
+            if (this.level > 0) {
                 this.level--;
             }
         }
     }
 
-    public void increaseLevel(){
+    public void increaseLevel() {
         if (this.level < 4) {
             this.level++;
             this.xp = 0;
         }
     }
 
-    public void resetLevel(){
+    public void resetLevel() {
         this.level = 0;
     }
 

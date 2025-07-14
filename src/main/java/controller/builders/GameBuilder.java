@@ -1,12 +1,16 @@
 package controller.builders;
 
 import model.*;
+import model.lives.NPC;
 import model.lives.Player;
 import model.map.Cabin;
 import model.map.Farm;
 import model.map.Location;
 import model.map.Shops.Shop;
 import model.map.World;
+import model.relationships.NPCFriendship;
+
+import java.util.ArrayList;
 
 public class GameBuilder {
     private static User[] users;
@@ -53,7 +57,15 @@ public class GameBuilder {
 
         Player[] players = new Player[users.length];
         for (int i = 0; i < users.length; i++) {
-            players[i] = new Player(users[i], playerFarms[i]);
+            ArrayList<NPCFriendship> npcFriendships = new ArrayList<>();
+            for (NPC npc : world.getNpcs()) {
+                NPCFriendship npcFriendship = new NPCFriendship(npc);
+                npcFriendships.add(npcFriendship);
+            }
+
+            players[i] = new Player(users[i], playerFarms[i], npcFriendships);
+
+
             dateTime.addDailyUpdateListener(players[i]);
             dateTime.addHourUpdateListener(players[i]);
 

@@ -47,7 +47,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     private Location currentLocation;
 
-    private final ArrayList<NPCFriendship> npcFriendships = new ArrayList<>();
+    private final ArrayList<NPCFriendship> npcFriendships;
 
     private final ArrayList<Recipe> learnedFoodRecipes = new ArrayList<>() {{
         add(Recipe.foodRecipes.get("Fried Egg Recipe"));
@@ -73,10 +73,11 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     private SkillType buffSkill;
     private int buffHours;
 
-    public Player(User controllingUser, Farm farm) {
+    public Player(User controllingUser, Farm farm, ArrayList<NPCFriendship> npcFriendships) {
         super(controllingUser.getUsername());
         this.controllingUser = controllingUser;
         this.farm = farm;
+        this.npcFriendships = npcFriendships;
         this.money = 0;
         this.heartBreakDaysRemaining = 0;
         this.energy = MAXIMUM_ENERGY;
