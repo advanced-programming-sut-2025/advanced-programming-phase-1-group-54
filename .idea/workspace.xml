@@ -4,24 +4,61 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="merge">
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="fix watering can fill.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/PlantsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animalHouses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/animalHouses.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animalProduces.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/animalProduces.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/animals.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craftRecipes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/craftRecipes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crops.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/crops.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fishes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fishes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foodRecipes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/foodRecipes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foods.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/foods.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foragingCrops.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/foragingCrops.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foragingMaterials.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/foragingMaterials.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foragingSeeds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/foragingSeeds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foragingTrees.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/foragingTrees.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fruits.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fruits.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/materials.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/materials.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mixedSeeds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mixedSeeds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producerArtisans.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/producerArtisans.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/produces.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/produces.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seasonFishes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/seasonFishes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seasonLegendaryFishes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/seasonLegendaryFishes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/seeds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/FeatureArtisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/FeatureArtisan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/lives/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/lives/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/AnimalHousePrototype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/AnimalHousePrototype.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trees.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/trees.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unProducerArtisans.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/featureArtisans.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
         <option value="Record" />
-        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -34,15 +71,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;
+    }
+  ],
   &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;goodguy-not&quot;
+    &quot;state&quot;: &quot;OPEN&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54&quot;,
-    &quot;accountId&quot;: &quot;71d33bb1-166c-4fdb-8d69-d035d6644229&quot;
+    &quot;accountId&quot;: &quot;7ce6bb28-cb79-404a-94a1-2616f8204759&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -57,27 +98,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Asus/IdeaProjects/advanced-programming-phase-1-group-54&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "move-game-data",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Asus/IdeaProjects/advanced-programming-phase-1-group-54",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.preferences.import",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="model.map.Shops" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kourosh\JavaProjects\advanced-programming-phase-1-group-54\src\main\resources" />
+      <recent name="C:\Users\Kourosh\JavaProjects\advanced-programming-phase-1-group-54\src\main\resources\items" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -89,16 +139,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -135,51 +178,7 @@
       <workItem from="1747233139067" duration="41485000" />
       <workItem from="1747303498996" duration="9253000" />
       <workItem from="1747512763721" duration="190000" />
-      <workItem from="1747549737006" duration="11053000" />
-      <workItem from="1747572152699" duration="984000" />
-      <workItem from="1747650148932" duration="32000" />
-      <workItem from="1747720243393" duration="13000" />
-      <workItem from="1747810060148" duration="4000" />
-      <workItem from="1747810079469" duration="23000" />
-      <workItem from="1747910539112" duration="10000" />
-      <workItem from="1748251843160" duration="6000" />
-      <workItem from="1748680501694" duration="2091000" />
-      <workItem from="1748718393634" duration="7000" />
-      <workItem from="1751811081663" duration="151000" />
-      <workItem from="1751812560691" duration="483000" />
-      <workItem from="1752444949743" duration="4364000" />
-    </task>
-    <task id="LOCAL-00022" summary="edit writeToJson method of Seed Class">
-      <option name="closed" value="true" />
-      <created>1746216777704</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1746216777704</updated>
-    </task>
-    <task id="LOCAL-00023" summary=" write to json foragingCrops">
-      <option name="closed" value="true" />
-      <created>1746251040912</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1746251040912</updated>
-    </task>
-    <task id="LOCAL-00024" summary=" write to json Foods">
-      <option name="closed" value="true" />
-      <created>1746252794303</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1746252794303</updated>
-    </task>
-    <task id="LOCAL-00025" summary=" edit some things">
-      <option name="closed" value="true" />
-      <created>1746261370313</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1746261370313</updated>
+      <workItem from="1747549737006" duration="8304000" />
     </task>
     <task id="LOCAL-00026" summary="complete refigerator and backpack">
       <option name="closed" value="true" />
@@ -525,23 +524,55 @@
       <option name="project" value="LOCAL" />
       <updated>1747557634362</updated>
     </task>
-    <task id="LOCAL-00069" summary="debug code">
+    <task id="LOCAL-00069" summary="optimize imports">
       <option name="closed" value="true" />
-      <created>1747565321821</created>
+      <created>1752345528017</created>
       <option name="number" value="00069" />
       <option name="presentableId" value="LOCAL-00069" />
       <option name="project" value="LOCAL" />
-      <updated>1747565321822</updated>
+      <updated>1752345528017</updated>
     </task>
-    <task id="LOCAL-00070" summary="merge">
+    <task id="LOCAL-00070" summary="add HourCheck and change DateTime to Observer pattern.">
       <option name="closed" value="true" />
-      <created>1752408156717</created>
+      <created>1752354420436</created>
       <option name="number" value="00070" />
       <option name="presentableId" value="LOCAL-00070" />
       <option name="project" value="LOCAL" />
-      <updated>1752408156717</updated>
+      <updated>1752354420436</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="fix shop open and close">
+      <option name="closed" value="true" />
+      <created>1752354549086</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1752354549086</updated>
+    </task>
+    <task id="LOCAL-00072" summary="correctly add and remove things from DateTime observer.">
+      <option name="closed" value="true" />
+      <created>1752356142748</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1752356142748</updated>
+    </task>
+    <task id="LOCAL-00073" summary="plants are removed from dateTime Observer when dead.">
+      <option name="closed" value="true" />
+      <created>1752357073352</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1752357073352</updated>
+    </task>
+    <task id="LOCAL-00074" summary="fix watering can fill.">
+      <option name="closed" value="true" />
+      <created>1752357565159</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1752357565160</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,11 +602,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Friendship between players handled" />
-    <MESSAGE value="Game file player relainships added to Game" />
-    <MESSAGE value="Commands added" />
-    <MESSAGE value="Map" />
-    <MESSAGE value="updated map, print map, buildings, ..." />
     <MESSAGE value="make code run able ://///////////////" />
     <MESSAGE value="update map &amp; tools" />
     <MESSAGE value="some fixes" />
@@ -593,40 +619,14 @@
     <MESSAGE value="set farm number fix" />
     <MESSAGE value="write trade menu and put methods in right packages" />
     <MESSAGE value="to merge" />
-    <MESSAGE value="debug code" />
-    <MESSAGE value="w" />
     <MESSAGE value="merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
-          <line>307</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
-          <line>116</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java</url>
-          <line>134</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java</url>
-          <line>488</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java</url>
-          <line>487</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="debug code" />
+    <MESSAGE value="optimize imports" />
+    <MESSAGE value="add HourCheck and change DateTime to Observer pattern." />
+    <MESSAGE value="fix shop open and close" />
+    <MESSAGE value="correctly add and remove things from DateTime observer." />
+    <MESSAGE value="plants are removed from dateTime Observer when dead." />
+    <MESSAGE value="fix watering can fill." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix watering can fill." />
   </component>
 </project>
