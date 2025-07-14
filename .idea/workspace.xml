@@ -6,6 +6,42 @@
   <component name="ChangeListManager">
     <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="fix watering can fill.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animalHouses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/animalHouses.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animalProduces.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/animalProduces.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/animals.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/craftRecipes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/craftRecipes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crops.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/crops.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fishes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fishes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foodRecipes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/foodRecipes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foods.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/foods.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foragingCrops.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/foragingCrops.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foragingMaterials.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/foragingMaterials.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foragingSeeds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/foragingSeeds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foragingTrees.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/foragingTrees.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fruits.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fruits.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/materials.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/materials.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mixedSeeds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mixedSeeds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producerArtisans.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/producerArtisans.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/produces.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/produces.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seasonFishes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/seasonFishes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seasonLegendaryFishes.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/seasonLegendaryFishes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/seeds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/AnimalProduce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Fish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/FeatureArtisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/FeatureArtisan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/Produce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/crafting/ProducerArtisan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Crop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Fruit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Seed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/plants/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/plants/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/items/recipes/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/lives/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/lives/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/map/AnimalHousePrototype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/map/AnimalHousePrototype.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trees.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/trees.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unProducerArtisans.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/featureArtisans.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,30 +98,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Asus/IdeaProjects/advanced-programming-phase-1-group-54&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "move-game-data",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Asus/IdeaProjects/advanced-programming-phase-1-group-54",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.preferences.import",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model.map.Shops" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kourosh\JavaProjects\advanced-programming-phase-1-group-54\src\main\resources" />
+      <recent name="C:\Users\Kourosh\JavaProjects\advanced-programming-phase-1-group-54\src\main\resources\items" />
     </key>
   </component>
   <component name="RunManager">
@@ -98,6 +138,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>

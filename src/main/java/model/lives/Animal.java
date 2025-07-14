@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Animal extends Live implements Cloneable,DailyUpdate {
 
@@ -28,7 +29,7 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
         Gson gson = new Gson();
         FileReader file = null;
         try {
-            file = new FileReader("animals.json");
+            file = new FileReader(Objects.requireNonNull(Animal.class.getClassLoader().getResource("animals.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

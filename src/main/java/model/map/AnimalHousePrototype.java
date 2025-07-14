@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class AnimalHousePrototype implements Cloneable{
     // Needed to add location to AnimalHouse
@@ -21,7 +22,7 @@ public class AnimalHousePrototype implements Cloneable{
         Gson gson = new Gson();
         FileReader file = null;
         try {
-            file = new FileReader("animalHouses.json");
+            file = new FileReader(Objects.requireNonNull(AnimalHousePrototype.class.getClassLoader().getResource("animalHouses.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
