@@ -28,6 +28,7 @@ public class NpcController {
         }
         return npcList;
     }
+
     public static Result meetsNpc(String npcName){
         NPC npc = getNPCByName(npcName);
 
@@ -128,6 +129,7 @@ public class NpcController {
         }
         return null;
     }
+
     public static NPCFriendship getNPCFriendship(String npcName){
         for (NPCFriendship npcFriendship : App.getCurrentGame().getCurrentPlayer().getNpcFriendships()){
             if(npcFriendship.getNpc().getName().equals(npcName)){
