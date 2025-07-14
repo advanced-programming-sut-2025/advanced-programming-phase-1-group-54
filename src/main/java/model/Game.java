@@ -125,9 +125,6 @@ public class Game implements DailyUpdate {
                 }
             }
         }
-
-        // TODO this line should not be here.
-        NpcController.resetNpcEveryDay();
     }
 
 

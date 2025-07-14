@@ -1,8 +1,9 @@
 package model.relationships;
 
+import model.DailyUpdate;
 import model.lives.NPC;
 
-public class NPCFriendship extends Friendship {
+public class NPCFriendship extends Friendship implements DailyUpdate {
     private NPC npc;
     int dailyTalkTime = 0;
     int dailyGift = 0;
@@ -35,19 +36,17 @@ public class NPCFriendship extends Friendship {
         dailyGift++;
     }
 
-    public void setDailyGift(int dailyGift) {
-        this.dailyGift = dailyGift;
-    }
-
-    public void setDailyTalkTime(int dailyTalkTime) {
-        this.dailyTalkTime = dailyTalkTime;
-    }
-
     public void increaseXP(int xp) {
         this.xp += xp;
         this.setLevel(this.xp / 200);
         if (this.level > 3) {
             this.level = 3;
         }
+    }
+
+    @Override
+    public void nextDayUpdate() {
+        dailyGift = 0;
+        dailyTalkTime = 0;
     }
 }

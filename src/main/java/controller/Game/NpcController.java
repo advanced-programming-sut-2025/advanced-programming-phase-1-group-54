@@ -17,17 +17,7 @@ import java.util.Random;
 
 public class NpcController {
     private static Random rand = new Random();
-    public static void resetNpcEveryDay(){
-        for(Player player : App.getCurrentGame().getPlayers()){
-            for (NPCFriendship npcFriendship : player.getNpcFriendships()) {
-                npcFriendship.setDailyGift(0);
-                npcFriendship.setDailyTalkTime(0);
-            }
-        }
-        for(NPC npc : App.getCurrentGame().getWorld().getNpcs()){
-            npc.checkCounter();
-        }
-    }
+
     public static ArrayList<String> friendShipNpcList(){
         ArrayList<String> npcList = new ArrayList<>();
         String temp = "NPC name             friendship level            friendship XP";
