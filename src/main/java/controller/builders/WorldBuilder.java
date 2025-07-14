@@ -71,8 +71,14 @@ public class WorldBuilder {
             shop.checkHour(dateTime.getHour());
         }
 
-        ArrayList<NPCHouse> NPCHouses = buildNPCHouses();
-        World world = new World(playerFarms, shops, NPCHouses, new Map(World.getNumberOfRows(), World.getNumberOfColumns(), tiles));
+        ArrayList<NPCHouse> npcHouses = buildNPCHouses();
+
+        for (NPCHouse npcHouse : npcHouses) {
+            NPC npc = npcHouse.getNpc();
+            dateTime.addDailyUpdateListener(npc);
+        }
+
+        World world = new World(playerFarms, shops, npcHouses, new Map(World.getNumberOfRows(), World.getNumberOfColumns(), tiles));
         WorldBuilder.reset();
         return world;
     }

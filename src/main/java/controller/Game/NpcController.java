@@ -17,17 +17,7 @@ import java.util.Random;
 
 public class NpcController {
     private static Random rand = new Random();
-    public static void resetNpcEveryDay(){
-        for(Player player : App.getCurrentGame().getPlayers()){
-            for (NPCFriendship npcFriendship : player.getNpcFriendships()) {
-                npcFriendship.setDailyGift(0);
-                npcFriendship.setDailyTalkTime(0);
-            }
-        }
-        for(NPC npc : App.getCurrentGame().getWorld().getNpcs()){
-            npc.checkCounter();
-        }
-    }
+
     public static ArrayList<String> friendShipNpcList(){
         ArrayList<String> npcList = new ArrayList<>();
         String temp = "NPC name             friendship level            friendship XP";
@@ -40,10 +30,18 @@ public class NpcController {
     }
     public static Result meetsNpc(String npcName){
         NPC npc = getNPCByName(npcName);
-        //todo check distance
+
         if (npc == null){
             return new Result(false, "NPC not found");
         }
+
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        if (!MapController.isNear(player.getCurrentLocation(), npc)) {
+            return new Result(false,
+                    String.format("you should be next to %s to meet them.",
+                            npcName));
+        }
+
         NPCFriendship npcFriendship = getNPCFriendship(npcName);
         if(npcFriendship.getDailyTalkTime() == 0){
             npcFriendship.increaseXP(20);

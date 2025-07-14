@@ -677,9 +677,11 @@ public class CommonGameController {
         for (Direction direction : Direction.values()) {
             Location nearLocation = location.getLocationAt(direction);
             if (world.getTileAt(nearLocation).getTop().hasFeature(Feature.SELLING)) {
-                return (!(world.getTileAt(location).getThingOnTile() instanceof Building building)
-                        || world.getTileAt(nearLocation).getThingOnTile().equals(building))
-                        && (!(world.getTileAt(nearLocation).getThingOnTile() instanceof Building));
+//                return (!(world.getTileAt(location).getThingOnTile() instanceof Building building)
+//                        || world.getTileAt(nearLocation).getThingOnTile().equals(building))
+//                        && (!(world.getTileAt(nearLocation).getThingOnTile() instanceof Building));
+
+                return true;
             }
         }
         return false;

@@ -61,6 +61,7 @@ public class GameBuilder {
             for (NPC npc : world.getNpcs()) {
                 NPCFriendship npcFriendship = new NPCFriendship(npc);
                 npcFriendships.add(npcFriendship);
+                dateTime.addDailyUpdateListener(npcFriendship);
             }
 
             players[i] = new Player(users[i], playerFarms[i], npcFriendships);
