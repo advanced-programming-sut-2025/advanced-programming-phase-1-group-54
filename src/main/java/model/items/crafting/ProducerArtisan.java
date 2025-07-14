@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class ProducerArtisan extends Artisan implements HourUpdate, Cloneable {
 
@@ -21,7 +22,7 @@ public class ProducerArtisan extends Artisan implements HourUpdate, Cloneable {
         Gson gson = new Gson();
         FileReader file = null;
         try {
-            file = new FileReader("ProducerArtisans.json");
+            file = new FileReader(Objects.requireNonNull(ProducerArtisan.class.getClassLoader().getResource("producerArtisans.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

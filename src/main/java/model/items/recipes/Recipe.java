@@ -12,6 +12,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 public class Recipe {
 
@@ -25,7 +26,7 @@ public class Recipe {
         Gson gson = new Gson();
         FileReader file = null;
         try {
-            file = new FileReader("craftRecipes.json");
+            file = new FileReader(Objects.requireNonNull(Recipe.class.getClassLoader().getResource("craftRecipes.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -36,7 +37,7 @@ public class Recipe {
 
 
         try {
-            file = new FileReader("foodRecipes.json");
+            file = new FileReader(Objects.requireNonNull(Recipe.class.getClassLoader().getResource("foodRecipes.json")).getFile());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
