@@ -193,23 +193,25 @@ public class NpcController {
             return new Result(false,"choose correct index");
         }
         int count = i;
-        Quest quest = null;
-        for (int j = 0 ; j < npc.getAllQuests().size(); j++){
+        Quest quest = npc.getAllQuests().get(i - 1);
+//        for (int j = 0 ; j < npc.getAllQuests().size(); j++){
+//            quest = npc.getAllQuests().get(j);
+//            if (!quest.isCompleted() && (quest.isActive() || npcFriendship.getLevel() > 1)) {
+//                count--;
+//            }
+//            if (count == 0){
+//                quest = npc.getAllQuests().get(j);
+//            }
+//        }
 
-            if (!quest.isCompleted() && (npc.getAllQuests().get(j).isActive() || npcFriendship.getLevel() > 1)) {
-                count--;
-            }
-            if (count == 0){
-                quest = npc.getAllQuests().get(j);
-            }
-        }
-        if (quest == null){
+        if (quest == null || quest.isCompleted() || (! quest.isActive())){
             return new Result(false,"choose correct index");
         }
         Item item = CommonGameController.findItem(quest.getRequestedItem());
-        if(CommonGameController.removeItemFromInventory(item,quest.getRequestedItemCount()) == false){
+        if(! CommonGameController.removeItemFromInventory(item, quest.getRequestedItemCount())){
             return new Result(false,"not enough item");
         }
+
         if (quest.getReward().equals("Coin")){
             App.getCurrentGame().getCurrentPlayer().increaseEnergy(quest.getRewardCount());
         }
