@@ -28,6 +28,7 @@ public class NpcController {
         }
         return npcList;
     }
+
     public static Result meetsNpc(String npcName){
         NPC npc = getNPCByName(npcName);
 
@@ -128,6 +129,7 @@ public class NpcController {
         }
         return null;
     }
+
     public static NPCFriendship getNPCFriendship(String npcName){
         for (NPCFriendship npcFriendship : App.getCurrentGame().getCurrentPlayer().getNpcFriendships()){
             if(npcFriendship.getNpc().getName().equals(npcName)){
@@ -169,17 +171,29 @@ public class NpcController {
     public static ArrayList<String> questList(NPC npc) {
         ArrayList<String> list = new ArrayList<>();
         NPCFriendship npcFriendship = NpcController.getNPCFriendship(npc.getName());
-        list.add("required item: count          reward item: count");
-        for(Quest quest : npc.getAllQuests()){
-            if(!quest.isCompleted() && (quest.isActive() || npcFriendship.getLevel() > 1)){
-                String st = quest.getRequestedItem() + ": " + quest.getRequestedItemCount() + "             " + quest.getReward() + ": " + quest.getRewardCount();
+        list.add("quest number       required item: count          reward item: count");
+        int questCount = npc.getAllQuests().size();
+        if(questCount == 0){
+            list = new ArrayList<>();
+            list.add("NPC don't have any quests");
+            return list;
+        }
+        Quest quest = null;
+        for(int i = 0 ; i < questCount; i++){
+            quest  = npc.getAllQuests().get(i);
+            if(!quest.isCompleted() && quest.isActive()){
+                String st = "Quest" + (i + 1) + "  " + quest.getRequestedItem() + ": " + quest.getRequestedItemCount() +
+                        "             " + quest.getReward() + ": " + quest.getRewardCount();
                 list.add(st);
             }
         }
+        if(npcFriendship.getLevel() >= 1 && (! quest.isCompleted())){
+            list.add("Quest" + questCount + "  " + quest.getRequestedItem() + ": " + quest.getRequestedItemCount() +
+                    "         " + quest.getReward() + ": " + quest.getRewardCount() );
+        }
         if (list.size() == 1){
             list = new ArrayList<>();
-            list.add("there is no quest");
-            return list;
+            list.add("there is no quest active");
         }
         return list;
     }
@@ -190,7 +204,7 @@ public class NpcController {
         if (i < 1 || i > npc.getAllQuests().size()){
             return new Result(false,"choose correct index");
         }
-        int count = i;
+//        int count = i;
         Quest quest = npc.getAllQuests().get(i - 1);
 //        for (int j = 0 ; j < npc.getAllQuests().size(); j++){
 //            quest = npc.getAllQuests().get(j);
@@ -201,10 +215,15 @@ public class NpcController {
 //                quest = npc.getAllQuests().get(j);
 //            }
 //        }
-
-        if (quest == null || quest.isCompleted() || (! quest.isActive())){
+        if(quest == npc.getAllQuests().getLast()){
+            if(npcFriendship.getLevel() < 1 || quest.isCompleted()) {
+                return new Result(false, "choose correct index");
+            }
+        }
+        else if (quest == null || quest.isCompleted() || (! quest.isActive())){
             return new Result(false,"choose correct index");
         }
+
         Item item = CommonGameController.findItem(quest.getRequestedItem());
         if(! CommonGameController.removeItemFromInventory(item, quest.getRequestedItemCount())){
             return new Result(false,"not enough item");
