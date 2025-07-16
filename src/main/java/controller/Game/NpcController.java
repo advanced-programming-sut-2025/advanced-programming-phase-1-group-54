@@ -236,6 +236,7 @@ public class NpcController {
             npcFriendship.increaseXP(200);
         }
         else if(quest.getReward().equals("Salmon Dinner Recipe")){
+            // TODO please don't use public fields !!!
             Recipe recipe = Recipe.foodRecipes.get("Salmon Dinner Recipe");
             App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes().add(recipe);
         }
