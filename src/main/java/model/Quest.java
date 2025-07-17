@@ -5,8 +5,6 @@ import model.lives.NPC;
 public class Quest {
     private NPC questGiver;
 
-
-
     private String requestedItem;
     private int requestedItemCount;
 

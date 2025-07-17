@@ -31,21 +31,21 @@ public class ShopsController {
             return new Result(false, "You are not in a shop");
         }
 
-        if (shop.getOwner().getName().equals("Clint")) {
+        if (shop instanceof BlackSmithShop) {
             if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(0).getOpeningHours()
                 || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(0).getClosingHours()) {
                 return new Result(false, "shop is closed");
             }
             return buySomethingFromBlacksmith(itemName, count);
         }
-        if (shop.getOwner().getName().equals("Morris")) {
+        if (shop instanceof JojoMartShop) {
             if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(1).getOpeningHours()
                     || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(1).getClosingHours()) {
                 return new Result(false, "shop is closed");
             }
             return buySomethingFromJojaMart(itemName, count);
         }
-        if (shop.getOwner().getName().equals("Pierre")) {
+        if (shop instanceof PierreGeneralShop) {
 
             if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(2).getOpeningHours()
                     || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(2).getClosingHours()) {
@@ -53,7 +53,7 @@ public class ShopsController {
             }
             return buySomethingFromPierre(itemName, count);
         }
-        if (shop.getOwner().getName().equals("Robin")) {
+        if (shop instanceof CarpenterShop) {
 
             if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(3).getOpeningHours()
                     || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(3).getClosingHours()) {
@@ -61,7 +61,7 @@ public class ShopsController {
             }
             return buySomethingFromCarpenter(itemName, count);
         }
-        if (shop.getOwner().getName().equals("Willy")) {
+        if (shop instanceof FishShop) {
 
             if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(4).getOpeningHours()
                     || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(4).getClosingHours()) {
@@ -69,7 +69,7 @@ public class ShopsController {
             }
             return buySomethingFromFishShop(itemName, count);
         }
-        if (shop.getOwner().getName().equals("Marnie")) {
+        if (shop instanceof MarnieRanch) {
 
             if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(5).getOpeningHours()
                     || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(5).getClosingHours()) {
@@ -77,7 +77,7 @@ public class ShopsController {
             }
             return buySomethingFromMarnie(itemName, count);
         }
-        if (shop.getOwner().getName().equals("Gus")) {
+        if (shop instanceof TheStardropSaloonShop) {
 
             if (App.getCurrentGame().getDateTime().getHour() < App.getCurrentGame().getWorld().getShops().get(6).getOpeningHours()
                     || App.getCurrentGame().getDateTime().getHour() > App.getCurrentGame().getWorld().getShops().get(6).getClosingHours()) {

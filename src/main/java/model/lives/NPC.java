@@ -52,10 +52,11 @@ public class NPC extends Live implements DailyUpdate {
 
     @Override
     public void nextDayUpdate() {
-        if (this.newQuestCounter == 0) {
-            this.allQuests.get(2).setActive(true);
-        } else {
-            this.newQuestCounter--;
+        if (newQuestCounter > 0) {
+            newQuestCounter--;
+            if (newQuestCounter <= 0) {
+                allQuests.get(2).setActive(true);
+            }
         }
     }
 }
