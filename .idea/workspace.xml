@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="fix NPC">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/NpcController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/NpcController.java" afterDir="false" />
-    </list>
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="final NPC debug" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -147,14 +145,6 @@
       <workItem from="1751812560691" duration="483000" />
       <workItem from="1752444949743" duration="5154000" />
       <workItem from="1752484298630" duration="4040000" />
-    </task>
-    <task id="LOCAL-00027" summary="complete planting method">
-      <option name="closed" value="true" />
-      <created>1746305055320</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1746305055320</updated>
     </task>
     <task id="LOCAL-00028" summary="edit planting method&#10;write crowAttack method &#10;write showPlant method&#10;write grow method for plants">
       <option name="closed" value="true" />
@@ -540,7 +530,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752499999401</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="final NPC debug">
+      <option name="closed" value="true" />
+      <created>1752500416660</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1752500416660</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,7 +568,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated map, print map, buildings, ..." />
     <MESSAGE value="make code run able ://///////////////" />
     <MESSAGE value="update map &amp; tools" />
     <MESSAGE value="some fixes" />
@@ -595,7 +592,8 @@
     <MESSAGE value="debug NPC" />
     <MESSAGE value="merge" />
     <MESSAGE value="fix NPC" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix NPC" />
+    <MESSAGE value="final NPC debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="final NPC debug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
