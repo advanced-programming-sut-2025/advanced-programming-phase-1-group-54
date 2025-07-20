@@ -1,0 +1,179 @@
+package io.github.stardewmini.model;
+
+import io.github.stardewmini.model.enums.Season;
+import io.github.stardewmini.model.enums.WeekDay;
+
+import java.util.ArrayList;
+
+public class DateTime {
+    private int year;
+    private int day;
+    private int hour;
+    private WeekDay weekDay;
+    private Season season;
+
+    private final ArrayList<DailyUpdate> dailyUpdateListeners = new ArrayList<>();
+    private final ArrayList<HourUpdate> hourUpdateListeners = new ArrayList<>();
+    private final ArrayList<HourCheck> hourCheckListeners = new ArrayList<>();
+
+    private static final int START_HOUR = 9;
+    private static final int END_HOUR = 22;
+    private static final int HOURS_IN_DAY = 24;
+    private static final int DAY_TIME = END_HOUR - START_HOUR;
+    private static final int NIGHT_TIME = HOURS_IN_DAY - DAY_TIME;
+    private static final int DAYS_IN_WEEK = WeekDay.values().length;
+    private static final int DAYS_IN_SEASON = 28;
+    private static final int SEASONS_IN_YEAR = Season.values().length;
+
+    private static final Season STARTING_SEASON = Season.SPRING;
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public WeekDay getWeekDay() {
+        return weekDay;
+    }
+
+    public Season getSeason() {
+        return season;
+    }
+
+    public static int getStartHour() {
+        return START_HOUR;
+    }
+
+    public static int getEndHour() {
+        return END_HOUR;
+    }
+
+    public static int getHoursInDay() {
+        return HOURS_IN_DAY;
+    }
+
+    public static int getDayTime() {
+        return DAY_TIME;
+    }
+
+    public static int getNightTime() {
+        return NIGHT_TIME;
+    }
+
+    public static int getDaysInWeek() {
+        return DAYS_IN_WEEK;
+    }
+
+    public static int getDaysInSeason() {
+        return DAYS_IN_SEASON;
+    }
+
+    public static int getSeasonsInYear() {
+        return SEASONS_IN_YEAR;
+    }
+
+    public static Season getStartingSeason() {
+        return STARTING_SEASON;
+    }
+
+    public void addDailyUpdateListener(DailyUpdate dailyUpdateListener) {
+        dailyUpdateListeners.add(dailyUpdateListener);
+    }
+
+    public void removeDailyUpdateListener(DailyUpdate dailyUpdateListener) {
+        dailyUpdateListeners.remove(dailyUpdateListener);
+    }
+
+    public void addHourUpdateListener(HourUpdate hourUpdateListener) {
+        hourUpdateListeners.add(hourUpdateListener);
+    }
+
+    public void removeHourUpdateListener(HourUpdate hourUpdateListener) {
+        hourUpdateListeners.remove(hourUpdateListener);
+    }
+
+    public void addHourCheckListener(HourCheck hourCheckListener) {
+        hourCheckListeners.add(hourCheckListener);
+    }
+
+    public void removeHourCheckListener(HourCheck hourCheckListener) {
+        hourCheckListeners.remove(hourCheckListener);
+    }
+
+    public void notifyDailyUpdates() {
+        for (DailyUpdate dailyUpdateListener : dailyUpdateListeners) {
+            dailyUpdateListener.nextDayUpdate();
+        }
+    }
+
+    public void notifyHourUpdates(int amount) {
+        for (HourUpdate hourUpdateListener : hourUpdateListeners) {
+            hourUpdateListener.nextHourUpdate(amount);
+        }
+    }
+
+    public void notifyHourChecks(int time) {
+        for (HourCheck hourCheckListener : hourCheckListeners) {
+            hourCheckListener.checkHour(time);
+        }
+    }
+
+    public void increaseDay(int amount) {
+        weekDay = WeekDay.values()[(amount + weekDay.ordinal()) % DAYS_IN_WEEK];
+        year += (((amount + day) / (DAYS_IN_SEASON + 1)) + season.ordinal()) / (SEASONS_IN_YEAR + 1);
+        season = Season.values()[(((amount + day) / (DAYS_IN_SEASON + 1)) + season.ordinal()) % SEASONS_IN_YEAR];
+        day = (amount + day) % DAYS_IN_SEASON;
+        if (day == 0) {
+            day = DAYS_IN_SEASON;
+        }
+
+        for (int i = 1; i <= amount; i++) {
+            notifyDailyUpdates();
+        }
+
+        notifyHourUpdates(amount * HOURS_IN_DAY + START_HOUR - hour);
+        notifyHourChecks(hour);
+    }
+
+    public void increaseHour(int amount) {
+        increaseDay((amount + hour - START_HOUR) / DAY_TIME);
+        int remainingAmount = (amount + hour - START_HOUR) % DAY_TIME;
+        hour = START_HOUR + remainingAmount;
+
+        notifyHourUpdates(remainingAmount);
+        notifyHourChecks(hour);
+    }
+
+    public DateTime() {
+        this.year = 0;
+        this.day = 1;
+        this.hour = 9;
+        this.weekDay = WeekDay.MONDAY;
+        this.season = STARTING_SEASON;
+    }
+
+    public DateTime(DateTime dateTime) { // basically clone()
+        this.year = dateTime.year;
+        this.day = dateTime.day;
+        this.hour = dateTime.hour;
+        this.weekDay = dateTime.weekDay;
+        this.season = dateTime.season;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s, %d/%s/%d at %d o'clock",
+                this.weekDay.toString().toLowerCase(),
+                this.year,
+                this.season.toString().toLowerCase(),
+                this.day,
+                this.hour);
+    }
+}

@@ -1,0 +1,119 @@
+package io.github.stardewmini.controller.builders;
+
+import io.github.stardewmini.model.*;
+import io.github.stardewmini.model.lives.NPC;
+import io.github.stardewmini.model.lives.Player;
+import io.github.stardewmini.model.map.Cabin;
+import io.github.stardewmini.model.map.Farm;
+import io.github.stardewmini.model.map.Location;
+import io.github.stardewmini.model.map.Shops.Shop;
+import io.github.stardewmini.model.map.World;
+import io.github.stardewmini.model.relationships.NPCFriendship;
+
+import java.util.ArrayList;
+
+public class GameBuilder {
+    private static User[] users;
+    private static int[] playerFarmNumbers;
+
+    public static void reset() {
+        users = null;
+        playerFarmNumbers = null;
+    }
+
+    public static void setUsers(User[] users) {
+        GameBuilder.users = users;
+        playerFarmNumbers = new int[users.length];
+    }
+
+    public static boolean setNextPlayerFarm(int number) {
+        for (int i = 0; i < users.length; i++) {
+            if (playerFarmNumbers[i] == 0) {
+                playerFarmNumbers[i] = number;
+                return (i == users.length - 1);
+            }
+        }
+        return true;
+    }
+
+
+    public static Game getResult() {
+        DateTime dateTime = new DateTime();
+
+        Farm[] playerFarms = new Farm[users.length];
+
+        for (int i = 0; i < users.length; i++) {
+            FarmBuilder.reset();
+            FarmBuilder.setLocation(WorldBuilder.getFarmLocation(i));
+            FarmBuilder.setFarmNumber(playerFarmNumbers[i]);
+            FarmBuilder.setDateTime(dateTime);
+            playerFarms[i] = FarmBuilder.getResult();
+        }
+
+        WorldBuilder.reset();
+        WorldBuilder.setPlayerFarms(playerFarms);
+        WorldBuilder.setDateTime(dateTime);
+        World world = WorldBuilder.getResult();
+
+        Player[] players = new Player[users.length];
+        for (int i = 0; i < users.length; i++) {
+            ArrayList<NPCFriendship> npcFriendships = new ArrayList<>();
+            for (NPC npc : world.getNpcs()) {
+                NPCFriendship npcFriendship = new NPCFriendship(npc);
+                npcFriendships.add(npcFriendship);
+                dateTime.addDailyUpdateListener(npcFriendship);
+            }
+
+            players[i] = new Player(users[i], playerFarms[i], npcFriendships);
+
+
+            dateTime.addDailyUpdateListener(players[i]);
+            dateTime.addHourUpdateListener(players[i]);
+
+            Cabin cabin = playerFarms[i].getCabin();
+
+            Location locationInCabin;
+            do {
+                locationInCabin = cabin.getRandomLocation();
+            } while (cabin.getTileAt(locationInCabin).getThingOnTile() == null);
+
+            Location location = new Location(
+                    playerFarms[i].getLocation().row() + cabin.getLocation().row() + locationInCabin.row(),
+                    playerFarms[i].getLocation().column() + cabin.getLocation().column() + locationInCabin.column()
+            );
+
+            cabin.getTileAt(locationInCabin).setThingOnTile(players[i]);
+            players[i].setCurrentLocation(location);
+        }
+
+        Game game = new Game(dateTime, world, players);
+        dateTime.addDailyUpdateListener(game);
+
+        GameBuilder.reset();
+        return game;
+    }
+
+    public static GameData getGameData() {
+        String[] playerNames = new String[users.length];
+        for (int i = 0; i < playerNames.length; i++) {
+            playerNames[i] = users[i].getUsername();
+        }
+
+        int[] playerFarms = new int[playerFarmNumbers.length];
+        System.arraycopy(playerFarmNumbers, 0, playerFarms, 0, playerFarmNumbers.length);
+
+        return new GameData(playerNames, playerFarms);
+    }
+
+    public static void setGameData(GameData gameData) {
+        GameBuilder.reset();
+
+        users = new User[gameData.playerNames().length];
+        for (int i = 0; i < gameData.playerNames().length; i++) {
+            users[i] = App.getUserByUsername(gameData.playerNames()[i]);
+        }
+
+        playerFarmNumbers = new int[gameData.playerFarms().length];
+        System.arraycopy(gameData.playerFarms(), 0, playerFarmNumbers, 0, gameData.playerNames().length);
+    }
+}

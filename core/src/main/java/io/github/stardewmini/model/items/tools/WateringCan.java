@@ -1,0 +1,50 @@
+package io.github.stardewmini.model.items.tools;
+
+import io.github.stardewmini.model.enums.SkillType;
+import io.github.stardewmini.model.enums.ToolType;
+
+public class WateringCan extends Tool {
+    private int currentWater;
+
+    public WateringCan() {
+        super(ToolType.WATERING_CAN);
+    }
+
+    public int getCurrentWater() {
+        return currentWater;
+    }
+
+    public void increaseWater() {
+        currentWater++;
+        if (currentWater > getCapacity())
+            currentWater = getCapacity();
+    }
+
+    public void decreaseWater() {
+        currentWater--;
+        if (currentWater < 0)
+            currentWater = 0;
+    }
+
+    public int getCapacity() {
+        switch (getToolLevel()) {
+            case NORMAL:
+                return 40;
+            case COPPER:
+                return 55;
+            case IRON:
+                return 70;
+            case GOLD:
+                return 85;
+            case IRIDIUM:
+                return 100;
+            default:
+                return -1;
+        }
+    }
+
+    @Override
+    public SkillType getSkillType() {
+        return SkillType.FARMING;
+    }
+}
