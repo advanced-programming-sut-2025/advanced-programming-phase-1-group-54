@@ -33,7 +33,7 @@ public class CommonGameController {
 
         String message = "vote added.";
         if (game.getVotes() < game.getPlayers().length) {
-            return new Result(true,  message);
+            return new Result(0,  message);
         }
 
         boolean success = game.getDeleteVotes() == game.getVotes();
@@ -49,7 +49,7 @@ public class CommonGameController {
             }
         }
 
-        return new Result(true, message);
+        return new Result((success? 2 : 1), message);
     }
 
 
