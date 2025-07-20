@@ -4,8 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="fix NPC">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Game/NpcController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Game/NpcController.java" afterDir="false" />
+    <list default="true" id="9cd808e6-b2e4-4ba1-b4fa-6b50f3a35f55" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlacksmithStock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/BlacksmithStock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlacksmithUpgradeTools.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/BlacksmithUpgradeTools.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarpenterFarmBuilding.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CarpenterFarmBuilding.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarpenterPermanent.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CarpenterPermanent.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FishStock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FishStock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JojoMartFall.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JojoMartFall.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JojoMartPermanent.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JojoMartPermanent.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JojomartSpring.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JojomartSpring.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JojomartSummer.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JojomartSummer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JojomartWinter.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JojomartWinter.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarnieRanchInventory.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MarnieRanchInventory.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarnieRanchLivesStock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MarnieRanchLivesStock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PierreBackpacks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PierreBackpacks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PierreFall.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PierreFall.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PierreSpring.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PierreSpring.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PierreSummer.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PierreSummer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PierreYearRound.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PierreYearRound.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheStarDropSaloon.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TheStarDropSaloon.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +45,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="fix-shops" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,7 +59,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/advanced-programming-sut-2025/advanced-programming-phase-1-group-54&quot;,
-    &quot;accountId&quot;: &quot;71d33bb1-166c-4fdb-8d69-d035d6644229&quot;
+    &quot;accountId&quot;: &quot;7ce6bb28-cb79-404a-94a1-2616f8204759&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -76,6 +95,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kourosh\JavaProjects\advanced-programming-phase-1-group-54\src\main\resources" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -87,16 +111,12 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -516,29 +536,29 @@
       <option name="project" value="LOCAL" />
       <updated>1752492204881</updated>
     </task>
-    <task id="LOCAL-00073" summary="merge">
+    <task id="LOCAL-00073" summary="fix purchase item.">
       <option name="closed" value="true" />
-      <created>1752496014142</created>
+      <created>1752675961480</created>
       <option name="number" value="00073" />
       <option name="presentableId" value="LOCAL-00073" />
       <option name="project" value="LOCAL" />
-      <updated>1752496014142</updated>
+      <updated>1752675961481</updated>
     </task>
-    <task id="LOCAL-00074" summary="merge">
+    <task id="LOCAL-00074" summary="fix npc dailyUpdate">
       <option name="closed" value="true" />
-      <created>1752497114565</created>
+      <created>1752676915630</created>
       <option name="number" value="00074" />
       <option name="presentableId" value="LOCAL-00074" />
       <option name="project" value="LOCAL" />
-      <updated>1752497114565</updated>
+      <updated>1752676915630</updated>
     </task>
-    <task id="LOCAL-00075" summary="fix NPC">
+    <task id="LOCAL-00075" summary="add todo. (please fix)">
       <option name="closed" value="true" />
-      <created>1752499999401</created>
+      <created>1752676967491</created>
       <option name="number" value="00075" />
       <option name="presentableId" value="LOCAL-00075" />
       <option name="project" value="LOCAL" />
-      <updated>1752499999401</updated>
+      <updated>1752676967491</updated>
     </task>
     <option name="localTasksCounter" value="76" />
     <servers />
@@ -570,6 +590,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Map" />
     <MESSAGE value="updated map, print map, buildings, ..." />
     <MESSAGE value="make code run able ://///////////////" />
     <MESSAGE value="update map &amp; tools" />
@@ -590,12 +611,11 @@
     <MESSAGE value="to merge" />
     <MESSAGE value="debug code" />
     <MESSAGE value="w" />
-    <MESSAGE value="debug plants" />
-    <MESSAGE value="ok" />
-    <MESSAGE value="debug NPC" />
     <MESSAGE value="merge" />
-    <MESSAGE value="fix NPC" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix NPC" />
+    <MESSAGE value="fix purchase item." />
+    <MESSAGE value="fix npc dailyUpdate" />
+    <MESSAGE value="add todo. (please fix)" />
+    <option name="LAST_COMMIT_MESSAGE" value="add todo. (please fix)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
