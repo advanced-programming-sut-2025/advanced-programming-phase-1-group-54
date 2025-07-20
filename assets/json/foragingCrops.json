@@ -1,0 +1,33 @@
+{
+  "WINTER": [
+    "Crocus",
+    "Crystal Fruit",
+    "Holly",
+    "Snow Yam",
+    "Winter Root"
+  ],
+  "FALL": [
+    "Blackberry",
+    "Chanterelle",
+    "Hazelnut",
+    "Purple Mushroom",
+    "Wild Plum"
+  ],
+  "SPRING": [
+    "Daffodil",
+    "Dandelion",
+    "Leek",
+    "Morel",
+    "Salmonberry",
+    "Spring Onion",
+    "Wild Horseradish"
+  ],
+  "SUMMER": [
+    "Common Mushroom",
+    "Grape",
+    "Fiddlehead Fern",
+    "Red Mushroom",
+    "Spice Berry",
+    "Sweet Pea"
+  ]
+}

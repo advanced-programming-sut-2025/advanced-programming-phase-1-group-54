@@ -1,0 +1,86 @@
+[
+  {
+    "Name": "Corn Seeds",
+    "Description": "Plant these in the summer or fall. Takes 14 days to mature, and continues to produce after first harvest.",
+    "Price": 187,
+    "Count": 5
+  },
+  {
+    "Name": "Eggplant Seeds",
+    "Description": "Plant these in the fall. Takes 5 days to mature, and continues to produce after first harvest.",
+    "Price": 25,
+    "Count": 5
+  },
+  {
+    "Name": "Pumpkin Seeds",
+    "Description": "Plant these in the fall. Takes 13 days to mature.",
+    "Price": 125,
+    "Count": 5
+  },
+  {
+    "Name": "Broccoli Seeds",
+    "Description": "Plant in the fall. Takes 8 days to mature, and continues to produce after first harvest.",
+    "Price": 15,
+    "Count": 5
+  },
+  {
+    "Name": "Amaranth Seeds",
+    "Description": "Plant these in the fall. Takes 7 days to grow. Harvest with the scythe.",
+    "Price": 87,
+    "Count": 5
+  },
+  {
+    "Name": "Grape Starter",
+    "Description": "Plant these in the fall. Takes 10 days to grow, but keeps producing after that. Grows on a trellis.",
+    "Price": 75,
+    "Count": 5
+  },
+  {
+    "Name": "Beet Seeds",
+    "Description": "Plant these in the fall. Takes 6 days to mature.",
+    "Price": 20,
+    "Count": 5
+  },
+  {
+    "Name": "Yam Seeds",
+    "Description": "Plant these in the fall. Takes 10 days to mature.",
+    "Price": 75,
+    "Count": 5
+  },
+  {
+    "Name": "Bok Choy Seeds",
+    "Description": "Plant these in the fall. Takes 4 days to mature.",
+    "Price": 62,
+    "Count": 5
+  },
+  {
+    "Name": "Cranberry Seeds",
+    "Description": "Plant these in the fall. Takes 7 days to mature, and continues to produce after first harvest.",
+    "Price": 300,
+    "Count": 5
+  },
+  {
+    "Name": "Sunflower Seeds",
+    "Description": "Plant in summer or fall. Takes 8 days to produce a large sunflower. Yields more seeds at harvest.",
+    "Price": 125,
+    "Count": 5
+  },
+  {
+    "Name": "Fairy Seeds",
+    "Description": "Plant in fall. Takes 12 days to produce a mysterious flower. Assorted Colors.",
+    "Price": 250,
+    "Count": 5
+  },
+  {
+    "Name": "Rare Seed",
+    "Description": "Sow in fall. Takes all season to grow.",
+    "Price": 1000,
+    "Count": 1
+  },
+  {
+    "Name": "Wheat Seeds",
+    "Description": "Plant these in the summer or fall. Takes 4 days to mature. Harvest with the scythe.",
+    "Price": 12,
+    "Count": 5
+  }
+]

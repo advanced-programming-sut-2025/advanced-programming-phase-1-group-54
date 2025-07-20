@@ -1,0 +1,337 @@
+{
+  "Cauliflower Seeds": {
+    "plant": "Cauliflower Crop",
+    "name": "Cauliflower Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Rhubarb Seeds": {
+    "plant": "Rhubarb Crop",
+    "name": "Rhubarb Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Bean Starter": {
+    "plant": "Green Bean Crop",
+    "name": "Bean Starter",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Parsnip Seeds": {
+    "plant": "Parsnip Crop",
+    "name": "Parsnip Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Broccoli Seeds": {
+    "plant": "Broccoli Crop",
+    "name": "Broccoli Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Summer Squash Seeds": {
+    "plant": "Summer Squash Crop",
+    "name": "Summer Squash Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Yam Seeds": {
+    "plant": "Yam Crop",
+    "name": "Yam Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Pine Cones": {
+    "plant": "Pine Tree",
+    "name": "Pine Cones",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Rare Seed": {
+    "plant": "Sweet Gem Crop",
+    "name": "Rare Seed",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Amaranth Seeds": {
+    "plant": "Amaranth Crop",
+    "name": "Amaranth Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Pepper Seeds": {
+    "plant": "Hot Pepper Crop",
+    "name": "Pepper Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Poppy Seeds": {
+    "plant": "Poppy Crop",
+    "name": "Poppy Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Blueberry Seeds": {
+    "plant": "Blueberry Crop",
+    "name": "Blueberry Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Kale Seeds": {
+    "plant": "Kale Crop",
+    "name": "Kale Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Fairy Seeds": {
+    "plant": "Fairy Rose Crop",
+    "name": "Fairy Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Strawberry Seeds": {
+    "plant": "Strawberry Crop",
+    "name": "Strawberry Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Acorns": {
+    "plant": "Oak Tree",
+    "name": "Acorns",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Bok Choy Seeds": {
+    "plant": "Bok Choy Crop",
+    "name": "Bok Choy Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Melon Seeds": {
+    "plant": "Melon Crop",
+    "name": "Melon Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Powdermelon Seeds": {
+    "plant": "Powdermelon Crop",
+    "name": "Powdermelon Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Cherry Sapling": {
+    "plant": "Cherry Tree",
+    "name": "Cherry Sapling",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Beet Seeds": {
+    "plant": "Beet Crop",
+    "name": "Beet Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Coffee Bean": {
+    "plant": "Coffee Bean Crop",
+    "name": "Coffee Bean",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Rice Shoot": {
+    "plant": "Unmilled Rice Crop",
+    "name": "Rice Shoot",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Mushroom Tree Seeds": {
+    "plant": "Mushroom Tree",
+    "name": "Mushroom Tree Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Pumpkin Seeds": {
+    "plant": "Pumpkin Crop",
+    "name": "Pumpkin Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Starfruit Seeds": {
+    "plant": "Starfruit Crop",
+    "name": "Starfruit Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Radish Seeds": {
+    "plant": "Radish Crop",
+    "name": "Radish Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Tomato Seeds": {
+    "plant": "Tomato Crop",
+    "name": "Tomato Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Red Cabbage Seeds": {
+    "plant": "Red Cabbage Crop",
+    "name": "Red Cabbage Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Sunflower Seeds": {
+    "plant": "Sunflower Crop",
+    "name": "Sunflower Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Artichoke Seeds": {
+    "plant": "Artichoke Seeds",
+    "name": "Artichoke Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Mango Sapling": {
+    "plant": "Mango Tree",
+    "name": "Mango Sapling",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Mahogany Seeds": {
+    "plant": "Mahogany Tree",
+    "name": "Mahogany Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Corn Seeds": {
+    "plant": "Corn Crop",
+    "name": "Corn Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Carrot Seeds": {
+    "plant": "Carrot Crop",
+    "name": "Carrot Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Ancient Seeds": {
+    "plant": "Ancient Fruit Crop",
+    "name": "Ancient Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Cranberry Seeds": {
+    "plant": "Cranberry Crop",
+    "name": "Cranberry Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Mixed Seeds": {
+    "name": "Mixed Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Mystic Tree Seeds": {
+    "plant": "Mystic Tree",
+    "name": "Mystic Tree Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Wheat Seeds": {
+    "plant": "Wheat Crop",
+    "name": "Wheat Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Apple Sapling": {
+    "plant": "Apple Tree",
+    "name": "Apple Sapling",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Banana Sapling": {
+    "plant": "Banana Tree",
+    "name": "Banana Sapling",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Eggplant Seeds": {
+    "plant": "Eggplant Crop",
+    "name": "Eggplant Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Maple Seeds": {
+    "plant": "Maple Tree",
+    "name": "Maple Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Garlic Seeds": {
+    "plant": "Garlic Crop",
+    "name": "Garlic Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Hops Starter": {
+    "plant": "Hops Crop",
+    "name": "Hops Starter",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Potato Seeds": {
+    "plant": "Potato Crop",
+    "name": "Potato Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Jazz Seeds": {
+    "plant": "Blue Jazz Crop",
+    "name": "Jazz Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Apricot Sapling": {
+    "plant": "Apricot Tree",
+    "name": "Apricot Sapling",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Peach Sapling": {
+    "plant": "Peach Tree",
+    "name": "Peach Sapling",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Tulip Bulb": {
+    "plant": "Tulip Crop",
+    "name": "Tulip Bulb",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Pomegranate Sapling": {
+    "plant": "Pomegranate Tree",
+    "name": "Pomegranate Sapling",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Spangle Seeds": {
+    "plant": "Spangle Crop",
+    "name": "Spangle Seeds",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Grape Starter": {
+    "plant": "Grape Crop",
+    "name": "Grape Starter",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Orange Sapling": {
+    "plant": "Orange Tree",
+    "name": "Orange Sapling",
+    "isEdible": false,
+    "baseSellPrice": 0
+  }
+}
