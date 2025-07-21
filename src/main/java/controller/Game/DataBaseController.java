@@ -15,7 +15,8 @@ public class DataBaseController {
      */
     public static JSONArray loadJsonArray(String filename) {
         String fullPath = Paths.get("").toAbsolutePath().resolve(filename).toString();
-        try (InputStream inputStream = Objects.requireNonNull(DataBaseController.class.getClassLoader().getResourceAsStream(fullPath))) {
+        try (InputStream inputStream = Objects.requireNonNull(DataBaseController.class.getClassLoader().
+                getResourceAsStream(fullPath))) {
             return new JSONArray(new JSONTokener(inputStream));
         } catch (IOException e) {
             throw new RuntimeException(e);
