@@ -181,6 +181,8 @@ public class DefaultMenu implements GameSubMenu {
             handleAddMoney(input);
         else if (CheatCode.ADD_ANIMAL_HOUSE.matches(input))
             handleAddAnimalHouse(input);
+        else if (CheatCode.ADD_ANIMAL.matches(input))
+            handleAddAnimal(input);
         else
             return false;
 
@@ -245,13 +247,20 @@ public class DefaultMenu implements GameSubMenu {
     }
 
     private void handleAddAnimalHouse(String input) {
-        Command command = GameCommand.BUILD_ANIMAL_HOUSE;
+        Command command = CheatCode.ADD_ANIMAL_HOUSE;
         String buildingName = command.getGroup(input, "buildingName");
         Location location = new Location(
                 Integer.parseInt(command.getGroup(input, "x")),
                 Integer.parseInt(command.getGroup(input, "y"))
         );
         showResult(CheatController.addBuilding(buildingName, location));
+    }
+
+    private void handleAddAnimal(String input) {
+        Command command = CheatCode.ADD_ANIMAL;
+        String animalName = command.getGroup(input, "animalName");
+        String name = command.getGroup(input, "name");
+        showResult(CheatController.addAnimal(animalName, name));
     }
 
     // Game Commands
