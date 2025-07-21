@@ -11,6 +11,7 @@ public enum CheatCode implements Command {
     SET_FRIENDSHIP("cheat set friendship -n (?<animalName>.+) -c (?<amount>\\d+)"),
     ADD_MONEY("cheat add (?<amount>\\d+) dollars"),
     ADD_ANIMAL_HOUSE("cheat add building -a (?<buildingName>.+) -l (?<x>[-+]?\\d+) (?<y>[-+]?\\d+)"),
+    ADD_ANIMAL("cheat add animal -a (?<animalName>.+) -n (?<name>.+)")
     ;
 
     private final String regex;

@@ -142,4 +142,28 @@ public class CheatController {
 
         return new Result(true, buildingName + " built!");
     }
+
+    public static Result addAnimal(String animalName, String name) {
+        Animal animal = Animal.getAnimal(animalName);
+        if (animal == null) {
+            return new Result(false, "No such animal.");
+        }
+
+        boolean temp = false;
+        for (AnimalHouse animalHouse : App.getCurrentGame().getCurrentPlayer().getFarm().getAnimalHouses()) {
+            for (String acceptedAnimalName : animalHouse.getAnimals()) {
+                if (acceptedAnimalName.equals(animalName)) {
+                    temp = true;
+                    break;
+                }
+            }
+        }
+        if (!temp) {
+            return new Result(false, "building required");
+        }
+
+        App.getCurrentGame().getCurrentPlayer().getAnimals().put(name, animal);
+        App.getCurrentGame().getDateTime().addDailyUpdateListener(animal);
+        return new Result(true, "animal purchased");
+    }
 }
