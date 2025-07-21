@@ -1,6 +1,6 @@
 package io.github.stardewmini.model.map;
 
-import io.github.stardewmini.controller.Game.PlantsController;
+import io.github.stardewmini.controller.game.PlantsController;
 import io.github.stardewmini.model.DailyUpdate;
 import io.github.stardewmini.model.Placeable;
 import io.github.stardewmini.model.enums.Color;

@@ -1,4 +1,4 @@
-package io.github.stardewmini.controller.Game;
+package io.github.stardewmini.controller.game;
 
 import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.DateTime;

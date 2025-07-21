@@ -1,7 +1,7 @@
 package io.github.stardewmini.controller;
 
-import io.github.stardewmini.controller.builders.FarmBuilder;
-import io.github.stardewmini.controller.builders.GameBuilder;
+import io.github.stardewmini.model.builders.FarmBuilder;
+import io.github.stardewmini.model.builders.GameBuilder;
 import io.github.stardewmini.model.*;
 
 public class GameMenuController {
@@ -36,22 +36,22 @@ public class GameMenuController {
         players[0] = loggedInUser;
         System.arraycopy(users, 0, players, 1, users.length);
 
-        GameBuilder.reset();
-        GameBuilder.setUsers(players);
+        GameBuilder.getInstance().reset();
+        GameBuilder.getInstance().setUsers(players);
 
         return new Result(true, "Players registered.");
     }
 
     public static Result chooseNewGameMap(int number) {
-        if (number < 1 || number > FarmBuilder.getNumberOfFarms())
-            return new Result(false, "Map number must be between 1 and " + FarmBuilder.getNumberOfFarms());
+        if (number < 1 || number > FarmBuilder.getInstance().getNumberOfFarms())
+            return new Result(false, "Map number must be between 1 and " + FarmBuilder.getInstance().getNumberOfFarms());
 
-        boolean isFinished = GameBuilder.setNextPlayerFarm(number);
+        boolean isFinished = GameBuilder.getInstance().setNextPlayerFarm(number);
         return new Result((isFinished? 1 : 0), "Map number " + number + " chosen");
     }
 
     public static Result createNewGame() {
-        GameData gameData = GameBuilder.getGameData();
+        GameData gameData = GameBuilder.getInstance().getGameData();
         App.addGameData(gameData);
         return new Result(true, "Successfully created game!");
     }
@@ -63,9 +63,9 @@ public class GameMenuController {
         if (gameData == null)
             return new Result(false, "You are not in any game! you must first create a new game!");
 
-        GameBuilder.reset();
-        GameBuilder.setGameData(gameData);
-        Game game = GameBuilder.getResult();
+        GameBuilder.getInstance().reset();
+        GameBuilder.getInstance().setGameData(gameData);
+        Game game = GameBuilder.getInstance().getResult();
         App.setCurrentGame(game);
         return new Result(true, "Loading... Done!");
     }

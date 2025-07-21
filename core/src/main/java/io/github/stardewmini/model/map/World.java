@@ -4,8 +4,7 @@ package io.github.stardewmini.model.map;
     There is a global map in game, each player has a farm in one of four corners of map;
  */
 
-import io.github.stardewmini.controller.Game.DataBaseController;
-import io.github.stardewmini.controller.Game.PlantsController;
+import io.github.stardewmini.controller.game.PlantsController;
 import io.github.stardewmini.model.DailyUpdate;
 import io.github.stardewmini.model.enums.Direction;
 import io.github.stardewmini.model.enums.Season;

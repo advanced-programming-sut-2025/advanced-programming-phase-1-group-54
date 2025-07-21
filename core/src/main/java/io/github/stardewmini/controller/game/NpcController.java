@@ -1,4 +1,4 @@
-package io.github.stardewmini.controller.Game;
+package io.github.stardewmini.controller.game;
 
 import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.Quest;
@@ -6,7 +6,6 @@ import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.enums.Season;
 import io.github.stardewmini.model.enums.Weather;
 import io.github.stardewmini.model.items.Item;
-import io.github.stardewmini.model.items.recipes.Recipe;
 import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.relationships.NPCFriendship;

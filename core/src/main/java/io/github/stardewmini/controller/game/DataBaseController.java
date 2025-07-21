@@ -1,12 +1,7 @@
-package io.github.stardewmini.controller.Game;
+package io.github.stardewmini.controller.game;
 
 //import org.json.JSONArray;
 //import org.json.JSONTokener;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Paths;
-import java.util.Objects;
 
 public class DataBaseController {
     /* TODO

@@ -1,4 +1,4 @@
-package io.github.stardewmini.controller.builders;
+package io.github.stardewmini.model.builders;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,19 +16,30 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class FarmBuilder {
-    private static final int NUMBER_OF_FORAGING_MATERIAL = 2;
+    private static FarmBuilder instance;
 
-    private static Location location;
+    private FarmBuilder() {
+    }
 
-    private static Location cabinLocation;
-    private static Location greenHouseLocation;
-    private static Area[] lakeAreas;
-    private static Area quarryArea;
-    private static DateTime dateTime;
+    public static FarmBuilder getInstance() {
+        if (instance == null)
+            instance = new FarmBuilder();
+        return instance;
+    }
 
-    private static Tile[][] tiles = new Tile[Farm.getNumberOfRows()][Farm.getNumberOfColumns()];
+    private final int NUMBER_OF_FORAGING_MATERIAL = 2;
 
-    public static void reset() {
+    private Location location;
+
+    private Location cabinLocation;
+    private Location greenHouseLocation;
+    private Area[] lakeAreas;
+    private Area quarryArea;
+    private DateTime dateTime;
+
+    private Tile[][] tiles = new Tile[Farm.getNumberOfRows()][Farm.getNumberOfColumns()];
+
+    public void reset() {
         location = null;
         cabinLocation = null;
         greenHouseLocation = null;
@@ -38,29 +49,29 @@ public class FarmBuilder {
         tiles = new Tile[Farm.getNumberOfRows()][Farm.getNumberOfColumns()];
     }
 
-    public static void setLocation(Location location) {
-        FarmBuilder.location = location;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
-    public static void setCabinLocation(Location cabinLocation) {
-        FarmBuilder.cabinLocation = cabinLocation;
+    public void setCabinLocation(Location cabinLocation) {
+        this.cabinLocation = cabinLocation;
     }
 
-    public static void setGreenHouseLocation(Location greenHouseLocation) {
-        FarmBuilder.greenHouseLocation = greenHouseLocation;
+    public void setGreenHouseLocation(Location greenHouseLocation) {
+        this.greenHouseLocation = greenHouseLocation;
     }
 
-    public static void setLakeAreas(Area[] lakeAreas) {
-        FarmBuilder.lakeAreas = lakeAreas;
+    public void setLakeAreas(Area[] lakeAreas) {
+        this.lakeAreas = lakeAreas;
     }
 
-    public static void setQuarryArea(Area quarryArea) {
-        FarmBuilder.quarryArea = quarryArea;
+    public void setQuarryArea(Area quarryArea) {
+        this.quarryArea = quarryArea;
     }
 
 
-    public static void setFarmNumber(int number) {
-        try (InputStream inputStream = FarmBuilder.class.getClassLoader().getResourceAsStream("farms.json"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+    public void setFarmNumber(int number) {
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("farms.json"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
             JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonArray().get(number - 1).getAsJsonObject();
@@ -74,19 +85,19 @@ public class FarmBuilder {
         }
     }
 
-    public static void setDateTime(DateTime dateTime) {
-        FarmBuilder.dateTime = dateTime;
+    public void setDateTime(DateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
-    public static int getNumberOfFarms() {
-        try (InputStream inputStream = FarmBuilder.class.getClassLoader().getResourceAsStream("farms.json"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+    public int getNumberOfFarms() {
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("farms.json"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             return JsonParser.parseReader(reader).getAsJsonArray().size();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static Cabin buildCabin() {
+    public Cabin buildCabin() {
         Cabin cabin = new Cabin(cabinLocation);
         for (int x = 0; x < cabin.getNumberOfRows(); x++) {
             for (int y = 0; y < cabin.getNumberOfColumns(); y++) {
@@ -97,7 +108,7 @@ public class FarmBuilder {
         return cabin;
     }
 
-    private static GreenHouse buildGreenHouse() {
+    private GreenHouse buildGreenHouse() {
         GreenHouse greenHouse = new GreenHouse(greenHouseLocation);
         for (int x = 0; x < greenHouse.getNumberOfRows(); x++) {
             for (int y = 0; y < greenHouse.getNumberOfColumns(); y++) {
@@ -111,7 +122,7 @@ public class FarmBuilder {
         return greenHouse;
     }
 
-    private static GenericWall[] buildLakes() {
+    private GenericWall[] buildLakes() {
         GenericWall[] lakes = new GenericWall[lakeAreas.length];
         for (int t = 0; t < lakeAreas.length; t++) {
             lakes[t] = new GenericWall(lakeAreas[t], Symbol.LAKE);
@@ -126,7 +137,7 @@ public class FarmBuilder {
     }
 
 
-    private static Quarry buildQuarry() {
+    private Quarry buildQuarry() {
         Quarry quarry = new Quarry(quarryArea);
         for (int row = quarryArea.upperLeftLocation().row(); row <= quarryArea.lowerRightLocation().row(); row++) {
             for (int column = quarryArea.upperLeftLocation().column(); column <= quarryArea.lowerRightLocation().column(); column++) {
@@ -142,7 +153,7 @@ public class FarmBuilder {
         return quarry;
     }
 
-    public static void placeRandomStuff(Farm farm) {
+    public void placeRandomStuff(Farm farm) {
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
                 if ((int) (Math.random() * 100) < 5) {
@@ -161,7 +172,7 @@ public class FarmBuilder {
         }
     }
 
-    public static Farm getResult() {
+    public Farm getResult() {
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
                 tiles[i][j] = new Tile(new Location(i, j));
@@ -178,7 +189,7 @@ public class FarmBuilder {
         placeRandomStuff(farm);
         dateTime.addDailyUpdateListener(farm);
 
-        FarmBuilder.reset();
+        this.reset();
         return farm;
     }
 

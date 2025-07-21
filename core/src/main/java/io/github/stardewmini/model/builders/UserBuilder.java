@@ -1,4 +1,4 @@
-package io.github.stardewmini.controller.builders;
+package io.github.stardewmini.model.builders;
 
 import io.github.stardewmini.model.User;
 import io.github.stardewmini.model.enums.Gender;
@@ -7,16 +7,27 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class UserBuilder {
-    private static String username;
-    private static String password;
-    private static String nickname;
-    private static String email;
-    private static Gender gender;
+    private static UserBuilder instance;
 
-    private static int chosenSecurityQuestionNumber;
-    private static String answerToSecurityQuestion;
+    private UserBuilder() {
+    }
 
-    public static void reset() {
+    public static UserBuilder getInstance() {
+        if (instance == null)
+            instance = new UserBuilder();
+        return instance;
+    }
+
+    private String username;
+    private String password;
+    private String nickname;
+    private String email;
+    private Gender gender;
+
+    private int chosenSecurityQuestionNumber;
+    private String answerToSecurityQuestion;
+
+    public void reset() {
         username = null;
         password = null;
         nickname = null;
@@ -26,22 +37,22 @@ public class UserBuilder {
         answerToSecurityQuestion = null;
     }
 
-    public static void registerBasicData(String username, String password, String nickname, String email, Gender gender) {
-        UserBuilder.username = username;
-        UserBuilder.password = password;
-        UserBuilder.nickname = nickname;
-        UserBuilder.email = email;
-        UserBuilder.gender = gender;
+    public void registerBasicData(String username, String password, String nickname, String email, Gender gender) {
+        this.username = username;
+        this.password = password;
+        this.nickname = nickname;
+        this.email = email;
+        this.gender = gender;
     }
 
-    public static void registerSecurityQuestionAnswer(int number, String answer) {
-        UserBuilder.chosenSecurityQuestionNumber = number;
-        UserBuilder.answerToSecurityQuestion = answer;
+    public void registerSecurityQuestionAnswer(int number, String answer) {
+        this.chosenSecurityQuestionNumber = number;
+        this.answerToSecurityQuestion = answer;
     }
 
-    public static User getResult() {
+    public User getResult() {
         User user = new User(username, sha256(password), nickname, email, gender, chosenSecurityQuestionNumber, sha256(answerToSecurityQuestion));
-        UserBuilder.reset();
+        this.reset();
         return user;
     }
 

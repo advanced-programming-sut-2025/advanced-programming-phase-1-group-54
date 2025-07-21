@@ -1,9 +1,7 @@
-package io.github.stardewmini.controller.builders;
+package io.github.stardewmini.model.builders;
 
-import io.github.stardewmini.controller.Game.DataBaseController;
 import io.github.stardewmini.model.DateTime;
 import io.github.stardewmini.model.Quest;
-import io.github.stardewmini.model.items.ShopItem;
 import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.map.*;
 import io.github.stardewmini.model.map.Shops.*;
@@ -16,6 +14,18 @@ public class WorldBuilder {
         remove json array. use gson.
         move reading and writing files (and all json) to DatabaseController.
      */
+
+    private static WorldBuilder instance;
+
+    private WorldBuilder() {
+    }
+
+    public static WorldBuilder getInstance() {
+        if (instance == null)
+            instance = new WorldBuilder();
+        return instance;
+    }
+
     private static final Location[] farmLocation = {
             new Location(0, 0),
             new Location(World.getNumberOfRows() - Farm.getNumberOfRows(), 0),
@@ -23,30 +33,30 @@ public class WorldBuilder {
             new Location(0, World.getNumberOfColumns() - Farm.getNumberOfColumns())
     };
 
-    private static Farm[] playerFarms;
-    private static Tile[][] tiles;
-    private static DateTime dateTime;
+    private Farm[] playerFarms;
+    private Tile[][] tiles;
+    private DateTime dateTime;
 
     static Location getFarmLocation(int i) {
         return farmLocation[i];
     }
 
-    public static void reset() {
+    public void reset() {
         playerFarms = new Farm[4];
         tiles = null;
         dateTime = null;
     }
 
-    public static void setPlayerFarms(Farm[] playerFarms) {
-        WorldBuilder.playerFarms = new Farm[playerFarms.length];
-        System.arraycopy(playerFarms, 0, WorldBuilder.playerFarms, 0, playerFarms.length);
+    public void setPlayerFarms(Farm[] playerFarms) {
+        this.playerFarms = new Farm[playerFarms.length];
+        System.arraycopy(playerFarms, 0, this.playerFarms, 0, playerFarms.length);
     }
 
-    public static void setDateTime(DateTime dateTime) {
-        WorldBuilder.dateTime = dateTime;
+    public void setDateTime(DateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
-    public static World getResult() {
+    public World getResult() {
         tiles = new Tile[World.getNumberOfRows()][World.getNumberOfColumns()];
 
         // put farms in corners\
@@ -84,12 +94,12 @@ public class WorldBuilder {
         }
 
         World world = new World(playerFarms, shops, npcHouses, new Map(World.getNumberOfRows(), World.getNumberOfColumns(), tiles));
-        WorldBuilder.reset();
+        this.reset();
         return world;
     }
 
 
-    private static final Area[] npcHouseAreas = {
+    private final Area[] npcHouseAreas = {
             new Area(new Location(31, 36), new Location(34, 41)),
             new Area(new Location(36, 31), new Location(42, 36)),
             new Area(new Location(46, 36), new Location(49, 41)),
@@ -98,7 +108,7 @@ public class WorldBuilder {
     };
 
 
-    private static final Area[] shopAreas = {
+    private final Area[] shopAreas = {
             new Area(new Location(24, 40), new Location(30, 47)),
             new Area(new Location(22, 50), new Location(28, 56)),
             new Area(new Location(56, 10), new Location(62, 17)),
@@ -109,7 +119,7 @@ public class WorldBuilder {
     };
 
 
-    public static ArrayList<NPCHouse> buildNPCHouses() {
+    public ArrayList<NPCHouse> buildNPCHouses() {
         ArrayList<NPCHouse> npcHouses = new ArrayList<>();
         NPC npc = new NPC("Artisan", "Sebastian");
 
@@ -213,7 +223,7 @@ public class WorldBuilder {
         return npcHouses;
     }
 
-//    private static ArrayList<Shop> buildShops() {
+//    private ArrayList<Shop> buildShops() {
 //        ArrayList<Shop> shops = new ArrayList<>();
 //        //creating blacksmith shop
 //        NPC human = new NPC("Shop Keeper", "Clint");

@@ -1,13 +1,12 @@
 package io.github.stardewmini.controller;
 
-import io.github.stardewmini.controller.builders.UserBuilder;
+import io.github.stardewmini.model.builders.UserBuilder;
 import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.User;
 import io.github.stardewmini.model.enums.Gender;
 
 public class RegisterMenuController {
-
     public static Result register(String username, String password, String confirmPassword, String nickname,
                                   String email, Gender gender) {
         boolean usernameTaken = !isUsernameUnique(username);
@@ -31,8 +30,8 @@ public class RegisterMenuController {
         if (!checkEmailResult.success())
             return checkEmailResult;
 
-        UserBuilder.reset();
-        UserBuilder.registerBasicData(username, password, nickname, email, gender);
+        UserBuilder.getInstance().reset();
+        UserBuilder.getInstance().registerBasicData(username, password, nickname, email, gender);
         if (usernameTaken) {
             if (!randomPassword)
                 return new Result(1, String.format("Username is taken, confirm %s as your username?", username));
@@ -48,7 +47,7 @@ public class RegisterMenuController {
     }
 
     public static Result resetUserBuilder() {
-        UserBuilder.reset();
+        UserBuilder.getInstance().reset();
         return new Result(true, null);
     }
 
@@ -173,12 +172,12 @@ public class RegisterMenuController {
         if (!answer.equals(confirmAnswer))
             return new Result(false, "Answers do not match");
 
-        UserBuilder.registerSecurityQuestionAnswer(number, answer);
+        UserBuilder.getInstance().registerSecurityQuestionAnswer(number, answer);
         return new Result(true, "Security question answered");
     }
 
     public static Result saveNewUser() {
-        User user = UserBuilder.getResult();
+        User user = UserBuilder.getInstance().getResult();
         App.addUser(user);
         return new Result(true, "Successfully registered!");
     }

@@ -1,4 +1,4 @@
-package io.github.stardewmini.controller.builders;
+package io.github.stardewmini.model.builders;
 
 import io.github.stardewmini.model.*;
 import io.github.stardewmini.model.lives.NPC;
@@ -6,27 +6,37 @@ import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.map.Cabin;
 import io.github.stardewmini.model.map.Farm;
 import io.github.stardewmini.model.map.Location;
-import io.github.stardewmini.model.map.Shops.Shop;
 import io.github.stardewmini.model.map.World;
 import io.github.stardewmini.model.relationships.NPCFriendship;
 
 import java.util.ArrayList;
 
 public class GameBuilder {
-    private static User[] users;
-    private static int[] playerFarmNumbers;
+    private static GameBuilder instance;
 
-    public static void reset() {
+    private GameBuilder() {
+    }
+
+    public static GameBuilder getInstance() {
+        if (instance == null)
+            instance = new GameBuilder();
+        return instance;
+    }
+
+    private User[] users;
+    private int[] playerFarmNumbers;
+
+    public void reset() {
         users = null;
         playerFarmNumbers = null;
     }
 
-    public static void setUsers(User[] users) {
-        GameBuilder.users = users;
+    public void setUsers(User[] users) {
+        this.users = users;
         playerFarmNumbers = new int[users.length];
     }
 
-    public static boolean setNextPlayerFarm(int number) {
+    public boolean setNextPlayerFarm(int number) {
         for (int i = 0; i < users.length; i++) {
             if (playerFarmNumbers[i] == 0) {
                 playerFarmNumbers[i] = number;
@@ -37,23 +47,23 @@ public class GameBuilder {
     }
 
 
-    public static Game getResult() {
+    public Game getResult() {
         DateTime dateTime = new DateTime();
 
         Farm[] playerFarms = new Farm[users.length];
 
         for (int i = 0; i < users.length; i++) {
-            FarmBuilder.reset();
-            FarmBuilder.setLocation(WorldBuilder.getFarmLocation(i));
-            FarmBuilder.setFarmNumber(playerFarmNumbers[i]);
-            FarmBuilder.setDateTime(dateTime);
-            playerFarms[i] = FarmBuilder.getResult();
+            FarmBuilder.getInstance().reset();
+            FarmBuilder.getInstance().setLocation(WorldBuilder.getFarmLocation(i));
+            FarmBuilder.getInstance().setFarmNumber(playerFarmNumbers[i]);
+            FarmBuilder.getInstance().setDateTime(dateTime);
+            playerFarms[i] = FarmBuilder.getInstance().getResult();
         }
 
-        WorldBuilder.reset();
-        WorldBuilder.setPlayerFarms(playerFarms);
-        WorldBuilder.setDateTime(dateTime);
-        World world = WorldBuilder.getResult();
+        WorldBuilder.getInstance().reset();
+        WorldBuilder.getInstance().setPlayerFarms(playerFarms);
+        WorldBuilder.getInstance().setDateTime(dateTime);
+        World world = WorldBuilder.getInstance().getResult();
 
         Player[] players = new Player[users.length];
         for (int i = 0; i < users.length; i++) {
@@ -89,11 +99,11 @@ public class GameBuilder {
         Game game = new Game(dateTime, world, players);
         dateTime.addDailyUpdateListener(game);
 
-        GameBuilder.reset();
+        this.reset();
         return game;
     }
 
-    public static GameData getGameData() {
+    public GameData getGameData() {
         String[] playerNames = new String[users.length];
         for (int i = 0; i < playerNames.length; i++) {
             playerNames[i] = users[i].getUsername();
@@ -105,8 +115,8 @@ public class GameBuilder {
         return new GameData(playerNames, playerFarms);
     }
 
-    public static void setGameData(GameData gameData) {
-        GameBuilder.reset();
+    public void setGameData(GameData gameData) {
+        this.reset();
 
         users = new User[gameData.playerNames().length];
         for (int i = 0; i < gameData.playerNames().length; i++) {
