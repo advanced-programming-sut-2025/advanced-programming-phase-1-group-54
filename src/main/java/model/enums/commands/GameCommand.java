@@ -50,8 +50,8 @@ public enum GameCommand implements Command {
     // Animal commands
     BUILD_ANIMAL_HOUSE("build -a (?<buildingName>.+) -l (?<x>[-+]?\\d+) (?<y>[-+]?\\d+)"),
     BUY_ANIMAL("buy animal -a (?<animalName>.+) -n (?<name>.+)"),
-    PET_ANIMAL("pet -a (?<name>.+)"),
-    FEED_ANIMAL("feed hay -n (?<animalName>.+) -l (?<x>[-+]?\\d+) (?<y>[-+]?\\d+)"),
+    PET_ANIMAL("pet -n (?<name>.+)"),
+    FEED_ANIMAL("feed hay -n (?<animalName>.+)"),
     SHOW_ANIMALS("animals"),
     MOVE_ANIMAL("shepherd animals -n (?<name>.+) -l (?<x>[-+]?\\d+) (?<y>[-+]?\\d+)"),
     SHOW_ANIMAL_PRODUCES("produces"),

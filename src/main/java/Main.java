@@ -1,3 +1,4 @@
+import model.lives.Animal;
 import view.AppView;
 
 public class Main {

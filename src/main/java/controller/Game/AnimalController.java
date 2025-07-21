@@ -32,12 +32,13 @@ public class AnimalController {
         Player player = App.getCurrentGame().getCurrentPlayer();
         StringBuilder output = new StringBuilder();
         for(Animal animal : player.getAnimals().values()) {
-            output.append(animal).append("\n").
+            output.append(animal.getAnimalName()).append(" ").append(animal.getName()).append("\n").
                     append("friendship level: ").append(animal.getFriendshipLevel()).append("\n").
                     append("caressed: ").append(animal.isCaressed()).append("\n").
-                    append("hungry").append(animal.isHungry()).append("\n").
-                    append("--------------------");
+                    append("fed : ").append(animal.isFed()).append("\n").
+                    append("--------------------\n");
         }
+        output.deleteCharAt(output.length()-1);
         return new Result(1,output.toString());
     }
 
@@ -69,25 +70,25 @@ public class AnimalController {
                 animal.setLocation(locationInFarm);
                 tile.getTop().setThingOnTile(animal);
             }
-
-            return new Result(false, "Sorry, but there is no room for " + animal);
+            else{
+                return new Result(false, "Sorry, but there is no room for " + animal);
+            }
         }
-
+        else{
+            return new Result(false, "Sorry, but there is no space on the tile");
+        }
 
         return new Result(1,animal + " was moved successfully");
     }
 
     private static void deleteAnimalFromFarm(Animal animal) {
         if(animal.getLocation() != null ) {
-            Tile pastTile = App.getCurrentGame().getWorld().getFarm(App.getCurrentGame().getCurrentPlayer()).
-                    getTileAt(animal.getLocation());
+            Tile pastTile = App.getCurrentGame().getCurrentPlayer().getFarm().getTileAt(animal.getLocation());
             if(pastTile.getThingOnTile() instanceof AnimalHouse pastAnimalHouse){
                 pastAnimalHouse.decreaseNumberOfAnimals(1);
-                pastTile.setThingOnTile(null);
+                pastTile = pastTile.getTop();
             }
-            else{
-                pastTile.setThingOnTile(null);
-            }
+            pastTile.setThingOnTile(null);
         }
     }
 
@@ -104,7 +105,7 @@ public class AnimalController {
             return new Result(-1, "You don't have any Hay in backpack");
         }
 
-        animal.setHungry(false);
+        animal.setFed(true);
 
         return new Result(1,animal + " was fed successfully");
     }
@@ -175,8 +176,9 @@ public class AnimalController {
 
         player.getAnimals().remove(animalName);
         deleteAnimalFromFarm(animal);
+         int price = (int)(animal.getSellPrice() * ((double) animal.getFriendshipLevel() /1000 + 0.3));
         player.increaseMoney((int)(animal.getSellPrice() * ((double) animal.getFriendshipLevel() /1000) + 0.3));
 
-        return new Result(1,"You sold " + animalName);
+        return new Result(1,"You sold " + animalName + " for " + price + " money");
     }
 }

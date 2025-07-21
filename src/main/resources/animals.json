@@ -9,7 +9,7 @@
       "Large Egg"
     ],
     "friendshipLevel": 0,
-    "hungry": false,
+    "fed": false,
     "caressed": false,
     "goneOut": false
   },
@@ -22,7 +22,7 @@
       "Dinosaur Egg"
     ],
     "friendshipLevel": 0,
-    "hungry": false,
+    "fed": false,
     "caressed": false,
     "goneOut": false
   },
@@ -36,7 +36,7 @@
       "Rabbit Leg"
     ],
     "friendshipLevel": 0,
-    "hungry": false,
+    "fed": false,
     "caressed": false,
     "goneOut": false
   },
@@ -49,7 +49,7 @@
       "Duck Egg"
     ],
     "friendshipLevel": 0,
-    "hungry": false,
+    "fed": false,
     "caressed": false,
     "goneOut": false
   },
@@ -62,7 +62,7 @@
       "Wool"
     ],
     "friendshipLevel": 0,
-    "hungry": false,
+    "fed": false,
     "caressed": false,
     "goneOut": false
   },
@@ -76,7 +76,7 @@
       "Large Milk"
     ],
     "friendshipLevel": 0,
-    "hungry": false,
+    "fed": false,
     "caressed": false,
     "goneOut": false
   },
@@ -90,7 +90,7 @@
       "Large Goat Milk"
     ],
     "friendshipLevel": 0,
-    "hungry": false,
+    "fed": false,
     "caressed": false,
     "goneOut": false
   },
@@ -103,7 +103,7 @@
       "Truffle"
     ],
     "friendshipLevel": 0,
-    "hungry": false,
+    "fed": false,
     "caressed": false,
     "goneOut": false
   }
