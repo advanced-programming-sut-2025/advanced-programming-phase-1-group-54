@@ -32,6 +32,8 @@ public class DefaultMenu implements GameSubMenu {
     private boolean checkGameCommand(String input, Scanner scanner) {
         if (GameCommand.EXIT_GAME.matches(input))
             handleExitGame();
+        else if (GameCommand.TERMINATE_GAME.matches(input))
+            handleTerminateGame();
         else if (GameCommand.NEXT_TURN.matches(input))
             handleNextTurn(scanner);
         else if (GameCommand.TIME.matches(input))
@@ -177,6 +179,8 @@ public class DefaultMenu implements GameSubMenu {
             handleSetFriendship(input);
         else if (CheatCode.ADD_MONEY.matches(input))
             handleAddMoney(input);
+        else if (CheatCode.ADD_ANIMAL_HOUSE.matches(input))
+            handleAddAnimalHouse(input);
         else
             return false;
 
@@ -238,6 +242,16 @@ public class DefaultMenu implements GameSubMenu {
         Command command = CheatCode.ADD_MONEY;
         int amount = Integer.parseInt(command.getGroup(input, "amount"));
         showResult(CheatController.addMoney(amount));
+    }
+
+    private void handleAddAnimalHouse(String input) {
+        Command command = GameCommand.BUILD_ANIMAL_HOUSE;
+        String buildingName = command.getGroup(input, "buildingName");
+        Location location = new Location(
+                Integer.parseInt(command.getGroup(input, "x")),
+                Integer.parseInt(command.getGroup(input, "y"))
+        );
+        showResult(CheatController.addBuilding(buildingName, location));
     }
 
     // Game Commands
@@ -658,6 +672,10 @@ public class DefaultMenu implements GameSubMenu {
         Result result = FriendShipController.respondToMarriage(username, answer);
         showResult(result);
         return (result.code() == 1);
+    }
+
+    private void handleTerminateGame() {
+        // TODO
     }
 
 }

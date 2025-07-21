@@ -3,6 +3,7 @@ package model.enums.commands;
 public enum GameCommand implements Command {
     // General Commands
     EXIT_GAME("exit game"),
+    TERMINATE_GAME("terminate game"),
     NEXT_TURN("next turn"),
     TIME("time"),
     DATE("date"),
