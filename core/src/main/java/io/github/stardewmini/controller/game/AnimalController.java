@@ -14,15 +14,6 @@ import io.github.stardewmini.model.map.Tile;
 import io.github.stardewmini.view.AnimalMenu;
 
 public class AnimalController {
-    private AnimalMenu menu;
-
-    public void setMenu(AnimalMenu menu) {
-        this.menu = menu;
-    }
-
-    public void handle(){
-
-    }
 
     public static Result pet(String animalName) {
         Player player = App.getCurrentGame().getCurrentPlayer();

@@ -15,13 +15,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class NpcController {
-
-    private NPCMenu menu;
-
-    public void setMenu(NPCMenu menu) {
-        this.menu = menu;
-    }
-
     private static Random rand = new Random();
 
     public static ArrayList<String> friendShipNpcList(){

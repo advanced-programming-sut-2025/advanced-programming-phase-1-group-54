@@ -15,16 +15,6 @@ import io.github.stardewmini.view.FishingMenu;
 
 public class FishingController {
 
-    private FishingMenu menu;
-
-    public void setMenu(FishingMenu menu) {
-        this.menu = menu;
-    }
-
-    public void handle(){
-
-    }
-
     public static Result fishing(String fishingPoleName) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
