@@ -1,0 +1,259 @@
+{
+  "Cherry Bomb Recipe": {
+    "name": "Cherry Bomb Recipe",
+    "ingredientsNames": [
+      "Copper Ore",
+      "Coal"
+    ],
+    "ingredientsNumber": {
+      "Coal": 1,
+      "Copper Ore": 4
+    }
+  },
+  "Bomb Recipe": {
+    "name": "Bomb Recipe",
+    "ingredientsNames": [
+      "Iron Ore",
+      "Coal"
+    ],
+    "ingredientsNumber": {
+      "Coal": 1,
+      "Iron Ore": 4
+    }
+  },
+  "Mega Bomb Recipe": {
+    "name": "Mega Bomb Recipe",
+    "ingredientsNames": [
+      "Gold Ore",
+      "Coal"
+    ],
+    "ingredientsNumber": {
+      "Gold Ore": 4,
+      "Coal": 1
+    }
+  },
+  "Sprinkler Recipe": {
+    "name": "Sprinkler Recipe",
+    "ingredientsNames": [
+      "Copper Bar",
+      "Iron Bar"
+    ],
+    "ingredientsNumber": {
+      "Iron Bar": 1,
+      "Copper Bar": 1
+    }
+  },
+  "Quality Sprinkler Recipe": {
+    "name": "Quality Sprinkler Recipe",
+    "ingredientsNames": [
+      "Iron Bar",
+      "Gold Bar"
+    ],
+    "ingredientsNumber": {
+      "Gold Bar": 1,
+      "Iron Bar": 1
+    }
+  },
+  "Iridium Sprinkler Recipe": {
+    "name": "Iridium Sprinkler Recipe",
+    "ingredientsNames": [
+      "Gold Bar",
+      "Iridium Bar"
+    ],
+    "ingredientsNumber": {
+      "Gold Bar": 1,
+      "Iridium Bar": 1
+    }
+  },
+  "Charcoal Kiln Recipe": {
+    "name": "Charcoal Kiln Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Copper Bar"
+    ],
+    "ingredientsNumber": {
+      "Wood": 20,
+      "Copper Bar": 2
+    }
+  },
+  "Furnace Recipe": {
+    "name": "Furnace Recipe",
+    "ingredientsNames": [
+      "Copper Ore",
+      "Stone"
+    ],
+    "ingredientsNumber": {
+      "Copper Ore": 20,
+      "Stone": 25
+    }
+  },
+  "Scarecrow Recipe": {
+    "name": "Scarecrow Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Coal",
+      "Fiber"
+    ],
+    "ingredientsNumber": {
+      "Wood": 50,
+      "Coal": 1,
+      "Fiber": 20
+    }
+  },
+  "Deluxe Scarecrow Recipe": {
+    "name": "Deluxe Scarecrow Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Coal",
+      "Fiber",
+      "Iridium Ore"
+    ],
+    "ingredientsNumber": {
+      "Wood": 50,
+      "Coal": 1,
+      "Fiber": 20,
+      "Iridium Ore": 1
+    }
+  },
+  "Bee House Recipe": {
+    "name": "Bee House Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Coal",
+      "Iron Bar"
+    ],
+    "ingredientsNumber": {
+      "Wood": 40,
+      "Coal": 8,
+      "Iron Bar": 1
+    }
+  },
+  "Cheese Press Recipe": {
+    "name": "Cheese Press Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Stone",
+      "Copper Bar"
+    ],
+    "ingredientsNumber": {
+      "Wood": 45,
+      "Stone": 45,
+      "Copper Bar": 1
+    }
+  },
+  "Keg Recipe": {
+    "name": "Keg Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Copper Bar",
+      "Iron Bar"
+    ],
+    "ingredientsNumber": {
+      "Wood": 30,
+      "Iron Bar": 1,
+      "Copper Bar": 1
+    }
+  },
+  "Loom Recipe": {
+    "name": "Loom Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Fiber"
+    ],
+    "ingredientsNumber": {
+      "Wood": 60,
+      "Fiber": 30
+    }
+  },
+  "Mayonnaise Machine Recipe": {
+    "name": "Mayonnaise Machine Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Stone",
+      "Copper Bar"
+    ],
+    "ingredientsNumber": {
+      "Wood": 15,
+      "Stone": 15,
+      "Copper Bar": 1
+    }
+  },
+  "Oil Maker Recipe": {
+    "name": "Oil Maker Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Gold Bar",
+      "Iron Bar"
+    ],
+    "ingredientsNumber": {
+      "Gold Bar": 1,
+      "Wood": 100,
+      "Iron Bar": 1
+    }
+  },
+  "Preserves Jar Recipe": {
+    "name": "Preserves Jar Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Stone",
+      "Coal"
+    ],
+    "ingredientsNumber": {
+      "Wood": 50,
+      "Coal": 8,
+      "Stone": 40
+    }
+  },
+  "Dehydrator Recipe": {
+    "name": "Dehydrator Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Stone",
+      "Fiber"
+    ],
+    "ingredientsNumber": {
+      "Wood": 30,
+      "Fiber": 30,
+      "Stone": 20
+    }
+  },
+  "Grass Starter Recipe": {
+    "name": "Grass Starter Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Fiber"
+    ],
+    "ingredientsNumber": {
+      "Wood": 1,
+      "Fiber": 1
+    }
+  },
+  "Fish Smoker Recipe": {
+    "name": "Fish Smoker Recipe",
+    "ingredientsNames": [
+      "Wood",
+      "Iron Bar",
+      "Coal"
+    ],
+    "ingredientsNumber": {
+      "Wood": 50,
+      "Coal": 10,
+      "Iron Bar": 3
+    }
+  },
+  "Mystic Tree Seeds Recipe": {
+    "name": "Mystic Tree Seeds Recipe",
+    "ingredientsNames": [
+      "Acorn",
+      "Maple Seed",
+      "Pine Cone",
+      "Mahogany Seed"
+    ],
+    "ingredientsNumber": {
+      "Maple Seed": 5,
+      "Mahogany Seed": 5,
+      "Pine Cone": 5,
+      "acorn": 5
+    }
+  }
+}

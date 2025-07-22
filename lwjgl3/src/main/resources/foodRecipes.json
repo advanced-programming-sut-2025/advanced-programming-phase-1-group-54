@@ -1,0 +1,267 @@
+{
+  "Fried Egg Recipe": {
+    "name": "Fried Egg Recipe",
+    "ingredientsNames": [
+      "Egg"
+    ],
+    "ingredientsNumber": {
+      "Egg": 1
+    }
+  },
+  "Baked Fish Recipe": {
+    "name": "Baked Fish Recipe",
+    "ingredientsNames": [
+      "Sardine",
+      "Salmon",
+      "Wheat"
+    ],
+    "ingredientsNumber": {
+      "Sardine": 1,
+      "Salmon": 1,
+      "Wheat": 1
+    }
+  },
+  "Salad Recipe": {
+    "name": "Salad Recipe",
+    "ingredientsNames": [
+      "Leek",
+      "Dandelion"
+    ],
+    "ingredientsNumber": {
+      "Leek": 1,
+      "Dandelion": 1
+    }
+  },
+  "Omelet Recipe": {
+    "name": "Omelet Recipe",
+    "ingredientsNames": [
+      "Egg",
+      "Milk"
+    ],
+    "ingredientsNumber": {
+      "Egg": 1,
+      "Milk": 1
+    }
+  },
+  "Pumpkin Pie Recipe": {
+    "name": "Pumpkin Pie Recipe",
+    "ingredientsNames": [
+      "Pumpkin",
+      "Wheat Flour",
+      "Milk",
+      "Sugar"
+    ],
+    "ingredientsNumber": {
+      "Pumpkin": 1,
+      "Wheat Flour": 1,
+      "Sugar": 1,
+      "Milk": 1
+    }
+  },
+  "Spaghetti Recipe": {
+    "name": "Spaghetti Recipe",
+    "ingredientsNames": [
+      "Wheat Flour",
+      "Tomato"
+    ],
+    "ingredientsNumber": {
+      "Wheat Flour": 1,
+      "Tomato": 1
+    }
+  },
+  "Pizza Recipe": {
+    "name": "Pizza Recipe",
+    "ingredientsNames": [
+      "Wheat Flour",
+      "Tomato",
+      "Cheese"
+    ],
+    "ingredientsNumber": {
+      "Wheat Flour": 1,
+      "Cheese": 1,
+      "Tomato": 1
+    }
+  },
+  "Tortilla Recipe": {
+    "name": "Tortilla Recipe",
+    "ingredientsNames": [
+      "Corn"
+    ],
+    "ingredientsNumber": {
+      "Corn": 1
+    }
+  },
+  "Maki Roll Recipe": {
+    "name": "Maki Roll Recipe",
+    "ingredientsNames": [
+      "Fish",
+      "Rice",
+      "Fiber"
+    ],
+    "ingredientsNumber": {
+      "Fiber": 1,
+      "Fish": 1,
+      "Rice": 1
+    }
+  },
+  "Triple Shot Espresso Recipe": {
+    "name": "Triple Shot Espresso Recipe",
+    "ingredientsNames": [
+      "Coffee"
+    ],
+    "ingredientsNumber": {
+      "Coffee": 3
+    }
+  },
+  "Cookie Recipe": {
+    "name": "Cookie Recipe",
+    "ingredientsNames": [
+      "Wheat Flour",
+      "Sugar",
+      "Egg"
+    ],
+    "ingredientsNumber": {
+      "Egg": 1,
+      "Wheat Flour": 1,
+      "Sugar": 1
+    }
+  },
+  "Hash Browns Recipe": {
+    "name": "Hash Browns Recipe",
+    "ingredientsNames": [
+      "Potato",
+      "Oil"
+    ],
+    "ingredientsNumber": {
+      "Potato": 1,
+      "Oil": 1
+    }
+  },
+  "Pancakes Recipe": {
+    "name": "Pancakes Recipe",
+    "ingredientsNames": [
+      "Wheat Flour",
+      "Egg"
+    ],
+    "ingredientsNumber": {
+      "Egg": 1,
+      "Wheat Flour": 1
+    }
+  },
+  "Fruit Salad Recipe": {
+    "name": "Fruit Salad Recipe",
+    "ingredientsNames": [
+      "Blueberry",
+      "Melon",
+      "Apricot"
+    ],
+    "ingredientsNumber": {
+      "Blueberry": 1,
+      "Apricot": 1,
+      "Melon": 1
+    }
+  },
+  "Red Plate Recipe": {
+    "name": "Red Plate Recipe",
+    "ingredientsNames": [
+      "Red Cabbage",
+      "Radish"
+    ],
+    "ingredientsNumber": {
+      "Red Cabbage": 1,
+      "Radish": 1
+    }
+  },
+  "Bread Recipe": {
+    "name": "Bread Recipe",
+    "ingredientsNames": [
+      "Wheat Flour"
+    ],
+    "ingredientsNumber": {
+      "Wheat Flour": 1
+    }
+  },
+  "Salmon Dinner Recipe": {
+    "name": "Salmon Dinner Recipe",
+    "ingredientsNames": [
+      "Salmon",
+      "Amaranth",
+      "Kale"
+    ],
+    "ingredientsNumber": {
+      "Amaranth": 1,
+      "Salmon": 1,
+      "Kale": 1
+    }
+  },
+  "Vegetable Medley Recipe": {
+    "name": "Vegetable Medley Recipe",
+    "ingredientsNames": [
+      "Tomato",
+      "Beet"
+    ],
+    "ingredientsNumber": {
+      "Tomato": 1,
+      "Beet": 1
+    }
+  },
+  "Farmer\u0027s Lunch Recipe": {
+    "name": "Farmer\u0027s Lunch Recipe",
+    "ingredientsNames": [
+      "Omelet",
+      "Parsnip"
+    ],
+    "ingredientsNumber": {
+      "Parsnip": 1,
+      "Omelet": 1
+    }
+  },
+  "Survival Burger Recipe": {
+    "name": "Survival Burger Recipe",
+    "ingredientsNames": [
+      "Bread",
+      "Carrot",
+      "Eggplant"
+    ],
+    "ingredientsNumber": {
+      "Carrot": 1,
+      "Eggplant": 1,
+      "Bread": 1
+    }
+  },
+  "Dish O\u0027 The Sea Recipe": {
+    "name": "Dish O\u0027 The Sea Recipe",
+    "ingredientsNames": [
+      "Sardine",
+      "Hash Browns"
+    ],
+    "ingredientsNumber": {
+      "Sardine": 2,
+      "Hash Browns": 1
+    }
+  },
+  "Seaform Pudding Recipe": {
+    "name": "Seaform Pudding Recipe",
+    "ingredientsNames": [
+      "Flounder",
+      "Midnight Carp"
+    ],
+    "ingredientsNumber": {
+      "Midnight Carp": 1,
+      "Flounder": 1
+    }
+  },
+  "Miner\u0027s Treat Recipe": {
+    "name": "Miner\u0027s Treat Recipe",
+    "ingredientsNames": [
+      "Carrot",
+      "Sugar",
+      "Milk"
+    ],
+    "ingredientsNumber": {
+      "Carrot": 2,
+      "Sugar": 1,
+      "Milk": 1
+    }
+  }
+}

@@ -15,12 +15,12 @@ import io.github.stardewmini.view.AnimalMenu;
 
 public class AnimalController {
 
-    public static Result pet(String animalName) {
+    public static Result pet(Animal animal) {
         Player player = App.getCurrentGame().getCurrentPlayer();
-        Animal animal = player.getAnimals().get(animalName);
-        if(animal == null) {
-            return new Result(-1, "You don't have any animal named " + animalName);
-        }
+//        Animal animal = player.getAnimals().get(animalName);
+//        if(animal == null) {
+//            return new Result(-1, "You don't have any animal named " + animal.getName());
+//        }
         if(! MapController.isNear(player.getCurrentLocation(),animal)){
             return new Result(-1, animal + " is not near you");
         }
@@ -92,13 +92,13 @@ public class AnimalController {
         }
     }
 
-    public static Result feedAnimal(String animalName) {
+    public static Result feedAnimal(Animal animal) {
 
         Player player = App.getCurrentGame().getCurrentPlayer();
-        Animal animal = player.getAnimals().get(animalName);
-        if(animal == null) {
-            return new Result(-1, "Animal " + animalName + " not found");
-        }
+//        Animal animal = player.getAnimals().get(animal.getName());
+//        if(animal == null) {
+//            return new Result(-1, "Animal " + animal.getName() + " not found");
+//        }
 
         Item item = CommonGameController.findItem("Hay");
         if(! player.getBackpack().removeItem(item,1)){
@@ -123,12 +123,12 @@ public class AnimalController {
         return new Result(1,output.toString());
     }
 
-    public static Result getAnimalProduce(String animalName) {
+    public static Result getAnimalProduce(Animal animal) {
         Player player = App.getCurrentGame().getCurrentPlayer();
-        Animal animal = player.getAnimals().get(animalName);
-        if(animal == null) {
-            return new Result(-1, "Animal " + animalName + " not found");
-        }
+//        Animal animal = player.getAnimals().get(animalName);
+//        if(animal == null) {
+//            return new Result(-1, "Animal " + animalName + " not found");
+//        }
 
         if(animal.getProduce() == null) {
             return new Result(-1, animal + " doesn't have any produce");
@@ -158,26 +158,26 @@ public class AnimalController {
         animal.increaseFriendshipLevel(5);
         player.getSkill(SkillType.FARMING).addXP(5);
         if(enoughEnergy){
-            return new Result(1,"You got produce from " + animalName);
+            return new Result(1,"You got produce from " + animal.getName());
         }
         else {
             return new Result(1,"You got produce from " +
-                    animalName  + ". " + CommonGameController.passOut().message());
+                    animal.getName()  + ". " + CommonGameController.passOut().message());
         }
 
     }
 
-    public static Result sellAnimal(String animalName) {
+    public static Result sellAnimal(Animal animal) {
         Player player = App.getCurrentGame().getCurrentPlayer();
-        Animal animal = player.getAnimals().get(animalName);
-        if(animal == null) {
-            return new Result(-1, "Animal " + animalName + " not found");
-        }
+//        Animal animal = player.getAnimals().get(animalName);
+//        if(animal == null) {
+//            return new Result(-1, "Animal " + animalName + " not found");
+//        }
 
-        player.getAnimals().remove(animalName);
+        player.getAnimals().remove(animal.getName());
         deleteAnimalFromFarm(animal);
         player.increaseMoney((int)(animal.getSellPrice() * ((double) animal.getFriendshipLevel() /1000) + 0.3));
 
-        return new Result(1,"You sold " + animalName);
+        return new Result(1,"You sold " + animal.getName());
     }
 }

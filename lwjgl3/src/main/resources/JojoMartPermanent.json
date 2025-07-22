@@ -1,0 +1,38 @@
+[
+  {
+    "Name": "Joja Cola",
+    "Description": "The flagship product of Joja corporation.",
+    "Price": 75,
+    "Count": -1
+  },
+  {
+    "Name": "Ancient Seed",
+    "Description": "Could these still grow?",
+    "Price": 500,
+    "Count": 1
+  },
+  {
+    "Name": "Grass Starter",
+    "Description": "Place this on your farm to start a new patch of grass.",
+    "Price": 125,
+    "Count": -1
+  },
+  {
+    "Name": "Sugar",
+    "Description": "Adds sweetness to pastries and candies. Too much can be unhealthy.",
+    "Price": 125,
+    "Count": -1
+  },
+  {
+    "Name": "Wheat Flour",
+    "Description": "A common cooking ingredient made from crushed wheat seeds.",
+    "Price": 125,
+    "Count": -1
+  },
+  {
+    "Name": "Rice",
+    "Description": "A basic grain often served under vegetables.",
+    "Price": 250,
+    "Count": -1
+  }
+]
