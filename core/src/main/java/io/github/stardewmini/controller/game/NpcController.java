@@ -9,11 +9,19 @@ import io.github.stardewmini.model.items.Item;
 import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.relationships.NPCFriendship;
+import io.github.stardewmini.view.NPCMenu;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class NpcController {
+
+    private NPCMenu menu;
+
+    public void setMenu(NPCMenu menu) {
+        this.menu = menu;
+    }
+
     private static Random rand = new Random();
 
     public static ArrayList<String> friendShipNpcList(){

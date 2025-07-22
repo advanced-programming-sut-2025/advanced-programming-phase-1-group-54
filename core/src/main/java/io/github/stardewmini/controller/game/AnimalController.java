@@ -11,8 +11,18 @@ import io.github.stardewmini.model.map.AnimalHouse;
 import io.github.stardewmini.model.map.Farm;
 import io.github.stardewmini.model.map.Location;
 import io.github.stardewmini.model.map.Tile;
+import io.github.stardewmini.view.AnimalMenu;
 
 public class AnimalController {
+    private AnimalMenu menu;
+
+    public void setMenu(AnimalMenu menu) {
+        this.menu = menu;
+    }
+
+    public void handle(){
+
+    }
 
     public static Result pet(String animalName) {
         Player player = App.getCurrentGame().getCurrentPlayer();

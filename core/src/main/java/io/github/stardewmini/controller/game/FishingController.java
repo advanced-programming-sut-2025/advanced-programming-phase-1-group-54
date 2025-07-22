@@ -11,8 +11,19 @@ import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.lives.Skill;
 import io.github.stardewmini.model.map.Farm;
 import io.github.stardewmini.model.map.GenericWall;
+import io.github.stardewmini.view.FishingMenu;
 
 public class FishingController {
+
+    private FishingMenu menu;
+
+    public void setMenu(FishingMenu menu) {
+        this.menu = menu;
+    }
+
+    public void handle(){
+
+    }
 
     public static Result fishing(String fishingPoleName) {
         Player player = App.getCurrentGame().getCurrentPlayer();
