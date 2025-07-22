@@ -24,23 +24,27 @@ public class AnimalMenu implements Screen {
     private final TextButton getProduceButton;
     private final TextButton sellButton;
     private final TextButton backButton;
-    private final Table table;
 
     public AnimalMenu(Skin skin,Animal animal) {
         this.animal = animal;
         this.window = new Window("Animal Menu", skin);
-        this.menuTitle = new Label("Animal menu", skin);
+        this.menuTitle = new Label("carfdfa: sg\nsafdsgs: dgd\nafsghdgfd: sfd", skin);
         this.feedButton = new TextButton("Feed", skin);
         this.petButton = new TextButton("Pet", skin);
         this.moveButton = new TextButton("Move", skin);
         this.getProduceButton = new TextButton("Get Produce", skin);
         this.sellButton = new TextButton("Sell", skin);
         this.backButton = new TextButton("Back", skin);
-        this.table = new Table();
     }
 
     @Override
     public void show() {
+
+        backButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+
+            }
+        });
 
         feedButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
@@ -80,6 +84,10 @@ public class AnimalMenu implements Screen {
         window.add(feedButton).expand().pad(10);
         window.add(petButton).expand().pad(10);
         window.add(moveButton).expand().pad(10);
+        window.row();
+        window.add(getProduceButton).expand().pad(10);
+        window.add(sellButton).expand().pad(10);
+        window.add(menuTitle).expand().pad(10);
 
         window.getTitleTable().add(backButton).pad(10);
 

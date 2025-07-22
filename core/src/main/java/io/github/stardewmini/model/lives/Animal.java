@@ -60,7 +60,7 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
     private Player owner;
 
     private int friendshipLevel;
-    private boolean hungry;
+    private boolean fed;
     private boolean caressed;
     private boolean goneOut;
     private AnimalProduce produce;
@@ -101,8 +101,8 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
         return friendshipLevel;
     }
 
-    public boolean isHungry() {
-        return hungry;
+    public boolean isFed() {
+        return fed;
     }
 
     public boolean isCaressed() {
@@ -151,8 +151,8 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
         }
     }
 
-    public void setHungry(boolean hungry) {
-        this.hungry = hungry;
+    public void setFed(boolean fed) {
+        this.fed = fed;
     }
 
     public void setCaressed(boolean caressed) {
@@ -161,6 +161,9 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
 
     public void setGoneOut(boolean goneOut) {
         this.goneOut = goneOut;
+        if(goneOut){
+            this.fed = true;
+        }
     }
 
     public void setProduce(AnimalProduce produce) {
@@ -174,7 +177,6 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
     @Override
     public void nextDayUpdate(){
         if(this.isGoneOut()){
-            this.setHungry(false);
             this.increaseFriendshipLevel(8);
         }
 
@@ -191,12 +193,12 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
             this.decreaseFriendshipLevel(20);
         }
 
-        if(this.isHungry()){
-            this.decreaseFriendshipLevel(20);
-            this.setDaysAfterProducing(0);
+        if(this.isFed()){
+            this.increaseDaysAfterProducing(1);
         }
         else {
-            this.increaseDaysAfterProducing(1);
+            this.decreaseFriendshipLevel(20);
+            this.setDaysAfterProducing(0);
         }
 
         if(this.getAnimalName().equals("Pig")){
@@ -213,13 +215,18 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
             setProduceQuality(animalProduce);
             this.setProduce(animalProduce);
         }
+
+        this.fed = false;
+        this.caressed = false;
+        this.goneOut = false;
+
     }
 
     private AnimalProduce producing(){
 
         int friendship = this.getFriendshipLevel();
         if(this.getAnimalProducesNames().size() > 1 && friendship > 100){
-            double probability = (this.getFriendshipLevel() + (150  * (Math.random() + 0.5)))/1500;
+            double probability = (friendship + (150  * (Math.random() + 0.5)))/1500;
             if(Math.random() <= probability){
                 return AnimalProduce.getAnimalProduce(this.getAnimalProducesNames().get(1));
             }
