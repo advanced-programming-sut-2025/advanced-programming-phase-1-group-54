@@ -1,0 +1,68 @@
+[
+  {
+    "Name": "Parsnip Seeds",
+    "Description": "Plant these in the spring. Takes 4 days to mature.",
+    "Price": 25,
+    "Count": 5
+  },
+  {
+    "Name": "Bean Starter",
+    "Description": "Plant these in the spring. Takes 10 days to mature, but keeps producing after that. Grows on a trellis.",
+    "Price": 75,
+    "Count": 5
+  },
+  {
+    "Name": "Cauliflower Seeds",
+    "Description": "Plant these in the spring. Takes 12 days to produce a large cauliflower.",
+    "Price": 100,
+    "Count": 5
+  },
+  {
+    "Name": "Potato Seeds",
+    "Description": "Plant these in the spring. Takes 6 days to mature, and has a chance of yielding multiple potatoes at harvest.",
+    "Price": 62,
+    "Count": 5
+  },
+  {
+    "Name": "Strawberry Seeds",
+    "Description": "Plant these in spring. Takes 8 days to mature, and keeps producing strawberries after that.",
+    "Price": 100,
+    "Count": 5
+  },
+  {
+    "Name": "Tulip Bulb",
+    "Description": "Plant in spring. Takes 6 days to produce a colorful flower. Assorted colors.",
+    "Price": 25,
+    "Count": 5
+  },
+  {
+    "Name": "Kale Seeds",
+    "Description": "Plant these in the spring. Takes 6 days to mature. Harvest with the scythe.",
+    "Price": 87,
+    "Count": 5
+  },
+  {
+    "Name": "Coffee Beans",
+    "Description": "Plant in summer or spring. Takes 10 days to grow, Then produces coffee Beans every other day.",
+    "Price": 200,
+    "Count": 1
+  },
+  {
+    "Name": "Carrot Seeds",
+    "Description": "Plant in the spring. Takes 3 days to grow.",
+    "Price": 5,
+    "Count": 10
+  },
+  {
+    "Name": "Rhubarb Seeds",
+    "Description": "Plant these in the spring. Takes 13 days to mature.",
+    "Price": 100,
+    "Count": 5
+  },
+  {
+    "Name": "Jazz Seeds",
+    "Description": "Plant in spring. Takes 7 days to produce a blue puffball flower.",
+    "Price": 37,
+    "Count": 5
+  }
+]

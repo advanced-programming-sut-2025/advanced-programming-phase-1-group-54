@@ -1,0 +1,102 @@
+{
+  "Gold Ore": {
+    "name": "Gold Ore",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Wood": {
+    "name": "Wood",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Fiber": {
+    "name": "Fiber",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Iridium Ore": {
+    "name": "Iridium Ore",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Iron Ore": {
+    "name": "Iron Ore",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Diamond": {
+    "name": "Diamond",
+    "isEdible": false,
+    "baseSellPrice": 750
+  },
+  "Copper Ore": {
+    "name": "Copper Ore",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Quartz": {
+    "name": "Quartz",
+    "isEdible": false,
+    "baseSellPrice": 25
+  },
+  "Stone": {
+    "name": "Stone",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Amethyst": {
+    "name": "Amethyst",
+    "isEdible": false,
+    "baseSellPrice": 100
+  },
+  "Frozen Tear": {
+    "name": "Frozen Tear",
+    "isEdible": false,
+    "baseSellPrice": 75
+  },
+  "Fire Quartz": {
+    "name": "Fire Quartz",
+    "isEdible": false,
+    "baseSellPrice": 100
+  },
+  "Aquamarine": {
+    "name": "Aquamarine",
+    "isEdible": false,
+    "baseSellPrice": 180
+  },
+  "Emerald": {
+    "name": "Emerald",
+    "isEdible": false,
+    "baseSellPrice": 250
+  },
+  "Coal": {
+    "name": "Coal",
+    "isEdible": false,
+    "baseSellPrice": 0
+  },
+  "Earth Crystal": {
+    "name": "Earth Crystal",
+    "isEdible": false,
+    "baseSellPrice": 50
+  },
+  "Jade": {
+    "name": "Jade",
+    "isEdible": false,
+    "baseSellPrice": 200
+  },
+  "Prismatic Shard": {
+    "name": "Prismatic Shard",
+    "isEdible": false,
+    "baseSellPrice": 2000
+  },
+  "Ruby": {
+    "name": "Ruby",
+    "isEdible": false,
+    "baseSellPrice": 250
+  },
+  "Topaz": {
+    "name": "Topaz",
+    "isEdible": false,
+    "baseSellPrice": 80
+  }
+}
