@@ -87,7 +87,6 @@ public class Crop extends Plant implements Cloneable{
         } catch (CloneNotSupportedException e){
             throw new AssertionError();
         }
-
     }
 
     public static void writeToJson(){

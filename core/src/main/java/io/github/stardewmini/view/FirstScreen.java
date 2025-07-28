@@ -15,8 +15,11 @@ public class FirstScreen implements Screen {
     @Override
     public void show() {
         GameAssetManager gameAssetManager = GameAssetManager.getGameAssetManager();
+        Texture aks = new Texture("Stardew_Valley_Images-main/Trees/Peach_Stage_5.png");
+        int totalWidth = aks.getWidth();
+        int totalHeight = aks.getHeight();
         TextureRegion[][] cow = TextureRegion.split(new
-            Texture("Stardew_Valley_Images-main/sprites/Cow Brown.png"),32,32);
+            Texture("Stardew_Valley_Images-main/Trees/Peach_Stage_5.png"),totalWidth/4,totalHeight);
         Main.getBatch().begin();
         for(int i = 0; i < cow.length; i++){
             for(int j = 0; j < cow[i].length; j++){
@@ -24,6 +27,8 @@ public class FirstScreen implements Screen {
             }
         }
         Main.getBatch().end();
+
+        // Stardew_Valley_Images-main/sprites/Cow Brown.png
 
         // Prepare your screen here.
     }

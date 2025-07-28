@@ -22,32 +22,6 @@
     "watered": false,
     "numberOfDaysWithoutWater": 0
   },
-  "Mushroom Tree": {
-    "name": "Mushroom Tree",
-    "source": "Mushroom Spore",
-    "fruit": "Common Mushroom",
-    "stages": [
-      7,
-      7,
-      7,
-      7
-    ],
-    "maxStages": 4,
-    "currentStage": 0,
-    "daysInCurrentStage": 0,
-    "totalHarvestTime": 28,
-    "regrowthTime": 1,
-    "seasons": [
-      "SPRING",
-      "SUMMER",
-      "FALL",
-      "WINTER"
-    ],
-    "fruitIsRipen": false,
-    "fertilized": false,
-    "watered": false,
-    "numberOfDaysWithoutWater": 0
-  },
   "Pine Tree": {
     "name": "Pine Tree",
     "source": "Pine Cone",
@@ -258,32 +232,6 @@
     "regrowthTime": 1,
     "seasons": [
       "FALL"
-    ],
-    "fruitIsRipen": false,
-    "fertilized": false,
-    "watered": false,
-    "numberOfDaysWithoutWater": 0
-  },
-  "Sap Tree": {
-    "name": "Sap Tree",
-    "source": "Sap Source",
-    "fruit": "Sap",
-    "stages": [
-      7,
-      7,
-      7,
-      7
-    ],
-    "maxStages": 4,
-    "currentStage": 0,
-    "daysInCurrentStage": 0,
-    "totalHarvestTime": 28,
-    "regrowthTime": 1,
-    "seasons": [
-      "SPRING",
-      "SUMMER",
-      "FALL",
-      "WINTER"
     ],
     "fruitIsRipen": false,
     "fertilized": false,

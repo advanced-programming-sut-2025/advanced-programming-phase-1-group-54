@@ -203,27 +203,27 @@ public class Tree extends Plant implements Cloneable{
         );
         treeTypes.put("Pine Tree", tree);
 
-        tree = new Tree(
-                "Sap Tree",
-                "Sap Source",
-                "Sap",
-                new int[]{7, 7, 7, 7},
-                28,
-                1,
-                new Season[]{Season.SPRING, Season.SUMMER, Season.FALL, Season.WINTER}
-        );
-        treeTypes.put("Sap Tree", tree);
+//        tree = new Tree(
+//                "Sap Tree",
+//                "Sap Source",
+//                "Sap",
+//                new int[]{7, 7, 7, 7},
+//                28,
+//                1,
+//                new Season[]{Season.SPRING, Season.SUMMER, Season.FALL, Season.WINTER}
+//        );
+//        treeTypes.put("Sap Tree", tree);
 
-        tree = new Tree(
-                "Mushroom Tree",
-                "Mushroom Spore",
-                "Common Mushroom",
-                new int[]{7, 7, 7, 7},
-                28,
-                1,
-                new Season[]{Season.SPRING, Season.SUMMER, Season.FALL, Season.WINTER}
-        );
-        treeTypes.put("Mushroom Tree", tree);
+//        tree = new Tree(
+//                "Mushroom Tree",
+//                "Mushroom Spore",
+//                "Common Mushroom",
+//                new int[]{7, 7, 7, 7},
+//                28,
+//                1,
+//                new Season[]{Season.SPRING, Season.SUMMER, Season.FALL, Season.WINTER}
+//        );
+//        treeTypes.put("Mushroom Tree", tree);
 
         tree = new Tree(
                 "Mystic Tree",
