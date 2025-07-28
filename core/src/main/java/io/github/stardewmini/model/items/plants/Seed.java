@@ -377,16 +377,16 @@ public class Seed extends Item implements Placeable, Cloneable{
         seed = new Seed("Pomegranate Sapling","Pomegranate Tree");
         seedTypes.put("Pomegranate Sapling",seed);
 
-        seed = new Seed("Acorns","Oak Tree");
-        seedTypes.put("Acorns",seed);
+        seed = new Seed("Acorn","Oak Tree");
+        seedTypes.put("Acorn",seed);
         foragingTreesType.add(seed.getName());
 
         seed = new Seed("Maple Seeds","Maple Tree");
         seedTypes.put("Maple Seeds",seed);
         foragingTreesType.add(seed.getName());
 
-        seed = new Seed("Pine Cones","Pine Tree");
-        seedTypes.put("Pine Cones",seed);
+        seed = new Seed("Pine Cone","Pine Tree");
+        seedTypes.put("Pine Cone",seed);
         foragingTreesType.add(seed.getName());
 
         seed = new Seed("Mahogany Seeds","Mahogany Tree");

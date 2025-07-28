@@ -321,10 +321,10 @@
     "isEdible": true,
     "baseSellPrice": 110
   },
-  "Oak Resin ": {
+  "Oak Resin": {
     "energy": 0,
     "quality": "NORMAL",
-    "name": "Oak Resin ",
+    "name": "Oak Resin",
     "isEdible": false,
     "baseSellPrice": 150
   },

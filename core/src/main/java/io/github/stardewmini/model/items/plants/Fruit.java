@@ -159,8 +159,8 @@ public class Fruit extends Item implements Cloneable, Placeable {
         fruit = new Fruit("Pomegranate", 140, true, 38);
         fruitTypes.put("Pomegranate", fruit);
 
-        fruit = new Fruit("Oak Resin ", 150, false, 0);
-        fruitTypes.put("Oak Resin ", fruit);
+        fruit = new Fruit("Oak Resin", 150, false, 0);
+        fruitTypes.put("Oak Resin", fruit);
 
         fruit = new Fruit("Maple Syrup", 200, false, 0);
         fruitTypes.put("Maple Syrup", fruit);

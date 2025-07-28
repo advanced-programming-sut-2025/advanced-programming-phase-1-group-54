@@ -172,7 +172,7 @@ public class Tree extends Plant implements Cloneable{
 // محصولات خاص (همه فصل‌ها)
         tree = new Tree(
                 "Oak Tree",
-                "Oak Seed",
+                "Acorn",
                 "Oak Resin",
                 new int[]{7, 7, 7, 7},
                 28,

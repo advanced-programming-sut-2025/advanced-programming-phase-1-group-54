@@ -247,11 +247,11 @@
       "Acorn",
       "Maple Seed",
       "Pine Cone",
-      "Mahogany Seed"
+      "Mahogany Seeds"
     ],
     "ingredientsNumber": {
       "Maple Seed": 5,
-      "Mahogany Seed": 5,
+      "Mahogany Seeds": 5,
       "Pine Cone": 5,
       "acorn": 5
     }

@@ -82,7 +82,7 @@ public class CraftingController {
         }
 
         if(artisanName.equals("Mystic Tree Seeds")){
-            if(! player.getBackpack().addItem(Seed.getSeed("Mystic Tree Seed"),1)){
+            if(! player.getBackpack().addItem(Seed.getSeed("Mystic Tree Seeds"),1)){
                 return new Result(-1,"Backpack is full");
             }
         }

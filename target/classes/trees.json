@@ -315,7 +315,7 @@
   },
   "Oak Tree": {
     "name": "Oak Tree",
-    "source": "Oak Seed",
+    "source": "Acorn",
     "fruit": "Oak Resin",
     "stages": [
       7,

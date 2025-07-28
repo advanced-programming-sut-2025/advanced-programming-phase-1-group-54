@@ -39,14 +39,15 @@ public class GameAssetManager {
 
     private final HashMap<String,Texture> fruits = new HashMap<>();
     {
-//        FileHandle file;
-//        for(String key : Fruit.getFruitsList()) {
-//            file = Gdx.files.internal("Stardew_Valley_Images-main/Crops/" + fileName(key) + ".png");
-//            if(! file.exists()){
-//                file = Gdx.files.internal("Stardew_Valley_Images-main/Trees/" + fileName(key) + ".png");
-//            }
-//            fruits.put(key,new Texture(file));
-//        }
+        FileHandle file;
+        for(String key : Fruit.getFruitsList()) {
+            System.out.println(key);
+            file = Gdx.files.internal("Stardew_Valley_Images-main/Crops/" + fileName(key) + ".png");
+            if(! file.exists()){
+                file = Gdx.files.internal("Stardew_Valley_Images-main/Trees/" + fileName(key) + ".png");
+            }
+            fruits.put(key,new Texture(file));
+        }
     }
 
     public Texture getFruits(String name) {
@@ -57,6 +58,7 @@ public class GameAssetManager {
     {
 //        FileHandle file;
 //        for(String key : Seed.getSeedsList()) {
+//            System.out.println(key);
 //            file = Gdx.files.internal("Stardew_Valley_Images-main/Crops/" + fileName(key) + ".png");
 //            if(! file.exists()){
 //                file = Gdx.files.internal("Stardew_Valley_Images-main/Trees/" + fileName(key) + ".png");
@@ -87,32 +89,32 @@ public class GameAssetManager {
 
     private final HashMap<String,HashMap<String,Texture>> trees = new HashMap<>();
     {
-        for(String key : Tree.getTreesList()) {
-            HashMap<String,Texture> textures = new HashMap<>();
-            Tree tree = Tree.getTree(key);
-            String withOutTree = key.substring(0,key.length() - 5);
-            System.out.println(withOutTree);
-            for(int i = 1 ;i < tree.getMaxStages();i++){
-                textures.put(i - 1 + "",new Texture("Stardew_Valley_Images-main/Trees/" +
-                    withOutTree + "_Stage_"+ i + ".png"));
-            }
-            Texture texture = new Texture("Stardew_Valley_Images-main/Trees/" + withOutTree  +"_Stage_5.png");
-            int totalWidth = texture.getWidth();
-            int totalHeight = texture.getHeight();
-            TextureRegion[][] season = TextureRegion.split(new
-                Texture("Stardew_Valley_Images-main/Trees/" + withOutTree + "_Stage_5.png"),totalWidth/4,totalHeight);
-            for(int i = 0 ; i < 4 ; i++) {
-                textures.put(Season.values()[i].toString(), season[0][i].getTexture());
-            }
-            try{
-                textures.put("fruit",new Texture("Stardew_Valley_Images-main/Trees/"+
-                    withOutTree + "_Stage_5_Fruit.png"));
-                textures.put("lightning",new Texture("Stardew_Valley_Images-main/Trees/" +
-                    key.replace(" ","") + "Lightning.png"));
-            }
-            catch(Exception ignored){}
-            trees.put(key,textures);
-        }
+//        for(String key : Tree.getTreesList()) {
+//            HashMap<String,Texture> textures = new HashMap<>();
+//            Tree tree = Tree.getTree(key);
+//            String withOutTree = key.substring(0,key.length() - 5);
+//            System.out.println(withOutTree);
+//            for(int i = 1 ;i < tree.getMaxStages();i++){
+//                textures.put(i - 1 + "",new Texture("Stardew_Valley_Images-main/Trees/" +
+//                    withOutTree + "_Stage_"+ i + ".png"));
+//            }
+//            Texture texture = new Texture("Stardew_Valley_Images-main/Trees/" + withOutTree  +"_Stage_5.png");
+//            int totalWidth = texture.getWidth();
+//            int totalHeight = texture.getHeight();
+//            TextureRegion[][] season = TextureRegion.split(new
+//                Texture("Stardew_Valley_Images-main/Trees/" + withOutTree + "_Stage_5.png"),totalWidth/4,totalHeight);
+//            for(int i = 0 ; i < 4 ; i++) {
+//                textures.put(Season.values()[i].toString(), season[0][i].getTexture());
+//            }
+//            try{
+//                textures.put("fruit",new Texture("Stardew_Valley_Images-main/Trees/"+
+//                    withOutTree + "_Stage_5_Fruit.png"));
+//                textures.put("lightning",new Texture("Stardew_Valley_Images-main/Trees/" +
+//                    key.replace(" ","") + "Lightning.png"));
+//            }
+//            catch(Exception ignored){}
+//            trees.put(key,textures);
+//        }
     }
 
     public Texture getCrops(String treeName, String stateName) {

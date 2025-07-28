@@ -355,8 +355,8 @@ public class Recipe {
         numberOfIngredients.put("Maple Seed", 5);
         ingredients.add("Pine Cone");
         numberOfIngredients.put("Pine Cone", 5);
-        ingredients.add("Mahogany Seed");
-        numberOfIngredients.put("Mahogany Seed", 5);
+        ingredients.add("Mahogany Seeds");
+        numberOfIngredients.put("Mahogany Seeds", 5);
 
         recipe = new Recipe("Mystic Tree Seeds Recipe",ingredients,numberOfIngredients);
         craftRecipesType.put("Mystic Tree Seeds Recipe",recipe);

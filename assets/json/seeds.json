@@ -41,9 +41,9 @@
     "isEdible": false,
     "baseSellPrice": 0
   },
-  "Pine Cones": {
+  "Pine Cone": {
     "plant": "Pine Tree",
-    "name": "Pine Cones",
+    "name": "Pine Cone",
     "isEdible": false,
     "baseSellPrice": 0
   },
@@ -95,9 +95,9 @@
     "isEdible": false,
     "baseSellPrice": 0
   },
-  "Acorns": {
+  "Acorn": {
     "plant": "Oak Tree",
-    "name": "Acorns",
+    "name": "Acorn",
     "isEdible": false,
     "baseSellPrice": 0
   },

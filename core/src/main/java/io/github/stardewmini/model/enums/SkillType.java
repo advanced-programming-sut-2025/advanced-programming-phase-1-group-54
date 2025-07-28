@@ -36,7 +36,7 @@ public enum SkillType {
     new ArrayList<>(),
     new ArrayList<>(),
     new ArrayList<>(){{
-        add("Mystic Tree Seed Recipe");
+        add("Mystic Tree Seeds Recipe");
     }}}),
     FISHING(new ArrayList[]{new ArrayList<>(),
             new ArrayList<>(),
