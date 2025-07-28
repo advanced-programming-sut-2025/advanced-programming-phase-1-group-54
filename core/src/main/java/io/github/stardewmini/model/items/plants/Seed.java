@@ -3,6 +3,7 @@ package io.github.stardewmini.model.items.plants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.sun.source.doctree.SeeTree;
 import io.github.stardewmini.model.Placeable;
 import io.github.stardewmini.model.enums.Season;
 import io.github.stardewmini.model.enums.Symbol;
@@ -13,10 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Seed extends Item implements Placeable, Cloneable{
 
@@ -70,6 +68,10 @@ public class Seed extends Item implements Placeable, Cloneable{
         else {
             return seed.clone();
         }
+    }
+
+    public static Set<String> getSeedsList(){
+        return new HashSet<>(seeds.keySet());
     }
 
     public static Seed getForagingSeed(Season season){

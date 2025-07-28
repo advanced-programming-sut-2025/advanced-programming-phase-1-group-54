@@ -14,10 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Fruit extends Item implements Cloneable, Placeable {
 
@@ -55,6 +52,10 @@ public class Fruit extends Item implements Cloneable, Placeable {
         } else {
             return fruit.clone();
         }
+    }
+
+    public static Set<String> getFruitsList(){
+        return new HashSet<>(fruits.keySet());
     }
 
     public static Fruit getForagingCrop(Season season) {

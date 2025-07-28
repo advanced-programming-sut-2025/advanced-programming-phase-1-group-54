@@ -10,9 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 public class ProducerArtisan extends Artisan implements HourUpdate, Cloneable {
 
@@ -38,6 +36,10 @@ public class ProducerArtisan extends Artisan implements HourUpdate, Cloneable {
         } else {
             return producerArtisan.clone();
         }
+    }
+
+    public static Set<String> getProducerArtisans() {
+        return new HashSet<>(producerArtisans.keySet());
     }
 
     private final ArrayList<String> producesNames;

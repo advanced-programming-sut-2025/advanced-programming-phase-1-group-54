@@ -11,10 +11,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Material extends Item implements Placeable,Cloneable {
 
@@ -49,6 +46,10 @@ public class Material extends Item implements Placeable,Cloneable {
         else{
             return material.clone();
         }
+    }
+
+    public static Set<String> getMineralList(){
+        return new HashSet<>(materials.keySet());
     }
 
     public static Material getForagingMaterial() {

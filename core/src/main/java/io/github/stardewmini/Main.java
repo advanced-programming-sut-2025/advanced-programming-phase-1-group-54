@@ -18,8 +18,8 @@ public class Main extends Game {
     public void create() {
         main = this;
         batch = new SpriteBatch();
-//        setScreen(new FirstScreen());
-        setScreen(new AnimalMenu(GameAssetManager.getGameAssetManager().getSkin(),Animal.getAnimal("Hen")));
+        setScreen(new FirstScreen());
+//        setScreen(new AnimalMenu(GameAssetManager.getGameAssetManager().getSkin(),Animal.getAnimal("Hen")));
     }
 
     @Override

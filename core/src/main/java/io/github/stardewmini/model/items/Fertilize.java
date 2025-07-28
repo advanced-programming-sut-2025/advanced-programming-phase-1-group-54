@@ -3,6 +3,8 @@ package io.github.stardewmini.model.items;
 import io.github.stardewmini.model.enums.Feature;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Fertilize extends Item {
 
@@ -15,6 +17,9 @@ public class Fertilize extends Item {
         return fertilizers.get(fertilizeName);
     }
 
+    public static Set<String> getFertilizersList() {
+        return new HashSet<>(fertilizers.keySet());
+    }
 
     private final Feature feature;
 

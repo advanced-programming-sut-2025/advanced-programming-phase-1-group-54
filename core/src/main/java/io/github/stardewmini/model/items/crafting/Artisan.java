@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Artisan extends Item implements Placeable, Cloneable {
+public abstract class Artisan extends Item implements Placeable, Cloneable {
 
 //    private final static HashMap<String,Artisan> artisans;
 //

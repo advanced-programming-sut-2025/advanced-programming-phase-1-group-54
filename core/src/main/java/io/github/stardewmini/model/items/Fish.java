@@ -67,6 +67,10 @@ public class Fish extends Item implements Cloneable {
         }
     }
 
+    public static Set<String> getFishesList() {
+        return new HashSet<>(fishes.keySet());
+    }
+
     public static Fish getSeasonFish(Season season, boolean addLegendary) {
         ArrayList<Fish> fishes = seasonFishes.get(season);
 

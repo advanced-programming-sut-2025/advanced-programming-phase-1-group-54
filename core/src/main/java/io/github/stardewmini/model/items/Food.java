@@ -11,7 +11,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class Food extends Item implements Cloneable {
 
@@ -37,6 +39,10 @@ public class Food extends Item implements Cloneable {
         } else {
             return food.clone();
         }
+    }
+
+    public static Set<String> getFoodsList() {
+        return new HashSet<>(foods.keySet());
     }
 
     private final int energy;

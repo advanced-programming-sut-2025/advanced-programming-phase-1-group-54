@@ -1,6 +1,8 @@
 package io.github.stardewmini.model.items;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UniqueItem extends Item implements Cloneable{
     private final static HashMap<String, UniqueItem> items;
@@ -29,6 +31,10 @@ public class UniqueItem extends Item implements Cloneable{
         } else {
             return uniqueItem.clone();
         }
+    }
+
+    public static Set<String> getUniqueItemList() {
+        return new HashSet<>(items.keySet());
     }
 
     @Override

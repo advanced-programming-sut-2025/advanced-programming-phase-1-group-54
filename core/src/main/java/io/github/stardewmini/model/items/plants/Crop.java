@@ -12,9 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 public class Crop extends Plant implements Cloneable{
     private static final HashMap<String,Crop> crops;
@@ -40,6 +38,11 @@ public class Crop extends Plant implements Cloneable{
             return crop.clone();
         }
     }
+
+    public static Set<String> getCropsList(){
+        return new HashSet<>(crops.keySet());
+    }
+
 
 
 

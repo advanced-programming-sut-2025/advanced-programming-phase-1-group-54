@@ -12,9 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 
 public class Tree extends Plant implements Cloneable{
@@ -48,6 +46,9 @@ public class Tree extends Plant implements Cloneable{
         }
     }
 
+    public static Set<String> getTreesList(){
+        return new HashSet<>(trees.keySet());
+    }
 
 
     @Override

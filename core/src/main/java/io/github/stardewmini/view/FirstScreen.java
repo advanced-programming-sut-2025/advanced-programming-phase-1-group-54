@@ -1,11 +1,30 @@
 package io.github.stardewmini.view;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import io.github.stardewmini.Main;
+import io.github.stardewmini.model.GameAssetManager;
 
 /** First screen of the application. Displayed after the application is created. */
 public class FirstScreen implements Screen {
     @Override
     public void show() {
+        GameAssetManager gameAssetManager = GameAssetManager.getGameAssetManager();
+        TextureRegion[][] cow = TextureRegion.split(new
+            Texture("Stardew_Valley_Images-main/sprites/Cow Brown.png"),32,32);
+        Main.getBatch().begin();
+        for(int i = 0; i < cow.length; i++){
+            for(int j = 0; j < cow[i].length; j++){
+                Main.getBatch().draw(cow[i][j],i*100 + 100,j*100 + 100,50,50);
+            }
+        }
+        Main.getBatch().end();
+
         // Prepare your screen here.
     }
 

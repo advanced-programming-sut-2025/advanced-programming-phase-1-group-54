@@ -11,7 +11,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class FeatureArtisan extends Artisan implements Cloneable{
 
@@ -37,6 +39,10 @@ public class FeatureArtisan extends Artisan implements Cloneable{
         else {
             return featureArtisan.clone();
         }
+    }
+
+    public static Set<String> getFeatureArtisansList() {
+        return new HashSet<>(unProducerArtisans.keySet());
     }
 
     private final int sellPrice;

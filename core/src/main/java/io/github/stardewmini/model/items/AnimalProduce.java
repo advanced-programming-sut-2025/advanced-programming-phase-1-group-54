@@ -11,7 +11,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class AnimalProduce extends Item implements Cloneable {
 
@@ -37,6 +39,10 @@ public class AnimalProduce extends Item implements Cloneable {
         } else {
             return animalProduce.clone();
         }
+    }
+
+    public static Set<String> getAnimalProducesList() {
+        return new HashSet<>(animalProduces.keySet());
     }
 
     public AnimalProduce(String name, boolean isEdible, int sellPrice) {
