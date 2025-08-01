@@ -79,9 +79,13 @@ public class GameAssetManager {
             Crop crop = Crop.getCrop(key);
             String withOutCrop = key.substring(0,key.length() - 5);
             System.out.println(withOutCrop);
-            for(int i = 1 ;i <= crop.getMaxStages();i++){
-                textures.put(i - 1 + "",new Texture("Stardew_Valley_Images-main/Crops/" + fileName(withOutCrop)
+            for(int i = 1 ;i <= crop.getMaxStages() + 1;i++){
+                textures.put((i - 1) + "",new Texture("Stardew_Valley_Images-main/Crops/" + fileName(withOutCrop)
                     + "_Stage_" + i + ".png"));
+            }
+            if(! crop.isOneTime()){
+                textures.put((crop.getMaxStages() + 1) + "", new Texture("Stardew_Valley_Images-main/Crops/" +
+                    fileName(withOutCrop) + "_Stage_" + (crop.getMaxStages() + 2) + ".png"));
             }
             crops.put(key,textures);
         }
