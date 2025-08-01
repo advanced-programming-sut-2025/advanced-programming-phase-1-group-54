@@ -134,7 +134,7 @@ public class Crop extends Plant implements Cloneable{
         cropTypes.put("Cauliflower Crop", crop);
 
         crop = new Crop(
-                "Coffee Bean Crop",
+                "Coffee Crop",
                 "Coffee Bean",
                 "Coffee Bean",
                 new int[] {1, 2, 2, 3, 2},
@@ -144,7 +144,7 @@ public class Crop extends Plant implements Cloneable{
                 false,
                 false
         );
-        cropTypes.put("Coffee Bean Crop", crop);
+        cropTypes.put("Coffee Crop", crop);
 
         crop = new Crop(
                 "Garlic Crop",
@@ -381,7 +381,7 @@ public class Crop extends Plant implements Cloneable{
         cropTypes.put("Starfruit Crop", crop);
 
         crop = new Crop(
-                "Spangle Crop",
+                "Summer Spangle Crop",
                 "Spangle Seeds",
                 "Summer Spangle",
                 new int[] {1, 2, 3},
@@ -391,7 +391,7 @@ public class Crop extends Plant implements Cloneable{
                 true,
                 false
         );
-        cropTypes.put("Spangle Crop", crop);
+        cropTypes.put("Summer Spangle Crop", crop);
 
         crop = new Crop(
                 "Summer Squash Crop",
@@ -521,7 +521,7 @@ public class Crop extends Plant implements Cloneable{
                 false,
                 false
         );
-        cropTypes.put("Cranberries Crop", crop);
+        cropTypes.put("Cranberry Crop", crop);
 
         crop = new Crop(
                 "Eggplant Crop",
@@ -589,7 +589,7 @@ public class Crop extends Plant implements Cloneable{
         cropTypes.put("Yam Crop", crop);
 
         crop = new Crop(
-                "Sweet Gem Crop",
+                "Sweet Gem Berry Crop",
                 "Rare Seed",
                 "Sweet Gem Berry",
                 new int[] {1, 2, 4, 3},
@@ -599,7 +599,7 @@ public class Crop extends Plant implements Cloneable{
                 true,
                 false
         );
-        cropTypes.put("Sweet Gem Crop", crop);
+        cropTypes.put("Sweet Gem Berry Crop", crop);
 
         crop = new Crop(
                 "Powdermelon Crop",

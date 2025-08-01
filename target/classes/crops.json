@@ -49,10 +49,10 @@
     "watered": false,
     "numberOfDaysWithoutWater": 0
   },
-  "Spangle Crop": {
+  "Summer Spangle Crop": {
     "oneTime": true,
     "isGiantPossible": false,
-    "name": "Spangle Crop",
+    "name": "Summer Spangle Crop",
     "source": "Spangle Seeds",
     "fruit": "Summer Spangle",
     "stages": [
@@ -671,7 +671,7 @@
     "watered": false,
     "numberOfDaysWithoutWater": 0
   },
-  "Cranberries Crop": {
+  "Cranberry Crop": {
     "oneTime": false,
     "isGiantPossible": false,
     "name": "Cranberry Crop",
@@ -794,10 +794,10 @@
     "watered": false,
     "numberOfDaysWithoutWater": 0
   },
-  "Sweet Gem Crop": {
+  "Sweet Gem Berry Crop": {
     "oneTime": true,
     "isGiantPossible": false,
-    "name": "Sweet Gem Crop",
+    "name": "Sweet Gem Berry Crop",
     "source": "Rare Seed",
     "fruit": "Sweet Gem Berry",
     "stages": [
@@ -943,10 +943,10 @@
     "watered": false,
     "numberOfDaysWithoutWater": 0
   },
-  "Coffee Bean Crop": {
+  "Coffee Crop": {
     "oneTime": false,
     "isGiantPossible": false,
-    "name": "Coffee Bean Crop",
+    "name": "Coffee Crop",
     "source": "Coffee Bean",
     "fruit": "Coffee Bean",
     "stages": [

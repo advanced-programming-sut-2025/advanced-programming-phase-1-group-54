@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import io.github.stardewmini.model.GameAssetManager;
+import io.github.stardewmini.model.items.plants.Crop;
 import io.github.stardewmini.model.lives.Animal;
 import io.github.stardewmini.view.AnimalMenu;
 import io.github.stardewmini.view.FirstScreen;

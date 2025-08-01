@@ -48,7 +48,7 @@
     "baseSellPrice": 0
   },
   "Rare Seed": {
-    "plant": "Sweet Gem Crop",
+    "plant": "Sweet Gem Berry Crop",
     "name": "Rare Seed",
     "isEdible": false,
     "baseSellPrice": 0
@@ -132,7 +132,7 @@
     "baseSellPrice": 0
   },
   "Coffee Bean": {
-    "plant": "Coffee Bean Crop",
+    "plant": "Coffee Crop",
     "name": "Coffee Bean",
     "isEdible": false,
     "baseSellPrice": 0
@@ -317,7 +317,7 @@
     "baseSellPrice": 0
   },
   "Spangle Seeds": {
-    "plant": "Spangle Crop",
+    "plant": "Summer Spangle Crop",
     "name": "Spangle Seeds",
     "isEdible": false,
     "baseSellPrice": 0

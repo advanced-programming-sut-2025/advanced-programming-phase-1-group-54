@@ -10,6 +10,7 @@ import io.github.stardewmini.model.items.plants.Crop;
 import io.github.stardewmini.model.items.plants.Fruit;
 import io.github.stardewmini.model.items.plants.Seed;
 import io.github.stardewmini.model.items.plants.Tree;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.logging.FileHandler;
@@ -39,15 +40,15 @@ public class GameAssetManager {
 
     private final HashMap<String,Texture> fruits = new HashMap<>();
     {
-        FileHandle file;
-        for(String key : Fruit.getFruitsList()) {
-            System.out.println(key);
-            file = Gdx.files.internal("Stardew_Valley_Images-main/Crops/" + fileName(key) + ".png");
-            if(! file.exists()){
-                file = Gdx.files.internal("Stardew_Valley_Images-main/Trees/" + fileName(key) + ".png");
-            }
-            fruits.put(key,new Texture(file));
-        }
+//        FileHandle file;
+//        for(String key : Fruit.getFruitsList()) {
+//            System.out.println(key);
+//            file = Gdx.files.internal("Stardew_Valley_Images-main/Crops/" + fileName(key) + ".png");
+//            if(! file.exists()){
+//                file = Gdx.files.internal("Stardew_Valley_Images-main/Trees/" + fileName(key) + ".png");
+//            }
+//            fruits.put(key,new Texture(file));
+//        }
     }
 
     public Texture getFruits(String name) {
@@ -73,18 +74,17 @@ public class GameAssetManager {
 
     private final HashMap<String,HashMap<String,Texture>> crops = new HashMap<>();
     {
-//        for(String key : Crop.getCropsList()) {
-//            HashMap<String,Texture> textures = new HashMap<>();
-//            Crop crop = Crop.getCrop(key);
-//            for(int i = 1 ;i <= crop.getMaxStages();i++){
-//                textures.put(i + "",new Texture("fasd"));
-//            }
-//            for(Season season : Season.values()) {
-//                textures.put(season.toString(),new Texture("fasd"));
-//            }
-//            textures.put(key,new Texture("fasd"));
-//            crops.put(key,textures);
-//        }
+        for(String key : Crop.getCropsList()) {
+            HashMap<String,Texture> textures = new HashMap<>();
+            Crop crop = Crop.getCrop(key);
+            String withOutCrop = key.substring(0,key.length() - 5);
+            System.out.println(withOutCrop);
+            for(int i = 1 ;i <= crop.getMaxStages();i++){
+                textures.put(i - 1 + "",new Texture("Stardew_Valley_Images-main/Crops/" + fileName(withOutCrop)
+                    + "_Stage_" + i + ".png"));
+            }
+            crops.put(key,textures);
+        }
     }
 
     private final HashMap<String,HashMap<String,Texture>> trees = new HashMap<>();
@@ -117,7 +117,7 @@ public class GameAssetManager {
 //        }
     }
 
-    public Texture getCrops(String treeName, String stateName) {
+    public Texture getTrees(String treeName, String stateName) {
         return trees.get(treeName).get(stateName);
     }
 

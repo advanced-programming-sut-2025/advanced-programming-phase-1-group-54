@@ -170,7 +170,7 @@ public class Seed extends Item implements Placeable, Cloneable{
         springSeeds.add(seed.getName());
         springMixedSeeds.add(seed.getName());
 
-        seed = new Seed("Coffee Bean","Coffee Bean Crop");
+        seed = new Seed("Coffee Bean","Coffee Crop");
         seedTypes.put("Coffee Bean",seed);
         springSeeds.add(seed.getName());
 
@@ -256,7 +256,7 @@ public class Seed extends Item implements Placeable, Cloneable{
         seedTypes.put("Starfruit Seeds",seed);
         summerSeeds.add(seed.getName());
 
-        seed = new Seed("Spangle Seeds","Spangle Crop");
+        seed = new Seed("Spangle Seeds","Summer Spangle Crop");
         seedTypes.put("Spangle Seeds",seed);
         summerSeeds.add(seed.getName());
         summerMixedSeeds.add(seed.getName());
@@ -330,7 +330,7 @@ public class Seed extends Item implements Placeable, Cloneable{
         seedTypes.put("Yam Seeds",seed);
         fallSeeds.add(seed.getName());
 
-        seed = new Seed("Rare Seed","Sweet Gem Crop");
+        seed = new Seed("Rare Seed","Sweet Gem Berry Crop");
         seedTypes.put("Rare Seed",seed);
         fallSeeds.add(seed.getName());
 
