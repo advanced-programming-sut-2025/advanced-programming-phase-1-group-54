@@ -7,8 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.items.plants.Crop;
 import io.github.stardewmini.model.lives.Animal;
+import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.view.AnimalMenu;
 import io.github.stardewmini.view.FirstScreen;
+import io.github.stardewmini.view.NPCMenu;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {
@@ -19,8 +21,9 @@ public class Main extends Game {
     public void create() {
         main = this;
         batch = new SpriteBatch();
-        setScreen(new FirstScreen());
+//        setScreen(new FirstScreen());
 //        setScreen(new AnimalMenu(GameAssetManager.getGameAssetManager().getSkin(),Animal.getAnimal("Hen")));
+        setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getGameAssetManager().getSkin()));
     }
 
     @Override
