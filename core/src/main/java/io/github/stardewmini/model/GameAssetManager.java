@@ -11,6 +11,7 @@ import io.github.stardewmini.model.items.plants.Crop;
 import io.github.stardewmini.model.items.plants.Fruit;
 import io.github.stardewmini.model.items.plants.Seed;
 import io.github.stardewmini.model.items.plants.Tree;
+import io.github.stardewmini.model.lives.NPC;
 
 import java.util.HashMap;
 
@@ -129,7 +130,7 @@ public class GameAssetManager {
     private final HashMap<String,Texture> materialStones = new HashMap<>();
     {
         for(String key : Material.getMineralList()){
-            System.out.println(key);
+//            System.out.println(key);
             materials.put(key,new Texture("Stardew_Valley_Images-main/Mineral/"+ fileName(key) +".png"));
             materialStones.put(key,new Texture("Stardew_Valley_Images-main/Node/"+ fileName(key) + "_Node.png"));
         }
@@ -142,6 +143,78 @@ public class GameAssetManager {
     public Texture getMaterialStones(String name) {
         return materialStones.get(name);
     }
+
+    private final HashMap<String,TextureRegion[][]> NPCsFrames = new HashMap<>();
+    {
+        TextureRegion[][] frames;
+        Texture texture;
+
+        texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Abigail0.png");
+        frames = TextureRegion.split(texture,texture.getWidth()/4,
+            texture.getHeight()/14);
+        NPCsFrames.put("Abigail",frames);
+
+        texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Harvey0.png");
+        frames = TextureRegion.split(texture,texture.getWidth()/4,
+            texture.getHeight()/14);
+        NPCsFrames.put("Harvey",frames);
+
+        texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Leah0.png");
+        frames = TextureRegion.split(texture,texture.getWidth()/4,
+            texture.getHeight()/14);
+        NPCsFrames.put("Leah",frames);
+
+        texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Robin0.png");
+        frames = TextureRegion.split(texture,texture.getWidth()/4,
+            texture.getHeight()/14);
+        NPCsFrames.put("Robin",frames);
+
+        texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Sebastian0.png");
+        frames = TextureRegion.split(texture,texture.getWidth()/4,
+            texture.getHeight()/14);
+        NPCsFrames.put("Sebastian",frames);
+
+    }
+
+    public TextureRegion[][] getNPCsFrames(String name) {
+        return NPCsFrames.get(name);
+    }
+
+    private final HashMap<String,Texture> NPCsFace  = new HashMap<>();
+    {
+        TextureRegion[][] frames;
+        Texture texture;
+
+        texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Abigail2.png");
+        frames = TextureRegion.split(texture,texture.getWidth()/2,
+            texture.getHeight()/5);
+        NPCsFace.put("Abigail",frames[0][0].getTexture());
+
+        texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Harvey2.png");
+        frames = TextureRegion.split(texture,texture.getWidth()/2,
+            texture.getHeight()/5);
+        NPCsFace.put("Harvey",frames[0][0].getTexture());
+
+        texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Leah2.png");
+        frames = TextureRegion.split(texture,texture.getWidth()/2,
+            texture.getHeight()/5);
+        NPCsFace.put("Leah",frames[0][0].getTexture());
+
+        texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Robin2.png");
+        frames = TextureRegion.split(texture,texture.getWidth()/2,
+            texture.getHeight()/5);
+        NPCsFace.put("Robin",frames[0][0].getTexture());
+
+        texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Sebastian2.png");
+        frames = TextureRegion.split(texture,texture.getWidth()/2,
+            texture.getHeight()/5);
+        NPCsFace.put("Sebastian",frames[0][0].getTexture());
+    }
+
+    public Texture getNPCsFace(String name) {
+        return NPCsFace.get(name);
+    }
+
 
 
 
