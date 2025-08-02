@@ -1,31 +1,23 @@
 package io.github.stardewmini.model;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import io.github.stardewmini.model.enums.Season;
 import io.github.stardewmini.model.items.plants.Crop;
-import io.github.stardewmini.model.items.plants.Fruit;
-import io.github.stardewmini.model.items.plants.Seed;
-import io.github.stardewmini.model.items.plants.Tree;
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
-import java.util.logging.FileHandler;
 
 public class GameAssetManager {
-    private static GameAssetManager gameAssetManager;
+    private static GameAssetManager instance;
 
     private GameAssetManager() {
     }
 
-    public static GameAssetManager getGameAssetManager() {
-        if(gameAssetManager == null) {
-            gameAssetManager = new GameAssetManager();
+    public static GameAssetManager getInstance() {
+        if(instance == null) {
+            instance = new GameAssetManager();
         }
-        return gameAssetManager;
+        return instance;
     }
 
     private String fileName(String input){
