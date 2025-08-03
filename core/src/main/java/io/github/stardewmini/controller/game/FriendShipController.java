@@ -25,7 +25,6 @@ public class FriendShipController {
             messageBuilder.append(relationship.getOtherPlayer(player).getName())
                     .append("level: ").append(relationship.getLevel()).append("\nXP: ").append(relationship.getXP()).
                     append("\n");
-            // TODO add more details about the relationship (if needed)
         }
 
         return new Result(true, messageBuilder.toString());

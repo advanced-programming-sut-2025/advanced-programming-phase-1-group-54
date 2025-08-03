@@ -134,6 +134,15 @@ public class NpcController {
         return null;
     }
 
+    public static Result getNPCsFriendship(){
+        StringBuilder output = new StringBuilder();
+        for(NPCFriendship npcFriendship : App.getCurrentGame().getCurrentPlayer().getNpcFriendships()){
+            output.append(npcFriendship.getNpc().getName()).append(" Level : ").append(npcFriendship.getLevel()).
+                append(" XP : ").append(npcFriendship.getXP()).append("\n");
+        }
+        return new Result(true,output.toString());
+    }
+
     public static Result giftNpc(NPC npc, String itemName) {
         if(npc == null){
             return new Result(false,"NPC not found");

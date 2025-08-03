@@ -116,8 +116,6 @@ public class NPCMenu implements Screen {
         windows[0].add(missionsButton).expand().pad(10);
         windows[0].add(friendshipButton).expand().pad(10);
 
-        //TODO gift window
-
         windows[1].add(giftLabel);
         windows[1].row();
         windows[1].add(giftItem);

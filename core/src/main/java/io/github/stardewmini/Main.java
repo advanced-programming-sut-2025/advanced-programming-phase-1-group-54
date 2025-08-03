@@ -10,6 +10,7 @@ import io.github.stardewmini.model.lives.Animal;
 import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.view.AnimalMenu;
 import io.github.stardewmini.view.FirstScreen;
+import io.github.stardewmini.view.InventoryMenu;
 import io.github.stardewmini.view.NPCMenu;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
@@ -23,7 +24,8 @@ public class Main extends Game {
         batch = new SpriteBatch();
 //        setScreen(new FirstScreen());
 //        setScreen(new AnimalMenu(GameAssetManager.getGameAssetManager().getSkin(),Animal.getAnimal("Hen")));
-        setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getGameAssetManager().getSkin()));
+//        setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getGameAssetManager().getSkin()));
+        setScreen(new InventoryMenu(GameAssetManager.getGameAssetManager().getSkin()));
     }
 
     @Override
