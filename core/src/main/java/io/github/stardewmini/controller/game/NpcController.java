@@ -6,6 +6,7 @@ import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.enums.Season;
 import io.github.stardewmini.model.enums.Weather;
 import io.github.stardewmini.model.items.Item;
+import io.github.stardewmini.model.items.recipes.Recipe;
 import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.relationships.NPCFriendship;
@@ -13,19 +14,14 @@ import io.github.stardewmini.view.NPCMenu;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class NpcController {
     private static Random rand = new Random();
 
-    public static ArrayList<String> friendShipNpcList(){
-        ArrayList<String> npcList = new ArrayList<>();
-        String temp = "NPC name             friendship level            friendship XP";
-        npcList.add(temp);
-        for (NPCFriendship npcFriendship : App.getCurrentGame().getCurrentPlayer().getNpcFriendships()){
-            String s = npcFriendship.getNpc().getName() + "             " + npcFriendship.getLevel() + "         " + npcFriendship.getXP();
-            npcList.add(s);
-        }
-        return npcList;
+    public static String friendShipNpc(NPC npc) {
+        NPCFriendship friendship = getNPCFriendship(npc.getName());
+        return  "friendship level : " + friendship.getLevel() + "friendship XP : " + friendship.getXP();
     }
 
     public static Result meetsNpc(String npcName){
@@ -138,8 +134,7 @@ public class NpcController {
         return null;
     }
 
-    public static Result giftNpc(String npcName, String itemName) {
-        NPC npc = getNPCByName(npcName);
+    public static Result giftNpc(NPC npc, String itemName) {
         if(npc == null){
             return new Result(false,"NPC not found");
         }
@@ -156,7 +151,7 @@ public class NpcController {
                 if (item.getName().contains(st)){
                     npcFriendship.increaseXP(200);
                     npcFriendship.increaseDailyGift();
-                    return new Result(true,"gift sent successfully and " + npcName + " liked it" );
+                    return new Result(true,"gift sent successfully and " + npc.getName() + " liked it" );
                 }
             npcFriendship.increaseXP(50);
             npcFriendship.increaseDailyGift();
@@ -167,15 +162,13 @@ public class NpcController {
         }
     }
 
-    public static ArrayList<String> questList(NPC npc) {
+    public static Result questList(NPC npc) {
         ArrayList<String> list = new ArrayList<>();
         NPCFriendship npcFriendship = NpcController.getNPCFriendship(npc.getName());
-        list.add("quest number       required item: count          reward item: count");
+        list.add("Quest number       required item: count          reward item: count");
         int questCount = npc.getAllQuests().size();
         if(questCount == 0){
-            list = new ArrayList<>();
-            list.add("NPC don't have any quests");
-            return list;
+            return new Result(false,"NPC doesn't have any quest");
         }
         Quest quest = null;
         for(int i = 0 ; i < questCount; i++){
@@ -188,19 +181,23 @@ public class NpcController {
         }
         if(npcFriendship.getLevel() >= 1 && (! quest.isCompleted())){
             list.add("Quest" + questCount + "  " + quest.getRequestedItem() + ": " + quest.getRequestedItemCount() +
-                    "         " + quest.getReward() + ": " + quest.getRewardCount() );
+                    "         " + quest.getReward() + ": " + quest.getRewardCount());
         }
         if (list.size() == 1){
             list = new ArrayList<>();
             list.add("there is no quest active");
         }
-        return list;
+        return new Result(true,String.join("\n", list));
     }
 
-    /*
-    public static Result questFinish(int i) {
-        // TODO DON'T GET NPC FROM VIEW !!!!
-        NPC npc = NPCMenu.getNpc();
+    public static Result questFinish(String number,NPC npc) {
+        int i;
+        try{
+            i = Integer.parseInt(number);
+        }
+        catch (Exception e){
+            return new Result(false,"Enter correct number");
+        }
         NPCFriendship npcFriendship = getNPCFriendship(npc.getName());
         if (i < 1 || i > npc.getAllQuests().size()){
             return new Result(false,"choose correct index");
@@ -248,5 +245,5 @@ public class NpcController {
         quest.setCompleted(true);
         return new Result(true,"quest finished");
     }
-    */
+
 }

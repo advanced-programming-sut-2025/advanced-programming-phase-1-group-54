@@ -91,6 +91,10 @@ public class GameAssetManager {
         }
     }
 
+    public Texture getCrops(String cropName,String stateName) {
+        return crops.get(cropName).get(stateName);
+    }
+
     private final HashMap<String,HashMap<String,Texture>> trees = new HashMap<>();
     {
         for(String key : Tree.getTreesList()) {
