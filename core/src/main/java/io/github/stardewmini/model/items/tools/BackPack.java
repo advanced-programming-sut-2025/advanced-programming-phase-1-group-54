@@ -4,6 +4,7 @@ import io.github.stardewmini.model.enums.BackPackLevel;
 import io.github.stardewmini.model.items.Item;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class BackPack {
@@ -69,5 +70,9 @@ public class BackPack {
             level = BackPackLevel.values()[level.ordinal() + 1];
         }
     }
-    
+
+    public Map<Item, Integer> getCopy() {
+        return new HashMap<>(numberOfItemInBackPack);
+    }
+
 }

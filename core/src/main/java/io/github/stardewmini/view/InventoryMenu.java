@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
+import io.github.stardewmini.controller.game.InventoryController;
 import io.github.stardewmini.model.GameAssetManager;
 
 public class InventoryMenu implements Screen {
@@ -34,6 +35,7 @@ public class InventoryMenu implements Screen {
     public InventoryMenu(Skin skin) {
         this.window = new Window("inventory Menu",skin);
         this.backButton = new TextButton("Back", skin);
+//  todo      this.inventoryTable = InventoryController.showInventory();
         this.inventoryTable = new Table(skin);
         this.scrollPane = new ScrollPane(this.inventoryTable,skin);
         this.table1 = new Table(skin);
@@ -88,14 +90,13 @@ public class InventoryMenu implements Screen {
         window.setPosition(Gdx.graphics.getWidth()/4f, Gdx.graphics.getHeight()/4f);
         window.getTitleTable().add(backButton);
 
+        // todo bayad ina hazf beshe
         inventoryTable.add(new TextButton("salam",GameAssetManager.getGameAssetManager().getSkin())).pad(10);
         inventoryTable.add(new TextButton("salam",GameAssetManager.getGameAssetManager().getSkin())).pad(10).row();
         inventoryTable.add(new TextButton("salam",GameAssetManager.getGameAssetManager().getSkin())).pad(10);
         inventoryTable.add(new TextButton("salam",GameAssetManager.getGameAssetManager().getSkin())).pad(10).row();
         inventoryTable.add(new TextButton("salam",GameAssetManager.getGameAssetManager().getSkin())).pad(10);
         inventoryTable.add(new TextButton("salam",GameAssetManager.getGameAssetManager().getSkin())).pad(10);
-
-
 
         socialTable.add(playersFriendshipLabel).pad(10);
         socialTable.add(npcsFriendshipLabel).pad(10);

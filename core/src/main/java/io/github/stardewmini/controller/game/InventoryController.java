@@ -1,9 +1,16 @@
 package io.github.stardewmini.controller.game;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import io.github.stardewmini.model.App;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.enums.SkillType;
+import io.github.stardewmini.model.items.Item;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.lives.Skill;
+
+import java.util.Map;
 
 public class InventoryController {
 
@@ -19,6 +26,23 @@ public class InventoryController {
         return output.toString();
     }
 
-
+    public static Table showInventory(){
+        Table output = new Table();
+        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+        Map<Item,Integer> inventory = currentPlayer.getBackpack().getCopy();
+        GameAssetManager gameAssetManager = GameAssetManager.getGameAssetManager();
+        int i = 0;
+        for(Item item : inventory.keySet()){
+            Table table = new Table();
+            table.add(new Image(gameAssetManager.getFruits(item.getName()))).row();
+            table.add(new Label(inventory.get(item).toString(),gameAssetManager.getSkin()));
+            output.add(table).pad(10);
+            i++;
+            if(i == 4){
+                output.row();
+            }
+        }
+        return output;
+    }
 
 }
