@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import io.github.stardewmini.model.enums.Season;
+import io.github.stardewmini.model.items.AnimalProduce;
+import io.github.stardewmini.model.items.Fish;
 import io.github.stardewmini.model.items.Material;
 import io.github.stardewmini.model.items.plants.Crop;
 import io.github.stardewmini.model.items.plants.Fruit;
@@ -219,7 +221,61 @@ public class GameAssetManager {
         return NPCsFace.get(name);
     }
 
+    private final HashMap<String,Texture> fishes  = new HashMap<>();
+    {
+        for(String key : Fish.getFishesList()){
+            fishes.put(key,new Texture("Stardew_Valley_Images-main/Fish/" + fileName(key) + ".png"));
+        }
+    }
+
+    public Texture getFishes(String name) {
+        return fishes.get(name);
+    }
+
+    private final HashMap<String,Texture> animalProduces  = new HashMap<>();
+    {
+        for(String key : AnimalProduce.getAnimalProducesList()){
+//            System.out.println(key);
+            animalProduces.put(key,new Texture("Stardew_Valley_Images-main/Animal_product/" +
+                fileName(key) + ".png"));
+        }
+    }
+
+    public Texture getAnimalProduce(String name) {
+        return animalProduces.get(name);
+    }
 
 
 
+
+    public Texture getItem(String name){
+        Texture texture;
+
+        texture = fruits.get(name);
+        if(texture != null){
+            return texture;
+        }
+
+        texture = seeds.get(name);
+        if(texture != null){
+            return texture;
+        }
+
+        texture = materials.get(name);
+        if(texture != null){
+            return texture;
+        }
+
+        texture = fishes.get(name);
+        if(texture != null){
+            return texture;
+        }
+
+        texture = animalProduces.get(name);
+        if(texture != null){
+            return texture;
+        }
+
+        return null;
+    }
 }

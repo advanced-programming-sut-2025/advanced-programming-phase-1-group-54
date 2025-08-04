@@ -8,10 +8,7 @@ import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.items.plants.Crop;
 import io.github.stardewmini.model.lives.Animal;
 import io.github.stardewmini.model.lives.NPC;
-import io.github.stardewmini.view.AnimalMenu;
-import io.github.stardewmini.view.FirstScreen;
-import io.github.stardewmini.view.InventoryMenu;
-import io.github.stardewmini.view.NPCMenu;
+import io.github.stardewmini.view.*;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {
@@ -25,7 +22,8 @@ public class Main extends Game {
 //        setScreen(new FirstScreen());
 //        setScreen(new AnimalMenu(GameAssetManager.getGameAssetManager().getSkin(),Animal.getAnimal("Hen")));
 //        setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getGameAssetManager().getSkin()));
-        setScreen(new InventoryMenu(GameAssetManager.getGameAssetManager().getSkin()));
+//        setScreen(new InventoryMenu(GameAssetManager.getGameAssetManager().getSkin()));
+        setScreen(new FishingMenu());
     }
 
     @Override
