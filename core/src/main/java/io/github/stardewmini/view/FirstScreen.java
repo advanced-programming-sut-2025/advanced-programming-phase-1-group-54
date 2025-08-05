@@ -1,12 +1,8 @@
 package io.github.stardewmini.view;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.model.GameAssetManager;
 
@@ -14,7 +10,7 @@ import io.github.stardewmini.model.GameAssetManager;
 public class FirstScreen implements Screen {
     @Override
     public void show() {
-        GameAssetManager gameAssetManager = GameAssetManager.getGameAssetManager();
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         Texture aks = new Texture("Stardew_Valley_Images-main/Trees/Peach_Stage_5.png");
         int totalWidth = aks.getWidth();
         int totalHeight = aks.getHeight();
