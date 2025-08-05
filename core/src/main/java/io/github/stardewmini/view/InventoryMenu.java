@@ -20,16 +20,38 @@ public class InventoryMenu implements Screen {
 
     private final Table table1;
     private final Table table2;
+
     private final ScrollPane scrollPane;
     private final Table inventoryTable;
     private final TextButton inventoryButton;
+//    private final Label trashcanLabel;
+    private final TextField trashItem;
+    private final Label trashItemLabel;
+    private final TextField trashNumber;
+    private final Label trashNumberLabel;
+    private final Table trashTable;
+    private final Window trashWindow;
+    private final TextButton trashButton;
+
     private final Label skillLabel;
     private final TextButton skillButton;
+
     private final Table socialTable;
     private final Label npcsFriendshipLabel;
     private final Label playersFriendshipLabel;
     private final TextButton socialButton;
+
     private final TextButton mapButton;
+
+    private final TextButton settingButton;
+    private final TextButton exitButton;
+    private final TextButton kickButton;
+    private final Window kickWindow;
+    private final TextField kickField;
+    private final Label kickLabel;
+    private final Table kickTable;
+
+
 
 
     public InventoryMenu(Skin skin) {
@@ -41,13 +63,33 @@ public class InventoryMenu implements Screen {
         this.table1 = new Table(skin);
         this.table2 = new Table(skin);
         this.inventoryButton = new TextButton("Inventory", skin);
+
+//        this.trashcanLabel = new Label("Trashcan normal", skin);
+        this.trashItem = new TextField("", skin);
+        this.trashItemLabel = new Label("Enter Item name : ", skin);
+        this.trashNumber = new TextField("", skin);
+        this.trashNumberLabel = new Label("Enter Number : ", skin);
+        this.trashTable = new Table(skin);
+        this.trashWindow = new Window("Trashcan", skin);
+        this.trashButton = new TextButton("Trash", skin);
+
         this.skillLabel = new Label("skill", skin);
         this.skillButton = new TextButton("Skills", skin);
+
         this.socialTable = new Table(skin);
         this.npcsFriendshipLabel = new Label("npc", skin);
         this.playersFriendshipLabel = new Label("player", skin);
         this.socialButton = new TextButton("Social", skin);
+
         this.mapButton = new TextButton("Map", skin);
+
+        this.settingButton = new TextButton("Setting", skin);
+        this.exitButton = new TextButton("Exit", skin);
+        this.kickButton = new TextButton("Kick", skin);
+        this.kickWindow = new Window("Kick Menu", skin);
+        this.kickField = new TextField("", skin);
+        this.kickLabel = new Label("Enter Username", skin);
+        this.kickTable = new Table(skin);
     }
 
     @Override
@@ -62,7 +104,9 @@ public class InventoryMenu implements Screen {
         inventoryButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 table2.clear();
-                table2.add(scrollPane).expand().pad(10);
+                table2.add(scrollPane).expand().pad(10).row();
+                table2.add(trashWindow).expand().pad(10);
+
             }
         });
 
@@ -86,8 +130,16 @@ public class InventoryMenu implements Screen {
             }
         });
 
-        window.setSize( Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f);
-        window.setPosition(Gdx.graphics.getWidth()/4f, Gdx.graphics.getHeight()/4f);
+        settingButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                table2.clear();
+                table2.add(exitButton).expand().pad(10).row();
+                table2.add(kickWindow).expand().pad(10);
+            }
+        });
+
+        window.setSize( 3 * Gdx.graphics.getWidth()/4f, 3 * Gdx.graphics.getHeight()/4f);
+        window.setPosition(Gdx.graphics.getWidth()/8f, Gdx.graphics.getHeight()/8f);
         window.getTitleTable().add(backButton);
 
         // todo bayad ina hazf beshe
@@ -101,13 +153,28 @@ public class InventoryMenu implements Screen {
         socialTable.add(playersFriendshipLabel).pad(10);
         socialTable.add(npcsFriendshipLabel).pad(10);
 
+        trashTable.add(trashItemLabel).pad(10);
+        trashTable.add(trashItem).pad(10).row();
+        trashTable.add(trashNumberLabel).pad(10);
+        trashTable.add(trashNumber).pad(10);
+
+        trashWindow.add(trashTable);
+        trashWindow.add(trashButton).pad(10);
 
         table1.add(inventoryButton).pad(10);
         table1.add(skillButton).pad(10);
         table1.add(socialButton).pad(10);
         table1.add(mapButton).pad(10);
+        table1.add(settingButton).pad(10);
 
-        table2.add(scrollPane).expand().pad(10);
+        kickWindow.add(kickLabel).pad(10);
+        kickTable.add(kickLabel).pad(10);
+        kickTable.add(kickField).pad(10);
+        kickWindow.add(kickTable).row();
+        kickWindow.add(kickButton).pad(10);
+
+        table2.add(scrollPane).expand().pad(10).row();
+        table2.add(trashWindow).expand().pad(10);
 
         window.add(table1);
         window.row();

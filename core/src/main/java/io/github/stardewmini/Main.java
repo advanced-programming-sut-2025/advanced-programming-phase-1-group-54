@@ -4,6 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import io.github.stardewmini.controller.game.FishingController;
+import io.github.stardewmini.model.FishingGame;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.items.plants.Crop;
 import io.github.stardewmini.model.lives.Animal;
@@ -22,8 +24,10 @@ public class Main extends Game {
 //        setScreen(new FirstScreen());
 //        setScreen(new AnimalMenu(GameAssetManager.getGameAssetManager().getSkin(),Animal.getAnimal("Hen")));
 //        setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getGameAssetManager().getSkin()));
-//        setScreen(new InventoryMenu(GameAssetManager.getGameAssetManager().getSkin()));
-        setScreen(new FishingMenu());
+        setScreen(new InventoryMenu(GameAssetManager.getGameAssetManager().getSkin()));
+//        FishingGame game = new FishingGame();
+//        FishingController.setGame(game);
+//        setScreen(new FishingMenu(GameAssetManager.getGameAssetManager().getSkin()));
     }
 
     @Override
