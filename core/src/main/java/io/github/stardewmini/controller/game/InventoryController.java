@@ -30,7 +30,7 @@ public class InventoryController {
         Table output = new Table();
         Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
         Map<Item,Integer> inventory = currentPlayer.getBackpack().getCopy();
-        GameAssetManager gameAssetManager = GameAssetManager.getGameAssetManager();
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         int i = 0;
         for(Item item : inventory.keySet()){
             Table table = new Table();

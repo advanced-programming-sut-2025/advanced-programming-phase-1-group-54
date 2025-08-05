@@ -1,23 +1,17 @@
 package io.github.stardewmini;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import io.github.stardewmini.model.GameAssetManager;
-import io.github.stardewmini.model.items.plants.Crop;
-import io.github.stardewmini.model.lives.Animal;
-import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.view.*;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {
-    private static Main main;
+    private static Main instance;
     private static SpriteBatch batch;
 
     @Override
     public void create() {
-        main = this;
+        instance = this;
         batch = new SpriteBatch();
 //        setScreen(new FirstScreen());
 //        setScreen(new AnimalMenu(GameAssetManager.getGameAssetManager().getSkin(),Animal.getAnimal("Hen")));
@@ -36,8 +30,8 @@ public class Main extends Game {
         batch.dispose();
     }
 
-    public static Main getMain() {
-        return main;
+    public static Main getInstance() {
+        return instance;
     }
 
     public static SpriteBatch getBatch() {
