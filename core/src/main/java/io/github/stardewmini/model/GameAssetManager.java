@@ -13,21 +13,20 @@ import io.github.stardewmini.model.items.plants.Crop;
 import io.github.stardewmini.model.items.plants.Fruit;
 import io.github.stardewmini.model.items.plants.Seed;
 import io.github.stardewmini.model.items.plants.Tree;
-import io.github.stardewmini.model.lives.NPC;
 
 import java.util.HashMap;
 
 public class GameAssetManager {
-    private static GameAssetManager gameAssetManager;
+    private static GameAssetManager instance;
 
     private GameAssetManager() {
     }
 
-    public static GameAssetManager getGameAssetManager() {
-        if(gameAssetManager == null) {
-            gameAssetManager = new GameAssetManager();
+    public static GameAssetManager getInstance() {
+        if(instance == null) {
+            instance = new GameAssetManager();
         }
-        return gameAssetManager;
+        return instance;
     }
 
     private String fileName(String input){

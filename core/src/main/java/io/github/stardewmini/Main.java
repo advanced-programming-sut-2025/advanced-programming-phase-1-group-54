@@ -1,7 +1,6 @@
 package io.github.stardewmini;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import io.github.stardewmini.controller.game.FishingController;
@@ -28,6 +27,9 @@ public class Main extends Game {
 //        FishingGame game = new FishingGame();
 //        FishingController.setGame(game);
 //        setScreen(new FishingMenu(GameAssetManager.getGameAssetManager().getSkin()));
+//        setScreen(new InventoryMenu(GameAssetManager.getGameAssetManager().getSkin()));
+//        setScreen(new FishingMenu());
+        setScreen(new StartMenu());
     }
 
     @Override

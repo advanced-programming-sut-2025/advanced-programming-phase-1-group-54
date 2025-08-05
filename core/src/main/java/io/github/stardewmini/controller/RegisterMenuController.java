@@ -9,14 +9,10 @@ import io.github.stardewmini.model.enums.Gender;
 public class RegisterMenuController {
     public static Result register(String username, String password, String confirmPassword, String nickname,
                                   String email, Gender gender) {
-        boolean usernameTaken = !isUsernameUnique(username);
-        boolean randomPassword = password == null || confirmPassword == null;
-
-        if (usernameTaken)
-            username = getNewUsername(username);
-
-        if (randomPassword)
-            password = confirmPassword = getRandomPassword();
+        if (!isUsernameUnique(username)) {
+            return new Result(true,
+                String.format("Username is taken, recommended username: %s", getNewUsername(username)));
+        }
 
         Result checkUsernameResult = checkUsername(username);
         if (!checkUsernameResult.success())
@@ -32,17 +28,6 @@ public class RegisterMenuController {
 
         UserBuilder.getInstance().reset();
         UserBuilder.getInstance().registerBasicData(username, password, nickname, email, gender);
-        if (usernameTaken) {
-            if (!randomPassword)
-                return new Result(1, String.format("Username is taken, confirm %s as your username?", username));
-
-            return new Result(3, String.format("Username is taken, confirm %s as your username, " +
-                    "and confirm %s as your password?", username, password));
-        }
-
-        if (randomPassword)
-            return new Result(2, String.format("confirm %s as your password?", password));
-
         return new Result(true, "Successfully registered data!");
     }
 
@@ -61,8 +46,8 @@ public class RegisterMenuController {
 
     static boolean isEmailValid(String email) {
         String regex = "(?!.*[?><,\"';:\\\\/|\\]\\[}{+=)(*&^%$#!])" +
-                "(?!.*\\.\\..*@)[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?@" +
-                "([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+(?!-)[a-zA-Z0-9-]{2,}(?<!-)";
+            "(?!.*\\.\\..*@)[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?@" +
+            "([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+(?!-)[a-zA-Z0-9-]{2,}(?<!-)";
         return email.matches(regex);
     }
 
@@ -115,7 +100,7 @@ public class RegisterMenuController {
         return new Result(true, "email ok");
     }
 
-    static String getRandomPassword() {
+    public static String getRandomPassword() {
         String specialCharacters = "?><,\"';:\\/|][}{+=)(*&^%$#!";
         Result checkPasswordStrengthResult;
         char[] password;
@@ -167,7 +152,7 @@ public class RegisterMenuController {
     public static Result pickQuestion(int number, String answer, String confirmAnswer) {
         if (number < 0 || number > User.getSecurityQuestions().length)
             return new Result(false, String.format("Number should be between 1 and %d",
-                    User.getSecurityQuestions().length));
+                User.getSecurityQuestions().length));
 
         if (!answer.equals(confirmAnswer))
             return new Result(false, "Answers do not match");
