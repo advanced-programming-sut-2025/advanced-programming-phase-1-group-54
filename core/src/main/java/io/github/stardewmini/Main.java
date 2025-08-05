@@ -22,7 +22,7 @@ public class Main extends Game {
 //        FishingController.setGame(game);
 //        setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin()));
 //        setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
-        setScreen(new StartMenu());
+//        setScreen(new StartMenu());
     }
 
     @Override

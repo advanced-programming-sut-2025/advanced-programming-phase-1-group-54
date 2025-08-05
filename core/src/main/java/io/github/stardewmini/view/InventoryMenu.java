@@ -2,7 +2,9 @@ package io.github.stardewmini.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -10,6 +12,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.model.GameAssetManager;
+import io.github.stardewmini.model.enums.SkillType;
 
 public class InventoryMenu implements Screen {
 
@@ -32,7 +35,7 @@ public class InventoryMenu implements Screen {
     private final Window trashWindow;
     private final TextButton trashButton;
 
-    private final Label skillLabel;
+    private final Label [] skillsLabel;
     private final TextButton skillButton;
 
     private final Table socialTable;
@@ -72,7 +75,10 @@ public class InventoryMenu implements Screen {
         this.trashWindow = new Window("Trashcan", skin);
         this.trashButton = new TextButton("Trash", skin);
 
-        this.skillLabel = new Label("skill", skin);
+        this.skillsLabel = new Label[4];
+        for(int i = 0; i < skillsLabel.length; i++){
+            skillsLabel[i] = new Label(SkillType.values()[i].name(), skin);
+        }
         this.skillButton = new TextButton("Skills", skin);
 
         this.socialTable = new Table(skin);
@@ -119,7 +125,9 @@ public class InventoryMenu implements Screen {
         skillButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 table2.clear();
-                table2.add(skillLabel).expand().pad(10);
+                for (Label label : skillsLabel) {
+                    table2.add(label).pad(10).row();
+                }
             }
         });
 
@@ -136,6 +144,23 @@ public class InventoryMenu implements Screen {
                 table2.add(kickWindow).expand().pad(10);
             }
         });
+
+        for(int i = 0 ; i < skillsLabel.length ; i++){
+            Label label = skillsLabel[i];
+            SkillType skillType = SkillType.values()[i];
+            skillsLabel[i].addListener(new InputListener() {
+
+                public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor){
+                    label.setText("increase " + skillType.name() + "skill to consume less energy for " +
+                        skillType.name());
+                }
+
+                public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor){
+                    label.setText(skillType.name());
+                }
+            });
+        }
+
 
         window.setSize( 3 * Gdx.graphics.getWidth()/4f, 3 * Gdx.graphics.getHeight()/4f);
         window.setPosition(Gdx.graphics.getWidth()/8f, Gdx.graphics.getHeight()/8f);

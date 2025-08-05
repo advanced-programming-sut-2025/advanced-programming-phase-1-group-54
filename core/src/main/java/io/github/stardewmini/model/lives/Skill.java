@@ -43,4 +43,8 @@ public class Skill {
             this.xp = 0;
         }
     }
+
+    public SkillType getSkillType() {
+        return skillType;
+    }
 }
