@@ -42,7 +42,7 @@ public class AnimalMenu implements Screen {
 
         backButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-
+                window.remove();
             }
         });
 
