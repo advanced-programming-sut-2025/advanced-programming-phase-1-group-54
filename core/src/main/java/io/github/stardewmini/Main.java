@@ -17,7 +17,8 @@ public class Main extends Game {
 //        setScreen(new AnimalMenu(GameAssetManager.getGameAssetManager().getSkin(),Animal.getAnimal("Hen")));
 //        setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getGameAssetManager().getSkin()));
 //        setScreen(new InventoryMenu(GameAssetManager.getGameAssetManager().getSkin()));
-        setScreen(new FishingMenu());
+//        setScreen(new FishingMenu());
+        setScreen(new StartMenu());
     }
 
     @Override

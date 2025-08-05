@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
@@ -15,12 +16,17 @@ import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.SoundManager;
 import io.github.stardewmini.model.enums.Gender;
 
+import java.util.ArrayList;
+
 public class RegisterMenu implements Screen {
+    private Table root;
     private Table firstPage;
     private Table secondPage;
     private Stage stage;
 
     private void createFirstPage(Skin skin) {
+        Label titleLabel = new Label("Register", skin, "Bold");
+
         TextField usernameField = new TextField("", skin);
         usernameField.setMessageText("Username");
 
@@ -45,7 +51,7 @@ public class RegisterMenu implements Screen {
             }
         });
 
-        TextButton randomPasswordButton = new TextButton("Generate Random Password", skin);
+        TextButton randomPasswordButton = new TextButton("Random Password", skin);
         randomPasswordButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
@@ -85,7 +91,8 @@ public class RegisterMenu implements Screen {
 
                 resultLabel.setText(result.message());
                 if (result.success()) {
-                    // TODO goto next page;
+                    root.removeActor(firstPage);
+                    root.add(secondPage).expand().fill().row();
                 }
             }
         });
@@ -99,10 +106,104 @@ public class RegisterMenu implements Screen {
                 Main.getInstance().setScreen(new StartMenu());
             }
         });
+
+        firstPage = new Table(skin);
+        firstPage.setFillParent(true);
+        firstPage.center();
+
+        firstPage.add(titleLabel).colspan(2);
+        firstPage.row().pad(10, 0, 10, 0);
+        firstPage.add(usernameField).width(300).colspan(2);
+        firstPage.row().pad(10, 0, 10, 0);
+        firstPage.add(passwordField).width(300).pad(10);
+        firstPage.add(confirmPasswordField).width(300);
+        firstPage.row().pad(10, 0, 10, 0);
+        firstPage.add(randomPasswordButton).height(90).width(300).pad(10);
+        firstPage.add(showPasswordCheckBox);
+        firstPage.row().pad(10, 0, 10, 0);
+        firstPage.add(nicknameField).width(300).colspan(2);
+        firstPage.row().pad(10, 0, 10, 0);
+        firstPage.add(emailField).width(300).colspan(2);
+        firstPage.row().pad(10, 0, 10, 0);
+        firstPage.add(genderSelectBox).colspan(2);
+        firstPage.row().pad(10, 0, 10, 0);
+        firstPage.add(resultLabel).colspan(2);
+        firstPage.row().pad(10, 0, 10, 0);
+        firstPage.add(submitButton).height(90).width(300).colspan(2);
+        firstPage.row().pad(10, 0, 10, 0);
+        firstPage.add(backButton).height(90).width(300).colspan(2);
     }
 
     private void createSecondPage(Skin skin) {
+        Label titleLabel = new Label("Security Question", skin, "Bold");
 
+        ArrayList<Label> securityQuestionLabels = new ArrayList<>();
+        int n = 1;
+        for (String securityQuestion : RegisterMenuController.getSecurityQuestions()) {
+            securityQuestionLabels.add(new Label(n + ". " + securityQuestion, skin));
+            n++;
+        }
+
+        Integer[] itemNumbers = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            itemNumbers[i] = i + 1;
+        }
+
+        SelectBox<Integer> securityQuestionSelectBox = new SelectBox<>(skin);
+        securityQuestionSelectBox.setItems(itemNumbers);
+
+        TextField answerField = new TextField("", skin);
+        answerField.setMessageText("Answer");
+
+        TextField confirmAnswerField = new TextField("", skin);
+        confirmAnswerField.setMessageText("Confirm Answer");
+
+        Label resultField = new Label("", skin);
+
+        TextButton submitButton = new TextButton("Submit", skin);
+        submitButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                SoundManager.getInstance().playClick();
+                Result result = RegisterMenuController.pickQuestion(
+                    securityQuestionSelectBox.getSelected(),
+                    answerField.getText(),
+                    confirmAnswerField.getText()
+                );
+
+                resultField.setText(result.message());
+                if (result.success()) {
+                    Main.getInstance().getScreen().dispose();
+                    Main.getInstance().setScreen(new MainMenu());
+                }
+            }
+        });
+
+        TextButton backButton = new TextButton("Back", skin);
+        backButton.addListener(new ChangeListener() {
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                SoundManager.getInstance().playClick();
+                RegisterMenuController.resetUserBuilder();
+                root.removeActor(secondPage);
+                root.add(firstPage).expand().fill().row();
+            }
+        });
+
+        secondPage = new Table(skin);
+        secondPage.setFillParent(true);
+        secondPage.center();
+
+        secondPage.add(titleLabel).colspan(3);
+        secondPage.row().pad(10, 0, 10, 0);
+        for (Label securityQuestionLabel : securityQuestionLabels) {
+            secondPage.add(securityQuestionLabel).colspan(3);
+            secondPage.row().pad(10, 0, 10, 0);
+        }
+        secondPage.add(securityQuestionSelectBox);
+        secondPage.add(answerField).width(300);
+        secondPage.add(confirmAnswerField).width(300);
+        secondPage.row().pad(10, 0, 10, 0);
+        secondPage.add(submitButton).height(90).width(300).colspan(3);
     }
 
     @Override
@@ -112,16 +213,20 @@ public class RegisterMenu implements Screen {
 
         Skin skin = GameAssetManager.getInstance().getSkin();
 
-        Table root = new Table();
+        root = new Table();
         root.setFillParent(true);
         root.center();
+
+        createFirstPage(skin);
+        createSecondPage(skin);
+        root.add(firstPage).expand().fill().row();
 
         stage.addActor(root);
     }
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(0, 0, 0, 1);
+        ScreenUtils.clear(1, 0, 0, 1);
         Main.getBatch().begin();
         Main.getBatch().end();
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));

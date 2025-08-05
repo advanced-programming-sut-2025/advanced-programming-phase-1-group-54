@@ -25,7 +25,7 @@ public class StartMenu implements Screen {
 
         Skin skin = GameAssetManager.getInstance().getSkin();
 
-        Label titleLabel = new Label("Stardew Valley", skin);
+        Label titleLabel = new Label("Stardew Valley", skin, "Bold");
         titleLabel.setFontScale(3f);
         TextButton signUpMenuButton = new TextButton("Sign Up", skin);
         TextButton loginMenuButton = new TextButton("Login", skin);
@@ -64,18 +64,18 @@ public class StartMenu implements Screen {
 
         table.add(titleLabel).pad(100, 0, 100, 0);
         table.row().pad(10, 0 , 10 , 0);
-        table.add(signUpMenuButton).width(300);
+        table.add(signUpMenuButton).height(90).width(300);
         table.row().pad(10, 0 , 10 , 0);
-        table.add(loginMenuButton).width(300);
+        table.add(loginMenuButton).height(90).width(300);
         table.row().pad(10, 0 , 10 , 0);
-        table.add(exitButton).width(300);
+        table.add(exitButton).height(90).width(300);
 
         stage.addActor(table);
     }
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(0, 0, 0, 1);
+        ScreenUtils.clear(1, 0, 0, 1);
         Main.getBatch().begin();
         Main.getBatch().end();
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
