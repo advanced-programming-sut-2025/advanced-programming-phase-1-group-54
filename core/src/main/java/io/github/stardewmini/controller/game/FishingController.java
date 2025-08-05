@@ -133,7 +133,7 @@ public class FishingController {
         mapShapeRenderer.end();
 
         Main.getBatch().begin();
-        Main.getBatch().draw(GameAssetManager.getGameAssetManager().getFishes("Salmon"),fish.x,fish.y,
+        Main.getBatch().draw(GameAssetManager.getInstance().getFishes("Salmon"),fish.x,fish.y,
             fish.width,fish.height);
         Main.getBatch().end();
 
