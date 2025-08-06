@@ -57,6 +57,7 @@ public class RegisterMenu implements Screen {
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
                 passwordField.setText(RegisterMenuController.getRandomPassword());
+                confirmPasswordField.setText("");
                 showPasswordCheckBox.setChecked(true);
                 passwordField.setPasswordMode(false);
                 confirmPasswordField.setPasswordMode(false);
