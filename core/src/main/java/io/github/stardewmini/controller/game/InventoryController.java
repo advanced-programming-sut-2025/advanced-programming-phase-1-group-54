@@ -14,16 +14,22 @@ import java.util.Map;
 
 public class InventoryController {
 
-    public static String skills(){
-        StringBuilder output  = new StringBuilder();
+//    public static String skills(){
+//        StringBuilder output  = new StringBuilder();
+//
+//        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+//        for(SkillType type : SkillType.values()){
+//            Skill skill = currentPlayer.getSkill(type);
+//            output.append(type.name()).append(" Level : ").append(skill.getLevel())
+//                .append(" XP needed for next Level : ").append(skill.getXpNeededForLevelUp()).append("\n");
+//        }
+//        return output.toString();
+//    }
 
+    public static String showSkill(int index){
         Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
-        for(SkillType type : SkillType.values()){
-            Skill skill = currentPlayer.getSkill(type);
-            output.append(type.name()).append(" Level : ").append(skill.getLevel())
-                .append(" XP needed for next Level : ").append(skill.getXpNeededForLevelUp()).append("\n");
-        }
-        return output.toString();
+        Skill skill = currentPlayer.getSkill(SkillType.values()[index]);
+        return skill.getSkillType() + " Level : " + skill.getLevel() + " XP needed for next Level : " + skill.getXpNeededForLevelUp();
     }
 
     public static Table showInventory(){

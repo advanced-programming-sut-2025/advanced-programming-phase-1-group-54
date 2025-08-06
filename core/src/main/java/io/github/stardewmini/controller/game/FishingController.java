@@ -1,6 +1,16 @@
 package io.github.stardewmini.controller.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
+import io.github.stardewmini.Main;
 import io.github.stardewmini.model.App;
+import io.github.stardewmini.model.FishingGame;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.enums.FishingPoleType;
 import io.github.stardewmini.model.enums.ProduceQuality;
@@ -15,7 +25,13 @@ import io.github.stardewmini.view.FishingMenu;
 
 public class FishingController {
 
-    public static Result fishing(String fishingPoleName) {
+    private static FishingGame game;
+
+    public static void setGame(FishingGame game) {
+        FishingController.game = game;
+    }
+
+    public static Result fishing(String fishingPoleName,boolean perfect) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
 
@@ -85,6 +101,64 @@ public class FishingController {
         }
         player.getSkill(SkillType.FISHING).addXP(5);
         return new Result(true, message.toString());
+    }
+
+    public static void handle(ShapeRenderer shapeRenderer, ShapeRenderer mapShapeRenderer, ProgressBar bar) {
+        Rectangle greenPart = game.getGreenPart();
+        Rectangle fish = game.getFish();
+        Rectangle map = game.getMap();
+
+        if(greenPart.y + greenPart.height >= FishingGame.max){
+            game.setGreenPartDirection(false);
+        }
+        else if(greenPart.y <= FishingGame.min){
+            game.setGreenPartDirection(true);
+        }
+
+        if(game.isGreenPartDirection()){
+            greenPart.y++;
+        }
+        else{
+            greenPart.y--;
+        }
+
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(Color.GREEN);
+        shapeRenderer.rect(greenPart.x, greenPart.y, greenPart.width, greenPart.height);
+        shapeRenderer.end();
+
+        mapShapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        mapShapeRenderer.setColor(Color.RED);
+        mapShapeRenderer.rect(map.x, map.y, map.width, map.height);
+        mapShapeRenderer.end();
+
+        Main.getBatch().begin();
+        Main.getBatch().draw(GameAssetManager.getInstance().getFishes("Salmon"),fish.x,fish.y,
+            fish.width,fish.height);
+        Main.getBatch().end();
+
+        if(Gdx.input.isKeyPressed(Input.Keys.UP) && fish.y + fish.height < FishingGame.max){
+            fish.y++;
+        }
+
+        if(Gdx.input.isKeyPressed(Input.Keys.DOWN) && fish.y > FishingGame.min){
+            fish.y--;
+        }
+
+        if(fish.overlaps(greenPart)){
+            bar.setValue(bar.getValue() + 1);
+        }
+        else{
+            bar.setValue(bar.getValue() - 1);
+            game.setPerfect(false);
+        }
+
+        if(bar.getMaxValue() == bar.getValue()){
+            // todo  write fishingPoleName
+            fishing("sdsd",game.isPerfect());
+            // todo back to game
+        }
+
     }
 
 }

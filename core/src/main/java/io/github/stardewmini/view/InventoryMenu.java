@@ -2,7 +2,9 @@ package io.github.stardewmini.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -10,6 +12,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.model.GameAssetManager;
+import io.github.stardewmini.model.enums.SkillType;
 
 public class InventoryMenu implements Screen {
 
@@ -19,16 +22,38 @@ public class InventoryMenu implements Screen {
 
     private final Table table1;
     private final Table table2;
+
     private final ScrollPane scrollPane;
     private final Table inventoryTable;
     private final TextButton inventoryButton;
-    private final Label skillLabel;
+//    private final Label trashcanLabel;
+    private final TextField trashItem;
+    private final Label trashItemLabel;
+    private final TextField trashNumber;
+    private final Label trashNumberLabel;
+    private final Table trashTable;
+    private final Window trashWindow;
+    private final TextButton trashButton;
+
+    private final Label [] skillsLabel;
     private final TextButton skillButton;
+
     private final Table socialTable;
     private final Label npcsFriendshipLabel;
     private final Label playersFriendshipLabel;
     private final TextButton socialButton;
+
     private final TextButton mapButton;
+
+    private final TextButton settingButton;
+    private final TextButton exitButton;
+    private final TextButton kickButton;
+    private final Window kickWindow;
+    private final TextField kickField;
+    private final Label kickLabel;
+    private final Table kickTable;
+
+
 
 
     public InventoryMenu(Skin skin) {
@@ -40,13 +65,36 @@ public class InventoryMenu implements Screen {
         this.table1 = new Table(skin);
         this.table2 = new Table(skin);
         this.inventoryButton = new TextButton("Inventory", skin);
-        this.skillLabel = new Label("skill", skin);
+
+//        this.trashcanLabel = new Label("Trashcan normal", skin);
+        this.trashItem = new TextField("", skin);
+        this.trashItemLabel = new Label("Enter Item name : ", skin);
+        this.trashNumber = new TextField("", skin);
+        this.trashNumberLabel = new Label("Enter Number : ", skin);
+        this.trashTable = new Table(skin);
+        this.trashWindow = new Window("Trashcan", skin);
+        this.trashButton = new TextButton("Trash", skin);
+
+        this.skillsLabel = new Label[4];
+        for(int i = 0; i < skillsLabel.length; i++){
+            skillsLabel[i] = new Label(SkillType.values()[i].name(), skin);
+        }
         this.skillButton = new TextButton("Skills", skin);
+
         this.socialTable = new Table(skin);
         this.npcsFriendshipLabel = new Label("npc", skin);
         this.playersFriendshipLabel = new Label("player", skin);
         this.socialButton = new TextButton("Social", skin);
+
         this.mapButton = new TextButton("Map", skin);
+
+        this.settingButton = new TextButton("Setting", skin);
+        this.exitButton = new TextButton("Exit", skin);
+        this.kickButton = new TextButton("Kick", skin);
+        this.kickWindow = new Window("Kick Menu", skin);
+        this.kickField = new TextField("", skin);
+        this.kickLabel = new Label("Enter Username", skin);
+        this.kickTable = new Table(skin);
     }
 
     @Override
@@ -61,7 +109,9 @@ public class InventoryMenu implements Screen {
         inventoryButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 table2.clear();
-                table2.add(scrollPane).expand().pad(10);
+                table2.add(scrollPane).expand().pad(10).row();
+                table2.add(trashWindow).expand().pad(10);
+
             }
         });
 
@@ -75,7 +125,9 @@ public class InventoryMenu implements Screen {
         skillButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 table2.clear();
-                table2.add(skillLabel).expand().pad(10);
+                for (Label label : skillsLabel) {
+                    table2.add(label).pad(10).row();
+                }
             }
         });
 
@@ -85,8 +137,33 @@ public class InventoryMenu implements Screen {
             }
         });
 
-        window.setSize( Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f);
-        window.setPosition(Gdx.graphics.getWidth()/4f, Gdx.graphics.getHeight()/4f);
+        settingButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                table2.clear();
+                table2.add(exitButton).expand().pad(10).row();
+                table2.add(kickWindow).expand().pad(10);
+            }
+        });
+
+        for(int i = 0 ; i < skillsLabel.length ; i++){
+            Label label = skillsLabel[i];
+            SkillType skillType = SkillType.values()[i];
+            skillsLabel[i].addListener(new InputListener() {
+
+                public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor){
+                    label.setText("increase " + skillType.name() + "skill to consume less energy for " +
+                        skillType.name());
+                }
+
+                public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor){
+                    label.setText(skillType.name());
+                }
+            });
+        }
+
+
+        window.setSize( 3 * Gdx.graphics.getWidth()/4f, 3 * Gdx.graphics.getHeight()/4f);
+        window.setPosition(Gdx.graphics.getWidth()/8f, Gdx.graphics.getHeight()/8f);
         window.getTitleTable().add(backButton);
 
         // todo bayad ina hazf beshe
@@ -100,13 +177,28 @@ public class InventoryMenu implements Screen {
         socialTable.add(playersFriendshipLabel).pad(10);
         socialTable.add(npcsFriendshipLabel).pad(10);
 
+        trashTable.add(trashItemLabel).pad(10);
+        trashTable.add(trashItem).pad(10).row();
+        trashTable.add(trashNumberLabel).pad(10);
+        trashTable.add(trashNumber).pad(10);
+
+        trashWindow.add(trashTable);
+        trashWindow.add(trashButton).pad(10);
 
         table1.add(inventoryButton).pad(10);
         table1.add(skillButton).pad(10);
         table1.add(socialButton).pad(10);
         table1.add(mapButton).pad(10);
+        table1.add(settingButton).pad(10);
 
-        table2.add(scrollPane).expand().pad(10);
+        kickWindow.add(kickLabel).pad(10);
+        kickTable.add(kickLabel).pad(10);
+        kickTable.add(kickField).pad(10);
+        kickWindow.add(kickTable).row();
+        kickWindow.add(kickButton).pad(10);
+
+        table2.add(scrollPane).expand().pad(10).row();
+        table2.add(trashWindow).expand().pad(10);
 
         window.add(table1);
         window.row();

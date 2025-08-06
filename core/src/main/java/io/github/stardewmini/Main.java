@@ -2,6 +2,7 @@ package io.github.stardewmini;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.view.*;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
@@ -14,11 +15,14 @@ public class Main extends Game {
         instance = this;
         batch = new SpriteBatch();
 //        setScreen(new FirstScreen());
-//        setScreen(new AnimalMenu(GameAssetManager.getGameAssetManager().getSkin(),Animal.getAnimal("Hen")));
-//        setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getGameAssetManager().getSkin()));
-//        setScreen(new InventoryMenu(GameAssetManager.getGameAssetManager().getSkin()));
-//        setScreen(new FishingMenu());
-        setScreen(new StartMenu());
+//        setScreen(new AnimalMenu(GameAssetManager.getInstance().getSkin(),Animal.getAnimal("Hen")));
+//        setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getInstance().getSkin()));
+        setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
+//        FishingGame game = new FishingGame();
+//        FishingController.setGame(game);
+//        setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin()));
+//        setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
+//        setScreen(new StartMenu());
     }
 
     @Override
