@@ -106,63 +106,6 @@ public class LoginMenu implements Screen {
         root.add(backButton).height(90).width(300);
     }
 
-//    private void createForgetPasswordPages(Skin skin) {
-//        Label titleLabel = new Label("Forgot Your Password?", skin, "Bold");
-//
-//        Label enterUsernameLabel = new Label("Enter your username", skin);
-//        TextField usernameField = new TextField("", skin);
-//        usernameField.setMessageText("Username");
-//
-//        Label securityQuestionLabel = new Label("", skin);
-//        TextField answerField = new TextField("", skin);
-//        answerField.setMessageText("Answer");
-//
-//        Label chooseNewPasswordLabel = new Label("Choose your new password", skin);
-//        TextField passwordField = new TextField("", skin);
-//        passwordField.setMessageText("Password");
-//        passwordField.setPasswordMode(true);
-//        passwordField.setPasswordCharacter('*');
-//
-//        TextField confirmPasswordField = new TextField("", skin);
-//        confirmPasswordField.setMessageText("Confirm Password");
-//        confirmPasswordField.setPasswordMode(true);
-//        confirmPasswordField.setPasswordCharacter('*');
-//
-//        CheckBox showPasswordCheckBox = new CheckBox("Show Password", skin);
-//        showPasswordCheckBox.setChecked(false);
-//        showPasswordCheckBox.addListener(new ChangeListener() {
-//            @Override
-//            public void changed(ChangeEvent changeEvent, Actor actor) {
-//                SoundManager.getInstance().playClick();
-//                passwordField.setPasswordMode(!showPasswordCheckBox.isChecked());
-//                confirmPasswordField.setPasswordMode(!showPasswordCheckBox.isChecked());
-//            }
-//        });
-//
-//        TextButton randomPasswordButton = new TextButton("Random Password", skin);
-//        randomPasswordButton.addListener(new ChangeListener() {
-//            @Override
-//            public void changed(ChangeEvent changeEvent, Actor actor) {
-//                SoundManager.getInstance().playClick();
-//                passwordField.setText(RegisterMenuController.getRandomPassword());
-//                confirmPasswordField.setText("");
-//                showPasswordCheckBox.setChecked(true);
-//                passwordField.setPasswordMode(false);
-//                confirmPasswordField.setPasswordMode(false);
-//            }
-//        });
-//
-//        nextButton = new TextButton("Next", skin);
-//        backButton = new TextButton("Back", skin);
-//
-//        forgetPasswordRoot = new Table(skin);
-//        forgetPasswordRoot.setFillParent(true);
-//        forgetPasswordRoot.center();
-//
-//        forgetPasswordRoot.add(titleLabel);
-//        forgetPasswordRoot.row().pad(10, 0, 10, 0);
-//    }
-
     @Override
     public void show() {
         stage = new Stage(new ScreenViewport());

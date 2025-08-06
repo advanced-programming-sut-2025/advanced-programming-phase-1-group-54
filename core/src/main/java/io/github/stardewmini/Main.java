@@ -17,12 +17,12 @@ public class Main extends Game {
 //        setScreen(new FirstScreen());
 //        setScreen(new AnimalMenu(GameAssetManager.getInstance().getSkin(),Animal.getAnimal("Hen")));
 //        setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getInstance().getSkin()));
-        setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
+//        setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
 //        FishingGame game = new FishingGame();
 //        FishingController.setGame(game);
 //        setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin()));
 //        setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
-//        setScreen(new StartMenu());
+        setScreen(new StartMenu());
     }
 
     @Override
