@@ -30,6 +30,7 @@ public class MainMenu implements Screen {
         TextButton gameButton = new TextButton("Game", skin);
         TextButton profileButton = new TextButton("Profile", skin);
         TextButton logoutButton = new TextButton("Logout", skin);
+        TextButton exitButton = new TextButton("Exit", skin);
 
         gameButton.addListener(new ChangeListener() {
             @Override
@@ -59,6 +60,14 @@ public class MainMenu implements Screen {
             }
         });
 
+        exitButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                SoundManager.getInstance().playClick();
+                Gdx.app.exit();
+            }
+        });
+
 
         Table table = new Table();
         table.setFillParent(true);
@@ -71,6 +80,8 @@ public class MainMenu implements Screen {
         table.add(profileButton).height(90).width(300);
         table.row().pad(10, 0 , 10 , 0);
         table.add(logoutButton).height(90).width(300);
+        table.row().pad(10, 0 , 10 , 0);
+        table.add(exitButton).height(90).width(300);
 
         stage.addActor(table);
     }
