@@ -10,6 +10,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.game.AnimalController;
+import io.github.stardewmini.model.Game;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.lives.Animal;
 
 public class AnimalMenu implements Screen {

@@ -13,6 +13,7 @@ import io.github.stardewmini.model.items.plants.Crop;
 import io.github.stardewmini.model.items.plants.Fruit;
 import io.github.stardewmini.model.items.plants.Seed;
 import io.github.stardewmini.model.items.plants.Tree;
+import io.github.stardewmini.model.lives.Animal;
 
 import java.util.HashMap;
 
@@ -249,6 +250,42 @@ public class GameAssetManager {
     public Texture getStar() {
         return star;
     }
+
+    private final HashMap<String,TextureRegion[][]> animals  = new HashMap<>();
+    {
+        Texture texture;
+        TextureRegion[][] frames;
+
+        for(String key : Animal.getAnimalsList()){
+            System.out.println(key);
+            texture = new Texture("Stardew_Valley_Images-main/Animal_Sprites/" + fileName(key) +".png");
+            frames = TextureRegion.split(texture,texture.getWidth()/4,texture.getHeight()/5);
+            animals.put(key,frames);
+        }
+    }
+
+    public TextureRegion[] getAnimalWalk(String name){
+        return animals.get(name)[1];
+    }
+
+    public TextureRegion[] getAnimalPet(String name){
+        TextureRegion[][] frames = animals.get(name);
+        TextureRegion[] petFrames = new TextureRegion[3];
+        petFrames[0] = frames[0][0];
+        petFrames[1] = frames[3][0];
+        petFrames[2] = frames[3][1];
+        return petFrames;
+    }
+
+    public TextureRegion[] getAnimalEat(String name){
+        return animals.get(name)[4];
+    }
+
+    public Texture getAnimalProduced(String name){
+        return animals.get(name)[0][0].getTexture();
+    }
+
+
 
     public Texture getItem(String name){
         Texture texture;
