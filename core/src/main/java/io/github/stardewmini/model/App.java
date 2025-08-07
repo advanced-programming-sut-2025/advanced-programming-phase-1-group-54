@@ -33,8 +33,6 @@ public class App {
                 throw new RuntimeException(e);
             }
         }
-
-        // TODO go to main menu if loggedInUser is not null
     }
 
     private static void readUsers() {

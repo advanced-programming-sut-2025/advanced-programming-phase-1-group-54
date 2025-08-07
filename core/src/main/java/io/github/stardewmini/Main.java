@@ -2,6 +2,7 @@ package io.github.stardewmini;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.view.*;
 
@@ -22,7 +23,13 @@ public class Main extends Game {
 //        FishingController.setGame(game);
 //        setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin()));
 //        setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
-        setScreen(new StartMenu());
+
+        if (App.getLoggedInUser() != null) {
+            setScreen(new MainMenu());
+        }
+        else {
+            setScreen(new StartMenu());
+        }
     }
 
     @Override
