@@ -21,11 +21,11 @@ public class LoginMenuController {
         return new Result(true, "Successfully logged in");
     }
 
-    public static String getSecurityQuestion(String username) {
+    public static Result getSecurityQuestion(String username) {
         User user = App.getUserByUsername(username);
         if (user != null)
-            return user.getSecurityQuestion();
-        return null;
+            return new Result(true, user.getSecurityQuestion());
+        return new Result(false, "User not found");
     }
 
     public static Result answer(String username, String answer) {

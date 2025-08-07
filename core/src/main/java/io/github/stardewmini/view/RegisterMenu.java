@@ -57,6 +57,7 @@ public class RegisterMenu implements Screen {
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
                 passwordField.setText(RegisterMenuController.getRandomPassword());
+                confirmPasswordField.setText("");
                 showPasswordCheckBox.setChecked(true);
                 passwordField.setPasswordMode(false);
                 confirmPasswordField.setPasswordMode(false);
@@ -70,8 +71,8 @@ public class RegisterMenu implements Screen {
         TextField emailField = new TextField("", skin);
         emailField.setMessageText("Email");
 
-        SelectBox<String> genderSelectBox = new SelectBox<>(skin);
-        genderSelectBox.setItems("Male", "Female");
+        SelectBox<Gender> genderSelectBox = new SelectBox<>(skin);
+        genderSelectBox.setItems(Gender.MALE, Gender.FEMALE);
 
         Label resultLabel = new Label("", skin);
 
@@ -86,7 +87,7 @@ public class RegisterMenu implements Screen {
                     confirmPasswordField.getText(),
                     nicknameField.getText(),
                     emailField.getText(),
-                    Gender.getGender(genderSelectBox.getSelected())
+                    genderSelectBox.getSelected()
                 );
 
                 resultLabel.setText(result.message());
@@ -138,10 +139,10 @@ public class RegisterMenu implements Screen {
         Label titleLabel = new Label("Security Question", skin, "Bold");
 
         ArrayList<Label> securityQuestionLabels = new ArrayList<>();
-        int n = 1;
+        int n = 0;
         for (String securityQuestion : RegisterMenuController.getSecurityQuestions()) {
-            securityQuestionLabels.add(new Label(n + ". " + securityQuestion, skin));
             n++;
+            securityQuestionLabels.add(new Label(n + ". " + securityQuestion, skin));
         }
 
         Integer[] itemNumbers = new Integer[n];
@@ -174,7 +175,7 @@ public class RegisterMenu implements Screen {
                 resultField.setText(result.message());
                 if (result.success()) {
                     Main.getInstance().getScreen().dispose();
-                    Main.getInstance().setScreen(new MainMenu());
+                    Main.getInstance().setScreen(new RegisterMenu());
                 }
             }
         });
@@ -203,7 +204,11 @@ public class RegisterMenu implements Screen {
         secondPage.add(answerField).width(300);
         secondPage.add(confirmAnswerField).width(300);
         secondPage.row().pad(10, 0, 10, 0);
+        secondPage.add(resultField).colspan(3);
+        secondPage.row().pad(10, 0, 10, 0);
         secondPage.add(submitButton).height(90).width(300).colspan(3);
+        secondPage.row().pad(10, 0, 10, 0);
+        secondPage.add(backButton).height(90).width(300).colspan(3);
     }
 
     @Override

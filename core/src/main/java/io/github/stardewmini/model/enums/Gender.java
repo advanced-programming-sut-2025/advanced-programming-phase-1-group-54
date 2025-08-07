@@ -3,13 +3,9 @@ package io.github.stardewmini.model.enums;
 public enum Gender {
     MALE, FEMALE;
 
-    public static Gender getGender(String gender) {
-        switch (gender) {
-            case "male", "M", "m":
-                return Gender.MALE;
-            case "female", "F", "f":
-                return Gender.FEMALE;
-        }
-        return null;
+    @Override
+    public String toString() {
+        String out = super.toString();
+        return out.charAt(0) + out.substring(1).toLowerCase();
     }
 }

@@ -65,10 +65,12 @@ public class ProfileMenuController {
 
     public static Result showUserInfo() {
         User currentUser = App.getLoggedInUser();
-        String message = "Username: " + currentUser.getUsername() + "\n";
+        String message = "User Info: \n" + "Username: " + currentUser.getUsername() + "\n";
         message += "Nickname: " + currentUser.getNickname() + "\n";
+        message += "Email: " + currentUser.getEmail() + "\n";
+        message += "Gender: " + currentUser.getGender() + "\n";
         message += "Number of Games: " + currentUser.getNumberOfPlayedGames() + "\n";
-        message += "Largest Money in All Games: " + currentUser.getMaximumMoney();
+        message += "Max. Money: " + currentUser.getMaximumMoney();
 
         return new Result(true, message);
     }

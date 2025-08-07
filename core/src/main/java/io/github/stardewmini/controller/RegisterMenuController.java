@@ -158,10 +158,6 @@ public class RegisterMenuController {
             return new Result(false, "Answers do not match");
 
         UserBuilder.getInstance().registerSecurityQuestionAnswer(number, answer);
-        return new Result(true, "Security question answered");
-    }
-
-    public static Result saveNewUser() {
         User user = UserBuilder.getInstance().getResult();
         App.addUser(user);
         return new Result(true, "Successfully registered!");

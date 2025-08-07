@@ -4,10 +4,9 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import io.github.stardewmini.controller.game.FishingController;
 import io.github.stardewmini.model.FishingGame;
+import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.view.*;
-
-import java.util.Scanner;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {
@@ -26,7 +25,13 @@ public class Main extends Game {
 //        FishingController.setGame(game);
         setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin() , "gsdg","fish"));
 //        setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
-//        setScreen(new StartMenu());
+
+        if (App.getLoggedInUser() != null) {
+            setScreen(new MainMenu());
+        }
+        else {
+            setScreen(new StartMenu());
+        }
     }
 
     @Override
