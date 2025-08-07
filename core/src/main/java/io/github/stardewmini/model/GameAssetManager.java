@@ -281,7 +281,7 @@ public class GameAssetManager {
         return animals.get(name)[4];
     }
 
-    public Texture getAnimalProduced(String name){
+    public Texture getProducedAnimal(String name){
         return animals.get(name)[0][0].getTexture();
     }
 
