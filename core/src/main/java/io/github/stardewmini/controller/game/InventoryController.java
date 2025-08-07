@@ -41,7 +41,7 @@ public class InventoryController {
         for(Item item : inventory.keySet()){
             Table table = new Table();
             table.add(new Image(gameAssetManager.getItem(item.getName()))).row();
-            table.add(new Label(inventory.get(item).toString(),gameAssetManager.getSkin()));
+            table.add(new Label(item.getName() + " " + inventory.get(item).toString(),gameAssetManager.getSkin()));
             output.add(table).pad(10);
             i++;
             if(i == 4){
@@ -50,5 +50,4 @@ public class InventoryController {
         }
         return output;
     }
-
 }

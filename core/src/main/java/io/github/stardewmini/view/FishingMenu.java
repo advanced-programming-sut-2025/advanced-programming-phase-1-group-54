@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -19,11 +20,15 @@ public class FishingMenu implements Screen {
     private final ShapeRenderer shapeRenderer;
     private final ShapeRenderer bound;
     private final ProgressBar fishingBar;
+    private final Label fishingType;
+    private final Label fishName;
 
-    public FishingMenu(Skin skin) {
+    public FishingMenu(Skin skin,String fishingType ,String fishName) {
         this.shapeRenderer = new ShapeRenderer();
         this.bound = new ShapeRenderer();
         this.fishingBar = new ProgressBar(0,1_000,1,true, skin);
+        this.fishingType = new Label( fishingType, skin);
+        this.fishName = new Label(fishName, skin);
     }
 
     @Override
@@ -32,8 +37,14 @@ public class FishingMenu implements Screen {
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
 
-        fishingBar.setSize(20,screenHeight/4);
-        fishingBar.setPosition(screenWidth/2 + 100, screenHeight /2 - screenHeight/8);
+        fishingType.setPosition(screenWidth/2f, screenHeight/2f + screenHeight/4f);
+        fishName.setPosition(screenWidth/2f, screenHeight/2f + screenHeight/4f + screenHeight/30f);
+        stage.addActor(fishingType);
+        stage.addActor(fishName);
+
+        fishingBar.setValue(fishingBar.getMaxValue()/2);
+        fishingBar.setSize(20,screenHeight/4f);
+        fishingBar.setPosition(screenWidth/2f + 100, screenHeight /2f - screenHeight/8f);
         stage.addActor(fishingBar);
     }
 

@@ -7,6 +7,7 @@ import io.github.stardewmini.model.map.World;
 import io.github.stardewmini.model.relationships.Relationship;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Game implements DailyUpdate {
     private final World world;
@@ -20,11 +21,14 @@ public class Game implements DailyUpdate {
 
     private final ArrayList<Relationship> relationships;
 
+    private final HashMap<Player,FishingGame> fishingGames;
+
     public Game(DateTime dateTime, World world, Player[] players) {
         this.dateTime = dateTime;
         this.world = world;
         this.players = players;
         this.relationships = new ArrayList<>();
+        this.fishingGames = new HashMap<>();
 
         for (int i = 0; i < players.length; i++) {
             for (int j = i + 1; j < players.length; j++) {
@@ -100,6 +104,9 @@ public class Game implements DailyUpdate {
         return players[turn];
     }
 
+    public HashMap<Player, FishingGame> getFishingGames() {
+        return fishingGames;
+    }
 
     @Override
     public void nextDayUpdate() {

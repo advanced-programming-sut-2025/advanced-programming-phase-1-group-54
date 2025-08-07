@@ -8,10 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.FishingGame;
-import io.github.stardewmini.model.GameAssetManager;
-import io.github.stardewmini.model.Result;
+import io.github.stardewmini.model.*;
 import io.github.stardewmini.model.enums.FishingPoleType;
 import io.github.stardewmini.model.enums.ProduceQuality;
 import io.github.stardewmini.model.enums.SkillType;
@@ -25,12 +22,6 @@ import io.github.stardewmini.view.FishingMenu;
 
 public class FishingController {
 
-    private static FishingGame game;
-
-    public static void setGame(FishingGame game) {
-        FishingController.game = game;
-    }
-
     public static Result fishing(String fishingPoleName,boolean perfect) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
@@ -41,8 +32,6 @@ public class FishingController {
 
         boolean isNearLake = false;
         for (GenericWall lake : farm.getLakes()) {
-            System.out.println(lake);
-            System.out.println(player.getCurrentLocation());
             if (MapController.isNear(player.getCurrentLocation(), lake)) {
                 isNearLake = true;
             }
@@ -52,60 +41,66 @@ public class FishingController {
             return new Result(false, "you must be next to a lake to start fishing");
         }
 
+
+
+//        if (fishingPole == null) {
+//            return new Result(false, "you don't have " + fishingPoleName + " fishing pole");
+//        }
+        return null;
+    }
+
+    public static void startFishing(String fishingPoleName,boolean perfect) {
+        Player player = App.getCurrentGame().getCurrentPlayer();
+
         FishingPoleType fishingPoleType = FishingPoleType.fromString(fishingPoleName);
-
-        if (fishingPoleType == null) {
-            return new Result(false, "invalid fishing pole");
-        }
-
         FishingPole fishingPole = player.getFishingPole(fishingPoleType);
 
-        if (fishingPole == null) {
-            return new Result(false, "you don't have " + fishingPoleName + " fishing pole");
-        }
-
         int energyNeeded = fishingPole.getEnergyNeededPerUse();
-        boolean enoughEnergy = player.checkEnergy(energyNeeded, SkillType.FISHING);
+        player.decreaseEnergy(energyNeeded, SkillType.FISHING);
 
         int skillLevel = player.getSkill(SkillType.FISHING).getLevel();
         double weatherFactor = App.getCurrentGame().getCurrentWeather().getFishingFactor();
 
-        int numberOfFishes = Math.min((int) Math.ceil(Math.random() * weatherFactor * (skillLevel + 2)), 6);
-        double poleFactor = player.getFishingPole(FishingPoleType.fromString(fishingPoleName)).getPoleFactor();
+        double poleFactor = fishingPole.getPoleFactor();
 
-        StringBuilder message = new StringBuilder("Starting fishing ...");
+        ProduceQuality quality = ProduceQuality.
+            giveQuality(Math.random() * (skillLevel + 2) * poleFactor / (7 - weatherFactor));
 
-        for (int i = 0; i < numberOfFishes; i++) {
-            ProduceQuality quality = ProduceQuality.
-                    giveQuality(Math.random() * (skillLevel + 2) * poleFactor / (7 - weatherFactor));
+        Fish fish;
+        if (fishingPoleType == FishingPoleType.TRAINING) {
+            fish = Fish.getCheapestSeasonFish(App.getCurrentGame().getDateTime().getSeason());
+        } else {
+            fish = Fish.getSeasonFish(App.getCurrentGame().getDateTime().getSeason(),
+                skillLevel == Skill.getMaxSkillLevel());
+        }
+        fish.setQuality(quality);
 
+        FishingGame fishingGame = new FishingGame(fish,FishingGame.random.nextInt(0,5));
+        App.getCurrentGame().getFishingGames().put(player, fishingGame);
 
-            Fish fish;
-            if (fishingPoleType == FishingPoleType.TRAINING) {
-                fish = Fish.getCheapestSeasonFish(App.getCurrentGame().getDateTime().getSeason());
-            } else {
-                fish = Fish.getSeasonFish(App.getCurrentGame().getDateTime().getSeason(),
-                        skillLevel == Skill.getMaxSkillLevel());
+        Main.getInstance().setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin(),
+            "Movement level : " + fishingGame.getFishType(),fish.getQuality() + " " +  fish.getName()));
+
+    }
+
+    public static Result winFishing(boolean perfect) {
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        Fish fish = App.getCurrentGame().getFishingGames().get(player).getFish();
+        if(perfect) {
+            if(fish.getQuality() == ProduceQuality.SILVER){
+                fish.setQuality(ProduceQuality.GOLD);
             }
-            fish.setQuality(quality);
-
-            Result result = ToolsController.addToBackPack(player.getBackpack(), fish, 1);
-            message.append("\n").append(result.message());
+            else if(fish.getQuality() == ProduceQuality.GOLD){
+                fish.setQuality(ProduceQuality.IRIDIUM);
+            }
         }
-
-        if (numberOfFishes == 0)
-            message.append("\nYou got no fish :(");
-
-        if (!enoughEnergy) {
-
-        }
-        player.getSkill(SkillType.FISHING).addXP(5);
-        return new Result(true, message.toString());
+        return ToolsController.addToBackPack(player.getBackpack(), fish, 1);
     }
 
     public static void handle(ShapeRenderer shapeRenderer, ShapeRenderer mapShapeRenderer, ProgressBar bar) {
+        FishingGame game = App.getCurrentGame().getFishingGames().get(App.getCurrentGame().getCurrentPlayer());
         Rectangle greenPart = game.getGreenPart();
-        Rectangle fish = game.getFish();
+        Rectangle fish = game.getFishRectangle();
         Rectangle map = game.getMap();
 
         if(greenPart.y + greenPart.height >= FishingGame.max){
@@ -115,12 +110,62 @@ public class FishingController {
             game.setGreenPartDirection(true);
         }
 
-        if(game.isGreenPartDirection()){
-            greenPart.y++;
+        int rand;
+        if(game.getFishType() == 0){
+            rand = FishingGame.random.nextInt(0, 3);
+            if(rand == 0){
+                fish.y = fish.y + 3;
+            }
+            else if(rand != 1){
+                fish.y = fish.y - 3;
+            }
+
         }
-        else{
-            greenPart.y--;
+        else if(game.getFishType() == 1){
+            rand = FishingGame.random.nextInt(0, 4);
+            if(rand == 0){
+                fish.y = fish.y + 3;
+            }
+            else if(rand == 1){
+                fish.y = fish.y - 3;
+            }
+            else if(rand == 2){
+                fish.y = fish.y + 3 * game.getLastMoveDirection();
+            }
+
         }
+        else if(game.getFishType() == 2){
+            rand = FishingGame.random.nextInt(0, 3);
+            if(rand == 0){
+                fish.y = fish.y + 3;
+            }
+            else if(rand != 1){
+                fish.y = fish.y - 5;
+            }
+
+        }
+        else if(game.getFishType() == 3){
+            rand = FishingGame.random.nextInt(0, 3);
+            if(rand == 0){
+                fish.y = fish.y + 5;
+            }
+            else if(rand != 1){
+                fish.y = fish.y - 3;
+            }
+
+        }
+        else if(game.getFishType() == 4){
+            rand = FishingGame.random.nextInt(0, 3);
+            if(rand == 0){
+                fish.y = fish.y + 5;
+            }
+            else if(rand != 1){
+                fish.y = fish.y - 5;
+            }
+        }
+
+        fish.y = Math.max(fish.y, FishingGame.min);
+        fish.y = Math.min(fish.y, FishingGame.max - fish.height);
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.GREEN);
@@ -135,14 +180,18 @@ public class FishingController {
         Main.getBatch().begin();
         Main.getBatch().draw(GameAssetManager.getInstance().getFishes("Salmon"),fish.x,fish.y,
             fish.width,fish.height);
+        if(true){
+            Main.getBatch().draw(GameAssetManager.getInstance().getStar(), fish.x,fish.y,
+                fish.width/2, fish.height/2);
+        }
         Main.getBatch().end();
 
-        if(Gdx.input.isKeyPressed(Input.Keys.UP) && fish.y + fish.height < FishingGame.max){
-            fish.y++;
+        if(Gdx.input.isKeyPressed(Input.Keys.UP) && greenPart.y + greenPart.height < FishingGame.max){
+            greenPart.y++;
         }
 
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN) && fish.y > FishingGame.min){
-            fish.y--;
+        if(Gdx.input.isKeyPressed(Input.Keys.DOWN) && greenPart.y > FishingGame.min){
+            greenPart.y--;
         }
 
         if(fish.overlaps(greenPart)){
@@ -155,8 +204,12 @@ public class FishingController {
 
         if(bar.getMaxValue() == bar.getValue()){
             // todo  write fishingPoleName
-            fishing("sdsd",game.isPerfect());
+            winFishing(game.isPerfect());
             // todo back to game
+        }
+
+        if(bar.getMinValue() == bar.getValue()){
+            // todo sout you have lost && back to game
         }
 
     }

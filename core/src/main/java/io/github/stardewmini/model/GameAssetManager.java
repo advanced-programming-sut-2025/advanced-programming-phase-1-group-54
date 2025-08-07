@@ -244,8 +244,11 @@ public class GameAssetManager {
         return animalProduces.get(name);
     }
 
+    private final Texture star = new Texture("Stardew_Valley_Images-main/Achievement/Achievement_Star_02.png");
 
-
+    public Texture getStar() {
+        return star;
+    }
 
     public Texture getItem(String name){
         Texture texture;
