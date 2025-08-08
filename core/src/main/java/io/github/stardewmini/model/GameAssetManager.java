@@ -9,6 +9,8 @@ import io.github.stardewmini.model.enums.Season;
 import io.github.stardewmini.model.items.AnimalProduce;
 import io.github.stardewmini.model.items.Fish;
 import io.github.stardewmini.model.items.Material;
+import io.github.stardewmini.model.items.crafting.FeatureArtisan;
+import io.github.stardewmini.model.items.crafting.ProducerArtisan;
 import io.github.stardewmini.model.items.plants.Crop;
 import io.github.stardewmini.model.items.plants.Fruit;
 import io.github.stardewmini.model.items.plants.Seed;
@@ -257,7 +259,7 @@ public class GameAssetManager {
         TextureRegion[][] frames;
 
         for(String key : Animal.getAnimalsList()){
-            System.out.println(key);
+//            System.out.println(key);
             texture = new Texture("Stardew_Valley_Images-main/Animal_Sprites/" + fileName(key) +".png");
             frames = TextureRegion.split(texture,texture.getWidth()/4,texture.getHeight()/5);
             animals.put(key,frames);
@@ -285,7 +287,21 @@ public class GameAssetManager {
         return animals.get(name)[0][0].getTexture();
     }
 
+    private final HashMap<String,Texture> artisans  = new HashMap<>();
+    {
+        for(String key : ProducerArtisan.getProducerArtisansList()){
+//            System.out.println(key);
+            artisans.put(key,new Texture("Stardew_Valley_Images-main/Craftable_item/" + fileName(key) + ".png"));
+        }
+        for(String key : FeatureArtisan.getFeatureArtisansList()){
+//            System.out.println(key);
+            artisans.put(key,new Texture("Stardew_Valley_Images-main/Craftable_item/" + fileName(key) + ".png"));
+        }
+    }
 
+    public Texture getArtisans(String name) {
+        return artisans.get(name);
+    }
 
     public Texture getItem(String name){
         Texture texture;

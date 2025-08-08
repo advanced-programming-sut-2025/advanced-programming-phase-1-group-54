@@ -16,40 +16,41 @@ public class FirstScreen implements Screen {
     @Override
     public void show() {
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
-        Texture aks = new Texture("Stardew_Valley_Images-main/Animal_Sprites/Duck.png");
-        int totalWidth = aks.getWidth();
+        Texture aks = new Texture("Stardew_Valley_Images-main/sprites/Farm Buildings.png");
+        int totalWidth = aks.getWidth()/2;
         int totalHeight = aks.getHeight();
-        TextureRegion[][] cow = TextureRegion.split(aks,totalWidth,totalHeight/14);
+        TextureRegion[][] cow = TextureRegion.split(aks,totalWidth,totalHeight/3);
         Main.getBatch().begin();
-        for(int i = 0; i < 3; i++){
-            Gdx.gl.glClearColor(0, 0, 0, 0);
-            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-
-            Main.getBatch().draw(cow[i][0],0,4 * totalHeight/14 - totalHeight/14 * i);
-
-        }
-        Main.getBatch().draw(cow[4][0],0,4 * totalHeight/14 - totalHeight/14 * 3);
-        Main.getBatch().draw(cow[6][0],0,4 * totalHeight/14 - totalHeight/14 * 4);
-
+        Gdx.gl.glClearColor(0, 0, 0, 0);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+//        for(int i = 0; i < 3; i++){
+//            Gdx.gl.glClearColor(0, 0, 0, 0);
+//            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+//
+//
+//            Main.getBatch().draw(cow[i][0],0,4 * totalHeight/14 - totalHeight/14 * i);
+//
+//        }
+//        Main.getBatch().draw(cow[4][0],0,4 * totalHeight/14 - totalHeight/14 * 3);
+//        Main.getBatch().draw(cow[6][0],0,4 * totalHeight/14 - totalHeight/14 * 4);
+        Main.getBatch().draw(cow[0][0],0,0);
         Main.getBatch().end();
 
-        Pixmap pixmap;
-        Pixmap flipped;
-        int pngHeight = 5 * totalHeight/14;
-
-        pixmap = ScreenUtils.getFrameBufferPixmap(0,0,totalWidth, pngHeight);
-        flipped = new Pixmap(totalWidth, pngHeight,Pixmap.Format.RGBA8888);
-        for(int y = 0 ;y <  pngHeight ;y++) {
-            for(int x = 0 ;x < totalWidth ;x++) {
-                int pixel = pixmap.getPixel(x,y);
-                flipped.drawPixel(x,pngHeight - y - 1,pixel);
-            }
-        }
-
-
-        PixmapIO.writePNG(Gdx.files.local("Duck" +".png"), flipped);
-
+//        Pixmap pixmap;
+//        Pixmap flipped;
+//        int pngHeight = 5 * totalHeight/14;
+//
+//        pixmap = ScreenUtils.getFrameBufferPixmap(0,0,totalWidth, pngHeight);
+//        flipped = new Pixmap(totalWidth, pngHeight,Pixmap.Format.RGBA8888);
+//        for(int y = 0 ;y <  pngHeight ;y++) {
+//            for(int x = 0 ;x < totalWidth ;x++) {
+//                int pixel = pixmap.getPixel(x,y);
+//                flipped.drawPixel(x,pngHeight - y - 1,pixel);
+//            }
+//        }
+//
+//
+//        PixmapIO.writePNG(Gdx.files.local("Duck" +".png"), flipped);
 
 
 

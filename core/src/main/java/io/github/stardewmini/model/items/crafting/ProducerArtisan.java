@@ -38,7 +38,7 @@ public class ProducerArtisan extends Artisan implements HourUpdate, Cloneable {
         }
     }
 
-    public static Set<String> getProducerArtisans() {
+    public static Set<String> getProducerArtisansList() {
         return new HashSet<>(producerArtisans.keySet());
     }
 
