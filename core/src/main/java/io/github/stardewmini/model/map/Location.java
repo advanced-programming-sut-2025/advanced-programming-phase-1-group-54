@@ -1,5 +1,6 @@
 package io.github.stardewmini.model.map;
 
+import io.github.stardewmini.Main;
 import io.github.stardewmini.model.enums.Direction;
 
 public record Location(int row, int column) {
@@ -10,6 +11,11 @@ public record Location(int row, int column) {
     // TODO use this if needed
     public Location delta(Location that) {
         return new Location(this.row - that.row(), this.column - that.column());
+    }
+
+    public double distance(Location that) {
+        return Math.sqrt((this.column - that.column) * (this.column - that.column) +
+            (this.row - that.row) * (this.row - that.row));
     }
 
     public Location add(Location that) {

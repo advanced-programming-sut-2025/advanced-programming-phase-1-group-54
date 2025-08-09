@@ -1,6 +1,12 @@
 package io.github.stardewmini.controller.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import io.github.stardewmini.Main;
 import io.github.stardewmini.model.App;
+import io.github.stardewmini.model.Game;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.enums.SkillType;
 import io.github.stardewmini.model.enums.ToolType;
@@ -11,6 +17,7 @@ import io.github.stardewmini.model.map.AnimalHouse;
 import io.github.stardewmini.model.map.Farm;
 import io.github.stardewmini.model.map.Location;
 import io.github.stardewmini.model.map.Tile;
+import io.github.stardewmini.view.AnimalMenu;
 
 public class AnimalController {
 
@@ -25,6 +32,7 @@ public class AnimalController {
         }
         animal.increaseFriendshipLevel(15);
         animal.setCaressed(true);
+        animal.setPetTime(0);
         return new Result(1,animal + " slightly likes you more!");
     }
 
@@ -42,7 +50,7 @@ public class AnimalController {
         return new Result(1,output.toString());
     }
 
-    public static Result moveAnimal(String animalName, Location location) {
+    public static Result moveAnimal(Animal animal, Location location) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarm(player);
         Location locationInFarm = location.delta(farm.getLocation());
@@ -52,9 +60,8 @@ public class AnimalController {
             return new Result(-1, "location is not in your farm");
         }
 
-        Animal animal = player.getAnimals().get(animalName);
-        if(animal == null) {
-            return new Result(-1, "You don't have any animal with name : " + animalName);
+        if(animal.getLocation() != null && animal.getLocation().distance(location) > 5){
+            return new Result(false,"location is too far");
         }
 
         if(tile.getThingOnTile() == null){
@@ -87,6 +94,9 @@ public class AnimalController {
             if(pastTile.getThingOnTile() instanceof AnimalHouse pastAnimalHouse){
                 pastAnimalHouse.decreaseNumberOfAnimals(1);
                 pastTile = pastTile.getTop();
+                if(! animal.isGoneOut()){
+                    animal.setEatTime(0);
+                }
             }
             pastTile.setThingOnTile(null);
         }
@@ -106,7 +116,7 @@ public class AnimalController {
         }
 
         animal.setFed(true);
-
+        animal.setEatTime(0);
         return new Result(1,animal + " was fed successfully");
     }
 
@@ -180,5 +190,62 @@ public class AnimalController {
         player.increaseMoney((int)(animal.getSellPrice() * ((double) animal.getFriendshipLevel() /1000) + 0.3));
 
         return new Result(1,"You sold " + animal.getName() + " for " + price + " money");
+    }
+
+    public static void eatAnimation(Animal animal,float delta){
+        Animation<TextureRegion> animation = GameAssetManager.getInstance().getAnimalEat(animal.getAnimalName());
+        animal.getSprite().setRegion(animation.getKeyFrame(animal.getEatTime()));
+        animal.setEatTime(animal.getEatTime() + delta);
+        animation.setPlayMode(Animation.PlayMode.REVERSED);
+    }
+
+    public static void petAnimal(Animal animal,float delta){
+        Animation<TextureRegion> animation = GameAssetManager.getInstance().getAnimalPet(animal.getAnimalName());
+        animal.getSprite().setRegion(animation.getKeyFrame(animal.getPetTime()));
+        animal.setPetTime(animal.getPetTime() + delta);
+        animation.setPlayMode(Animation.PlayMode.NORMAL);
+    }
+
+    public static void walkAnimation(Animal animal,float delta){
+        Animation<TextureRegion> animation = GameAssetManager.getInstance().getAnimalWalk(animal.getAnimalName());
+        animal.getSprite().setRegion(animation.getKeyFrame(animal.getWalkTime()));
+        if(animation.isAnimationFinished(animal.getWalkTime())){
+            animal.setWalkTime(0);
+        }
+        else{
+            animal.setWalkTime(animal.getWalkTime() + delta);
+        }
+        animation.setPlayMode(Animation.PlayMode.LOOP);
+    }
+     private final static Animal animal = Animal.getAnimal("Cow");
+
+    public static void render(float delta){
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+
+//        for(Animal animal : App.getCurrentGame().getCurrentPlayer().getAnimals().values()) {
+
+        eatAnimation(animal, delta);
+        animal.getSprite().setPosition(Gdx.graphics.getWidth()/2f + 100, Gdx.graphics.getHeight()/2f + 100);
+        animal.getSprite().setSize(200, 200);
+        animal.getSprite().draw(Main.getBatch());
+//            if (false) { // todo  walk animation
+//
+//            }
+//            else if (! gameAssetManager.getAnimalPet(animal.getAnimalName()).isAnimationFinished(animal.getPetTime()) || true) {
+//                petAnimal(animal, delta);
+//                animal.getSprite().setPosition(Gdx.graphics.getWidth()/2f + 100, Gdx.graphics.getHeight()/2f + 100);
+//                animal.getSprite().setSize(200, 200);
+//                animal.getSprite().draw(Main.getBatch());
+//            }
+//            else if (! gameAssetManager.getAnimalEat(animal.getAnimalName()).isAnimationFinished(animal.getEatTime())) {
+//                eatAnimation(animal, delta);
+//            }
+//            else if (animal.getProduce() != null) {
+//
+//            }
+//            else {
+//
+//            }
+//        }
     }
 }

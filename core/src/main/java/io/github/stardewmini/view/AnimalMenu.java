@@ -2,6 +2,7 @@ package io.github.stardewmini.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -64,7 +65,7 @@ public class AnimalMenu implements Screen {
 
         moveButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                AnimalController.moveAnimal("name",null);
+                AnimalController.moveAnimal(animal,null);
             }
         });
 
@@ -93,7 +94,6 @@ public class AnimalMenu implements Screen {
 
         window.getTitleTable().add(backButton).pad(10);
 
-
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
 
@@ -105,11 +105,14 @@ public class AnimalMenu implements Screen {
     @Override
     public void render(float v) {
         ScreenUtils.clear(0, 0, 0, 1);
-        Main.getBatch().begin();
-        Main.getBatch().end();
+
 
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();
+
+        Main.getBatch().begin();
+//        AnimalController.render(v);
+        Main.getBatch().end();
     }
 
     @Override

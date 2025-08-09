@@ -1,7 +1,13 @@
 package io.github.stardewmini.controller.game;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.DateTime;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.enums.Direction;
 import io.github.stardewmini.model.enums.Feature;
@@ -22,7 +28,7 @@ import java.util.ArrayList;
 
 public class CraftingController {
 
-    public static Result showCraftingRecipe(){
+    public static Result showCraftingRecipe(Window window){
 
         Player player = App.getCurrentGame().getCurrentPlayer();
         Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
@@ -30,15 +36,30 @@ public class CraftingController {
             return new Result(-1,"You are not in the Cabin");
         }
 
-        ArrayList<Recipe> craftingRecipes = App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes();
-        StringBuilder output = new StringBuilder();
+        ArrayList<Recipe> craftingRecipes = player.getLearnedCraftingRecipes();
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+        int inRow = 0;
         for (Recipe recipe : Recipe.craftRecipes.values()) {
-            output.append(recipe.getName()).append(" : ").append(craftingRecipes.contains(recipe)).append("\n");
+            Image image = new Image(gameAssetManager.getRecipe(recipe.getName()));
+            if(craftingRecipes.contains(recipe)){
+                image.addListener(new ClickListener() {
+                    public void clicked(InputEvent event, float x, float y) {
+                        String artisanName = recipe.getName();
+                        crafting(artisanName.substring(0,artisanName.length() - 7));
+                    }
+                });
+            }
+            else {
+                image.setColor(Color.GRAY);
+            }
+            window.add(image).expand().pad(10);
+            inRow++;
+            if(inRow == 10){
+                window.row();
+                inRow = 0;
+            }
         }
-        if(!output.isEmpty()) {
-            output.deleteCharAt(output.length() - 1);
-        }
-        return new Result(1, output.toString());
+        return new Result(1, "");
 
     }
 

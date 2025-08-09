@@ -1,5 +1,6 @@
 package io.github.stardewmini.model.lives;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -33,6 +34,9 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
         }
         Type type = new TypeToken<HashMap<String, Animal>>(){}.getType();
         animals = gson.fromJson(file,type);
+        for(Animal animal : animals.values()){
+            animal.sprite = new Sprite();
+        }
     }
 
     private static final int MAX_FRIENDSHIP = 1000;
@@ -67,6 +71,10 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
     private boolean goneOut;
     private AnimalProduce produce;
     protected Location location;
+    private Sprite sprite;
+    private float eatTime;
+    private float walkTime;
+    private float petTime;
 
     public Animal(String animalName, int sellPrice, int numberOfProducingDays, ArrayList<String> animalProducesNames) {
         this.animalName = animalName;
@@ -123,6 +131,22 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
         return location;
     }
 
+    public Sprite getSprite() {
+        return sprite;
+    }
+
+    public float getEatTime() {
+        return eatTime;
+    }
+
+    public float getWalkTime() {
+        return walkTime;
+    }
+
+    public float getPetTime() {
+        return petTime;
+    }
+
     public void increaseDaysAfterProducing(int daysAfterProducing) {
         this.daysAfterProducing += daysAfterProducing;
     }
@@ -174,6 +198,18 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public void setEatTime(float eatTime) {
+        this.eatTime = eatTime;
+    }
+
+    public void setWalkTime(float walkTime) {
+        this.walkTime = walkTime;
+    }
+
+    public void setPetTime(float petTime) {
+        this.petTime = petTime;
     }
 
     @Override

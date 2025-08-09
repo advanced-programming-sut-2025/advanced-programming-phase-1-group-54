@@ -3,6 +3,7 @@ package io.github.stardewmini.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import io.github.stardewmini.model.enums.Season;
@@ -15,6 +16,7 @@ import io.github.stardewmini.model.items.plants.Crop;
 import io.github.stardewmini.model.items.plants.Fruit;
 import io.github.stardewmini.model.items.plants.Seed;
 import io.github.stardewmini.model.items.plants.Tree;
+import io.github.stardewmini.model.items.recipes.Recipe;
 import io.github.stardewmini.model.lives.Animal;
 
 import java.util.HashMap;
@@ -253,7 +255,11 @@ public class GameAssetManager {
         return star;
     }
 
-    private final HashMap<String,TextureRegion[][]> animals  = new HashMap<>();
+    private final HashMap<String, Animation<TextureRegion>> animalWalk = new HashMap<>();
+    private final HashMap<String,Animation<TextureRegion>> animalPet = new HashMap<>();
+    private final HashMap<String,Animation<TextureRegion>> animalEat = new HashMap<>();
+    private final HashMap<String,Texture> animals = new HashMap<>();
+    private final HashMap<String,Texture> producedAnimal = new HashMap<>();
     {
         Texture texture;
         TextureRegion[][] frames;
@@ -262,29 +268,33 @@ public class GameAssetManager {
 //            System.out.println(key);
             texture = new Texture("Stardew_Valley_Images-main/Animal_Sprites/" + fileName(key) +".png");
             frames = TextureRegion.split(texture,texture.getWidth()/4,texture.getHeight()/5);
-            animals.put(key,frames);
+            animalWalk.put(key,new Animation<>(0.1f,frames[1]));
+            animalPet.put(key,new Animation<>(1f,frames[0][0],frames[3][0],frames[3][1],frames[3][0]
+                ,frames[0][0]));
+            animalEat.put(key,new Animation<>(1f,frames[4]));
+            animals.put(key,frames[1][0].getTexture());
+            producedAnimal.put(key,frames[0][0].getTexture());
         }
     }
 
-    public TextureRegion[] getAnimalWalk(String name){
-        return animals.get(name)[1];
+    public Animation<TextureRegion> getAnimalWalk(String name){
+        return animalWalk.get(name);
     }
 
-    public TextureRegion[] getAnimalPet(String name){
-        TextureRegion[][] frames = animals.get(name);
-        TextureRegion[] petFrames = new TextureRegion[3];
-        petFrames[0] = frames[0][0];
-        petFrames[1] = frames[3][0];
-        petFrames[2] = frames[3][1];
-        return petFrames;
+    public Animation<TextureRegion> getAnimalPet(String name){
+        return animalPet.get(name);
     }
 
-    public TextureRegion[] getAnimalEat(String name){
-        return animals.get(name)[4];
+    public Animation<TextureRegion> getAnimalEat(String name){
+        return animalEat.get(name);
+    }
+
+    public Texture getAnimal(String name){
+        return animals.get(name);
     }
 
     public Texture getProducedAnimal(String name){
-        return animals.get(name)[0][0].getTexture();
+        return producedAnimal.get(name);
     }
 
     private final HashMap<String,Texture> artisans  = new HashMap<>();
@@ -302,6 +312,26 @@ public class GameAssetManager {
     public Texture getArtisans(String name) {
         return artisans.get(name);
     }
+
+    private final HashMap<String,Texture> recipe = new HashMap<>();
+    {
+        for(String key : Recipe.craftRecipes.keySet()) {
+            String name = key.substring(0,key.length() - 7);
+//            System.out.println(name);
+            recipe.put(key,new Texture("Stardew_Valley_Images-main/Craftable_item/" + fileName(name) + ".png"));
+        }
+        for(String key : Recipe.foodRecipes.keySet()) {
+            String name = key.substring(0,key.length() - 7);
+//            System.out.println(name);
+            recipe.put(key,new Texture("Stardew_Valley_Images-main/Recipe/" + fileName(name) + ".png"));
+        }
+    }
+
+    public Texture getRecipe(String name) {
+        return recipe.get(name);
+    }
+
+
 
     public Texture getItem(String name){
         Texture texture;
@@ -333,4 +363,5 @@ public class GameAssetManager {
 
         return null;
     }
+
 }
