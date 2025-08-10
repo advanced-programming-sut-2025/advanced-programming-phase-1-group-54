@@ -18,6 +18,7 @@ import io.github.stardewmini.model.items.plants.Seed;
 import io.github.stardewmini.model.items.plants.Tree;
 import io.github.stardewmini.model.items.recipes.Recipe;
 import io.github.stardewmini.model.lives.Animal;
+import io.github.stardewmini.model.map.AnimalHousePrototype;
 
 import java.util.HashMap;
 
@@ -258,8 +259,8 @@ public class GameAssetManager {
     private final HashMap<String, Animation<TextureRegion>> animalWalk = new HashMap<>();
     private final HashMap<String,Animation<TextureRegion>> animalPet = new HashMap<>();
     private final HashMap<String,Animation<TextureRegion>> animalEat = new HashMap<>();
-    private final HashMap<String,Texture> animals = new HashMap<>();
-    private final HashMap<String,Texture> producedAnimal = new HashMap<>();
+    private final HashMap<String,TextureRegion> animals = new HashMap<>();
+    private final HashMap<String,TextureRegion> producedAnimal = new HashMap<>();
     {
         Texture texture;
         TextureRegion[][] frames;
@@ -272,8 +273,8 @@ public class GameAssetManager {
             animalPet.put(key,new Animation<>(1f,frames[0][0],frames[3][0],frames[3][1],frames[3][0]
                 ,frames[0][0]));
             animalEat.put(key,new Animation<>(1f,frames[4]));
-            animals.put(key,frames[1][0].getTexture());
-            producedAnimal.put(key,frames[0][0].getTexture());
+            animals.put(key,frames[1][0]);
+            producedAnimal.put(key,frames[0][0]);
         }
     }
 
@@ -289,11 +290,11 @@ public class GameAssetManager {
         return animalEat.get(name);
     }
 
-    public Texture getAnimal(String name){
+    public TextureRegion getAnimal(String name){
         return animals.get(name);
     }
 
-    public Texture getProducedAnimal(String name){
+    public TextureRegion getProducedAnimal(String name){
         return producedAnimal.get(name);
     }
 
@@ -329,6 +330,20 @@ public class GameAssetManager {
 
     public Texture getRecipe(String name) {
         return recipe.get(name);
+    }
+
+    private final HashMap<String,Texture> buildings = new HashMap<>();
+    {
+        for(String key : AnimalHousePrototype.getAnimalHouseList()){
+//            System.out.println(key);
+            buildings.put(key,new Texture("Stardew_Valley_Images-main/Buildings/" + fileName(key) +".png"));
+        }
+        buildings.put("Green House",new Texture("Stardew_Valley_Images-main/Buildings/GreenHouse.png"));
+        buildings.put("lake",new Texture("Stardew_Valley_Images-main/Buildings/lake.png"));
+    }
+
+    public Texture getBuilding(String name) {
+        return buildings.get(name);
     }
 
 

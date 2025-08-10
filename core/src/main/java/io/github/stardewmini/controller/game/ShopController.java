@@ -1,0 +1,89 @@
+package io.github.stardewmini.controller.game;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import io.github.stardewmini.model.GameAssetManager;
+import io.github.stardewmini.model.lives.Animal;
+import io.github.stardewmini.model.map.AnimalHouse;
+import io.github.stardewmini.model.map.AnimalHousePrototype;
+
+public class ShopController {
+    public static void showItems(Table scrollTable, Table table, TextButton buyButton, TextField number,Label itemLabel
+    ,Label priceLabel,TextField nameField) {
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+        int inRow = 0;
+        int price;
+        for(String animal : Animal.getAnimalsList()){
+            price = Animal.getAnimal(animal).getSellPrice();
+            Image image = new Image(gameAssetManager.getProducedAnimal(animal));
+            if(animal.equals("Pig")){
+                image.setColor(1,1,1,0.4f);
+            }
+            else {
+                int finalPrice = price;
+                image.addListener(new ClickListener() {
+                    public void clicked(InputEvent event, float x, float y) {
+                        table.clear();
+                        image.setSize(Gdx.graphics.getWidth()/12f, Gdx.graphics.getHeight()/8f);
+                        table.add(image).size(Gdx.graphics.getWidth()/12f, Gdx.graphics.getHeight()/8f).row();
+                        itemLabel.setText(animal);
+                        table.add(itemLabel).expand().pad(10);
+                        table.row();
+                        priceLabel.setText(finalPrice + "coin");
+                        table.add(priceLabel).expand().pad(10);
+                        table.row();
+                        table.add(number).expand().pad(10);
+                        table.row();
+                        table.add(nameField).expand().pad(10);
+                        table.row();
+                        table.add(buyButton).expand().pad(10);
+                    }
+                });
+            }
+            Label label = new Label(animal + " : " + price + "Coin", gameAssetManager.getSkin());
+            Table itemTable = new Table();
+            image.setSize(Gdx.graphics.getWidth()/12f, Gdx.graphics.getHeight()/8f);
+            itemTable.add(image).size(Gdx.graphics.getWidth()/12f, Gdx.graphics.getHeight()/8f).row();
+            label.setFontScale(0.5f);
+            itemTable.add(label);
+            scrollTable.add(itemTable).expand().pad(30);
+            inRow++;
+            if(inRow == 4){
+                scrollTable.row();
+                inRow = 0;
+            }
+        }
+        scrollTable.row();
+        inRow = 0;
+        for(String animalHouse : AnimalHousePrototype.getAnimalHouseList()){
+            price = AnimalHousePrototype.getAnimalHousePrototype(animalHouse).getSize() *  100;
+            Image image = new Image(gameAssetManager.getBuilding(animalHouse));
+            if(animalHouse.equals("Big Barn")){
+                image.setColor(1,1,1,0.4f);
+            }
+            else {
+                image.addListener(new ClickListener() {
+                    public void clicked(InputEvent event, float x, float y) {
+
+                    }
+                });
+            }
+            Label label = new Label(animalHouse + " : " + price + "Coin", gameAssetManager.getSkin());
+            Table itemTable = new Table();
+            image.setSize(Gdx.graphics.getWidth()/12f, Gdx.graphics.getHeight()/8f);
+            itemTable.add(image).size(Gdx.graphics.getWidth()/12f, Gdx.graphics.getHeight()/8f).row();
+            label.setFontScale(0.5f);
+            itemTable.add(label);
+            scrollTable.add(itemTable).expand().pad(30);
+            inRow++;
+            if(inRow == 4){
+                scrollTable.row();
+                inRow = 0;
+            }
+        }
+    }
+
+}

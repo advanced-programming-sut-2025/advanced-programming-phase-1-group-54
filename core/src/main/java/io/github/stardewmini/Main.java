@@ -19,7 +19,6 @@ public class Main extends Game {
     public void create() {
         instance = this;
         batch = new SpriteBatch();
-        Recipe.foodRecipeWriteFromJson();
 //        setScreen(new FirstScreen());
 //        setScreen(new AnimalMenu(GameAssetManager.getInstance().getSkin(), Animal.getAnimal("Hen")));
 //        setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getInstance().getSkin()));
@@ -28,7 +27,8 @@ public class Main extends Game {
 //        FishingController.setGame(game);
 //        setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin() , "gsdg","fish"));
 //        setScreen(new CraftingMenu(GameAssetManager.getInstance().getSkin()));
-        setScreen(new CookingMenu(GameAssetManager.getInstance().getSkin()));
+//        setScreen(new CookingMenu(GameAssetManager.getInstance(Skin()));
+        setScreen(new shopMenu(GameAssetManager.getInstance().getSkin()));
 
 
 //        if (App.getLoggedInUser() != null) {
