@@ -6,12 +6,11 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.GameMenuController;
-import io.github.stardewmini.controller.LoginMenuController;
-import io.github.stardewmini.controller.game.CommonGameController;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.SoundManager;
@@ -22,6 +21,7 @@ public class CreateGameMenu implements Screen {
     private Table root;
     private Table firstPage;
     private Table secondPage;
+    private Label choosingMapLabel;
     private Stage stage;
 
     private final ArrayList<String> playerNames = new ArrayList<>();
@@ -35,6 +35,10 @@ public class CreateGameMenu implements Screen {
         }
 
         return message.toString();
+    }
+
+    private String getChoosingMapString() {
+        return "Choose map for " + GameMenuController.getNextPlayerUsername();
     }
 
     private void createFirstPage(Skin skin) {
@@ -75,7 +79,9 @@ public class CreateGameMenu implements Screen {
 
                 resultLabel.setText(result.message());
                 if (result.success()) {
-                    // TODO next page;
+                    choosingMapLabel.setText(getChoosingMapString());
+                    root.removeActor(firstPage);
+                    root.add(secondPage).expand().fill().row();
                 }
             }
         });
@@ -111,6 +117,66 @@ public class CreateGameMenu implements Screen {
         firstPage.add(backButton).height(90).width(300);
     }
 
+    private void createSecondPage(Skin skin) {
+        choosingMapLabel = new Label("", skin, "Bold");
+
+        SelectBox<Integer> farmSelectBox = new SelectBox<>(skin);
+        Integer[] integerArray = new Integer[GameMenuController.getNumberOfFarms()];
+        for (int i = 0; i < integerArray.length; i++) {
+            integerArray[i] = i + 1;
+        }
+        farmSelectBox.setItems(integerArray);
+
+        Label resultLabel = new Label("", skin);
+
+        TextButton nextButton = new TextButton("Next", skin);
+        nextButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                SoundManager.getInstance().playClick();
+                Result result = GameMenuController.chooseNewGameMap(farmSelectBox.getSelected());
+
+                resultLabel.setText(result.message());
+
+                if (result.code() == 0) {
+                    choosingMapLabel.setText(getChoosingMapString());
+                }
+                else if (result.code() == 1) {
+                    GameMenuController.createNewGame();
+                    GameMenuController.loadGame();
+                    Main.getInstance().getScreen().dispose();
+                    Main.getInstance().setScreen(new GameScreen());
+                }
+            }
+        });
+
+
+        TextButton backButton = new TextButton("Back", skin);
+        backButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                SoundManager.getInstance().playClick();
+                GameMenuController.reset();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new MainMenu());
+            }
+        });
+
+        secondPage = new Table();
+        secondPage.setFillParent(true);
+        secondPage.center();
+
+        secondPage.add(choosingMapLabel);
+        secondPage.row().pad(10, 0, 10, 0);
+        secondPage.add(farmSelectBox);
+        secondPage.row().pad(10, 0, 10, 0);
+        secondPage.add(resultLabel);
+        secondPage.row().pad(10, 0, 10, 0);
+        secondPage.add(nextButton).height(90).width(300);
+        secondPage.row().pad(10, 0, 10, 0);
+        secondPage.add(backButton).height(90).width(300);
+    }
+
     @Override
     public void show() {
         stage = new Stage(new ScreenViewport());
@@ -123,7 +189,9 @@ public class CreateGameMenu implements Screen {
         root.center();
 
         createFirstPage(skin);
-        root.add(firstPage).expand().fill();
+        createSecondPage(skin);
+
+        root.add(firstPage).expand().fill().row();
 
         stage.addActor(root);
     }

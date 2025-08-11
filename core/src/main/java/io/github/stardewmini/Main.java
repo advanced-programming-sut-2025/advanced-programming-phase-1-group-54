@@ -28,15 +28,15 @@ public class Main extends Game {
 //        setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin() , "gsdg","fish"));
 //        setScreen(new CraftingMenu(GameAssetManager.getInstance().getSkin()));
 //        setScreen(new CookingMenu(GameAssetManager.getInstance(Skin()));
-        setScreen(new shopMenu(GameAssetManager.getInstance().getSkin()));
+//        setScreen(new shopMenu(GameAssetManager.getInstance().getSkin()));
 
 
-//        if (App.getLoggedInUser() != null) {
-//            setScreen(new MainMenu());
-//        }
-//        else {
-//            setScreen(new StartMenu());
-//        }
+        if (App.getLoggedInUser() != null) {
+            setScreen(new MainMenu());
+        }
+        else {
+            setScreen(new StartMenu());
+        }
     }
 
     @Override

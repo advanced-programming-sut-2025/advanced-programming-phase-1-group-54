@@ -14,7 +14,6 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.GameMenuController;
 import io.github.stardewmini.controller.MainMenuController;
-import io.github.stardewmini.controller.game.MapController;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.SoundManager;
@@ -87,7 +86,7 @@ public class PreGameMenu implements Screen {
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(0, 0, 0, 1);
+        ScreenUtils.clear(1, 0, 0, 1);
         Main.getBatch().begin();
         Main.getBatch().end();
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));

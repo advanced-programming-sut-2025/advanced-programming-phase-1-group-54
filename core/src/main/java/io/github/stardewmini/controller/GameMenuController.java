@@ -89,4 +89,12 @@ public class GameMenuController {
         App.setCurrentGame(game);
         return new Result(true, "Loading... Done!");
     }
+
+    public static int getNumberOfFarms() {
+        return FarmBuilder.getInstance().getNumberOfFarms();
+    }
+
+    public static void reset() {
+        GameBuilder.getInstance().reset();
+    }
 }

@@ -32,7 +32,8 @@ public class GameBuilder {
     }
 
     public void setUsers(User[] users) {
-        this.users = users;
+        this.users = new User[users.length];
+        System.arraycopy(users, 0, this.users, 0, users.length);
         playerFarmNumbers = new int[users.length];
     }
 
