@@ -199,7 +199,8 @@ public class MapController {
                 if (tile.getThingOnTile() != null && tile.getThingOnTile().equals(currentBuilding))
                     tile = tile.getTop();
 
-                tile.getSprite().draw(batch);
+                if (tile.getSprite().getTexture() != null)
+                    tile.getSprite().draw(batch);
             }
         }
     }
