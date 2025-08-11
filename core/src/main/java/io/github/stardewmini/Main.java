@@ -19,7 +19,7 @@ public class Main extends Game {
     public void create() {
         instance = this;
         batch = new SpriteBatch();
-//        setScreen(new FirstScreen());
+        setScreen(new FirstScreen());
 //        setScreen(new AnimalMenu(GameAssetManager.getInstance().getSkin(), Animal.getAnimal("Hen")));
 //        setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getInstance().getSkin()));
 //        setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
@@ -29,14 +29,15 @@ public class Main extends Game {
 //        setScreen(new CraftingMenu(GameAssetManager.getInstance().getSkin()));
 //        setScreen(new CookingMenu(GameAssetManager.getInstance(Skin()));
 //        setScreen(new shopMenu(GameAssetManager.getInstance().getSkin()));
+//        setScreen(new CheatMenu(GameAssetManager.getInstance().getSkin()));
 
 
-        if (App.getLoggedInUser() != null) {
-            setScreen(new MainMenu());
-        }
-        else {
-            setScreen(new StartMenu());
-        }
+//        if (App.getLoggedInUser() != null) {
+//            setScreen(new MainMenu());
+//        }
+//        else {
+//            setScreen(new StartMenu());
+//        }
     }
 
     @Override

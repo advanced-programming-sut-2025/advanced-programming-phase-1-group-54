@@ -19,6 +19,7 @@ import io.github.stardewmini.model.items.plants.Tree;
 import io.github.stardewmini.model.items.recipes.Recipe;
 import io.github.stardewmini.model.lives.Animal;
 import io.github.stardewmini.model.map.AnimalHousePrototype;
+import io.github.stardewmini.model.map.Shops.Shop;
 
 import java.util.HashMap;
 
@@ -294,6 +295,35 @@ public class GameAssetManager {
         return animals.get(name);
     }
 
+    private final Animation<TextureRegion> playerWalkUp;
+    private final Animation<TextureRegion> playerWalkDown;
+    private final Animation<TextureRegion> playerWalkLeft;
+    private final Animation<TextureRegion> playerWalkRight;
+    {
+        Texture texture = new Texture("Stardew_Valley_Images-main/Player/Alex3.png");
+        TextureRegion[][] frames = TextureRegion.split(texture,texture.getWidth(),texture.getHeight());
+        playerWalkUp = new Animation<>(0.5f,frames[2]);
+        playerWalkDown = new Animation<>(0.5f,frames[0]);
+        playerWalkLeft = new Animation<>(0.5f,frames[3]);
+        playerWalkRight = new Animation<>(0.5f,frames[1]);
+    }
+
+    public Animation<TextureRegion> getPlayerWalkUp() {
+        return playerWalkUp;
+    }
+
+    public Animation<TextureRegion> getPlayerWalkDown() {
+        return playerWalkDown;
+    }
+
+    public Animation<TextureRegion> getPlayerWalkLeft() {
+        return playerWalkLeft;
+    }
+
+    public Animation<TextureRegion> getPlayerWalkRight() {
+        return playerWalkRight;
+    }
+
     public TextureRegion getProducedAnimal(String name){
         return producedAnimal.get(name);
     }
@@ -340,12 +370,24 @@ public class GameAssetManager {
         }
         buildings.put("Green House",new Texture("Stardew_Valley_Images-main/Buildings/GreenHouse.png"));
         buildings.put("lake",new Texture("Stardew_Valley_Images-main/Buildings/lake.png"));
+        buildings.put("floor",new Texture("Stardew_Valley_Images-main/Buildings/floor.png"));
+        buildings.put("Blacksmith",new Texture("Stardew_Valley_Images-main/Buildings/Blacksmith.png"));
+        buildings.put("Carpenter Shop",new Texture("Stardew_Valley_Images-main/Buildings/Carpenter's_Shop.png"));
+        buildings.put("Fish Shop",new Texture("Stardew_Valley_Images-main/Buildings/Fish_Shop.png"));
+        buildings.put("Jojamart",new Texture("Stardew_Valley_Images-main/Buildings/Jojamart.png"));
+        buildings.put("marine Shop",new Texture("Stardew_Valley_Images-main/Buildings/marine_shop.png"));
+        buildings.put("Pierres Shop",new Texture("Stardew_Valley_Images-main/Buildings/Pierres_shop.png"));
+        buildings.put("House" , new Texture("Stardew_Valley_Images-main/Buildings/HouseLevel1png.png"));
+        buildings.put("AbigailHouse",new Texture("Stardew_Valley_Images-main/Buildings/AbigailHouse.png"));
+        buildings.put("HarveyHouse",new Texture("Stardew_Valley_Images-main/Buildings/HarveyHouse.png"));
+        buildings.put("LeahHouse",new Texture("Stardew_Valley_Images-main/Buildings/LeahHouse.png"));
+        buildings.put("RobinHouse",new Texture("Stardew_Valley_Images-main/Buildings/RobinHouse.png"));
+        buildings.put("SebastianHouse",new Texture("Stardew_Valley_Images-main/Buildings/SebastianHouse.png"));
     }
 
     public Texture getBuilding(String name) {
         return buildings.get(name);
     }
-
 
 
     public Texture getItem(String name){

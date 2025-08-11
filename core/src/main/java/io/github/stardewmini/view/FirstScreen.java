@@ -16,13 +16,14 @@ public class FirstScreen implements Screen {
     @Override
     public void show() {
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
-        Texture aks = new Texture("Stardew_Valley_Images-main/sprites/Farm Buildings.png");
-        int totalWidth = aks.getWidth()/2;
+        Texture aks = new Texture("Stardew_Valley_Images-main/sprites/Alex.png");
+        int totalWidth = aks.getWidth();
         int totalHeight = aks.getHeight();
-        TextureRegion[][] cow = TextureRegion.split(aks,totalWidth,totalHeight/3);
+        TextureRegion[][] cow = TextureRegion.split(aks,totalWidth/9,totalHeight);
         Main.getBatch().begin();
         Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
 //        for(int i = 0; i < 3; i++){
 //            Gdx.gl.glClearColor(0, 0, 0, 0);
 //            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -33,8 +34,8 @@ public class FirstScreen implements Screen {
 //        }
 //        Main.getBatch().draw(cow[4][0],0,4 * totalHeight/14 - totalHeight/14 * 3);
 //        Main.getBatch().draw(cow[6][0],0,4 * totalHeight/14 - totalHeight/14 * 4);
-        Main.getBatch().draw(cow[0][0],0,0);
-        Main.getBatch().end();
+//        Main.getBatch().draw(cow[0][0],0,0);
+//        Main.getBatch().end();
 
 //        Pixmap pixmap;
 //        Pixmap flipped;
@@ -65,17 +66,21 @@ public class FirstScreen implements Screen {
 //                i++;
 //                Main.getBatch().draw(cow[0][i],totalWidth/9,0);
 //            }
-//        for(int i = 0; i < cow.length; i++){
-//            for(int j = 0; j < cow[i].length; j++){
-//                Main.getBatch().draw(cow[i][j],j*100 + 100,i*200 + 100,100,400);
+//        for(int i = 0; i < cow.length; i++) {
+//            for (int j = 0; j < cow[i].length; j++) {
+//                Main.getBatch().draw(cow[i][j], j * totalWidth/9, 0);
 //            }
+//
 //        }
-
+        Main.getBatch().end();
+//
+//        for(int i = 0;i < 9;i++){
+//
 //            Pixmap pixmap;
 //            Pixmap flipped;
 //
-//            if(i %3 == 2){
-//                pixmap = ScreenUtils.getFrameBufferPixmap(0,0,2 * totalWidth/9,totalHeight);
+//            if(i %3 == 1){
+//                pixmap = ScreenUtils.getFrameBufferPixmap(i * totalWidth/9,0,2 * totalWidth/9,totalHeight);
 //                flipped = new Pixmap(2 * totalWidth/9,totalHeight,Pixmap.Format.RGBA8888);
 //                for(int y = 0 ;y < totalHeight ;y++) {
 //                    for(int x = 0 ;x < 2 * totalWidth/9 ;x++) {
@@ -83,9 +88,10 @@ public class FirstScreen implements Screen {
 //                        flipped.drawPixel(x,totalHeight - y - 1,pixel);
 //                    }
 //                }
+//                i++;
 //            }
 //            else{
-//                pixmap = ScreenUtils.getFrameBufferPixmap(0,0,totalWidth/9,totalHeight);
+//                pixmap = ScreenUtils.getFrameBufferPixmap(i * totalWidth/9,0,totalWidth/9,totalHeight);
 //                flipped = new Pixmap(totalWidth/9,totalHeight,Pixmap.Format.RGBA8888);
 //                for(int y = 0 ;y < totalHeight ;y++) {
 //                    for(int x = 0 ;x < totalWidth/9 ;x++) {
@@ -96,7 +102,7 @@ public class FirstScreen implements Screen {
 //            }
 //
 //
-//            PixmapIO.writePNG(Gdx.files.local("Robin" + i +".png"), flipped);
+//            PixmapIO.writePNG(Gdx.files.local("Alex" + i +".png"), flipped);
 //        }
 
 

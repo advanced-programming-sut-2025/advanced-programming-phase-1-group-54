@@ -16,13 +16,25 @@ import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.map.*;
 
 public class CheatController {
-    public static Result advanceTime(int x) {
+    public static Result advanceTime(String string) {
+        int x;
+        try{
+            x = Integer.parseInt(string);
+        }catch (Exception e){
+            return new Result(false,"only enter numbers");
+        }
         Game game = App.getCurrentGame();
         game.getDateTime().increaseHour(x);
         return new Result(true, "it's now " + game.getDateTime().toString());
     }
 
-    public static Result advanceDate(int x) {
+    public static Result advanceDate(String string) {
+        int x;
+        try{
+            x = Integer.parseInt(string);
+        }catch (Exception e){
+            return new Result(false,"only enter numbers");
+        }
         Game game = App.getCurrentGame();
         game.getDateTime().increaseDay(x);
         return new Result(true, "it's now " + game.getDateTime().toString());
@@ -75,13 +87,25 @@ public class CheatController {
         return new Result(1,"Now " + animal + "'s friendship level is around " + animal.getFriendshipLevel());
     }
 
-    public static Result addMoney(int money) {
+    public static Result addMoney(String string) {
+        int money;
+        try{
+            money = Integer.parseInt(string);
+        }catch (Exception e){
+            return new Result(false,"only enter numbers");
+        }
         Player player = App.getCurrentGame().getCurrentPlayer();
         player.increaseMoney(money);
         return new Result(true, "You are richer than before!");
     }
 
-    public static Result addItem(String itemName, int count) {
+    public static Result addItem(String itemName, String countString) {
+        int count;
+        try{
+            count = Integer.parseInt(countString);
+        }catch (Exception e){
+            return new Result(false,"only enter numbers");
+        }
         Player player = App.getCurrentGame().getCurrentPlayer();
         Item item = CommonGameController.findItem(itemName);
         if(item == null) {
