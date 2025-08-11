@@ -383,6 +383,7 @@ public class GameAssetManager {
         buildings.put("LeahHouse",new Texture("Stardew_Valley_Images-main/Buildings/LeahHouse.png"));
         buildings.put("RobinHouse",new Texture("Stardew_Valley_Images-main/Buildings/RobinHouse.png"));
         buildings.put("SebastianHouse",new Texture("Stardew_Valley_Images-main/Buildings/SebastianHouse.png"));
+        buildings.put("TheStardropSaloonShop",new Texture("Stardew_Valley_Images-main/Buildings/stardrop_saloon.png"));
     }
 
     public Texture getBuilding(String name) {
