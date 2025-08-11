@@ -10,7 +10,7 @@ public class RegisterMenuController {
     public static Result register(String username, String password, String confirmPassword, String nickname,
                                   String email, Gender gender) {
         if (!isUsernameUnique(username)) {
-            return new Result(true,
+            return new Result(false,
                 String.format("Username is taken, recommended username: %s", getNewUsername(username)));
         }
 
