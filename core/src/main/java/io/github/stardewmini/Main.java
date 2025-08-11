@@ -28,9 +28,10 @@ public class Main extends Game {
 //        FishingController.setGame(game);
 //        setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin() , "gsdg","fish"));
 //        setScreen(new CraftingMenu(GameAssetManager.getInstance().getSkin()));
-        setScreen(new CookingMenu(GameAssetManager.getInstance().getSkin()));
+//        setScreen(new CookingMenu(GameAssetManager.getInstance().getSkin()));
 
 
+//
 //        if (App.getLoggedInUser() != null) {
 //            setScreen(new MainMenu());
 //        }

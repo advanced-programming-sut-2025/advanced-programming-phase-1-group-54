@@ -1,6 +1,8 @@
 package io.github.stardewmini.model.lives;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import io.github.stardewmini.model.DailyUpdate;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.HourUpdate;
 import io.github.stardewmini.model.User;
 import io.github.stardewmini.model.enums.*;

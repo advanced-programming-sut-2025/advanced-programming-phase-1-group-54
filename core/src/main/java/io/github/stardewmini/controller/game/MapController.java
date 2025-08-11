@@ -1,9 +1,7 @@
 package io.github.stardewmini.controller.game;
 
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.Game;
-import io.github.stardewmini.model.Placeable;
-import io.github.stardewmini.model.Result;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import io.github.stardewmini.model.*;
 import io.github.stardewmini.model.enums.Direction;
 import io.github.stardewmini.model.enums.Symbol;
 import io.github.stardewmini.model.items.Material;
@@ -32,7 +30,7 @@ public class MapController {
         Material wood = Material.getMaterial("Wood");
 
         boolean hasWood = player.getBackpack().getNumberOfItemInBackPack().get(wood) >=
-                GreenHouse.getNeededWood();
+            GreenHouse.getNeededWood();
 
         if (!hasWood) {
             return new Result(true, "you don't have enough wood");
@@ -93,7 +91,7 @@ public class MapController {
             if (energyNeeded >= player.getEnergy() * 20) {
                 Result passOut = CommonGameController.passOut();
                 return new Result(true, String.format("Player has fallen at location (%d, %d)!\n",
-                        player.getCurrentLocation().row(), player.getCurrentLocation().column()) + passOut.message());
+                    player.getCurrentLocation().row(), player.getCurrentLocation().column()) + passOut.message());
             }
 
             Tile A = world.getTileAt(player.getCurrentLocation()).getTop();
@@ -121,7 +119,7 @@ public class MapController {
             currentBuilding = building;
 
         if (location.row() < 0 || location.column() < 0 ||
-                location.row() + size - 1 >= World.getNumberOfRows() || location.column() + size - 1 >= World.getNumberOfColumns())
+            location.row() + size - 1 >= World.getNumberOfRows() || location.column() + size - 1 >= World.getNumberOfColumns())
             return new Result(false, "invalid location and size");
 
         StringBuilder message = new StringBuilder();
@@ -150,11 +148,11 @@ public class MapController {
             for (Direction direction : Direction.values()) {
                 Location nearLocation = location.getLocationAt(direction);
                 if (world.getTileAt(nearLocation).getThingOnTile() == null ||
-                        !world.getTileAt(nearLocation).getThingOnTile().equals(building))
+                    !world.getTileAt(nearLocation).getThingOnTile().equals(building))
                     continue;
 
                 if (world.getTileAt(nearLocation).getTop().getThingOnTile() != null &&
-                        world.getTileAt(nearLocation).getTop().getThingOnTile().equals(placeable)) {
+                    world.getTileAt(nearLocation).getTop().getThingOnTile().equals(placeable)) {
                     return true;
                 }
             }
@@ -165,7 +163,7 @@ public class MapController {
         for (Direction direction : Direction.values()) {
             Location nearLocation = location.getLocationAt(direction);
             if (world.getTileAt(nearLocation).getThingOnTile() != null &&
-                    world.getTileAt(nearLocation).getThingOnTile().equals(placeable)) {
+                world.getTileAt(nearLocation).getThingOnTile().equals(placeable)) {
                 return true;
             }
         }
@@ -178,5 +176,31 @@ public class MapController {
             message.append(symbol.name().toLowerCase()).append(": ").append(symbol).append("\n");
         }
         return new Result(true, message.toString());
+    }
+
+    public static void draw(SpriteBatch batch) {
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+        World world = game.getWorld();
+
+        Building currentBuilding = null;
+        if (world.getTileAt(player.getCurrentLocation()).getThingOnTile() instanceof Building building)
+            currentBuilding = building;
+
+        batch.draw(GameAssetManager.getInstance().getBackground(), 0, 0,
+            Tile.getSize() * World.getNumberOfColumns(),
+            Tile.getSize() * World.getNumberOfRows());
+
+        for (int row = 0; row < World.getNumberOfRows(); row++) {
+            for (int column = 0; column < World.getNumberOfColumns(); column++) {
+                Location tileLocation = new Location(row, column);
+                Tile tile = world.getTileAt(tileLocation);
+
+                if (tile.getThingOnTile() != null && tile.getThingOnTile().equals(currentBuilding))
+                    tile = tile.getTop();
+
+                tile.getSprite().draw(batch);
+            }
+        }
     }
 }

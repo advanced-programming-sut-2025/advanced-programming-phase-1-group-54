@@ -364,4 +364,9 @@ public class GameAssetManager {
         return null;
     }
 
+    private final Texture background = new Texture("background.png");
+
+    public Texture getBackground() {
+        return background;
+    }
 }

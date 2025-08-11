@@ -46,6 +46,15 @@ public class GameBuilder {
         return true;
     }
 
+    public String getNextPlayerName() {
+        for (int i = 0; i < users.length; i++) {
+            if (playerFarmNumbers[i] == 0) {
+                return users[i].getUsername();
+            }
+        }
+        return null;
+    }
+
 
     public Game getResult() {
         DateTime dateTime = new DateTime();

@@ -1,5 +1,8 @@
 package io.github.stardewmini.model.map;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import io.github.stardewmini.controller.game.MapController;
 import io.github.stardewmini.controller.game.PlantsController;
 import io.github.stardewmini.model.DailyUpdate;
 import io.github.stardewmini.model.Placeable;
@@ -11,13 +14,23 @@ import io.github.stardewmini.model.items.plants.Plant;
 import java.util.ArrayList;
 
 public class Tile implements DailyUpdate {
+    private static final int SIZE = 60;
+
     private final Location location;
+
+    private final Sprite sprite = new Sprite();
 
     private Placeable thingOnTile = null;
     private final ArrayList<Feature> features = new ArrayList<>();
 
+    public static int getSize() {
+        return SIZE;
+    }
+
     public Tile(Location location) {
         this.location = location;
+
+        sprite.setSize(SIZE, SIZE);
     }
 
     public Location getLocation() {
@@ -94,5 +107,17 @@ public class Tile implements DailyUpdate {
                 setThingOnTile(null);
             }
         }
+    }
+
+    public void setTexture(Texture texture) {
+        sprite.setTexture(texture);
+    }
+
+    public void setSpritePosition(float x, float y) {
+        sprite.setPosition(x, y);
+    }
+
+    public Sprite getSprite() {
+        return sprite;
     }
 }

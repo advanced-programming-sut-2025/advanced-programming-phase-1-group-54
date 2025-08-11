@@ -1,5 +1,7 @@
 package io.github.stardewmini.controller.game;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import io.github.stardewmini.model.*;
 import io.github.stardewmini.model.enums.Direction;
 import io.github.stardewmini.model.enums.Feature;
@@ -687,4 +689,11 @@ public class CommonGameController {
         return false;
     }
 
+    public static void draw(SpriteBatch batch) {
+        MapController.draw(batch);
+    }
+
+    public static void update(float delta, OrthographicCamera camera) {
+        // TODO update game each frame.
+    }
 }
