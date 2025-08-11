@@ -1,7 +1,11 @@
 package io.github.stardewmini.controller.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.Game;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.enums.Feature;
 import io.github.stardewmini.model.enums.Symbol;
@@ -141,5 +145,89 @@ public class CheatController {
         }
 
         return new Result(true, buildingName + " built!");
+    }
+
+    public static Result addAnimal(Animal animal, String name) {
+        if (animal == null) {
+            return new Result(false, "No such animal.");
+        }
+
+        boolean temp = false;
+        for (AnimalHouse animalHouse : App.getCurrentGame().getCurrentPlayer().getFarm().getAnimalHouses()) {
+            for (String acceptedAnimalName : animalHouse.getAnimals()) {
+                if (acceptedAnimalName.equals(animal.getAnimalName())) {
+                    temp = true;
+                    break;
+                }
+            }
+        }
+        if (!temp) {
+            return new Result(false, "building required");
+        }
+
+        animal.setName(name);
+        animal.setOwner(App.getCurrentGame().getCurrentPlayer());
+        App.getCurrentGame().getCurrentPlayer().getAnimals().put(name, animal);
+        App.getCurrentGame().getDateTime().addDailyUpdateListener(animal);
+        return new Result(true, "animal purchased");
+    }
+
+    public static Result addToFarm(Image image ,String itemName,String name,int price) {
+        // todo change image to correct image
+        image = new Image(GameAssetManager.getInstance().getStar());
+        Player player = App.getCurrentGame().getCurrentPlayer();
+        if(player.getMoney() <= price){
+            return new Result(false, "You can't have " + price +"coin");
+        }
+        player.decreaseMoney(price);
+        Tile tile;
+
+        Location location = App.getCurrentGame().getCurrentPlayer().getFarm().getLocation();
+        if(Animal.getAnimal(itemName) != null) {
+            Animal animal = Animal.getAnimal(itemName);
+            while(! (Gdx.input.isKeyPressed(Input.Keys.ENTER) && AnimalController.moveAnimal(animal,location).success())){
+                if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+                    location = location.add(new Location(0, 1));
+                }
+                if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+                    location = location.add(new Location(0, -1));
+                }
+                if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+                    location = location.add(new Location(1, 0));
+                }
+                if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+                    location = location.add(new Location(-1, 0));
+                }
+                if (Gdx.input.isKeyPressed(Input.Keys.E)) {
+                    return new Result(false, "you gave up");
+                }
+                tile = App.getCurrentGame().getCurrentPlayer().getFarm().getTileAt(location);
+                // todo add image to tile sprite
+            }
+            addAnimal(animal,name);
+            return new Result(true, "animal purchased");
+        }
+        else {
+            while(! (Gdx.input.isKeyPressed(Input.Keys.ENTER) && addBuilding(itemName,location).success())){
+                if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+                    location = location.add(new Location(0, 1));
+                }
+                if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+                    location = location.add(new Location(0, -1));
+                }
+                if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+                    location = location.add(new Location(1, 0));
+                }
+                if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+                    location = location.add(new Location(-1, 0));
+                }
+                if (Gdx.input.isKeyPressed(Input.Keys.E)) {
+                    return new Result(false, "you gave up");
+                }
+                tile = App.getCurrentGame().getCurrentPlayer().getFarm().getTileAt(location);
+            }
+            return new Result(true, "building purchased");
+        }
+
     }
 }

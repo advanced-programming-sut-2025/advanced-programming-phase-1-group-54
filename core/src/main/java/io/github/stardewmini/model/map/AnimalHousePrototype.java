@@ -10,9 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 public class AnimalHousePrototype implements Cloneable{
     // Needed to add location to AnimalHouse
@@ -38,6 +36,10 @@ public class AnimalHousePrototype implements Cloneable{
         else{
             return animalHousePrototype.clone();
         }
+    }
+
+    public static Set<String> getAnimalHouseList(){
+        return new HashSet<>(animalHouses.keySet());
     }
 
     private final String name;
