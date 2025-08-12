@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import io.github.stardewmini.model.Game;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Placeable;
 import io.github.stardewmini.model.enums.Symbol;
@@ -30,6 +31,13 @@ public class Material extends Item implements Placeable,Cloneable {
         }
         Type type = new TypeToken<HashMap<String, Material>>(){}.getType();
         materials = gson.fromJson(file,type);
+
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+        for(String material : materials.keySet()) {
+            Sprite sprite1 = new Sprite();
+            sprite1.setRegion(gameAssetManager.getMaterialStones(material));
+            materials.get(material).setSprite(sprite1);
+        }
 
         try {
             file = new FileReader(Objects.requireNonNull(Material.class.getClassLoader().getResource("foragingMaterials.json")).getFile());
@@ -60,7 +68,7 @@ public class Material extends Item implements Placeable,Cloneable {
         return getMaterial(foragingMaterialName);
     }
 
-    private final Sprite sprite;
+    private Sprite sprite;
 
     public Material(String name, int sellPrice) {
         super(name,false,sellPrice);
@@ -192,5 +200,9 @@ public class Material extends Item implements Placeable,Cloneable {
     @Override
     public Sprite getSprite() {
         return sprite;
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
     }
 }
