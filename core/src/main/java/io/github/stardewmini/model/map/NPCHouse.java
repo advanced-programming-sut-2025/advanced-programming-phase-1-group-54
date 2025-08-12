@@ -1,6 +1,7 @@
 package io.github.stardewmini.model.map;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.enums.Symbol;
 import io.github.stardewmini.model.lives.NPC;
 
@@ -12,6 +13,8 @@ public class NPCHouse extends Building {
         this.npc = npc;
 
         this.getTileAt(getRandomLocation()).setThingOnTile(npc);
+
+        this.getSprite().setRegion(GameAssetManager.getInstance().getBuilding("AbigailHouse"));
     }
 
     public NPC getNpc() {

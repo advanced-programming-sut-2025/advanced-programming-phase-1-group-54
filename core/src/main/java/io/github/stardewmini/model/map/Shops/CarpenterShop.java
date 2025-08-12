@@ -1,5 +1,6 @@
 package io.github.stardewmini.model.map.Shops;
 
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.items.ShopItem;
 import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.map.Area;
@@ -9,10 +10,13 @@ import java.util.ArrayList;
 public class CarpenterShop extends Shop {
     private ArrayList<ShopItem> permanentStock;
     private ArrayList<ItemsinCarpenterShop> farmBuildings;
+
     public CarpenterShop(NPC owner, Area area) {
-        super(owner,8,20, area);
+        super(owner, 8, 20, area);
         this.permanentStock = new ArrayList<>();
         this.farmBuildings = new ArrayList<>();
+
+        this.getSprite().setRegion(GameAssetManager.getInstance().getBuilding("Carpenter Shop"));
     }
 
     public ArrayList<ShopItem> getPermanentStock() {
@@ -36,8 +40,9 @@ public class CarpenterShop extends Shop {
         int ySize;
         int wood;
         int stone;
-        public ItemsinCarpenterShop(int xSize,int ySize,String name, int count, int price,String description, int wood, int stone) {
-            super( name,false,  count,  price, description);
+
+        public ItemsinCarpenterShop(int xSize, int ySize, String name, int count, int price, String description, int wood, int stone) {
+            super(name, false, count, price, description);
             this.xSize = xSize;
             this.ySize = ySize;
             this.wood = wood;

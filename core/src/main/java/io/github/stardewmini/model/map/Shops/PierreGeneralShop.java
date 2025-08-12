@@ -1,5 +1,6 @@
 package io.github.stardewmini.model.map.Shops;
 
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.items.ShopItem;
 import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.map.Area;
@@ -12,13 +13,16 @@ public class PierreGeneralShop extends Shop {
     private ArrayList<SeasonalStockItems> springStock;
     private ArrayList<SeasonalStockItems> summerStock;
     private ArrayList<SeasonalStockItems> fallStock;
+
     public PierreGeneralShop(NPC owner, Area area) {
-        super(owner,9,17, area);
+        super(owner, 9, 17, area);
         this.yearRoundStock = new ArrayList<>();
         this.backPacks = new ArrayList<>();
         this.springStock = new ArrayList<>();
         this.summerStock = new ArrayList<>();
         this.fallStock = new ArrayList<>();
+
+        this.getSprite().setRegion(GameAssetManager.getInstance().getBuilding("Pierres Shop"));
     }
 
     public ArrayList<ShopItem> getYearRoundStock() {
@@ -64,7 +68,8 @@ public class PierreGeneralShop extends Shop {
     public static class BackPacksItems extends ShopItem {
         private boolean isPurchaseAble;
         private String isAvailable;
-        public BackPacksItems(boolean isPurchaseAble,String name, int price,String description, String isAvailable) {
+
+        public BackPacksItems(boolean isPurchaseAble, String name, int price, String description, String isAvailable) {
             super(name, false, 1, price, description);
             this.isPurchaseAble = isPurchaseAble;
             this.isAvailable = isAvailable;
@@ -86,10 +91,12 @@ public class PierreGeneralShop extends Shop {
             isPurchaseAble = purchaseAble;
         }
     }
+
     public static class SeasonalStockItems extends ShopItem {
         private int priceInSeason;
         private int priceOutOfSeason;
-        public SeasonalStockItems (String name, int price,String description,int priceInSeason,int priceOutOfSeason) {
+
+        public SeasonalStockItems(String name, int price, String description, int priceInSeason, int priceOutOfSeason) {
             super(name, false, 5, price, description);
             this.priceInSeason = priceInSeason;
             this.priceOutOfSeason = priceOutOfSeason;
