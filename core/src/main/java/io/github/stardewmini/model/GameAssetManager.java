@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import io.github.stardewmini.model.enums.FishingPoleType;
 import io.github.stardewmini.model.enums.Season;
 import io.github.stardewmini.model.enums.ToolLevel;
 import io.github.stardewmini.model.items.AnimalProduce;
@@ -443,6 +444,13 @@ public class GameAssetManager {
         tool.put("Normal",new Texture("Stardew_Valley_Images-main/Tools/Backpack.png"));
         tool.put("Deluxe",new Texture("Stardew_Valley_Images-main/Tools/36_Backpack.png"));
         tools.put("BackPack",tool);
+
+        tool = new HashMap<>();
+        for(FishingPoleType type : FishingPoleType.values()){
+            System.out.println(type);
+            tool.put(type.toString(),new Texture("Stardew_Valley_Images-main/Tools/Fishing_Pole/" + type + "_Rod.png"));
+        }
+        tools.put("Fishing Pole",tool);
     }
 
     public Texture getTool(String name,String level) {
