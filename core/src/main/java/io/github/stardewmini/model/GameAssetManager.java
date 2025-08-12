@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import io.github.stardewmini.model.enums.Season;
+import io.github.stardewmini.model.enums.ToolLevel;
 import io.github.stardewmini.model.items.AnimalProduce;
 import io.github.stardewmini.model.items.Fish;
 import io.github.stardewmini.model.items.Material;
@@ -368,6 +369,7 @@ public class GameAssetManager {
 //            System.out.println(key);
             buildings.put(key,new Texture("Stardew_Valley_Images-main/Buildings/" + fileName(key) +".png"));
         }
+        buildings.put("Destroyed Green House", new Texture("Stardew_Valley_Images-main/Buildings/DestroyedGreenHouse.png"));
         buildings.put("Green House",new Texture("Stardew_Valley_Images-main/Buildings/GreenHouse.png"));
         buildings.put("lake",new Texture("Stardew_Valley_Images-main/Buildings/lake.png"));
         buildings.put("floor",new Texture("Stardew_Valley_Images-main/Buildings/floor.png"));
@@ -391,6 +393,60 @@ public class GameAssetManager {
         return buildings.get(name);
     }
 
+    private final HashMap<String,HashMap<String,Texture>> tools = new HashMap();
+    {
+        HashMap<String,Texture> tool = new HashMap<>();
+        ToolLevel[] toolLevels = ToolLevel.values();
+        for(ToolLevel level : toolLevels){
+//            System.out.println(level);
+            tool.put(level.toString(),new Texture("Stardew_Valley_Images-main/Tools/Axe/" + level + "_Axe.png"));
+        }
+        tools.put("Axe",tool);
+
+        tool = new HashMap<>();
+        for (ToolLevel level : toolLevels){
+//            System.out.println(level + "Hoe");
+            tool.put(level.toString(),new Texture("Stardew_Valley_Images-main/Tools/Hoe/" + level + "_Hoe.png"));
+        }
+        tools.put("Hoe",tool);
+
+        tool = new HashMap<>();
+        for (ToolLevel level : toolLevels){
+//            System.out.println(level + "pickaxe");
+            tool.put(level.toString(),new Texture("Stardew_Valley_Images-main/Tools/Pickaxe/" + level + "_Pickaxe.png"));
+        }
+        tools.put("Pickaxe",tool);
+
+        tool = new HashMap<>();
+        tool.put("Normal",new Texture("Stardew_Valley_Images-main/Tools/Scythe/Scythe.png"));
+        tool.put("Gold",new Texture("Stardew_Valley_Images-main/Tools/Scythe/Golden_Scythe.png"));
+        tool.put("Iridium",new Texture("Stardew_Valley_Images-main/Tools/Scythe/Iridium_Scythe.png"));
+        tools.put("Scythe",tool);
+
+        tool = new HashMap<>();
+        tool.put("Copper",new Texture("Stardew_Valley_Images-main/Tools/Trash_Can/Trash_Can_Copper.png"));
+        tool.put("Gold",new Texture("Stardew_Valley_Images-main/Tools/Trash_Can/Trash_Can_Gold.png"));
+        tool.put("Iridium",new Texture("Stardew_Valley_Images-main/Tools/Trash_Can/Trash_Can_Iridium.png"));
+        tool.put("Normal",new Texture("Stardew_Valley_Images-main/Tools/Trash_Can/Trash_Can_Steel.png"));
+        tools.put("Trash Can",tool);
+
+        tool = new HashMap<>();
+        tool.put("Normal",new Texture("Stardew_Valley_Images-main/Tools/Shears.png"));
+        tools.put("Shears",tool);
+
+        tool = new HashMap<>();
+        tool.put("Normal",new Texture("Stardew_Valley_Images-main/Tools/Milk_Pail.png"));
+        tools.put("Milk Pail",tool);
+
+        tool = new HashMap<>();
+        tool.put("Normal",new Texture("Stardew_Valley_Images-main/Tools/Backpack.png"));
+        tool.put("Deluxe",new Texture("Stardew_Valley_Images-main/Tools/36_Backpack.png"));
+        tools.put("BackPack",tool);
+    }
+
+    public Texture getTool(String name,String level) {
+        return tools.get(name).get(level);
+    }
 
     public Texture getItem(String name){
         Texture texture;
