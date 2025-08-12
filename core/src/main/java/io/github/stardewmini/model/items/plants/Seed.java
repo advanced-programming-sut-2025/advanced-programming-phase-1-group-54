@@ -1,9 +1,10 @@
 package io.github.stardewmini.model.items.plants;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.sun.source.doctree.SeeTree;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Placeable;
 import io.github.stardewmini.model.enums.Season;
 import io.github.stardewmini.model.enums.Symbol;
@@ -22,6 +23,7 @@ public class Seed extends Item implements Placeable, Cloneable{
     private final static HashMap<Season,ArrayList<String>> foragingSeeds;
     private final static HashMap<Season,ArrayList<String>> mixedSeeds;
     private final static ArrayList<String> foragingTrees;
+
 
     static{
         Gson gson = new Gson();
@@ -95,10 +97,14 @@ public class Seed extends Item implements Placeable, Cloneable{
     }
 
     private final String plant;
+    private final Sprite sprite;
+
 
     public Seed(String name, String plant) {
         super(name,false,0);
         this.plant = plant;
+
+        sprite = new Sprite(GameAssetManager.getInstance().getSeeds(name));
     }
 
     public String getPlant() {
@@ -442,7 +448,7 @@ public class Seed extends Item implements Placeable, Cloneable{
     }
 
     @Override
-    public Symbol getSymbol() {
-        return Symbol.SEED;
+    public Sprite getSprite() {
+        return sprite;
     }
 }

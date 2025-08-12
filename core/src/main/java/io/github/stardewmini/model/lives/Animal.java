@@ -131,10 +131,6 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
         return location;
     }
 
-    public Sprite getSprite() {
-        return sprite;
-    }
-
     public float getEatTime() {
         return eatTime;
     }
@@ -360,8 +356,8 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
     }
 
     @Override
-    public Symbol getSymbol() {
-        return Symbol.ANIMAL;
+    public Sprite getSprite() {
+        return sprite;
     }
 
     @Override

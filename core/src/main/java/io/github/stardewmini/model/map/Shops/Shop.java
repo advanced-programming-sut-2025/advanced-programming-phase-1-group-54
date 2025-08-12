@@ -1,5 +1,6 @@
 package io.github.stardewmini.model.map.Shops;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import io.github.stardewmini.model.HourCheck;
 import io.github.stardewmini.model.enums.Symbol;
 import io.github.stardewmini.model.lives.NPC;
@@ -45,11 +46,6 @@ public class Shop extends Building implements HourCheck {
     @Override
     public boolean canEnter() {
         return isOpen();
-    }
-
-    @Override
-    public Symbol getSymbol() {
-        return Symbol.SHOP;
     }
 
     @Override

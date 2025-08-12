@@ -1,7 +1,9 @@
 package io.github.stardewmini.model.items.crafting;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Placeable;
 import io.github.stardewmini.model.enums.Feature;
 import io.github.stardewmini.model.enums.Symbol;
@@ -34,13 +36,15 @@ public abstract class Artisan extends Item implements Placeable, Cloneable {
 //        return artisans.get(Name).clone();
 //    }
 
-
+    private final Sprite sprite;
     private final String recipeName;
 
 
     public Artisan(String name, String recipeName) {
         super(name, false, 0);
         this.recipeName = recipeName;
+
+        sprite = new Sprite(GameAssetManager.getInstance().getArtisans(name));
     }
 
     public String getRecipeName() {
@@ -489,7 +493,7 @@ public abstract class Artisan extends Item implements Placeable, Cloneable {
     }
 
     @Override
-    public Symbol getSymbol() {
-        return Symbol.ARTISAN;
+    public Sprite getSprite() {
+        return sprite;
     }
 }

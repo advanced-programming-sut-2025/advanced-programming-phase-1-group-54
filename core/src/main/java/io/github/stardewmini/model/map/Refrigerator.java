@@ -1,5 +1,6 @@
 package io.github.stardewmini.model.map;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import io.github.stardewmini.model.Placeable;
 import io.github.stardewmini.model.enums.Symbol;
 import io.github.stardewmini.model.items.Item;
@@ -7,6 +8,7 @@ import io.github.stardewmini.model.items.Item;
 import java.util.HashMap;
 
 public class Refrigerator implements Placeable {
+    private final Sprite sprite = new Sprite(); // TODO texture
 
     private final HashMap<Item,Integer> numberOfItemInRefrigerator = new HashMap<>();
 
@@ -53,7 +55,7 @@ public class Refrigerator implements Placeable {
 
 
     @Override
-    public Symbol getSymbol() {
-        return Symbol.REFRIGERATOR;
+    public Sprite getSprite() {
+        return sprite;
     }
 }

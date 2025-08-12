@@ -1,8 +1,10 @@
 package io.github.stardewmini.model.items;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Placeable;
 import io.github.stardewmini.model.enums.Symbol;
 
@@ -58,10 +60,12 @@ public class Material extends Item implements Placeable,Cloneable {
         return getMaterial(foragingMaterialName);
     }
 
-
+    private final Sprite sprite;
 
     public Material(String name, int sellPrice) {
         super(name,false,sellPrice);
+
+        this.sprite = new Sprite(GameAssetManager.getInstance().getMaterials(name));
     }
 
     @Override
@@ -186,12 +190,7 @@ public class Material extends Item implements Placeable,Cloneable {
     }
 
     @Override
-    public Symbol getSymbol() {
-        if (this.getName().equals("Wood")) {
-            return Symbol.WOOD;
-        }
-        else {
-            return Symbol.ROCK;
-        }
+    public Sprite getSprite() {
+        return sprite;
     }
 }

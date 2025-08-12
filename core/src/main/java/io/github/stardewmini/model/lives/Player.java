@@ -12,6 +12,7 @@ import io.github.stardewmini.model.items.tools.*;
 import io.github.stardewmini.model.map.Farm;
 import io.github.stardewmini.model.map.Location;
 import io.github.stardewmini.model.map.Refrigerator;
+import io.github.stardewmini.model.map.Tile;
 import io.github.stardewmini.model.relationships.Gift;
 import io.github.stardewmini.model.relationships.NPCFriendship;
 import io.github.stardewmini.model.relationships.Relationship;
@@ -27,6 +28,13 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     public static int getMaximumEnergy() {
         return MAXIMUM_ENERGY;
     }
+
+
+    private Sprite sprite = new Sprite(GameAssetManager.getInstance().getPlayerWalkRight().getKeyFrame(0));
+    private boolean moving = false;
+    private float moveSpeed = 4f;
+    private float x, y;
+    private float targetX, targetY;
 
     private int money;
     private int nextDayMoney = 0;
@@ -97,6 +105,8 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         this.setEquippedTool(this.getTool(ToolType.HOE));
 
         this.setFishingPole(FishingPoleType.TRAINING, new FishingPole(FishingPoleType.TRAINING));
+
+        this.sprite.setSize(Tile.getSize(), (int) Math.floor(Tile.getSize() * 1.7));
     }
 
     public User getControllingUser() {
@@ -282,6 +292,10 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
+        x = currentLocation.column() * Tile.getSize();
+        y = currentLocation.row() * Tile.getSize();
+        targetX = x;
+        targetY = y;
     }
 
     public ArrayList<NPCFriendship> getNpcFriendships() {
@@ -340,10 +354,50 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         }
     }
 
+    public void update(float delta) {
+        if (moving) {
+            // Move towards target
+            float step = moveSpeed * Tile.getSize() * delta;
+            if (Math.abs(targetX - x) <= step && Math.abs(targetY - y) <= step) {
+                x = targetX;
+                y = targetY;
+                moving = false;
+            } else {
+                if (x < targetX) x += step;
+                if (x > targetX) x -= step;
+                if (y < targetY) y += step;
+                if (y > targetY) y -= step;
+            }
+        }
+    }
+
+    public boolean tryMove(int dx, int dy) {
+        if (moving) return false; // Ignore input while moving
+
+        int newX = currentLocation.column() + dx;
+        int newY = currentLocation.row() + dy;
+
+        // TODO: check if new tile is walkable
+
+        currentLocation = new Location(newY, newX);
+        targetX = newX * Tile.getSize();
+        targetY = newY * Tile.getSize();
+        moving = true;
+
+        return true;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
 
     @Override
-    public Symbol getSymbol() {
-        return Symbol.PLAYER;
+    public Sprite getSprite() {
+        return sprite;
     }
 
     @Override

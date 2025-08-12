@@ -691,9 +691,11 @@ public class CommonGameController {
 
     public static void draw(SpriteBatch batch) {
         MapController.draw(batch);
+        PlayerController.draw(batch);
     }
 
     public static void update(float delta, OrthographicCamera camera) {
+        PlayerController.update(delta, camera);
         // TODO update game each frame.
     }
 }

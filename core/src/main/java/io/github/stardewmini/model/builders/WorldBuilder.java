@@ -27,10 +27,10 @@ public class WorldBuilder {
     }
 
     private static final Location[] farmLocation = {
-            new Location(0, 0),
-            new Location(World.getNumberOfRows() - Farm.getNumberOfRows(), 0),
-            new Location(World.getNumberOfRows() - Farm.getNumberOfRows(), World.getNumberOfColumns() - Farm.getNumberOfColumns()),
-            new Location(0, World.getNumberOfColumns() - Farm.getNumberOfColumns())
+        new Location(0, 0),
+        new Location(World.getNumberOfRows() - Farm.getNumberOfRows(), 0),
+        new Location(World.getNumberOfRows() - Farm.getNumberOfRows(), World.getNumberOfColumns() - Farm.getNumberOfColumns()),
+        new Location(0, World.getNumberOfColumns() - Farm.getNumberOfColumns())
     };
 
     private Farm[] playerFarms;
@@ -76,6 +76,10 @@ public class WorldBuilder {
                 if (tiles[i][j] == null) {
                     tiles[i][j] = new Tile(new Location(i, j));
                 }
+                tiles[i][j].setSpritePosition(
+                    j * Tile.getSize(),
+                    i * Tile.getSize()
+                );
             }
         }
 
@@ -94,28 +98,38 @@ public class WorldBuilder {
         }
 
         World world = new World(playerFarms, shops, npcHouses, new Map(World.getNumberOfRows(), World.getNumberOfColumns(), tiles));
+
+        for (int i = 0; i < World.getNumberOfRows(); i++) {
+            for (int j = 0; j < World.getNumberOfColumns(); j++) {
+                tiles[i][j].getTop().setSpritePosition(
+                    j * Tile.getSize(),
+                    i * Tile.getSize()
+                );
+            }
+        }
+
         this.reset();
         return world;
     }
 
 
     private final Area[] npcHouseAreas = {
-            new Area(new Location(31, 36), new Location(34, 41)),
-            new Area(new Location(36, 31), new Location(42, 36)),
-            new Area(new Location(46, 36), new Location(49, 41)),
-            new Area(new Location(38, 46), new Location(44, 51)),
-            new Area(new Location(50, 50), new Location(54, 54)),
+        new Area(new Location(31, 36), new Location(34, 41)),
+        new Area(new Location(36, 31), new Location(42, 36)),
+        new Area(new Location(46, 36), new Location(49, 41)),
+        new Area(new Location(38, 46), new Location(44, 51)),
+        new Area(new Location(50, 50), new Location(54, 54)),
     };
 
 
     private final Area[] shopAreas = {
-            new Area(new Location(24, 40), new Location(30, 47)),
-            new Area(new Location(22, 50), new Location(28, 56)),
-            new Area(new Location(56, 10), new Location(62, 17)),
-            new Area(new Location(44, 16), new Location(50, 22)),
-            new Area(new Location(53, 70), new Location(60, 78)),
-            new Area(new Location(43, 64), new Location(48, 70)),
-            new Area(new Location(67, 50), new Location(75, 58)),
+        new Area(new Location(24, 40), new Location(30, 47)),
+        new Area(new Location(22, 50), new Location(28, 56)),
+        new Area(new Location(56, 10), new Location(62, 17)),
+        new Area(new Location(44, 16), new Location(50, 22)),
+        new Area(new Location(53, 70), new Location(60, 78)),
+        new Area(new Location(43, 64), new Location(48, 70)),
+        new Area(new Location(67, 50), new Location(75, 58)),
     };
 
 

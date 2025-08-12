@@ -1,8 +1,10 @@
 package io.github.stardewmini.model.items.plants;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.enums.Direction;
 import io.github.stardewmini.model.enums.Season;
 import io.github.stardewmini.model.enums.Symbol;
@@ -16,6 +18,7 @@ import java.util.*;
 
 public class Crop extends Plant implements Cloneable{
     private static final HashMap<String,Crop> crops;
+
 
     static{
         Gson gson = new Gson();
@@ -50,11 +53,16 @@ public class Crop extends Plant implements Cloneable{
     private final boolean isGiantPossible;
     private Direction giantDirection;
 
+    private final Sprite sprite;
+
+
     public Crop(String name, String source, String fruit, int[] stages, int totalHarvestTime, int regrowthTime,
                 Season[] seasons, boolean oneTime, boolean isGiantPossible) {
         super(name, source, fruit, stages, totalHarvestTime, regrowthTime, seasons);
         this.oneTime = oneTime;
         this.isGiantPossible = isGiantPossible;
+
+        sprite = new Sprite(); // TODO texture
     }
 
     public boolean isOneTime() {
@@ -638,7 +646,7 @@ public class Crop extends Plant implements Cloneable{
     }
 
     @Override
-    public Symbol getSymbol() {
-        return Symbol.CROP;
+    public Sprite getSprite() {
+        return sprite;
     }
 }

@@ -73,7 +73,7 @@ public class MapController {
         return new Result(true, "Location reachable, energy needed is: " + distance / 20);
     }
 
-    public static Result walk(Location location) {
+    public static Result walk(Location location) { // NOT USING THIS FOR GRAPHICS.
         Game game = App.getCurrentGame();
         World world = game.getWorld();
         Player player = game.getCurrentPlayer();
@@ -201,6 +201,17 @@ public class MapController {
 
                 if (tile.getSprite().getTexture() != null)
                     tile.getSprite().draw(batch);
+
+                if (tile.getThingOnTile() != null && !(tile.getThingOnTile() instanceof Player)) {
+                    if (tile.getThingOnTile().getSprite() == null) {
+                        System.out.println("BAD SPRITE " + tile.getThingOnTile());
+                    } else if (tile.getThingOnTile().getSprite().getTexture() == null) {
+                        System.out.println("BAD TEXTURE " + tile.getThingOnTile());
+                    } else if (!(tile.getThingOnTile() instanceof Building building) || tileLocation.equals(building.getLocation())) {
+                        tile.getThingOnTile().getSprite().setPosition(column * Tile.getSize(), row * Tile.getSize());
+                        tile.getThingOnTile().getSprite().draw(batch);
+                    }
+                }
             }
         }
     }
