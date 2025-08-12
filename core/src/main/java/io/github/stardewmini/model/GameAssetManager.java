@@ -369,6 +369,7 @@ public class GameAssetManager {
 //            System.out.println(key);
             buildings.put(key,new Texture("Stardew_Valley_Images-main/Buildings/" + fileName(key) +".png"));
         }
+        buildings.put("Well",new Texture("Stardew_Valley_Images-main/Buildings/Well.png"));
         buildings.put("Destroyed Green House", new Texture("Stardew_Valley_Images-main/Buildings/DestroyedGreenHouse.png"));
         buildings.put("Green House",new Texture("Stardew_Valley_Images-main/Buildings/GreenHouse.png"));
         buildings.put("lake",new Texture("Stardew_Valley_Images-main/Buildings/lake.png"));
