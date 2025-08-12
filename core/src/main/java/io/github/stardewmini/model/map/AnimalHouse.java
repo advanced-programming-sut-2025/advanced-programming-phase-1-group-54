@@ -1,5 +1,6 @@
 package io.github.stardewmini.model.map;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.enums.AnimalHouseType;
 import io.github.stardewmini.model.enums.Symbol;
@@ -16,7 +17,7 @@ public class AnimalHouse extends Building {
         for(int x = 0;x < prototype.getNumberOfRows(); x++) {
             for(int y = 0; y < prototype.getNumberOfColumns(); y++) {
                 tiles[location.row() + x][location.column() + y].getTop().getSprite().
-                    setTexture(gameAssetManager.getBuilding("floor"));
+                    setRegion(gameAssetManager.getBuilding("floor"));
             }
         }
         return output;
@@ -35,6 +36,8 @@ public class AnimalHouse extends Building {
         this.animals = prototype.getAnimals();
         this.size = prototype.getSize();
         this.numberOfAnimals = 0;
+
+        this.getSprite().setRegion(GameAssetManager.getInstance().getBuilding(prototype.getName()));
     }
 
     public String getName() {
@@ -60,11 +63,5 @@ public class AnimalHouse extends Building {
     public void decreaseNumberOfAnimals(int numberOfAnimals) {
         this.numberOfAnimals -= numberOfAnimals;
     }
-
-    @Override
-    public Symbol getSymbol() {
-        return (animalHouseType.equals(AnimalHouseType.BARN) ? Symbol.BARN : Symbol.COOP);
-    }
-
 
 }

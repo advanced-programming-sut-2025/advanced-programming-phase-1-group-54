@@ -1,9 +1,11 @@
 package io.github.stardewmini.model.items.plants;
 
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.enums.Season;
 import io.github.stardewmini.model.enums.Symbol;
 
@@ -16,10 +18,13 @@ import java.util.*;
 
 
 public class Tree extends Plant implements Cloneable{
+    private final Sprite sprite;
 
     public Tree(String name, String source, String fruit, int[] stages, int totalHarvestTime,
                 int regrowthTime, Season[] seasons) {
         super(name, source, fruit, stages, totalHarvestTime, regrowthTime, seasons);
+
+        sprite = new Sprite(); // TODO texture
     }
 
     private final static HashMap<String,Tree> trees;
@@ -247,8 +252,8 @@ public class Tree extends Plant implements Cloneable{
     }
 
     @Override
-    public Symbol getSymbol() {
-        return Symbol.TREE;
+    public Sprite getSprite() {
+        return sprite;
     }
 
 }

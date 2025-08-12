@@ -1,5 +1,7 @@
 package io.github.stardewmini.model.map;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.enums.Feature;
 import io.github.stardewmini.model.enums.Symbol;
 
@@ -11,7 +13,7 @@ public class GreenHouse extends Building {
 
     private boolean built;
 
-    private final GenericWall waterTank;
+//    private final GenericWall waterTank;
 
     public static int getNeededMoney() {
         return NEEDED_MONEY;
@@ -30,11 +32,13 @@ public class GreenHouse extends Building {
             }
         }
 
-        waterTank = new GenericWall(new Area(new Location(0, 0), new Location(0, NUMBER_OF_COLUMNS - 1)), Symbol.WELL);
+//        waterTank = new GenericWall(new Area(new Location(0, 0), new Location(0, NUMBER_OF_COLUMNS - 1)), ); // TODO texture
         for (int j = 0; j < NUMBER_OF_COLUMNS; j++) {
-            this.getTileAt(new Location(0, j)).setThingOnTile(waterTank);
+//            this.getTileAt(new Location(0, j)).setThingOnTile(waterTank);
             this.getTileAt(new Location(0, j)).addFeature(Feature.WATER);
         }
+
+        this.getSprite().setRegion(GameAssetManager.getInstance().getBuilding("Green House")); // TODO texture
     }
 
     public boolean isBuilt() {
@@ -43,10 +47,9 @@ public class GreenHouse extends Building {
 
     public void setBuilt(boolean built) {
         this.built = built;
-    }
-
-    public GenericWall getWaterTank() {
-        return waterTank;
+        if (built) {
+            this.getSprite().setRegion(GameAssetManager.getInstance().getBuilding("Green House"));
+        }
     }
 
     @Override
@@ -54,8 +57,4 @@ public class GreenHouse extends Building {
         return isBuilt();
     }
 
-    @Override
-    public Symbol getSymbol() {
-        return Symbol.GREENHOUSE;
-    }
 }

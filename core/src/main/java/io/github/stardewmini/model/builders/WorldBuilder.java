@@ -66,14 +66,6 @@ public class WorldBuilder {
                 for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
                     Location location = new Location(i, j);
                     tiles[farmLocation[t].row() + i][farmLocation[t].column() + j] = playerFarms[t].getTileAt(location);
-                    tiles[farmLocation[t].row() + i][farmLocation[t].column() + j].setSpritePosition(
-                        (farmLocation[t].column() + j) * Tile.getSize(),
-                        (farmLocation[t].row() + i) * Tile.getSize()
-                    );
-                    tiles[farmLocation[t].row() + i][farmLocation[t].column() + j].getTop().setSpritePosition(
-                        (farmLocation[t].column() + j) * Tile.getSize(),
-                        (farmLocation[t].row() + i) * Tile.getSize()
-                    );
                 }
             }
         }
@@ -83,11 +75,11 @@ public class WorldBuilder {
             for (int j = 0; j < World.getNumberOfColumns(); j++) {
                 if (tiles[i][j] == null) {
                     tiles[i][j] = new Tile(new Location(i, j));
-                    tiles[i][j].setSpritePosition(
-                        j * Tile.getSize(),
-                        i * Tile.getSize()
-                    );
                 }
+                tiles[i][j].setSpritePosition(
+                    j * Tile.getSize(),
+                    i * Tile.getSize()
+                );
             }
         }
 

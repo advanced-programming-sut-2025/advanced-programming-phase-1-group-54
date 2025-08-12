@@ -1,7 +1,7 @@
 package io.github.stardewmini.model;
 
-import io.github.stardewmini.model.enums.Symbol;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public interface Placeable {
-    Symbol getSymbol();
+    Sprite getSprite();
 }

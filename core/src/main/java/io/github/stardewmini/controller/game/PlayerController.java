@@ -30,9 +30,13 @@ public class PlayerController {
             dx++;
         }
 
+        Tile currentTile = world.getTileAt(player.getCurrentLocation());
         Tile targetTile = world.getTileAt(player.getCurrentLocation().add(new Location(dy, dx)));
         if (targetTile != null && targetTile.isWalkable()) {
-            player.tryMove(dx, dy);
+            if (player.tryMove(dx, dy)) {
+                currentTile.getTop().setThingOnTile(null);
+                targetTile.getTop().setThingOnTile(player);
+            }
         }
 
         player.update(delta);

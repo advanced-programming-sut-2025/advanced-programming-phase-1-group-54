@@ -1,8 +1,6 @@
 package io.github.stardewmini.model.lives;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import io.github.stardewmini.controller.game.PlayerController;
 import io.github.stardewmini.model.DailyUpdate;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.HourUpdate;
@@ -373,8 +371,8 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         }
     }
 
-    public void tryMove(int dx, int dy) {
-        if (moving) return; // Ignore input while moving
+    public boolean tryMove(int dx, int dy) {
+        if (moving) return false; // Ignore input while moving
 
         int newX = currentLocation.column() + dx;
         int newY = currentLocation.row() + dy;
@@ -385,10 +383,8 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         targetX = newX * Tile.getSize();
         targetY = newY * Tile.getSize();
         moving = true;
-    }
 
-    public Sprite getSprite() {
-        return sprite;
+        return true;
     }
 
     public float getX() {
@@ -400,8 +396,8 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     }
 
     @Override
-    public Symbol getSymbol() {
-        return Symbol.PLAYER;
+    public Sprite getSprite() {
+        return sprite;
     }
 
     @Override

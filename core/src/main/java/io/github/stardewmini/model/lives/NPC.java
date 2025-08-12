@@ -1,6 +1,8 @@
 package io.github.stardewmini.model.lives;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import io.github.stardewmini.model.DailyUpdate;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Quest;
 import io.github.stardewmini.model.enums.Symbol;
 
@@ -10,6 +12,8 @@ import java.util.Random;
 public class NPC extends Live implements DailyUpdate {
     private static final Random rand = new Random();
 
+
+    private Sprite sprite = new Sprite();
     private String job;
 
     private final ArrayList<String> favoriteItems = new ArrayList<>();
@@ -47,8 +51,8 @@ public class NPC extends Live implements DailyUpdate {
     }
 
     @Override
-    public Symbol getSymbol() {
-        return Symbol.NPC;
+    public Sprite getSprite() {
+        return sprite;
     }
 
     @Override

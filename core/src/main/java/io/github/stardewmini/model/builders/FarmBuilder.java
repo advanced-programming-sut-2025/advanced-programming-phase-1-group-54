@@ -106,7 +106,7 @@ public class FarmBuilder {
                 Location location = cabinLocation.add(new Location(x, y));
                 tiles[location.row()][location.column()].setThingOnTile(cabin);
                 tiles[location.row()][location.column()].getTop().getSprite().
-                    setTexture(gameAssetManager.getBuilding("floor"));
+                    setRegion(gameAssetManager.getBuilding("floor"));
             }
         }
         return cabin;
@@ -123,7 +123,7 @@ public class FarmBuilder {
                 Location location = greenHouseLocation.add(locationInGreenHouse);
                 tiles[location.row()][location.column()].setThingOnTile(greenHouse);
                 tiles[location.row()][location.column()].getTop().getSprite().
-                    setTexture(gameAssetManager.getBuilding("floor"));
+                    setRegion(gameAssetManager.getBuilding("floor"));
             }
         }
         return greenHouse;
@@ -133,12 +133,12 @@ public class FarmBuilder {
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         GenericWall[] lakes = new GenericWall[lakeAreas.length];
         for (int t = 0; t < lakeAreas.length; t++) {
-            lakes[t] = new GenericWall(lakeAreas[t], Symbol.LAKE);
+            lakes[t] = new GenericWall(lakeAreas[t], GameAssetManager.getInstance().getBuilding("lake"));
             for (int row = lakeAreas[t].upperLeftLocation().row(); row <= lakeAreas[t].lowerRightLocation().row(); row++) {
                 for (int column = lakeAreas[t].upperLeftLocation().column(); column <= lakeAreas[t].lowerRightLocation().column(); column++) {
                     tiles[row][column].setThingOnTile(lakes[t]);
                     tiles[row][column].addFeature(Feature.WATER);
-                    tiles[row][column].getTop().getSprite().setTexture(gameAssetManager.getBuilding("lake"));
+                    tiles[row][column].getTop().getSprite().setRegion(gameAssetManager.getBuilding("lake"));
                 }
             }
         }
@@ -152,7 +152,7 @@ public class FarmBuilder {
         for (int row = quarryArea.upperLeftLocation().row(); row <= quarryArea.lowerRightLocation().row(); row++) {
             for (int column = quarryArea.upperLeftLocation().column(); column <= quarryArea.lowerRightLocation().column(); column++) {
                 tiles[row][column].setThingOnTile(quarry);
-                tiles[row][column].getTop().getSprite().setTexture(gameAssetManager.getBuilding("Quarry Floor"));
+                tiles[row][column].getTop().getSprite().setRegion(gameAssetManager.getBuilding("Quarry Floor"));
             }
         }
 

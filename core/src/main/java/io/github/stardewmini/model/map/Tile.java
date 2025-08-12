@@ -2,7 +2,6 @@ package io.github.stardewmini.model.map;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import io.github.stardewmini.controller.game.MapController;
 import io.github.stardewmini.controller.game.PlantsController;
 import io.github.stardewmini.model.DailyUpdate;
 import io.github.stardewmini.model.Placeable;
@@ -86,7 +85,7 @@ public class Tile implements DailyUpdate {
         if (thingOnTile == null)
             out = Symbol.EMPTY.toString();
         else
-            out = getThingOnTile().getSymbol().toString();
+            out = getThingOnTile().getSprite().toString();
 
         if (features.contains(Feature.WATER))
             out = Symbol.LAKE.toString();
@@ -107,10 +106,6 @@ public class Tile implements DailyUpdate {
                 setThingOnTile(null);
             }
         }
-    }
-
-    public void setTexture(Texture texture) {
-        sprite.setTexture(texture);
     }
 
     public void setSpritePosition(float x, float y) {

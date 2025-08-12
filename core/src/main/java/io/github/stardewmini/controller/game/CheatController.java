@@ -156,7 +156,9 @@ public class CheatController {
         }
         else {
             building = new GenericWall(new Area(location, location.add(new Location(numberOfRows, numberOfColumns))),
-                    (isWell? Symbol.WELL : Symbol.SELLING));
+                    null);
+
+            // TODO texture
         }
 
         for (int i = 0; i < building.getNumberOfRows(); i++) {
