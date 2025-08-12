@@ -73,7 +73,7 @@ public class MapController {
         return new Result(true, "Location reachable, energy needed is: " + distance / 20);
     }
 
-    public static Result walk(Location location) {
+    public static Result walk(Location location) { // NOT USING THIS FOR GRAPHICS.
         Game game = App.getCurrentGame();
         World world = game.getWorld();
         Player player = game.getCurrentPlayer();
