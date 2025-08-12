@@ -301,7 +301,7 @@ public class GameAssetManager {
     private final Animation<TextureRegion> playerWalkRight;
     {
         Texture texture = new Texture("Stardew_Valley_Images-main/Player/Alex3.png");
-        TextureRegion[][] frames = TextureRegion.split(texture,texture.getWidth(),texture.getHeight());
+        TextureRegion[][] frames = TextureRegion.split(texture,texture.getWidth()/4,texture.getHeight()/13);
         playerWalkUp = new Animation<>(0.5f,frames[2]);
         playerWalkDown = new Animation<>(0.5f,frames[0]);
         playerWalkLeft = new Animation<>(0.5f,frames[3]);
