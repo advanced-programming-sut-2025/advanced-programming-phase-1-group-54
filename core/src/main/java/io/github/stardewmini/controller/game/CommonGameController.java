@@ -1,7 +1,10 @@
 package io.github.stardewmini.controller.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import io.github.stardewmini.Main;
 import io.github.stardewmini.model.*;
 import io.github.stardewmini.model.enums.Direction;
 import io.github.stardewmini.model.enums.Feature;
@@ -18,6 +21,7 @@ import io.github.stardewmini.model.items.tools.BackPack;
 import io.github.stardewmini.model.lives.Animal;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.map.*;
+import io.github.stardewmini.view.InventoryMenu;
 
 
 public class CommonGameController {
@@ -696,6 +700,10 @@ public class CommonGameController {
 
     public static void update(float delta, OrthographicCamera camera) {
         PlayerController.update(delta, camera);
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
+            Main.getInstance().setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
+        }
         // TODO update game each frame.
     }
 }

@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
+import io.github.stardewmini.controller.game.InventoryController;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.enums.SkillType;
 
@@ -59,8 +60,8 @@ public class InventoryMenu implements Screen {
     public InventoryMenu(Skin skin) {
         this.window = new Window("inventory Menu",skin);
         this.backButton = new TextButton("Back", skin);
-//  todo      this.inventoryTable = InventoryController.showInventory();
-        this.inventoryTable = new Table(skin);
+        this.inventoryTable = InventoryController.showInventory();
+//        this.inventoryTable = new Table(skin);
         this.scrollPane = new ScrollPane(this.inventoryTable,skin);
         this.table1 = new Table(skin);
         this.table2 = new Table(skin);
@@ -103,6 +104,8 @@ public class InventoryMenu implements Screen {
         backButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
@@ -166,14 +169,6 @@ public class InventoryMenu implements Screen {
         window.setPosition(Gdx.graphics.getWidth()/8f, Gdx.graphics.getHeight()/8f);
         window.getTitleTable().add(backButton);
 
-        // todo bayad ina hazf beshe
-        inventoryTable.add(new TextButton("salam",GameAssetManager.getInstance().getSkin())).pad(10);
-        inventoryTable.add(new TextButton("salam",GameAssetManager.getInstance().getSkin())).pad(10).row();
-        inventoryTable.add(new TextButton("salam",GameAssetManager.getInstance().getSkin())).pad(10);
-        inventoryTable.add(new TextButton("salam",GameAssetManager.getInstance().getSkin())).pad(10).row();
-        inventoryTable.add(new TextButton("salam",GameAssetManager.getInstance().getSkin())).pad(10);
-        inventoryTable.add(new TextButton("salam",GameAssetManager.getInstance().getSkin())).pad(10);
-
         socialTable.add(playersFriendshipLabel).pad(10);
         socialTable.add(npcsFriendshipLabel).pad(10);
 
@@ -212,7 +207,7 @@ public class InventoryMenu implements Screen {
 
     @Override
     public void render(float v) {
-        ScreenUtils.clear(0, 0, 0, 1);
+        ScreenUtils.clear(0, 0, 0, 0);
         Main.getBatch().begin();
         Main.getBatch().end();
 
