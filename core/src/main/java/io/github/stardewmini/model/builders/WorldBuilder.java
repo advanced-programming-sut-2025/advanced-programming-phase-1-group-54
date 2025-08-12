@@ -1,7 +1,11 @@
 package io.github.stardewmini.model.builders;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import io.github.stardewmini.controller.game.ResourceController;
 import io.github.stardewmini.model.DateTime;
 import io.github.stardewmini.model.Quest;
+import io.github.stardewmini.model.items.ShopItem;
 import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.map.*;
 import io.github.stardewmini.model.map.Shops.*;
@@ -83,8 +87,7 @@ public class WorldBuilder {
             }
         }
 
-//        ArrayList<Shop> shops = buildShops();
-        ArrayList<Shop> shops = new ArrayList<>();
+        ArrayList<Shop> shops = buildShops();
         for (Shop shop : shops) {
             dateTime.addHourCheckListener(shop);
             shop.checkHour(dateTime.getHour());
@@ -237,234 +240,238 @@ public class WorldBuilder {
         return npcHouses;
     }
 
-//    private ArrayList<Shop> buildShops() {
-//        ArrayList<Shop> shops = new ArrayList<>();
-//        //creating blacksmith shop
-//        NPC human = new NPC("Shop Keeper", "Clint");
-//        BlackSmithShop blackSmithShop = new BlackSmithShop(human, shopAreas[0]);
-//        shops.add(blackSmithShop);
-//        JSONArray jsonArray = DataBaseController.loadJsonArray("BlacksmithStock.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            ShopItem shopItem = new ShopItem(name, false, count, price, description);
-//            blackSmithShop.getStock().add(shopItem);
-//        }
-//        jsonArray = DataBaseController.loadJsonArray("BlacksmithUpgradeTools.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            String hashmapString = jsonArray.getJSONObject(i).getString("HashmapString");
-//            int hashmapInt = jsonArray.getJSONObject(i).getInt("HashmapInt");
-//            int price = jsonArray.getJSONObject(i).getInt("price");
-//            BlackSmithShop.UpgradeToolBlackSmith upgradesToolsBlacsmithShop = new BlackSmithShop.UpgradeToolBlackSmith(name, price, hashmapString, hashmapInt);
-//            blackSmithShop.getUpgradeTools().add(upgradesToolsBlacsmithShop);
-//        }
-//
-//
-//        //creating JojoMart shop
-//        NPC human1 = new NPC("Shop keeper", "Morris");
-//        JojoMartShop jojoMartShop = new JojoMartShop(human1, shopAreas[1]);
-//        shops.add(jojoMartShop);
-//        jsonArray = DataBaseController.loadJsonArray("JojoMartPermanent.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            ShopItem shopItem = new ShopItem(name, false, count, price, description);
-//            jojoMartShop.getPermanentStock().add(shopItem);
-//        }
-//        jsonArray = DataBaseController.loadJsonArray("JojoMartFall.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            ShopItem shopItem = new ShopItem(name, false, count, price, description);
-//            jojoMartShop.getFallStock().add(shopItem);
-//        }
-//        jsonArray = DataBaseController.loadJsonArray("JojomartSpring.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            ShopItem shopItem = new ShopItem(name, false, count, price, description);
-//            jojoMartShop.getSpringStock().add(shopItem);
-//        }
-//
-//        jsonArray = DataBaseController.loadJsonArray("JojomartSummer.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            ShopItem shopItem = new ShopItem(name, false, count, price, description);
-//            jojoMartShop.getSummerStock().add(shopItem);
-//        }
-//
-//        jsonArray = DataBaseController.loadJsonArray("JojoMartWinter.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            ShopItem shopItem = new ShopItem(name, false, count, price, description);
-//            jojoMartShop.getWinterStock().add(shopItem);
-//        }
-//
-//
-//        //creating Pierre General Shop
-//        NPC human2 = new NPC("Shop keeper", "Pierre");
-//        PierreGeneralShop pierreGeneralShop = new PierreGeneralShop(human2, shopAreas[2]);
-//        shops.add(pierreGeneralShop);
-//        jsonArray = DataBaseController.loadJsonArray("PierreYearRound.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            ShopItem shopItem = new ShopItem(name, false, count, price, description);
-//            pierreGeneralShop.getYearRoundStock().add(shopItem);
-//        }
-//        jsonArray = DataBaseController.loadJsonArray("PierreBackpacks.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            boolean isPurchaseable = jsonArray.getJSONObject(i).getBoolean("isPurchaseAble");
-//            String isAvailable = jsonArray.getJSONObject(i).getString("StringAvailable");
-//            PierreGeneralShop.BackPacksItems backPacksItems = new PierreGeneralShop.BackPacksItems(isPurchaseable, name, price, description, isAvailable);
-//            pierreGeneralShop.getBackPacks().add(backPacksItems);
-//        }
-//        jsonArray = DataBaseController.loadJsonArray("PierreSpring.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int priceInSeason = jsonArray.getJSONObject(i).getInt("PriceInSeason");
-//            int priceOutOfSeason = jsonArray.getJSONObject(i).getInt("PriceOutOfSeason");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            PierreGeneralShop.SeasonalStockItems seasonalStockItems = new PierreGeneralShop.SeasonalStockItems(name, 0, description, priceInSeason, priceOutOfSeason);
-//            pierreGeneralShop.getSpringStock().add(seasonalStockItems);
-//        }
-//        jsonArray = DataBaseController.loadJsonArray("PierreSummer.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int priceInSeason = jsonArray.getJSONObject(i).getInt("PriceInSeason");
-//            int priceOutOfSeason = jsonArray.getJSONObject(i).getInt("PriceOutOfSeason");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            PierreGeneralShop.SeasonalStockItems seasonalStockItems = new PierreGeneralShop.SeasonalStockItems(name, 0, description, priceInSeason, priceOutOfSeason);
-//            pierreGeneralShop.getSummerStock().add(seasonalStockItems);
-//        }
-//        jsonArray = DataBaseController.loadJsonArray("PierreFall.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int priceInSeason = jsonArray.getJSONObject(i).getInt("PriceInSeason");
-//            int priceOutOfSeason = jsonArray.getJSONObject(i).getInt("PriceOutOfSeason");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            PierreGeneralShop.SeasonalStockItems seasonalStockItems = new PierreGeneralShop.SeasonalStockItems(name, 0, description, priceInSeason, priceOutOfSeason);
-//            pierreGeneralShop.getFallStock().add(seasonalStockItems);
-//        }
-//
-//
-//        //creating Carpenter’s Shop
-//        NPC human3 = new NPC("Shop keeper", "Robin");
-//        CarpenterShop carpenterShop = new CarpenterShop(human3, shopAreas[3]);
-//        shops.add(carpenterShop);
-//        jsonArray = DataBaseController.loadJsonArray("CarpenterPermanent.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            ShopItem shopItem = new ShopItem(name, false, count, price, description);
-//            carpenterShop.getPermanentStock().add(shopItem);
-//        }
-//        jsonArray = DataBaseController.loadJsonArray("CarpenterFarmBuilding.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            int xsize = jsonArray.getJSONObject(i).getInt("XSize");
-//            int ysize = jsonArray.getJSONObject(i).getInt("YSize");
-//            int wood = jsonArray.getJSONObject(i).getInt("Wood");
-//            int stone = jsonArray.getJSONObject(i).getInt("Stone");
-//            CarpenterShop.ItemsinCarpenterShop itemsinCarpenterShop = new CarpenterShop.ItemsinCarpenterShop(xsize, ysize, name, count, price, description, wood, stone);
-//            carpenterShop.getFarmBuildings().add(itemsinCarpenterShop);
-//        }
-//
-//
-//        //creating Fish Shop
-//        NPC human4 = new NPC("Shop keeper", "Willy");
-//        FishShop fishShop = new FishShop(human4, shopAreas[4]);
-//        shops.add(fishShop);
-//        jsonArray = DataBaseController.loadJsonArray("FishStock.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            int fishinglevel = jsonArray.getJSONObject(i).getInt("FishingSkillRequired");
-//            FishShop.StockInShop stockInShop = new FishShop.StockInShop(fishinglevel, name, false, price, description);
-//            fishShop.getStockInShop().add(stockInShop);
-//        }
-//
-//
-//        //crating Marnie’s Ranch
-//        NPC human5 = new NPC("Shop keeper", "Marnie");
-//        MarnieRanch marnieRanch = new MarnieRanch(human5, shopAreas[5]);
-//        shops.add(marnieRanch);
-//        jsonArray = DataBaseController.loadJsonArray("MarnieRanchInventory.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            ShopItem shopItem = new ShopItem(name, false, count, price, description);
-//            marnieRanch.getShopInventory().add(shopItem);
-//        }
-//        jsonArray = DataBaseController.loadJsonArray("MarnieRanchLivesStock.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            String buildingRequired = jsonArray.getJSONObject(i).getString("BuildingRequired");
-//            MarnieRanch.ItemsInMarnieRanch itemsInShops = new MarnieRanch.ItemsInMarnieRanch(buildingRequired, count, name, price, description);
-//            marnieRanch.getLiveStock().add(itemsInShops);
-//        }
-//
-//
-//        //creating :The Stardrop Saloon
-//        NPC human6 = new NPC("Shop keeper", "Gus");
-//        TheStardropSaloonShop theStardropSaloonShop = new TheStardropSaloonShop(human6, shopAreas[6]);
-//        shops.add(theStardropSaloonShop);
-//        jsonArray = DataBaseController.loadJsonArray("TheStarDropSaloon.json");
-//        for (int i = 0; i < jsonArray.length(); i++) {
-//            String name = jsonArray.getJSONObject(i).getString("Name");
-//            int price = jsonArray.getJSONObject(i).getInt("Price");
-//            String description = jsonArray.getJSONObject(i).getString("Description");
-//            int count = jsonArray.getJSONObject(i).getInt("Count");
-//            ShopItem shopItem = new ShopItem(name, false, count, price, description);
-//            theStardropSaloonShop.getPermanentStock().add(shopItem);
-//        }
-//
-//
-//        for (Shop shop : shops) {
-//            for (int i = 0; i < shop.getNumberOfRows(); i++) {
-//                for (int j = 0; j < shop.getNumberOfColumns(); j++) {
-//                    tiles[shop.getLocation().row() + i][shop.getLocation().column() + j].setThingOnTile(shop);
-//                }
-//            }
-//        }
-//
-//        return shops;
-//    }
+    private ArrayList<Shop> buildShops() {
+        ArrayList<Shop> shops = new ArrayList<>();
+        //creating blacksmith shop
+        NPC human = new NPC("Shop Keeper", "Clint");
+        BlackSmithShop blackSmithShop = new BlackSmithShop(human, shopAreas[0]);
+        shops.add(blackSmithShop);
+        JsonArray jsonArray = ResourceController.loadJsonArray("BlacksmithStock.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            ShopItem shopItem = new ShopItem(name, false, count, price, description);
+            blackSmithShop.getStock().add(shopItem);
+        }
+        jsonArray = ResourceController.loadJsonArray("BlacksmithUpgradeTools.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            String hashmapString = jsonElement.getAsJsonObject().get("HashmapString").getAsString();
+            int hashmapInt = jsonElement.getAsJsonObject().get("HashmapInt").getAsInt();
+            int price = jsonElement.getAsJsonObject().get("price").getAsInt();
+            BlackSmithShop.UpgradeToolBlackSmith upgradesToolsBlacsmithShop = new BlackSmithShop.UpgradeToolBlackSmith(name, price, hashmapString, hashmapInt);
+            blackSmithShop.getUpgradeTools().add(upgradesToolsBlacsmithShop);
+        }
+
+
+        //creating JojoMart shop
+        NPC human1 = new NPC("Shop keeper", "Morris");
+        JojoMartShop jojoMartShop = new JojoMartShop(human1, shopAreas[1]);
+        shops.add(jojoMartShop);
+        jsonArray = ResourceController.loadJsonArray("JojoMartPermanent.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            ShopItem shopItem = new ShopItem(name, false, count, price, description);
+            jojoMartShop.getPermanentStock().add(shopItem);
+        }
+        jsonArray = ResourceController.loadJsonArray("JojoMartFall.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            ShopItem shopItem = new ShopItem(name, false, count, price, description);
+            jojoMartShop.getFallStock().add(shopItem);
+        }
+        jsonArray = ResourceController.loadJsonArray("JojomartSpring.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            ShopItem shopItem = new ShopItem(name, false, count, price, description);
+            jojoMartShop.getSpringStock().add(shopItem);
+        }
+
+        jsonArray = ResourceController.loadJsonArray("JojomartSummer.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            ShopItem shopItem = new ShopItem(name, false, count, price, description);
+            jojoMartShop.getSummerStock().add(shopItem);
+        }
+
+        jsonArray = ResourceController.loadJsonArray("JojoMartWinter.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            ShopItem shopItem = new ShopItem(name, false, count, price, description);
+            jojoMartShop.getWinterStock().add(shopItem);
+        }
+
+
+        //creating Pierre General Shop
+        NPC human2 = new NPC("Shop keeper", "Pierre");
+        PierreGeneralShop pierreGeneralShop = new PierreGeneralShop(human2, shopAreas[2]);
+        shops.add(pierreGeneralShop);
+        jsonArray = ResourceController.loadJsonArray("PierreYearRound.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            ShopItem shopItem = new ShopItem(name, false, count, price, description);
+            pierreGeneralShop.getYearRoundStock().add(shopItem);
+        }
+        jsonArray = ResourceController.loadJsonArray("PierreBackpacks.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            boolean isPurchaseable = jsonElement.getAsJsonObject().get("isPurchaseAble").getAsBoolean();
+            String isAvailable = jsonElement.getAsJsonObject().get("StringAvailable").getAsString();
+            PierreGeneralShop.BackPacksItems backPacksItems = new PierreGeneralShop.BackPacksItems(isPurchaseable, name, price, description, isAvailable);
+            pierreGeneralShop.getBackPacks().add(backPacksItems);
+        }
+        jsonArray = ResourceController.loadJsonArray("PierreSpring.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int priceInSeason = jsonElement.getAsJsonObject().get("PriceInSeason").getAsInt();
+            int priceOutOfSeason = jsonElement.getAsJsonObject().get("PriceOutOfSeason").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            PierreGeneralShop.SeasonalStockItems seasonalStockItems = new PierreGeneralShop.SeasonalStockItems(name, 0, description, priceInSeason, priceOutOfSeason);
+            pierreGeneralShop.getSpringStock().add(seasonalStockItems);
+        }
+        jsonArray = ResourceController.loadJsonArray("PierreSummer.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int priceInSeason = jsonElement.getAsJsonObject().get("PriceInSeason").getAsInt();
+            int priceOutOfSeason = jsonElement.getAsJsonObject().get("PriceOutOfSeason").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            PierreGeneralShop.SeasonalStockItems seasonalStockItems = new PierreGeneralShop.SeasonalStockItems(name, 0, description, priceInSeason, priceOutOfSeason);
+            pierreGeneralShop.getSummerStock().add(seasonalStockItems);
+        }
+        jsonArray = ResourceController.loadJsonArray("PierreFall.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int priceInSeason = jsonElement.getAsJsonObject().get("PriceInSeason").getAsInt();
+            int priceOutOfSeason = jsonElement.getAsJsonObject().get("PriceOutOfSeason").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            PierreGeneralShop.SeasonalStockItems seasonalStockItems = new PierreGeneralShop.SeasonalStockItems(name, 0, description, priceInSeason, priceOutOfSeason);
+            pierreGeneralShop.getFallStock().add(seasonalStockItems);
+        }
+
+
+        //creating Carpenter’s Shop
+        NPC human3 = new NPC("Shop keeper", "Robin");
+        CarpenterShop carpenterShop = new CarpenterShop(human3, shopAreas[3]);
+        shops.add(carpenterShop);
+        jsonArray = ResourceController.loadJsonArray("CarpenterPermanent.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            ShopItem shopItem = new ShopItem(name, false, count, price, description);
+            carpenterShop.getPermanentStock().add(shopItem);
+        }
+        jsonArray = ResourceController.loadJsonArray("CarpenterFarmBuilding.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            int xsize = jsonElement.getAsJsonObject().get("XSize").getAsInt();
+            int ysize = jsonElement.getAsJsonObject().get("YSize").getAsInt();
+            int wood = jsonElement.getAsJsonObject().get("Wood").getAsInt();
+            int stone = jsonElement.getAsJsonObject().get("Stone").getAsInt();
+            CarpenterShop.ItemsinCarpenterShop itemsinCarpenterShop = new CarpenterShop.ItemsinCarpenterShop(xsize, ysize, name, count, price, description, wood, stone);
+            carpenterShop.getFarmBuildings().add(itemsinCarpenterShop);
+        }
+
+
+        //creating Fish Shop
+        NPC human4 = new NPC("Shop keeper", "Willy");
+        FishShop fishShop = new FishShop(human4, shopAreas[4]);
+        shops.add(fishShop);
+        jsonArray = ResourceController.loadJsonArray("FishStock.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            int fishinglevel = jsonElement.getAsJsonObject().get("FishingSkillRequired").getAsInt();
+            FishShop.StockInShop stockInShop = new FishShop.StockInShop(fishinglevel, name, false, price, description);
+            fishShop.getStockInShop().add(stockInShop);
+        }
+
+
+        //crating Marnie’s Ranch
+        NPC human5 = new NPC("Shop keeper", "Marnie");
+        MarnieRanch marnieRanch = new MarnieRanch(human5, shopAreas[5]);
+        shops.add(marnieRanch);
+        jsonArray = ResourceController.loadJsonArray("MarnieRanchInventory.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            ShopItem shopItem = new ShopItem(name, false, count, price, description);
+            marnieRanch.getShopInventory().add(shopItem);
+        }
+        jsonArray = ResourceController.loadJsonArray("MarnieRanchLivesStock.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            String buildingRequired = jsonElement.getAsJsonObject().get("BuildingRequired").getAsString();
+            MarnieRanch.ItemsInMarnieRanch itemsInShops = new MarnieRanch.ItemsInMarnieRanch(buildingRequired, count, name, price, description);
+            marnieRanch.getLiveStock().add(itemsInShops);
+        }
+
+
+        //creating :The Stardrop Saloon
+        NPC human6 = new NPC("Shop keeper", "Gus");
+        TheStardropSaloonShop theStardropSaloonShop = new TheStardropSaloonShop(human6, shopAreas[6]);
+        shops.add(theStardropSaloonShop);
+        jsonArray = ResourceController.loadJsonArray("TheStarDropSaloon.json");
+        for (JsonElement jsonElement : jsonArray) {
+            String name = jsonElement.getAsJsonObject().get("Name").getAsString();
+            int price = jsonElement.getAsJsonObject().get("Price").getAsInt();
+            String description = jsonElement.getAsJsonObject().get("Description").getAsString();
+            int count = jsonElement.getAsJsonObject().get("Count").getAsInt();
+            ShopItem shopItem = new ShopItem(name, false, count, price, description);
+            theStardropSaloonShop.getPermanentStock().add(shopItem);
+        }
+
+
+        for (Shop shop : shops) {
+            for (int i = 0; i < shop.getNumberOfRows(); i++) {
+                for (int j = 0; j < shop.getNumberOfColumns(); j++) {
+                    tiles[shop.getLocation().row() + i][shop.getLocation().column() + j].setThingOnTile(shop);
+                    tiles[shop.getLocation().row() + i][shop.getLocation().column() + j].setSpritePosition(
+                        (shop.getLocation().column() + j) * Tile.getSize(),
+                        (shop.getLocation().row() + i) * Tile.getSize()
+                    );
+                }
+            }
+        }
+
+        return shops;
+    }
 
 }
