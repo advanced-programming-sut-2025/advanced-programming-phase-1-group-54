@@ -8,6 +8,7 @@ import io.github.stardewmini.model.Game;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Placeable;
 import io.github.stardewmini.model.enums.Symbol;
+import io.github.stardewmini.model.map.Tile;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -36,6 +37,7 @@ public class Material extends Item implements Placeable,Cloneable {
         for(String material : materials.keySet()) {
             Sprite sprite1 = new Sprite();
             sprite1.setRegion(gameAssetManager.getMaterialStones(material));
+            sprite1.setSize(Tile.getSize(), Tile.getSize());
             materials.get(material).setSprite(sprite1);
         }
 

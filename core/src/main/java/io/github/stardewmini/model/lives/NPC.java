@@ -1,10 +1,13 @@
 package io.github.stardewmini.model.lives;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import io.github.stardewmini.model.DailyUpdate;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Quest;
 import io.github.stardewmini.model.enums.Symbol;
+import io.github.stardewmini.model.map.Tile;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -24,8 +27,16 @@ public class NPC extends Live implements DailyUpdate {
 
     public NPC(String job, String name) {
         super(name);
+        System.out.println(name);
         this.job = job;
         newQuestCounter = rand.nextInt(30) + 30;
+        this.sprite = new Sprite();
+        TextureRegion[][] textureRegion = GameAssetManager.getInstance().getNPCsFrames(name);
+        if(textureRegion == null) {
+            textureRegion = GameAssetManager.getInstance().getNPCsFrames("Robin");
+        }
+        this.sprite.setRegion(textureRegion[0][0]);
+        this.sprite.setSize(Tile.getSize(), (int) Math.floor(Tile.getSize() * 1.7));
     }
 
     public void activateQuest(Quest quest) {
