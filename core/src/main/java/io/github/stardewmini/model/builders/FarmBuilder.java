@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.github.stardewmini.model.DateTime;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.enums.Feature;
 import io.github.stardewmini.model.enums.Symbol;
 import io.github.stardewmini.model.items.Material;
@@ -98,17 +99,21 @@ public class FarmBuilder {
     }
 
     public Cabin buildCabin() {
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         Cabin cabin = new Cabin(cabinLocation);
         for (int x = 0; x < cabin.getNumberOfRows(); x++) {
             for (int y = 0; y < cabin.getNumberOfColumns(); y++) {
                 Location location = cabinLocation.add(new Location(x, y));
                 tiles[location.row()][location.column()].setThingOnTile(cabin);
+                tiles[location.row()][location.column()].getTop().getSprite().
+                    setTexture(gameAssetManager.getBuilding("floor"));
             }
         }
         return cabin;
     }
 
     private GreenHouse buildGreenHouse() {
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         GreenHouse greenHouse = new GreenHouse(greenHouseLocation);
         for (int x = 0; x < greenHouse.getNumberOfRows(); x++) {
             for (int y = 0; y < greenHouse.getNumberOfColumns(); y++) {
@@ -117,12 +122,15 @@ public class FarmBuilder {
 
                 Location location = greenHouseLocation.add(locationInGreenHouse);
                 tiles[location.row()][location.column()].setThingOnTile(greenHouse);
+                tiles[location.row()][location.column()].getTop().getSprite().
+                    setTexture(gameAssetManager.getBuilding("floor"));
             }
         }
         return greenHouse;
     }
 
     private GenericWall[] buildLakes() {
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         GenericWall[] lakes = new GenericWall[lakeAreas.length];
         for (int t = 0; t < lakeAreas.length; t++) {
             lakes[t] = new GenericWall(lakeAreas[t], Symbol.LAKE);
@@ -130,6 +138,7 @@ public class FarmBuilder {
                 for (int column = lakeAreas[t].upperLeftLocation().column(); column <= lakeAreas[t].lowerRightLocation().column(); column++) {
                     tiles[row][column].setThingOnTile(lakes[t]);
                     tiles[row][column].addFeature(Feature.WATER);
+                    tiles[row][column].getTop().getSprite().setTexture(gameAssetManager.getBuilding("lake"));
                 }
             }
         }
@@ -138,10 +147,12 @@ public class FarmBuilder {
 
 
     private Quarry buildQuarry() {
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         Quarry quarry = new Quarry(quarryArea);
         for (int row = quarryArea.upperLeftLocation().row(); row <= quarryArea.lowerRightLocation().row(); row++) {
             for (int column = quarryArea.upperLeftLocation().column(); column <= quarryArea.lowerRightLocation().column(); column++) {
                 tiles[row][column].setThingOnTile(quarry);
+                tiles[row][column].getTop().getSprite().setTexture(gameAssetManager.getBuilding("Quarry Floor"));
             }
         }
 

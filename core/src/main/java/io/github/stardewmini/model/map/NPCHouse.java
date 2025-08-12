@@ -4,6 +4,7 @@ import io.github.stardewmini.model.enums.Symbol;
 import io.github.stardewmini.model.lives.NPC;
 
 public class NPCHouse extends Building {
+
     private final NPC npc;
 
     public NPCHouse(NPC npc, Area area) {

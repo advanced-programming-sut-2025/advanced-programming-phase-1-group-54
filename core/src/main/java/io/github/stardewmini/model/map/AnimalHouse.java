@@ -1,21 +1,35 @@
 package io.github.stardewmini.model.map;
 
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.enums.AnimalHouseType;
 import io.github.stardewmini.model.enums.Symbol;
 
 import java.util.ArrayList;
 
 public class AnimalHouse extends Building {
+
+    public static AnimalHouse BuildAnimalHouse(AnimalHousePrototype prototype, Location location) {
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+        Tile[][] tiles = new Tile[prototype.getNumberOfRows()][prototype.getNumberOfColumns()];
+        Map map = new Map(prototype.getNumberOfRows(), prototype.getNumberOfColumns(),tiles);
+        AnimalHouse output = new AnimalHouse(prototype, location, map);
+        for(int x = 0;x < prototype.getNumberOfRows(); x++) {
+            for(int y = 0; y < prototype.getNumberOfColumns(); y++) {
+                tiles[location.row() + x][location.column() + y].getTop().getSprite().
+                    setTexture(gameAssetManager.getBuilding("floor"));
+            }
+        }
+        return output;
+    }
+
     private final AnimalHouseType animalHouseType;
     private final String name;
     private final ArrayList<String> animals;
     private final int size;
     private int numberOfAnimals;
 
-    public AnimalHouse(AnimalHousePrototype prototype, Location location) {
-        super(location, new Map(prototype.getNumberOfRows(),
-                        prototype.getNumberOfColumns()));
-
+    private AnimalHouse(AnimalHousePrototype prototype, Location location,Map map) {
+        super(location, map);
         this.animalHouseType = prototype.getAnimalHouseType();
         this.name = prototype.getName();
         this.animals = prototype.getAnimals();

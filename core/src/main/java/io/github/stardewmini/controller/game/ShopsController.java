@@ -568,7 +568,7 @@ public class ShopsController {
 
         Building building;
         if (prototype != null) {
-            building = new AnimalHouse(prototype, location);
+            building = AnimalHouse.BuildAnimalHouse(prototype,location);
         }
         else {
             building = new GenericWall(new Area(location, location.add(new Location(numberOfRows, numberOfColumns))),

@@ -371,6 +371,7 @@ public class GameAssetManager {
         buildings.put("Green House",new Texture("Stardew_Valley_Images-main/Buildings/GreenHouse.png"));
         buildings.put("lake",new Texture("Stardew_Valley_Images-main/Buildings/lake.png"));
         buildings.put("floor",new Texture("Stardew_Valley_Images-main/Buildings/floor.png"));
+        buildings.put("Quarry Floor",new Texture("Stardew_Valley_Images-main/Buildings/Quarry_Floor.png"));
         buildings.put("Blacksmith",new Texture("Stardew_Valley_Images-main/Buildings/Blacksmith.png"));
         buildings.put("Carpenter Shop",new Texture("Stardew_Valley_Images-main/Buildings/Carpenter's_Shop.png"));
         buildings.put("Fish Shop",new Texture("Stardew_Valley_Images-main/Buildings/Fish_Shop.png"));
