@@ -47,6 +47,7 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
             return null;
         }
         else{
+            animal.setSprite(new Sprite());
             return animal.clone();
         }
     }
@@ -206,6 +207,10 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
 
     public void setPetTime(float petTime) {
         this.petTime = petTime;
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
     }
 
     @Override

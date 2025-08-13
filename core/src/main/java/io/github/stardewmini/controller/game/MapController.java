@@ -237,26 +237,27 @@ public class MapController {
 
 //        width = (int) (cameraPosition.x + screenX - Gdx.graphics.getWidth()/2f);
 //        height = (int)( cameraPosition.y - screenY + Gdx.graphics.getHeight()/2f);
-
-        if(tile.getThingOnTile() instanceof Shop){
-            Main.getInstance().getScreen().dispose();
-            Main.getInstance().setScreen(new ShopMenu(GameAssetManager.getInstance().getSkin()));
-        }
-        else if(tile.getThingOnTile() instanceof NPC npc){
-            Main.getInstance().getScreen().dispose();
-            Main.getInstance().setScreen(new NPCMenu(npc,GameAssetManager.getInstance().getSkin()));
-        }
-        else if(tile.getTop().getThingOnTile() instanceof NPC npc){
-            Main.getInstance().getScreen().dispose();
-            Main.getInstance().setScreen(new NPCMenu(npc,GameAssetManager.getInstance().getSkin()));
-        }
-        else if(tile.getThingOnTile() instanceof Animal animal){
-            Main.getInstance().getScreen().dispose();
-            Main.getInstance().setScreen(new AnimalMenu(GameAssetManager.getInstance().getSkin(),animal));
-        }
-        else if(tile.getTop().getThingOnTile() instanceof Animal animal){
-            Main.getInstance().getScreen().dispose();
-            Main.getInstance().setScreen(new AnimalMenu(GameAssetManager.getInstance().getSkin(),animal));
+        if(tile != null){
+            if(tile.getThingOnTile() instanceof Shop){
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new ShopMenu(GameAssetManager.getInstance().getSkin()));
+            }
+            else if(tile.getThingOnTile() instanceof NPC npc){
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new NPCMenu(npc,GameAssetManager.getInstance().getSkin()));
+            }
+            else if(tile.getTop().getThingOnTile() instanceof NPC npc){
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new NPCMenu(npc,GameAssetManager.getInstance().getSkin()));
+            }
+            else if(tile.getThingOnTile() instanceof Animal animal){
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new AnimalMenu(GameAssetManager.getInstance().getSkin(),animal));
+            }
+            else if(tile.getTop().getThingOnTile() instanceof Animal animal){
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new AnimalMenu(GameAssetManager.getInstance().getSkin(),animal));
+            }
         }
     }
 }

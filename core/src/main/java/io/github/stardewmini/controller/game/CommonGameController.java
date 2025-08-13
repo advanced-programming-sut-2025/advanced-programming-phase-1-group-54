@@ -700,10 +700,12 @@ public class CommonGameController {
     public static void draw(SpriteBatch batch, Stage stage,OrthographicCamera camera) {
         MapController.draw(batch,stage,camera);
         PlayerController.draw(batch);
+        AnimalController.draw(batch);
     }
 
     public static void update(float delta, OrthographicCamera camera) {
         PlayerController.update(delta, camera);
+        AnimalController.update(delta);
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             Main.getInstance().setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));

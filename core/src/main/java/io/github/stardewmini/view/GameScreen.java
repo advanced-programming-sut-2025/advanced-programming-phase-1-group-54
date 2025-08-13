@@ -41,7 +41,7 @@ public class GameScreen implements Screen, InputProcessor {
     }
 
     public GameScreen(Skin skin) {
-        this.label = new Label("", skin);
+        this.label = new Label("salam olagh azizi halet chetore?", skin);
     }
 
     @Override
@@ -51,14 +51,13 @@ public class GameScreen implements Screen, InputProcessor {
 
         stage = new Stage(new ScreenViewport());
 
-        label.setPosition(0, 0);
+        label.setPosition(100, 100);
         stage.addActor(label);
         Gdx.input.setInputProcessor(this);
     }
 
     @Override
     public void render(float delta) {
-        stage.clear();
         CommonGameController.update(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f), camera);
         camera.update();
         Main.getBatch().setProjectionMatrix(camera.combined);
@@ -69,9 +68,9 @@ public class GameScreen implements Screen, InputProcessor {
         Main.getBatch().end();
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();
-        Main.getBatch().begin();
-        Main.getBatch().draw(GameAssetManager.getInstance().getStar(), width, height);
-        Main.getBatch().end();
+//        Main.getBatch().begin();
+//        Main.getBatch().draw(GameAssetManager.getInstance().getStar(), width, height);
+//        Main.getBatch().end();
 
         lastChange += delta;
         if(lastChange >= 10) {

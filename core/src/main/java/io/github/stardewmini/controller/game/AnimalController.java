@@ -2,6 +2,8 @@ package io.github.stardewmini.controller.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.model.App;
@@ -229,7 +231,7 @@ public class AnimalController {
     }
      private final static Animal animal = Animal.getAnimal("Cow");
 
-    public static void render(float delta){
+    public static void update(float delta){
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
 
         for(Animal animal : App.getCurrentGame().getCurrentPlayer().getAnimals().values()) {
@@ -249,6 +251,14 @@ public class AnimalController {
             else {
                 animal.getSprite().setRegion(gameAssetManager.getAnimal(animal.getAnimalName()));
             }
+        }
+    }
+
+    public static void draw(SpriteBatch batch){
+        for(Animal animal : App.getCurrentGame().getCurrentPlayer().getAnimals().values()) {
+            animal.getSprite().setSize(Tile.getSize(), Tile.getSize());
+            animal.getSprite().setPosition(animal.getLocation().column() * Tile.getSize(),animal.getLocation().row() * Tile.getSize());
+            animal.getSprite().draw(batch);
         }
     }
 }

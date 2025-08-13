@@ -79,6 +79,11 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
     private final HashMap<String, Animal> animals = new HashMap<>();
+    {
+        Animal animal = Animal.getAnimal("Hen");
+        animal.setLocation(new Location(0,5));
+        animals.put("HEn",animal);
+    }
 
     private SkillType buffSkill;
     private int buffHours;

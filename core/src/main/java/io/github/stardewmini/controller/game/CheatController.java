@@ -154,7 +154,9 @@ public class CheatController {
 
         Building building;
         if (prototype != null) {
-            building = new AnimalHouse(prototype, location);
+            AnimalHouse animalHouse = new AnimalHouse(prototype, location);
+            App.getCurrentGame().getCurrentPlayer().getFarm().getAnimalHouses().add(animalHouse);
+            building = animalHouse;
         }
         else {
             building = new GenericWall(new Area(location, location.add(new Location(numberOfRows, numberOfColumns))),
