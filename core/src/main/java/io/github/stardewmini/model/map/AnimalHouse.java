@@ -24,13 +24,6 @@ public class AnimalHouse extends Building {
         this.numberOfAnimals = 0;
 
         this.getSprite().setRegion(GameAssetManager.getInstance().getBuilding(prototype.getName()));
-
-        for(int x = 0;x < prototype.getNumberOfRows(); x++) {
-            for(int y = 0; y < prototype.getNumberOfColumns(); y++) {
-                this.getTileAt(new Location(x, y)).getSprite()
-                    .setRegion(GameAssetManager.getInstance().getBuilding("floor"));
-            }
-        }
     }
 
     public String getName() {

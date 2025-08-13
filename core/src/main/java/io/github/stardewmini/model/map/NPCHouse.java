@@ -17,12 +17,6 @@ public class NPCHouse extends Building {
 
         System.out.println(npc.getName());
         this.getSprite().setRegion(GameAssetManager.getInstance().getBuilding(npc.getName() + "House"));
-
-        for(int x = 0; x < area.numberOfRows(); x++) {
-            for(int y = 0; y < area.numberOfColumns(); y++) {
-                this.getTileAt(new Location(x,y)).getSprite().setRegion(GameAssetManager.getInstance().getBuilding("floor"));
-            }
-        }
     }
 
     public NPC getNpc() {

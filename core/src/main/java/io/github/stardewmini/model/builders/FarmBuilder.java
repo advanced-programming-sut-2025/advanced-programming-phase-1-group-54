@@ -105,8 +105,6 @@ public class FarmBuilder {
             for (int y = 0; y < cabin.getNumberOfColumns(); y++) {
                 Location location = cabinLocation.add(new Location(x, y));
                 tiles[location.row()][location.column()].setThingOnTile(cabin);
-                tiles[location.row()][location.column()].getTop().getSprite().
-                    setRegion(gameAssetManager.getBuilding("floor"));
             }
         }
         return cabin;
@@ -122,8 +120,6 @@ public class FarmBuilder {
 
                 Location location = greenHouseLocation.add(locationInGreenHouse);
                 tiles[location.row()][location.column()].setThingOnTile(greenHouse);
-                tiles[location.row()][location.column()].getTop().getSprite().
-                    setRegion(gameAssetManager.getBuilding("floor"));
             }
         }
         return greenHouse;
