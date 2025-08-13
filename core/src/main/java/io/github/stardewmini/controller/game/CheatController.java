@@ -195,6 +195,11 @@ public class CheatController {
             return new Result(false, "building required");
         }
 
+        int i = 0;
+        while (App.getCurrentGame().getCurrentPlayer().getAnimals().get(name + i) != null) {
+            i++;
+        }
+        name = name + i;
         animal.setName(name);
         animal.setOwner(App.getCurrentGame().getCurrentPlayer());
         App.getCurrentGame().getCurrentPlayer().getAnimals().put(name, animal);
