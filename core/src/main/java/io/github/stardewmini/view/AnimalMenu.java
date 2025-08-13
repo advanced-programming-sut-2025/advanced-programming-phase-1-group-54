@@ -13,6 +13,7 @@ import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.game.AnimalController;
 import io.github.stardewmini.model.Game;
 import io.github.stardewmini.model.GameAssetManager;
+import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.lives.Animal;
 
 public class AnimalMenu implements Screen {
@@ -31,7 +32,7 @@ public class AnimalMenu implements Screen {
     public AnimalMenu(Skin skin,Animal animal) {
         this.animal = animal;
         this.window = new Window("Animal Menu", skin);
-        this.menuTitle = new Label("carfdfa: sg\nsafdsgs: dgd\nafsghdgfd: sfd", skin);
+        this.menuTitle = new Label(AnimalController.showAnimal(animal).message(), skin);
         this.feedButton = new TextButton("Feed", skin);
         this.petButton = new TextButton("Pet", skin);
         this.moveButton = new TextButton("Move", skin);
@@ -47,27 +48,25 @@ public class AnimalMenu implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin()));
             }
         });
 
         feedButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                AnimalController.feedAnimal(animal);
-                System.out.println("check");
+                Result result = AnimalController.feedAnimal(animal);
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 
         petButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                AnimalController.pet(animal);
-                System.out.println("check");
+                Result result = AnimalController.pet(animal);
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 
@@ -79,16 +78,19 @@ public class AnimalMenu implements Screen {
 
         getProduceButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                AnimalController.getAnimalProduce(animal);
+                Result result = AnimalController.getAnimalProduce(animal);
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 
         sellButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                AnimalController.sellAnimal(animal);
+                Result result = AnimalController.sellAnimal(animal);
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 
@@ -109,7 +111,6 @@ public class AnimalMenu implements Screen {
         Gdx.input.setInputProcessor(stage);
 
         stage.addActor(window);
-
 
     }
 

@@ -29,11 +29,20 @@ import io.github.stardewmini.model.map.World;
 
 public class GameScreen implements Screen, InputProcessor {
     private Stage stage;
-
+    private Label label;
+    private float lastChange = 0;
     private OrthographicCamera camera;
 
     int width = 0;
     int height = 0;
+
+    public GameScreen(Skin skin,String string) {
+        this.label = new Label(string, skin);
+    }
+
+    public GameScreen(Skin skin) {
+        this.label = new Label("", skin);
+    }
 
     @Override
     public void show() {
@@ -42,8 +51,9 @@ public class GameScreen implements Screen, InputProcessor {
 
         stage = new Stage(new ScreenViewport());
 
+        label.setPosition(0, 0);
+        stage.addActor(label);
         Gdx.input.setInputProcessor(this);
-//        Gdx.input.setInputProcessor(stage);
     }
 
     @Override
@@ -62,6 +72,11 @@ public class GameScreen implements Screen, InputProcessor {
         Main.getBatch().begin();
         Main.getBatch().draw(GameAssetManager.getInstance().getStar(), width, height);
         Main.getBatch().end();
+
+        lastChange += delta;
+        if(lastChange >= 10) {
+            label.setText("");
+        }
     }
 
     @Override
@@ -86,7 +101,7 @@ public class GameScreen implements Screen, InputProcessor {
 
     @Override
     public void dispose() {
-//        stage.dispose();
+        stage.dispose();
     }
 
     @Override
@@ -161,5 +176,17 @@ public class GameScreen implements Screen, InputProcessor {
     @Override
     public boolean scrolled(float amountX, float amountY) {
         return false;
+    }
+
+    public Label getLabel() {
+        return label;
+    }
+
+    public OrthographicCamera getCamera() {
+        return camera;
+    }
+
+    public void setLastChange(float lastChange) {
+        this.lastChange = lastChange;
     }
 }

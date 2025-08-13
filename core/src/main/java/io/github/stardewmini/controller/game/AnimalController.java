@@ -50,6 +50,16 @@ public class AnimalController {
         return new Result(1,output.toString());
     }
 
+    public static Result showAnimal(Animal animal) {
+        StringBuilder output = new StringBuilder();
+        output.append(animal.getAnimalName()).append(" ").append(animal.getName()).append("\n").
+            append("friendship level: ").append(animal.getFriendshipLevel()).append("\n").
+            append("caressed: ").append(animal.isCaressed()).append("\n").
+            append("fed : ").append(animal.isFed()).append("\n").
+            append("--------------------");
+        return new Result(true,output.toString());
+    }
+
     public static Result moveAnimal(Animal animal, Location location) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarm(player);
@@ -199,7 +209,7 @@ public class AnimalController {
         animation.setPlayMode(Animation.PlayMode.REVERSED);
     }
 
-    public static void petAnimal(Animal animal,float delta){
+    public static void petAnimation(Animal animal,float delta){
         Animation<TextureRegion> animation = GameAssetManager.getInstance().getAnimalPet(animal.getAnimalName());
         animal.getSprite().setRegion(animation.getKeyFrame(animal.getPetTime()));
         animal.setPetTime(animal.getPetTime() + delta);
@@ -222,30 +232,23 @@ public class AnimalController {
     public static void render(float delta){
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
 
-//        for(Animal animal : App.getCurrentGame().getCurrentPlayer().getAnimals().values()) {
+        for(Animal animal : App.getCurrentGame().getCurrentPlayer().getAnimals().values()) {
 
-        eatAnimation(animal, delta);
-        animal.getSprite().setPosition(Gdx.graphics.getWidth()/2f + 100, Gdx.graphics.getHeight()/2f + 100);
-        animal.getSprite().setSize(200, 200);
-        animal.getSprite().draw(Main.getBatch());
-//            if (false) { // todo  walk animation
-//
-//            }
-//            else if (! gameAssetManager.getAnimalPet(animal.getAnimalName()).isAnimationFinished(animal.getPetTime()) || true) {
-//                petAnimal(animal, delta);
-//                animal.getSprite().setPosition(Gdx.graphics.getWidth()/2f + 100, Gdx.graphics.getHeight()/2f + 100);
-//                animal.getSprite().setSize(200, 200);
-//                animal.getSprite().draw(Main.getBatch());
-//            }
-//            else if (! gameAssetManager.getAnimalEat(animal.getAnimalName()).isAnimationFinished(animal.getEatTime())) {
-//                eatAnimation(animal, delta);
-//            }
-//            else if (animal.getProduce() != null) {
-//
-//            }
-//            else {
-//
-//            }
-//        }
+            if (false) { // todo  walk animation
+
+            }
+            else if (! gameAssetManager.getAnimalPet(animal.getAnimalName()).isAnimationFinished(animal.getPetTime())) {
+                petAnimation(animal, delta);
+            }
+            else if (! gameAssetManager.getAnimalEat(animal.getAnimalName()).isAnimationFinished(animal.getEatTime())) {
+                eatAnimation(animal, delta);
+            }
+            else if (animal.getProduce() != null) {
+                animal.getSprite().setRegion(gameAssetManager.getProducedAnimal(animal.getAnimalName()));
+            }
+            else {
+                animal.getSprite().setRegion(gameAssetManager.getAnimal(animal.getAnimalName()));
+            }
+        }
     }
 }

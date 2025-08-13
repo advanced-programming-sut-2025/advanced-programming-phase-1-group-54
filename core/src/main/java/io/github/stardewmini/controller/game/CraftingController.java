@@ -47,10 +47,10 @@ public class CraftingController {
                 image.addListener(new ClickListener() {
                     public void clicked(InputEvent event, float x, float y) {
                         String artisanName = recipe.getName();
-                        crafting(artisanName.substring(0,artisanName.length() - 7));
+                        Result result = crafting(artisanName.substring(0,artisanName.length() - 7));
                         window.remove();
                         Main.getInstance().getScreen().dispose();
-                        Main.getInstance().setScreen(new GameScreen());
+                        Main.getInstance().setScreen(new GameScreen(gameAssetManager.getSkin(),result.message()));
                     }
                 });
             }

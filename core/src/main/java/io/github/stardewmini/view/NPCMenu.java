@@ -10,6 +10,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.game.NpcController;
+import io.github.stardewmini.model.GameAssetManager;
+import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.lives.NPC;
 
 public class NPCMenu implements Screen {
@@ -60,7 +62,7 @@ public class NPCMenu implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 currentWindow.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin()));
             }
         });
 
@@ -96,19 +98,19 @@ public class NPCMenu implements Screen {
 
         giveGiftButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-//                NpcController.giftNpc(npc,giftItem.getMessageText());
+                Result result = NpcController.giftNpc(npc,giftItem.getMessageText());
                 currentWindow.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 
         completeQuestButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-//                NpcController.questFinish(questNumber.getMessageText(),npc);
+                Result result = NpcController.questFinish(questNumber.getMessageText(),npc);
                 currentWindow.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 

@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.game.CraftingController;
 import io.github.stardewmini.controller.game.FoodController;
+import io.github.stardewmini.model.GameAssetManager;
 
 public class CookingMenu implements Screen {
 
@@ -35,7 +36,7 @@ public class CookingMenu implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin()));
             }
         });
 

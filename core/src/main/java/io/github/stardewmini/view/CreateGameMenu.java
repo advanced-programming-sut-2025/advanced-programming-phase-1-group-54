@@ -145,7 +145,7 @@ public class CreateGameMenu implements Screen {
                     GameMenuController.createNewGame();
                     GameMenuController.loadGame();
                     Main.getInstance().getScreen().dispose();
-                    Main.getInstance().setScreen(new GameScreen());
+                    Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin()));
                 }
             }
         });

@@ -15,6 +15,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.game.CheatController;
+import io.github.stardewmini.model.GameAssetManager;
+import io.github.stardewmini.model.Result;
 
 public class CheatMenu implements Screen {
 
@@ -53,7 +55,7 @@ public class CheatMenu implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin()));
             }
         });
 
@@ -65,10 +67,10 @@ public class CheatMenu implements Screen {
 
         addMoneyButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                CheatController.addMoney(addMoneyField.getText());
+                Result result = CheatController.addMoney(addMoneyField.getText());
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 
@@ -87,10 +89,10 @@ public class CheatMenu implements Screen {
 
         addItemButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                CheatController.addItem(addItemNameField.getText(), addItemCountField.getText());
+                Result result = CheatController.addItem(addItemNameField.getText(), addItemCountField.getText());
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 
@@ -102,10 +104,10 @@ public class CheatMenu implements Screen {
 
         addTimeButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                CheatController.advanceDate(addTimeField.getText());
+                Result result = CheatController.advanceDate(addTimeField.getText());
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 
@@ -117,10 +119,10 @@ public class CheatMenu implements Screen {
 
         addDayButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                CheatController.advanceDate(addDayField.getText());
+                Result result = CheatController.advanceDate(addDayField.getText());
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 

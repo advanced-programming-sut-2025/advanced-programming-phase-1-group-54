@@ -52,7 +52,7 @@ public class PreGameMenu implements Screen {
 
                 if (result.success()) {
                     Main.getInstance().getScreen().dispose();
-                    Main.getInstance().setScreen(new GameScreen());
+                    Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
                 }
             }
         });

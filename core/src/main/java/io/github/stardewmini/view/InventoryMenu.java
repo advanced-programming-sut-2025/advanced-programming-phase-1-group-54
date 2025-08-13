@@ -16,6 +16,7 @@ import io.github.stardewmini.controller.game.InventoryController;
 import io.github.stardewmini.controller.game.NpcController;
 import io.github.stardewmini.controller.game.ToolsController;
 import io.github.stardewmini.model.GameAssetManager;
+import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.enums.SkillType;
 import io.github.stardewmini.model.relationships.Friendship;
 
@@ -109,7 +110,7 @@ public class InventoryMenu implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin()));
             }
         });
 
@@ -154,10 +155,10 @@ public class InventoryMenu implements Screen {
 
         trashButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                ToolsController.throwInTrash(trashItem.getText(), trashNumber.getText());
+                Result result = ToolsController.throwInTrash(trashItem.getText(), trashNumber.getText());
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 
@@ -166,7 +167,7 @@ public class InventoryMenu implements Screen {
                 // todo
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin()));
             }
         });
 
@@ -175,7 +176,7 @@ public class InventoryMenu implements Screen {
                 // todo
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin()));
             }
         });
 

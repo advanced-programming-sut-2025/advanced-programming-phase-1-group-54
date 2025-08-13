@@ -297,6 +297,10 @@ public class GameAssetManager {
         return animals.get(name);
     }
 
+    public TextureRegion getProducedAnimal(String name){
+        return producedAnimal.get(name);
+    }
+
     private final Animation<TextureRegion> playerWalkUp;
     private final Animation<TextureRegion> playerWalkDown;
     private final Animation<TextureRegion> playerWalkLeft;
@@ -324,10 +328,6 @@ public class GameAssetManager {
 
     public Animation<TextureRegion> getPlayerWalkRight() {
         return playerWalkRight;
-    }
-
-    public TextureRegion getProducedAnimal(String name){
-        return producedAnimal.get(name);
     }
 
     private final HashMap<String,Texture> artisans  = new HashMap<>();

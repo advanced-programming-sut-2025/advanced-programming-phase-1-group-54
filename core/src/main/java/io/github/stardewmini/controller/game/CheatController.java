@@ -2,7 +2,9 @@ package io.github.stardewmini.controller.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import io.github.stardewmini.Main;
 import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.Game;
 import io.github.stardewmini.model.GameAssetManager;
@@ -198,7 +200,7 @@ public class CheatController {
         return new Result(true, "animal purchased");
     }
 
-    public static Result addToFarm(Image image ,String itemName,String name,int price) {
+    public static Result addToFarm(Image image , String itemName, String name, int price, OrthographicCamera camera) {
         // todo change image to correct image
         image = new Image(GameAssetManager.getInstance().getStar());
         Player player = App.getCurrentGame().getCurrentPlayer();
@@ -206,12 +208,12 @@ public class CheatController {
             return new Result(false, "You can't have " + price +"coin");
         }
         player.decreaseMoney(price);
-        Tile tile;
 
         Location location = App.getCurrentGame().getCurrentPlayer().getFarm().getLocation();
+        Main.getBatch().begin();
         if(Animal.getAnimal(itemName) != null) {
             Animal animal = Animal.getAnimal(itemName);
-            while(! (Gdx.input.isKeyPressed(Input.Keys.ENTER) && AnimalController.moveAnimal(animal,location).success())){
+            while(! ((Gdx.input.isKeyPressed(Input.Keys.ENTER) && AnimalController.moveAnimal(animal,location).success()))){
                 if(Gdx.input.isKeyPressed(Input.Keys.UP)){
                     location = location.add(new Location(0, 1));
                 }
@@ -227,14 +229,16 @@ public class CheatController {
                 if (Gdx.input.isKeyPressed(Input.Keys.E)) {
                     return new Result(false, "you gave up");
                 }
-                tile = App.getCurrentGame().getCurrentPlayer().getFarm().getTileAt(location);
+                image.setPosition(location.row(), location.column());
+                image.draw(Main.getBatch(),0.5f);
+                camera.position.set(location.row() * Tile.getSize(),location.column() * Tile.getSize(),0);
                 // todo add image to tile sprite
             }
             addAnimal(animal,name);
             return new Result(true, "animal purchased");
         }
         else {
-            while(! (Gdx.input.isKeyPressed(Input.Keys.ENTER) && addBuilding(itemName,location).success())){
+            while(! ((Gdx.input.isKeyPressed(Input.Keys.ENTER) && addBuilding(itemName,location).success()))){
                 if(Gdx.input.isKeyPressed(Input.Keys.UP)){
                     location = location.add(new Location(0, 1));
                 }
@@ -250,10 +254,11 @@ public class CheatController {
                 if (Gdx.input.isKeyPressed(Input.Keys.E)) {
                     return new Result(false, "you gave up");
                 }
-                tile = App.getCurrentGame().getCurrentPlayer().getFarm().getTileAt(location);
+                image.setPosition(location.row(), location.column());
+                image.draw(Main.getBatch(),0.5f);
+                camera.position.set(location.row() * Tile.getSize(),location.column() * Tile.getSize(),0);
             }
             return new Result(true, "building purchased");
         }
-
     }
 }

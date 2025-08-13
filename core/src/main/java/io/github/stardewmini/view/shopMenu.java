@@ -13,6 +13,8 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.game.CheatController;
 import io.github.stardewmini.controller.game.ShopController;
+import io.github.stardewmini.model.GameAssetManager;
+import io.github.stardewmini.model.Result;
 
 public class shopMenu implements Screen {
 
@@ -27,7 +29,7 @@ public class shopMenu implements Screen {
     private final TextField nameField;
     private final Label itemName;
     private final Label itemPrice;
-    private Image image;
+    private final TextField location;
 
 
 
@@ -40,6 +42,7 @@ public class shopMenu implements Screen {
         this.buyButton = new TextButton("Buy", skin);
         this.number = new TextField("number", skin);
         this.nameField = new TextField("name", skin);
+        this.location = new TextField("location : X,Y", skin);
         this.itemName = new Label("", skin);
         this.itemPrice = new Label("", skin);
     }
@@ -48,13 +51,13 @@ public class shopMenu implements Screen {
     public void show() {
 
         scrollPane.setScrollingDisabled(true, false);
-        ShopController.showItems(scrollTable,table,buyButton,number,itemName,itemPrice,nameField);
+        ShopController.showItems(scrollTable,table,buyButton,number,itemName,itemPrice,nameField,location);
 
         backButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin()));
             }
         });
 
@@ -70,14 +73,21 @@ public class shopMenu implements Screen {
             }
         });
 
+        location.addListener(new InputListener() {
+            public void enter(InputEvent event, float x, float y,int pointer, Actor actor) {
+                location.setText("");
+            }
+        });
+
         buyButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 String priceString = itemPrice.getText().toString();
                 int price = Integer.parseInt(priceString.substring(0,priceString.length() - 5));
-                CheatController.addToFarm(null,itemName.getText().toString(),null,price);
+                Result result = ShopController.buy(itemName.getText().toString(),nameField.getText(),
+                    price,location.getText());
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen());
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 
