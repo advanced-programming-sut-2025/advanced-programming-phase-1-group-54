@@ -1,12 +1,24 @@
 package io.github.stardewmini.controller.game;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import io.github.stardewmini.Main;
 import io.github.stardewmini.model.*;
 import io.github.stardewmini.model.enums.Direction;
 import io.github.stardewmini.model.enums.Symbol;
 import io.github.stardewmini.model.items.Material;
+import io.github.stardewmini.model.lives.Animal;
+import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.map.*;
+import io.github.stardewmini.model.map.Shops.Shop;
+import io.github.stardewmini.view.GameScreen;
+import io.github.stardewmini.view.shopMenu;
 
 import java.util.ArrayList;
 
@@ -178,7 +190,7 @@ public class MapController {
         return new Result(true, message.toString());
     }
 
-    public static void draw(SpriteBatch batch) {
+    public static void draw(SpriteBatch batch, Stage stage, OrthographicCamera camera) {
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
         World world = game.getWorld();

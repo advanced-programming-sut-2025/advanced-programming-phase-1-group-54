@@ -59,6 +59,8 @@ public class NPCMenu implements Screen {
         backButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 currentWindow.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
@@ -96,6 +98,8 @@ public class NPCMenu implements Screen {
             public void clicked(InputEvent event, float x, float y) {
 //                NpcController.giftNpc(npc,giftItem.getMessageText());
                 currentWindow.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
@@ -103,6 +107,8 @@ public class NPCMenu implements Screen {
             public void clicked(InputEvent event, float x, float y) {
 //                NpcController.questFinish(questNumber.getMessageText(),npc);
                 currentWindow.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 

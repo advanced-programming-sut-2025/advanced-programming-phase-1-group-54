@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.model.*;
 import io.github.stardewmini.model.enums.Direction;
@@ -696,8 +697,8 @@ public class CommonGameController {
         return false;
     }
 
-    public static void draw(SpriteBatch batch) {
-        MapController.draw(batch);
+    public static void draw(SpriteBatch batch, Stage stage,OrthographicCamera camera) {
+        MapController.draw(batch,stage,camera);
         PlayerController.draw(batch);
     }
 

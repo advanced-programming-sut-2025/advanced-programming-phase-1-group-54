@@ -15,7 +15,6 @@ public class NPCHouse extends Building {
 
         this.getTileAt(getRandomLocation()).setThingOnTile(npc);
 
-        System.out.println(npc.getName());
         this.getSprite().setRegion(GameAssetManager.getInstance().getBuilding(npc.getName() + "House"));
     }
 

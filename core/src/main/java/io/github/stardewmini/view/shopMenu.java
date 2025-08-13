@@ -53,6 +53,8 @@ public class shopMenu implements Screen {
         backButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
@@ -73,6 +75,9 @@ public class shopMenu implements Screen {
                 String priceString = itemPrice.getText().toString();
                 int price = Integer.parseInt(priceString.substring(0,priceString.length() - 5));
                 CheatController.addToFarm(null,itemName.getText().toString(),null,price);
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 

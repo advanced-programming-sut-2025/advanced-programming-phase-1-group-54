@@ -46,6 +46,8 @@ public class AnimalMenu implements Screen {
         backButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
@@ -53,6 +55,9 @@ public class AnimalMenu implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 AnimalController.feedAnimal(animal);
                 System.out.println("check");
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
@@ -60,6 +65,9 @@ public class AnimalMenu implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 AnimalController.pet(animal);
                 System.out.println("check");
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
@@ -72,6 +80,9 @@ public class AnimalMenu implements Screen {
         getProduceButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 AnimalController.getAnimalProduce(animal);
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
