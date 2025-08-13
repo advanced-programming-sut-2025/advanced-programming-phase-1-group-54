@@ -14,7 +14,7 @@ import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.game.CheatController;
 import io.github.stardewmini.controller.game.ShopController;
 
-public class shopMenu implements Screen {
+public class ShopMenu implements Screen {
 
     private Stage stage;
     private final Window window;
@@ -31,7 +31,7 @@ public class shopMenu implements Screen {
 
 
 
-    public shopMenu(Skin skin) {
+    public ShopMenu(Skin skin) {
         this.window = new Window("Shop Menu", skin);
         this.backButton = new TextButton("Back", skin);
         this.scrollTable = new Table(skin);

@@ -1,12 +1,10 @@
 package io.github.stardewmini.controller.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.model.*;
 import io.github.stardewmini.model.enums.Direction;
@@ -17,8 +15,9 @@ import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.map.*;
 import io.github.stardewmini.model.map.Shops.Shop;
-import io.github.stardewmini.view.GameScreen;
-import io.github.stardewmini.view.shopMenu;
+import io.github.stardewmini.view.AnimalMenu;
+import io.github.stardewmini.view.NPCMenu;
+import io.github.stardewmini.view.ShopMenu;
 
 import java.util.ArrayList;
 
@@ -203,8 +202,8 @@ public class MapController {
             Tile.getSize() * World.getNumberOfColumns(),
             Tile.getSize() * World.getNumberOfRows());
 
-        for (int row = 0; row < World.getNumberOfRows(); row++) {
-            for (int column = 0; column < World.getNumberOfColumns(); column++) {
+        for (int row = World.getNumberOfRows() - 1; row >= 0; row--) {
+            for (int column = World.getNumberOfColumns() - 1; column >= 0; column--) {
                 Location tileLocation = new Location(row, column);
                 Tile tile = world.getTileAt(tileLocation);
 
@@ -225,6 +224,39 @@ public class MapController {
                     }
                 }
             }
+        }
+    }
+
+    public static void mouseClick(int screenX, int screenY, OrthographicCamera camera) {
+        Vector3 cameraPosition = camera.position;
+        System.out.println("X = " + (int)((cameraPosition.x + screenX - Gdx.graphics.getWidth()/2f)/Tile.getSize()) + " Y = " + (int)((cameraPosition.y - screenY + Gdx.graphics.getHeight()/2f)/Tile.getSize()));
+        System.out.println("camX = " + cameraPosition.x + " camY = " + cameraPosition.y);
+        Tile tile = App.getCurrentGame().getWorld().getTileAt(
+            new Location((int)((cameraPosition.y - screenY + Gdx.graphics.getHeight()/2f)/Tile.getSize()),
+                (int)((cameraPosition.x + screenX - Gdx.graphics.getWidth()/2f)/Tile.getSize())));
+
+//        width = (int) (cameraPosition.x + screenX - Gdx.graphics.getWidth()/2f);
+//        height = (int)( cameraPosition.y - screenY + Gdx.graphics.getHeight()/2f);
+
+        if(tile.getThingOnTile() instanceof Shop){
+            Main.getInstance().getScreen().dispose();
+            Main.getInstance().setScreen(new ShopMenu(GameAssetManager.getInstance().getSkin()));
+        }
+        else if(tile.getThingOnTile() instanceof NPC npc){
+            Main.getInstance().getScreen().dispose();
+            Main.getInstance().setScreen(new NPCMenu(npc,GameAssetManager.getInstance().getSkin()));
+        }
+        else if(tile.getTop().getThingOnTile() instanceof NPC npc){
+            Main.getInstance().getScreen().dispose();
+            Main.getInstance().setScreen(new NPCMenu(npc,GameAssetManager.getInstance().getSkin()));
+        }
+        else if(tile.getThingOnTile() instanceof Animal animal){
+            Main.getInstance().getScreen().dispose();
+            Main.getInstance().setScreen(new AnimalMenu(GameAssetManager.getInstance().getSkin(),animal));
+        }
+        else if(tile.getTop().getThingOnTile() instanceof Animal animal){
+            Main.getInstance().getScreen().dispose();
+            Main.getInstance().setScreen(new AnimalMenu(GameAssetManager.getInstance().getSkin(),animal));
         }
     }
 }
