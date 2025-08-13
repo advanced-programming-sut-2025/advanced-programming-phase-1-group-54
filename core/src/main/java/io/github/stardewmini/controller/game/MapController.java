@@ -235,8 +235,6 @@ public class MapController {
             new Location((int)((cameraPosition.y - screenY + Gdx.graphics.getHeight()/2f)/Tile.getSize()),
                 (int)((cameraPosition.x + screenX - Gdx.graphics.getWidth()/2f)/Tile.getSize())));
 
-//        width = (int) (cameraPosition.x + screenX - Gdx.graphics.getWidth()/2f);
-//        height = (int)( cameraPosition.y - screenY + Gdx.graphics.getHeight()/2f);
         if(tile != null){
             if(tile.getThingOnTile() instanceof Shop){
                 Main.getInstance().getScreen().dispose();

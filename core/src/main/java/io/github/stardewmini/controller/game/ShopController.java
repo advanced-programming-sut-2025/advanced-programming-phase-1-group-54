@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import io.github.stardewmini.model.App;
+import io.github.stardewmini.model.Game;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.lives.Animal;
@@ -127,8 +128,7 @@ public class ShopController {
         Result result;
         if(Animal.getAnimal(itemName) != null){
             Animal animal = Animal.getAnimal(itemName);
-            animal.setLocation(location);
-            result = CheatController.addAnimal(animal,name);
+            result = CheatController.addAnimal(animal,name,location);
         }
         else {
             result = CheatController.addBuilding(itemName,location);

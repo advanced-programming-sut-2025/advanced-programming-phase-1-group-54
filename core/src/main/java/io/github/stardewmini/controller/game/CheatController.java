@@ -177,7 +177,7 @@ public class CheatController {
         return new Result(true, buildingName + " built!");
     }
 
-    public static Result addAnimal(Animal animal, String name) {
+    public static Result addAnimal(Animal animal, String name,Location location) {
         if (animal == null) {
             return new Result(false, "No such animal.");
         }
@@ -193,6 +193,11 @@ public class CheatController {
         }
         if (!temp) {
             return new Result(false, "building required");
+        }
+
+        Result result = AnimalController.moveAnimal(animal,location);
+        if(! result.success()){
+            return result;
         }
 
         int i = 0;
@@ -241,7 +246,7 @@ public class CheatController {
                 camera.position.set(location.row() * Tile.getSize(),location.column() * Tile.getSize(),0);
                 // todo add image to tile sprite
             }
-            addAnimal(animal,name);
+//            addAnimal(animal,name);
             return new Result(true, "animal purchased");
         }
         else {

@@ -15,6 +15,9 @@ import io.github.stardewmini.model.Game;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.lives.Animal;
+import io.github.stardewmini.model.map.Location;
+
+import java.util.Locale;
 
 public class AnimalMenu implements Screen {
 
@@ -28,6 +31,9 @@ public class AnimalMenu implements Screen {
     private final TextButton getProduceButton;
     private final TextButton sellButton;
     private final TextButton backButton;
+    private final TextField location;
+    private final TextButton moveAnimalButton;
+    private final Table table;
 
     public AnimalMenu(Skin skin,Animal animal) {
         this.animal = animal;
@@ -39,6 +45,9 @@ public class AnimalMenu implements Screen {
         this.getProduceButton = new TextButton("Get Produce", skin);
         this.sellButton = new TextButton("Sell", skin);
         this.backButton = new TextButton("Back", skin);
+        this.location = new TextField("X,Y", skin);
+        this.moveAnimalButton = new TextButton("Move Animal", skin);
+        this.table = new Table(skin);
     }
 
     @Override
@@ -72,7 +81,31 @@ public class AnimalMenu implements Screen {
 
         moveButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                AnimalController.moveAnimal(animal,null);
+                table.clear();
+                table.add(location).expand().pad(10).row();
+                table.add(moveAnimalButton);
+            }
+        });
+
+        moveAnimalButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                int row = 0,column = 0;
+                String loc = location.getText();
+                try{
+                    String[] locParts = loc.split(",");
+                   row = Integer.parseInt(locParts[1]);
+                   column = Integer.parseInt(locParts[0]);
+                } catch (Exception e) {
+                    window.remove();
+                    Main.getInstance().getScreen().dispose();
+                    Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),
+                        "enter location in X,Y format"));
+                }
+                Location location1 = new Location(row,column);
+                Result result = AnimalController.moveAnimal(animal,location1);
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 
@@ -97,14 +130,15 @@ public class AnimalMenu implements Screen {
         window.setSize( Gdx.graphics.getWidth() /2f, Gdx.graphics.getHeight()/2f);
         window.setPosition(Gdx.graphics.getWidth()/4f, Gdx.graphics.getHeight()/4f);
 
-        window.add(feedButton).expand().pad(10);
-        window.add(petButton).expand().pad(10);
-        window.add(moveButton).expand().pad(10);
-        window.row();
-        window.add(getProduceButton).expand().pad(10);
-        window.add(sellButton).expand().pad(10);
-        window.add(menuTitle).expand().pad(10);
+        table.add(feedButton).expand().pad(10);
+        table.add(petButton).expand().pad(10);
+        table.add(moveButton).expand().pad(10);
+        table.row();
+        table.add(getProduceButton).expand().pad(10);
+        table.add(sellButton).expand().pad(10);
+        table.add(menuTitle).expand().pad(10);
 
+        window.add(table).expand().pad(10);
         window.getTitleTable().add(backButton).pad(10);
 
         stage = new Stage(new ScreenViewport());

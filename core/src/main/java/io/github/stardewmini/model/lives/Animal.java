@@ -72,6 +72,8 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
     private boolean goneOut;
     private AnimalProduce produce;
     protected Location location;
+    private int x;
+    private int y;
     private Sprite sprite;
     private float eatTime;
     private float walkTime;
@@ -144,6 +146,14 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
         return petTime;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     public void increaseDaysAfterProducing(int daysAfterProducing) {
         this.daysAfterProducing += daysAfterProducing;
     }
@@ -211,6 +221,14 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
 
     public void setSprite(Sprite sprite) {
         this.sprite = sprite;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     @Override

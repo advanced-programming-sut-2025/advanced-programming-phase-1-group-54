@@ -77,6 +77,10 @@ public class AnimalController {
         }
 
         if(tile.getThingOnTile() == null){
+            if(animal.getLocation() == null){
+                animal.setX(locationInFarm.column() * Tile.getSize());
+                animal.setY(locationInFarm.row() * Tile.getSize());
+            }
             deleteAnimalFromFarm(animal);
             tile.setThingOnTile(animal);
             animal.setLocation(locationInFarm);
@@ -84,6 +88,10 @@ public class AnimalController {
         }
         else if(tile.getThingOnTile() instanceof AnimalHouse animalHouse){
             if(animalHouse.getSize() > animalHouse.getNumberOfAnimals() && tile.getTop().getThingOnTile() == null){
+                if(animal.getLocation() == null){
+                    animal.setX(locationInFarm.column() * Tile.getSize());
+                    animal.setY(locationInFarm.row() * Tile.getSize());
+                }
                 deleteAnimalFromFarm(animal);
                 animalHouse.increaseNumberOfAnimals(1);
                 animal.setLocation(locationInFarm);
@@ -97,6 +105,7 @@ public class AnimalController {
             return new Result(false, "Sorry, but there is no space on the tile");
         }
 
+        animal.setWalkTime(0);
         return new Result(1,animal + " was moved successfully");
     }
 
@@ -229,15 +238,28 @@ public class AnimalController {
         }
         animation.setPlayMode(Animation.PlayMode.LOOP);
     }
-     private final static Animal animal = Animal.getAnimal("Cow");
 
     public static void update(float delta){
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
 
         for(Animal animal : App.getCurrentGame().getCurrentPlayer().getAnimals().values()) {
 
-            if (false) { // todo  walk animation
-
+            if (animal.getLocation() != null  && ( animal.getX() != animal.getLocation().column() * Tile.getSize()||
+                animal.getY() != animal.getLocation().row() * Tile.getSize() )) {
+                Location location = animal.getLocation();
+                if(animal.getX() > location.column() * Tile.getSize()){
+                    animal.setX(animal.getX() - Tile.getSize()/60);
+                }
+                else if(animal.getX() < location.column() * Tile.getSize()){
+                    animal.setX(animal.getX() + Tile.getSize()/60);
+                }
+                else if(animal.getY() > location.row() * Tile.getSize()){
+                    animal.setY(animal.getY() - Tile.getSize()/60);
+                }
+                else if(animal.getY() < location.row() * Tile.getSize()){
+                    animal.setY(animal.getY() + Tile.getSize()/60);
+                }
+                walkAnimation(animal,delta);
             }
             else if (! gameAssetManager.getAnimalPet(animal.getAnimalName()).isAnimationFinished(animal.getPetTime())) {
                 petAnimation(animal, delta);
@@ -257,7 +279,7 @@ public class AnimalController {
     public static void draw(SpriteBatch batch){
         for(Animal animal : App.getCurrentGame().getCurrentPlayer().getAnimals().values()) {
             animal.getSprite().setSize(Tile.getSize(), Tile.getSize());
-            animal.getSprite().setPosition(animal.getLocation().column() * Tile.getSize(),animal.getLocation().row() * Tile.getSize());
+            animal.getSprite().setPosition(animal.getX(),animal.getY());
             animal.getSprite().draw(batch);
         }
     }
