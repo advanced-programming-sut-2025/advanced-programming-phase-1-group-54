@@ -485,7 +485,7 @@ public class GameAssetManager {
             return texture;
         }
 
-        texture = recipe.get(name.substring(0,name.length() - 7));
+        texture = recipe.get(name + " Recipe");
         if(texture != null){
             return texture;
         }
