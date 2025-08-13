@@ -447,7 +447,7 @@ public class GameAssetManager {
 
         tool = new HashMap<>();
         for(FishingPoleType type : FishingPoleType.values()){
-            System.out.println(type);
+//            System.out.println(type);
             tool.put(type.toString(),new Texture("Stardew_Valley_Images-main/Tools/Fishing_Pole/" + type + "_Rod.png"));
         }
         tools.put("Fishing Pole",tool);
@@ -481,6 +481,11 @@ public class GameAssetManager {
         }
 
         texture = animalProduces.get(name);
+        if(texture != null){
+            return texture;
+        }
+
+        texture = recipe.get(name.substring(0,name.length() - 7));
         if(texture != null){
             return texture;
         }

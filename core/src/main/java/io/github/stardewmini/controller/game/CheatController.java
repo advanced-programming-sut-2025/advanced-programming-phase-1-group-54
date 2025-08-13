@@ -152,7 +152,7 @@ public class CheatController {
 
         Building building;
         if (prototype != null) {
-            building = AnimalHouse.BuildAnimalHouse(prototype, location);
+            building = new AnimalHouse(prototype, location);
         }
         else {
             building = new GenericWall(new Area(location, location.add(new Location(numberOfRows, numberOfColumns))),

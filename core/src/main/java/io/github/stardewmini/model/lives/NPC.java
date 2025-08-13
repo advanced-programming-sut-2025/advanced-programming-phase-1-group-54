@@ -16,7 +16,7 @@ public class NPC extends Live implements DailyUpdate {
     private static final Random rand = new Random();
 
 
-    private Sprite sprite = new Sprite();
+    private Sprite sprite;
     private String job;
 
     private final ArrayList<String> favoriteItems = new ArrayList<>();
@@ -27,7 +27,6 @@ public class NPC extends Live implements DailyUpdate {
 
     public NPC(String job, String name) {
         super(name);
-        System.out.println(name);
         this.job = job;
         newQuestCounter = rand.nextInt(30) + 30;
         this.sprite = new Sprite();

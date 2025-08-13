@@ -156,7 +156,7 @@ public class WorldBuilder {
         quest = new Quest(npc, "Stone", 150, "Quartz", 50, false);
         npc.getAllQuests().add(quest);
 
-        npcHouses.add(new NPCHouse(npc, npcHouseAreas[0]));
+        npcHouses.add(new NPCHouse(npc,npcHouseAreas[0]));
 
         NPC npc1 = new NPC("Miner", "Abigail");
 
@@ -173,7 +173,7 @@ public class WorldBuilder {
         quest = new Quest(npc1, "Wheat", 50, "Iridium Sprinkler", 1, false);
         npc1.getAllQuests().add(quest);
 
-        npcHouses.add(new NPCHouse(npc1, npcHouseAreas[1]));
+        npcHouses.add(new NPCHouse(npc1,npcHouseAreas[1]));
 
 
         NPC npc2 = new NPC("Baker", "Harvey");
@@ -191,10 +191,10 @@ public class WorldBuilder {
         quest = new Quest(npc2, "Grape Wine", 1, "Salad", 5, false);
         npc2.getAllQuests().add(quest);
 
-        npcHouses.add(new NPCHouse(npc2, npcHouseAreas[2]));
+        npcHouses.add(new NPCHouse(npc2,npcHouseAreas[2]));
 
 
-        NPC npc3 = new NPC("Chef", "Lia");
+        NPC npc3 = new NPC("Chef", "Leah");
 
         npc3.getFavoriteItems().add("Salad");
         npc3.getFavoriteItems().add("Coffee");
@@ -209,7 +209,7 @@ public class WorldBuilder {
         quest = new Quest(npc3, "Wood", 200, "Deluxe Scarecrow", 3, false);
         npc3.getAllQuests().add(quest);
 
-        npcHouses.add(new NPCHouse(npc3, npcHouseAreas[3]));
+        npcHouses.add(new NPCHouse(npc3,npcHouseAreas[3]));
 
 
         NPC npc4 = new NPC("Blacksmith", "Robin");
@@ -227,7 +227,7 @@ public class WorldBuilder {
         quest = new Quest(npc4, "Wood", 1000, "Coin", 25000, false);
         npc4.getAllQuests().add(quest);
 
-        npcHouses.add(new NPCHouse(npc4, npcHouseAreas[4]));
+        npcHouses.add(new NPCHouse(npc4,npcHouseAreas[4]));
 
         for (NPCHouse npcHouse : npcHouses) {
             for (int i = 0; i < npcHouse.getNumberOfRows(); i++) {

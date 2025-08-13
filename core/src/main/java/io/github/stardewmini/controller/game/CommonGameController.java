@@ -21,6 +21,9 @@ import io.github.stardewmini.model.items.tools.BackPack;
 import io.github.stardewmini.model.lives.Animal;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.map.*;
+import io.github.stardewmini.view.CheatMenu;
+import io.github.stardewmini.view.CookingMenu;
+import io.github.stardewmini.view.CraftingMenu;
 import io.github.stardewmini.view.InventoryMenu;
 
 
@@ -703,6 +706,18 @@ public class CommonGameController {
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             Main.getInstance().setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
+        }
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.B)){
+            Main.getInstance().setScreen(new CookingMenu(GameAssetManager.getInstance().getSkin()));
+        }
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.C)){
+            Main.getInstance().setScreen(new CraftingMenu(GameAssetManager.getInstance().getSkin()));
+        }
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.V)){
+            Main.getInstance().setScreen(new CheatMenu(GameAssetManager.getInstance().getSkin()));
         }
         // TODO update game each frame.
     }

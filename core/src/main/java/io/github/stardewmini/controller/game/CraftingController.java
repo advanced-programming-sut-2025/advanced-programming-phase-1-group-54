@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import io.github.stardewmini.Main;
 import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.DateTime;
 import io.github.stardewmini.model.GameAssetManager;
@@ -23,6 +24,7 @@ import io.github.stardewmini.model.map.Cabin;
 import io.github.stardewmini.model.map.Farm;
 import io.github.stardewmini.model.map.Location;
 import io.github.stardewmini.model.map.Tile;
+import io.github.stardewmini.view.GameScreen;
 
 import java.util.ArrayList;
 
@@ -46,6 +48,9 @@ public class CraftingController {
                     public void clicked(InputEvent event, float x, float y) {
                         String artisanName = recipe.getName();
                         crafting(artisanName.substring(0,artisanName.length() - 7));
+                        window.remove();
+                        Main.getInstance().getScreen().dispose();
+                        Main.getInstance().setScreen(new GameScreen());
                     }
                 });
             }

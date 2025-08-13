@@ -11,9 +11,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
+import io.github.stardewmini.controller.game.FriendShipController;
 import io.github.stardewmini.controller.game.InventoryController;
+import io.github.stardewmini.controller.game.NpcController;
+import io.github.stardewmini.controller.game.ToolsController;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.enums.SkillType;
+import io.github.stardewmini.model.relationships.Friendship;
 
 public class InventoryMenu implements Screen {
 
@@ -78,13 +82,13 @@ public class InventoryMenu implements Screen {
 
         this.skillsLabel = new Label[4];
         for(int i = 0; i < skillsLabel.length; i++){
-            skillsLabel[i] = new Label(SkillType.values()[i].name(), skin);
+            skillsLabel[i] = new Label(InventoryController.showSkill(i), skin);
         }
         this.skillButton = new TextButton("Skills", skin);
 
         this.socialTable = new Table(skin);
-        this.npcsFriendshipLabel = new Label("npc", skin);
-        this.playersFriendshipLabel = new Label("player", skin);
+        this.npcsFriendshipLabel = new Label(NpcController.getNPCsFriendship().message(), skin);
+        this.playersFriendshipLabel = new Label(FriendShipController.showFriendships().message(), skin);
         this.socialButton = new TextButton("Social", skin);
 
         this.mapButton = new TextButton("Map", skin);
@@ -148,9 +152,37 @@ public class InventoryMenu implements Screen {
             }
         });
 
+        trashButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                ToolsController.throwInTrash(trashItem.getText(), trashNumber.getText());
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
+            }
+        });
+
+        exitButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                // todo
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
+            }
+        });
+
+        kickButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                // todo
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
+            }
+        });
+
         for(int i = 0 ; i < skillsLabel.length ; i++){
             Label label = skillsLabel[i];
             SkillType skillType = SkillType.values()[i];
+            int finalI = i;
             skillsLabel[i].addListener(new InputListener() {
 
                 public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor){
@@ -159,7 +191,7 @@ public class InventoryMenu implements Screen {
                 }
 
                 public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor){
-                    label.setText(skillType.name());
+                    label.setText(InventoryController.showSkill(finalI));
                 }
             });
         }

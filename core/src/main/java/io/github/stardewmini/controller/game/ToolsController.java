@@ -33,7 +33,14 @@ public class ToolsController {
         return new Result(true, message.toString());
     }
 
-    public static Result throwInTrash(String itemName, Integer number) {
+    public static Result throwInTrash(String itemName, String numberString) {
+        Integer number;
+        try{
+            number = Integer.parseInt(numberString);
+        }catch (Exception e){
+            return new Result(false, "only enter numbers in number box");
+        }
+
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
 

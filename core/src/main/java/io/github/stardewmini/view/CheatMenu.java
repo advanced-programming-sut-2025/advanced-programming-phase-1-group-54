@@ -52,6 +52,8 @@ public class CheatMenu implements Screen {
         backButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
@@ -64,6 +66,9 @@ public class CheatMenu implements Screen {
         addMoneyButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 CheatController.addMoney(addMoneyField.getText());
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
@@ -83,6 +88,9 @@ public class CheatMenu implements Screen {
         addItemButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 CheatController.addItem(addItemNameField.getText(), addItemCountField.getText());
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
@@ -95,6 +103,9 @@ public class CheatMenu implements Screen {
         addTimeButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 CheatController.advanceDate(addTimeField.getText());
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
@@ -107,6 +118,9 @@ public class CheatMenu implements Screen {
         addDayButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 CheatController.advanceDate(addDayField.getText());
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 
@@ -128,8 +142,6 @@ public class CheatMenu implements Screen {
         Gdx.input.setInputProcessor(stage);
 
         stage.addActor(window);
-
-
     }
 
     @Override

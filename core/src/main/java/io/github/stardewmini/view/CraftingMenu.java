@@ -32,6 +32,8 @@ public class CraftingMenu implements Screen {
         backButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen());
             }
         });
 

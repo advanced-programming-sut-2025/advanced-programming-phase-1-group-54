@@ -14,6 +14,7 @@ import io.github.stardewmini.model.relationships.Talk;
 import java.util.ArrayList;
 
 public class FriendShipController {
+
     public static Result showFriendships() {
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
@@ -23,7 +24,7 @@ public class FriendShipController {
         StringBuilder messageBuilder = new StringBuilder();
         for (Relationship relationship : relationships) {
             messageBuilder.append(relationship.getOtherPlayer(player).getName())
-                    .append("level: ").append(relationship.getLevel()).append("\nXP: ").append(relationship.getXP()).
+                    .append("\nlevel: ").append(relationship.getLevel()).append("\nXP: ").append(relationship.getXP()).
                     append("\n");
         }
 
