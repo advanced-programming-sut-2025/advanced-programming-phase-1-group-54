@@ -722,4 +722,9 @@ public class CommonGameController {
         }
         // TODO update game each frame.
     }
+
+    public static void mouseClick(int screenX, int screenY, OrthographicCamera camera) {
+        MapController.mouseClick(screenX, screenY, camera);
+        ToolsController.mouseClick(screenX, screenY, camera);
+    }
 }

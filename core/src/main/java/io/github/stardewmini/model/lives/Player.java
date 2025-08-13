@@ -377,8 +377,6 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         int newX = currentLocation.column() + dx;
         int newY = currentLocation.row() + dy;
 
-        // TODO: check if new tile is walkable
-
         currentLocation = new Location(newY, newX);
         targetX = newX * Tile.getSize();
         targetY = newY * Tile.getSize();

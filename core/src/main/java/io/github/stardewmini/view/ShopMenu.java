@@ -16,7 +16,7 @@ import io.github.stardewmini.controller.game.ShopController;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Result;
 
-public class shopMenu implements Screen {
+public class ShopMenu implements Screen {
 
     private Stage stage;
     private final Window window;
@@ -33,7 +33,7 @@ public class shopMenu implements Screen {
 
 
 
-    public shopMenu(Skin skin) {
+    public ShopMenu(Skin skin) {
         this.window = new Window("Shop Menu", skin);
         this.backButton = new TextButton("Back", skin);
         this.scrollTable = new Table(skin);
