@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.model.*;
 import io.github.stardewmini.model.enums.Direction;
@@ -227,11 +229,16 @@ public class MapController {
         }
     }
 
-    public static void mouseClick(int screenX, int screenY, OrthographicCamera camera) {
+    public static void mouseClick(int screenX, int screenY, OrthographicCamera camera, Window[] windows) {
         Vector3 cameraPosition = camera.position;
         Tile tile = App.getCurrentGame().getWorld().getTileAt(
             new Location((int)((cameraPosition.y - screenY + Gdx.graphics.getHeight()/2f)/Tile.getSize()),
                 (int)((cameraPosition.x + screenX - Gdx.graphics.getWidth()/2f)/Tile.getSize())));
+
+        Tile downTile = App.getCurrentGame().getWorld().getTileAt(tile.getLocation().add(new Location(-1,0)));
+        if(downTile  == null){
+            System.out.println("ridi");
+        }
 
         if(tile != null){
             if(tile.getThingOnTile() instanceof Shop){
@@ -253,6 +260,21 @@ public class MapController {
             else if(tile.getTop().getThingOnTile() instanceof Animal animal){
                 Main.getInstance().getScreen().dispose();
                 Main.getInstance().setScreen(new AnimalMenu(GameAssetManager.getInstance().getSkin(),animal));
+            }
+            else if(downTile != null && downTile.getThingOnTile() instanceof NPC npc){
+                if(npc.getDialogTime() >= NPC.dialogTiming){
+                    int i = App.getCurrentGame().getWorld().getNPCIndex(npc);
+                    windows[i].getTitleLabel().setText(NpcController.meetsNpc(npc.getName()).message());
+                    npc.setDialogTime(0);
+                }
+            }
+            else if(downTile != null && downTile.getTop().getThingOnTile() instanceof NPC npc){
+                if(npc.getDialogTime() >= NPC.dialogTiming) {
+                    int i = App.getCurrentGame().getWorld().getNPCIndex(npc);
+                    windows[i].getTitleLabel().setFontScale(0.5f);
+                    windows[i].getTitleLabel().setText(NpcController.meetsNpc(npc.getName()).message());
+                    npc.setDialogTime(0);
+                }
             }
         }
     }

@@ -7,15 +7,13 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.game.CommonGameController;
+import io.github.stardewmini.controller.game.NpcController;
 import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.Game;
 import io.github.stardewmini.model.GameAssetManager;
@@ -29,23 +27,35 @@ import io.github.stardewmini.model.map.World;
 
 public class GameScreen implements Screen, InputProcessor {
     private Stage stage;
-    private Label label;
+    private final Label label;
     private float lastChange = 0;
     private OrthographicCamera camera;
+    private final Window[] windows;
 
     int width = 0;
     int height = 0;
 
     public GameScreen(Skin skin,String string) {
         this.label = new Label(string, skin);
+        windows = new Window[5];
+        for(int i = 0; i < 5; i++) {
+            windows[i] = new Window("dialoge", skin);
+            windows[i].setSize(Tile.getSize()*8,Tile.getSize()*3);
+        }
     }
 
     public GameScreen(Skin skin) {
         this.label = new Label("salam olagh azizi halet chetore?", skin);
+        windows = new Window[5];
+        for(int i = 0; i < 5; i++) {
+            windows[i] = new Window("dialoge", skin);
+            windows[i].setSize(Tile.getSize()*8,Tile.getSize()*3);
+        }
     }
 
     @Override
     public void show() {
+        NpcController.fixWindows(this.windows);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
@@ -64,7 +74,7 @@ public class GameScreen implements Screen, InputProcessor {
 
         ScreenUtils.clear(0, 0, 0, 1);
         Main.getBatch().begin();
-        CommonGameController.draw(Main.getBatch(),stage,camera);
+        CommonGameController.draw(Main.getBatch(),stage,camera,windows);
         Main.getBatch().end();
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();
@@ -120,7 +130,7 @@ public class GameScreen implements Screen, InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        CommonGameController.mouseClick(screenX, screenY, camera);
+        CommonGameController.mouseClick(screenX, screenY, camera,windows);
         return false;
     }
 

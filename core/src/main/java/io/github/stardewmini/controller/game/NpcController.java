@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Quest;
@@ -16,7 +18,9 @@ import io.github.stardewmini.model.items.recipes.Recipe;
 import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.map.NPCHouse;
+import io.github.stardewmini.model.map.Tile;
 import io.github.stardewmini.model.relationships.NPCFriendship;
+import io.github.stardewmini.view.GameScreen;
 import io.github.stardewmini.view.NPCMenu;
 
 import java.util.ArrayList;
@@ -68,13 +72,13 @@ public class NpcController {
         int randomNum = npcFriendship.getLevel();
         switch (randomNum){
             case 0:
-                return new Result(true, "Hey. If you’re looking for something, make it quick. I’ve got work to do.");
+                return new Result(true, "Hey. If you're looking for something, make it quick. I've got work to do.");
             case 1:
-                return new Result(true,"Oh, it’s you. Just finished something new—maybe I’ll show you one day.");
+                return new Result(true,"Oh, it’s you. Just finished something new—maybe I'll show you one day.");
             case 2:
-                return new Result(true,"Glad you stopped by. You’ve got good energy. Want to hangout later?");
+                return new Result(true,"Glad you stopped by. You've got good energy. Want to hangout later?");
             case 3:
-                return new Result(true,"Sometimes I feel like you’re the only one who really gets me. The world feels a little lighter when you’re around.");
+                return new Result(true,"Sometimes I feel like you're the only one who really gets me. The world feels a little lighter when you're around.");
         }
         return null;
     }
@@ -82,13 +86,13 @@ public class NpcController {
     private static Result getDialogByWeather() {
         switch (App.getCurrentGame().getCurrentWeather()){
             case Weather.SUNNY:
-                return new Result(true, "The light today’s perfect. Good visibility makes for cleaner work");
+                return new Result(true, "The light today's perfect. Good visibility makes for cleaner work");
             case Weather.RAIN:
-                return new Result(true,"Rain’s got a rhythm to it. Puts me in the zone. You ever try working to the sound of rain?");
+                return new Result(true,"Rain's got a rhythm to it. Puts me in the zone. You ever try working to the sound of rain?");
             case Weather.STORM:
-                return new Result(true,"");
+                return new Result(true,"it's bad Weather.");
             case Weather.SNOW:
-                return new Result(true,"Everything's quiet under the snow. Feels like the world’s holding its breath—perfect time to create.");
+                return new Result(true,"Everything's quiet under the snow. Feels like the world's holding its breath—perfect time to create.");
         }
         return null;
     }
@@ -96,7 +100,7 @@ public class NpcController {
     private static Result getDialogBySeason() {
         switch (App.getCurrentGame().getDateTime().getSeason()){
             case Season.SPRING :
-                return new Result(true,"Spring brings new life—and new inspiration. I always get the itch to make something fresh.");
+                return new Result(true,"Spring brings new life and new inspiration. I always get the itch to make something fresh.");
             case Season.SUMMER:
                 return new Result(true,"Working in this heat is brutal... but nothing worth making comes easy");
             case Season.FALL:
@@ -110,16 +114,16 @@ public class NpcController {
     private static Result getDialogByDayHour() {
         int hour = App.getCurrentGame().getDateTime().getHour();
         if(hour > 8 && hour < 12 ){
-            return new Result(true,"Morning. My brain’s not fully online yet… but the work won’t wait.");
+            return new Result(true,"Morning. My brain's not fully online yet... but the work won't wait.");
         }
         else if(hour > 11 && hour < 15){
-            return new Result(true,"It’s already noon and I’m only halfway through my list. Guess lunch can wait.");
+            return new Result(true,"It's already noon and I'm only halfway through my list. Guess lunch can wait.");
         }
         else if(hour > 14 && hour < 18){
-            return new Result(true,"It was a productive day. Now, if I had a slice of pizza, that’d make it perfect.");
+            return new Result(true,"It was a productive day. Now, if I had a slice of pizza, that'd make it perfect.");
         }
         else {
-            return new Result(true,"Nights are the best time to design. It’s quiet… just me and the ideas.");
+            return new Result(true,"Nights are the best time to design. It's quiet... just me and the ideas.");
         }
     }
 
@@ -273,8 +277,37 @@ public class NpcController {
     }
 
     public static void update(float delta) {
-        for(NPCHouse npcHouse : App.getCurrentGame().getWorld().getNpcHouses()){
-            giftAnimation(npcHouse.getNpc(),delta);
+        ArrayList<NPCHouse> npcHouses = App.getCurrentGame().getWorld().getNpcHouses();
+        for(int i = 0 ;i < npcHouses.size() ; i++){
+            NPC npc = npcHouses.get(i).getNpc();
+            giftAnimation(npc,delta);
+            if(npc.getDialogTime() < NPC.dialogTiming){
+                npc.setDialogTime(npc.getDialogTime() + delta);
+            }
+        }
+    }
+
+    public static void draw(SpriteBatch batch,Window[] windows) {
+        ArrayList<NPCHouse> npcHouses = App.getCurrentGame().getWorld().getNpcHouses();
+        for(int i = 0 ; i < npcHouses.size() ; i++){
+            NPC npc = npcHouses.get(i).getNpc();
+            if(npc.getDialogTime() >= NPC.dialogTiming){
+                windows[i].draw(batch,1f);
+            }
+            else if(npc.getDialogTime() < 10){
+                windows[i].draw(batch,1f);
+            }
+            else {
+                windows[i].getTitleLabel().setText("dialog");
+            }
+        }
+    }
+
+    public static void fixWindows(Window[] windows){
+        ArrayList<NPCHouse> npcHouses = App.getCurrentGame().getWorld().getNpcHouses();
+        for(int i = 0 ; i < windows.length ; i++){
+            windows[i].setPosition(npcHouses.get(i).getNpc().getLocation().column() * Tile.getSize(),
+                (npcHouses.get(i).getNpc().getLocation().row() + 1) * Tile.getSize());
         }
     }
 

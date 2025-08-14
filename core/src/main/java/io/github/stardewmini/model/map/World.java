@@ -119,6 +119,15 @@ public class World implements DailyUpdate {
         return npcs;
     }
 
+    public int getNPCIndex(NPC npc){
+        for(int i = 0; i < npcHouses.size(); i++){
+            if(npcHouses.get(i).getNpc().equals(npc)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void foraging(Season season) {
         for (Farm farm : playerFarms) {
             farm.foragingCrop(season);

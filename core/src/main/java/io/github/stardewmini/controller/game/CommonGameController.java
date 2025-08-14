@@ -5,6 +5,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.model.*;
 import io.github.stardewmini.model.enums.Direction;
@@ -695,10 +697,11 @@ public class CommonGameController {
         return false;
     }
 
-    public static void draw(SpriteBatch batch, Stage stage,OrthographicCamera camera) {
+    public static void draw(SpriteBatch batch, Stage stage, OrthographicCamera camera, Window[] windows) {
         MapController.draw(batch,stage,camera);
         PlayerController.draw(batch);
         AnimalController.draw(batch);
+        NpcController.draw(batch,windows);
     }
 
     public static void update(float delta, OrthographicCamera camera) {
@@ -728,8 +731,8 @@ public class CommonGameController {
         // TODO update game each frame.
     }
 
-    public static void mouseClick(int screenX, int screenY, OrthographicCamera camera) {
-        MapController.mouseClick(screenX, screenY, camera);
+    public static void mouseClick(int screenX, int screenY, OrthographicCamera camera,Window[] windows) {
+        MapController.mouseClick(screenX, screenY, camera, windows);
         ToolsController.mouseClick(screenX, screenY, camera);
     }
 }
