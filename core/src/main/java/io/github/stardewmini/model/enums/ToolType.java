@@ -20,6 +20,7 @@ public enum ToolType {
 
     @Override
     public String toString() {
-        return this.name().toLowerCase().replace("_", " ");
+        return this.name().charAt(0) + this.name().substring(1).toLowerCase()
+            .replace("_", " ");
     }
 }

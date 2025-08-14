@@ -29,6 +29,7 @@ public class Main extends Game {
 //    todo     setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getInstance().getSkin()));
 
 //        setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
+
 //  todo      FishingGame game = new FishingGame(null,0);
 //        FishingController.setGame(game);
 //        setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin() , "gsdg","fish"));

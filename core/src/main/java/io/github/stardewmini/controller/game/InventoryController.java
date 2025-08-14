@@ -1,15 +1,23 @@
 package io.github.stardewmini.controller.game;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import io.github.stardewmini.Main;
 import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.GameAssetManager;
+import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.enums.SkillType;
 import io.github.stardewmini.model.items.Item;
+import io.github.stardewmini.model.items.tools.Tool;
+import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.lives.Skill;
+import io.github.stardewmini.view.GameScreen;
 
 import java.util.Map;
 
@@ -49,6 +57,38 @@ public class InventoryController {
             i++;
             if(i == 4){
                 output.row();
+            }
+        }
+        return output;
+    }
+
+    public static Table showTolls(Window window){
+        Table output = new Table();
+        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+        int i = 0;
+        for(Tool tool : currentPlayer.getTools()){
+            if(tool != null){
+                System.out.println(tool.getToolType());
+                Table table = new Table();
+                Texture texture = gameAssetManager.getTool(tool.getToolType().toString(),tool.getToolLevel().toString());
+                Image image = new Image(texture);
+                image.addListener(new ClickListener() {
+                    public void clicked(InputEvent event, float x, float y) {
+                        Result result = ToolsController.equipTool(tool.getToolType().toString());
+                        window.remove();
+                        Main.getInstance().getScreen().dispose();
+                        Main.getInstance().setScreen(new GameScreen(gameAssetManager.getSkin(),result.message()));
+                    }
+                });
+                table.add(image).row();
+                table.add(new Label(tool.getToolLevel().toString() + " " + tool.getToolType().toString()
+                    ,gameAssetManager.getSkin()));
+                output.add(table).pad(10);
+                i++;
+                if(i == 4){
+                    output.row();
+                }
             }
         }
         return output;

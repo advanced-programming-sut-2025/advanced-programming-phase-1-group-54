@@ -59,8 +59,8 @@ public class InventoryMenu implements Screen {
     private final Label kickLabel;
     private final Table kickTable;
 
-
-
+    private final ScrollPane toolsScrollPane;
+    private final TextButton toolsButton;
 
     public InventoryMenu(Skin skin) {
         this.window = new Window("inventory Menu",skin);
@@ -101,6 +101,9 @@ public class InventoryMenu implements Screen {
         this.kickField = new TextField("", skin);
         this.kickLabel = new Label("Enter Username", skin);
         this.kickTable = new Table(skin);
+
+        this.toolsScrollPane = new ScrollPane(InventoryController.showTolls(window),skin);
+        this.toolsButton = new TextButton("Tools Menu", skin);
     }
 
     @Override
@@ -150,6 +153,13 @@ public class InventoryMenu implements Screen {
                 table2.clear();
                 table2.add(exitButton).expand().pad(10).row();
                 table2.add(kickWindow).expand().pad(10);
+            }
+        });
+
+        toolsButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                table2.clear();
+                table2.add(toolsScrollPane).expand().pad(10);
             }
         });
 
@@ -218,6 +228,7 @@ public class InventoryMenu implements Screen {
         table1.add(socialButton).pad(10);
         table1.add(mapButton).pad(10);
         table1.add(settingButton).pad(10);
+        table1.add(toolsButton).pad(10);
 
         kickWindow.add(kickLabel).pad(10);
         kickTable.add(kickLabel).pad(10);

@@ -385,6 +385,7 @@ public class GameAssetManager {
         buildings.put("lake",new Texture("Stardew_Valley_Images-main/Buildings/lake.png"));
         buildings.put("floor",new Texture("Stardew_Valley_Images-main/Buildings/floor.png"));
         buildings.put("Quarry Floor",new Texture("Stardew_Valley_Images-main/Buildings/Quarry_Floor.png"));
+        buildings.put("Plowed Floor",new Texture("Stardew_Valley_Images-main/Flooring/Flooring_08.png"));
         buildings.put("Blacksmith",new Texture("Stardew_Valley_Images-main/Buildings/Blacksmith.png"));
         buildings.put("Carpenter Shop",new Texture("Stardew_Valley_Images-main/Buildings/Carpenter's_Shop.png"));
         buildings.put("Fish Shop",new Texture("Stardew_Valley_Images-main/Buildings/Fish_Shop.png"));
@@ -460,6 +461,13 @@ public class GameAssetManager {
             tool.put(type.toString(),new Texture("Stardew_Valley_Images-main/Tools/Fishing_Pole/" + type + "_Rod.png"));
         }
         tools.put("Fishing Pole",tool);
+
+        tool = new HashMap<>();
+        tool.put("Normal",new Texture("Stardew_Valley_Images-main/Tools/Watering_Can/NORMAL_Pan.png"));
+        tool.put("Copper",new Texture("Stardew_Valley_Images-main/Tools/Watering_Can/Copper_Pan.png"));
+        tool.put("Gold",new Texture("Stardew_Valley_Images-main/Tools/Watering_Can/Gold_Pan.png"));
+        tool.put("Iridium",new Texture("Stardew_Valley_Images-main/Tools/Watering_Can/Iridium_Pan.png"));
+        tools.put("Watering can",tool);
     }
 
     public Texture getTool(String name,String level) {

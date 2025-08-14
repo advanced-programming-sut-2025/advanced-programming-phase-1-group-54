@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.Game;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.enums.*;
 import io.github.stardewmini.model.items.Item;
@@ -194,6 +195,7 @@ public class ToolsController {
             return new Result(true, "This tile has already been plowed");
 
         tile.addFeature(Feature.PLOWED);
+        tile.getSprite().setRegion(GameAssetManager.getInstance().getBuilding("Plowed Floor"));
         return new Result(true, "This tile has been plowed");
     }
 
@@ -333,8 +335,6 @@ public class ToolsController {
         float dy = clickPos.y - playerPos.y;
 
         Direction direction = getDirection(dy, dx);
-
-        System.out.println("Clicked direction: " + direction);
 
         useTool(direction);
     }

@@ -130,6 +130,10 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         return tools[toolType.ordinal()];
     }
 
+    public Tool[] getTools() {
+        return tools;
+    }
+
     public void setTool(ToolType toolType, Tool tool) {
         tools[toolType.ordinal()] = tool;
     }

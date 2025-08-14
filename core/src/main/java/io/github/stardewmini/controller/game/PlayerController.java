@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import io.github.stardewmini.model.App;
+import io.github.stardewmini.model.GameAssetManager;
+import io.github.stardewmini.model.items.tools.Tool;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.map.Location;
 import io.github.stardewmini.model.map.Tile;
@@ -49,6 +51,9 @@ public class PlayerController {
         for (Player player : App.getCurrentGame().getPlayers()) {
             player.getSprite().setPosition(player.getX(), player.getY());
             player.getSprite().draw(batch);
+            Tool tool = player.getEquippedTool();
+            batch.draw(GameAssetManager.getInstance().getTool(tool.getToolType().toString(),tool.getToolLevel().toString())
+                ,player.getX() + 2 * Tile.getSize()/3f, player.getY() + Tile.getSize()/2f);
         }
     }
 }
