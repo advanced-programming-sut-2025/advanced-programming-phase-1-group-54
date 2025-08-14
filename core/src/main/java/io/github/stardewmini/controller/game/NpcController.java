@@ -275,7 +275,6 @@ public class NpcController {
     public static void update(float delta) {
         for(NPCHouse npcHouse : App.getCurrentGame().getWorld().getNpcHouses()){
             giftAnimation(npcHouse.getNpc(),delta);
-            System.out.println(npcHouse.getNpc().getName());
         }
     }
 
