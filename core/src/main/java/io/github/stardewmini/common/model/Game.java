@@ -100,9 +100,9 @@ public class Game implements DailyUpdate {
         return dateTime;
     }
 
-    public Player getCurrentPlayer() {
-        return players[turn];
-    }
+//    public Player getCurrentPlayer() {
+//        return players[turn];
+//    }
 
     public HashMap<Player, FishingGame> getFishingGames() {
         return fishingGames;

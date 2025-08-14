@@ -1,15 +1,11 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.client.controllers.game.CommonGameController;
 import io.github.stardewmini.server.app.GameApp;
-import io.github.stardewmini.common.model.DateTime;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.Direction;
 import io.github.stardewmini.common.model.enums.Feature;
-import io.github.stardewmini.common.model.items.Item;
 import io.github.stardewmini.common.model.items.crafting.Artisan;
 import io.github.stardewmini.common.model.items.crafting.FeatureArtisan;
-import io.github.stardewmini.common.model.items.crafting.Produce;
 import io.github.stardewmini.common.model.items.crafting.ProducerArtisan;
 import io.github.stardewmini.common.model.items.plants.Seed;
 import io.github.stardewmini.common.model.items.recipes.Recipe;
@@ -21,11 +17,47 @@ import io.github.stardewmini.common.model.map.Tile;
 
 public class CraftingController {
 
+//    public static Result showCraftingRecipe(Window window){
+//
+//        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+//        Tile tile = GameApp.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
+//        if(! (tile.getThingOnTile() instanceof Cabin)){
+//            return new Result(-1,"You are not in the Cabin");
+//        }
+//
+//        ArrayList<Recipe> craftingRecipes = player.getLearnedCraftingRecipes();
+//        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+//        int inRow = 0;
+//        for (Recipe recipe : Recipe.craftRecipes.values()) {
+//            Image image = new Image(gameAssetManager.getRecipe(recipe.getName()));
+//            if(craftingRecipes.contains(recipe)){
+//                image.addListener(new ClickListener() {
+//                    public void clicked(InputEvent event, float x, float y) {
+//                        String artisanName = recipe.getName();
+//                        Result result = crafting(artisanName.substring(0,artisanName.length() - 7));
+//                        window.remove();
+//                        Main.getInstance().getScreen().dispose();
+//                        Main.getInstance().setScreen(new GameScreen(gameAssetManager.getSkin(),result.message()));
+//                    }
+//                });
+//            }
+//            else {
+//                image.setColor(Color.GRAY);
+//            }
+//            window.add(image).expand().pad(10);
+//            inRow++;
+//            if(inRow == 10){
+//                window.row();
+//                inRow = 0;
+//            }
+//        }
+//        return new Result(1, "");
+//
+//    }
 
+    public static Result crafting(String artisanName,String username){
 
-    public static Result crafting(String artisanName){
-
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
         Tile tile = GameApp.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
         if(! (tile.getThingOnTile() instanceof Cabin)){
             return new Result(-1,"You are not in the Cabin");
@@ -53,13 +85,13 @@ public class CraftingController {
 
 
         for(String ingredient : recipe.getIngredientsNames()){
-            if(CommonGameController.numberOfItemInBackPack(ingredient) < recipe.getIngredientsNumber().get(ingredient)){
+            if(CommonGameController.numberOfItemInBackPack(ingredient,username) < recipe.getIngredientsNumber().get(ingredient)){
                 return new Result(-1,"You do not have the enough ingredients");
             }
         }
 
         for(String ingredient : recipe.getIngredientsNames()){
-            CommonGameController.removeItemFromBackPack(ingredient, recipe.getIngredientsNumber().get(ingredient));
+            CommonGameController.removeItemFromBackPack(ingredient, recipe.getIngredientsNumber().get(ingredient),username);
         }
 
         if(artisanName.equals("Mystic Tree Seeds")){
@@ -80,11 +112,11 @@ public class CraftingController {
     }
 
     // TODO
-    public static Result placeArtisan(String artisanName, Direction direction){
+    public static Result placeArtisan(String artisanName, Direction direction, String username){
         if (direction == null)
             return new Result(false, "invalid direction");
 
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
         Farm farm = GameApp.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
 
         if(farm == null){
@@ -123,7 +155,7 @@ public class CraftingController {
                     Location location1 = location.delta(new Location(location.row() + i,location.column() + j));
                     Tile tile1 =  farm.getTileAt(location1);
                     if(tile1 != null){
-                        CommonGameController.deleteThingOnTile(tile1,farm);
+                        CommonGameController.deleteThingOnTile(tile1,farm,username);
                     }
                 }
             }
@@ -144,96 +176,96 @@ public class CraftingController {
         return new Result(-1,"Artisan placed successfully");
     }
 
-    public static Result producing(String artisanName,String produceName){
-
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
-
-        ProducerArtisan producerArtisan = null;
-        boolean haveArtisan = false;
-        for(ProducerArtisan artisan : player.getPlacedArtisans()){
-            if(artisan.getName().equals(artisanName)){
-                haveArtisan = true;
-                if(artisan.getProcessingProduce() == null){
-                    producerArtisan = artisan;
-                }
-            }
-        }
-
-        if(! haveArtisan){
-            return new Result(-1,"You don't have the producing artisan");
-        }
-
-        if(producerArtisan == null){
-            return new Result(-1,"Artisan is producing");
-        }
-
-        Produce produce = Produce.getProduce(produceName);
-        if(produce == null){
-            return new Result(-1,"Produce doesn't exist");
-        }
-
-        if(! producerArtisan.getProducesNames().contains(produce.getName())){
-            return new Result(-1,"Artisan can't make this produce");
-        }
-
-        for(String ingredient : produce.getIngredientsNames()){
-            if(CommonGameController.numberOfItemInBackPack(ingredient) < produce.getIngredientsNumber().get(ingredient)){
-                return new Result(-1,"You don't have enough ingredient to make this produce");
-            }
-        }
-
-
-        producerArtisan.setProcessingProduce(produce);
-        if(produce.getProcessingMornings() > 0){
-            producerArtisan.setRemainingHours(DateTime.getHoursInDay() - GameApp.getCurrentGame().getDateTime().getHour() +
-                    (produce.getProcessingMornings() - 1) * DateTime.getHoursInDay());
-        }
-        else{
-            producerArtisan.setRemainingHours(produce.getProcessingHours());
-        }
-
-        for(String ingredient : produce.getIngredientsNames()){
-            Item item = CommonGameController.findItem(ingredient);
-            player.getBackpack().removeItem(item,produce.getIngredientsNumber().get(ingredient));
-        }
-
-        return new Result(1,"Start Producing");
-
-    }
-
-    public static Result getProduceFromArtisan(String artisanName){
-
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
-
-        ProducerArtisan producerArtisan = null;
-        for(ProducerArtisan artisan : player.getPlacedArtisans()){
-            if(artisan.getName().equals(artisanName)){
-                producerArtisan = artisan;
-            }
-        }
-
-        if(producerArtisan == null){
-            return new Result(-1,"you don't have the artisan");
-        }
-
-        if(! producerArtisan.isProduceReady()){
-            return new Result(-1,"Produce isn't ready");
-        }
-
-//        if(! MapController.isNear(player.getCurrentLocation(),producerArtisan)){
-//            return new Result(-1,"You aren't near artisan " + producerArtisan.getName());
+//    public static Result producing(String artisanName,String produceName,String username){
+//
+//        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+//
+//        ProducerArtisan producerArtisan = null;
+//        boolean haveArtisan = false;
+//        for(ProducerArtisan artisan : player.getPlacedArtisans()){
+//            if(artisan.getName().equals(artisanName)){
+//                haveArtisan = true;
+//                if(artisan.getProcessingProduce() == null){
+//                    producerArtisan = artisan;
+//                }
+//            }
 //        }
-
-        if(! player.getBackpack().addItem(producerArtisan.getProcessingProduce(),1)){
-            return new Result(-1,"Backpack is full");
-        }
-
-        producerArtisan.setProduceIsReady(false);
-        producerArtisan.setProcessingProduce(null);
-
-
-        return new Result(1,"You got the produce");
-    }
+//
+//        if(! haveArtisan){
+//            return new Result(-1,"You don't have the producing artisan");
+//        }
+//
+//        if(producerArtisan == null){
+//            return new Result(-1,"Artisan is producing");
+//        }
+//
+//        Produce produce = Produce.getProduce(produceName);
+//        if(produce == null){
+//            return new Result(-1,"Produce doesn't exist");
+//        }
+//
+//        if(! producerArtisan.getProducesNames().contains(produce.getName())){
+//            return new Result(-1,"Artisan can't make this produce");
+//        }
+//
+//        for(String ingredient : produce.getIngredientsNames()){
+//            if(CommonGameController.numberOfItemInBackPack(ingredient) < produce.getIngredientsNumber().get(ingredient)){
+//                return new Result(-1,"You don't have enough ingredient to make this produce");
+//            }
+//        }
+//
+//
+//        producerArtisan.setProcessingProduce(produce);
+//        if(produce.getProcessingMornings() > 0){
+//            producerArtisan.setRemainingHours(DateTime.getHoursInDay() - App.getCurrentGame().getDateTime().getHour() +
+//                    (produce.getProcessingMornings() - 1) * DateTime.getHoursInDay());
+//        }
+//        else{
+//            producerArtisan.setRemainingHours(produce.getProcessingHours());
+//        }
+//
+//        for(String ingredient : produce.getIngredientsNames()){
+//            Item item = CommonGameController.findItem(ingredient);
+//            player.getBackpack().removeItem(item,produce.getIngredientsNumber().get(ingredient));
+//        }
+//
+//        return new Result(1,"Start Producing");
+//
+//    }
+//
+//    public static Result getProduceFromArtisan(String artisanName){
+//
+//        Player player = App.getCurrentGame().getCurrentPlayer();
+//
+//        ProducerArtisan producerArtisan = null;
+//        for(ProducerArtisan artisan : player.getPlacedArtisans()){
+//            if(artisan.getName().equals(artisanName)){
+//                producerArtisan = artisan;
+//            }
+//        }
+//
+//        if(producerArtisan == null){
+//            return new Result(-1,"you don't have the artisan");
+//        }
+//
+//        if(! producerArtisan.isProduceReady()){
+//            return new Result(-1,"Produce isn't ready");
+//        }
+//
+////        if(! MapController.isNear(player.getCurrentLocation(),producerArtisan)){
+////            return new Result(-1,"You aren't near artisan " + producerArtisan.getName());
+////        }
+//
+//        if(! player.getBackpack().addItem(producerArtisan.getProcessingProduce(),1)){
+//            return new Result(-1,"Backpack is full");
+//        }
+//
+//        producerArtisan.setProduceIsReady(false);
+//        producerArtisan.setProcessingProduce(null);
+//
+//
+//        return new Result(1,"You got the produce");
+//    }
 
 
 }

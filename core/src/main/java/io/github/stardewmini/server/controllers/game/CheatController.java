@@ -1,15 +1,8 @@
 package io.github.stardewmini.server.controllers.game;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import io.github.stardewmini.client.Main;
-import io.github.stardewmini.client.controllers.game.CommonGameController;
-import io.github.stardewmini.client.controllers.game.ToolsController;
+
 import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.Game;
-import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.Feature;
 import io.github.stardewmini.common.model.enums.Weather;
@@ -43,9 +36,20 @@ public class CheatController {
         return new Result(true, "it's now " + game.getDateTime().toString());
     }
 
-    public static Result thunderStrike(Location location) {
+    public static Result thunderStrike(String locationString,String username) {
+        int x,y;
+        Location location;
+        try{
+            String[] locParts = locationString.split(",");
+            x = Integer.parseInt(locParts[0]);
+            y = Integer.parseInt(locParts[1]);
+            location = new Location(y,x);
+        }catch (Exception e){
+            return new Result(false,"enter location in X,Y format");
+        }
+
         Game game = GameApp.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(username);
         Farm farm = game.getWorld().getFarmAt(player.getCurrentLocation());
 
         if (farm == null) {
@@ -66,21 +70,27 @@ public class CheatController {
         return new Result(true, "You changed the future!");
     }
 
-    public static Result setEnergy(int value) {
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+    public static Result setEnergy(String valueString,String username) {
+        int value;
+        try {
+            value = Integer.parseInt(valueString);
+        } catch (Exception e){
+            return new Result(false,"enter only numbers");
+        }
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
         player.setUnlimitedEnergy(false);
         player.setEnergy(value);
         return new Result(true, "You suddenly feel weird, as if you're energy has changed!");
     }
 
-    public static Result setUnlimitedEnergy() {
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+    public static Result setUnlimitedEnergy(String username) {
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
         player.setUnlimitedEnergy(true);
         return new Result(true, "You suddenly feel unstoppable!");
     }
 
-    public static Result setAnimalFriendship(String animalName, int amount) {
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+    public static Result setAnimalFriendship(String animalName, int amount,String username) {
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
         Animal animal = player.getAnimals().get(animalName);
         if(animal == null) {
             return new Result(-1, "You don't have any animal named " + animalName);
@@ -90,26 +100,26 @@ public class CheatController {
         return new Result(1,"Now " + animal + "'s friendship level is around " + animal.getFriendshipLevel());
     }
 
-    public static Result addMoney(String string) {
+    public static Result addMoney(String string,String username) {
         int money;
         try{
             money = Integer.parseInt(string);
         }catch (Exception e){
             return new Result(false,"only enter numbers");
         }
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
         player.increaseMoney(money);
         return new Result(true, "You are richer than before!");
     }
 
-    public static Result addItem(String itemName, String countString) {
+    public static Result addItem(String itemName, String countString,String username) {
         int count;
         try{
             count = Integer.parseInt(countString);
         }catch (Exception e){
             return new Result(false,"only enter numbers");
         }
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
         Item item = CommonGameController.findItem(itemName);
         if(item == null) {
             return new Result(-1, "Doesn't exist any item named " + itemName);
@@ -117,7 +127,7 @@ public class CheatController {
         return ToolsController.addToBackPack(player.getBackpack(), item, count);
     }
 
-    public static Result addBuilding(String buildingName, Location location) {
+    public static Result addBuilding(String buildingName, Location location,String username) {
         AnimalHousePrototype prototype = AnimalHousePrototype.getAnimalHousePrototype(buildingName);
         int numberOfRows;
         int numberOfColumns;
@@ -156,7 +166,7 @@ public class CheatController {
         Building building;
         if (prototype != null) {
             AnimalHouse animalHouse = new AnimalHouse(prototype, location);
-            GameApp.getCurrentGame().getCurrentPlayer().getFarm().getAnimalHouses().add(animalHouse);
+            GameApp.getCurrentGame().getPlayerByUsername(username).getFarm().getAnimalHouses().add(animalHouse);
             building = animalHouse;
         }
         else {
@@ -178,13 +188,13 @@ public class CheatController {
         return new Result(true, buildingName + " built!");
     }
 
-    public static Result addAnimal(Animal animal, String name,Location location) {
+    public static Result addAnimal(Animal animal, String name,Location location,String username) {
         if (animal == null) {
             return new Result(false, "No such animal.");
         }
 
         boolean temp = false;
-        for (AnimalHouse animalHouse : GameApp.getCurrentGame().getCurrentPlayer().getFarm().getAnimalHouses()) {
+        for (AnimalHouse animalHouse : GameApp.getCurrentGame().getPlayerByUsername(username).getFarm().getAnimalHouses()) {
             for (String acceptedAnimalName : animalHouse.getAnimals()) {
                 if (acceptedAnimalName.equals(animal.getAnimalName())) {
                     temp = true;
@@ -196,82 +206,82 @@ public class CheatController {
             return new Result(false, "building required");
         }
 
-        Result result = AnimalController.moveAnimal(animal,location);
+        Result result = AnimalController.moveAnimal(animal,location,username);
         if(! result.success()){
             return result;
         }
 
         int i = 0;
-        while (GameApp.getCurrentGame().getCurrentPlayer().getAnimals().get(name + i) != null) {
+        while (GameApp.getCurrentGame().getPlayerByUsername(username).getAnimals().get(name + i) != null) {
             i++;
         }
         name = name + i;
         animal.setName(name);
-        animal.setOwner(GameApp.getCurrentGame().getCurrentPlayer());
-        GameApp.getCurrentGame().getCurrentPlayer().getAnimals().put(name, animal);
+        animal.setOwner(GameApp.getCurrentGame().getPlayerByUsername(username));
+        GameApp.getCurrentGame().getPlayerByUsername(username).getAnimals().put(name, animal);
         GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(animal);
         return new Result(true, "animal purchased");
     }
 
-    public static Result addToFarm(Image image , String itemName, String name, int price, OrthographicCamera camera) {
-        // todo change image to correct image
-        image = new Image(GameAssetManager.getInstance().getStar());
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
-        if(player.getMoney() <= price){
-            return new Result(false, "You can't have " + price +"coin");
-        }
-        player.decreaseMoney(price);
-
-        Location location = GameApp.getCurrentGame().getCurrentPlayer().getFarm().getLocation();
-        Main.getBatch().begin();
-        if(Animal.getAnimal(itemName) != null) {
-            Animal animal = Animal.getAnimal(itemName);
-            while(! ((Gdx.input.isKeyPressed(Input.Keys.ENTER) && AnimalController.moveAnimal(animal,location).success()))){
-                if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-                    location = location.add(new Location(0, 1));
-                }
-                if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-                    location = location.add(new Location(0, -1));
-                }
-                if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-                    location = location.add(new Location(1, 0));
-                }
-                if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-                    location = location.add(new Location(-1, 0));
-                }
-                if (Gdx.input.isKeyPressed(Input.Keys.E)) {
-                    return new Result(false, "you gave up");
-                }
-                image.setPosition(location.row(), location.column());
-                image.draw(Main.getBatch(),0.5f);
-                camera.position.set(location.row() * Tile.getSize(),location.column() * Tile.getSize(),0);
-                // todo add image to tile sprite
-            }
-//            addAnimal(animal,name);
-            return new Result(true, "animal purchased");
-        }
-        else {
-            while(! ((Gdx.input.isKeyPressed(Input.Keys.ENTER) && addBuilding(itemName,location).success()))){
-                if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-                    location = location.add(new Location(0, 1));
-                }
-                if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-                    location = location.add(new Location(0, -1));
-                }
-                if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-                    location = location.add(new Location(1, 0));
-                }
-                if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-                    location = location.add(new Location(-1, 0));
-                }
-                if (Gdx.input.isKeyPressed(Input.Keys.E)) {
-                    return new Result(false, "you gave up");
-                }
-                image.setPosition(location.row(), location.column());
-                image.draw(Main.getBatch(),0.5f);
-                camera.position.set(location.row() * Tile.getSize(),location.column() * Tile.getSize(),0);
-            }
-            return new Result(true, "building purchased");
-        }
-    }
+//    public static Result addToFarm(Image image , String itemName, String name, int price, OrthographicCamera camera) {
+//        // todo change image to correct image
+//        image = new Image(GameAssetManager.getInstance().getStar());
+//        Player player = App.getCurrentGame().getCurrentPlayer();
+//        if(player.getMoney() <= price){
+//            return new Result(false, "You can't have " + price +"coin");
+//        }
+//        player.decreaseMoney(price);
+//
+//        Location location = App.getCurrentGame().getCurrentPlayer().getFarm().getLocation();
+//        Main.getBatch().begin();
+//        if(Animal.getAnimal(itemName) != null) {
+//            Animal animal = Animal.getAnimal(itemName);
+//            while(! ((Gdx.input.isKeyPressed(Input.Keys.ENTER) && AnimalController.moveAnimal(animal,location).success()))){
+//                if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+//                    location = location.add(new Location(0, 1));
+//                }
+//                if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+//                    location = location.add(new Location(0, -1));
+//                }
+//                if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+//                    location = location.add(new Location(1, 0));
+//                }
+//                if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+//                    location = location.add(new Location(-1, 0));
+//                }
+//                if (Gdx.input.isKeyPressed(Input.Keys.E)) {
+//                    return new Result(false, "you gave up");
+//                }
+//                image.setPosition(location.row(), location.column());
+//                image.draw(Main.getBatch(),0.5f);
+//                camera.position.set(location.row() * Tile.getSize(),location.column() * Tile.getSize(),0);
+//                // todo add image to tile sprite
+//            }
+////            addAnimal(animal,name);
+//            return new Result(true, "animal purchased");
+//        }
+//        else {
+//            while(! ((Gdx.input.isKeyPressed(Input.Keys.ENTER) && addBuilding(itemName,location).success()))){
+//                if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+//                    location = location.add(new Location(0, 1));
+//                }
+//                if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+//                    location = location.add(new Location(0, -1));
+//                }
+//                if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+//                    location = location.add(new Location(1, 0));
+//                }
+//                if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+//                    location = location.add(new Location(-1, 0));
+//                }
+//                if (Gdx.input.isKeyPressed(Input.Keys.E)) {
+//                    return new Result(false, "you gave up");
+//                }
+//                image.setPosition(location.row(), location.column());
+//                image.draw(Main.getBatch(),0.5f);
+//                camera.position.set(location.row() * Tile.getSize(),location.column() * Tile.getSize(),0);
+//            }
+//            return new Result(true, "building purchased");
+//        }
+//    }
 }

@@ -1,6 +1,5 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.client.controllers.game.CommonGameController;
 import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.SkillType;
@@ -15,8 +14,8 @@ import io.github.stardewmini.common.model.map.Tile;
 
 public class AnimalController {
 
-    public static Result pet(Animal animal) {
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+    public static Result pet(Animal animal,String username) {
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
 //        Animal animal = player.getAnimals().get(animalName);
 //        if(animal == null) {
 //            return new Result(-1, "You don't have any animal named " + animalName);
@@ -30,8 +29,8 @@ public class AnimalController {
         return new Result(1,animal + " slightly likes you more!");
     }
 
-    public static Result showAnimals() {
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+    public static Result showAnimals(String username) {
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
         StringBuilder output = new StringBuilder();
         for(Animal animal : player.getAnimals().values()) {
             output.append(animal.getAnimalName()).append(" ").append(animal.getName()).append("\n").
@@ -54,8 +53,8 @@ public class AnimalController {
         return new Result(true,output.toString());
     }
 
-    public static Result moveAnimal(Animal animal, Location location) {
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+    public static Result moveAnimal(Animal animal, Location location,String username) {
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
         Farm farm = GameApp.getCurrentGame().getWorld().getFarm(player);
         Location locationInFarm = location.delta(farm.getLocation());
         Tile tile = farm.getTileAt(locationInFarm);
@@ -73,7 +72,7 @@ public class AnimalController {
                 animal.setX(locationInFarm.column() * Tile.getSize());
                 animal.setY(locationInFarm.row() * Tile.getSize());
             }
-            deleteAnimalFromFarm(animal);
+            deleteAnimalFromFarm(animal,username);
             tile.setThingOnTile(animal);
             animal.setLocation(locationInFarm);
             animal.setGoneOut(true);
@@ -84,7 +83,7 @@ public class AnimalController {
                     animal.setX(locationInFarm.column() * Tile.getSize());
                     animal.setY(locationInFarm.row() * Tile.getSize());
                 }
-                deleteAnimalFromFarm(animal);
+                deleteAnimalFromFarm(animal,username);
                 animalHouse.increaseNumberOfAnimals(1);
                 animal.setLocation(locationInFarm);
                 tile.getTop().setThingOnTile(animal);
@@ -101,9 +100,9 @@ public class AnimalController {
         return new Result(1,animal + " was moved successfully");
     }
 
-    private static void deleteAnimalFromFarm(Animal animal) {
+    private static void deleteAnimalFromFarm(Animal animal,String username) {
         if(animal.getLocation() != null ) {
-            Tile pastTile = GameApp.getCurrentGame().getCurrentPlayer().getFarm().getTileAt(animal.getLocation());
+            Tile pastTile = GameApp.getCurrentGame().getPlayerByUsername(username).getFarm().getTileAt(animal.getLocation());
             if(pastTile.getThingOnTile() instanceof AnimalHouse pastAnimalHouse){
                 pastAnimalHouse.decreaseNumberOfAnimals(1);
                 pastTile = pastTile.getTop();
@@ -115,9 +114,9 @@ public class AnimalController {
         }
     }
 
-    public static Result feedAnimal(Animal animal) {
+    public static Result feedAnimal(Animal animal,String username) {
 
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
 //        Animal animal = player.getAnimals().get(animalName);
 //        if(animal == null) {
 //            return new Result(-1, "Animal " + animalName + " not found");
@@ -133,8 +132,8 @@ public class AnimalController {
         return new Result(1,animal + " was fed successfully");
     }
 
-    public static Result showProducedAnimals() {
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+    public static Result showProducedAnimals(String username) {
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
         StringBuilder output = new StringBuilder();
         for(Animal animal : player.getAnimals().values()) {
             if(animal.getProduce() != null){
@@ -146,8 +145,8 @@ public class AnimalController {
         return new Result(1,output.toString());
     }
 
-    public static Result getAnimalProduce(Animal animal) {
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+    public static Result getAnimalProduce(Animal animal,String username) {
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
 //        Animal animal = player.getAnimals().get(animalName);
 //        if(animal == null) {
 //            return new Result(-1, "Animal " + animalName + " not found");
@@ -185,25 +184,24 @@ public class AnimalController {
         }
         else {
             return new Result(1,"You got produce from " +
-                animal.getName()  + ". " + CommonGameController.passOut().message());
+                animal.getName()  + ". " + CommonGameController.passOut(username).message());
         }
 
     }
 
-    public static Result sellAnimal(Animal animal) {
-        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+    public static Result sellAnimal(Animal animal,String username) {
+        Player player = GameApp.getCurrentGame().getPlayerByUsername(username);
 //        Animal animal = player.getAnimals().get(animalName);
 //        if(animal == null) {
 //            return new Result(-1, "Animal " + animalName + " not found");
 //        }
 
         player.getAnimals().remove(animal.getName());
-        deleteAnimalFromFarm(animal);
+        deleteAnimalFromFarm(animal,username);
         int price = (int)(animal.getSellPrice() * ((double) animal.getFriendshipLevel() /1000 + 0.3));
         player.increaseMoney((int)(animal.getSellPrice() * ((double) animal.getFriendshipLevel() /1000) + 0.3));
 
         return new Result(1,"You sold " + animal.getName() + " for " + price + " money");
     }
-
 
 }

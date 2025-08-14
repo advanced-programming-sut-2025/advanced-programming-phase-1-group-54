@@ -1,6 +1,6 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.client.controllers.game.CommonGameController;
+
 import io.github.stardewmini.common.model.*;
 import io.github.stardewmini.common.model.map.*;
 import io.github.stardewmini.common.model.enums.Direction;
@@ -12,9 +12,9 @@ import io.github.stardewmini.server.app.GameApp;
 import java.util.ArrayList;
 
 public class MapController {
-    public static Result buildGreenhouse() {
+    public static Result buildGreenhouse(String username) {
         Game game = GameApp.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(username);
 
         Farm farm = game.getWorld().getFarm(player);
 
@@ -44,9 +44,9 @@ public class MapController {
         return new Result(true, "greenhouse built successfully!");
     }
 
-    public static Result checkForWalking(Location location) {
+    public static Result checkForWalking(Location location,String username) {
         Game game = GameApp.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(username);
 
         if (location.row() < 0 || location.column() < 0 || location.row() >= World.getNumberOfRows() || location.column() >= World.getNumberOfColumns())
             return new Result(false, "invalid location");
@@ -74,12 +74,12 @@ public class MapController {
         return new Result(true, "Location reachable, energy needed is: " + distance / 20);
     }
 
-    public static Result walk(Location location) { // NOT USING THIS FOR GRAPHICS.
+    public static Result walk(Location location,String username) { // NOT USING THIS FOR GRAPHICS.
         Game game = GameApp.getCurrentGame();
         World world = game.getWorld();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(username);
 
-        Result result = checkForWalking(location);
+        Result result = checkForWalking(location,username);
         if (!result.success())
             return result;
 
@@ -90,7 +90,7 @@ public class MapController {
         for (Direction direction : shortestPath) {
             energyNeeded += 1 + (lastDirection != null && direction == lastDirection ? 10 : 0);
             if (energyNeeded >= player.getEnergy() * 20) {
-                Result passOut = CommonGameController.passOut();
+                Result passOut = CommonGameController.passOut(username);
                 return new Result(true, String.format("Player has fallen at location (%d, %d)!\n",
                     player.getCurrentLocation().row(), player.getCurrentLocation().column()) + passOut.message());
             }
@@ -110,9 +110,9 @@ public class MapController {
         return new Result(true, "You walked successfully!");
     }
 
-    public static Result printMap(Location location, int size) {
+    public static Result printMap(Location location, int size,String username) {
         Game game = GameApp.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(username);
         World world = game.getWorld();
 
         Building currentBuilding = null;
