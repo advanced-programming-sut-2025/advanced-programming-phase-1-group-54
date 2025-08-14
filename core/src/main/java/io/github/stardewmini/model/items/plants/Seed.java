@@ -36,6 +36,8 @@ public class Seed extends Item implements Placeable, Cloneable{
         Type type = new TypeToken<HashMap<String,Seed>>(){}.getType();
         seeds = gson.fromJson(file,type);
 
+
+
         try {
             file = new FileReader(Objects.requireNonNull(Seed.class.getClassLoader().getResource("foragingSeeds.json")).getFile());
         } catch (FileNotFoundException e) {

@@ -23,10 +23,7 @@ import io.github.stardewmini.model.lives.Animal;
 import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.map.*;
-import io.github.stardewmini.view.CheatMenu;
-import io.github.stardewmini.view.CookingMenu;
-import io.github.stardewmini.view.CraftingMenu;
-import io.github.stardewmini.view.InventoryMenu;
+import io.github.stardewmini.view.*;
 
 
 public class CommonGameController {
@@ -723,6 +720,10 @@ public class CommonGameController {
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.V)){
             Main.getInstance().setScreen(new CheatMenu(GameAssetManager.getInstance().getSkin()));
+        }
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.X)){
+            Main.getInstance().setScreen(new PlantingMenu(GameAssetManager.getInstance().getSkin()));
         }
         // TODO update game each frame.
     }

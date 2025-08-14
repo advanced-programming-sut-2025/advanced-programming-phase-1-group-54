@@ -10,6 +10,7 @@ import io.github.stardewmini.model.enums.ProduceQuality;
 import io.github.stardewmini.model.enums.Season;
 import io.github.stardewmini.model.enums.Symbol;
 import io.github.stardewmini.model.items.Item;
+import io.github.stardewmini.model.map.Tile;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -23,7 +24,6 @@ public class Fruit extends Item implements Cloneable, Placeable {
     private final static HashMap<String, Fruit> fruits;
     private final static HashMap<Season, ArrayList<String>> foragingCrops;
 
-
     static {
         Gson gson = new Gson();
         FileReader file = null;
@@ -35,6 +35,14 @@ public class Fruit extends Item implements Cloneable, Placeable {
         Type type = new TypeToken<HashMap<String, Fruit>>() {
         }.getType();
         fruits = gson.fromJson(file, type);
+
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+        for(String fruit : fruits.keySet()) {
+            Sprite sprite1 = new Sprite();
+            sprite1.setRegion(gameAssetManager.getFruits(fruit));
+            sprite1.setSize(Tile.getSize(), Tile.getSize());
+            fruits.get(fruit).setSprite(sprite1);
+        }
 
         try {
             file = new FileReader(Objects.requireNonNull(Fruit.class.getClassLoader().getResource("foragingCrops.json")).getFile());
@@ -420,5 +428,9 @@ public class Fruit extends Item implements Cloneable, Placeable {
     @Override
     public Sprite getSprite() {
         return sprite;
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
     }
 }

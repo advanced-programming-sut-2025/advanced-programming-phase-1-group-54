@@ -1,8 +1,10 @@
 package io.github.stardewmini.model.items.plants;
 
 import io.github.stardewmini.model.DailyUpdate;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Placeable;
 import io.github.stardewmini.model.enums.Season;
+import io.github.stardewmini.view.GameScreen;
 
 public abstract class Plant implements Placeable, DailyUpdate {
 
@@ -147,6 +149,22 @@ public abstract class Plant implements Placeable, DailyUpdate {
                 this.currentStage++;
                 if(this.currentStage == this.maxStages){
                     this.fruitIsRipen = true;
+                    if(this instanceof Crop){
+                        this.getSprite().setRegion(GameAssetManager.getInstance().getCrops(this.name,"fruit"));
+                    }
+                    else{
+                        this.getSprite().setRegion(GameAssetManager.getInstance().getTrees(this.name,"fruit"));
+                    }
+                }
+                else{
+                    if(this instanceof Crop){
+                        this.getSprite().setRegion(GameAssetManager.getInstance().
+                            getCrops(this.name,"" + this.currentStage));
+                    }
+                    else{
+                        this.getSprite().setRegion(GameAssetManager.getInstance().
+                            getTrees(this.name,"" + this.currentStage));
+                    }
                 }
             }
         }
@@ -154,6 +172,12 @@ public abstract class Plant implements Placeable, DailyUpdate {
             this.daysInCurrentStage++;
             this.daysInCurrentStage = this.daysInCurrentStage % regrowthTime;
             if(this.daysInCurrentStage == 0){
+                if(this instanceof Crop){
+                    this.getSprite().setRegion(GameAssetManager.getInstance().getCrops(this.name,"fruit"));
+                }
+                else{
+                    this.getSprite().setRegion(GameAssetManager.getInstance().getTrees(this.name,"fruit"));
+                }
                 this.fruitIsRipen = true;
             }
         }

@@ -8,6 +8,7 @@ import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.enums.Direction;
 import io.github.stardewmini.model.enums.Season;
 import io.github.stardewmini.model.enums.Symbol;
+import io.github.stardewmini.model.map.Tile;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -30,6 +31,14 @@ public class Crop extends Plant implements Cloneable{
         }
         Type type = new TypeToken<HashMap<String,Crop>>(){}.getType();
         crops = gson.fromJson(file,type);
+
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+        for(String crop : crops.keySet()) {
+            Sprite sprite1 = new Sprite();
+            sprite1.setRegion(gameAssetManager.getCrops(crop,"0"));
+            sprite1.setSize(Tile.getSize(), Tile.getSize());
+           crops.get(crop).setSprite(sprite1);
+        }
     }
 
     public static Crop getCrop(String name){
@@ -53,7 +62,7 @@ public class Crop extends Plant implements Cloneable{
     private final boolean isGiantPossible;
     private Direction giantDirection;
 
-    private final Sprite sprite;
+    private Sprite sprite;
 
 
     public Crop(String name, String source, String fruit, int[] stages, int totalHarvestTime, int regrowthTime,
@@ -79,6 +88,10 @@ public class Crop extends Plant implements Cloneable{
 
     public void setGiantDirection(Direction giantDirection) {
         this.giantDirection = giantDirection;
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
     }
 
     @Override

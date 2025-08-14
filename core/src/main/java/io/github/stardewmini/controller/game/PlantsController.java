@@ -1,9 +1,6 @@
 package io.github.stardewmini.controller.game;
 
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.Game;
-import io.github.stardewmini.model.Placeable;
-import io.github.stardewmini.model.Result;
+import io.github.stardewmini.model.*;
 import io.github.stardewmini.model.enums.Direction;
 import io.github.stardewmini.model.enums.Feature;
 import io.github.stardewmini.model.enums.Season;
@@ -43,7 +40,13 @@ public class PlantsController {
 
     }
 
-    public static Result planting(String seedName, Direction direction) {
+    public static Result planting(String seedName, String directionString) {
+        Direction direction;
+        try{
+            direction = Direction.valueOf(directionString);
+        } catch (Exception e) {
+            return new Result(false, "enter correct direction");
+        }
         if (direction == null)
             return new Result(false, "invalid direction");
 
@@ -133,6 +136,8 @@ public class PlantsController {
                 if (addedToBackPack.success()) {
                     game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
                     tree.setFruitIsRipen(false);
+                    tree.getSprite().setRegion(GameAssetManager.getInstance().getTrees(tree.getName(),
+                        game.getDateTime().getSeason().toString()));
                 }
 
                 return addedToBackPack;
@@ -174,6 +179,10 @@ public class PlantsController {
                         crop.setFruitIsRipen(false);
                         if (crop.isOneTime()) {
                             tile.setThingOnTile(null);
+                        }
+                        else {
+                            crop.getSprite().setRegion(GameAssetManager.getInstance().getCrops(crop.getName(),
+                                "" + (crop.getMaxStages() + 1)));
                         }
                     }
 

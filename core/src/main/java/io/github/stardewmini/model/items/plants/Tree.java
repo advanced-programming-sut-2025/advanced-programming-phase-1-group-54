@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.enums.Season;
 import io.github.stardewmini.model.enums.Symbol;
+import io.github.stardewmini.model.map.Tile;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,7 +19,7 @@ import java.util.*;
 
 
 public class Tree extends Plant implements Cloneable{
-    private final Sprite sprite;
+    private Sprite sprite;
 
     public Tree(String name, String source, String fruit, int[] stages, int totalHarvestTime,
                 int regrowthTime, Season[] seasons) {
@@ -39,6 +40,14 @@ public class Tree extends Plant implements Cloneable{
         }
         Type type = new TypeToken<HashMap<String,Tree>>(){}.getType();
         trees = gson.fromJson(file,type);
+
+        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+        for(String tree : trees.keySet()) {
+            Sprite sprite1 = new Sprite();
+            sprite1.setRegion(gameAssetManager.getTrees(tree,"0"));
+            sprite1.setSize(Tile.getSize(), Tile.getSize());
+            trees.get(tree).setSprite(sprite1);
+        }
     }
 
     public static Tree getTree(String treeName){
@@ -251,9 +260,13 @@ public class Tree extends Plant implements Cloneable{
 
     }
 
+
     @Override
     public Sprite getSprite() {
         return sprite;
     }
 
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
+    }
 }
