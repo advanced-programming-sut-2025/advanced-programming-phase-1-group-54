@@ -1,6 +1,12 @@
 package io.github.stardewmini.controller.game;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import io.github.stardewmini.model.App;
+import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Quest;
 import io.github.stardewmini.model.Result;
 import io.github.stardewmini.model.enums.Season;
@@ -9,6 +15,7 @@ import io.github.stardewmini.model.items.Item;
 import io.github.stardewmini.model.items.recipes.Recipe;
 import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.lives.Player;
+import io.github.stardewmini.model.map.NPCHouse;
 import io.github.stardewmini.model.relationships.NPCFriendship;
 import io.github.stardewmini.view.NPCMenu;
 
@@ -154,6 +161,7 @@ public class NpcController {
         if(CommonGameController.removeItemFromInventory(item,1) == false){
             return new Result(false,"you don't have such item");
         }
+        npc.setAnimationTime(0);
         NPCFriendship npcFriendship = getNPCFriendship(npc.getName());
         if(npcFriendship.getDailyGift() == 0){
             for (String st : npc.getFavoriteItems())
@@ -174,7 +182,7 @@ public class NpcController {
     public static Result questList(NPC npc) {
         ArrayList<String> list = new ArrayList<>();
         NPCFriendship npcFriendship = NpcController.getNPCFriendship(npc.getName());
-        list.add("Quest number       required item: count          reward item: count");
+        list.add("Quest num  req: count  rew: count");
         int questCount = npc.getAllQuests().size();
         if(questCount == 0){
             return new Result(false,"NPC doesn't have any quest");
@@ -184,7 +192,7 @@ public class NpcController {
             quest  = npc.getAllQuests().get(i);
             if(!quest.isCompleted() && quest.isActive()){
                 String st = "Quest" + (i + 1) + "  " + quest.getRequestedItem() + ": " + quest.getRequestedItemCount() +
-                        "             " + quest.getReward() + ": " + quest.getRewardCount();
+                        "  " + quest.getReward() + ": " + quest.getRewardCount();
                 list.add(st);
             }
         }
@@ -253,6 +261,22 @@ public class NpcController {
         }
         quest.setCompleted(true);
         return new Result(true,"quest finished");
+    }
+
+    public static void giftAnimation(NPC npc, float delta) {
+        Animation<TextureRegion> animation = GameAssetManager.getInstance().getNPCsGifts(npc.getName());
+        if(! animation.isAnimationFinished(npc.getAnimationTime())){
+            npc.getSprite().setRegion(animation.getKeyFrame(npc.getAnimationTime()));
+            npc.setAnimationTime(npc.getAnimationTime() + delta);
+            animation.setPlayMode(Animation.PlayMode.NORMAL);
+        }
+    }
+
+    public static void update(float delta) {
+        for(NPCHouse npcHouse : App.getCurrentGame().getWorld().getNpcHouses()){
+            giftAnimation(npcHouse.getNpc(),delta);
+            System.out.println(npcHouse.getNpc().getName());
+        }
     }
 
 }

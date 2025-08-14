@@ -229,8 +229,6 @@ public class MapController {
 
     public static void mouseClick(int screenX, int screenY, OrthographicCamera camera) {
         Vector3 cameraPosition = camera.position;
-        System.out.println("X = " + (int)((cameraPosition.x + screenX - Gdx.graphics.getWidth()/2f)/Tile.getSize()) + " Y = " + (int)((cameraPosition.y - screenY + Gdx.graphics.getHeight()/2f)/Tile.getSize()));
-        System.out.println("camX = " + cameraPosition.x + " camY = " + cameraPosition.y);
         Tile tile = App.getCurrentGame().getWorld().getTileAt(
             new Location((int)((cameraPosition.y - screenY + Gdx.graphics.getHeight()/2f)/Tile.getSize()),
                 (int)((cameraPosition.x + screenX - Gdx.graphics.getWidth()/2f)/Tile.getSize())));

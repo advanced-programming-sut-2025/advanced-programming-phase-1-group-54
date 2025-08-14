@@ -105,8 +105,8 @@ public class ToolsController {
 
         Location currentLocation = player.getCurrentLocation().delta(farm.getLocation());
         Location location = currentLocation.getLocationAt(direction).delta(farm.getLocation());
-        System.out.println(currentLocation);
-        System.out.println(location);
+//        System.out.println(currentLocation);
+//        System.out.println(location);
         Tile playerTile = farm.getTileAt(currentLocation);
         Tile tile = farm.getTileAt(location);
 

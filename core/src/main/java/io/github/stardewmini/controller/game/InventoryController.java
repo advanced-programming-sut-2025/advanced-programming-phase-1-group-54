@@ -1,5 +1,6 @@
 package io.github.stardewmini.controller.game;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -40,7 +41,9 @@ public class InventoryController {
         int i = 0;
         for(Item item : inventory.keySet()){
             Table table = new Table();
-            table.add(new Image(gameAssetManager.getItem(item.getName()))).row();
+            Texture texture = gameAssetManager.getItem(item.getName());
+            Image image = new Image(texture);
+            table.add(image).row();
             table.add(new Label(item.getName() + " " + inventory.get(item).toString(),gameAssetManager.getSkin()));
             output.add(table).pad(10);
             i++;

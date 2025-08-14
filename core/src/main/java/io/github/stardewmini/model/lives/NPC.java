@@ -7,6 +7,7 @@ import io.github.stardewmini.model.DailyUpdate;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Quest;
 import io.github.stardewmini.model.enums.Symbol;
+import io.github.stardewmini.model.map.Location;
 import io.github.stardewmini.model.map.Tile;
 
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ public class NPC extends Live implements DailyUpdate {
 
     private Sprite sprite;
     private String job;
+    private float animationTime;
+    private Location location;
 
     private final ArrayList<String> favoriteItems = new ArrayList<>();
 
@@ -48,8 +51,28 @@ public class NPC extends Live implements DailyUpdate {
         return job;
     }
 
+    public float getAnimationTime() {
+        return animationTime;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
     public void setJob(String job) {
         this.job = job;
+    }
+
+    public void setAnimationTime(float animationTime) {
+        this.animationTime = animationTime;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
     }
 
     public ArrayList<String> getFavoriteItems() {

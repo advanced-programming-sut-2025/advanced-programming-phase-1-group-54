@@ -2,6 +2,8 @@ package io.github.stardewmini.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -18,8 +20,8 @@ public class NPCMenu implements Screen {
 
     private Stage stage;
     private final NPC npc;
-    private Window currentWindow;
-    private final Window[] windows = new Window[4];
+    private final Window currentWindow;
+    private final Table table;
     private final TextButton backButton;
     private final TextButton giftButton;
     private final TextButton missionsButton;
@@ -39,9 +41,8 @@ public class NPCMenu implements Screen {
 
     public NPCMenu(NPC npc, Skin skin) {
         this.npc = npc;
-        for(int i = 0;i < 4;i++){
-            windows[i] = new Window("NPC Menu", skin);
-        }
+        this.currentWindow = new Window("NPC Menu", skin);
+        this.table = new Table(skin);
         this.backButton = new TextButton("Back", skin);
         this.giftButton = new TextButton("Gift", skin);
         this.missionsButton = new TextButton("Missions", skin);
@@ -68,37 +69,38 @@ public class NPCMenu implements Screen {
 
         giftButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                //TODO bad inventory
-                currentWindow.remove();
-                currentWindow = windows[1];
-                currentWindow.getTitleTable().add(backButton);
-                stage.addActor(currentWindow);
+                table.clear();
+                table.add(giftLabel);
+                table.row();
+                table.add(giftItem);
+                table.row();
+                table.add(giveGiftButton);
             }
         });
 
         missionsButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-//                NpcController.questList(npc);
-                currentWindow.remove();
-                currentWindow = windows[2];
-                currentWindow.getTitleTable().add(backButton);
-                stage.addActor(currentWindow);
+                quests.setText(NpcController.questList(npc).message());
+                table.clear();
+                table.add(quests).expand().pad(10);
+                table.row();
+                table.add(questNumber).expand().pad(10);
+                table.row();
+                table.add(completeQuestButton).expand().pad(10);
             }
         });
 
         friendshipButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-//                NpcController.friendShipNpc(npc);
-                currentWindow.remove();
-                currentWindow = windows[3];
-                currentWindow.getTitleTable().add(backButton);
-                stage.addActor(currentWindow);
+                friendshipLabel.setText(NpcController.friendShipNpc(npc));
+                table.clear();
+                table.add(friendshipLabel).expand().pad(10);
             }
         });
 
         giveGiftButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                Result result = NpcController.giftNpc(npc,giftItem.getMessageText());
+                Result result = NpcController.giftNpc(npc,giftItem.getText());
                 currentWindow.remove();
                 Main.getInstance().getScreen().dispose();
                 Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
@@ -107,38 +109,22 @@ public class NPCMenu implements Screen {
 
         completeQuestButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                Result result = NpcController.questFinish(questNumber.getMessageText(),npc);
+                Result result = NpcController.questFinish(questNumber.getText(),npc);
                 currentWindow.remove();
                 Main.getInstance().getScreen().dispose();
                 Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
 
-        for(int i = 0;i < 4;i++){
-            windows[i].setSize( Gdx.graphics.getWidth() /2f, Gdx.graphics.getHeight()/2f);
-            windows[i].setPosition(Gdx.graphics.getWidth()/4f, Gdx.graphics.getHeight()/4f);
-        }
+        currentWindow.setSize( Gdx.graphics.getWidth() /2f, Gdx.graphics.getHeight()/2f);
+        currentWindow.setPosition(Gdx.graphics.getWidth()/4f, Gdx.graphics.getHeight()/4f);
+
+        table.add(giftButton).expand().pad(10);
+        table.add(missionsButton).expand().pad(10);
+        table.add(friendshipButton).expand().pad(10);
 
 
-        windows[0].add(giftButton).expand().pad(10);
-        windows[0].add(missionsButton).expand().pad(10);
-        windows[0].add(friendshipButton).expand().pad(10);
-
-        windows[1].add(giftLabel);
-        windows[1].row();
-        windows[1].add(giftItem);
-        windows[1].row();
-        windows[1].add(giveGiftButton);
-
-        windows[2].add(quests).expand().pad(10);
-        windows[2].row();
-        windows[2].add(questNumber).expand().pad(10);
-        windows[2].row();
-        windows[2].add(completeQuestButton).expand().pad(10);
-
-        windows[3].add(friendshipLabel).expand().pad(10);
-
-        currentWindow = windows[0];
+        currentWindow.add(table);
         currentWindow.getTitleTable().add(backButton);
 
         stage = new Stage(new ScreenViewport());
@@ -149,6 +135,7 @@ public class NPCMenu implements Screen {
 
     @Override
     public void render(float v) {
+
         ScreenUtils.clear(0, 0, 0, 1);
         Main.getBatch().begin();
         Main.getBatch().end();

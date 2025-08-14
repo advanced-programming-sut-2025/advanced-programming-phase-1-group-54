@@ -20,6 +20,7 @@ import io.github.stardewmini.model.items.plants.Fruit;
 import io.github.stardewmini.model.items.plants.Seed;
 import io.github.stardewmini.model.items.tools.BackPack;
 import io.github.stardewmini.model.lives.Animal;
+import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.map.*;
 import io.github.stardewmini.view.CheatMenu;
@@ -706,6 +707,7 @@ public class CommonGameController {
     public static void update(float delta, OrthographicCamera camera) {
         PlayerController.update(delta, camera);
         AnimalController.update(delta);
+        NpcController.update(delta);
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             Main.getInstance().setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));

@@ -6,23 +6,28 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.ScreenUtils;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.model.GameAssetManager;
+import io.github.stardewmini.model.lives.NPC;
 
 /** First screen of the application. Displayed after the application is created. */
 public class FirstScreen implements Screen {
+
+    NPC npc1 = new NPC("","Abigail");
+
     @Override
     public void show() {
-        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
-        Texture aks = new Texture("Stardew_Valley_Images-main/sprites/Alex.png");
-        int totalWidth = aks.getWidth();
-        int totalHeight = aks.getHeight();
-        TextureRegion[][] cow = TextureRegion.split(aks,totalWidth/9,totalHeight);
-        Main.getBatch().begin();
-        Gdx.gl.glClearColor(0, 0, 0, 0);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+//        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+//        Texture aks = new Texture("Stardew_Valley_Images-main/sprites/Alex.png");
+//        int totalWidth = aks.getWidth();
+//        int totalHeight = aks.getHeight();
+//        TextureRegion[][] cow = TextureRegion.split(aks,totalWidth/9,totalHeight);
+//        Main.getBatch().begin();
+//        Gdx.gl.glClearColor(0, 0, 0, 0);
+//        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 //        for(int i = 0; i < 3; i++){
 //            Gdx.gl.glClearColor(0, 0, 0, 0);
@@ -72,7 +77,7 @@ public class FirstScreen implements Screen {
 //            }
 //
 //        }
-        Main.getBatch().end();
+//        Main.getBatch().end();
 //
 //        for(int i = 0;i < 9;i++){
 //
@@ -113,6 +118,23 @@ public class FirstScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        ScreenUtils.clear(0, 0, 0, 1);
+//
+//        Animation<TextureRegion> animation = GameAssetManager.getInstance().getNPCsGifts(npc1.getName());
+//        if(! animation.isAnimationFinished(npc1.getAnimationTime())){
+//            animation.getKeyFrame(npc1.getAnimationTime()).getTexture().draw();
+//            npc1.getSprite().setRegion(animation.getKeyFrame());
+//            npc1.setAnimationTime(npc1.getAnimationTime() + delta);
+//            animation.setPlayMode(Animation.PlayMode.LOOP);
+//        }
+//
+//        System.out.println(npc1.getAnimationTime());
+//
+//        npc1.getSprite().setPosition(200,200);
+//
+//        Main.getBatch().begin();
+//        npc1.getSprite().draw(Main.getBatch());
+//        Main.getBatch().end();
         // Draw your screen here. "delta" is the time since last render in seconds.
     }
 

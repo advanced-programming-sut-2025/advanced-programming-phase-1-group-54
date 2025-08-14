@@ -52,7 +52,6 @@ public class GameAssetManager {
     {
         FileHandle file;
         for(String key : Fruit.getFruitsList()) {
-//            System.out.println(key);
             file = Gdx.files.internal("Stardew_Valley_Images-main/Crops/" + fileName(key) + ".png");
             if(! file.exists()){
                 file = Gdx.files.internal("Stardew_Valley_Images-main/Trees/" + fileName(key) + ".png");
@@ -159,6 +158,7 @@ public class GameAssetManager {
     }
 
     private final HashMap<String,TextureRegion[][]> NPCsFrames = new HashMap<>();
+    private final HashMap<String,Animation<TextureRegion>> NPCsGifts = new HashMap<>();
     {
         TextureRegion[][] frames;
         Texture texture;
@@ -167,31 +167,40 @@ public class GameAssetManager {
         frames = TextureRegion.split(texture,texture.getWidth()/4,
             texture.getHeight()/14);
         NPCsFrames.put("Abigail",frames);
+        NPCsGifts.put("Abigail",new Animation<>(1f,frames[0][0],frames[8][0],frames[0][0],frames[8][0],frames[0][0]));
 
         texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Harvey0.png");
         frames = TextureRegion.split(texture,texture.getWidth()/4,
             texture.getHeight()/14);
         NPCsFrames.put("Harvey",frames);
+        NPCsGifts.put("Harvey",new Animation<>(1f,frames[0][0],frames[8][0],frames[0][0],frames[8][0],frames[0][0]));
 
         texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Leah0.png");
         frames = TextureRegion.split(texture,texture.getWidth()/4,
-            texture.getHeight()/14);
+            texture.getHeight()/13);
         NPCsFrames.put("Leah",frames);
+        NPCsGifts.put("Leah",new Animation<>(1f,frames[0][0],frames[6][0],frames[0][0],frames[6][0],frames[0][0]));
 
         texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Robin0.png");
         frames = TextureRegion.split(texture,texture.getWidth()/4,
-            texture.getHeight()/14);
+            texture.getHeight()/10);
         NPCsFrames.put("Robin",frames);
+        NPCsGifts.put("Robin",new Animation<>(1f,frames[0][0],frames[4][3],frames[0][0],frames[4][3],frames[0][0]));
 
         texture = new Texture("Stardew_Valley_Images-main/NPCCharacters/Sebastian0.png");
         frames = TextureRegion.split(texture,texture.getWidth()/4,
             texture.getHeight()/14);
         NPCsFrames.put("Sebastian",frames);
+        NPCsGifts.put("Sebastian",new Animation<>(1f,frames[0][0],frames[9][2],frames[0][0],frames[9][2],frames[0][0]));
 
     }
 
     public TextureRegion[][] getNPCsFrames(String name) {
         return NPCsFrames.get(name);
+    }
+
+    public Animation<TextureRegion> getNPCsGifts(String name) {
+        return NPCsGifts.get(name);
     }
 
     private final HashMap<String,Texture> NPCsFace  = new HashMap<>();
