@@ -1,4 +1,4 @@
-package io.github.stardewmini.server.controllers.game;
+package io.github.stardewmini.client.controllers.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -21,6 +21,7 @@ import io.github.stardewmini.common.model.lives.Skill;
 import io.github.stardewmini.common.model.map.Farm;
 import io.github.stardewmini.common.model.map.GenericWall;
 import io.github.stardewmini.client.view.FishingMenu;
+import io.github.stardewmini.server.controllers.game.MapController;
 
 public class FishingController {
 

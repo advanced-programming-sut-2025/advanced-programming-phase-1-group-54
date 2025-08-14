@@ -5,14 +5,13 @@ package io.github.stardewmini.common.model.map;
  */
 
 import io.github.stardewmini.common.model.map.Shops.Shop;
-import io.github.stardewmini.server.controllers.game.PlantsController;
+import io.github.stardewmini.client.controllers.game.PlantsController;
 import io.github.stardewmini.common.model.DailyUpdate;
 import io.github.stardewmini.common.model.enums.Direction;
 import io.github.stardewmini.common.model.enums.Season;
 import io.github.stardewmini.common.model.enums.Weather;
 import io.github.stardewmini.common.model.lives.NPC;
 import io.github.stardewmini.common.model.lives.Player;
-import io.github.stardewmini.common.model.map.Shops.*;
 //import org.json.JSONArray;
 
 import java.util.ArrayList;

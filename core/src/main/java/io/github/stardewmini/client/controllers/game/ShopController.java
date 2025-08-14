@@ -127,15 +127,16 @@ public class ShopController {
         if(Animal.getAnimal(itemName) != null) {
             // TODO
             Animal animal = Animal.getAnimal(itemName);
-            result = CheatController.addAnimal(animal,name,location);
+//            result = CheatController.addAnimal(animal,name,location);
         }
         else {
-            result = CheatController.addBuilding(itemName,location);
+//            result = CheatController.addBuilding(itemName,location);
         }
 
-        if(result.success()){
-            player.decreaseMoney(price);
-        }
-        return  result;
+//        if(result.success()){
+//            player.decreaseMoney(price);
+//        }
+//        return  result;
+        return null;
     }
 }

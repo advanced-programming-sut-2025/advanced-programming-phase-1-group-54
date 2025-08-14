@@ -1,4 +1,4 @@
-package io.github.stardewmini.server.controllers.game;
+package io.github.stardewmini.client.controllers.game;
 
 import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.DateTime;
@@ -10,6 +10,7 @@ import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.relationships.Gift;
 import io.github.stardewmini.common.model.relationships.Relationship;
 import io.github.stardewmini.common.model.relationships.Talk;
+import io.github.stardewmini.server.controllers.game.MapController;
 
 import java.util.ArrayList;
 
@@ -44,7 +45,7 @@ public class FriendShipController {
             return new Result(false, "user not found");
         }
 
-        if (!MapController.isNear(player.getCurrentLocation(), otherPlayer))
+        if (!io.github.stardewmini.server.controllers.game.MapController.isNear(player.getCurrentLocation(), otherPlayer))
             return new Result(false, "you must be next to each other to talk to each other!");
 
         Talk talk = new Talk(GameApp.getCurrentGame().getCurrentPlayer(), message, new DateTime(GameApp.getCurrentGame().getDateTime()));

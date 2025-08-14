@@ -1,12 +1,5 @@
-package io.github.stardewmini.server.controllers.game;
+package io.github.stardewmini.client.controllers.game;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import io.github.stardewmini.client.Main;
-import io.github.stardewmini.client.controllers.game.PlayerController;
 import io.github.stardewmini.common.model.*;
 import io.github.stardewmini.common.model.items.*;
 import io.github.stardewmini.common.model.map.*;
@@ -23,10 +16,6 @@ import io.github.stardewmini.common.model.items.plants.Seed;
 import io.github.stardewmini.common.model.items.tools.BackPack;
 import io.github.stardewmini.common.model.lives.Animal;
 import io.github.stardewmini.common.model.lives.Player;
-import io.github.stardewmini.client.view.CheatMenu;
-import io.github.stardewmini.client.view.CookingMenu;
-import io.github.stardewmini.client.view.CraftingMenu;
-import io.github.stardewmini.client.view.InventoryMenu;
 import io.github.stardewmini.server.app.GameApp;
 
 

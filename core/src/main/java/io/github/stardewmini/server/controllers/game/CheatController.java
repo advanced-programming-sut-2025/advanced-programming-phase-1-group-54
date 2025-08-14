@@ -5,6 +5,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import io.github.stardewmini.client.Main;
+import io.github.stardewmini.client.controllers.game.CommonGameController;
+import io.github.stardewmini.client.controllers.game.ToolsController;
 import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.Game;
 import io.github.stardewmini.client.Renderers.GameAssetManager;

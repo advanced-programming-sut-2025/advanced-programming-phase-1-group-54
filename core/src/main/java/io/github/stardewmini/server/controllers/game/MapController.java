@@ -1,23 +1,12 @@
 package io.github.stardewmini.server.controllers.game;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import io.github.stardewmini.client.Main;
+import io.github.stardewmini.client.controllers.game.CommonGameController;
 import io.github.stardewmini.common.model.*;
 import io.github.stardewmini.common.model.map.*;
 import io.github.stardewmini.common.model.enums.Direction;
 import io.github.stardewmini.common.model.enums.Symbol;
 import io.github.stardewmini.common.model.items.Material;
-import io.github.stardewmini.common.model.lives.Animal;
-import io.github.stardewmini.common.model.lives.NPC;
 import io.github.stardewmini.common.model.lives.Player;
-import io.github.stardewmini.common.model.map.Shops.Shop;
-import io.github.stardewmini.client.view.AnimalMenu;
-import io.github.stardewmini.client.view.NPCMenu;
-import io.github.stardewmini.client.view.ShopMenu;
 import io.github.stardewmini.server.app.GameApp;
 
 import java.util.ArrayList;

@@ -1,9 +1,5 @@
-package io.github.stardewmini.server.controllers.game;
+package io.github.stardewmini.client.controllers.game;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.Game;
 import io.github.stardewmini.common.model.Result;

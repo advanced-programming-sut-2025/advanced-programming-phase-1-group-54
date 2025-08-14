@@ -1,14 +1,8 @@
 package io.github.stardewmini.server.controllers.game;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import io.github.stardewmini.client.Main;
+import io.github.stardewmini.client.controllers.game.CommonGameController;
 import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.DateTime;
-import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.Direction;
 import io.github.stardewmini.common.model.enums.Feature;
@@ -24,9 +18,6 @@ import io.github.stardewmini.common.model.map.Cabin;
 import io.github.stardewmini.common.model.map.Farm;
 import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.Tile;
-import io.github.stardewmini.client.view.GameScreen;
-
-import java.util.ArrayList;
 
 public class CraftingController {
 

@@ -1,4 +1,4 @@
-package io.github.stardewmini.server.controllers.game;
+package io.github.stardewmini.client.controllers.game;
 
 import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.Game;

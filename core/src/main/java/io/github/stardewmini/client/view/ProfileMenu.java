@@ -9,6 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.client.Main;
+import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.ClientConnectionController;
 import io.github.stardewmini.client.controllers.ProfileMenuController;
 import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
@@ -65,7 +67,8 @@ public class ProfileMenu implements Screen {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
-                Result result = ProfileMenuController.changeUsername(newUsernameField.getText());
+                Message message = ClientConnectionController.createChangeUsername(newUsernameField.getText());
+                Result result = ClientApp.sendRequest(message);
                 resultLabel.setText(result.message());
                 userInfoLabel.setText(ProfileMenuController.showUserInfo().message());
             }

@@ -1,5 +1,6 @@
 package io.github.stardewmini.server.controllers.game;
 
+import io.github.stardewmini.client.controllers.game.CommonGameController;
 import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.SkillType;

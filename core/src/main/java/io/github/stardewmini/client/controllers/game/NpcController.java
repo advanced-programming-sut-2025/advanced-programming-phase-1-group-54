@@ -1,4 +1,4 @@
-package io.github.stardewmini.server.controllers.game;
+package io.github.stardewmini.client.controllers.game;
 
 import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.Quest;
@@ -10,6 +10,7 @@ import io.github.stardewmini.common.model.items.recipes.Recipe;
 import io.github.stardewmini.common.model.lives.NPC;
 import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.relationships.NPCFriendship;
+import io.github.stardewmini.server.controllers.game.MapController;
 
 import java.util.ArrayList;
 import java.util.Random;
