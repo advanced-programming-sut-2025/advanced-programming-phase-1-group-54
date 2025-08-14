@@ -4,12 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.controller.game.FishingController;
+import io.github.stardewmini.model.GameAssetManager;
 
 public class FishingMenu implements Screen {
 
@@ -22,6 +24,8 @@ public class FishingMenu implements Screen {
     private final ProgressBar fishingBar;
     private final Label fishingType;
     private final Label fishName;
+    private final Image fishImage;
+    private final Image starImage;
 
     public FishingMenu(Skin skin,String fishingType ,String fishName) {
         this.shapeRenderer = new ShapeRenderer();
@@ -29,6 +33,8 @@ public class FishingMenu implements Screen {
         this.fishingBar = new ProgressBar(0,1_000,1,true, skin);
         this.fishingType = new Label( fishingType, skin);
         this.fishName = new Label(fishName, skin);
+        this.fishImage = new Image(GameAssetManager.getInstance().getFishes("Salmon"));
+        this.starImage = new Image(GameAssetManager.getInstance().getStar());
     }
 
     @Override
@@ -36,6 +42,9 @@ public class FishingMenu implements Screen {
 
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
+
+        stage.addActor(fishImage);
+        stage.addActor(starImage);
 
         fishingType.setPosition(screenWidth/2f, screenHeight/2f + screenHeight/4f);
         fishName.setPosition(screenWidth/2f, screenHeight/2f + screenHeight/4f + screenHeight/30f);
@@ -52,7 +61,7 @@ public class FishingMenu implements Screen {
     public void render(float v) {
         ScreenUtils.clear(0, 0, 0, 1);
 
-        FishingController.handle(shapeRenderer,bound,fishingBar);
+        FishingController.handle(shapeRenderer,bound,fishingBar, fishImage,starImage);
 
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();

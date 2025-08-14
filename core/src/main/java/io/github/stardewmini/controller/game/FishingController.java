@@ -19,6 +19,7 @@ import io.github.stardewmini.model.lives.Skill;
 import io.github.stardewmini.model.map.Farm;
 import io.github.stardewmini.model.map.GenericWall;
 import io.github.stardewmini.view.FishingMenu;
+import io.github.stardewmini.view.GameScreen;
 
 public class FishingController {
 
@@ -49,7 +50,7 @@ public class FishingController {
         return null;
     }
 
-    public static void startFishing(String fishingPoleName,boolean perfect) {
+    public static void startFishing(String fishingPoleName) {
         Player player = App.getCurrentGame().getCurrentPlayer();
 
         FishingPoleType fishingPoleType = FishingPoleType.fromString(fishingPoleName);
@@ -78,6 +79,7 @@ public class FishingController {
         FishingGame fishingGame = new FishingGame(fish,FishingGame.random.nextInt(0,5));
         App.getCurrentGame().getFishingGames().put(player, fishingGame);
 
+        Main.getInstance().getScreen().dispose();
         Main.getInstance().setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin(),
             "Movement level : " + fishingGame.getFishType(),fish.getQuality() + " " +  fish.getName()));
 
@@ -94,10 +96,15 @@ public class FishingController {
                 fish.setQuality(ProduceQuality.IRIDIUM);
             }
         }
-        return ToolsController.addToBackPack(player.getBackpack(), fish, 1);
+        Result result = ToolsController.addToBackPack(player.getBackpack(), fish, 1);
+        if(perfect){
+            return new Result(result.success(),"PERFECT . " + result.message());
+        }
+        return result;
     }
 
-    public static void handle(ShapeRenderer shapeRenderer, ShapeRenderer mapShapeRenderer, ProgressBar bar) {
+    public static void handle(ShapeRenderer shapeRenderer, ShapeRenderer mapShapeRenderer, ProgressBar bar,
+                              Image fishImage,Image starImage) {
         FishingGame game = App.getCurrentGame().getFishingGames().get(App.getCurrentGame().getCurrentPlayer());
         Rectangle greenPart = game.getGreenPart();
         Rectangle fish = game.getFishRectangle();
@@ -177,13 +184,22 @@ public class FishingController {
         mapShapeRenderer.rect(map.x, map.y, map.width, map.height);
         mapShapeRenderer.end();
 
+
+        fishImage.setSize(fish.width, fish.height);
+        fishImage.setPosition(fish.x, fish.y);
+        starImage.setSize(fish.width/3, fish.height/3);
+        starImage.setPosition(fish.x, fish.y);
+
         Main.getBatch().begin();
-        Main.getBatch().draw(GameAssetManager.getInstance().getFishes("Salmon"),fish.x,fish.y,
+        Main.getBatch().draw(GameAssetManager.getInstance().getFishes("Salmon"),fish.x + 500,fish.y,
             fish.width,fish.height);
-        if(true){
+        if(fish.equals(ProduceQuality.IRIDIUM)){
             Main.getBatch().draw(GameAssetManager.getInstance().getStar(), fish.x,fish.y,
                 fish.width/2, fish.height/2);
         }
+//        else{
+//            starImage.remove();
+//        }
         Main.getBatch().end();
 
         if(Gdx.input.isKeyPressed(Input.Keys.UP) && greenPart.y + greenPart.height < FishingGame.max){
@@ -203,13 +219,15 @@ public class FishingController {
         }
 
         if(bar.getMaxValue() == bar.getValue()){
-            // todo  write fishingPoleName
-            winFishing(game.isPerfect());
-            // todo back to game
+            Result result = winFishing(game.isPerfect());
+            Main.getInstance().getScreen().dispose();
+            Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
         }
 
         if(bar.getMinValue() == bar.getValue()){
-            // todo sout you have lost && back to game
+            Main.getInstance().getScreen().dispose();
+            Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),
+                "you failed in fishing"));
         }
 
     }

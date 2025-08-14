@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.model.*;
 import io.github.stardewmini.model.enums.Direction;
+import io.github.stardewmini.model.enums.Feature;
 import io.github.stardewmini.model.enums.Symbol;
 import io.github.stardewmini.model.items.Material;
 import io.github.stardewmini.model.lives.Animal;
@@ -18,6 +19,7 @@ import io.github.stardewmini.model.lives.Player;
 import io.github.stardewmini.model.map.*;
 import io.github.stardewmini.model.map.Shops.Shop;
 import io.github.stardewmini.view.AnimalMenu;
+import io.github.stardewmini.view.FishingMenu;
 import io.github.stardewmini.view.NPCMenu;
 import io.github.stardewmini.view.ShopMenu;
 
@@ -275,6 +277,10 @@ public class MapController {
                     windows[i].getTitleLabel().setText(NpcController.meetsNpc(npc.getName()).message());
                     npc.setDialogTime(0);
                 }
+            }
+            else if(tile.hasFeature(Feature.WATER)){
+                camera.position.set(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f, 0);
+                FishingController.startFishing("Training");
             }
         }
     }

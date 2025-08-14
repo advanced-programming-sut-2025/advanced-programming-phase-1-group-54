@@ -25,19 +25,16 @@ public class Main extends Game {
         batch = new SpriteBatch();
 //        setScreen(new FirstScreen());
 //        setScreen(new AnimalMenu(GameAssetManager.getInstance().getSkin(), Animal.getAnimal("Hen")));
-
-//    todo     setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getInstance().getSkin()));
-
+//        setScreen(new NPCMenu(new NPC("sasa","ahh"),GameAssetManager.getInstance().getSkin()));
 //        setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
 
-//  todo      FishingGame game = new FishingGame(null,0);
+//        FishingGame game = new FishingGame(null,0);
 //        FishingController.setGame(game);
 //        setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin() , "gsdg","fish"));
 
 //        setScreen(new CraftingMenu(GameAssetManager.getInstance().getSkin()));
 //        setScreen(new CookingMenu(GameAssetManager.getInstance(Skin()));
 //        setScreen(new shopMenu(GameAssetManager.getInstance().getSkin()));
-
 //                setScreen(new CheatMenu(GameAssetManager.getInstance().getSkin()));
 
 
