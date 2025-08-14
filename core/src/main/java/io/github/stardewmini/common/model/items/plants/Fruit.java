@@ -69,14 +69,10 @@ public class Fruit extends Item implements Cloneable, Placeable {
     private final int energy;
     private ProduceQuality quality;
 
-    private Sprite sprite;
-
     public Fruit(String name, int sellPrice, boolean isEdible, int energy) {
         super(name, isEdible, sellPrice);
         this.energy = energy;
         this.quality = ProduceQuality.NORMAL;
-
-        this.sprite = new Sprite(GameAssetManager.getInstance().getFruits(name));
     }
 
     public boolean isEdible() {
@@ -414,10 +410,5 @@ public class Fruit extends Item implements Cloneable, Placeable {
             throw new RuntimeException(e);
         }
 
-    }
-
-    @Override
-    public Sprite getSprite() {
-        return sprite;
     }
 }

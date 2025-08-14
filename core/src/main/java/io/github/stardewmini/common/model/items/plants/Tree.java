@@ -16,13 +16,10 @@ import java.util.*;
 
 
 public class Tree extends Plant implements Cloneable{
-    private final Sprite sprite;
 
     public Tree(String name, String source, String fruit, int[] stages, int totalHarvestTime,
                 int regrowthTime, Season[] seasons) {
         super(name, source, fruit, stages, totalHarvestTime, regrowthTime, seasons);
-
-        sprite = new Sprite(); // TODO texture
     }
 
     private final static HashMap<String,Tree> trees;
@@ -248,10 +245,4 @@ public class Tree extends Plant implements Cloneable{
         }
 
     }
-
-    @Override
-    public Sprite getSprite() {
-        return sprite;
-    }
-
 }

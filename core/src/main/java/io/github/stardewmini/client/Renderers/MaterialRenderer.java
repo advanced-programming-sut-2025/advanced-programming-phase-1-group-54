@@ -1,25 +1,26 @@
 package io.github.stardewmini.client.Renderers;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import io.github.stardewmini.common.model.items.Material;
 
 public class MaterialRenderer {
     private final Material material;
-    private String string;
+    private Sprite sprite;
 
     public MaterialRenderer(Material material) {
         this.material = material;
-        this.string = material.toString();
+        this.sprite = new Sprite(GameAssetManager.getInstance().getMaterials(material.getName()));
     }
 
     public Material getMaterial() {
         return material;
     }
 
-    public String getString() {
-        return string;
+    public Sprite getSprite() {
+        return sprite;
     }
 
-    public void setString(String string) {
-        this.string = string;
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
     }
 }

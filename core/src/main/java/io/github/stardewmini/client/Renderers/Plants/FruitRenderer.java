@@ -1,6 +1,7 @@
 package io.github.stardewmini.client.Renderers.Plants;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.items.plants.Fruit;
 
 public class FruitRenderer {
@@ -9,7 +10,7 @@ public class FruitRenderer {
 
     public FruitRenderer(Fruit fruit) {
         this.fruit = fruit;
-        this.sprite = new Sprite();
+        this.sprite = new Sprite(GameAssetManager.getInstance().getFruits(fruit.getName()));
     }
 
     public Fruit getFruit() {

@@ -1,6 +1,7 @@
 package io.github.stardewmini.client.Renderers.Plants;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.items.plants.Seed;
 
 public class SeedRenderer {
@@ -9,7 +10,7 @@ public class SeedRenderer {
 
     public SeedRenderer(Seed seed) {
         this.seed = seed;
-        this.sprite = new Sprite();
+        this.sprite = new Sprite(GameAssetManager.getInstance().getSeeds(seed.getName()));
     }
 
     public Seed getSeed() {

@@ -14,7 +14,6 @@ public class NPC extends Live implements DailyUpdate {
     private static final Random rand = new Random();
 
 
-    private Sprite sprite;
     private String job;
 
     private final ArrayList<String> favoriteItems = new ArrayList<>();
@@ -27,13 +26,7 @@ public class NPC extends Live implements DailyUpdate {
         super(name);
         this.job = job;
         newQuestCounter = rand.nextInt(30) + 30;
-        this.sprite = new Sprite();
-        TextureRegion[][] textureRegion = GameAssetManager.getInstance().getNPCsFrames(name);
-        if(textureRegion == null) {
-            textureRegion = GameAssetManager.getInstance().getNPCsFrames("Robin");
-        }
-        this.sprite.setRegion(textureRegion[0][0]);
-        this.sprite.setSize(Tile.getSize(), (int) Math.floor(Tile.getSize() * 1.7));
+
     }
 
     public void activateQuest(Quest quest) {

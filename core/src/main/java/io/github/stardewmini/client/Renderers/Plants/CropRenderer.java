@@ -1,6 +1,7 @@
 package io.github.stardewmini.client.Renderers.Plants;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.items.plants.Crop;
 
 public class CropRenderer {
@@ -9,7 +10,7 @@ public class CropRenderer {
 
     public CropRenderer(Crop crop) {
         this.crop = crop;
-        this.sprite = new Sprite();
+        this.sprite = new Sprite(GameAssetManager.getInstance().getCrops(crop.getName(),"0"));
     }
 
     public Crop getCrop() {

@@ -16,8 +16,6 @@ public class Tile implements DailyUpdate {
 
     private final Location location;
 
-    private final Sprite sprite = new Sprite();
-
     private Placeable thingOnTile = null;
     private final ArrayList<Feature> features = new ArrayList<>();
 
@@ -27,8 +25,6 @@ public class Tile implements DailyUpdate {
 
     public Tile(Location location) {
         this.location = location;
-
-        sprite.setSize(SIZE, SIZE);
     }
 
     public Location getLocation() {
@@ -105,13 +101,5 @@ public class Tile implements DailyUpdate {
                 setThingOnTile(null);
             }
         }
-    }
-
-    public void setSpritePosition(float x, float y) {
-        sprite.setPosition(x, y);
-    }
-
-    public Sprite getSprite() {
-        return sprite;
     }
 }

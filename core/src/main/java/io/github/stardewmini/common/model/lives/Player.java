@@ -33,7 +33,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     }
 
 
-    private Sprite sprite = new Sprite(GameAssetManager.getInstance().getPlayerWalkRight().getKeyFrame(0));
+
     private boolean moving = false;
     private float moveSpeed = 4f;
     private float x, y;
@@ -114,7 +114,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
         this.setFishingPole(FishingPoleType.TRAINING, new FishingPole(FishingPoleType.TRAINING));
 
-        this.sprite.setSize(Tile.getSize(), (int) Math.floor(Tile.getSize() * 1.7));
+
     }
 
     public User getControllingUser() {
@@ -399,11 +399,6 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     public float getY() {
         return y;
-    }
-
-    @Override
-    public Sprite getSprite() {
-        return sprite;
     }
 
     @Override

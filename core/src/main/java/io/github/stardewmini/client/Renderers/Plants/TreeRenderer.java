@@ -1,6 +1,7 @@
 package io.github.stardewmini.client.Renderers.Plants;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.items.plants.Tree;
 
 public class TreeRenderer {
@@ -9,7 +10,7 @@ public class TreeRenderer {
 
     public TreeRenderer(Tree tree) {
         this.tree = tree;
-        sprite = new Sprite();
+        sprite = new Sprite(GameAssetManager.getInstance().getTrees(tree.getName(),"0"));
     }
 
     public Tree getTree() {

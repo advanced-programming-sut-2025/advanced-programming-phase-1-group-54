@@ -96,14 +96,11 @@ public class Seed extends Item implements Placeable, Cloneable{
     }
 
     private final String plant;
-    private final Sprite sprite;
 
 
     public Seed(String name, String plant) {
         super(name,false,0);
         this.plant = plant;
-
-        sprite = new Sprite(GameAssetManager.getInstance().getSeeds(name));
     }
 
     public String getPlant() {
@@ -444,10 +441,5 @@ public class Seed extends Item implements Placeable, Cloneable{
             throw new RuntimeException(e);
         }
 
-    }
-
-    @Override
-    public Sprite getSprite() {
-        return sprite;
     }
 }

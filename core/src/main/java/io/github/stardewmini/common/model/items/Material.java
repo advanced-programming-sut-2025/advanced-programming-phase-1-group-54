@@ -68,12 +68,8 @@ public class Material extends Item implements Placeable,Cloneable {
         return getMaterial(foragingMaterialName);
     }
 
-    private Sprite sprite;
-
     public Material(String name, int sellPrice) {
         super(name,false,sellPrice);
-
-        this.sprite = new Sprite(GameAssetManager.getInstance().getMaterials(name));
     }
 
     @Override

@@ -33,9 +33,6 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
         }
         Type type = new TypeToken<HashMap<String, Animal>>(){}.getType();
         animals = gson.fromJson(file,type);
-        for(Animal animal : animals.values()){
-            animal.sprite = new Sprite();
-        }
     }
 
     private static final int MAX_FRIENDSHIP = 1000;
@@ -46,7 +43,6 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
             return null;
         }
         else{
-            animal.setSprite(new Sprite());
             return animal.clone();
         }
     }
@@ -73,7 +69,6 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
     protected Location location;
     private int x;
     private int y;
-    private Sprite sprite;
     private float eatTime;
     private float walkTime;
     private float petTime;
@@ -216,10 +211,6 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
 
     public void setPetTime(float petTime) {
         this.petTime = petTime;
-    }
-
-    public void setSprite(Sprite sprite) {
-        this.sprite = sprite;
     }
 
     public void setX(int x) {
@@ -375,11 +366,6 @@ public class Animal extends Live implements Cloneable,DailyUpdate {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
-    }
-
-    @Override
-    public Sprite getSprite() {
-        return sprite;
     }
 
     @Override

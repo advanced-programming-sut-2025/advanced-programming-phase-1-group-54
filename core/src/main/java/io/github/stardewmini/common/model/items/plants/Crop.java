@@ -1,6 +1,5 @@
 package io.github.stardewmini.common.model.items.plants;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -51,16 +50,12 @@ public class Crop extends Plant implements Cloneable{
     private final boolean isGiantPossible;
     private Direction giantDirection;
 
-    private final Sprite sprite;
-
 
     public Crop(String name, String source, String fruit, int[] stages, int totalHarvestTime, int regrowthTime,
                 Season[] seasons, boolean oneTime, boolean isGiantPossible) {
         super(name, source, fruit, stages, totalHarvestTime, regrowthTime, seasons);
         this.oneTime = oneTime;
         this.isGiantPossible = isGiantPossible;
-
-        sprite = new Sprite(); // TODO texture
     }
 
     public boolean isOneTime() {
@@ -641,10 +636,5 @@ public class Crop extends Plant implements Cloneable{
             throw new RuntimeException(e);
         }
 
-    }
-
-    @Override
-    public Sprite getSprite() {
-        return sprite;
     }
 }

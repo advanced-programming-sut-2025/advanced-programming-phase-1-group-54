@@ -5,7 +5,6 @@ import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Placeable;
 
 public abstract class Building implements Placeable {
-    private final Sprite sprite = new Sprite();
 
     private final Location location;
     private final Map map;
@@ -42,10 +41,6 @@ public abstract class Building implements Placeable {
 
     public Location getRandomLocation() {
         return map.getRandomLocation();
-    }
-
-    public Sprite getSprite() {
-        return sprite;
     }
 
     public boolean canEnter() {
