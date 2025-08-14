@@ -3,7 +3,9 @@ package io.github.stardewmini.controller.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import io.github.stardewmini.model.App;
 import io.github.stardewmini.model.GameAssetManager;
@@ -14,6 +16,71 @@ import io.github.stardewmini.model.map.Tile;
 import io.github.stardewmini.model.map.World;
 
 public class PlayerController {
+
+    public static void upAnimation(Player player,float delta){
+
+        Animation<TextureRegion> animation = GameAssetManager.getInstance().getPlayerWalkUp();
+        player.getSprite().setRegion(animation.getKeyFrame(player.getAnimationTime()));
+        if(animation.isAnimationFinished(player.getAnimationTime())){
+            player.setAnimationTime(0);
+        }
+        else{
+            player.setAnimationTime(player.getAnimationTime() + delta);
+        }
+        animation.setPlayMode(Animation.PlayMode.LOOP);
+    }
+
+    public static void downAnimation(Player player,float delta){
+
+        Animation<TextureRegion> animation = GameAssetManager.getInstance().getPlayerWalkDown();
+        player.getSprite().setRegion(animation.getKeyFrame(player.getAnimationTime()));
+        if(animation.isAnimationFinished(player.getAnimationTime())){
+            player.setAnimationTime(0);
+        }
+        else{
+            player.setAnimationTime(player.getAnimationTime() + delta);
+        }
+        animation.setPlayMode(Animation.PlayMode.LOOP);
+    }
+
+    public static void rightAnimation(Player player,float delta){
+
+        Animation<TextureRegion> animation = GameAssetManager.getInstance().getPlayerWalkRight();
+        player.getSprite().setRegion(animation.getKeyFrame(player.getAnimationTime()));
+        if(animation.isAnimationFinished(player.getAnimationTime())){
+            player.setAnimationTime(0);
+        }
+        else{
+            player.setAnimationTime(player.getAnimationTime() + delta);
+        }
+        animation.setPlayMode(Animation.PlayMode.LOOP);
+    }
+
+    public static void leftAnimation(Player player,float delta){
+
+        Animation<TextureRegion> animation = GameAssetManager.getInstance().getPlayerWalkLeft();
+        player.getSprite().setRegion(animation.getKeyFrame(player.getAnimationTime()));
+        if(animation.isAnimationFinished(player.getAnimationTime())){
+            player.setAnimationTime(0);
+        }
+        else{
+            player.setAnimationTime(player.getAnimationTime() + delta);
+        }
+        animation.setPlayMode(Animation.PlayMode.LOOP);
+    }
+
+    public static void dieAnimation(Player player,float delta){
+        Animation<TextureRegion> animation = GameAssetManager.getInstance().getPlayerDie();
+        player.getSprite().setRegion(animation.getKeyFrame(player.getAnimationTime()));
+        if(animation.isAnimationFinished(player.getAnimationTime())){
+            player.setAnimationTime(0);
+        }
+        else{
+            player.setAnimationTime(player.getAnimationTime() + delta);
+        }
+        animation.setPlayMode(Animation.PlayMode.LOOP);
+    }
+
     public static void update(float delta, OrthographicCamera camera) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         World world = App.getCurrentGame().getWorld();
@@ -21,15 +88,23 @@ public class PlayerController {
         int dx = 0, dy = 0;
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             dy++;
+            upAnimation(player,delta);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             dx--;
+            leftAnimation(player,delta);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             dy--;
+            downAnimation(player,delta);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
             dx++;
+            rightAnimation(player,delta);
+        }
+
+        if(player.getEnergy() <= 0){
+            dieAnimation(player,delta);
         }
 
         Tile currentTile = world.getTileAt(player.getCurrentLocation());

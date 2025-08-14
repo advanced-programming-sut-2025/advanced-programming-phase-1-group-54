@@ -2,6 +2,7 @@ package io.github.stardewmini.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.g3d.utils.TextureBinder;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -17,6 +18,7 @@ import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.game.CheatController;
 import io.github.stardewmini.model.GameAssetManager;
 import io.github.stardewmini.model.Result;
+import io.github.stardewmini.model.map.Location;
 
 public class CheatMenu implements Screen {
 
@@ -32,6 +34,10 @@ public class CheatMenu implements Screen {
     private final TextButton addTimeButton;
     private final TextField addDayField;
     private final TextButton addDayButton;
+    private final TextField addThunderField;
+    private final TextButton addThunderButton;
+    private final TextField setEnergyField;
+    private final TextButton setEnergyButton;
 
 
     public CheatMenu(Skin skin) {
@@ -46,6 +52,10 @@ public class CheatMenu implements Screen {
         this.addTimeButton = new TextButton("Add time", skin);
         this.addDayField = new TextField("day", skin);
         this.addDayButton = new TextButton("Add day", skin);
+        this.addThunderField = new TextField("X,Y", skin);
+        this.addThunderButton = new TextButton("Add tunder", skin);
+        this.setEnergyField = new TextField("energy", skin);
+        this.setEnergyButton = new TextButton("Set energy", skin);
     }
 
     @Override
@@ -104,7 +114,7 @@ public class CheatMenu implements Screen {
 
         addTimeButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                Result result = CheatController.advanceDate(addTimeField.getText());
+                Result result = CheatController.advanceTime(addTimeField.getText());
                 window.remove();
                 Main.getInstance().getScreen().dispose();
                 Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
@@ -126,8 +136,44 @@ public class CheatMenu implements Screen {
             }
         });
 
-        window.setSize( Gdx.graphics.getWidth() /2f, Gdx.graphics.getHeight()/2f);
-        window.setPosition(Gdx.graphics.getWidth()/4f, Gdx.graphics.getHeight()/4f);
+        addThunderButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                int a,b;
+                Location location;
+                Result result;
+                try{
+                    String[] locParts = addThunderField.getText().split(",");
+                    a = Integer.parseInt(locParts[0]);
+                    b = Integer.parseInt(locParts[1]);
+                    location = new Location(b,a);
+                    result = CheatController.thunderStrike(addThunderField.getText());
+                    window.remove();
+                    GameScreen gameScreen = new GameScreen(GameAssetManager.getInstance().getSkin(),result.message());
+                    gameScreen.updateThunder(location);
+                    Main.getInstance().getScreen().dispose();
+                    Main.getInstance().setScreen(gameScreen);
+                }catch (Exception e){
+                    result = new Result(false,"enter location in X,Y format");
+                    window.remove();
+                    GameScreen gameScreen = new GameScreen(GameAssetManager.getInstance().getSkin(),result.message());
+                    Main.getInstance().getScreen().dispose();
+                    Main.getInstance().setScreen(gameScreen);
+                }
+
+            }
+        });
+
+        setEnergyButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                Result result = CheatController.setEnergy(setEnergyField.getText());
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
+            }
+        });
+
+        window.setSize( 3 * Gdx.graphics.getWidth()/4f, 3 * Gdx.graphics.getHeight()/4f);
+        window.setPosition(Gdx.graphics.getWidth()/8f, Gdx.graphics.getHeight()/8f);
 
         window.getTitleTable().add(backButton);
         window.add(addMoneyField).expand().pad(10);
@@ -138,7 +184,11 @@ public class CheatMenu implements Screen {
         window.add(addTimeField).expand().pad(10);
         window.add(addTimeButton).expand().pad(10).row();
         window.add(addDayField).expand().pad(10);
-        window.add(addDayButton).expand().pad(10);
+        window.add(addDayButton).expand().pad(10).row();
+        window.add(addThunderField).expand().pad(10);
+        window.add(addThunderButton).expand().pad(10).row();
+        window.add(setEnergyField).expand().pad(10);
+        window.add(setEnergyButton).expand().pad(10);
 
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);

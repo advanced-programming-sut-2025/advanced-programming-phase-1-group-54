@@ -2,7 +2,10 @@ package io.github.stardewmini.controller.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -282,6 +285,15 @@ public class MapController {
                 camera.position.set(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f, 0);
                 FishingController.startFishing("Training");
             }
+        }
+    }
+
+    public static void updateThunder( Sprite sprite,float time,SpriteBatch batch){
+        Animation<TextureRegion> animation = GameAssetManager.getInstance().getThunderAnimation();
+        sprite.setRegion(animation.getKeyFrame(time));
+        animation.setPlayMode(Animation.PlayMode.NORMAL);
+        if(! animation.isAnimationFinished(time)){
+            sprite.draw(batch);
         }
     }
 }

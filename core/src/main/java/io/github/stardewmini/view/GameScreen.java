@@ -4,53 +4,55 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.game.CommonGameController;
+import io.github.stardewmini.controller.game.MapController;
 import io.github.stardewmini.controller.game.NpcController;
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.Game;
-import io.github.stardewmini.model.GameAssetManager;
-import io.github.stardewmini.model.SoundManager;
-import io.github.stardewmini.model.lives.Animal;
-import io.github.stardewmini.model.lives.NPC;
 import io.github.stardewmini.model.map.Location;
-import io.github.stardewmini.model.map.Shops.Shop;
 import io.github.stardewmini.model.map.Tile;
-import io.github.stardewmini.model.map.World;
 
 public class GameScreen implements Screen, InputProcessor {
     private Stage stage;
-    private final Label label;
+    private final Label messageLabel;
     private float lastChange = 0;
     private OrthographicCamera camera;
     private final Window[] windows;
+    private final Label timeLabel;
+    private Sprite thunderSprite = new Sprite();
+    private float thunderTime;
 
     int width = 0;
     int height = 0;
 
     public GameScreen(Skin skin,String string) {
-        this.label = new Label(string, skin);
+        this.messageLabel = new Label(string, skin);
         windows = new Window[5];
         for(int i = 0; i < 5; i++) {
             windows[i] = new Window("dialoge", skin);
             windows[i].setSize(Tile.getSize()*8,Tile.getSize()*3);
         }
+        this.timeLabel = new Label("", skin);
+        this.thunderTime = 10;
+        this.thunderSprite = new Sprite();
+        this.thunderSprite.setSize(Tile.getSize(),Tile.getSize());
     }
 
     public GameScreen(Skin skin) {
-        this.label = new Label("salam olagh azizi halet chetore?", skin);
+        this.messageLabel = new Label("salam olagh e azizi halet chetore?", skin);
         windows = new Window[5];
         for(int i = 0; i < 5; i++) {
             windows[i] = new Window("dialoge", skin);
             windows[i].setSize(Tile.getSize()*8,Tile.getSize()*3);
         }
+        this.timeLabel = new Label("", skin);
+        this.thunderTime = 10;
+        this.thunderSprite = new Sprite();
+        this.thunderSprite.setSize(Tile.getSize(),Tile.getSize());
     }
 
     @Override
@@ -61,20 +63,27 @@ public class GameScreen implements Screen, InputProcessor {
 
         stage = new Stage(new ScreenViewport());
 
-        label.setPosition(100, 100);
-        stage.addActor(label);
+        timeLabel.setPosition(50, Gdx.graphics.getHeight() - 150);
+        messageLabel.setPosition(100, 100);
+
+        stage.addActor(timeLabel);
+        stage.addActor(messageLabel);
         Gdx.input.setInputProcessor(this);
     }
 
     @Override
     public void render(float delta) {
+        timeLabel.setText(CommonGameController.updateDateTime(Main.getBatch()));
         CommonGameController.update(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f), camera);
+
         camera.update();
         Main.getBatch().setProjectionMatrix(camera.combined);
 
         ScreenUtils.clear(0, 0, 0, 1);
         Main.getBatch().begin();
         CommonGameController.draw(Main.getBatch(),stage,camera,windows);
+        MapController.updateThunder(thunderSprite,thunderTime,Main.getBatch());
+        thunderTime += delta;
         Main.getBatch().end();
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();
@@ -84,7 +93,7 @@ public class GameScreen implements Screen, InputProcessor {
 
         lastChange += delta;
         if(lastChange >= 10) {
-            label.setText("");
+            messageLabel.setText("");
         }
     }
 
@@ -159,8 +168,8 @@ public class GameScreen implements Screen, InputProcessor {
         return false;
     }
 
-    public Label getLabel() {
-        return label;
+    public Label getMessageLabel() {
+        return messageLabel;
     }
 
     public OrthographicCamera getCamera() {
@@ -169,5 +178,10 @@ public class GameScreen implements Screen, InputProcessor {
 
     public void setLastChange(float lastChange) {
         this.lastChange = lastChange;
+    }
+
+    public void updateThunder(Location location){
+        this.thunderSprite.setPosition(location.column() * Tile.getSize(),location.row() * Tile.getSize());
+        this.thunderTime = 0;
     }
 }

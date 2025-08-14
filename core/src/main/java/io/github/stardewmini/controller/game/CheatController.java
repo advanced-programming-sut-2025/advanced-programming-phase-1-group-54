@@ -42,7 +42,18 @@ public class CheatController {
         return new Result(true, "it's now " + game.getDateTime().toString());
     }
 
-    public static Result thunderStrike(Location location) {
+    public static Result thunderStrike(String locationString) {
+        int x,y;
+        Location location;
+        try{
+            String[] locParts = locationString.split(",");
+            x = Integer.parseInt(locParts[0]);
+            y = Integer.parseInt(locParts[1]);
+            location = new Location(y,x);
+        }catch (Exception e){
+            return new Result(false,"enter location in X,Y format");
+        }
+
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
         Farm farm = game.getWorld().getFarmAt(player.getCurrentLocation());
@@ -65,7 +76,13 @@ public class CheatController {
         return new Result(true, "You changed the future!");
     }
 
-    public static Result setEnergy(int value) {
+    public static Result setEnergy(String valueString) {
+        int value;
+        try {
+            value = Integer.parseInt(valueString);
+        } catch (Exception e){
+            return new Result(false,"enter only numbers");
+        }
         Player player = App.getCurrentGame().getCurrentPlayer();
         player.setUnlimitedEnergy(false);
         player.setEnergy(value);

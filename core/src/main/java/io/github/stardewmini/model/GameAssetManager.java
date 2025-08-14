@@ -316,6 +316,7 @@ public class GameAssetManager {
     private final Animation<TextureRegion> playerWalkDown;
     private final Animation<TextureRegion> playerWalkLeft;
     private final Animation<TextureRegion> playerWalkRight;
+    private final Animation<TextureRegion> playerDie;
     {
         Texture texture = new Texture("Stardew_Valley_Images-main/Player/Alex3.png");
         TextureRegion[][] frames = TextureRegion.split(texture,texture.getWidth()/4,texture.getHeight()/13);
@@ -323,6 +324,7 @@ public class GameAssetManager {
         playerWalkDown = new Animation<>(0.5f,frames[0]);
         playerWalkLeft = new Animation<>(0.5f,frames[3]);
         playerWalkRight = new Animation<>(0.5f,frames[1]);
+        playerDie = new Animation<>(0.5f,frames[9][0],frames[9][1],frames[9][2]);
     }
 
     public Animation<TextureRegion> getPlayerWalkUp() {
@@ -339,6 +341,10 @@ public class GameAssetManager {
 
     public Animation<TextureRegion> getPlayerWalkRight() {
         return playerWalkRight;
+    }
+
+    public Animation<TextureRegion> getPlayerDie(){
+        return playerDie;
     }
 
     private final HashMap<String,Texture> artisans  = new HashMap<>();
@@ -474,6 +480,19 @@ public class GameAssetManager {
 
     public Texture getTool(String name,String level) {
         return tools.get(name).get(level);
+    }
+
+    private final Animation<TextureRegion> thunderAnimation;
+    {
+        TextureRegion thunder = new TextureRegion(new
+            Texture("Stardew_Valley_Images-main/ThunderAnimation/Emojis102.png"));
+        TextureRegion thunder2 = new TextureRegion(new
+            Texture("Stardew_Valley_Images-main/ThunderAnimation/Emojis047.png"));
+        thunderAnimation = new Animation<>(1f, thunder, thunder2,thunder,thunder2);
+    }
+
+    public Animation<TextureRegion> getThunderAnimation() {
+        return thunderAnimation;
     }
 
     public Texture getItem(String name){

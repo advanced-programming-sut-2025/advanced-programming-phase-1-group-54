@@ -735,4 +735,23 @@ public class CommonGameController {
         MapController.mouseClick(screenX, screenY, camera, windows);
         ToolsController.mouseClick(screenX, screenY, camera);
     }
+
+    public static String updateDateTime(SpriteBatch batch){
+        StringBuilder output = new StringBuilder();
+        DateTime dateTime = App.getCurrentGame().getDateTime();
+        output.append("Hour : ").append(dateTime.getHour()).append("\nday : ").append(dateTime.getDay()).
+            append("\nyear : ").append(dateTime.getYear()).append("\nweekDay : ").append(dateTime.getWeekDay()).
+            append("\nseason : ").append(dateTime.getSeason()).append("\nweather : ").
+            append(App.getCurrentGame().getCurrentWeather()).append("\nEnergy : ").
+            append(App.getCurrentGame().getCurrentPlayer().getEnergy());
+
+        if(dateTime.getHour() >= 18){
+            batch.setColor(0.7f, 0.7f, 0.7f, 1);
+        }
+        else{
+            batch.setColor(1, 1, 1, 1);
+        }
+
+        return output.toString();
+    }
 }
