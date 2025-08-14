@@ -1,6 +1,6 @@
 package io.github.stardewmini.common.model.map;
 
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 
 public class Cabin extends Building {
     private final static int NUMBER_OF_ROWS = 4;

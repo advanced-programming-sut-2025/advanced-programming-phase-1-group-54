@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import io.github.stardewmini.client.Main;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 
 /** First screen of the application. Displayed after the application is created. */
 public class FirstScreen implements Screen {

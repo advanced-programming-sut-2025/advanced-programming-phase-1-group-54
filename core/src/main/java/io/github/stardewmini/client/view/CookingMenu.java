@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.client.Main;
 import io.github.stardewmini.server.controllers.game.FoodController;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 
 public class CookingMenu implements Screen {
 

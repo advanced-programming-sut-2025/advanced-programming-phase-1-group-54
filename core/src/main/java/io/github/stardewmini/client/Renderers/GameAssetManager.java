@@ -1,4 +1,4 @@
-package io.github.stardewmini.common.model;
+package io.github.stardewmini.client.Renderers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;

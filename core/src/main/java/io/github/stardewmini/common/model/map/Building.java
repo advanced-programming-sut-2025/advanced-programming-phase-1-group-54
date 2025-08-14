@@ -1,7 +1,7 @@
 package io.github.stardewmini.common.model.map;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Placeable;
 
 public abstract class Building implements Placeable {

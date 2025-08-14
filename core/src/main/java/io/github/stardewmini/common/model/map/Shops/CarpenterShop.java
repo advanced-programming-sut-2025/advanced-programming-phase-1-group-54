@@ -1,6 +1,6 @@
 package io.github.stardewmini.common.model.map.Shops;
 
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.items.ShopItem;
 import io.github.stardewmini.common.model.lives.NPC;
 import io.github.stardewmini.common.model.map.Area;

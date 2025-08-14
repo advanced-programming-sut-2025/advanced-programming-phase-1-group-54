@@ -5,10 +5,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.github.stardewmini.common.model.DateTime;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.enums.Feature;
 import io.github.stardewmini.common.model.items.Material;
-import io.github.stardewmini.common.model.map.*;
 import io.github.stardewmini.common.model.map.*;
 
 import java.io.BufferedReader;

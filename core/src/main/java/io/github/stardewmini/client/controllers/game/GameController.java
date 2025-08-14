@@ -10,7 +10,7 @@ import io.github.stardewmini.client.view.CheatMenu;
 import io.github.stardewmini.client.view.CookingMenu;
 import io.github.stardewmini.client.view.CraftingMenu;
 import io.github.stardewmini.client.view.InventoryMenu;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 
 public class GameController {
     public static void draw(SpriteBatch batch, Stage stage, OrthographicCamera camera) {

@@ -11,7 +11,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.client.Main;
 import io.github.stardewmini.client.controllers.CheckRegisterController;
 import io.github.stardewmini.server.controllers.RegisterMenuController;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.SoundManager;
 import io.github.stardewmini.common.model.enums.Gender;

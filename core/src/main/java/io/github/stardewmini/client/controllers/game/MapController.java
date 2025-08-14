@@ -10,7 +10,7 @@ import io.github.stardewmini.client.view.AnimalMenu;
 import io.github.stardewmini.client.view.NPCMenu;
 import io.github.stardewmini.client.view.ShopMenu;
 import io.github.stardewmini.common.model.Game;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.lives.Animal;
 import io.github.stardewmini.common.model.lives.NPC;
 import io.github.stardewmini.common.model.lives.Player;

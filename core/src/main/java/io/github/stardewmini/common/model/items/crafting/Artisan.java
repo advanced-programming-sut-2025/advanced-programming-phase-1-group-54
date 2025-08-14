@@ -3,7 +3,7 @@ package io.github.stardewmini.common.model.items.crafting;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Placeable;
 import io.github.stardewmini.common.model.enums.Feature;
 import io.github.stardewmini.common.model.items.Item;

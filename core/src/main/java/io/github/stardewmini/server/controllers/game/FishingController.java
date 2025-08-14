@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import io.github.stardewmini.client.Main;
 import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.FishingGame;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.FishingPoleType;
 import io.github.stardewmini.common.model.enums.ProduceQuality;

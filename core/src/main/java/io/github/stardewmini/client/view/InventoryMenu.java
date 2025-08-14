@@ -15,7 +15,7 @@ import io.github.stardewmini.server.controllers.game.FriendShipController;
 import io.github.stardewmini.client.controllers.game.InventoryController;
 import io.github.stardewmini.server.controllers.game.NpcController;
 import io.github.stardewmini.server.controllers.game.ToolsController;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.SkillType;
 

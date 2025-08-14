@@ -1,7 +1,7 @@
 package io.github.stardewmini.common.model.map;
 
 import io.github.stardewmini.common.model.DailyUpdate;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.items.Material;
 
 public class Quarry extends Building implements DailyUpdate {

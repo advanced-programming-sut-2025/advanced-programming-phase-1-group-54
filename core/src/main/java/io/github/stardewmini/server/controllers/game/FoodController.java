@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import io.github.stardewmini.client.Main;
 import io.github.stardewmini.server.app.GameApp;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.items.Food;
 import io.github.stardewmini.common.model.items.Item;

@@ -3,7 +3,7 @@ package io.github.stardewmini.common.model.lives;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import io.github.stardewmini.common.model.DailyUpdate;
-import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Quest;
 import io.github.stardewmini.common.model.map.Tile;
 
