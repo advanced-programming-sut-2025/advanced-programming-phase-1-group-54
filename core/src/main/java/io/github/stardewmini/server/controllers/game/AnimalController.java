@@ -3,7 +3,7 @@ package io.github.stardewmini.server.controllers.game;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.SkillType;
@@ -19,7 +19,7 @@ import io.github.stardewmini.common.model.map.Tile;
 public class AnimalController {
 
     public static Result pet(Animal animal) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
 //        Animal animal = player.getAnimals().get(animalName);
 //        if(animal == null) {
 //            return new Result(-1, "You don't have any animal named " + animalName);
@@ -34,7 +34,7 @@ public class AnimalController {
     }
 
     public static Result showAnimals() {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
         StringBuilder output = new StringBuilder();
         for(Animal animal : player.getAnimals().values()) {
             output.append(animal.getAnimalName()).append(" ").append(animal.getName()).append("\n").
@@ -58,8 +58,8 @@ public class AnimalController {
     }
 
     public static Result moveAnimal(Animal animal, Location location) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        Farm farm = App.getCurrentGame().getWorld().getFarm(player);
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Farm farm = GameApp.getCurrentGame().getWorld().getFarm(player);
         Location locationInFarm = location.delta(farm.getLocation());
         Tile tile = farm.getTileAt(locationInFarm);
 
@@ -106,7 +106,7 @@ public class AnimalController {
 
     private static void deleteAnimalFromFarm(Animal animal) {
         if(animal.getLocation() != null ) {
-            Tile pastTile = App.getCurrentGame().getCurrentPlayer().getFarm().getTileAt(animal.getLocation());
+            Tile pastTile = GameApp.getCurrentGame().getCurrentPlayer().getFarm().getTileAt(animal.getLocation());
             if(pastTile.getThingOnTile() instanceof AnimalHouse pastAnimalHouse){
                 pastAnimalHouse.decreaseNumberOfAnimals(1);
                 pastTile = pastTile.getTop();
@@ -120,7 +120,7 @@ public class AnimalController {
 
     public static Result feedAnimal(Animal animal) {
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
 //        Animal animal = player.getAnimals().get(animalName);
 //        if(animal == null) {
 //            return new Result(-1, "Animal " + animalName + " not found");
@@ -137,7 +137,7 @@ public class AnimalController {
     }
 
     public static Result showProducedAnimals() {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
         StringBuilder output = new StringBuilder();
         for(Animal animal : player.getAnimals().values()) {
             if(animal.getProduce() != null){
@@ -150,7 +150,7 @@ public class AnimalController {
     }
 
     public static Result getAnimalProduce(Animal animal) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
 //        Animal animal = player.getAnimals().get(animalName);
 //        if(animal == null) {
 //            return new Result(-1, "Animal " + animalName + " not found");
@@ -194,7 +194,7 @@ public class AnimalController {
     }
 
     public static Result sellAnimal(Animal animal) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
 //        Animal animal = player.getAnimals().get(animalName);
 //        if(animal == null) {
 //            return new Result(-1, "Animal " + animalName + " not found");
@@ -208,74 +208,5 @@ public class AnimalController {
         return new Result(1,"You sold " + animal.getName() + " for " + price + " money");
     }
 
-    public static void eatAnimation(Animal animal,float delta){
-        Animation<TextureRegion> animation = GameAssetManager.getInstance().getAnimalEat(animal.getAnimalName());
-        animal.getSprite().setRegion(animation.getKeyFrame(animal.getEatTime()));
-        animal.setEatTime(animal.getEatTime() + delta);
-        animation.setPlayMode(Animation.PlayMode.REVERSED);
-    }
 
-    public static void petAnimation(Animal animal,float delta){
-        Animation<TextureRegion> animation = GameAssetManager.getInstance().getAnimalPet(animal.getAnimalName());
-        animal.getSprite().setRegion(animation.getKeyFrame(animal.getPetTime()));
-        animal.setPetTime(animal.getPetTime() + delta);
-        animation.setPlayMode(Animation.PlayMode.NORMAL);
-    }
-
-    public static void walkAnimation(Animal animal,float delta){
-        Animation<TextureRegion> animation = GameAssetManager.getInstance().getAnimalWalk(animal.getAnimalName());
-        animal.getSprite().setRegion(animation.getKeyFrame(animal.getWalkTime()));
-        if(animation.isAnimationFinished(animal.getWalkTime())){
-            animal.setWalkTime(0);
-        }
-        else{
-            animal.setWalkTime(animal.getWalkTime() + delta);
-        }
-        animation.setPlayMode(Animation.PlayMode.LOOP);
-    }
-
-    public static void update(float delta){
-        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
-
-        for(Animal animal : App.getCurrentGame().getCurrentPlayer().getAnimals().values()) {
-
-            if (animal.getLocation() != null  && ( animal.getX() != animal.getLocation().column() * Tile.getSize()||
-                animal.getY() != animal.getLocation().row() * Tile.getSize() )) {
-                Location location = animal.getLocation();
-                if(animal.getX() > location.column() * Tile.getSize()){
-                    animal.setX(animal.getX() - Tile.getSize()/60);
-                }
-                else if(animal.getX() < location.column() * Tile.getSize()){
-                    animal.setX(animal.getX() + Tile.getSize()/60);
-                }
-                else if(animal.getY() > location.row() * Tile.getSize()){
-                    animal.setY(animal.getY() - Tile.getSize()/60);
-                }
-                else if(animal.getY() < location.row() * Tile.getSize()){
-                    animal.setY(animal.getY() + Tile.getSize()/60);
-                }
-                walkAnimation(animal,delta);
-            }
-            else if (! gameAssetManager.getAnimalPet(animal.getAnimalName()).isAnimationFinished(animal.getPetTime())) {
-                petAnimation(animal, delta);
-            }
-            else if (! gameAssetManager.getAnimalEat(animal.getAnimalName()).isAnimationFinished(animal.getEatTime())) {
-                eatAnimation(animal, delta);
-            }
-            else if (animal.getProduce() != null) {
-                animal.getSprite().setRegion(gameAssetManager.getProducedAnimal(animal.getAnimalName()));
-            }
-            else {
-                animal.getSprite().setRegion(gameAssetManager.getAnimal(animal.getAnimalName()));
-            }
-        }
-    }
-
-    public static void draw(SpriteBatch batch){
-        for(Animal animal : App.getCurrentGame().getCurrentPlayer().getAnimals().values()) {
-            animal.getSprite().setSize(Tile.getSize(), Tile.getSize());
-            animal.getSprite().setPosition(animal.getX(),animal.getY());
-            animal.getSprite().draw(batch);
-        }
-    }
 }

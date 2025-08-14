@@ -7,7 +7,7 @@ import io.github.stardewmini.common.model.Result;
 import java.util.HashMap;
 
 public class ServerConnectionController {
-    public static Message handleCommand(Message message) {
+    public static Message handleCommand(String username, Message message) {
         String command = message.getFromBody("command");
         switch (command) {
             case "register":
@@ -27,18 +27,22 @@ public class ServerConnectionController {
                 return handleChangeForgottenPassword(message);
 
             case "change_username":
-                return handleChangeUsername(message);
+                return handleChangeUsername(username, message);
             case "change_password":
-                return handleChangePassword(message);
+                return handleChangePassword(username, message);
             case "change_nickname":
-                return handleChangeNickname(message);
+                return handleChangeNickname(username, message);
             case "change_email":
-                return handleChangeEmail(message);
+                return handleChangeEmail(username, message);
 
 
             default:
                 return null;
         }
+    }
+
+    public static void handleUpdate(String username, Message message) {
+        // TODO
     }
 
     private static Message makeResponseFrom(Result result) {
@@ -78,8 +82,7 @@ public class ServerConnectionController {
     private static Message handleLogin(Message message) {
         Result result = LoginMenuController.login(
             message.getFromBody("username"),
-            message.getFromBody("password"),
-            message.getBooleanFromBody("stayLoggedIn")
+            message.getFromBody("password")
         );
         return makeResponseFrom(result);
     }
@@ -108,33 +111,36 @@ public class ServerConnectionController {
         return makeResponseFrom(result);
     }
 
-    private static Message handleChangeUsername(Message message) {
+    private static Message handleChangeUsername(String username, Message message) {
         Result result = ProfileMenuController.changeUsername(
+            username,
             message.getFromBody("username")
         );
         return makeResponseFrom(result);
     }
 
-    private static Message handleChangePassword(Message message) {
+    private static Message handleChangePassword(String username, Message message) {
         Result result = ProfileMenuController.changePassword(
+            username,
             message.getFromBody("newPassword"),
             message.getFromBody("oldPassword")
         );
         return makeResponseFrom(result);
     }
 
-    private static Message handleChangeNickname(Message message) {
+    private static Message handleChangeNickname(String username, Message message) {
         Result result = ProfileMenuController.changeNickname(
+            username,
             message.getFromBody("nickname")
         );
         return makeResponseFrom(result);
     }
 
-    private static Message handleChangeEmail(Message message) {
+    private static Message handleChangeEmail(String username, Message message) {
         Result result = ProfileMenuController.changeEmail(
+            username,
             message.getFromBody("email")
         );
         return makeResponseFrom(result);
     }
-
 }

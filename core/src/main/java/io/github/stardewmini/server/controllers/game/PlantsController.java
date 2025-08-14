@@ -1,6 +1,6 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.Game;
 import io.github.stardewmini.common.model.Placeable;
 import io.github.stardewmini.common.model.Result;
@@ -49,9 +49,9 @@ public class PlantsController {
 
         Seed seed;
         if (seedName.equals("Mixed Seeds")) {
-            Result result = plantingSeeds(Seed.getMixedSeed(App.getCurrentGame().getDateTime().getSeason()), direction);
+            Result result = plantingSeeds(Seed.getMixedSeed(GameApp.getCurrentGame().getDateTime().getSeason()), direction);
             if (result.success()) {
-                if (!App.getCurrentGame().getCurrentPlayer().getBackpack().
+                if (!GameApp.getCurrentGame().getCurrentPlayer().getBackpack().
                         removeItem(Seed.getSeed("Mixed Seeds"), 1)) {
                     return new Result(-1, "you don't enough " + seedName);
                 }
@@ -64,7 +64,7 @@ public class PlantsController {
             }
             Result result = plantingSeeds(seed, direction);
             if (result.success()) {
-                if (!App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(seed, 1)) {
+                if (!GameApp.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(seed, 1)) {
                     return new Result(-1, "you don't enough " + seedName);
                 }
             }
@@ -74,8 +74,8 @@ public class PlantsController {
     }
 
     public static Result showPlant(Location location) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        Tile tile = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation()).getTileAt(location);
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Tile tile = GameApp.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation()).getTileAt(location);
 
         if (tile == null) {
             return new Result(-1, "tile is not in your farm");
@@ -101,7 +101,7 @@ public class PlantsController {
     }
 
     static Result harvestPlant(Direction direction) {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         Location location = game.getCurrentPlayer().getCurrentLocation().getLocationAt(direction);
         Farm farm = game.getWorld().getFarmAt(game.getCurrentPlayer().getCurrentLocation());
         Tile tile = farm.getTileAt(location.delta(farm.getLocation()));
@@ -188,7 +188,7 @@ public class PlantsController {
     }
 
     public static Result giveWater(Location location) {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         Farm farm = game.getWorld().getFarmAt(game.getCurrentPlayer().getCurrentLocation());
         Tile tile = farm.getTileAt(location.delta(farm.getLocation()));
 
@@ -217,8 +217,8 @@ public class PlantsController {
         if (direction == null)
             return new Result(false, "invalid direction");
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Farm farm = GameApp.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
         if (farm == null) {
             return new Result(-1, "You must be in a farm to do this action");
         }
@@ -264,9 +264,9 @@ public class PlantsController {
 
     private static Result plantingSeeds(Seed seed, Direction direction) {
 
-        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+        Player currentPlayer = GameApp.getCurrentGame().getCurrentPlayer();
 
-        Farm farm = App.getCurrentGame().getWorld().getFarmAt(currentPlayer.getCurrentLocation());
+        Farm farm = GameApp.getCurrentGame().getWorld().getFarmAt(currentPlayer.getCurrentLocation());
         if (farm == null) {
             return new Result(-1, "You are not in any farm");
         }
@@ -295,7 +295,7 @@ public class PlantsController {
         Tree tree = Tree.getTree(seed.getPlant());
         if (tree != null) {
             if(! inGreenHouse){
-                if(! tree.containSeason(App.getCurrentGame().getDateTime().getSeason())) {
+                if(! tree.containSeason(GameApp.getCurrentGame().getDateTime().getSeason())) {
                     return new Result(-1, "You can't plant this plant in this season");
                 }
             }
@@ -308,13 +308,13 @@ public class PlantsController {
                 tile.removeFeature(Feature.WATER_FERTILIZE);
             }
             tile.setThingOnTile(tree);
-            App.getCurrentGame().getDateTime().addDailyUpdateListener(tree);
+            GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(tree);
         }
 
         Crop crop = Crop.getCrop(seed.getPlant());
         if (crop != null) {
             if(! inGreenHouse){
-                if(! crop.containSeason(App.getCurrentGame().getDateTime().getSeason())) {
+                if(! crop.containSeason(GameApp.getCurrentGame().getDateTime().getSeason())) {
                     return new Result(-1, "You can't plant this plant in this season");
                 }
             }
@@ -328,7 +328,7 @@ public class PlantsController {
             }
             if (!cropCanBeGiant(crop, location)) {
                 tile.setThingOnTile(crop);
-                App.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
+                GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
             }
         }
 
@@ -341,7 +341,7 @@ public class PlantsController {
         if (!crop.isGiantPossible())
             return false;
 
-        Farm farm = App.getCurrentGame().getWorld().getFarmAt(location);
+        Farm farm = GameApp.getCurrentGame().getWorld().getFarmAt(location);
 
         Tile tile = farm.getTileAt(location);
         Tile upTile = farm.getTileAt(location.getLocationAt(Direction.UP));
@@ -383,10 +383,10 @@ public class PlantsController {
                     leftTile.setThingOnTile(leftCrop);
                     up_LeftTile.setThingOnTile(upLeftCrop);
 
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(upCrop);
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(leftCrop);
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(upLeftCrop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(upCrop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(leftCrop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(upLeftCrop);
 
                     return true;
 
@@ -411,10 +411,10 @@ public class PlantsController {
                     rightTile.setThingOnTile(rightCrop);
                     up_RightTile.setThingOnTile(upRightCrop);
 
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(upCrop);
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(rightCrop);
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(upRightCrop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(upCrop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(rightCrop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(upRightCrop);
 
                     return true;
                 }
@@ -442,10 +442,10 @@ public class PlantsController {
                     leftTile.setThingOnTile(leftCrop);
                     down_LeftTile.setThingOnTile(downLeftCrop);
 
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(downCrop);
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(leftCrop);
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(downLeftCrop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(downCrop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(leftCrop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(downLeftCrop);
 
                     return true;
                 }
@@ -470,10 +470,10 @@ public class PlantsController {
                     down_RightTile.setThingOnTile(downRightCrop);
 
 
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(downCrop);
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(rightCrop);
-                    App.getCurrentGame().getDateTime().addDailyUpdateListener(downRightCrop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(crop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(downCrop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(rightCrop);
+                    GameApp.getCurrentGame().getDateTime().addDailyUpdateListener(downRightCrop);
 
                     return true;
                 }

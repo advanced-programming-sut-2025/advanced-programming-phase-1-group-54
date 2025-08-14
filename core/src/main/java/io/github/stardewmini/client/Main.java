@@ -1,10 +1,10 @@
-package io.github.stardewmini;
+package io.github.stardewmini.client;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import io.github.stardewmini.client.view.MainMenu;
 import io.github.stardewmini.client.view.StartMenu;
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.client.app.GameApp;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {
@@ -32,7 +32,7 @@ public class Main extends Game {
 //        setScreen(new CheatMenu(GameAssetManager.getInstance().getSkin()));
 
 
-        if (App.getLoggedInUser() != null) {
+        if (GameApp.getLoggedInUser() != null) {
             setScreen(new MainMenu());
         }
         else {

@@ -17,4 +17,32 @@ public class Lobby {
         this.password = password;
         this.visible = visible;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+    }
+
+    public void removeUser(User user) {
+        users.remove(user);
+    }
 }

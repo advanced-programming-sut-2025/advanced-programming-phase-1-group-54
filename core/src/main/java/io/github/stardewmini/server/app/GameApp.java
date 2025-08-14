@@ -1,7 +1,11 @@
-package io.github.stardewmini.common.model;
+package io.github.stardewmini.server.app;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import io.github.stardewmini.common.model.Game;
+import io.github.stardewmini.common.model.GameData;
+import io.github.stardewmini.common.model.User;
+import io.github.stardewmini.server.model.Lobby;
 
 import java.io.File;
 import java.io.FileReader;
@@ -10,24 +14,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class App {
-    private static final File savesDir = new File(System.getProperty("user.home") + "/Desktop/StardewValley/");
+public class GameApp {
+    private static final File savesDir = new File(System.getProperty("user.home") + "/Desktop/StardewValley/server/");
     private static final File usersFile = new File(savesDir, "users.json");
-    private static final File loggedInUserFile = new File(savesDir, "loggedInUser.json");
     private static final File gamesFile = new File(savesDir, "games.json");
 
     private static ArrayList<User> users;
-
-    private static User loggedInUser;
+    private static ArrayList<Lobby> lobbies = new ArrayList<>();
     private static Game currentGame;
+
 
     static {
         if (!savesDir.mkdir()) {
             try {
                 if (!usersFile.createNewFile())
                     readUsers();
-                if (!loggedInUserFile.createNewFile())
-                    readLoggedInUser();
                 gamesFile.createNewFile();
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -46,16 +47,6 @@ public class App {
         }
     }
 
-    private static void readLoggedInUser() {
-        try (FileReader reader = new FileReader(loggedInUserFile)) {
-            Gson gson = new Gson();
-            String username = gson.fromJson(reader, String.class);
-            App.setLoggedInUser(App.getUserByUsername(username));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     private static ArrayList<GameData> readGames() {
         ArrayList<GameData> games;
         try (FileReader reader = new FileReader(gamesFile)) {
@@ -68,30 +59,6 @@ public class App {
         }
 
         return games;
-    }
-
-    public static User getLoggedInUser() {
-        return loggedInUser;
-    }
-
-    public static void setLoggedInUser(User loggedInUser) {
-        if (loggedInUser == null)
-            loggedInUserFile.delete();
-        App.loggedInUser = loggedInUser;
-    }
-
-    public static void saveLoggedInUser() {
-        try {
-            loggedInUserFile.createNewFile();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        try (FileWriter writer = new FileWriter(loggedInUserFile)) {
-            writer.write(loggedInUser.getUsername());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public static User getUserByUsername(String username) {
@@ -121,7 +88,7 @@ public class App {
     }
 
     public static void setCurrentGame(Game currentGame) {
-        App.currentGame = currentGame;
+        GameApp.currentGame = currentGame;
     }
 
     public static GameData getGameDataOf(User user) {
@@ -160,5 +127,27 @@ public class App {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void addLobby(Lobby lobby) {
+        lobbies.add(lobby);
+    }
+
+    public static void removeLobby(Lobby lobby) {
+        lobbies.remove(lobby);
+    }
+
+    public static Lobby getLobbyById(int id) {
+        for (Lobby lobby : lobbies) {
+            if (lobby.getId() == id) {
+                return lobby;
+            }
+        }
+
+        return null;
+    }
+
+    public static List<Lobby> getLobbies() {
+        return List.copyOf(lobbies);
     }
 }

@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import io.github.stardewmini.Main;
+import io.github.stardewmini.client.Main;
 import io.github.stardewmini.client.controllers.CheckRegisterController;
 import io.github.stardewmini.server.controllers.RegisterMenuController;
 import io.github.stardewmini.common.model.GameAssetManager;

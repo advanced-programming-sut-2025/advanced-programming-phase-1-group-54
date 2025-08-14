@@ -1,9 +1,9 @@
-package io.github.stardewmini.server.controllers.game;
+package io.github.stardewmini.client.controllers.game;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.enums.SkillType;
 import io.github.stardewmini.common.model.items.Item;
@@ -27,14 +27,14 @@ public class InventoryController {
 //    }
 
     public static String showSkill(int index){
-        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+        Player currentPlayer = GameApp.getCurrentGame().getCurrentPlayer();
         Skill skill = currentPlayer.getSkill(SkillType.values()[index]);
         return skill.getSkillType() + " Level : " + skill.getLevel() + " XP needed for next Level : " + skill.getXpNeededForLevelUp();
     }
 
     public static Table showInventory(){
         Table output = new Table();
-        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+        Player currentPlayer = GameApp.getCurrentGame().getCurrentPlayer();
         Map<Item,Integer> inventory = currentPlayer.getBackpack().getCopy();
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         int i = 0;

@@ -13,7 +13,9 @@ abstract public class ConnectionThread extends Thread {
 	protected final DataInputStream dataInputStream;
 	protected final DataOutputStream dataOutputStream;
 	protected final BlockingQueue<Message> receivedMessagesQueue;
-	protected Socket socket;
+    protected String otherSideIP;
+    protected int otherSidePort;
+    protected Socket socket;
 	protected AtomicBoolean end;
 
 	protected ConnectionThread(Socket socket) throws IOException {
@@ -46,7 +48,23 @@ abstract public class ConnectionThread extends Thread {
 		}
 	}
 
-	@Override
+    public String getOtherSideIP() {
+        return otherSideIP;
+    }
+
+    public void setOtherSideIP(String otherSideIP) {
+        this.otherSideIP = otherSideIP;
+    }
+
+    public int getOtherSidePort() {
+        return otherSidePort;
+    }
+
+    public void setOtherSidePort(int otherSidePort) {
+        this.otherSidePort = otherSidePort;
+    }
+
+    @Override
 	public void run() {
 		while (!end.get()) {
 			try {

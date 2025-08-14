@@ -1,7 +1,6 @@
 package io.github.stardewmini.common.model.builders;
 
 import io.github.stardewmini.common.model.*;
-import io.github.stardewmini.common.model.*;
 import io.github.stardewmini.common.model.lives.NPC;
 import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.map.Cabin;
@@ -9,6 +8,7 @@ import io.github.stardewmini.common.model.map.Farm;
 import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.World;
 import io.github.stardewmini.common.model.relationships.NPCFriendship;
+import io.github.stardewmini.server.app.GameApp;
 
 import java.util.ArrayList;
 
@@ -131,7 +131,7 @@ public class GameBuilder {
 
         users = new User[gameData.playerNames().length];
         for (int i = 0; i < gameData.playerNames().length; i++) {
-            users[i] = App.getUserByUsername(gameData.playerNames()[i]);
+            users[i] = GameApp.getUserByUsername(gameData.playerNames()[i]);
         }
 
         playerFarmNumbers = new int[gameData.playerFarms().length];

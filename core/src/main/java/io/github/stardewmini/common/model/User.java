@@ -2,6 +2,7 @@ package io.github.stardewmini.common.model;
 
 import com.google.gson.Gson;
 import io.github.stardewmini.common.model.enums.Gender;
+import io.github.stardewmini.server.app.GameApp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -105,6 +106,6 @@ public class User {
     }
 
     public boolean isInGame() {
-        return App.getGameDataOf(this) != null;
+        return GameApp.getGameDataOf(this) != null;
     }
 }

@@ -1,16 +1,17 @@
-package io.github.stardewmini.server.controllers.game;
+package io.github.stardewmini.client.controllers.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.lives.Animal;
 import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.map.AnimalHousePrototype;
 import io.github.stardewmini.common.model.map.Location;
+import io.github.stardewmini.server.controllers.game.CheatController;
 
 public class ShopController {
     public static void showItems(Table scrollTable, Table table, TextButton buyButton, TextField number,Label itemLabel
@@ -117,7 +118,7 @@ public class ShopController {
             return new Result(false, "only enter location in X,Y format");
         }
         Location location = new Location(x,y);
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
         if(player.getMoney() < price){
             return new Result(false, "You don't have " + price +"coin");
         }

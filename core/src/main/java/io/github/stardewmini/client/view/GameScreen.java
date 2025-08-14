@@ -9,8 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import io.github.stardewmini.Main;
-import io.github.stardewmini.server.controllers.game.CommonGameController;
+import io.github.stardewmini.client.Main;
+import io.github.stardewmini.client.controllers.game.GameController;
 
 public class GameScreen implements Screen, InputProcessor {
     private Stage stage;
@@ -43,7 +43,7 @@ public class GameScreen implements Screen, InputProcessor {
 
     @Override
     public void render(float delta) {
-        CommonGameController.update(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f), camera);
+        GameController.update(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f), camera);
         camera.update();
         Main.getBatch().setProjectionMatrix(camera.combined);
 
@@ -105,7 +105,7 @@ public class GameScreen implements Screen, InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        CommonGameController.mouseClick(screenX, screenY, camera);
+        GameController.mouseClick(screenX, screenY, camera);
         return false;
     }
 

@@ -5,7 +5,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import io.github.stardewmini.Main;
+import io.github.stardewmini.client.Main;
+import io.github.stardewmini.client.controllers.game.PlayerController;
 import io.github.stardewmini.common.model.*;
 import io.github.stardewmini.common.model.items.*;
 import io.github.stardewmini.common.model.map.*;
@@ -26,16 +27,17 @@ import io.github.stardewmini.client.view.CheatMenu;
 import io.github.stardewmini.client.view.CookingMenu;
 import io.github.stardewmini.client.view.CraftingMenu;
 import io.github.stardewmini.client.view.InventoryMenu;
+import io.github.stardewmini.server.app.GameApp;
 
 
 public class CommonGameController {
     public static Result exitGame() {
-        App.setCurrentGame(null);
+        GameApp.setCurrentGame(null);
         return new Result(true, "exited game");
     }
 
     public static Result deleteGameVote(boolean vote) {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         game.increaseVotes();
         if (vote) {
             game.increaseDeleteVotes();
@@ -64,12 +66,12 @@ public class CommonGameController {
 
 
     static Result passOut() {
-        App.getCurrentGame().getCurrentPlayer().setEnergy(0);
+        GameApp.getCurrentGame().getCurrentPlayer().setEnergy(0);
         return new Result(true, "you passed out!\n" + nextTurn().message());
     }
 
     public static Result nextTurn() {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         game.nextTurn();
         Player player = game.getCurrentPlayer();
 
@@ -89,58 +91,58 @@ public class CommonGameController {
     }
 
     public static Result showTime() {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         return new Result(true, String.format("%d o'clock", game.getDateTime().getHour()));
     }
 
     public static Result showDate() {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         return new Result(true, String.format("%d/%s/%d",
                 game.getDateTime().getYear(), game.getDateTime().getSeason().toString().toLowerCase(), game.getDateTime().getDay()));
     }
 
     public static Result showDateTime() {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         return new Result(true, game.getDateTime().toString());
 
     }
 
     public static Result showDayOfWeek() {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         return new Result(true, game.getDateTime().getWeekDay().toString().toLowerCase());
     }
 
     public static Result showSeason() {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         return new Result(true, game.getDateTime().getSeason().toString().toLowerCase());
     }
 
     public static Result showWeather() {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         return new Result(true, game.getCurrentWeather().toString().toLowerCase());
     }
 
     public static Result showWeatherForecast() {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         return new Result(true, game.getTomorrowWeather().toString().toLowerCase());
     }
 
     public static Result showEnergy() {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         Player player = game.getCurrentPlayer();
 
         return new Result(true, String.format("you have %d energy left.", player.getEnergy()));
     }
 
     public static Result showCurrentTool() {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         Player player = game.getCurrentPlayer();
 
         return new Result(true, player.getEquippedTool().toString());
     }
 
     public static Result showAvailableTools() {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         Player player = game.getCurrentPlayer();
 
         StringBuilder messageBuilder = new StringBuilder();
@@ -224,7 +226,7 @@ public class CommonGameController {
     }
 
     static int numberOfItemInBackPack(String ItemName) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
         Integer number = 0;
         if (ItemName.equals("fish")) {
             for (Fish fish : Fish.getFishesValues()) {
@@ -291,7 +293,7 @@ public class CommonGameController {
     }
 
     static void removeItemFromBackPack(String ItemName, int number) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
         BackPack backPack = player.getBackpack();
         Refrigerator refrigerator = player.getRefrigerator();
 
@@ -467,7 +469,7 @@ public class CommonGameController {
 
     static boolean removeItemFromInventory(Item item, int number) {
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
         int amount = player.getBackpack().getNumberOfItemInBackPack().getOrDefault(item, 0);
         if (number - amount > player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(item, 0)) {
             return false;
@@ -482,7 +484,7 @@ public class CommonGameController {
     }
 
     static boolean deleteThingOnTile(Tile tile, Farm farm) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
 
         Location location = player.getCurrentLocation().delta(farm.getLocation());
 
@@ -499,27 +501,27 @@ public class CommonGameController {
         } else if (tile.getThingOnTile() instanceof ProducerArtisan producerArtisan) {
             tile.setThingOnTile(null);
             player.getPlacedArtisans().remove(producerArtisan);
-            App.getCurrentGame().getDateTime().removeHourUpdateListener(producerArtisan);
+            GameApp.getCurrentGame().getDateTime().removeHourUpdateListener(producerArtisan);
         } else if (tile.getThingOnTile() instanceof Crop crop && crop.getGiantDirection() != null) {
             tile.setThingOnTile(null);
-            App.getCurrentGame().getDateTime().removeDailyUpdateListener(crop);
+            GameApp.getCurrentGame().getDateTime().removeDailyUpdateListener(crop);
             for (int i = 0; i < 3; i++) {
-                tile = App.getCurrentGame().getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection()));
+                tile = GameApp.getCurrentGame().getWorld().getTileAt(location.getLocationAt(crop.getGiantDirection()));
                 crop = (Crop) tile.getThingOnTile();
                 tile.setThingOnTile(null);
-                App.getCurrentGame().getDateTime().removeDailyUpdateListener(crop);
+                GameApp.getCurrentGame().getDateTime().removeDailyUpdateListener(crop);
             }
         } else if (tile.getThingOnTile() instanceof Building) {
             return deleteThingOnTile(tile.getTop(), farm);
         } else if (!(tile.getThingOnTile() instanceof Animal)) {
             if (tile.getThingOnTile() instanceof DailyUpdate dailyUpdate) {
-                App.getCurrentGame().getDateTime().removeDailyUpdateListener(dailyUpdate);
+                GameApp.getCurrentGame().getDateTime().removeDailyUpdateListener(dailyUpdate);
             }
             if (tile.getThingOnTile() instanceof HourUpdate hourUpdate) {
-                App.getCurrentGame().getDateTime().removeHourUpdateListener(hourUpdate);
+                GameApp.getCurrentGame().getDateTime().removeHourUpdateListener(hourUpdate);
             }
             if (tile.getThingOnTile() instanceof HourCheck hourCheck) {
-                App.getCurrentGame().getDateTime().removeHourCheckListener(hourCheck);
+                GameApp.getCurrentGame().getDateTime().removeHourCheckListener(hourCheck);
             }
             tile.setThingOnTile(null);
         } else {
@@ -529,7 +531,7 @@ public class CommonGameController {
     }
 
     public static Result sell(String product, int count) {
-        Game game = App.getCurrentGame();
+        Game game = GameApp.getCurrentGame();
         Player currentPlayer = game.getCurrentPlayer();
 
         if (!isNearShippingBin(currentPlayer.getCurrentLocation()))
@@ -683,7 +685,7 @@ public class CommonGameController {
     }
 
     private static boolean isNearShippingBin(Location location) {
-        World world = App.getCurrentGame().getWorld();
+        World world = GameApp.getCurrentGame().getWorld();
         for (Direction direction : Direction.values()) {
             Location nearLocation = location.getLocationAt(direction);
             if (world.getTileAt(nearLocation).getTop().hasFeature(Feature.SELLING)) {
@@ -697,36 +699,4 @@ public class CommonGameController {
         return false;
     }
 
-    public static void draw(SpriteBatch batch, Stage stage,OrthographicCamera camera) {
-        MapController.draw(batch,stage,camera);
-        PlayerController.draw(batch);
-        AnimalController.draw(batch);
-    }
-
-    public static void update(float delta, OrthographicCamera camera) {
-        PlayerController.update(delta, camera);
-        AnimalController.update(delta);
-
-        if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
-            Main.getInstance().setScreen(new InventoryMenu(GameAssetManager.getInstance().getSkin()));
-        }
-
-        if(Gdx.input.isKeyJustPressed(Input.Keys.B)){
-            Main.getInstance().setScreen(new CookingMenu(GameAssetManager.getInstance().getSkin()));
-        }
-
-        if(Gdx.input.isKeyJustPressed(Input.Keys.C)){
-            Main.getInstance().setScreen(new CraftingMenu(GameAssetManager.getInstance().getSkin()));
-        }
-
-        if(Gdx.input.isKeyJustPressed(Input.Keys.V)){
-            Main.getInstance().setScreen(new CheatMenu(GameAssetManager.getInstance().getSkin()));
-        }
-        // TODO update game each frame.
-    }
-
-    public static void mouseClick(int screenX, int screenY, OrthographicCamera camera) {
-        MapController.mouseClick(screenX, screenY, camera);
-        ToolsController.mouseClick(screenX, screenY, camera);
-    }
 }

@@ -3,16 +3,17 @@ package io.github.stardewmini.server.controllers;
 import io.github.stardewmini.common.model.*;
 import io.github.stardewmini.common.model.builders.FarmBuilder;
 import io.github.stardewmini.common.model.builders.GameBuilder;
+import io.github.stardewmini.server.app.GameApp;
 
 import java.util.ArrayList;
 
 public class GameMenuController {
-    public static Result selectNewGameUsers(ArrayList<String> usernames) {
-        User loggedInUser = App.getLoggedInUser();
+    public static Result selectNewGameUsers(String requester, ArrayList<String> usernames) {
+        User loggedInUser = GameApp.getUserByUsername(requester);
         User[] users = new User[usernames.size()];
 
         for (int i = 0; i < usernames.size(); i++) {
-            users[i] = App.getUserByUsername(usernames.get(i));
+            users[i] = GameApp.getUserByUsername(usernames.get(i));
             if (users[i] == null)
                 return new Result(false, "User " + usernames.get(i) + " not found");
         }
@@ -54,7 +55,7 @@ public class GameMenuController {
 
     public static Result createNewGame() {
         GameData gameData = GameBuilder.getInstance().getGameData();
-        App.addGameData(gameData);
+        GameApp.addGameData(gameData);
         return new Result(true, "Successfully created game!");
     }
 
@@ -62,23 +63,23 @@ public class GameMenuController {
         return GameBuilder.getInstance().getNextPlayerName();
     }
 
-    public static Result findUsername(String username) {
-        User user = App.getUserByUsername(username);
+    public static Result findUsername(String requester, String username) {
+        User user = GameApp.getUserByUsername(username);
         if (user == null)
             return new Result(false, "User " + username + " not found");
 
         if (user.isInGame())
             return new Result(false, "User " + username + " is already in a game. you can't play with them");
 
-        if (user.equals(App.getLoggedInUser()))
+        if (user.equals(GameApp.getUserByUsername(requester)))
             return new Result(false, "Don't play with yourself.");
 
         return new Result(true, "User found!");
     }
 
-    public static Result loadGame() {
-        User loggedInUser = App.getLoggedInUser();
-        GameData gameData = App.getGameDataOf(loggedInUser);
+    public static Result loadGame(String requester) {
+        User loggedInUser = GameApp.getUserByUsername(requester);
+        GameData gameData = GameApp.getGameDataOf(loggedInUser);
 
         if (gameData == null)
             return new Result(false, "You are not in any game! you must first create a new game!");
@@ -86,7 +87,7 @@ public class GameMenuController {
         GameBuilder.getInstance().reset();
         GameBuilder.getInstance().setGameData(gameData);
         Game game = GameBuilder.getInstance().getResult();
-        App.setCurrentGame(game);
+        GameApp.addGame(game);
         return new Result(true, "Loading... Done!");
     }
 

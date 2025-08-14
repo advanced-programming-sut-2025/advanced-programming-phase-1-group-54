@@ -1,6 +1,6 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.Quest;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.Season;
@@ -29,7 +29,7 @@ public class NpcController {
             return new Result(false, "NPC not found");
         }
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
         if (!MapController.isNear(player.getCurrentLocation(), npc)) {
             return new Result(false,
                     String.format("you should be next to %s to meet them.",
@@ -71,7 +71,7 @@ public class NpcController {
     }
 
     private static Result getDialogByWeather() {
-        switch (App.getCurrentGame().getCurrentWeather()){
+        switch (GameApp.getCurrentGame().getCurrentWeather()){
             case Weather.SUNNY:
                 return new Result(true, "The light today’s perfect. Good visibility makes for cleaner work");
             case Weather.RAIN:
@@ -85,7 +85,7 @@ public class NpcController {
     }
 
     private static Result getDialogBySeason() {
-        switch (App.getCurrentGame().getDateTime().getSeason()){
+        switch (GameApp.getCurrentGame().getDateTime().getSeason()){
             case Season.SPRING :
                 return new Result(true,"Spring brings new life—and new inspiration. I always get the itch to make something fresh.");
             case Season.SUMMER:
@@ -99,7 +99,7 @@ public class NpcController {
     }
 
     private static Result getDialogByDayHour() {
-        int hour = App.getCurrentGame().getDateTime().getHour();
+        int hour = GameApp.getCurrentGame().getDateTime().getHour();
         if(hour > 8 && hour < 12 ){
             return new Result(true,"Morning. My brain’s not fully online yet… but the work won’t wait.");
         }
@@ -115,7 +115,7 @@ public class NpcController {
     }
 
     public static NPC getNPCByName(String npcName){
-        for(NPC npc : App.getCurrentGame().getWorld().getNpcs()){
+        for(NPC npc : GameApp.getCurrentGame().getWorld().getNpcs()){
             if(npc.getName().equals(npcName)){
                 return npc;
             }
@@ -124,7 +124,7 @@ public class NpcController {
     }
 
     public static NPCFriendship getNPCFriendship(String npcName){
-        for (NPCFriendship npcFriendship : App.getCurrentGame().getCurrentPlayer().getNpcFriendships()){
+        for (NPCFriendship npcFriendship : GameApp.getCurrentGame().getCurrentPlayer().getNpcFriendships()){
             if(npcFriendship.getNpc().getName().equals(npcName)){
                 return npcFriendship;
             }
@@ -134,7 +134,7 @@ public class NpcController {
 
     public static Result getNPCsFriendship(){
         StringBuilder output = new StringBuilder();
-        for(NPCFriendship npcFriendship : App.getCurrentGame().getCurrentPlayer().getNpcFriendships()){
+        for(NPCFriendship npcFriendship : GameApp.getCurrentGame().getCurrentPlayer().getNpcFriendships()){
             output.append(npcFriendship.getNpc().getName()).append(" Level : ").append(npcFriendship.getLevel()).
                 append(" XP : ").append(npcFriendship.getXP()).append("\n");
         }
@@ -235,7 +235,7 @@ public class NpcController {
         }
 
         if (quest.getReward().equals("Coin")){
-            App.getCurrentGame().getCurrentPlayer().increaseEnergy(quest.getRewardCount());
+            GameApp.getCurrentGame().getCurrentPlayer().increaseEnergy(quest.getRewardCount());
         }
         else if (quest.getReward().equals("friendShip")){
             npcFriendship.increaseXP(200);
@@ -243,11 +243,11 @@ public class NpcController {
         else if(quest.getReward().equals("Salmon Dinner Recipe")){
             // TODO please don't use public fields !!!
             Recipe recipe = Recipe.foodRecipes.get("Salmon Dinner Recipe");
-            App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes().add(recipe);
+            GameApp.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes().add(recipe);
         }
         else{
             Item temp = CommonGameController.findItem(quest.getReward());
-            App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, quest.getRewardCount());
+            GameApp.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, quest.getRewardCount());
         }
         quest.setCompleted(true);
         return new Result(true,"quest finished");

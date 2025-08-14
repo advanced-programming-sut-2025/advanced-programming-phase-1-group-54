@@ -1,7 +1,7 @@
 package io.github.stardewmini.server.controllers;
 
 import io.github.stardewmini.common.model.builders.UserBuilder;
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.User;
 import io.github.stardewmini.common.model.enums.Gender;
@@ -46,12 +46,12 @@ public class RegisterMenuController {
 
         UserBuilder.getInstance().registerSecurityQuestionAnswer(number, answer);
         User user = UserBuilder.getInstance().getResult();
-        App.addUser(user);
+        GameApp.addUser(user);
         return new Result(true, "Successfully registered!");
     }
 
     static boolean isUsernameUnique(String username) {
-        return App.getUserByUsername(username) == null;
+        return GameApp.getUserByUsername(username) == null;
     }
 
     static boolean isUsernameValid(String username) {

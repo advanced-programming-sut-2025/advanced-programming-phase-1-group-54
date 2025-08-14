@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
-import io.github.stardewmini.Main;
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.client.Main;
+import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.FishingGame;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
@@ -25,8 +25,8 @@ import io.github.stardewmini.client.view.FishingMenu;
 public class FishingController {
 
     public static Result fishing(String fishingPoleName, boolean perfect) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Farm farm = GameApp.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
 
         if (farm == null) {
             return new Result(1, "You aren't in any farm");
@@ -52,7 +52,7 @@ public class FishingController {
     }
 
     public static void startFishing(String fishingPoleName,boolean perfect) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
 
         FishingPoleType fishingPoleType = FishingPoleType.fromString(fishingPoleName);
         FishingPole fishingPole = player.getFishingPole(fishingPoleType);
@@ -61,7 +61,7 @@ public class FishingController {
         player.decreaseEnergy(energyNeeded, SkillType.FISHING);
 
         int skillLevel = player.getSkill(SkillType.FISHING).getLevel();
-        double weatherFactor = App.getCurrentGame().getCurrentWeather().getFishingFactor();
+        double weatherFactor = GameApp.getCurrentGame().getCurrentWeather().getFishingFactor();
 
         double poleFactor = fishingPole.getPoleFactor();
 
@@ -70,15 +70,15 @@ public class FishingController {
 
         Fish fish;
         if (fishingPoleType == FishingPoleType.TRAINING) {
-            fish = Fish.getCheapestSeasonFish(App.getCurrentGame().getDateTime().getSeason());
+            fish = Fish.getCheapestSeasonFish(GameApp.getCurrentGame().getDateTime().getSeason());
         } else {
-            fish = Fish.getSeasonFish(App.getCurrentGame().getDateTime().getSeason(),
+            fish = Fish.getSeasonFish(GameApp.getCurrentGame().getDateTime().getSeason(),
                 skillLevel == Skill.getMaxSkillLevel());
         }
         fish.setQuality(quality);
 
         FishingGame fishingGame = new FishingGame(fish,FishingGame.random.nextInt(0,5));
-        App.getCurrentGame().getFishingGames().put(player, fishingGame);
+        GameApp.getCurrentGame().getFishingGames().put(player, fishingGame);
 
         Main.getInstance().setScreen(new FishingMenu(GameAssetManager.getInstance().getSkin(),
             "Movement level : " + fishingGame.getFishType(),fish.getQuality() + " " +  fish.getName()));
@@ -86,8 +86,8 @@ public class FishingController {
     }
 
     public static Result winFishing(boolean perfect) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        Fish fish = App.getCurrentGame().getFishingGames().get(player).getFish();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Fish fish = GameApp.getCurrentGame().getFishingGames().get(player).getFish();
         if(perfect) {
             if(fish.getQuality() == ProduceQuality.SILVER){
                 fish.setQuality(ProduceQuality.GOLD);
@@ -100,7 +100,7 @@ public class FishingController {
     }
 
     public static void handle(ShapeRenderer shapeRenderer, ShapeRenderer mapShapeRenderer, ProgressBar bar) {
-        FishingGame game = App.getCurrentGame().getFishingGames().get(App.getCurrentGame().getCurrentPlayer());
+        FishingGame game = GameApp.getCurrentGame().getFishingGames().get(GameApp.getCurrentGame().getCurrentPlayer());
         Rectangle greenPart = game.getGreenPart();
         Rectangle fish = game.getFishRectangle();
         Rectangle map = game.getMap();

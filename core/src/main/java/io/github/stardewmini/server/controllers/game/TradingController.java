@@ -1,6 +1,6 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.items.Item;
 import io.github.stardewmini.common.model.lives.Player;
@@ -10,7 +10,7 @@ import io.github.stardewmini.common.model.relationships.Trade;
 public class TradingController {
 
     public static Result tradeRequest(String username, String itemName, int amount) {
-        if (App.getCurrentGame().getPlayerByUsername(username) == null) {
+        if (GameApp.getCurrentGame().getPlayerByUsername(username) == null) {
             return CommonGameController.playerNotFound();
         }
         Item item = CommonGameController.findItem(itemName);
@@ -20,17 +20,17 @@ public class TradingController {
         if (amount < 1) {
             return new Result(false, "amount shpuld be positive");
         }
-        if (!App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(item, amount)) {
+        if (!GameApp.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(item, amount)) {
             return new Result(false, "not enough product");
         }
-        Trade trade = new Trade(App.getCurrentGame().getCurrentPlayer(), App.getCurrentGame().
+        Trade trade = new Trade(GameApp.getCurrentGame().getCurrentPlayer(), GameApp.getCurrentGame().
                 getPlayerByUsername(username), "offer", itemName, amount, 0, "", 0);
-        App.getCurrentGame().getPlayerByUsername(username).getReceivedTrades().add(trade);
+        GameApp.getCurrentGame().getPlayerByUsername(username).getReceivedTrades().add(trade);
         return new Result(true, "offer sent successfully");
     }
 
     public static Result tradeWithMoney(String username, String itemName, int amount, int price) {
-        if (App.getCurrentGame().getPlayerByUsername(username) == null) {
+        if (GameApp.getCurrentGame().getPlayerByUsername(username) == null) {
             return CommonGameController.playerNotFound();
         }
         Item item = CommonGameController.findItem(itemName);
@@ -43,17 +43,17 @@ public class TradingController {
         if (price < 1) {
             return new Result(false, "price shpuld be positive");
         }
-        if (App.getCurrentGame().getCurrentPlayer().getMoney() < price) {
+        if (GameApp.getCurrentGame().getCurrentPlayer().getMoney() < price) {
             return new Result(false, "not enough money");
         }
-        Trade trade = new Trade(App.getCurrentGame().getCurrentPlayer(), App.getCurrentGame().
+        Trade trade = new Trade(GameApp.getCurrentGame().getCurrentPlayer(), GameApp.getCurrentGame().
                 getPlayerByUsername(username), "request", itemName, amount, price, "", 0);
-        App.getCurrentGame().getPlayerByUsername(username).getReceivedTrades().add(trade);
+        GameApp.getCurrentGame().getPlayerByUsername(username).getReceivedTrades().add(trade);
         return new Result(true, "offer sent successfully");
     }
 
     public static Result tradeWithProduct(String username, String itemName, int amount, String targetItem, int targetAmount) {
-        if (App.getCurrentGame().getPlayerByUsername(username) == null) {
+        if (GameApp.getCurrentGame().getPlayerByUsername(username) == null) {
             return CommonGameController.playerNotFound();
         }
         Item item = CommonGameController.findItem(itemName);
@@ -70,59 +70,59 @@ public class TradingController {
         if (targetAmount < 1) {
             return new Result(false, "targetAmount shpuld be positive");
         }
-        if (!App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(item, amount)) {
+        if (!GameApp.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(item, amount)) {
             return new Result(false, "not enough product");
         }
-        Trade trade = new Trade(App.getCurrentGame().getCurrentPlayer(), App.getCurrentGame().
+        Trade trade = new Trade(GameApp.getCurrentGame().getCurrentPlayer(), GameApp.getCurrentGame().
                 getPlayerByUsername(username), "request", itemName, amount, 0, "", targetAmount);
-        App.getCurrentGame().getPlayerByUsername(username).getReceivedTrades().add(trade);
+        GameApp.getCurrentGame().getPlayerByUsername(username).getReceivedTrades().add(trade);
         return new Result(true, "offer sent successfully");
     }
 
     public static Result tradeResponse(boolean accept, int id) {
-        if (id > App.getCurrentGame().getCurrentPlayer().getReceivedTrades().size()) {
+        if (id > GameApp.getCurrentGame().getCurrentPlayer().getReceivedTrades().size()) {
             return new Result(false, "id out of range");
         }
-        Trade trade = App.getCurrentGame().getCurrentPlayer().getReceivedTrades().get(id - 1);
-        Relationship relationship = App.getCurrentGame().getRelationship(trade.getSender(), trade.getReceiver());
+        Trade trade = GameApp.getCurrentGame().getCurrentPlayer().getReceivedTrades().get(id - 1);
+        Relationship relationship = GameApp.getCurrentGame().getRelationship(trade.getSender(), trade.getReceiver());
         Item item = CommonGameController.findItem(trade.getItem());
 
         if (accept) {
             if (trade.getType().equals("request")) {
                 if (trade.getPrice() == 0) {
                     Item item1 = CommonGameController.findItem(trade.getTargetItem());
-                    if (!App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(item1, trade.getTargetAmount())) {
+                    if (!GameApp.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(item1, trade.getTargetAmount())) {
                         return new Result(false, "not enough product");
                     }
-                    App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(item, trade.getAmount());
+                    GameApp.getCurrentGame().getCurrentPlayer().getBackpack().addItem(item, trade.getAmount());
                     trade.getSender().getBackpack().addItem(item1, trade.getTargetAmount());
                     Trade temp = new Trade(trade.getSender(), trade.getReceiver(), trade.getType(), trade.getItem(), trade.getAmount(), trade.getPrice(), trade.getTargetItem(), trade.getTargetAmount());
                     temp.setAccepted(true);
                     relationship.getTradeHistory().add(temp);
-                    App.getCurrentGame().getCurrentPlayer().getReceivedTrades().remove(id - 1);
+                    GameApp.getCurrentGame().getCurrentPlayer().getReceivedTrades().remove(id - 1);
                     return new Result(true, "offer accepted successfully");
                 } else {
-                    if (App.getCurrentGame().getCurrentPlayer().getMoney() < trade.getPrice()) {
+                    if (GameApp.getCurrentGame().getCurrentPlayer().getMoney() < trade.getPrice()) {
                         return new Result(false, "not enough money");
-                    } else if (!App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(item, trade.getAmount())) {
+                    } else if (!GameApp.getCurrentGame().getCurrentPlayer().getBackpack().addItem(item, trade.getAmount())) {
                         return new Result(false, "not enough space in backpack");
                     } else {
-                        App.getCurrentGame().getCurrentPlayer().decreaseMoney(trade.getPrice());
+                        GameApp.getCurrentGame().getCurrentPlayer().decreaseMoney(trade.getPrice());
                         Trade temp = new Trade(trade.getSender(), trade.getReceiver(), trade.getType(), trade.getItem(), trade.getAmount(), trade.getPrice(), trade.getTargetItem(), trade.getTargetAmount());
                         temp.setAccepted(true);
                         relationship.getTradeHistory().add(temp);
-                        App.getCurrentGame().getCurrentPlayer().getReceivedTrades().remove(id - 1);
+                        GameApp.getCurrentGame().getCurrentPlayer().getReceivedTrades().remove(id - 1);
                         return new Result(true, "offer accepted");
                     }
                 }
             } else {
-                if (!App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(item, trade.getAmount())) {
+                if (!GameApp.getCurrentGame().getCurrentPlayer().getBackpack().addItem(item, trade.getAmount())) {
                     return new Result(false, "not enough space");
                 }
                 Trade temp = new Trade(trade.getSender(), trade.getReceiver(), trade.getType(), trade.getItem(), trade.getAmount(), trade.getPrice(), trade.getTargetItem(), trade.getTargetAmount());
                 temp.setAccepted(true);
                 relationship.getTradeHistory().add(temp);
-                App.getCurrentGame().getCurrentPlayer().getReceivedTrades().remove(id - 1);
+                GameApp.getCurrentGame().getCurrentPlayer().getReceivedTrades().remove(id - 1);
                 return new Result(true, "offer accepted successfully");
             }
         } else {
@@ -131,7 +131,7 @@ public class TradingController {
             Trade temp = new Trade(trade.getSender(), trade.getReceiver(), trade.getType(), trade.getItem(), trade.getAmount(), trade.getPrice(), trade.getTargetItem(), trade.getTargetAmount());
             temp.setAccepted(false);
             relationship.getTradeHistory().add(temp);
-            App.getCurrentGame().getCurrentPlayer().getReceivedTrades().remove(id - 1);
+            GameApp.getCurrentGame().getCurrentPlayer().getReceivedTrades().remove(id - 1);
             return new Result(true, "offer rejected successfully");
         }
     }
@@ -139,9 +139,9 @@ public class TradingController {
     public static Result tradeHistory() {
         StringBuilder output = new StringBuilder();
         output.append("sender      receiver         type        item        amount      price       target item      target amount       is Accepted\n");
-        for (Player player : App.getCurrentGame().getPlayers()) {
-            if (!player.equals(App.getCurrentGame().getCurrentPlayer())) {
-                Relationship relationship = App.getCurrentGame().getRelationship(player, App.getCurrentGame().getCurrentPlayer());
+        for (Player player : GameApp.getCurrentGame().getPlayers()) {
+            if (!player.equals(GameApp.getCurrentGame().getCurrentPlayer())) {
+                Relationship relationship = GameApp.getCurrentGame().getRelationship(player, GameApp.getCurrentGame().getCurrentPlayer());
                 if (relationship.getTradeHistory() == null) {
                     continue;
                 }
@@ -160,8 +160,8 @@ public class TradingController {
 
     public static Result tradeList() {
         StringBuilder output = new StringBuilder();
-        for (int i = 0; i < App.getCurrentGame().getCurrentPlayer().getReceivedTrades().size(); i++) {
-            Trade trade = App.getCurrentGame().getCurrentPlayer().getReceivedTrades().get(i);
+        for (int i = 0; i < GameApp.getCurrentGame().getCurrentPlayer().getReceivedTrades().size(); i++) {
+            Trade trade = GameApp.getCurrentGame().getCurrentPlayer().getReceivedTrades().get(i);
             if (trade.getType().equals("offer")) {
                 String string = trade.getSender().getName() + "whants " + trade.getTargetItem() + " " + trade.getTargetAmount();
             } else if (trade.getType().equals("request")) {

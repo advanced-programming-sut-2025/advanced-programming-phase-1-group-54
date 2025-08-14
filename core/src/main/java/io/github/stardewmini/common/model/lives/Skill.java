@@ -1,6 +1,6 @@
 package io.github.stardewmini.common.model.lives;
 
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.enums.SkillType;
 import io.github.stardewmini.common.model.items.recipes.Recipe;
 
@@ -30,7 +30,7 @@ public class Skill {
 
     public void addXP(int amount) {
         this.xp += amount;
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
         while (this.level < 4 && this.xp >= getXpNeededForLevelUp()) {
             xp -= getXpNeededForLevelUp();
             this.level++;

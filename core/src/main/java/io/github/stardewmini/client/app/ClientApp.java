@@ -10,8 +10,6 @@ public class ClientApp {
 
     private static String clientIP;
     private static int clientPort;
-    private static final Map<String, List<String>> sentFiles = new HashMap<>();
-    private static final Map<String, List<String>> receivedFiles = new HashMap<>();
     private static ServerConnectionThread serverConnectionThread;
 
     private static boolean exitFlag = false;

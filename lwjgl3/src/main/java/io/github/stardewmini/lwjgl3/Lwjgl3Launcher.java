@@ -2,13 +2,18 @@ package io.github.stardewmini.lwjgl3;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import io.github.stardewmini.Main;
+import io.github.stardewmini.client.Main;
 import io.github.stardewmini.client.app.ClientApp;
 
 /** Launches the desktop (LWJGL3) application. */
 public class Lwjgl3Launcher {
     public static void main(String[] args) {
         if (StartupHelper.startNewJvmIfRequired()) return; // This handles macOS support and helps on Windows.
+
+        if (args.length < 2) {
+            System.err.println("Usage: <self-address:port> <tracker-address:ip>");
+            return;
+        }
 
         try {
             ClientApp.initFromArgs(args);

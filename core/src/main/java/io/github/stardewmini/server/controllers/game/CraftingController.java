@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import io.github.stardewmini.Main;
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.client.Main;
+import io.github.stardewmini.server.app.GameApp;
 import io.github.stardewmini.common.model.DateTime;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
@@ -32,8 +32,8 @@ public class CraftingController {
 
     public static Result showCraftingRecipe(Window window){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Tile tile = GameApp.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
         if(! (tile.getThingOnTile() instanceof Cabin)){
             return new Result(-1,"You are not in the Cabin");
         }
@@ -70,8 +70,8 @@ public class CraftingController {
 
     public static Result crafting(String artisanName){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Tile tile = GameApp.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
         if(! (tile.getThingOnTile() instanceof Cabin)){
             return new Result(-1,"You are not in the Cabin");
         }
@@ -129,8 +129,8 @@ public class CraftingController {
         if (direction == null)
             return new Result(false, "invalid direction");
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
+        Farm farm = GameApp.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
 
         if(farm == null){
             return new Result(-1,"You aren't in any farm");
@@ -150,7 +150,7 @@ public class CraftingController {
 
             tile.setThingOnTile(producerArtisan);
             player.getPlacedArtisans().add(producerArtisan);
-            App.getCurrentGame().getDateTime().addHourUpdateListener(producerArtisan);
+            GameApp.getCurrentGame().getDateTime().addHourUpdateListener(producerArtisan);
 
             return new Result(1,"Artisan placed successfully");
         }
@@ -191,7 +191,7 @@ public class CraftingController {
 
     public static Result producing(String artisanName,String produceName){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
 
         ProducerArtisan producerArtisan = null;
         boolean haveArtisan = false;
@@ -230,7 +230,7 @@ public class CraftingController {
 
         producerArtisan.setProcessingProduce(produce);
         if(produce.getProcessingMornings() > 0){
-            producerArtisan.setRemainingHours(DateTime.getHoursInDay() - App.getCurrentGame().getDateTime().getHour() +
+            producerArtisan.setRemainingHours(DateTime.getHoursInDay() - GameApp.getCurrentGame().getDateTime().getHour() +
                     (produce.getProcessingMornings() - 1) * DateTime.getHoursInDay());
         }
         else{
@@ -248,7 +248,7 @@ public class CraftingController {
 
     public static Result getProduceFromArtisan(String artisanName){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = GameApp.getCurrentGame().getCurrentPlayer();
 
         ProducerArtisan producerArtisan = null;
         for(ProducerArtisan artisan : player.getPlacedArtisans()){
