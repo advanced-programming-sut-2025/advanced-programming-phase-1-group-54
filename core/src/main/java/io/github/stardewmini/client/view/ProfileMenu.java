@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.client.Main;
-import io.github.stardewmini.server.controllers.ProfileMenuController;
+import io.github.stardewmini.client.controllers.ProfileMenuController;
 import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.SoundManager;

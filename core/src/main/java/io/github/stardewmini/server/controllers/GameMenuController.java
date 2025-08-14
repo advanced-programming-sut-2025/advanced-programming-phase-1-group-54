@@ -87,7 +87,7 @@ public class GameMenuController {
         GameBuilder.getInstance().reset();
         GameBuilder.getInstance().setGameData(gameData);
         Game game = GameBuilder.getInstance().getResult();
-        GameApp.addGame(game);
+        GameApp.setCurrentGame(game);
         return new Result(true, "Loading... Done!");
     }
 

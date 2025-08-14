@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import io.github.stardewmini.common.model.enums.Direction;
-import io.github.stardewmini.server.app.GameApp;
+import io.github.stardewmini.client.app.GameApp;
 import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.Tile;

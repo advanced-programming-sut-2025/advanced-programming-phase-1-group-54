@@ -4,21 +4,6 @@ import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.User;
 
 public class CheckRegisterController {
-    static boolean isUsernameValid(String username) {
-        return username.matches("[a-zA-Z0-9-]+");
-    }
-
-    static boolean isEmailValid(String email) {
-        String regex = "(?!.*[?><,\"';:\\\\/|\\]\\[}{+=)(*&^%$#!])" +
-            "(?!.*\\.\\..*@)[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?@" +
-            "([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+(?!-)[a-zA-Z0-9-]{2,}(?<!-)";
-        return email.matches(regex);
-    }
-
-    static boolean isPasswordValid(String password) {
-        return password.matches("[a-zA-Z0-9?><,\"';:\\\\/|\\]\\[}{+=)(*&^%$#!]+");
-    }
-
     static Result checkPasswordStrength(String password) {
         if (password.length() < 8)
             return new Result(false, "Password must be at least 8 characters");
@@ -32,34 +17,6 @@ public class CheckRegisterController {
             return new Result(false, "Password must contain at least one special character");
 
         return new Result(true, "Password is strong");
-    }
-
-    static Result checkUsername(String username) {
-        if (!isUsernameValid(username))
-            return new Result(false, "Username is invalid!");
-
-        return new Result(true, "username ok");
-    }
-
-    static Result checkPassword(String password, String confirmPassword) {
-        if (!isPasswordValid(password))
-            return new Result(false, "Password is invalid!");
-
-        Result checkPasswordStrengthResult = checkPasswordStrength(password);
-        if (!checkPasswordStrengthResult.success())
-            return checkPasswordStrengthResult;
-
-        if (!password.equals(confirmPassword))
-            return new Result(false, "Passwords do not match!");
-
-        return new Result(true, "password ok");
-    }
-
-    static Result checkEmail(String email) {
-        if (!isEmailValid(email))
-            return new Result(false, "Email is invalid!");
-
-        return new Result(true, "email ok");
     }
 
     public static String getRandomPassword() {

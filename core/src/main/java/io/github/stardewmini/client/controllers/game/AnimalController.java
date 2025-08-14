@@ -7,7 +7,7 @@ import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.lives.Animal;
 import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.Tile;
-import io.github.stardewmini.server.app.GameApp;
+import io.github.stardewmini.client.app.GameApp;
 
 public class AnimalController {
 

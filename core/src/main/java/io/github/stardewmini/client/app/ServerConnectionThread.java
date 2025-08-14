@@ -3,7 +3,6 @@ package io.github.stardewmini.client.app;
 import io.github.stardewmini.client.controllers.ClientConnectionController;
 import io.github.stardewmini.common.ConnectionThread;
 import io.github.stardewmini.common.Message;
-import io.github.stardewmini.server.app.ClientConnectionThread;
 
 import java.io.IOException;
 import java.net.Socket;

@@ -1,5 +1,9 @@
 package io.github.stardewmini.client.app;
 
+import io.github.stardewmini.client.controllers.ClientConnectionController;
+import io.github.stardewmini.common.Message;
+import io.github.stardewmini.common.model.Result;
+
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.List;
@@ -8,8 +12,6 @@ import java.util.Map;
 public class ClientApp {
     public static final int TIMEOUT_MILLIS = 500;
 
-    private static String clientIP;
-    private static int clientPort;
     private static ServerConnectionThread serverConnectionThread;
 
     private static boolean exitFlag = false;
@@ -21,9 +23,6 @@ public class ClientApp {
     public static void initFromArgs(String[] args) throws Exception {
         String[] selfAddress = args[0].split(":");
         String[] serverAddress = args[1].split(":");
-
-        clientIP = selfAddress[0];
-        clientPort = Integer.parseInt(selfAddress[1]);
 
         serverConnectionThread = new ServerConnectionThread(
                 new Socket(serverAddress[0], Integer.parseInt(serverAddress[1]))
@@ -39,6 +38,15 @@ public class ClientApp {
         if (serverConnectionThread != null && !serverConnectionThread.isAlive()) {
             serverConnectionThread.start();
         }
+    }
 
+    public static ServerConnectionThread getServerConnectionThread() {
+        return serverConnectionThread;
+    }
+
+    public static Result sendRequest(Message message) {
+        Message response = serverConnectionThread.sendAndWaitForResponse(message,
+            ClientApp.TIMEOUT_MILLIS);
+        return ClientConnectionController.getResultFromResponse(response);
     }
 }

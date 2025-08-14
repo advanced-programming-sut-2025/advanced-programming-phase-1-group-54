@@ -1,5 +1,6 @@
 package io.github.stardewmini.client.app;
 
+import com.google.gson.Gson;
 import io.github.stardewmini.common.model.Game;
 import io.github.stardewmini.common.model.User;
 import io.github.stardewmini.common.model.lives.Player;
@@ -8,7 +9,6 @@ import java.io.File;
 
 public class GameApp { /* save local copies here */
     private static final File savesDir = new File(System.getProperty("user.home") + "/Desktop/StardewValley/client/");
-    private static final File loggedInUserFile = new File(savesDir, "loggedInUser.json");
 
     private static Game currentGame;
     private static User loggedInUser;

@@ -12,9 +12,9 @@ public class ServerConnectionController {
         switch (command) {
             case "register":
                 return handleRegister(message);
-            case "pick_security_question":
+            case "pick_question":
                 return handlePickSecurityQuestion(message);
-            case "reset_user_builder":
+            case "reset_register":
                 return handleResetUserBuilder();
 
             case "login":
@@ -34,10 +34,11 @@ public class ServerConnectionController {
                 return handleChangeNickname(username, message);
             case "change_email":
                 return handleChangeEmail(username, message);
-
+            case "user_info":
+                return handleUserInfo(username, message);
 
             default:
-                return null;
+                return GameCommandController.handleCommand(username, message);
         }
     }
 
@@ -63,7 +64,6 @@ public class ServerConnectionController {
         );
         return makeResponseFrom(result);
     }
-
 
     private static Message handlePickSecurityQuestion(Message message) {
         Result result = RegisterMenuController.pickQuestion(
@@ -141,6 +141,11 @@ public class ServerConnectionController {
             username,
             message.getFromBody("email")
         );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleUserInfo(String username, Message message) {
+        Result result = ProfileMenuController.showUserInfo(username);
         return makeResponseFrom(result);
     }
 }

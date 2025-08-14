@@ -3,7 +3,7 @@ package io.github.stardewmini.client.controllers.game;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import io.github.stardewmini.server.app.GameApp;
+import io.github.stardewmini.client.app.GameApp;
 import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.enums.SkillType;
 import io.github.stardewmini.common.model.items.Item;

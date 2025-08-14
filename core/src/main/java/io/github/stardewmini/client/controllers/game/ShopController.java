@@ -4,14 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import io.github.stardewmini.server.app.GameApp;
+import io.github.stardewmini.client.app.GameApp;
 import io.github.stardewmini.client.Renderers.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.lives.Animal;
 import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.map.AnimalHousePrototype;
 import io.github.stardewmini.common.model.map.Location;
-import io.github.stardewmini.server.controllers.game.CheatController;
+//import io.github.stardewmini.client.controllers.game.CheatController;
 
 public class ShopController {
     public static void showItems(Table scrollTable, Table table, TextButton buyButton, TextField number,Label itemLabel
@@ -124,7 +124,8 @@ public class ShopController {
         }
 
         Result result;
-        if(Animal.getAnimal(itemName) != null){
+        if(Animal.getAnimal(itemName) != null) {
+            // TODO
             Animal animal = Animal.getAnimal(itemName);
             result = CheatController.addAnimal(animal,name,location);
         }

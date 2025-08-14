@@ -19,7 +19,7 @@ import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.Shops.Shop;
 import io.github.stardewmini.common.model.map.Tile;
 import io.github.stardewmini.common.model.map.World;
-import io.github.stardewmini.server.app.GameApp;
+import io.github.stardewmini.client.app.GameApp;
 
 public class MapController {
     public static void draw(SpriteBatch batch, Stage stage, OrthographicCamera camera) {
