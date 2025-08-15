@@ -1,6 +1,5 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.common.model.App;
 import io.github.stardewmini.common.model.Game;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.*;
@@ -14,6 +13,7 @@ import io.github.stardewmini.common.model.items.tools.FishingPole;
 import io.github.stardewmini.common.model.items.tools.Tool;
 import io.github.stardewmini.common.model.lives.Animal;
 import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.server.app.App;
 
 import java.util.ArrayList;
 

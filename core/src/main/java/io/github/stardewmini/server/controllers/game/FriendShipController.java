@@ -1,6 +1,5 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.common.model.App;
 import io.github.stardewmini.common.model.DateTime;
 import io.github.stardewmini.common.model.Game;
 import io.github.stardewmini.common.model.Result;
@@ -10,6 +9,7 @@ import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.relationships.Gift;
 import io.github.stardewmini.common.model.relationships.Relationship;
 import io.github.stardewmini.common.model.relationships.Talk;
+import io.github.stardewmini.server.app.App;
 
 import java.util.ArrayList;
 

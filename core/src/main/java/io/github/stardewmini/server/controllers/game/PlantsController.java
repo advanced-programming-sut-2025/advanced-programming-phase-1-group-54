@@ -12,6 +12,7 @@ import io.github.stardewmini.common.model.map.Farm;
 import io.github.stardewmini.common.model.map.GreenHouse;
 import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.Tile;
+import io.github.stardewmini.server.app.App;
 
 public class PlantsController {
 

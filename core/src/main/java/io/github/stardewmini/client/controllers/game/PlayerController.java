@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.client.app.App;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.items.tools.Tool;
 import io.github.stardewmini.common.model.lives.Player;

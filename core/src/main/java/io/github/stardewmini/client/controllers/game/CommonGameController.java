@@ -7,8 +7,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import io.github.stardewmini.Main;
+import io.github.stardewmini.client.app.App;
 import io.github.stardewmini.client.view.*;
-import io.github.stardewmini.common.model.App;
 import io.github.stardewmini.common.model.DateTime;
 import io.github.stardewmini.common.model.GameAssetManager;
 

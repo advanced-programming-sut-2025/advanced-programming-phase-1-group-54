@@ -1,6 +1,5 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.common.model.App;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.items.Food;
 import io.github.stardewmini.common.model.items.Item;
@@ -10,6 +9,7 @@ import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.map.Cabin;
 import io.github.stardewmini.common.model.map.Refrigerator;
 import io.github.stardewmini.common.model.map.Tile;
+import io.github.stardewmini.server.app.App;
 
 public class FoodController {
 

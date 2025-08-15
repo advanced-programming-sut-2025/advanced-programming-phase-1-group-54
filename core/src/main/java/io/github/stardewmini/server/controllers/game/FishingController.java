@@ -8,7 +8,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.common.model.App;
 import io.github.stardewmini.common.model.FishingGame;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
@@ -23,6 +22,7 @@ import io.github.stardewmini.common.model.map.Farm;
 import io.github.stardewmini.common.model.map.GenericWall;
 import io.github.stardewmini.client.view.FishingMenu;
 import io.github.stardewmini.client.view.GameScreen;
+import io.github.stardewmini.server.app.App;
 
 public class FishingController {
 

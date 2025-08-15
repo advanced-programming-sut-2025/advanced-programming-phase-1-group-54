@@ -8,6 +8,7 @@ import io.github.stardewmini.common.model.map.Farm;
 import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.World;
 import io.github.stardewmini.common.model.relationships.NPCFriendship;
+import io.github.stardewmini.server.app.App;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,5 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.common.model.App;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.SkillType;
 import io.github.stardewmini.common.model.enums.ToolType;
@@ -11,6 +10,7 @@ import io.github.stardewmini.common.model.map.AnimalHouse;
 import io.github.stardewmini.common.model.map.Farm;
 import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.Tile;
+import io.github.stardewmini.server.app.App;
 
 public class AnimalController {
 

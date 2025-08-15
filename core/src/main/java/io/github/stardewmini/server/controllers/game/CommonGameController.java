@@ -25,6 +25,7 @@ import io.github.stardewmini.common.model.items.plants.Seed;
 import io.github.stardewmini.common.model.items.tools.BackPack;
 import io.github.stardewmini.common.model.lives.Animal;
 import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.server.app.App;
 
 
 public class CommonGameController {

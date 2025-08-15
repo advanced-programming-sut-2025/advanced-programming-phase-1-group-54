@@ -6,6 +6,7 @@ import io.github.stardewmini.common.model.enums.Direction;
 import io.github.stardewmini.common.model.enums.Symbol;
 import io.github.stardewmini.common.model.items.Material;
 import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.server.app.App;
 
 import java.util.ArrayList;
 

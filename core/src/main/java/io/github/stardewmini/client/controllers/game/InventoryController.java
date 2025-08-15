@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.client.app.App;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.SkillType;

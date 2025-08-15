@@ -1,6 +1,5 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.common.model.App;
 import io.github.stardewmini.common.model.Game;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
@@ -15,6 +14,7 @@ import io.github.stardewmini.common.model.items.tools.Tool;
 import io.github.stardewmini.common.model.items.tools.TrashCan;
 import io.github.stardewmini.common.model.items.tools.WateringCan;
 import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.server.app.App;
 
 public class ToolsController {
     public static Result showInventory() {

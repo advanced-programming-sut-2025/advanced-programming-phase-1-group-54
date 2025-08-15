@@ -1,10 +1,10 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.common.model.App;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.lives.Animal;
 import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.map.Location;
+import io.github.stardewmini.server.app.App;
 
 public class ShopController {
 /*

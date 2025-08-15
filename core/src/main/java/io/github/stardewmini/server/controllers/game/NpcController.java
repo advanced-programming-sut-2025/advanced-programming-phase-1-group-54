@@ -1,6 +1,5 @@
 package io.github.stardewmini.server.controllers.game;
 
-import io.github.stardewmini.common.model.App;
 import io.github.stardewmini.common.model.Quest;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.Season;
@@ -10,6 +9,7 @@ import io.github.stardewmini.common.model.items.recipes.Recipe;
 import io.github.stardewmini.common.model.lives.NPC;
 import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.relationships.NPCFriendship;
+import io.github.stardewmini.server.app.App;
 
 import java.util.ArrayList;
 import java.util.Random;
