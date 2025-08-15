@@ -88,13 +88,13 @@ public class ServerConnectionController {
                 return handleTalkHistory(username, message);
 
             case "get_emojis":
-                return null;
+                return handleGetEmojis(username, message);
             case "add_emojis":
-                return null;
+                return handleAddEmojis(username, message);
             case "remove_emojis":
-                return null;
+                return handleRemoveEmojis(username, message);
             case "select_emojis":
-                return null;
+                return handleSelectEmojis(username, message);
 
 
             default:
