@@ -1,4 +1,4 @@
-package io.github.stardewmini.controller;
+package io.github.stardewmini.server.controllers;
 
 import io.github.stardewmini.common.model.*;
 import io.github.stardewmini.common.model.builders.FarmBuilder;
