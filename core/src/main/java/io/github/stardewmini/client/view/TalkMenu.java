@@ -75,6 +75,9 @@ public class TalkMenu implements Screen {
             }
         });
 
+        window.setSize( Gdx.graphics.getWidth() /2f, Gdx.graphics.getHeight()/2f);
+        window.setPosition(Gdx.graphics.getWidth()/4f, Gdx.graphics.getHeight()/4f);
+
         window.getTitleTable().add(backButton);
         window.add(table);
 

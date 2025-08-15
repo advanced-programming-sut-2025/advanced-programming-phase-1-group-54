@@ -164,4 +164,31 @@ public class ClientGameController {
         body.put("username", username);
         return new Message(body, Message.Type.command);
     }
+
+    public static Message createGetEmojis(){
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "get_emojis");
+        return new Message(body, Message.Type.command);
+    }
+
+    public static Message createAddEmojis(String name){
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "add_emojis");
+        body.put("name", name);
+        return new Message(body, Message.Type.command);
+    }
+
+    public static Message createRemoveEmojis(String name){
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "remove_emojis");
+        body.put("name", name);
+        return new Message(body, Message.Type.command);
+    }
+
+    public static Message createSelectEmojis(String name){
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "select_emojis");
+        body.put("name", name);
+        return new Message(body, Message.Type.command);
+    }
 }

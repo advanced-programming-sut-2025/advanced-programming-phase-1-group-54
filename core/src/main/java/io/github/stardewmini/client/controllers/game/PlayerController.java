@@ -102,6 +102,14 @@ public class PlayerController {
             rightAnimation(player,delta);
         }
 
+        if(player.getEmojiTime() < Player.emojiShowTime){
+            player.setEmojiTime(player.getEmojiTime() + delta);
+            player.getEmojiSprite().setRegion(GameAssetManager.getInstance().getEmojis(player.getEmojiName()));
+            player.getEmojiSprite().setSize(Tile.getSize(), Tile.getSize());
+            player.getEmojiSprite().setPosition(player.getSprite().getX(),
+                player.getSprite().getY() + player.getSprite().getHeight());
+        }
+
         if(player.getEnergy() <= 0){
             dieAnimation(player,delta);
         }
@@ -128,6 +136,9 @@ public class PlayerController {
             Tool tool = player.getEquippedTool();
             batch.draw(GameAssetManager.getInstance().getTool(tool.getToolType().toString(),tool.getToolLevel().toString())
                 ,player.getX() + 2 * Tile.getSize()/3f, player.getY() + Tile.getSize()/2f);
+            if(player.getEmojiTime() < Player.emojiShowTime){
+                player.getEmojiSprite().draw(batch);
+            }
         }
     }
 }
