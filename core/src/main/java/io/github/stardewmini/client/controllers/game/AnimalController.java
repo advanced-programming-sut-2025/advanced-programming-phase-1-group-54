@@ -40,7 +40,7 @@ public class AnimalController {
     public static void update(float delta){
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
 
-        for(Animal animal : App.getCurrentGame().getCurrentPlayer().getAnimals().values()) {
+        for(Animal animal : App.getCurrentPlayer().getAnimals().values()) {
 
             if (animal.getLocation() != null  && ( animal.getX() != animal.getLocation().column() * Tile.getSize()||
                 animal.getY() != animal.getLocation().row() * Tile.getSize() )) {
@@ -75,7 +75,7 @@ public class AnimalController {
     }
 
     public static void draw(SpriteBatch batch){
-        for(Animal animal : App.getCurrentGame().getCurrentPlayer().getAnimals().values()) {
+        for(Animal animal : App.getCurrentPlayer().getAnimals().values()) {
             animal.getSprite().setSize(Tile.getSize(), Tile.getSize());
             animal.getSprite().setPosition(animal.getX(),animal.getY());
             animal.getSprite().draw(batch);

@@ -26,8 +26,9 @@ import io.github.stardewmini.server.app.App;
 
 public class FishingController {
 
-    public static Result fishing(String fishingPoleName, boolean perfect) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+/*
+    public static Result fishing(String requester, String fishingPoleName, boolean perfect) {
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
 
         if (farm == null) {
@@ -53,8 +54,8 @@ public class FishingController {
         return null;
     }
 
-    public static void startFishing(String fishingPoleName) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+    public static void startFishing(String requester, String fishingPoleName) {
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
 
         FishingPoleType fishingPoleType = FishingPoleType.fromString(fishingPoleName);
         FishingPole fishingPole = player.getFishingPole(fishingPoleType);
@@ -88,8 +89,8 @@ public class FishingController {
 
     }
 
-    public static Result winFishing(boolean perfect) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+    public static Result winFishing(String requester, boolean perfect) {
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Fish fish = App.getCurrentGame().getFishingGames().get(player).getFish();
         if(perfect) {
             if(fish.getQuality() == ProduceQuality.SILVER){
@@ -106,9 +107,9 @@ public class FishingController {
         return result;
     }
 
-    public static void handle(ShapeRenderer shapeRenderer, ShapeRenderer mapShapeRenderer, ProgressBar bar,
+    public static void handle(String requester, ShapeRenderer shapeRenderer, ShapeRenderer mapShapeRenderer, ProgressBar bar,
                               Image fishImage,Image starImage) {
-        FishingGame game = App.getCurrentGame().getFishingGames().get(App.getCurrentGame().getCurrentPlayer());
+        FishingGame game = App.getCurrentGame().getFishingGames().get(App.getCurrentGame().getPlayerByUsername(requester));
         Rectangle greenPart = game.getGreenPart();
         Rectangle fish = game.getFishRectangle();
         Rectangle map = game.getMap();
@@ -222,7 +223,7 @@ public class FishingController {
         }
 
         if(bar.getMaxValue() == bar.getValue()){
-            Result result = winFishing(game.isPerfect());
+            Result result = winFishing(requester, game.isPerfect());
             Main.getInstance().getScreen().dispose();
             Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
         }
@@ -234,5 +235,6 @@ public class FishingController {
         }
 
     }
+*/
 
 }

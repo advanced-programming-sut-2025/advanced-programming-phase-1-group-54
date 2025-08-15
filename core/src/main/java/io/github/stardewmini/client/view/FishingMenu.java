@@ -61,7 +61,7 @@ public class FishingMenu implements Screen {
     public void render(float v) {
         ScreenUtils.clear(0, 0, 0, 1);
 
-        FishingController.handle(shapeRenderer,bound,fishingBar, fishImage,starImage);
+//        FishingController.handle(shapeRenderer,bound,fishingBar, fishImage,starImage);
 
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();

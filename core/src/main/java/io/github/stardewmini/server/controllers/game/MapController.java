@@ -11,9 +11,9 @@ import io.github.stardewmini.server.app.App;
 import java.util.ArrayList;
 
 public class MapController {
-    public static Result buildGreenhouse() {
+    public static Result buildGreenhouse(String requester) {
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
 
         Farm farm = game.getWorld().getFarm(player);
 
@@ -43,9 +43,9 @@ public class MapController {
         return new Result(true, "greenhouse built successfully!");
     }
 
-    public static Result checkForWalking(Location location) {
+    public static Result checkForWalking(String requester, Location location) {
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
 
         if (location.row() < 0 || location.column() < 0 || location.row() >= World.getNumberOfRows() || location.column() >= World.getNumberOfColumns())
             return new Result(false, "invalid location");
@@ -73,12 +73,12 @@ public class MapController {
         return new Result(true, "Location reachable, energy needed is: " + distance / 20);
     }
 
-    public static Result walk(Location location) { // NOT USING THIS FOR GRAPHICS.
+    public static Result walk(String requester, Location location) { // NOT USING THIS FOR GRAPHICS.
         Game game = App.getCurrentGame();
         World world = game.getWorld();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
 
-        Result result = checkForWalking(location);
+        Result result = checkForWalking(requester, location);
         if (!result.success())
             return result;
 
@@ -89,7 +89,7 @@ public class MapController {
         for (Direction direction : shortestPath) {
             energyNeeded += 1 + (lastDirection != null && direction == lastDirection ? 10 : 0);
             if (energyNeeded >= player.getEnergy() * 20) {
-                Result passOut = CommonGameController.passOut();
+                Result passOut = CommonGameController.passOut(requester);
                 return new Result(true, String.format("Player has fallen at location (%d, %d)!\n",
                     player.getCurrentLocation().row(), player.getCurrentLocation().column()) + passOut.message());
             }
@@ -109,9 +109,9 @@ public class MapController {
         return new Result(true, "You walked successfully!");
     }
 
-    public static Result printMap(Location location, int size) {
+    public static Result printMap(String requester, Location location, int size) {
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
         World world = game.getWorld();
 
         Building currentBuilding = null;
@@ -181,7 +181,7 @@ public class MapController {
 /*
     public static void draw(SpriteBatch batch, Stage stage, OrthographicCamera camera) {
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
         World world = game.getWorld();
 
         Building currentBuilding = null;

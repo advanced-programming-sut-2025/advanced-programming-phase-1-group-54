@@ -23,7 +23,7 @@ public class CraftingController {
 /*
     public static Result showCraftingRecipe(Window window){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
         if(! (tile.getThingOnTile() instanceof Cabin)){
             return new Result(-1,"You are not in the Cabin");
@@ -60,9 +60,9 @@ public class CraftingController {
     }
 */
 
-    public static Result crafting(String artisanName){
+    public static Result crafting(String requester, String artisanName){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
         if(! (tile.getThingOnTile() instanceof Cabin)){
             return new Result(-1,"You are not in the Cabin");
@@ -90,13 +90,13 @@ public class CraftingController {
 
 
         for(String ingredient : recipe.getIngredientsNames()){
-            if(CommonGameController.numberOfItemInBackPack(ingredient) < recipe.getIngredientsNumber().get(ingredient)){
+            if(CommonGameController.numberOfItemInBackPack(requester, ingredient) < recipe.getIngredientsNumber().get(ingredient)){
                 return new Result(-1,"You do not have the enough ingredients");
             }
         }
 
         for(String ingredient : recipe.getIngredientsNames()){
-            CommonGameController.removeItemFromBackPack(ingredient, recipe.getIngredientsNumber().get(ingredient));
+            CommonGameController.removeItemFromBackPack(requester, ingredient, recipe.getIngredientsNumber().get(ingredient));
         }
 
         if(artisanName.equals("Mystic Tree Seeds")){
@@ -117,11 +117,11 @@ public class CraftingController {
     }
 
     // TODO
-    public static Result placeArtisan(String artisanName, Direction direction){
+    public static Result placeArtisan(String requester, String artisanName, Direction direction){
         if (direction == null)
             return new Result(false, "invalid direction");
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
 
         if(farm == null){
@@ -160,7 +160,7 @@ public class CraftingController {
                     Location location1 = location.delta(new Location(location.row() + i,location.column() + j));
                     Tile tile1 =  farm.getTileAt(location1);
                     if(tile1 != null){
-                        CommonGameController.deleteThingOnTile(tile1,farm);
+                        CommonGameController.deleteThingOnTile(requester, tile1,farm);
                     }
                 }
             }
@@ -181,9 +181,9 @@ public class CraftingController {
         return new Result(-1,"Artisan placed successfully");
     }
 
-    public static Result producing(String artisanName,String produceName){
+    public static Result producing(String requester, String artisanName,String produceName){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
 
         ProducerArtisan producerArtisan = null;
         boolean haveArtisan = false;
@@ -214,7 +214,7 @@ public class CraftingController {
         }
 
         for(String ingredient : produce.getIngredientsNames()){
-            if(CommonGameController.numberOfItemInBackPack(ingredient) < produce.getIngredientsNumber().get(ingredient)){
+            if(CommonGameController.numberOfItemInBackPack(requester, ingredient) < produce.getIngredientsNumber().get(ingredient)){
                 return new Result(-1,"You don't have enough ingredient to make this produce");
             }
         }
@@ -238,9 +238,9 @@ public class CraftingController {
 
     }
 
-    public static Result getProduceFromArtisan(String artisanName){
+    public static Result getProduceFromArtisan(String requester, String artisanName){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
 
         ProducerArtisan producerArtisan = null;
         for(ProducerArtisan artisan : player.getPlacedArtisans()){

@@ -16,7 +16,7 @@ public class FoodController {
 /*
     public static Result showFoodRecipes(Window window){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
 
         if(! (tile.getThingOnTile() instanceof Cabin)){
@@ -24,7 +24,7 @@ public class FoodController {
         }
 
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
-        ArrayList<Recipe> foodRecipes = App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes();
+        ArrayList<Recipe> foodRecipes = App.getCurrentGame().getPlayerByUsername(requester).getLearnedFoodRecipes();
         int inRow = 0;
         for(Recipe recipe: Recipe.foodRecipes.values()){
             Image image = new Image(gameAssetManager.getRecipe(recipe.getName()));
@@ -54,9 +54,9 @@ public class FoodController {
     }
 */
 
-    public static Result cooking(String foodName){
+    public static Result cooking(String requester, String foodName){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Food food = Food.getFood(foodName);
         Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
         if(! (tile.getThingOnTile() instanceof Cabin)){
@@ -80,7 +80,7 @@ public class FoodController {
         for(String ingredient : recipe.getIngredientsNames()){
 
 
-            if(CommonGameController.numberOfItemInBackPack(ingredient) < recipe.getIngredientsNumber().get(ingredient)){
+            if(CommonGameController.numberOfItemInBackPack(requester,ingredient) < recipe.getIngredientsNumber().get(ingredient)){
                 return new Result(-1,"You do not have enough ingredients");
             }
         }
@@ -90,29 +90,29 @@ public class FoodController {
         }
 
         for(String ingredient : recipe.getIngredientsNames()){
-            CommonGameController.removeItemFromBackPack(ingredient,recipe.getIngredientsNumber().get(ingredient));
+            CommonGameController.removeItemFromBackPack(requester,ingredient,recipe.getIngredientsNumber().get(ingredient));
         }
 
         player.decreaseEnergy(3,null);
 
         if(passOut){
             return new Result(1,foodName + " cooked successfully. " +
-                    CommonGameController.passOut().message());
+                    CommonGameController.passOut(requester).message());
         }
 
         return new Result(1,foodName + " cooked successfully");
 
     }
 
-    public static Result eatFood(String foodName){
+    public static Result eatFood(String requester, String foodName){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Food food = Food.getFood(foodName);
         if(food == null){
             return new Result(-1, "Food doesn't exist");
         }
 
-        if(! CommonGameController.removeItemFromInventory(food,1)){
+        if(! CommonGameController.removeItemFromInventory(requester,food,1)){
             return new Result(-1, "You don't have food");
         }
 
@@ -129,9 +129,9 @@ public class FoodController {
         return new Result(1,foodName + " eaten");
     }
 
-    public static Result moveToRefrigerator(String itemName ,int number){
+    public static Result moveToRefrigerator(String requester, String itemName ,int number){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
 
         if(! (tile.getThingOnTile() instanceof Cabin cabin)){
@@ -144,7 +144,7 @@ public class FoodController {
         }
 
         Refrigerator refrigerator = cabin.getRefrigerator();
-        BackPack backPack = App.getCurrentGame().getCurrentPlayer().getBackpack();
+        BackPack backPack = App.getCurrentGame().getPlayerByUsername(requester).getBackpack();
 
         if(! refrigerator.addItem(item,number)){
             return new Result(-1,"Item isn't edible");
@@ -160,15 +160,15 @@ public class FoodController {
         return new Result(1,number + " of " + itemName + " moved successfully");
     }
 
-    public static Result moveToBackpack(String itemName,int number){
+    public static Result moveToBackpack(String requester, String itemName,int number){
 
         Item item = CommonGameController.findItem(itemName);
         if(item == null){
             return new Result(-1, "Item doesn't exist");
         }
 
-        Refrigerator refrigerator = App.getCurrentGame().getCurrentPlayer().getRefrigerator();
-        BackPack backPack = App.getCurrentGame().getCurrentPlayer().getBackpack();
+        Refrigerator refrigerator = App.getCurrentGame().getPlayerByUsername(requester).getRefrigerator();
+        BackPack backPack = App.getCurrentGame().getPlayerByUsername(requester).getBackpack();
 
         if(! backPack.addItem(item,number)){
             return new Result(-1,"Backpack is full");

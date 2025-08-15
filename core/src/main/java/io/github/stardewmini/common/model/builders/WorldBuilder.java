@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import io.github.stardewmini.common.model.map.*;
 import io.github.stardewmini.common.model.map.Shops.*;
-import io.github.stardewmini.server.controllers.game.ResourceController;
+import io.github.stardewmini.common.ResourceController;
 import io.github.stardewmini.common.model.DateTime;
 import io.github.stardewmini.common.model.Quest;
 import io.github.stardewmini.common.model.items.ShopItem;

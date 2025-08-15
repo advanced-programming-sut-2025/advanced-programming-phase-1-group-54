@@ -81,7 +81,7 @@ public class PlayerController {
     }
 
     public static void update(float delta, OrthographicCamera camera) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentPlayer();
         World world = App.getCurrentGame().getWorld();
 
         int dx = 0, dy = 0;

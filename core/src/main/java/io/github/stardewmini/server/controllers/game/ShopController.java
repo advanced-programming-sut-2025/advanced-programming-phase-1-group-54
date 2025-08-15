@@ -102,7 +102,7 @@ public class ShopController {
     }
 */
 
-    public static Result buy(String itemName, String name, int price,String locationString) {
+    public static Result buy(String requester, String itemName, String name, int price,String locationString) {
         int x;
         int y;
         String[] locationParts = locationString.split(",");
@@ -113,7 +113,7 @@ public class ShopController {
             return new Result(false, "only enter location in X,Y format");
         }
         Location location = new Location(x,y);
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         if(player.getMoney() < price){
             return new Result(false, "You don't have " + price +"coin");
         }
@@ -121,10 +121,10 @@ public class ShopController {
         Result result;
         if(Animal.getAnimal(itemName) != null){
             Animal animal = Animal.getAnimal(itemName);
-            result = CheatController.addAnimal(animal,name,location);
+            result = CheatController.addAnimal(requester, animal,name,location);
         }
         else {
-            result = CheatController.addBuilding(itemName,location);
+            result = CheatController.addBuilding(requester, itemName,location);
         }
 
         if(result.success()){

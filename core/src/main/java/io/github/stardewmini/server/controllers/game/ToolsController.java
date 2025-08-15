@@ -17,9 +17,9 @@ import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.server.app.App;
 
 public class ToolsController {
-    public static Result showInventory() {
+    public static Result showInventory(String requester) {
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
 
         BackPack backPack = player.getBackpack();
 
@@ -34,7 +34,7 @@ public class ToolsController {
         return new Result(true, message.toString());
     }
 
-    public static Result throwInTrash(String itemName, String numberString) {
+    public static Result throwInTrash(String requester, String itemName, String numberString) {
         Integer number;
         try{
             number = Integer.parseInt(numberString);
@@ -43,7 +43,7 @@ public class ToolsController {
         }
 
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
 
         BackPack backPack = player.getBackpack();
         TrashCan trashCan = player.getTrashCan();
@@ -69,9 +69,9 @@ public class ToolsController {
         return new Result(true, String.format("%d of %s were thrown in trash, and you gained %d coins!", number, itemName, money));
     }
 
-    public static Result equipTool(String toolName) {
+    public static Result equipTool(String requester, String toolName) {
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
 
         ToolType toolType = ToolType.fromString(toolName);
         if (toolType == null)
@@ -86,12 +86,12 @@ public class ToolsController {
         return new Result(false, "tool equipped!");
     }
 
-    public static Result useTool(Direction direction) {
+    public static Result useTool(String requester, Direction direction) {
         if (direction == null)
             return new Result(false, "invalid direction");
 
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
         Farm farm = game.getWorld().getFarmAt(player.getCurrentLocation());
 
         if (farm == null) {
@@ -124,7 +124,7 @@ public class ToolsController {
             return new Result(false, "you don't have any tool equipped");
         }
 
-        Result useToolDetail = useToolDetail(direction);
+        Result useToolDetail = useToolDetail(requester, direction);
         int energyNeeded = equippedTool.getEnergyNeededPerUse();
 
         if (!useToolDetail.success() && (equippedTool.getToolType() == ToolType.AXE
@@ -138,16 +138,16 @@ public class ToolsController {
                 (useToolDetail.success() ? "succeeded" : "failed"), useToolDetail.message());
 
         if (!enoughEnergy) {
-            Result passOut = CommonGameController.passOut();
+            Result passOut = CommonGameController.passOut(requester);
             message += "\n" + passOut.message();
         }
 
         return new Result(useToolDetail.success(), message);
     }
 
-    private static Result useToolDetail(Direction direction) {
+    private static Result useToolDetail(String requester, Direction direction) {
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
         World world = game.getWorld();
 
         Location location = player.getCurrentLocation().getLocationAt(direction);
@@ -160,9 +160,9 @@ public class ToolsController {
             case HOE:
                 return useHoe(tile);
             case WATERING_CAN:
-                return useWateringCan(tool, tile, location);
+                return useWateringCan(requester, tool, tile, location);
             case SCYTHE:
-                return PlantsController.harvestPlant(direction);
+                return PlantsController.harvestPlant(requester, direction);
             case AXE:
                 return useAxe(player, backpack, tile);
             case PICKAXE:
@@ -193,7 +193,7 @@ public class ToolsController {
         return new Result(true, "This tile has been plowed");
     }
 
-    private static Result useWateringCan(Tool tool, Tile tile, Location location) {
+    private static Result useWateringCan(String requester, Tool tool, Tile tile, Location location) {
         WateringCan wateringCan = (WateringCan) tool;
 
         if (tile.hasFeature(Feature.WATER)) {
@@ -203,7 +203,7 @@ public class ToolsController {
 
         if (wateringCan.getCurrentWater() > 0) {
             wateringCan.decreaseWater();
-            return PlantsController.giveWater(location);
+            return PlantsController.giveWater(requester, location);
         }
 
         return new Result(false, "watering can is empty");
@@ -291,7 +291,7 @@ public class ToolsController {
             }
         }
 
-        boolean itemDestroyed = CommonGameController.deleteThingOnTile(tile, world.getFarmAt(player.getCurrentLocation()));
+        boolean itemDestroyed = CommonGameController.deleteThingOnTile(player.getName(), tile, world.getFarmAt(player.getCurrentLocation()));
 
         if (result != null) {
             return result;
@@ -303,9 +303,9 @@ public class ToolsController {
         return new Result(true, "nothing happened!");
     }
 
-    public static Result howMuchWater() {
+    public static Result howMuchWater(String requester) {
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
         WateringCan wateringCan = (WateringCan) player.getTool(ToolType.WATERING_CAN);
 
         return new Result(true, "water: " + wateringCan.getCurrentWater());
@@ -321,7 +321,7 @@ public class ToolsController {
 
 /*
     public static void mouseClick(int screenX, int screenY, OrthographicCamera camera) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Vector3 clickPos = new Vector3(screenX, screenY, 0);
         camera.unproject(clickPos); // Converts screen to world coordinates
         Vector2 playerPos = new Vector2(player.getX() + Tile.getSize()/2f, player.getY() + Tile.getSize()/2f); // Adjust to your player’s position

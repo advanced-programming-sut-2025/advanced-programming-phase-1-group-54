@@ -11,6 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
+import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.ClientGameController;
+import io.github.stardewmini.common.Message;
 import io.github.stardewmini.server.controllers.game.FriendShipController;
 import io.github.stardewmini.client.controllers.game.InventoryController;
 import io.github.stardewmini.server.controllers.game.NpcController;
@@ -22,7 +25,7 @@ import io.github.stardewmini.common.model.enums.SkillType;
 public class InventoryMenu implements Screen {
 
     private Stage stage;
-    private  Window window;
+    private Window window;
     private final TextButton backButton;
 
     private final Table table1;
@@ -31,7 +34,7 @@ public class InventoryMenu implements Screen {
     private final ScrollPane scrollPane;
     private final Table inventoryTable;
     private final TextButton inventoryButton;
-//    private final Label trashcanLabel;
+    //    private final Label trashcanLabel;
     private final TextField trashItem;
     private final Label trashItemLabel;
     private final TextField trashNumber;
@@ -40,7 +43,7 @@ public class InventoryMenu implements Screen {
     private final Window trashWindow;
     private final TextButton trashButton;
 
-    private final Label [] skillsLabel;
+    private final Label[] skillsLabel;
     private final TextButton skillButton;
 
     private final Table socialTable;
@@ -62,11 +65,11 @@ public class InventoryMenu implements Screen {
     private final TextButton toolsButton;
 
     public InventoryMenu(Skin skin) {
-        this.window = new Window("inventory Menu",skin);
+        this.window = new Window("inventory Menu", skin);
         this.backButton = new TextButton("Back", skin);
         this.inventoryTable = InventoryController.showInventory();
 //        this.inventoryTable = new Table(skin);
-        this.scrollPane = new ScrollPane(this.inventoryTable,skin);
+        this.scrollPane = new ScrollPane(this.inventoryTable, skin);
         this.table1 = new Table(skin);
         this.table2 = new Table(skin);
         this.inventoryButton = new TextButton("Inventory", skin);
@@ -81,14 +84,14 @@ public class InventoryMenu implements Screen {
         this.trashButton = new TextButton("Trash", skin);
 
         this.skillsLabel = new Label[4];
-        for(int i = 0; i < skillsLabel.length; i++){
+        for (int i = 0; i < skillsLabel.length; i++) {
             skillsLabel[i] = new Label(InventoryController.showSkill(i), skin);
         }
         this.skillButton = new TextButton("Skills", skin);
 
         this.socialTable = new Table(skin);
-        this.npcsFriendshipLabel = new Label(NpcController.getNPCsFriendship().message(), skin);
-        this.playersFriendshipLabel = new Label(FriendShipController.showFriendships().message(), skin);
+        this.npcsFriendshipLabel = new Label("npcs friendships aren't real." /*NpcController.getNPCsFriendship().message()*/, skin);
+        this.playersFriendshipLabel = new Label("players friendships aren't real." /*FriendShipController.showFriendships().message()*/, skin);
         this.socialButton = new TextButton("Social", skin);
 
         this.mapButton = new TextButton("Map", skin);
@@ -101,7 +104,7 @@ public class InventoryMenu implements Screen {
         this.kickLabel = new Label("Enter Username", skin);
         this.kickTable = new Table(skin);
 
-        this.toolsScrollPane = new ScrollPane(InventoryController.showTolls(window),skin);
+        this.toolsScrollPane = new ScrollPane(InventoryController.showTolls(window), skin);
         this.toolsButton = new TextButton("Tools Menu", skin);
     }
 
@@ -164,10 +167,11 @@ public class InventoryMenu implements Screen {
 
         trashButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                Result result = ToolsController.throwInTrash(trashItem.getText(), trashNumber.getText());
+                Message message = ClientGameController.createTrashCan(trashItem.getText(), trashNumber.getText());
+                Result result = ClientApp.sendRequest(message);
                 window.remove();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(), result.message()));
             }
         });
 
@@ -189,26 +193,26 @@ public class InventoryMenu implements Screen {
             }
         });
 
-        for(int i = 0 ; i < skillsLabel.length ; i++){
+        for (int i = 0; i < skillsLabel.length; i++) {
             Label label = skillsLabel[i];
             SkillType skillType = SkillType.values()[i];
             int finalI = i;
             skillsLabel[i].addListener(new InputListener() {
 
-                public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor){
+                public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
                     label.setText("increase " + skillType.name() + "skill to consume less energy for " +
                         skillType.name());
                 }
 
-                public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor){
+                public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor) {
                     label.setText(InventoryController.showSkill(finalI));
                 }
             });
         }
 
 
-        window.setSize( 3 * Gdx.graphics.getWidth()/4f, 3 * Gdx.graphics.getHeight()/4f);
-        window.setPosition(Gdx.graphics.getWidth()/8f, Gdx.graphics.getHeight()/8f);
+        window.setSize(3 * Gdx.graphics.getWidth() / 4f, 3 * Gdx.graphics.getHeight() / 4f);
+        window.setPosition(Gdx.graphics.getWidth() / 8f, Gdx.graphics.getHeight() / 8f);
         window.getTitleTable().add(backButton);
 
         socialTable.add(playersFriendshipLabel).pad(10);

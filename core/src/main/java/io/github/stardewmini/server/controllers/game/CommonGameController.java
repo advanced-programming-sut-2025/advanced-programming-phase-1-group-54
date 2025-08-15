@@ -43,11 +43,11 @@ public class CommonGameController {
 
         String message = "vote added.";
         if (game.getVotes() < game.getPlayers().length) {
-            return new Result(0,  message);
+            return new Result(0, message);
         }
 
         boolean success = game.getDeleteVotes() == game.getVotes();
-        message += "\nVotes result : " + (success? "Success" : "Failure");
+        message += "\nVotes result : " + (success ? "Success" : "Failure");
         if (success) {
             message += "\nGame was finished. bye bye :)";
 
@@ -59,33 +59,13 @@ public class CommonGameController {
             }
         }
 
-        return new Result((success? 2 : 1), message);
+        return new Result((success ? 2 : 1), message);
     }
 
 
-    static Result passOut() {
-        App.getCurrentGame().getCurrentPlayer().setEnergy(0);
-        return new Result(true, "you passed out!\n" + nextTurn().message());
-    }
-
-    public static Result nextTurn() {
-        Game game = App.getCurrentGame();
-        game.nextTurn();
-        Player player = game.getCurrentPlayer();
-
-        StringBuilder message = new StringBuilder(String.format("it is %s's turn",
-                player.getName()));
-
-        int code = 0;
-        if(!player.getReceivedGifts().isEmpty()){
-            code += 1;
-            message.append("\nYou received some gifts. You should open them.");
-        }
-        if(!player.getAskedForMarriage().isEmpty()){
-            code += 2;
-            message.append("\nYou received some marriage request. You should respond to them.");
-        }
-        return new Result(code, message.toString());
+    static Result passOut(String requester) {
+        App.getCurrentGame().getPlayerByUsername(requester).setEnergy(0);
+        return new Result(true, "you passed out!\n");
     }
 
     public static Result showTime() {
@@ -96,7 +76,7 @@ public class CommonGameController {
     public static Result showDate() {
         Game game = App.getCurrentGame();
         return new Result(true, String.format("%d/%s/%d",
-                game.getDateTime().getYear(), game.getDateTime().getSeason().toString().toLowerCase(), game.getDateTime().getDay()));
+            game.getDateTime().getYear(), game.getDateTime().getSeason().toString().toLowerCase(), game.getDateTime().getDay()));
     }
 
     public static Result showDateTime() {
@@ -125,31 +105,30 @@ public class CommonGameController {
         return new Result(true, game.getTomorrowWeather().toString().toLowerCase());
     }
 
-    public static Result showEnergy() {
+    public static Result showEnergy(String requester) {
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
 
         return new Result(true, String.format("you have %d energy left.", player.getEnergy()));
     }
 
-    public static Result showCurrentTool() {
+    public static Result showCurrentTool(String requester) {
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
 
         return new Result(true, player.getEquippedTool().toString());
     }
 
-    public static Result showAvailableTools() {
+    public static Result showAvailableTools(String requester) {
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
 
         StringBuilder messageBuilder = new StringBuilder();
         for (ToolType toolType : ToolType.values()) {
             messageBuilder.append(toolType.toString()).append(": ");
-            if(player.getTool(toolType) == null){
+            if (player.getTool(toolType) == null) {
                 messageBuilder.append("don't have the tool\n");
-            }
-            else{
+            } else {
                 messageBuilder.append(player.getTool(toolType).toString()).append("\n");
             }
 
@@ -223,8 +202,8 @@ public class CommonGameController {
         return null;
     }
 
-    static int numberOfItemInBackPack(String ItemName) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+    static int numberOfItemInBackPack(String requester, String ItemName) {
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Integer number = 0;
         if (ItemName.equals("fish")) {
             for (Fish fish : Fish.getFishesValues()) {
@@ -236,26 +215,26 @@ public class CommonGameController {
             }
         } else if (ItemName.equals("Cheese") || ItemName.equals("Goat Cheese") || ItemName.equals("Mayonnaise")) {
             number += player.getBackpack().getNumberOfItemInBackPack().
-                    getOrDefault(Produce.getProduce(ItemName), 0);
+                getOrDefault(Produce.getProduce(ItemName), 0);
             number += player.getRefrigerator().getNumberOfItemInRefrigerator().
-                    getOrDefault(Produce.getProduce(ItemName), 0);
+                getOrDefault(Produce.getProduce(ItemName), 0);
             number += player.getBackpack().getNumberOfItemInBackPack().
-                    getOrDefault(Produce.getProduce("Large " + ItemName), 0);
+                getOrDefault(Produce.getProduce("Large " + ItemName), 0);
             number += player.getRefrigerator().getNumberOfItemInRefrigerator().
-                    getOrDefault(Produce.getProduce("Large " + ItemName), 0);
+                getOrDefault(Produce.getProduce("Large " + ItemName), 0);
         } else if (ItemName.equals("Oil")) {
             number += player.getBackpack().getNumberOfItemInBackPack().
-                    getOrDefault(Produce.getProduce("Corn " + ItemName), 0);
+                getOrDefault(Produce.getProduce("Corn " + ItemName), 0);
             number += player.getRefrigerator().getNumberOfItemInRefrigerator().
-                    getOrDefault(Produce.getProduce("Corn " + ItemName), 0);
+                getOrDefault(Produce.getProduce("Corn " + ItemName), 0);
             number += player.getBackpack().getNumberOfItemInBackPack().
-                    getOrDefault(Produce.getProduce("Sunflower Seed " + ItemName), 0);
+                getOrDefault(Produce.getProduce("Sunflower Seed " + ItemName), 0);
             number += player.getRefrigerator().getNumberOfItemInRefrigerator().
-                    getOrDefault(Produce.getProduce("Sunflower Seed " + ItemName), 0);
+                getOrDefault(Produce.getProduce("Sunflower Seed " + ItemName), 0);
             number += player.getBackpack().getNumberOfItemInBackPack().
-                    getOrDefault(Produce.getProduce("Sunflower " + ItemName), 0);
+                getOrDefault(Produce.getProduce("Sunflower " + ItemName), 0);
             number += player.getRefrigerator().getNumberOfItemInRefrigerator().
-                    getOrDefault(Produce.getProduce("Sunflower " + ItemName), 0);
+                getOrDefault(Produce.getProduce("Sunflower " + ItemName), 0);
         } else {
             Item item = findItem(ItemName);
             if (item == null) {
@@ -277,7 +256,7 @@ public class CommonGameController {
                     animalProduce.setQuality(quality);
                     number += player.getBackpack().getNumberOfItemInBackPack().getOrDefault(animalProduce, 0);
                     number += player.getRefrigerator().getNumberOfItemInRefrigerator().
-                            getOrDefault(animalProduce, 0);
+                        getOrDefault(animalProduce, 0);
                 }
             } else {
                 number = player.getBackpack().getNumberOfItemInBackPack().getOrDefault(item, 0);
@@ -290,8 +269,8 @@ public class CommonGameController {
 
     }
 
-    static void removeItemFromBackPack(String ItemName, int number) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+    static void removeItemFromBackPack(String requester, String ItemName, int number) {
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         BackPack backPack = player.getBackpack();
         Refrigerator refrigerator = player.getRefrigerator();
 
@@ -338,31 +317,31 @@ public class CommonGameController {
             amount += refrigerator.getNumberOfItemInRefrigerator().getOrDefault(produce, 0);
 
             if (number > amount) {
-                removeItemFromInventory(produce, amount);
+                removeItemFromInventory(requester, produce, amount);
                 number -= amount;
-                removeItemFromInventory(Produce.getProduce("Large " + ItemName), number);
+                removeItemFromInventory(requester, Produce.getProduce("Large " + ItemName), number);
             } else {
-                removeItemFromInventory(produce, number);
+                removeItemFromInventory(requester, produce, number);
             }
         } else if (ItemName.equals("Oil")) {
             Produce produce = Produce.getProduce("Corn " + ItemName);
             amount = backPack.getNumberOfItemInBackPack().getOrDefault(produce, 0);
             amount += refrigerator.getNumberOfItemInRefrigerator().getOrDefault(produce, 0);
             if (number > amount) {
-                removeItemFromInventory(produce, amount);
+                removeItemFromInventory(requester, produce, amount);
                 number -= amount;
                 produce = Produce.getProduce("Sunflower Seed " + ItemName);
                 amount = backPack.getNumberOfItemInBackPack().getOrDefault(produce, 0);
                 amount += refrigerator.getNumberOfItemInRefrigerator().getOrDefault(produce, 0);
                 if (number > amount) {
-                    removeItemFromInventory(produce, amount);
+                    removeItemFromInventory(requester, produce, amount);
                     number -= amount;
-                    removeItemFromInventory(Produce.getProduce("Sunflower " + ItemName), number);
+                    removeItemFromInventory(requester, Produce.getProduce("Sunflower " + ItemName), number);
                 } else {
-                    removeItemFromInventory(produce, number);
+                    removeItemFromInventory(requester, produce, number);
                 }
             } else {
-                removeItemFromInventory(produce, number);
+                removeItemFromInventory(requester, produce, number);
             }
         } else {
             Item item = findItem(ItemName);
@@ -465,9 +444,9 @@ public class CommonGameController {
         }
     }
 
-    static boolean removeItemFromInventory(Item item, int number) {
+    static boolean removeItemFromInventory(String requester, Item item, int number) {
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         int amount = player.getBackpack().getNumberOfItemInBackPack().getOrDefault(item, 0);
         if (number - amount > player.getRefrigerator().getNumberOfItemInRefrigerator().getOrDefault(item, 0)) {
             return false;
@@ -481,8 +460,8 @@ public class CommonGameController {
 
     }
 
-    static boolean deleteThingOnTile(Tile tile, Farm farm) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+    static boolean deleteThingOnTile(String requester, Tile tile, Farm farm) {
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
 
         Location location = player.getCurrentLocation().delta(farm.getLocation());
 
@@ -510,7 +489,7 @@ public class CommonGameController {
                 App.getCurrentGame().getDateTime().removeDailyUpdateListener(crop);
             }
         } else if (tile.getThingOnTile() instanceof Building) {
-            return deleteThingOnTile(tile.getTop(), farm);
+            return deleteThingOnTile(requester, tile.getTop(), farm);
         } else if (!(tile.getThingOnTile() instanceof Animal)) {
             if (tile.getThingOnTile() instanceof DailyUpdate dailyUpdate) {
                 App.getCurrentGame().getDateTime().removeDailyUpdateListener(dailyUpdate);
@@ -528,9 +507,9 @@ public class CommonGameController {
         return true;
     }
 
-    public static Result sell(String product, int count) {
+    public static Result sell(String requester, String product, int count) {
         Game game = App.getCurrentGame();
-        Player currentPlayer = game.getCurrentPlayer();
+        Player currentPlayer = game.getPlayerByUsername(requester);
 
         if (!isNearShippingBin(currentPlayer.getCurrentLocation()))
             return new Result(false, "No shipping bin nearby!");
@@ -538,41 +517,37 @@ public class CommonGameController {
 
         Item item = findItem(product);
 
-        if(item == null){
+        if (item == null) {
             return new Result(false, "Doesn't exist such item!");
         }
 
         int numberOfItem = currentPlayer.getBackpack().getNumberOfItemInBackPack().get(item);
 
-        if(count == -1){
+        if (count == -1) {
             count = numberOfItem;
-        }
-        else if(count > numberOfItem){
-            return new Result(false,"You do not have enough item!");
+        } else if (count > numberOfItem) {
+            return new Result(false, "You do not have enough item!");
         }
 
         currentPlayer.getBackpack().removeItem(item, count);
 
-        if(item instanceof Fruit fruit){
+        if (item instanceof Fruit fruit) {
             currentPlayer.increaseNextDayMoney((int) Math.floor(count * item.getBaseSellPrice() *
-                    fruit.getQuality().getValue()));
-        }
-        else if(item instanceof AnimalProduce animalProduce){
+                fruit.getQuality().getValue()));
+        } else if (item instanceof AnimalProduce animalProduce) {
             currentPlayer.increaseNextDayMoney((int) Math.floor(count * item.getBaseSellPrice() *
-                    animalProduce.getQuality().getValue()));
-        }
-        else if(item instanceof Fish fish){
+                animalProduce.getQuality().getValue()));
+        } else if (item instanceof Fish fish) {
             currentPlayer.increaseNextDayMoney((int) Math.floor(count * item.getBaseSellPrice() *
-                    fish.getQuality().getValue()));
-        }
-        else{
-            if(item.getBaseSellPrice() == 0){
-                return new Result(false,"You can't sell this item!");
+                fish.getQuality().getValue()));
+        } else {
+            if (item.getBaseSellPrice() == 0) {
+                return new Result(false, "You can't sell this item!");
             }
-            currentPlayer.increaseNextDayMoney( count * item.getBaseSellPrice());
+            currentPlayer.increaseNextDayMoney(count * item.getBaseSellPrice());
         }
 
-        return new Result(true,count + " of item sold successfully");
+        return new Result(true, count + " of item sold successfully");
 
 //        Fish fish = Fish.getFish(product);
 //        if (fish != null) {
@@ -580,17 +555,17 @@ public class CommonGameController {
 //                if (!removeItemFromInventory(fish, count)) {
 //                    return new Result(false, "not enough products");
 //                }
-//            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish) == 0) {
+//            } else if (App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getNumberOfItemInBackPack().get(fish) == 0) {
 //                return new Result(false, "not enough products");
 //            } else {
 //                int money;
 //                if (count == -1) {
 //                    money = (int) (fish.getBaseSellPrice() * fish.getQuality().getValue())
-//                            * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fish);
+//                            * App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getNumberOfItemInBackPack().get(fish);
 //                } else {
 //                    money = (int) (fish.getBaseSellPrice() * fish.getQuality().getValue()) * count;
 //                }
-//                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+//                App.getCurrentGame().getPlayerByUsername(requester).increaseNextDayMoney(money);
 //                return new Result(true, "item sold successfully");
 //            }
 //        }
@@ -600,17 +575,17 @@ public class CommonGameController {
 //                if (!removeItemFromInventory(fruit, count)) {
 //                    return new Result(false, "not enough products");
 //                }
-//            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit) == 0) {
+//            } else if (App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getNumberOfItemInBackPack().get(fruit) == 0) {
 //                return new Result(false, "not enough products");
 //            } else {
 //                int money = 0;
 //                if (count == -1) {
 //                    money = (int) (fruit.getBaseSellPrice() * fruit.getQuality().getValue())
-//                            * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(fruit);
+//                            * App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getNumberOfItemInBackPack().get(fruit);
 //                } else {
 //                    money = (int) (fish.getBaseSellPrice() * fruit.getQuality().getValue()) * count;
 //                }
-//                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+//                App.getCurrentGame().getPlayerByUsername(requester).increaseNextDayMoney(money);
 //                return new Result(true, "item sold successfully");
 //            }
 //        }
@@ -622,16 +597,16 @@ public class CommonGameController {
 //                if (!removeItemFromInventory(food, count)) {
 //                    return new Result(false, "not enough products");
 //                }
-//            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food) == 0) {
+//            } else if (App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getNumberOfItemInBackPack().get(food) == 0) {
 //                return new Result(false, "not enough products");
 //            } else {
 //                int money = 0;
 //                if (count == -1) {
-//                    money = food.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(food);
+//                    money = food.getBaseSellPrice() * App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getNumberOfItemInBackPack().get(food);
 //                } else {
 //                    money = food.getBaseSellPrice() * count;
 //                }
-//                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+//                App.getCurrentGame().getPlayerByUsername(requester).increaseNextDayMoney(money);
 //                return new Result(true, "item sold successfully");
 //            }
 //        }
@@ -641,16 +616,16 @@ public class CommonGameController {
 //                if (!removeItemFromInventory(produce, count)) {
 //                    return new Result(false, "not enough products");
 //                }
-//            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce) == 0) {
+//            } else if (App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getNumberOfItemInBackPack().get(produce) == 0) {
 //                return new Result(false, "not enough products");
 //            } else {
 //                int money = 0;
 //                if (count == -1) {
-//                    money = produce.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(produce);
+//                    money = produce.getBaseSellPrice() * App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getNumberOfItemInBackPack().get(produce);
 //                } else {
 //                    money = produce.getBaseSellPrice() * count;
 //                }
-//                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+//                App.getCurrentGame().getPlayerByUsername(requester).increaseNextDayMoney(money);
 //                return new Result(true, "item sold successfully");
 //            }
 //        }
@@ -660,17 +635,17 @@ public class CommonGameController {
 //                if (!removeItemFromInventory(featureArtisan, count)) {
 //                    return new Result(false, "not enough products");
 //                }
-//            } else if (App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(featureArtisan) == 0) {
+//            } else if (App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getNumberOfItemInBackPack().get(featureArtisan) == 0) {
 //                return new Result(false, "not enough products");
 //            } else {
 //
 //                int money = 0;
 //                if (count == -1) {
-//                    money = featureArtisan.getBaseSellPrice() * App.getCurrentGame().getCurrentPlayer().getBackpack().getNumberOfItemInBackPack().get(featureArtisan);
+//                    money = featureArtisan.getBaseSellPrice() * App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getNumberOfItemInBackPack().get(featureArtisan);
 //                } else {
 //                    money = featureArtisan.getBaseSellPrice() * count;
 //                }
-//                App.getCurrentGame().getCurrentPlayer().increaseNextDayMoney(money);
+//                App.getCurrentGame().getPlayerByUsername(requester).increaseNextDayMoney(money);
 //                return new Result(false, "item sold successfully");
 //            }
 //        }
@@ -744,7 +719,7 @@ public class CommonGameController {
             append("\nyear : ").append(dateTime.getYear()).append("\nweekDay : ").append(dateTime.getWeekDay()).
             append("\nseason : ").append(dateTime.getSeason()).append("\nweather : ").
             append(App.getCurrentGame().getCurrentWeather()).append("\nEnergy : ").
-            append(App.getCurrentGame().getCurrentPlayer().getEnergy());
+            append(App.getCurrentGame().getPlayerByUsername(requester).getEnergy());
 
         if(dateTime.getHour() >= 18){
             batch.setColor(0.7f, 0.7f, 0.7f, 1);

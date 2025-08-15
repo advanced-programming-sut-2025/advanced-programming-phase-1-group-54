@@ -41,7 +41,7 @@ public class CheatController {
         return new Result(true, "it's now " + game.getDateTime().toString());
     }
 
-    public static Result thunderStrike(String locationString) {
+    public static Result thunderStrike(String requester, String locationString) {
         int x,y;
         Location location;
         try{
@@ -54,7 +54,7 @@ public class CheatController {
         }
 
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
         Farm farm = game.getWorld().getFarmAt(player.getCurrentLocation());
 
         if (farm == null) {
@@ -75,27 +75,27 @@ public class CheatController {
         return new Result(true, "You changed the future!");
     }
 
-    public static Result setEnergy(String valueString) {
+    public static Result setEnergy(String requester, String valueString) {
         int value;
         try {
             value = Integer.parseInt(valueString);
         } catch (Exception e){
             return new Result(false,"enter only numbers");
         }
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         player.setUnlimitedEnergy(false);
         player.setEnergy(value);
         return new Result(true, "You suddenly feel weird, as if you're energy has changed!");
     }
 
-    public static Result setUnlimitedEnergy() {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+    public static Result setUnlimitedEnergy(String requester) {
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         player.setUnlimitedEnergy(true);
         return new Result(true, "You suddenly feel unstoppable!");
     }
 
-    public static Result setAnimalFriendship(String animalName, int amount) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+    public static Result setAnimalFriendship(String requester, String animalName, int amount) {
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Animal animal = player.getAnimals().get(animalName);
         if(animal == null) {
             return new Result(-1, "You don't have any animal named " + animalName);
@@ -105,26 +105,26 @@ public class CheatController {
         return new Result(1,"Now " + animal + "'s friendship level is around " + animal.getFriendshipLevel());
     }
 
-    public static Result addMoney(String string) {
+    public static Result addMoney(String requester, String string) {
         int money;
         try{
             money = Integer.parseInt(string);
         }catch (Exception e){
             return new Result(false,"only enter numbers");
         }
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         player.increaseMoney(money);
         return new Result(true, "You are richer than before!");
     }
 
-    public static Result addItem(String itemName, String countString) {
+    public static Result addItem(String requester, String itemName, String countString) {
         int count;
         try{
             count = Integer.parseInt(countString);
         }catch (Exception e){
             return new Result(false,"only enter numbers");
         }
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Item item = CommonGameController.findItem(itemName);
         if(item == null) {
             return new Result(-1, "Doesn't exist any item named " + itemName);
@@ -132,7 +132,7 @@ public class CheatController {
         return ToolsController.addToBackPack(player.getBackpack(), item, count);
     }
 
-    public static Result addBuilding(String buildingName, Location location) {
+    public static Result addBuilding(String requester, String buildingName, Location location) {
         AnimalHousePrototype prototype = AnimalHousePrototype.getAnimalHousePrototype(buildingName);
         int numberOfRows;
         int numberOfColumns;
@@ -171,7 +171,7 @@ public class CheatController {
         Building building;
         if (prototype != null) {
             AnimalHouse animalHouse = new AnimalHouse(prototype, location);
-            App.getCurrentGame().getCurrentPlayer().getFarm().getAnimalHouses().add(animalHouse);
+            App.getCurrentGame().getPlayerByUsername(requester).getFarm().getAnimalHouses().add(animalHouse);
             building = animalHouse;
         }
         else {
@@ -193,13 +193,13 @@ public class CheatController {
         return new Result(true, buildingName + " built!");
     }
 
-    public static Result addAnimal(Animal animal, String name,Location location) {
+    public static Result addAnimal(String requester, Animal animal, String name,Location location) {
         if (animal == null) {
             return new Result(false, "No such animal.");
         }
 
         boolean temp = false;
-        for (AnimalHouse animalHouse : App.getCurrentGame().getCurrentPlayer().getFarm().getAnimalHouses()) {
+        for (AnimalHouse animalHouse : App.getCurrentGame().getPlayerByUsername(requester).getFarm().getAnimalHouses()) {
             for (String acceptedAnimalName : animalHouse.getAnimals()) {
                 if (acceptedAnimalName.equals(animal.getAnimalName())) {
                     temp = true;
@@ -211,37 +211,37 @@ public class CheatController {
             return new Result(false, "building required");
         }
 
-        Result result = AnimalController.moveAnimal(animal,location);
+        Result result = AnimalController.moveAnimal(requester, animal,location);
         if(! result.success()){
             return result;
         }
 
         int i = 0;
-        while (App.getCurrentGame().getCurrentPlayer().getAnimals().get(name + i) != null) {
+        while (App.getCurrentGame().getPlayerByUsername(requester).getAnimals().get(name + i) != null) {
             i++;
         }
         name = name + i;
         animal.setName(name);
-        animal.setOwner(App.getCurrentGame().getCurrentPlayer());
-        App.getCurrentGame().getCurrentPlayer().getAnimals().put(name, animal);
+        animal.setOwner(App.getCurrentGame().getPlayerByUsername(requester));
+        App.getCurrentGame().getPlayerByUsername(requester).getAnimals().put(name, animal);
         App.getCurrentGame().getDateTime().addDailyUpdateListener(animal);
         return new Result(true, "animal purchased");
     }
 
-    public static Result addToFarm(Image image , String itemName, String name, int price, OrthographicCamera camera) {
+    public static Result addToFarm(String requester, Image image , String itemName, String name, int price, OrthographicCamera camera) {
         // todo change image to correct image
         image = new Image(GameAssetManager.getInstance().getStar());
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         if(player.getMoney() <= price){
             return new Result(false, "You can't have " + price +"coin");
         }
         player.decreaseMoney(price);
 
-        Location location = App.getCurrentGame().getCurrentPlayer().getFarm().getLocation();
+        Location location = App.getCurrentGame().getPlayerByUsername(requester).getFarm().getLocation();
         Main.getBatch().begin();
         if(Animal.getAnimal(itemName) != null) {
             Animal animal = Animal.getAnimal(itemName);
-            while(! ((Gdx.input.isKeyPressed(Input.Keys.ENTER) && AnimalController.moveAnimal(animal,location).success()))){
+            while(! ((Gdx.input.isKeyPressed(Input.Keys.ENTER) && AnimalController.moveAnimal(requester, animal,location).success()))){
                 if(Gdx.input.isKeyPressed(Input.Keys.UP)){
                     location = location.add(new Location(0, 1));
                 }
@@ -266,7 +266,7 @@ public class CheatController {
             return new Result(true, "animal purchased");
         }
         else {
-            while(! ((Gdx.input.isKeyPressed(Input.Keys.ENTER) && addBuilding(itemName,location).success()))){
+            while(! ((Gdx.input.isKeyPressed(Input.Keys.ENTER) && addBuilding(requester, itemName,location).success()))){
                 if(Gdx.input.isKeyPressed(Input.Keys.UP)){
                     location = location.add(new Location(0, 1));
                 }

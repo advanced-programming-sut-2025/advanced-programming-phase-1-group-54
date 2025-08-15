@@ -68,6 +68,7 @@ public class CheatMenu implements Screen {
             }
         });
 
+/*          TODO add each command to (ClientGameController)
         addMoneyField.addListener(new InputListener() {
             public void enter(InputEvent event, float x, float y,int pointer, Actor actor) {
                 addMoneyField.setText("");
@@ -170,6 +171,7 @@ public class CheatMenu implements Screen {
                 Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
+*/
 
         window.setSize( 3 * Gdx.graphics.getWidth()/4f, 3 * Gdx.graphics.getHeight()/4f);
         window.setPosition(Gdx.graphics.getWidth()/8f, Gdx.graphics.getHeight()/8f);

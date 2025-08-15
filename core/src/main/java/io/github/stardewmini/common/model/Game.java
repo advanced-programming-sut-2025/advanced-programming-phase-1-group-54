@@ -14,7 +14,6 @@ public class Game implements DailyUpdate {
     private final Player[] players;
 
     private final DateTime dateTime;
-    private int turn;
 
     private int votes;
     private int deleteVotes;
@@ -100,10 +99,6 @@ public class Game implements DailyUpdate {
         return dateTime;
     }
 
-    public Player getCurrentPlayer() {
-        return players[turn];
-    }
-
     public HashMap<Player, FishingGame> getFishingGames() {
         return fishingGames;
     }
@@ -122,17 +117,6 @@ public class Game implements DailyUpdate {
         }
     }
 
-
-    public void nextTurn() {
-        do {
-            turn++;
-            if (turn >= players.length) {
-                turn = 0;
-                dateTime.increaseHour(1);
-            }
-        } while (players[turn].isFallen());
-
-    }
 
     public Weather getCurrentWeather() {
         return world.getCurrentWeather();

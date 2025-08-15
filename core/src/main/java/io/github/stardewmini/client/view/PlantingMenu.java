@@ -9,7 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.server.controllers.game.PlantsController;
+import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.ClientGameController;
+import io.github.stardewmini.client.controllers.game.PlantsController;
+import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 
@@ -48,7 +51,8 @@ public class PlantingMenu implements Screen {
 
         plantingButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                Result result = PlantsController.planting(plantingField.getText(), plantingDirectionField.getText());
+                Message message = ClientGameController.createPlanting(plantingField.getText(), plantingDirectionField.getText());
+                Result result = ClientApp.sendRequest(message);
                 window.remove();
                 Main.getInstance().getScreen().dispose();
                 Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));

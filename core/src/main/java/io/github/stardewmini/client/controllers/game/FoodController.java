@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class FoodController {
     public static Result showFoodRecipes(Window window){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentPlayer();
         Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
 
         if(! (tile.getThingOnTile() instanceof Cabin)){
@@ -31,7 +31,7 @@ public class FoodController {
         }
 
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
-        ArrayList<Recipe> foodRecipes = App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes();
+        ArrayList<Recipe> foodRecipes = App.getCurrentPlayer().getLearnedFoodRecipes();
         int inRow = 0;
         for(Recipe recipe: Recipe.foodRecipes.values()){
             Image image = new Image(gameAssetManager.getRecipe(recipe.getName()));

@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class CraftingController {
     public static Result showCraftingRecipe(Window window){
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentPlayer();
         Tile tile = App.getCurrentGame().getWorld().getTileAt(player.getCurrentLocation());
         if(! (tile.getThingOnTile() instanceof Cabin)){
             return new Result(-1,"You are not in the Cabin");

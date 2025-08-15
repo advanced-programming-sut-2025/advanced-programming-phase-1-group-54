@@ -11,9 +11,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.client.app.App;
+import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.ClientGameController;
 import io.github.stardewmini.client.view.AnimalMenu;
 import io.github.stardewmini.client.view.NPCMenu;
 import io.github.stardewmini.client.view.ShopMenu;
+import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.Game;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.enums.Feature;
@@ -31,7 +34,7 @@ import io.github.stardewmini.server.controllers.game.NpcController;
 public class MapController {
     public static void draw(SpriteBatch batch, Stage stage, OrthographicCamera camera) {
         Game game = App.getCurrentGame();
-        Player player = game.getCurrentPlayer();
+        Player player = App.getCurrentPlayer();
         World world = game.getWorld();
 
         Building currentBuilding = null;
@@ -102,7 +105,8 @@ public class MapController {
             else if(downTile != null && downTile.getThingOnTile() instanceof NPC npc){
                 if(npc.getDialogTime() >= NPC.dialogTiming){
                     int i = App.getCurrentGame().getWorld().getNPCIndex(npc);
-                    windows[i].getTitleLabel().setText(NpcController.meetsNpc(npc.getName()).message());
+                    Message message = ClientGameController.createMeetsNPC(npc.getName());
+                    windows[i].getTitleLabel().setText(ClientApp.sendRequest(message).message());
                     npc.setDialogTime(0);
                 }
             }
@@ -110,14 +114,17 @@ public class MapController {
                 if(npc.getDialogTime() >= NPC.dialogTiming) {
                     int i = App.getCurrentGame().getWorld().getNPCIndex(npc);
                     windows[i].getTitleLabel().setFontScale(0.5f);
-                    windows[i].getTitleLabel().setText(NpcController.meetsNpc(npc.getName()).message());
+                    Message message = ClientGameController.createMeetsNPC(npc.getName());
+                    windows[i].getTitleLabel().setText(ClientApp.sendRequest(message).message());
                     npc.setDialogTime(0);
                 }
             }
+/*
             else if(tile.hasFeature(Feature.WATER)){
                 camera.position.set(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f, 0);
                 FishingController.startFishing("Training");
             }
+*/
         }
     }
 

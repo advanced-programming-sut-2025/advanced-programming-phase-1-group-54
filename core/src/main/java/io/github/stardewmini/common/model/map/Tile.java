@@ -98,8 +98,8 @@ public class Tile implements DailyUpdate {
     @Override
     public void nextDayUpdate() {
         if (thingOnTile instanceof Plant plant) {
-            if (this.hasFeature(Feature.AUTO_WATER))
-                PlantsController.giveWater(this.getLocation());
+//            if (this.hasFeature(Feature.AUTO_WATER))
+                // PlantsController.giveWater(this.getLocation());
 
             if (plant.isDead()) {
                 setThingOnTile(null);

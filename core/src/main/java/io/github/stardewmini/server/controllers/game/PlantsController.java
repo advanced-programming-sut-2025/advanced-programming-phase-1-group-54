@@ -16,6 +16,7 @@ import io.github.stardewmini.server.app.App;
 
 public class PlantsController {
 
+/*
     public static Result showInfo(String plantName) {
         Crop crop = Crop.getCrop(plantName);
         if (crop != null) {
@@ -40,8 +41,9 @@ public class PlantsController {
         return new Result(false, "Plant does not exist");
 
     }
+*/
 
-    public static Result planting(String seedName, String directionString) {
+    public static Result planting(String requester, String seedName, String directionString) {
         Direction direction;
         try{
             direction = Direction.valueOf(directionString);
@@ -53,9 +55,9 @@ public class PlantsController {
 
         Seed seed;
         if (seedName.equals("Mixed Seeds")) {
-            Result result = plantingSeeds(Seed.getMixedSeed(App.getCurrentGame().getDateTime().getSeason()), direction);
+            Result result = plantingSeeds(requester, Seed.getMixedSeed(App.getCurrentGame().getDateTime().getSeason()), direction);
             if (result.success()) {
-                if (!App.getCurrentGame().getCurrentPlayer().getBackpack().
+                if (!App.getCurrentGame().getPlayerByUsername(requester).getBackpack().
                         removeItem(Seed.getSeed("Mixed Seeds"), 1)) {
                     return new Result(-1, "you don't enough " + seedName);
                 }
@@ -66,9 +68,9 @@ public class PlantsController {
             if (seed == null) {
                 return new Result(-1, "seed does not exist");
             }
-            Result result = plantingSeeds(seed, direction);
+            Result result = plantingSeeds(requester, seed, direction);
             if (result.success()) {
-                if (!App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(seed, 1)) {
+                if (!App.getCurrentGame().getPlayerByUsername(requester).getBackpack().removeItem(seed, 1)) {
                     return new Result(-1, "you don't enough " + seedName);
                 }
             }
@@ -77,8 +79,8 @@ public class PlantsController {
 
     }
 
-    public static Result showPlant(Location location) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+    public static Result showPlant(String requester, Location location) {
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Tile tile = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation()).getTileAt(location);
 
         if (tile == null) {
@@ -104,10 +106,10 @@ public class PlantsController {
 
     }
 
-    static Result harvestPlant(Direction direction) {
+    static Result harvestPlant(String requester, Direction direction) {
         Game game = App.getCurrentGame();
-        Location location = game.getCurrentPlayer().getCurrentLocation().getLocationAt(direction);
-        Farm farm = game.getWorld().getFarmAt(game.getCurrentPlayer().getCurrentLocation());
+        Location location = game.getPlayerByUsername(requester).getCurrentLocation().getLocationAt(direction);
+        Farm farm = game.getWorld().getFarmAt(game.getPlayerByUsername(requester).getCurrentLocation());
         Tile tile = farm.getTileAt(location.delta(farm.getLocation()));
 
         if (tile.getThingOnTile() != null && tile.getThingOnTile() instanceof GreenHouse) {
@@ -120,10 +122,10 @@ public class PlantsController {
         }
 
         if (placeable instanceof Fruit fruit) {
-            Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().
+            Result addedToBackPack = ToolsController.addToBackPack(game.getPlayerByUsername(requester).
                     getBackpack(), fruit, 1);
             if (addedToBackPack.success()) {
-                game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
+                game.getPlayerByUsername(requester).getSkill(SkillType.FARMING).addXP(5);
                 tile.setThingOnTile(null);
             }
             return addedToBackPack;
@@ -131,11 +133,11 @@ public class PlantsController {
 
         if (placeable instanceof Tree tree) {
             if (tree.isFruitIsRipen()) {
-                Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(),
+                Result addedToBackPack = ToolsController.addToBackPack(game.getPlayerByUsername(requester).getBackpack(),
                         Fruit.getFruit(tree.getFruit()), 1);
 
                 if (addedToBackPack.success()) {
-                    game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
+                    game.getPlayerByUsername(requester).getSkill(SkillType.FARMING).addXP(5);
                     tree.setFruitIsRipen(false);
                     tree.getSprite().setRegion(GameAssetManager.getInstance().getTrees(tree.getName(),
                         game.getDateTime().getSeason().toString()));
@@ -150,11 +152,11 @@ public class PlantsController {
         if (placeable instanceof Crop crop) {
             if (crop.isFruitIsRipen()) {
                 if (crop.getGiantDirection() != null) {
-                    Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(),
+                    Result addedToBackPack = ToolsController.addToBackPack(game.getPlayerByUsername(requester).getBackpack(),
                             Fruit.getFruit(crop.getFruit()), 10);
 
                     if (addedToBackPack.success()) {
-                        game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
+                        game.getPlayerByUsername(requester).getSkill(SkillType.FARMING).addXP(5);
                         crop.setFruitIsRipen(false);
                         if (crop.isOneTime()) {
                             tile.setThingOnTile(null);
@@ -173,10 +175,10 @@ public class PlantsController {
 
                     return addedToBackPack;
                 } else {
-                    Result addedToBackPack = ToolsController.addToBackPack(game.getCurrentPlayer().getBackpack(),
+                    Result addedToBackPack = ToolsController.addToBackPack(game.getPlayerByUsername(requester).getBackpack(),
                             Fruit.getFruit(crop.getFruit()), 1);
                     if (addedToBackPack.success()) {
-                        game.getCurrentPlayer().getSkill(SkillType.FARMING).addXP(5);
+                        game.getPlayerByUsername(requester).getSkill(SkillType.FARMING).addXP(5);
                         crop.setFruitIsRipen(false);
                         if (crop.isOneTime()) {
                             tile.setThingOnTile(null);
@@ -197,9 +199,9 @@ public class PlantsController {
 
     }
 
-    public static Result giveWater(Location location) {
+    public static Result giveWater(String requester, Location location) {
         Game game = App.getCurrentGame();
-        Farm farm = game.getWorld().getFarmAt(game.getCurrentPlayer().getCurrentLocation());
+        Farm farm = game.getWorld().getFarmAt(game.getPlayerByUsername(requester).getCurrentLocation());
         Tile tile = farm.getTileAt(location.delta(farm.getLocation()));
 
         if (tile.getThingOnTile() != null && tile.getThingOnTile() instanceof GreenHouse) {
@@ -223,11 +225,11 @@ public class PlantsController {
         return new Result(true, "You watered the plant on this tile");
     }
 
-    public static Result fertilizePlant(String fertilizeName, Direction direction) {
+    public static Result fertilizePlant(String requester, String fertilizeName, Direction direction) {
         if (direction == null)
             return new Result(false, "invalid direction");
 
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
         if (farm == null) {
             return new Result(-1, "You must be in a farm to do this action");
@@ -272,9 +274,9 @@ public class PlantsController {
     }
 
 
-    private static Result plantingSeeds(Seed seed, Direction direction) {
+    private static Result plantingSeeds(String requester, Seed seed, Direction direction) {
 
-        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+        Player currentPlayer = App.getCurrentGame().getPlayerByUsername(requester);
 
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(currentPlayer.getCurrentLocation());
         if (farm == null) {

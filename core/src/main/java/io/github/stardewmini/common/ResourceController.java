@@ -1,4 +1,4 @@
-package io.github.stardewmini.server.controllers.game;
+package io.github.stardewmini.common;
 
 
 import com.google.gson.JsonArray;

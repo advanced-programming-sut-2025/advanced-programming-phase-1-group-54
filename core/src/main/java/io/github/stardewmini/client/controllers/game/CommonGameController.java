@@ -59,7 +59,7 @@ public class CommonGameController {
             append("\nyear : ").append(dateTime.getYear()).append("\nweekDay : ").append(dateTime.getWeekDay()).
             append("\nseason : ").append(dateTime.getSeason()).append("\nweather : ").
             append(App.getCurrentGame().getCurrentWeather()).append("\nEnergy : ").
-            append(App.getCurrentGame().getCurrentPlayer().getEnergy());
+            append(App.getCurrentPlayer().getEnergy());
 
         if(dateTime.getHour() >= 18){
             batch.setColor(0.7f, 0.7f, 0.7f, 1);

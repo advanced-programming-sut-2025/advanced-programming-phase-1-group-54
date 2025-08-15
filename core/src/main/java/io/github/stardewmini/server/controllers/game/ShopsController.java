@@ -18,12 +18,13 @@ import io.github.stardewmini.server.app.App;
 import java.util.ArrayList;
 
 public class ShopsController {
+/*
     // HANDLE FISHING POLE AND RECIPE ONE BUY ?
 
-    public static Result purchaseItem(String itemName, int count) {
+    public static Result purchaseItem(String requester, String itemName, int count) {
         Game game = App.getCurrentGame();
         World world = game.getWorld();
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
 
         Tile playerTile = world.getTileAt(player.getCurrentLocation());
 
@@ -89,10 +90,10 @@ public class ShopsController {
         return new Result(false, "ERROR: shop was not found!");
     }
 
-    public static Result upgradeTool(String toolName) {
+    public static Result upgradeTool(String requester, String toolName) {
         Game game = App.getCurrentGame();
         World world = game.getWorld();
-        Player player = game.getCurrentPlayer();
+        Player player = game.getPlayerByUsername(requester);
 
         if (!(world.getTileAt(player.getCurrentLocation()).getThingOnTile() instanceof BlackSmithShop)) {
             return new Result(false, "You can only upgrade your tools at the blacksmith");
@@ -139,7 +140,7 @@ public class ShopsController {
         return new Result(false, "ERROR: wrong upgrade name");
     }
 
-    public static Result buildBuilding(String buildingName, Location location) {
+    public static Result buildBuilding(String requester, String buildingName, Location location) {
         for (CarpenterShop.ItemsinCarpenterShop item : ((CarpenterShop) (App.getCurrentGame().getWorld().
                 getShops().get(3))).getFarmBuildings()) {
             if (item.getName().equals(buildingName)) {
@@ -150,7 +151,7 @@ public class ShopsController {
         return new Result(false, "No building with this name was found");
     }
 
-    public static Result buyAnimal(String animalName, String name) {
+    public static Result buyAnimal(String requester, String animalName, String name) {
         for (MarnieRanch.ItemsInMarnieRanch item : ((MarnieRanch) (App.getCurrentGame().getWorld().getShops().get(5))).getLiveStock()) {
             if (item.getName().equals(animalName)) {
                 return buyLivesStockInMarnie(item, name);
@@ -160,27 +161,27 @@ public class ShopsController {
         return new Result(false, "No such animal exists");
     }
 
-    public static Result showAvailableProducts() {
+    public static Result showAvailableProducts(String requester) {
         ArrayList<String> temp;
-        if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof BlackSmithShop) {
             temp = ShopsController.showProductsInBlackSmith(true);
-        } else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        } else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof MarnieRanch) {
             temp = ShopsController.showProductsMarineRanch(true);
-        } else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        } else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof CarpenterShop) {
             temp = ShopsController.showCarpenterShop(true);
-        } else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        } else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof JojoMartShop) {
             temp = ShopsController.showJojaMart(true);
-        } else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        } else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof PierreGeneralShop) {
             temp = ShopsController.showPierreGeneralShop(true);
-        } else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        } else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof FishShop) {
             temp = ShopsController.showFishShop(true);
-        } else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        } else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof TheStardropSaloonShop) {
             temp = ShopsController.showProductsStardropSaloon(true);
         } else {
@@ -195,33 +196,33 @@ public class ShopsController {
         return new Result(true, message.toString().trim());
     }
 
-    public static Result showAllProducts() {
+    public static Result showAllProducts(String requester) {
         ArrayList<String> temp;
-        if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof BlackSmithShop) {
             temp = ShopsController.showProductsInBlackSmith(false);
         }
-        else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof MarnieRanch) {
             temp = ShopsController.showProductsMarineRanch(false);
         }
-        else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof CarpenterShop) {
             temp = ShopsController.showCarpenterShop(false);
         }
-        else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof JojoMartShop) {
             temp = ShopsController.showJojaMart(false);
         }
-        else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof PierreGeneralShop) {
             temp = ShopsController.showPierreGeneralShop(false);
         }
-        else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof FishShop) {
             temp = ShopsController.showFishShop(false);
         }
-        else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getCurrentPlayer().getCurrentLocation())
+        else if (App.getCurrentGame().getWorld().getTileAt(App.getCurrentGame().getPlayerByUsername(requester).getCurrentLocation())
                 .getThingOnTile() instanceof TheStardropSaloonShop) {
             temp = ShopsController.showProductsStardropSaloon(false);
         } else {
@@ -345,22 +346,22 @@ public class ShopsController {
         if (count > item.getCount() && item.getCount() != -1) {
             return new Result(false, "Not enough product.");
         }
-        if (count * item.getPrice() > App.getCurrentGame().getCurrentPlayer().getMoney()) {
+        if (count * item.getPrice() > App.getCurrentGame().getPlayerByUsername(requester).getMoney()) {
             return new Result(false, "Not enough money.");
         }
 
         if (item.getName().equals("Milk Pail")) {
             Tool milkPail = new Tool(ToolType.MILK_PAIL);
-            App.getCurrentGame().getCurrentPlayer().setTool(ToolType.MILK_PAIL, milkPail);
-            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getPlayerByUsername(requester).setTool(ToolType.MILK_PAIL, milkPail);
+            App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
             return new Result(true, "Item purchased");
         } else if (item.getName().equals("Shears")) {
             Tool shear = new Tool(ToolType.SHEAR);
-            App.getCurrentGame().getCurrentPlayer().setTool(ToolType.SHEAR, shear);
-            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getPlayerByUsername(requester).setTool(ToolType.SHEAR, shear);
+            App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -369,8 +370,8 @@ public class ShopsController {
         } else if (item.getName().contains(" (Recipe)")) {
             String temp = item.getName().split("\\(Recipe\\)")[0];
             Recipe temp1 = Recipe.craftRecipes.get(temp);
-            App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes().add(temp1);
-            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getPlayerByUsername(requester).getLearnedCraftingRecipes().add(temp1);
+            App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -379,8 +380,8 @@ public class ShopsController {
         } else if (item.getName().contains(" Recipe")) {
             String temp = item.getName().split(" Recipe")[0];
             Recipe temp1 = Recipe.foodRecipes.get(temp);
-            App.getCurrentGame().getCurrentPlayer().getLearnedFoodRecipes().add(temp1);
-            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getPlayerByUsername(requester).getLearnedFoodRecipes().add(temp1);
+            App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -390,19 +391,19 @@ public class ShopsController {
             Item temp = CommonGameController.findItem(item.getName());
             if (temp == null) {
                 UniqueItem uniqueItem = UniqueItem.getUniqueItem(item.getName());
-                if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(uniqueItem, count) == false) {
+                if (App.getCurrentGame().getPlayerByUsername(requester).getBackpack().addItem(uniqueItem, count) == false) {
                     return new Result(false, "No space in Backpack.");
                 }
-                App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
+                App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(item.getPrice() * item.getCount());
                 if (item.getCount() != -1) {
                     item.setCount(item.getCount() - 1);
                 }
                 return new Result(true, "Item purchased");
             } else {
-                if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, count) == false) {
+                if (App.getCurrentGame().getPlayerByUsername(requester).getBackpack().addItem(temp, count) == false) {
                     return new Result(false, "No space in Backpack.");
                 }
-                App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
+                App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(item.getPrice() * item.getCount());
                 if (item.getCount() != -1) {
                     item.setCount(item.getCount() - 1);
                 }
@@ -415,45 +416,45 @@ public class ShopsController {
         if (count > item.getCount() && item.getCount() != -1) {
             return new Result(false, "Not enough product.");
         }
-        if (count * item.getPrice() > App.getCurrentGame().getCurrentPlayer().getMoney()) {
+        if (count * item.getPrice() > App.getCurrentGame().getPlayerByUsername(requester).getMoney()) {
             return new Result(false, "Not enough money.");
         }
         if (CommonGameController.numberOfItemInBackPack(item.getIngredientString()) < item.getIngredientsInt()) {
             return new Result(false, "Not enough " + item.getIngredientString());
         }
         Item temp = CommonGameController.findItem(item.getIngredientString());
-        if (!App.getCurrentGame().getCurrentPlayer().getBackpack().removeItem(temp, count)) {
+        if (!App.getCurrentGame().getPlayerByUsername(requester).getBackpack().removeItem(temp, count)) {
             return new Result(false, "Not enough " + item.getIngredientString());
         }
-        App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
+        App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(item.getPrice() * item.getCount());
         //trashcan handle
         if (item.getName().contains("Trash")) {
             if (item.getName().contains("Copper")) {
-                App.getCurrentGame().getCurrentPlayer().getTrashCan().setToolLevel(ToolLevel.COPPER);
+                App.getCurrentGame().getPlayerByUsername(requester).getTrashCan().setToolLevel(ToolLevel.COPPER);
             }
             if (item.getName().contains("Steel")) {
-                App.getCurrentGame().getCurrentPlayer().getTrashCan().setToolLevel(ToolLevel.IRON);
+                App.getCurrentGame().getPlayerByUsername(requester).getTrashCan().setToolLevel(ToolLevel.IRON);
             }
             if (item.getName().contains("Gold")) {
-                App.getCurrentGame().getCurrentPlayer().getTrashCan().setToolLevel(ToolLevel.GOLD);
+                App.getCurrentGame().getPlayerByUsername(requester).getTrashCan().setToolLevel(ToolLevel.GOLD);
             }
             if (item.getName().contains("Iridium")) {
-                App.getCurrentGame().getCurrentPlayer().getTrashCan().setToolLevel(ToolLevel.IRIDIUM);
+                App.getCurrentGame().getPlayerByUsername(requester).getTrashCan().setToolLevel(ToolLevel.IRIDIUM);
             }
         }
         //handle Tool
         if (item.getName().contains("Tool")) {
             if (item.getName().contains("Copper")) {
-                App.getCurrentGame().getCurrentPlayer().getEquippedTool().setToolLevel(ToolLevel.COPPER);
+                App.getCurrentGame().getPlayerByUsername(requester).getEquippedTool().setToolLevel(ToolLevel.COPPER);
             }
             if (item.getName().contains("Steel")) {
-                App.getCurrentGame().getCurrentPlayer().getEquippedTool().setToolLevel(ToolLevel.IRON);
+                App.getCurrentGame().getPlayerByUsername(requester).getEquippedTool().setToolLevel(ToolLevel.IRON);
             }
             if (item.getName().contains("Gold")) {
-                App.getCurrentGame().getCurrentPlayer().getEquippedTool().setToolLevel(ToolLevel.GOLD);
+                App.getCurrentGame().getPlayerByUsername(requester).getEquippedTool().setToolLevel(ToolLevel.GOLD);
             }
             if (item.getName().contains("Iridium")) {
-                App.getCurrentGame().getCurrentPlayer().getEquippedTool().setToolLevel(ToolLevel.IRIDIUM);
+                App.getCurrentGame().getPlayerByUsername(requester).getEquippedTool().setToolLevel(ToolLevel.IRIDIUM);
             }
         }
         if (item.getCount() != -1) {
@@ -466,20 +467,20 @@ public class ShopsController {
         if (count > item.getCount() && item.getCount() != -1) {
             return new Result(false, "Not enough product.");
         }
-        if (count * item.getPrice() > App.getCurrentGame().getCurrentPlayer().getMoney()) {
+        if (count * item.getPrice() > App.getCurrentGame().getPlayerByUsername(requester).getMoney()) {
             return new Result(false, "Not enough money.");
         }
-        if (item.getName().equals("Deluxe Pack") && App.getCurrentGame().getCurrentPlayer().getBackpack().getLevel().equals(BackPackLevel.DELUX)) {
+        if (item.getName().equals("Deluxe Pack") && App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getLevel().equals(BackPackLevel.DELUX)) {
             return new Result(false, "You already have this one");
         }
-        if (item.getName().equals("Large Pack") && App.getCurrentGame().getCurrentPlayer().getBackpack().getLevel().equals(BackPackLevel.LARGE)) {
+        if (item.getName().equals("Large Pack") && App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getLevel().equals(BackPackLevel.LARGE)) {
             return new Result(false, "You already have this one");
         }
-        if (!item.isPurchaseAble() && App.getCurrentGame().getCurrentPlayer().getBackpack().getLevel().equals(BackPackLevel.NORMAL)) {
+        if (!item.isPurchaseAble() && App.getCurrentGame().getPlayerByUsername(requester).getBackpack().getLevel().equals(BackPackLevel.NORMAL)) {
             return new Result(false, "You should buy Large Backpack first.");
         }
-        App.getCurrentGame().getCurrentPlayer().getBackpack().upgrade();
-        App.getCurrentGame().getCurrentPlayer().decreaseMoney(count * item.getPrice());
+        App.getCurrentGame().getPlayerByUsername(requester).getBackpack().upgrade();
+        App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(count * item.getPrice());
         item.setCount(item.getCount() - 1);
         return new Result(true, "God willing, wear it in joy.");
     }
@@ -494,14 +495,14 @@ public class ShopsController {
         if (count > item.getCount() && item.getCount() != -1) {
             return new Result(false, "Not enough product.");
         }
-        if (count * price > App.getCurrentGame().getCurrentPlayer().getMoney()) {
+        if (count * price > App.getCurrentGame().getPlayerByUsername(requester).getMoney()) {
             return new Result(false, "Not enough money.");
         }
         Item temp = CommonGameController.findItem(item.getName());
-        if (App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, count) == false) {
+        if (App.getCurrentGame().getPlayerByUsername(requester).getBackpack().addItem(temp, count) == false) {
             return new Result(false, "No space in Backpack.");
         }
-        App.getCurrentGame().getCurrentPlayer().decreaseMoney(price * item.getCount());
+        App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(price * item.getCount());
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }
@@ -516,7 +517,7 @@ public class ShopsController {
         if (item.getCount() < count) {
             return new Result(false, "Not enough product.");
         }
-        if (App.getCurrentGame().getCurrentPlayer().getMoney() < item.getPrice() * count) {
+        if (App.getCurrentGame().getPlayerByUsername(requester).getMoney() < item.getPrice() * count) {
             return new Result(false, "Not enough money.");
         }
         if (CommonGameController.numberOfItemInBackPack("Wood") < item.getWood()) {
@@ -561,7 +562,7 @@ public class ShopsController {
             }
         }
 
-        App.getCurrentGame().getCurrentPlayer().decreaseMoney(count * item.getPrice());
+        App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(count * item.getPrice());
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }
@@ -592,16 +593,16 @@ public class ShopsController {
         if (count > item.getCount() && item.getCount() != -1) {
             return new Result(false, "Not enough product.");
         }
-        if (count * item.getPrice() > App.getCurrentGame().getCurrentPlayer().getMoney()) {
+        if (count * item.getPrice() > App.getCurrentGame().getPlayerByUsername(requester).getMoney()) {
             return new Result(false, "Not enough money.");
         }
-        if (App.getCurrentGame().getCurrentPlayer().getSkill(SkillType.FISHING).getLevel() < item.getPurchaseable()) {
+        if (App.getCurrentGame().getPlayerByUsername(requester).getSkill(SkillType.FISHING).getLevel() < item.getPurchaseable()) {
             return new Result(false, "fishing skill required");
         }
         if (item.getName().contains("Recipe")) {
             Recipe recipe = Recipe.craftRecipes.get("Fish Smoker");
-            App.getCurrentGame().getCurrentPlayer().getLearnedCraftingRecipes().add(recipe);
-            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getPlayerByUsername(requester).getLearnedCraftingRecipes().add(recipe);
+            App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -620,18 +621,18 @@ public class ShopsController {
                 return null;
             }
 
-            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
-            App.getCurrentGame().getCurrentPlayer().setFishingPole(poleLevel, new FishingPole(poleLevel));
+            App.getCurrentGame().getPlayerByUsername(requester).setFishingPole(poleLevel, new FishingPole(poleLevel));
             return new Result(true, "Item purchased");
         } else {
             Item temp = CommonGameController.findItem(item.getName());
-            if (!App.getCurrentGame().getCurrentPlayer().getBackpack().addItem(temp, count)) {
+            if (!App.getCurrentGame().getPlayerByUsername(requester).getBackpack().addItem(temp, count)) {
                 return new Result(false, "No space in Backpack.");
             }
-            App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
+            App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(item.getPrice() * item.getCount());
             if (item.getCount() != -1) {
                 item.setCount(item.getCount() - 1);
             }
@@ -644,14 +645,14 @@ public class ShopsController {
         if (count > item.getCount() && item.getCount() != -1) {
             return new Result(false, "Not enough product.");
         }
-        if (count * item.getPrice() > App.getCurrentGame().getCurrentPlayer().getMoney()) {
+        if (count * item.getPrice() > App.getCurrentGame().getPlayerByUsername(requester).getMoney()) {
             return new Result(false, "Not enough money.");
         }
-        if (App.getCurrentGame().getCurrentPlayer().getAnimals().get(name) != null) {
+        if (App.getCurrentGame().getPlayerByUsername(requester).getAnimals().get(name) != null) {
             return new Result(false, "this name is for another animal");
         }
         boolean temp = false;
-        for (AnimalHouse animalHouse : App.getCurrentGame().getCurrentPlayer().getFarm().getAnimalHouses()) {
+        for (AnimalHouse animalHouse : App.getCurrentGame().getPlayerByUsername(requester).getFarm().getAnimalHouses()) {
             if (animalHouse.getName().equals(item.getBuildingRequired())) {
                 temp = true;
             }
@@ -659,12 +660,12 @@ public class ShopsController {
         if (!temp) {
             return new Result(false, "building required");
         }
-        App.getCurrentGame().getCurrentPlayer().decreaseMoney(item.getPrice() * item.getCount());
+        App.getCurrentGame().getPlayerByUsername(requester).decreaseMoney(item.getPrice() * item.getCount());
         if (item.getCount() != -1) {
             item.setCount(item.getCount() - 1);
         }
         Animal animal = Animal.getAnimal(item.getName());
-        App.getCurrentGame().getCurrentPlayer().getAnimals().put(name, animal);
+        App.getCurrentGame().getPlayerByUsername(requester).getAnimals().put(name, animal);
         App.getCurrentGame().getDateTime().addDailyUpdateListener(animal);
         return new Result(true, "animal purchased");
     }
@@ -973,4 +974,5 @@ public class ShopsController {
         }
         return products;
     }
+*/
 }

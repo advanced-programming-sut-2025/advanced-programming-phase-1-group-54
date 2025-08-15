@@ -8,13 +8,16 @@ import io.github.stardewmini.client.app.App;
 import io.github.stardewmini.client.app.ClientApp;
 import io.github.stardewmini.client.controllers.ClientGameController;
 import io.github.stardewmini.common.Message;
+import io.github.stardewmini.common.model.Game;
+import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.Direction;
+import io.github.stardewmini.common.model.enums.ToolType;
 import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.map.Tile;
 
 public class ToolsController {
     public static void mouseClick(int screenX, int screenY, OrthographicCamera camera) {
-        Player player = App.getCurrentGame().getCurrentPlayer();
+        Player player = App.getCurrentPlayer();
         Vector3 clickPos = new Vector3(screenX, screenY, 0);
         camera.unproject(clickPos); // Converts screen to world coordinates
         Vector2 playerPos = new Vector2(player.getX() + Tile.getSize()/2f, player.getY() + Tile.getSize()/2f); // Adjust to your player’s position

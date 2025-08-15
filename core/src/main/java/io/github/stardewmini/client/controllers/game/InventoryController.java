@@ -9,6 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.client.app.App;
+import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.ClientGameController;
+import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.SkillType;
@@ -17,7 +20,6 @@ import io.github.stardewmini.common.model.items.tools.Tool;
 import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.lives.Skill;
 import io.github.stardewmini.client.view.GameScreen;
-import io.github.stardewmini.server.controllers.game.ToolsController;
 
 import java.util.Map;
 
@@ -26,7 +28,7 @@ public class InventoryController {
 //    public static String skills(){
 //        StringBuilder output  = new StringBuilder();
 //
-//        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+//        Player currentPlayer = App.getCurrentPlayer();
 //        for(SkillType type : SkillType.values()){
 //            Skill skill = currentPlayer.getSkill(type);
 //            output.append(type.name()).append(" Level : ").append(skill.getLevel())
@@ -36,14 +38,14 @@ public class InventoryController {
 //    }
 
     public static String showSkill(int index){
-        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+        Player currentPlayer = App.getCurrentPlayer();
         Skill skill = currentPlayer.getSkill(SkillType.values()[index]);
         return skill.getSkillType() + " Level : " + skill.getLevel() + " XP needed for next Level : " + skill.getXpNeededForLevelUp();
     }
 
     public static Table showInventory(){
         Table output = new Table();
-        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+        Player currentPlayer = App.getCurrentPlayer();
         Map<Item,Integer> inventory = currentPlayer.getBackpack().getCopy();
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         int i = 0;
@@ -64,7 +66,7 @@ public class InventoryController {
 
     public static Table showTolls(Window window){
         Table output = new Table();
-        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+        Player currentPlayer = App.getCurrentPlayer();
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         int i = 0;
         for(Tool tool : currentPlayer.getTools()){
@@ -75,7 +77,8 @@ public class InventoryController {
                 Image image = new Image(texture);
                 image.addListener(new ClickListener() {
                     public void clicked(InputEvent event, float x, float y) {
-                        Result result = ToolsController.equipTool(tool.getToolType().toString());
+                        Message message = ClientGameController.createEquipTool(tool.getToolType().toString());
+                        Result result = ClientApp.sendRequest(message);
                         window.remove();
                         Main.getInstance().getScreen().dispose();
                         Main.getInstance().setScreen(new GameScreen(gameAssetManager.getSkin(),result.message()));
