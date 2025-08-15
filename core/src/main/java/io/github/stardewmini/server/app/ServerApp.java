@@ -1,12 +1,17 @@
 package io.github.stardewmini.server.app;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ServerApp {
 	public static final int TIMEOUT_MILLIS = 10000;
 	private static final ArrayList<ClientConnectionThread> connections = new ArrayList<>();
 	private static boolean exitFlag = false;
 	private static ListenerThread listenerThread;
+
+    private static HashMap<String, Object> diff = new HashMap<>();
 
 	public static boolean isEnded() {
 		return exitFlag;
@@ -50,5 +55,21 @@ public class ServerApp {
             }
         }
         return null;
+    }
+
+    public static List<ClientConnectionThread> getConnections() {
+        return List.copyOf(connections);
+    }
+
+    public static HashMap<String, Object> getDiff() {
+        return (HashMap<String, Object>) Map.copyOf(diff);
+    }
+
+    public static void addDiff(String string, Object object) {
+        diff.put(string, object);
+    }
+
+    public static void clearDiff() {
+        diff.clear();
     }
 }

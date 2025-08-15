@@ -125,6 +125,14 @@ public class ServerConnectionController {
         }
     }
 
+    private static Message handleFindLobby(String username, Message message) {
+        return null; // TODO
+    }
+
+    private static Message handleRefreshLobbyList(String username, Message message) {
+        return null; // TODO
+    }
+
     public static void handleUpdate(String username, Message message) {
         // TODO
     }
