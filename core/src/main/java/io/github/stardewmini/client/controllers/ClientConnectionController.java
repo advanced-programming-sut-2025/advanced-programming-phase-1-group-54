@@ -187,4 +187,11 @@ public class ClientConnectionController {
         body.put("id", idString);
         return new Message(body, Message.Type.command);
     }
+
+    public static Message createStartGame(int id) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "start_game");
+        body.put("id", id);
+        return new Message(body, Message.Type.command);
+    }
 }

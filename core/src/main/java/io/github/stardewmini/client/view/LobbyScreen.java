@@ -50,9 +50,23 @@ public class LobbyScreen implements Screen {
         lobbyMembersTable = new Table();
         lobbyMembersTable.left();
         ScrollPane scrollPane = new ScrollPane(lobbyMembersTable, skin);
+
         TextButton startGameButton = new TextButton("Start Game", skin);
         TextButton leaveButton = new TextButton("Leave", skin);
 
+
+        startGameButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                SoundManager.getInstance().playClick();
+                Message message = ClientConnectionController.createStartGame(lobbyInfo.id());
+                Result result = ClientApp.sendRequest(message);
+                if (result.success()) {
+                    Main.getInstance().getScreen().dispose();
+                    Main.getInstance().setScreen(new ChooseMapScreen());
+                }
+            }
+        });
 
         leaveButton.addListener(new ChangeListener() {
             @Override

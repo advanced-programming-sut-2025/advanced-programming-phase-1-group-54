@@ -3,11 +3,16 @@ package io.github.stardewmini.server.controllers;
 
 import io.github.stardewmini.Main;
 import io.github.stardewmini.common.Message;
+import io.github.stardewmini.common.model.LobbyInfo;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.Gender;
+import io.github.stardewmini.server.app.App;
 import io.github.stardewmini.server.controllers.game.*;
+import io.github.stardewmini.server.model.Lobby;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ServerConnectionController {
     public static Message handleCommand(String username, String clientIp, int clientPort, Message message) {
@@ -47,9 +52,11 @@ public class ServerConnectionController {
             case "leave_lobby":
                 return handleLeaveLobby(username, message);
             case "refresh_lobby_list":
-                return handleRefreshLobbyList(username, message);
+                return handleRefreshLobbyList();
             case "find_lobby":
-                return handleFindLobby(username, message);
+                return handleFindLobby(message);
+            case "start_game":
+                return handleStartGame(message);
 
 
             case "use_tool":
@@ -125,16 +132,39 @@ public class ServerConnectionController {
         }
     }
 
-    private static Message handleFindLobby(String username, Message message) {
-        return null; // TODO
-    }
-
-    private static Message handleRefreshLobbyList(String username, Message message) {
-        return null; // TODO
+    private static Message handleStartGame(Message message) {
+        int lobbyId = message.getIntFromBody("id");
+        // TODO
     }
 
     public static void handleUpdate(String username, Message message) {
         // TODO
+    }
+
+    private static Message handleFindLobby(Message message) {
+        HashMap<String, Object> body = new HashMap<>();
+        List<LobbyInfo> lobbyInfos = new ArrayList<>();
+        Lobby foundLobby = App.getLobbyById(message.getIntFromBody("id"));
+
+        if (foundLobby != null) {
+            lobbyInfos.add(foundLobby.getLobbyInfo());
+        }
+
+        body.put("lobbies", lobbyInfos);
+        return new Message(body, Message.Type.response);
+    }
+
+    private static Message handleRefreshLobbyList() {
+        List<Lobby> lobbies = App.getLobbies();
+        HashMap<String, Object> body = new HashMap<>();
+        List<LobbyInfo> lobbyInfos = new ArrayList<>();
+        for (Lobby lobby : lobbies) {
+            if (lobby.isVisible()) {
+                lobbyInfos.add(lobby.getLobbyInfo());
+            }
+        }
+        body.put("lobbies", lobbyInfos);
+        return new Message(body, Message.Type.response);
     }
 
     private static Message makeResponseFrom(Result result) {

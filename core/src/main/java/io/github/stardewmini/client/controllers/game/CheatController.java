@@ -227,6 +227,7 @@ public class CheatController {
             return new Result(true, "animal purchased");
         }
         else {
+/*
             while(! ((Gdx.input.isKeyPressed(Input.Keys.ENTER) && addBuilding(requester, itemName,location).success()))){
                 if(Gdx.input.isKeyPressed(Input.Keys.UP)){
                     location = location.add(new Location(0, 1));
@@ -247,6 +248,7 @@ public class CheatController {
                 image.draw(Main.getBatch(),0.5f);
                 camera.position.set(location.row() * Tile.getSize(),location.column() * Tile.getSize(),0);
             }
+*/
             return new Result(true, "building purchased");
         }
     }

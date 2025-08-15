@@ -1,22 +1,17 @@
 package io.github.stardewmini.server.controllers;
 
 import io.github.stardewmini.common.Message;
+import io.github.stardewmini.common.model.LobbyInfo;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.User;
 import io.github.stardewmini.server.app.App;
 import io.github.stardewmini.server.model.Lobby;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class LobbyController {
-    public static Message getVisibleLobbies() {
-        List<Lobby> lobbies = App.getLobbies();
-        for (Lobby lobby : lobbies) {
-            // TODO
-        }
-        // TODO
-    }
-
     public static Result createLobby(String requester, String name, String password, boolean invisible) {
         int id = (int) (10000000 + Math.random() * 90000000);
 
