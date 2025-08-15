@@ -53,6 +53,7 @@ public class LobbyScreen implements Screen {
 
         TextButton startGameButton = new TextButton("Start Game", skin);
         TextButton leaveButton = new TextButton("Leave", skin);
+        Label resultLabel = new Label("", skin);
 
 
         startGameButton.addListener(new ChangeListener() {
@@ -61,10 +62,7 @@ public class LobbyScreen implements Screen {
                 SoundManager.getInstance().playClick();
                 Message message = ClientConnectionController.createStartGame(lobbyInfo.id());
                 Result result = ClientApp.sendRequest(message);
-                if (result.success()) {
-                    Main.getInstance().getScreen().dispose();
-                    Main.getInstance().setScreen(new ChooseMapScreen());
-                }
+                resultLabel.setText(result.message());
             }
         });
 
@@ -88,6 +86,14 @@ public class LobbyScreen implements Screen {
         root.add(titleLabel);
         root.row().pad(10, 0, 10, 0);
         root.add(subtitleLabel);
+        root.row().pad(10, 0, 10, 0);
+        root.add(scrollPane).width(1200).height(900);
+        root.row().pad(10, 0, 10, 0);
+        root.add(startGameButton).width(300).height(90);
+        root.row().pad(10, 0, 10, 0);
+        root.add(leaveButton).width(300).height(90);
+        root.row().pad(10, 0, 10, 0);
+        root.add(resultLabel);
 
         stage.addActor(root);
     }

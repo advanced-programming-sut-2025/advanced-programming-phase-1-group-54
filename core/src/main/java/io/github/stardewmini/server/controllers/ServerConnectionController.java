@@ -56,7 +56,7 @@ public class ServerConnectionController {
             case "find_lobby":
                 return handleFindLobby(message);
             case "start_game":
-                return handleStartGame(message);
+                return handleStartGame(username, message);
 
 
             case "use_tool":
@@ -132,9 +132,14 @@ public class ServerConnectionController {
         }
     }
 
-    private static Message handleStartGame(Message message) {
+    private static Message handleStartGame(String username, Message message) {
         int lobbyId = message.getIntFromBody("id");
-        // TODO
+        if (!App.getLobbyById(lobbyId).getAdmin().getUsername().equals(username)) {
+            return makeResponseFrom(new Result(false, "Only admin can start game."));
+        }
+
+        UpdateController.chooseMap(lobbyId);
+        return makeResponseFrom(new Result(true, "Starting Game ..."));
     }
 
     public static void handleUpdate(String username, Message message) {

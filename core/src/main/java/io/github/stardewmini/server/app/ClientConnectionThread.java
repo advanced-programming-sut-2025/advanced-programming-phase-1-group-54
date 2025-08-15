@@ -54,6 +54,7 @@ public class ClientConnectionThread extends ConnectionThread {
             return true;
         } else if (message.getType() == Message.Type.update) {
             ServerConnectionController.handleUpdate(username, message);
+            return true;
         }
         return false;
     }

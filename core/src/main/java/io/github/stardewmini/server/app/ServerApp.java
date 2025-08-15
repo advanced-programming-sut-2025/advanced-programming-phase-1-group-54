@@ -11,8 +11,6 @@ public class ServerApp {
 	private static boolean exitFlag = false;
 	private static ListenerThread listenerThread;
 
-    private static HashMap<String, Object> diff = new HashMap<>();
-
 	public static boolean isEnded() {
 		return exitFlag;
 	}
@@ -68,17 +66,5 @@ public class ServerApp {
 
     public static List<ClientConnectionThread> getConnections() {
         return List.copyOf(connections);
-    }
-
-    public static HashMap<String, Object> getDiff() {
-        return (HashMap<String, Object>) Map.copyOf(diff);
-    }
-
-    public static void addDiff(String string, Object object) {
-        diff.put(string, object);
-    }
-
-    public static void clearDiff() {
-        diff.clear();
     }
 }

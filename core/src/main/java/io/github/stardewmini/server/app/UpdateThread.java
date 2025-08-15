@@ -2,22 +2,30 @@ package io.github.stardewmini.server.app;
 
 import io.github.stardewmini.common.JSONUtils;
 import io.github.stardewmini.common.Message;
+import io.github.stardewmini.server.controllers.UpdateController;
+
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class UpdateThread extends Thread {
     private int TICK_RATE = 100;
-
+    private Queue<Message> diffs;
     private AtomicBoolean end;
 
     public UpdateThread() {
         this.end = new AtomicBoolean(false);
+        this.diffs = new ConcurrentLinkedDeque<>();
     }
 
-    private void sendDiff() {
+    private void sendDiff(Message diff) {
         for (ClientConnectionThread connectionThread : ServerApp.getConnections()) {
-            Message message = new Message(ServerApp.getDiff(), Message.Type.update);
-            connectionThread.sendMessage(message);
+            connectionThread.sendMessage(diff);
         }
+    }
+
+    public void addDiff(Message message) {
+        diffs.add(message);
     }
 
     @Override
@@ -26,14 +34,14 @@ public class UpdateThread extends Thread {
         while (!end.get()) {
             if (timer >= 60_000) {
                 App.getCurrentGame().getDateTime().increaseHour(1);
-                ServerApp.addDiff("advance_time", 1);
+                diffs.add(UpdateController.createAdvanceTime(1));
                 timer = 0;
             }
 
-            if (!ServerApp.getDiff().isEmpty()) {
-                sendDiff();
-                ServerApp.clearDiff();
+            while (!diffs.isEmpty()) {
+                sendDiff(diffs.poll());
             }
+
             try {
                 Thread.sleep(TICK_RATE);
             } catch (InterruptedException e) {
