@@ -1,8 +1,15 @@
 package io.github.stardewmini.client.controllers;
 
+import io.github.stardewmini.Main;
+import io.github.stardewmini.client.app.App;
 import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.view.GameScreen;
 import io.github.stardewmini.common.Message;
+import io.github.stardewmini.common.model.Game;
+import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.common.model.GameData;
 import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.builders.GameBuilder;
 import io.github.stardewmini.common.model.enums.Gender;
 
 import java.util.HashMap;
@@ -16,12 +23,28 @@ public class ClientConnectionController {
     }
 
     public static Message handleCommand(Message message) {
-        String command = message.getFromBody("command");
-        return null; // TODO
+        // TODO
+        return null;
+    }
+
+    public static void handleCreateGame(Message message) {
+        GameData gameData = message.getFromBody("gameData");
+        GameBuilder.getInstance().reset();
+        GameBuilder.getInstance().setGameData(gameData);
+        Game game = GameBuilder.getInstance().getResult();
+        App.setCurrentGame(game);
+
+        Main.getInstance().getScreen().dispose();
+        Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(), ""));
     }
 
     public static void handleUpdate(Message message) {
-        // TODO
+        String command = message.getFromBody("command");
+        switch (command) {
+            case "create_game":
+                handleCreateGame(message);
+                // TODO
+        }
     }
 
     public static Message status() {
@@ -128,11 +151,12 @@ public class ClientConnectionController {
         return new Message(body, Message.Type.command);
     }
 
-    public static Message createHostLobby(String name, String password) {
+    public static Message createHostLobby(String name, String password, boolean invisible) {
         HashMap<String, Object> body = new HashMap<>();
         body.put("command", "host_lobby");
         body.put("name", name);
         body.put("password", password);
+        body.put("invisible", invisible);
         return new Message(body, Message.Type.command);
     }
 
@@ -144,9 +168,23 @@ public class ClientConnectionController {
         return new Message(body, Message.Type.command);
     }
 
+    public static Message createLeaveLobby(int id) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "leave_lobby");
+        body.put("id", id);
+        return new Message(body, Message.Type.command);
+    }
+
     public static Message createRefreshLobbyList() {
         HashMap<String, Object> body = new HashMap<>();
         body.put("command", "refresh_lobby_list");
+        return new Message(body, Message.Type.command);
+    }
+
+    public static Message createFindLobby(String idString) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "find_lobby");
+        body.put("id", idString);
         return new Message(body, Message.Type.command);
     }
 }

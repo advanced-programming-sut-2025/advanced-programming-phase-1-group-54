@@ -1,5 +1,6 @@
 package io.github.stardewmini.server.model;
 
+import io.github.stardewmini.common.model.LobbyInfo;
 import io.github.stardewmini.common.model.User;
 
 import java.util.ArrayList;
@@ -52,5 +53,9 @@ public class Lobby {
 
     public User getAdmin() {
         return users.get(0);
+    }
+
+    public LobbyInfo getLobbyInfo() {
+        return new LobbyInfo(name, id, isPrivate());
     }
 }

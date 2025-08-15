@@ -12,6 +12,7 @@ public class UpdateThread extends Thread {
     private AtomicBoolean end;
 
 
+
     @Override
     public void run() {
         while (!end.get()) {
