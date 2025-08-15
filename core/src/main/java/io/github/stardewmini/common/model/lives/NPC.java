@@ -18,7 +18,11 @@ public class NPC extends Live implements DailyUpdate {
     private String job;
     private float animationTime;
     private Location location;
+    private Location location2;
+    private Location location3;
+    private Location location4;
     private float dialogTime;
+    private int locIndex = 0;
 
     private final ArrayList<String> favoriteItems = new ArrayList<>();
 
@@ -62,6 +66,21 @@ public class NPC extends Live implements DailyUpdate {
         return dialogTime;
     }
 
+    public Location getLocation2() {
+        return location2;
+    }
+
+    public Location getLocation3() {
+        return location3;
+    }
+
+    public Location getLocation4() {
+        return location4;
+    }
+
+    public int getNewQuestCounter() {
+        return newQuestCounter;
+    }
 
     public void setJob(String job) {
         this.job = job;
@@ -81,6 +100,22 @@ public class NPC extends Live implements DailyUpdate {
 
     public void setDialogTime(float dialogTime) {
         this.dialogTime = dialogTime;
+    }
+
+    public void setLocation2(Location location2) {
+        this.location2 = location2;
+    }
+
+    public void setLocation3(Location location3) {
+        this.location3 = location3;
+    }
+
+    public void setLocation4(Location location4) {
+        this.location4 = location4;
+    }
+
+    public void setNewQuestCounter(int newQuestCounter) {
+        this.newQuestCounter = newQuestCounter;
     }
 
     public ArrayList<String> getFavoriteItems() {
@@ -104,5 +139,19 @@ public class NPC extends Live implements DailyUpdate {
                 allQuests.get(2).setActive(true);
             }
         }
+
+        if(locIndex%3 == 0){
+            location = location2;
+        }
+        else if(locIndex%3 == 1){
+            location = location3;
+        }
+        else{
+            location = location4;
+        }
+
+        sprite.setPosition(location.column() * Tile.getSize(), location.row() * Tile.getSize());
+        locIndex++;
+        locIndex = locIndex%3;
     }
 }
