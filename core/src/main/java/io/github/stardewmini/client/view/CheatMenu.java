@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.server.controllers.game.CheatController;
+import io.github.stardewmini.client.controllers.game.CheatController;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.map.Location;
@@ -68,21 +68,21 @@ public class CheatMenu implements Screen {
             }
         });
 
-/*          TODO add each command to (ClientGameController)
+
         addMoneyField.addListener(new InputListener() {
             public void enter(InputEvent event, float x, float y,int pointer, Actor actor) {
                 addMoneyField.setText("");
             }
         });
 
-        addMoneyButton.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                Result result = CheatController.addMoney(addMoneyField.getText());
-                window.remove();
-                Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
-            }
-        });
+//        addMoneyButton.addListener(new ClickListener() {
+//            public void clicked(InputEvent event, float x, float y) {
+//                Result result = CheatController.addMoney(addMoneyField.getText());
+//                window.remove();
+//                Main.getInstance().getScreen().dispose();
+//                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
+//            }
+//        });
 
 
         addItemNameField.addListener(new InputListener() {
@@ -97,14 +97,14 @@ public class CheatMenu implements Screen {
             }
         });
 
-        addItemButton.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                Result result = CheatController.addItem(addItemNameField.getText(), addItemCountField.getText());
-                window.remove();
-                Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
-            }
-        });
+//        addItemButton.addListener(new ClickListener() {
+//            public void clicked(InputEvent event, float x, float y) {
+//                Result result = CheatController.addItem(addItemNameField.getText(), addItemCountField.getText());
+//                window.remove();
+//                Main.getInstance().getScreen().dispose();
+//                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
+//            }
+//        });
 
         addTimeField.addListener(new InputListener() {
             public void enter(InputEvent event, float x, float y,int pointer, Actor actor) {
@@ -171,7 +171,7 @@ public class CheatMenu implements Screen {
                 Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
             }
         });
-*/
+
 
         window.setSize( 3 * Gdx.graphics.getWidth()/4f, 3 * Gdx.graphics.getHeight()/4f);
         window.setPosition(Gdx.graphics.getWidth()/8f, Gdx.graphics.getHeight()/8f);

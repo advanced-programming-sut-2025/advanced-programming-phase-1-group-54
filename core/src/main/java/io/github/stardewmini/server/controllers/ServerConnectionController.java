@@ -97,6 +97,15 @@ public class ServerConnectionController {
             case "select_emojis":
                 return handleSelectEmojis(username, message);
 
+            case "advance_time":
+                return handleAdvanceTime(username, message);
+            case "advance_date":
+                return handleAdvanceDate(username, message);
+            case "thunder_strike":
+                return handleThunderStrike(username, message);
+            case "set_energy":
+                return handleSetEnergy(username, message);
+
 
             default:
                 return null;
@@ -420,6 +429,36 @@ public class ServerConnectionController {
         Result result = EmojiController.showEmojis(
             username,
             message.getFromBody("name")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleAdvanceTime(String username, Message message) {
+        Result result = CheatController.advanceTime(
+            message.getFromBody("string")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleAdvanceDate(String username, Message message){
+        Result result = CheatController.advanceDate(
+            message.getFromBody("string")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleThunderStrike(String username, Message message){
+        Result result = CheatController.thunderStrike(
+            username,
+            message.getFromBody("string")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleSetEnergy(String username, Message message){
+        Result result = CheatController.setEnergy(
+            username,
+            message.getFromBody("string")
         );
         return makeResponseFrom(result);
     }

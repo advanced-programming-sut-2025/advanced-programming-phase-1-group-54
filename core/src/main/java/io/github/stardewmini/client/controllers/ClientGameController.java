@@ -191,4 +191,34 @@ public class ClientGameController {
         body.put("name", name);
         return new Message(body, Message.Type.command);
     }
+
+    public static Message createAdvanceTime(String string) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "advance_time");
+        body.put("string", string);
+        return new Message(body, Message.Type.command);
+    }
+
+    public static Message createAdvanceDate(String string) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "advance_date");
+        body.put("string", string);
+        return new Message(body, Message.Type.command);
+    }
+
+    public static Message createThunderStrike(String string) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "thunder_strike");
+        body.put("string", string);
+        return new Message(body, Message.Type.command);
+    }
+
+    public static Message createSetEnergy(String string) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "set_energy");
+        body.put("string", string);
+        return new Message(body, Message.Type.command);
+    }
+
+
 }
