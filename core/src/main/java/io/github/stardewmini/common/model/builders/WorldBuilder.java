@@ -9,8 +9,6 @@ import io.github.stardewmini.common.model.DateTime;
 import io.github.stardewmini.common.model.Quest;
 import io.github.stardewmini.common.model.items.ShopItem;
 import io.github.stardewmini.common.model.lives.NPC;
-import io.github.stardewmini.model.map.*;
-import io.github.stardewmini.model.map.Shops.*;
 //import org.json.JSONArray;
 
 import java.util.ArrayList;

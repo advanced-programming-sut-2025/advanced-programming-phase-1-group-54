@@ -9,7 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.controller.RegisterMenuController;
+import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.CheckRegisterController;
+import io.github.stardewmini.client.controllers.ClientConnectionController;
+import io.github.stardewmini.common.Message;
+import io.github.stardewmini.server.controllers.RegisterMenuController;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.SoundManager;
@@ -55,7 +59,7 @@ public class RegisterMenu implements Screen {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
-                passwordField.setText(RegisterMenuController.getRandomPassword());
+                passwordField.setText(CheckRegisterController.getRandomPassword());
                 confirmPasswordField.setText("");
                 showPasswordCheckBox.setChecked(true);
                 passwordField.setPasswordMode(false);
@@ -80,7 +84,7 @@ public class RegisterMenu implements Screen {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
-                Result result = RegisterMenuController.register(
+                Message message = ClientConnectionController.createRegister(
                     usernameField.getText(),
                     passwordField.getText(),
                     confirmPasswordField.getText(),
@@ -88,6 +92,8 @@ public class RegisterMenu implements Screen {
                     emailField.getText(),
                     genderSelectBox.getSelected()
                 );
+
+                Result result = ClientApp.sendRequest(message);
 
                 resultLabel.setText(result.message());
                 if (result.success()) {
@@ -139,7 +145,7 @@ public class RegisterMenu implements Screen {
 
         ArrayList<Label> securityQuestionLabels = new ArrayList<>();
         int n = 0;
-        for (String securityQuestion : RegisterMenuController.getSecurityQuestions()) {
+        for (String securityQuestion : CheckRegisterController.getSecurityQuestions()) {
             n++;
             securityQuestionLabels.add(new Label(n + ". " + securityQuestion, skin));
         }
@@ -165,11 +171,13 @@ public class RegisterMenu implements Screen {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
-                Result result = RegisterMenuController.pickQuestion(
+                Message message = ClientConnectionController.createPickQuestion(
                     securityQuestionSelectBox.getSelected(),
                     answerField.getText(),
                     confirmAnswerField.getText()
                 );
+
+                Result result = ClientApp.sendRequest(message);
 
                 resultField.setText(result.message());
                 if (result.success()) {
@@ -183,7 +191,10 @@ public class RegisterMenu implements Screen {
         backButton.addListener(new ChangeListener() {
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
-                RegisterMenuController.resetUserBuilder();
+                Message message = ClientConnectionController.createResetRegister();
+
+                Result result = ClientApp.sendRequest(message);
+
                 root.removeActor(secondPage);
                 root.add(firstPage).expand().fill().row();
             }

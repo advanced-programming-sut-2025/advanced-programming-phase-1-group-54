@@ -15,6 +15,7 @@ public class ServerMain {
 			int port = Integer.parseInt(args[0]);
 			ServerApp.setListenerThread(new ListenerThread(port));
 			ServerApp.startListening();
+            System.out.println("Server is Running ...");
 		} catch (Exception e) {
 			System.err.println("Error starting server: " + e.getMessage());
 		}

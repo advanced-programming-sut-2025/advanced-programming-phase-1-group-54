@@ -1,7 +1,6 @@
 package io.github.stardewmini.common.model.builders;
 
 import io.github.stardewmini.common.model.*;
-import io.github.stardewmini.model.*;
 import io.github.stardewmini.common.model.lives.NPC;
 import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.map.Cabin;

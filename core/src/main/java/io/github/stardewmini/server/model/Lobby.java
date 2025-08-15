@@ -1,4 +1,4 @@
-package io.github.stardewmini.server.app;
+package io.github.stardewmini.server.model;
 
 import io.github.stardewmini.common.model.User;
 

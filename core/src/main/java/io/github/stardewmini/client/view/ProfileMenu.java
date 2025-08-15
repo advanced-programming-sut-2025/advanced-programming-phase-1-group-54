@@ -9,7 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.controller.ProfileMenuController;
+import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.ClientConnectionController;
+import io.github.stardewmini.common.Message;
+import io.github.stardewmini.server.controllers.ProfileMenuController;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.SoundManager;
@@ -25,7 +28,8 @@ public class ProfileMenu implements Screen {
         Skin skin = GameAssetManager.getInstance().getSkin();
 
         Label titleLabel = new Label("Profile Menu", skin, "Bold");
-        Label userInfoLabel = new Label(ProfileMenuController.showUserInfo().message(), skin);
+        Message message = ClientConnectionController.createUserInfo();
+        Label userInfoLabel = new Label(ClientApp.sendRequest(message).message(), skin);
         TextField newUsernameField = new TextField("", skin);
         newUsernameField.setText("New Username");
         TextButton changeUsernameButton = new TextButton("Change Username", skin);
@@ -65,9 +69,10 @@ public class ProfileMenu implements Screen {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
-                Result result = ProfileMenuController.changeUsername(newUsernameField.getText());
+                Message message = ClientConnectionController.createChangeUsername(newUsernameField.getText());
+                Result result = ClientApp.sendRequest(message);
                 resultLabel.setText(result.message());
-                userInfoLabel.setText(ProfileMenuController.showUserInfo().message());
+                userInfoLabel.setText(ClientApp.sendRequest(message).message());
             }
         });
 
@@ -75,12 +80,13 @@ public class ProfileMenu implements Screen {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
-                Result result = ProfileMenuController.changePassword(
+                Message message = ClientConnectionController.createChangePassword(
                     newPasswordField.getText(),
                     oldPasswordField.getText()
                 );
+                Result result = ClientApp.sendRequest(message);
                 resultLabel.setText(result.message());
-                userInfoLabel.setText(ProfileMenuController.showUserInfo().message());
+                userInfoLabel.setText(ClientApp.sendRequest(message).message());
             }
         });
 
@@ -88,9 +94,10 @@ public class ProfileMenu implements Screen {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
-                Result result = ProfileMenuController.changeNickname(newNicknameField.getText());
+                Message message = ClientConnectionController.createChangeNickname(newNicknameField.getText());
+                Result result = ClientApp.sendRequest(message);
                 resultLabel.setText(result.message());
-                userInfoLabel.setText(ProfileMenuController.showUserInfo().message());
+                userInfoLabel.setText(ClientApp.sendRequest(message).message());
             }
         });
 
@@ -98,9 +105,10 @@ public class ProfileMenu implements Screen {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
-                Result result = ProfileMenuController.changeEmail(newEmailField.getText());
+                Message message = ClientConnectionController.createChangeEmail(newEmailField.getText());
+                Result result = ClientApp.sendRequest(message);
                 resultLabel.setText(result.message());
-                userInfoLabel.setText(ProfileMenuController.showUserInfo().message());
+                userInfoLabel.setText(ClientApp.sendRequest(message).message());
             }
         });
 

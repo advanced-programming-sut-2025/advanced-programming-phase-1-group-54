@@ -9,7 +9,6 @@ import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.enums.Feature;
 import io.github.stardewmini.common.model.items.Material;
 import io.github.stardewmini.common.model.map.*;
-import io.github.stardewmini.model.map.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;

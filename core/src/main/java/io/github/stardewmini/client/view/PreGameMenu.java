@@ -13,7 +13,6 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.controller.GameMenuController;
-import io.github.stardewmini.controller.MainMenuController;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.SoundManager;
@@ -28,32 +27,25 @@ public class PreGameMenu implements Screen {
         Skin skin = GameAssetManager.getInstance().getSkin();
 
         Label titleLabel = new Label("Game Menu", skin, "Bold");
-        TextButton newGameButton = new TextButton("New Game", skin);
-        TextButton continueButton = new TextButton("Continue", skin);
-        // TODO add game info ...
-        Label resultLabel = new Label("", skin);
+        TextButton hostLobbyButton = new TextButton("Host Lobby", skin);
+        TextButton joinLobbyButton = new TextButton("Join Lobby", skin);
         TextButton backButton = new TextButton("Back", skin);
 
-        newGameButton.addListener(new ChangeListener() {
+        hostLobbyButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new CreateGameMenu());
+                Main.getInstance().setScreen(new HostLobbyScreen());
             }
         });
 
-        continueButton.addListener(new ChangeListener() {
+        joinLobbyButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
-                Result result = GameMenuController.loadGame();
-                resultLabel.setText(result.message());
-
-                if (result.success()) {
-                    Main.getInstance().getScreen().dispose();
-                    Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
-                }
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new JoinLobbyScreen());
             }
         });
 
@@ -61,7 +53,6 @@ public class PreGameMenu implements Screen {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
-                MainMenuController.logout();
                 Main.getInstance().getScreen().dispose();
                 Main.getInstance().setScreen(new MainMenu());
             }
@@ -72,13 +63,11 @@ public class PreGameMenu implements Screen {
         table.center();
 
         table.add(titleLabel).pad(100, 0, 100, 0);
-        table.row().pad(10, 0 , 10 , 0);
-        table.add(newGameButton).height(90).width(300);
-        table.row().pad(10, 0 , 10 , 0);
-        table.add(continueButton).height(90).width(300);
-        table.row().pad(10, 0 , 10 , 0);
-        table.add(resultLabel);
-        table.row().pad(10, 0 , 10 , 0);
+        table.row().pad(10, 0, 10, 0);
+        table.add(hostLobbyButton).height(90).width(300);
+        table.row().pad(10, 0, 10, 0);
+        table.add(joinLobbyButton).height(90).width(300);
+        table.row().pad(10, 0, 10, 0);
         table.add(backButton).height(90).width(300);
 
         stage.addActor(table);

@@ -10,10 +10,8 @@ import io.github.stardewmini.common.model.enums.Gender;
 import io.github.stardewmini.common.model.enums.SkillType;
 import io.github.stardewmini.common.model.enums.ToolType;
 import io.github.stardewmini.common.model.items.tools.*;
-import io.github.stardewmini.model.enums.*;
 import io.github.stardewmini.common.model.items.crafting.ProducerArtisan;
 import io.github.stardewmini.common.model.items.recipes.Recipe;
-import io.github.stardewmini.model.items.tools.*;
 import io.github.stardewmini.common.model.map.Farm;
 import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.Refrigerator;
@@ -85,10 +83,11 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     private final ArrayList<ProducerArtisan> placedArtisans = new ArrayList<>();
 
     private final HashMap<String, Animal> animals = new HashMap<>();
+
     {
         Animal animal = Animal.getAnimal("Hen");
-        animal.setLocation(new Location(0,5));
-        animals.put("HEn",animal);
+        animal.setLocation(new Location(0, 5));
+        animals.put("HEn", animal);
     }
 
     private SkillType buffSkill;
@@ -349,7 +348,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         } else if (skillType == null) {
             return this.energy > energyAmount;
         } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
-                this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY) {
+            this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY) {
             return this.energy > energyAmount - 2;
         } else if (this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY) {
             return this.energy > energyAmount - 1;
@@ -366,7 +365,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         } else if (skillType == null) {
             this.energy -= energyAmount;
         } else if (this.getBuffSkill() != null && skillType.equals(this.getBuffSkill()) &&
-                this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY) {
+            this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY) {
             this.energy -= energyAmount - 2;
         } else if (this.getSkill(skillType).getLevel() == MAXIMUM_ENERGY) {
             this.energy -= energyAmount - 1;
