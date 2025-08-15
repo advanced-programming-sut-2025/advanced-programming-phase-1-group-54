@@ -4,6 +4,7 @@ package io.github.stardewmini.server.controllers;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.enums.Gender;
 import io.github.stardewmini.server.controllers.game.*;
 
 import java.util.HashMap;
@@ -115,14 +116,13 @@ public class ServerConnectionController {
     }
 
     private static Message handleRegister(Message message) {
-        System.out.println("OK REGISTER");
         Result result = RegisterMenuController.register(
             message.getFromBody("username"),
             message.getFromBody("password"),
             message.getFromBody("confirmPassword"),
             message.getFromBody("nickname"),
             message.getFromBody("email"),
-            message.getFromBody("gender")
+            Gender.valueOf(message.getFromBody("gender"))
         );
 
         return makeResponseFrom(result);
