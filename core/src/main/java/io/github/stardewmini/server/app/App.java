@@ -2,6 +2,7 @@ package io.github.stardewmini.server.app;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import io.github.stardewmini.common.model.Game;
 import io.github.stardewmini.common.model.GameData;
 import io.github.stardewmini.common.model.User;
@@ -11,6 +12,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +40,35 @@ public class App {
     }
 
     private static void readUsers() {
+//        try{
+//            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","pass");
+//            PreparedStatement stmt = conn.prepareStatement("SELECT json_data FROM users");
+//
+//            ResultSet rs = stmt.executeQuery();
+//
+//            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//
+//            users = new ArrayList<>();
+//            while (rs.next()) {
+//                String json = rs.getString("json_data");
+//
+//                Type userListType = new TypeToken<ArrayList<User>>(){}.getType();
+//                ArrayList<User> tempList = gson.fromJson(json, userListType);
+//
+//                if(tempList != null) {
+//                    users.addAll(tempList);
+//                }
+//            }
+////            users = new ArrayList<>(List.of(gson.fromJson(json, User[].class)));
+//
+//            rs.close();
+//            stmt.close();
+//            conn.close();
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+
         try (FileReader reader = new FileReader(usersFile)) {
             Gson gson = new Gson();
             users = new ArrayList<>(List.of(gson.fromJson(reader, User[].class)));
@@ -74,7 +106,20 @@ public class App {
         saveUsers();
     }
 
-    public static void saveUsers() {
+    public static void saveUsers()  {
+//        try{
+//            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//            String json = gson.toJson(users);
+//
+//            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","pass");
+//            PreparedStatement stmt = conn.prepareStatement("INSERT INTO users(json_data) VALUES (?)");
+//            stmt.setString(1, json);
+//            stmt.executeUpdate();
+//            conn.close();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+
         try (FileWriter writer = new FileWriter(usersFile)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             writer.write(gson.toJson(users));
