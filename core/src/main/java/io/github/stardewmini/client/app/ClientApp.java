@@ -60,6 +60,11 @@ public class ClientApp {
         return ClientConnectionController.getResultFromResponse(response);
     }
 
+    public static Message sendMessageAndGetResponse(Message message) {
+        return serverConnectionThread.sendAndWaitForResponse(message,
+            ClientApp.TIMEOUT_MILLIS);
+    }
+
     public static void sendUpdate(Message message) {
         serverConnectionThread.sendMessage(message);
     }

@@ -127,4 +127,26 @@ public class ClientConnectionController {
         body.put("command", "user_info");
         return new Message(body, Message.Type.command);
     }
+
+    public static Message createHostLobby(String name, String password) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "host_lobby");
+        body.put("name", name);
+        body.put("password", password);
+        return new Message(body, Message.Type.command);
+    }
+
+    public static Message createJoinLobby(int id, String password) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "join_lobby");
+        body.put("id", id);
+        body.put("password", password);
+        return new Message(body, Message.Type.command);
+    }
+
+    public static Message createRefreshLobbyList() {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "refresh_lobby_list");
+        return new Message(body, Message.Type.command);
+    }
 }
