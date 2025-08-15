@@ -57,6 +57,15 @@ public class ServerApp {
         return null;
     }
 
+    public static ClientConnectionThread getConnectionByUsername(String username) {
+        for (ClientConnectionThread connection : connections) {
+            if (connection.getUsername().equals(username)) {
+                return connection;
+            }
+        }
+        return null;
+    }
+
     public static List<ClientConnectionThread> getConnections() {
         return List.copyOf(connections);
     }
