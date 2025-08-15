@@ -53,13 +53,6 @@ public class ClientGameController {
         return new Message(body, Message.Type.command);
     }
 
-    public static Message createMeetsNPC(String npcName) {
-        HashMap<String, Object> body = new HashMap<>();
-        body.put("command", "meets_npc");
-        body.put("NPCname", npcName);
-        return new Message(body, Message.Type.command);
-    }
-
     public static Message createTrashCan(String trashItem, String trashNumber) {
         HashMap<String, Object> body = new HashMap<>();
         body.put("command", "trash_can");
@@ -69,6 +62,12 @@ public class ClientGameController {
     }
 
 
+    public static Message createMeetsNPC(String npcName) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "meets_npc");
+        body.put("NPCname", npcName);
+        return new Message(body, Message.Type.command);
+    }
 
     public static Message createQuestList(String npcName) {
         HashMap<String, Object> body = new HashMap<>();

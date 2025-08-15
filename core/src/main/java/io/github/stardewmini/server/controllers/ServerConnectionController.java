@@ -1,8 +1,10 @@
 package io.github.stardewmini.server.controllers;
 
 
+import io.github.stardewmini.Main;
 import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.server.controllers.game.*;
 
 import java.util.HashMap;
 
@@ -39,43 +41,43 @@ public class ServerConnectionController {
 
 
             case "use_tool":
-                return null;
+                return handleUseTool(username, message);
             case "cooking":
-                return null;
+                return handleCooking(username, message);
             case "crafting":
-                return null;
+                return handleCrafting(username, message);
             case "buy":
-                return null;
+                return handleBuy(username, message);
             case "planting":
-                return null;
+                return handlePlanting(username, message);
             case "equip_tool":
-                return null;
+                return handleEquipTool(username, message);
             case "trash_can":
-                return null;
+                return handleTrashCan(username, message);
 
             case "meets_npc":
-                return null;
+                return handleMeetsNPC(username, message);
             case "quest_list":
-                return null;
+                return handleQuestList(username, message);
             case "friendship_npc":
-                return null;
+                return handleFriendShipNpc(username, message);
             case "gift_npc":
-                return null;
+                return handleGiftNpc(username, message);
             case "quest_finish":
-                return null;
+                return handleQuestFinish(username, message);
 
             case "show_animal":
-                return null;
+                return handleShowAnimal(username, message);
             case "feed_animal":
-                return null;
+                return handleFeedAnimal(username, message);
             case "pet":
-                return null;
+                return handlePet(username, message);
             case "move_animal":
-                return null;
+                return handleMoveAnimal(username, message);
             case "get_animal_produce":
-                return null;
+                return handleGetAnimalProduce(username, message);
             case "sell_animal":
-                return null;
+                return handleSellAnimal(username, message);
 
             default:
                 return null;
@@ -188,6 +190,161 @@ public class ServerConnectionController {
 
     private static Message handleUserInfo(String username, Message message) {
         Result result = ProfileMenuController.showUserInfo(username);
+        return makeResponseFrom(result);
+    }
+
+
+
+    private static Message handleUseTool(String username, Message message) {
+        Result result = ToolsController.useTool(
+            username,
+            message.getFromBody("direction")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleCooking(String username, Message message) {
+        Result result = FoodController.cooking(
+            username,
+            message.getFromBody("name")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleCrafting(String username, Message message) {
+        Result result = CraftingController.crafting(
+            username,
+            message.getFromBody("name")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleBuy(String username, Message message) {
+        Result result = ShopController.buy(
+            username,
+            message.getFromBody("itemName"),
+            message.getFromBody("name"),
+            message.getFromBody("price"),
+            message.getFromBody("locationString")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handlePlanting(String username, Message message) {
+        Result result = PlantsController.planting(
+            username,
+            message.getFromBody("itemName"),
+            message.getFromBody("direction")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleEquipTool(String username, Message message) {
+        Result result = ToolsController.equipTool(
+            username,
+            message.getFromBody("toolName")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleTrashCan(String username, Message message) {
+        Result result = ToolsController.throwInTrash(
+            username,
+            message.getFromBody("trashItem"),
+            message.getFromBody("trashNumber")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleMeetsNPC(String username, Message message) {
+        Result result = NpcController.meetsNpc(
+            username,
+            message.getFromBody("NPCname")
+
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleQuestList(String username, Message message) {
+        Result result = NpcController.questList(
+            username,
+            message.getFromBody("npcName")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleFriendShipNpc(String username, Message message) {
+        Result result = NpcController.friendShipNpc(
+            username,
+            message.getFromBody("npcName")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleGiftNpc(String username, Message message) {
+        Result result = NpcController.giftNpc(
+            username,
+            message.getFromBody("npcName"),
+            message.getFromBody("itemName")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleQuestFinish(String username, Message message) {
+        Result result = NpcController.questFinish(
+            username,
+            message.getFromBody("questNumber"),
+            message.getFromBody("npcName")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleShowAnimal(String username, Message message) {
+        Result result = AnimalController.showAnimal(
+            username,
+            message.getFromBody("name")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleFeedAnimal(String username, Message message) {
+        Result result = AnimalController.feedAnimal(
+            username,
+            message.getFromBody("name")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handlePet(String username, Message message) {
+        Result result = AnimalController.pet(
+            username,
+            message.getFromBody("name")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleMoveAnimal(String username, Message message) {
+        Result result = AnimalController.preMoveAnimal(
+            username,
+            message.getFromBody("name"),
+            message.getFromBody("location")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleGetAnimalProduce(String username, Message message) {
+        Result result = AnimalController.getAnimalProduce(
+            username,
+            message.getFromBody("name")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleSellAnimal(String username, Message message) {
+        Result result = AnimalController.sellAnimal(
+            username,
+            message.getFromBody("name")
+        );
         return makeResponseFrom(result);
     }
 }

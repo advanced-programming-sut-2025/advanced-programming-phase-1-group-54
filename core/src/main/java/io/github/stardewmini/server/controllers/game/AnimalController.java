@@ -14,8 +14,9 @@ import io.github.stardewmini.server.app.App;
 
 public class AnimalController {
 
-    public static Result pet(String requester, Animal animal) {
+    public static Result pet(String requester, String name) {
         Player player = App.getCurrentGame().getPlayerByUsername(requester);
+        Animal animal = player.getAnimals().get(name);
 //        Animal animal = player.getAnimals().get(animalName);
 //        if(animal == null) {
 //            return new Result(-1, "You don't have any animal named " + animalName);
@@ -43,7 +44,8 @@ public class AnimalController {
         return new Result(1,output.toString());
     }
 
-    public static Result showAnimal(String requester, Animal animal) {
+    public static Result showAnimal(String requester, String name) {
+        Animal animal = App.getCurrentGame().getPlayerByUsername(requester).getAnimals().get(name);
         StringBuilder output = new StringBuilder();
         output.append(animal.getAnimalName()).append(" ").append(animal.getName()).append("\n").
             append("friendship level: ").append(animal.getFriendshipLevel()).append("\n").
@@ -51,6 +53,12 @@ public class AnimalController {
             append("fed : ").append(animal.isFed()).append("\n").
             append("--------------------");
         return new Result(true,output.toString());
+    }
+
+    public static Result preMoveAnimal(String requester,String name, Location location){
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
+        Animal animal = player.getAnimals().get(name);
+        return moveAnimal(requester,animal,location);
     }
 
     public static Result moveAnimal(String requester, Animal animal, Location location) {
@@ -114,13 +122,13 @@ public class AnimalController {
         }
     }
 
-    public static Result feedAnimal(String requester, Animal animal) {
+    public static Result feedAnimal(String requester, String animalName) {
 
         Player player = App.getCurrentGame().getPlayerByUsername(requester);
-//        Animal animal = player.getAnimals().get(animalName);
-//        if(animal == null) {
-//            return new Result(-1, "Animal " + animalName + " not found");
-//        }
+        Animal animal = player.getAnimals().get(animalName);
+        if(animal == null) {
+            return new Result(-1, "Animal " + animalName + " not found");
+        }
 
         Item item = CommonGameController.findItem("Hay");
         if(! player.getBackpack().removeItem(item,1)){
@@ -145,12 +153,12 @@ public class AnimalController {
         return new Result(1,output.toString());
     }
 
-    public static Result getAnimalProduce(String requester, Animal animal) {
+    public static Result getAnimalProduce(String requester, String animalName) {
         Player player = App.getCurrentGame().getPlayerByUsername(requester);
-//        Animal animal = player.getAnimals().get(animalName);
-//        if(animal == null) {
-//            return new Result(-1, "Animal " + animalName + " not found");
-//        }
+        Animal animal = player.getAnimals().get(animalName);
+        if(animal == null) {
+            return new Result(-1, "Animal " + animalName + " not found");
+        }
 
         if(animal.getProduce() == null) {
             return new Result(-1, animal + " doesn't have any produce");
@@ -189,12 +197,12 @@ public class AnimalController {
 
     }
 
-    public static Result sellAnimal(String requester, Animal animal) {
+    public static Result sellAnimal(String requester, String animalName) {
         Player player = App.getCurrentGame().getPlayerByUsername(requester);
-//        Animal animal = player.getAnimals().get(animalName);
-//        if(animal == null) {
-//            return new Result(-1, "Animal " + animalName + " not found");
-//        }
+        Animal animal = player.getAnimals().get(animalName);
+        if(animal == null) {
+            return new Result(-1, "Animal " + animalName + " not found");
+        }
 
         player.getAnimals().remove(animal.getName());
         deleteAnimalFromFarm(requester, animal);

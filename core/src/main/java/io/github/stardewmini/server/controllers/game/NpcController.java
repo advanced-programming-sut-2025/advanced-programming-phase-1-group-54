@@ -17,9 +17,10 @@ import java.util.Random;
 public class NpcController {
     private static Random rand = new Random();
 
-    public static String friendShipNpc(String requester, NPC npc) {
+    public static Result friendShipNpc(String requester, NPC npc) {
         NPCFriendship friendship = getNPCFriendship(requester, npc.getName());
-        return "friendship level : " + friendship.getLevel() + "friendship XP : " + friendship.getXP();
+        return new Result(true,"friendship level : " + friendship.getLevel() + "friendship XP : " +
+            friendship.getXP());
     }
 
     public static Result meetsNpc(String requester, String npcName) {
