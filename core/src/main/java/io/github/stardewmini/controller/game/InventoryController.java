@@ -8,16 +8,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.GameAssetManager;
-import io.github.stardewmini.model.Result;
-import io.github.stardewmini.model.enums.SkillType;
-import io.github.stardewmini.model.items.Item;
-import io.github.stardewmini.model.items.tools.Tool;
-import io.github.stardewmini.model.lives.NPC;
-import io.github.stardewmini.model.lives.Player;
-import io.github.stardewmini.model.lives.Skill;
-import io.github.stardewmini.view.GameScreen;
+import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.enums.SkillType;
+import io.github.stardewmini.common.model.items.Item;
+import io.github.stardewmini.common.model.items.tools.Tool;
+import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.common.model.lives.Skill;
+import io.github.stardewmini.client.view.GameScreen;
 
 import java.util.Map;
 

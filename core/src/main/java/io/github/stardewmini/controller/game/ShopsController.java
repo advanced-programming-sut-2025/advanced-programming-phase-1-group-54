@@ -1,19 +1,19 @@
 package io.github.stardewmini.controller.game;
 
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.Game;
-import io.github.stardewmini.model.Result;
-import io.github.stardewmini.model.enums.*;
-import io.github.stardewmini.model.items.Item;
-import io.github.stardewmini.model.items.ShopItem;
-import io.github.stardewmini.model.items.UniqueItem;
-import io.github.stardewmini.model.items.recipes.Recipe;
-import io.github.stardewmini.model.items.tools.FishingPole;
-import io.github.stardewmini.model.items.tools.Tool;
-import io.github.stardewmini.model.lives.Animal;
-import io.github.stardewmini.model.lives.Player;
-import io.github.stardewmini.model.map.*;
-import io.github.stardewmini.model.map.Shops.*;
+import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.common.model.Game;
+import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.enums.*;
+import io.github.stardewmini.common.model.map.*;
+import io.github.stardewmini.common.model.map.Shops.*;
+import io.github.stardewmini.common.model.items.Item;
+import io.github.stardewmini.common.model.items.ShopItem;
+import io.github.stardewmini.common.model.items.UniqueItem;
+import io.github.stardewmini.common.model.items.recipes.Recipe;
+import io.github.stardewmini.common.model.items.tools.FishingPole;
+import io.github.stardewmini.common.model.items.tools.Tool;
+import io.github.stardewmini.common.model.lives.Animal;
+import io.github.stardewmini.common.model.lives.Player;
 
 import java.util.ArrayList;
 

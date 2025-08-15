@@ -1,19 +1,16 @@
 package io.github.stardewmini.controller.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.Game;
-import io.github.stardewmini.model.GameAssetManager;
-import io.github.stardewmini.model.Result;
-import io.github.stardewmini.model.lives.Animal;
-import io.github.stardewmini.model.lives.Player;
-import io.github.stardewmini.model.map.AnimalHouse;
-import io.github.stardewmini.model.map.AnimalHousePrototype;
-import io.github.stardewmini.model.map.Location;
+import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.lives.Animal;
+import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.common.model.map.AnimalHousePrototype;
+import io.github.stardewmini.common.model.map.Location;
 
 public class ShopController {
     public static void showItems(Table scrollTable, Table table, TextButton buyButton, TextField number,Label itemLabel

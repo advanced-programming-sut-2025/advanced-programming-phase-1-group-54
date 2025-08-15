@@ -1,17 +1,17 @@
 package io.github.stardewmini.controller.game;
 
-import io.github.stardewmini.model.*;
-import io.github.stardewmini.model.enums.Direction;
-import io.github.stardewmini.model.enums.Feature;
-import io.github.stardewmini.model.enums.Season;
-import io.github.stardewmini.model.enums.SkillType;
-import io.github.stardewmini.model.items.Fertilize;
-import io.github.stardewmini.model.items.plants.*;
-import io.github.stardewmini.model.lives.Player;
-import io.github.stardewmini.model.map.Farm;
-import io.github.stardewmini.model.map.GreenHouse;
-import io.github.stardewmini.model.map.Location;
-import io.github.stardewmini.model.map.Tile;
+import io.github.stardewmini.common.model.*;
+import io.github.stardewmini.common.model.items.plants.*;
+import io.github.stardewmini.common.model.enums.Direction;
+import io.github.stardewmini.common.model.enums.Feature;
+import io.github.stardewmini.common.model.enums.Season;
+import io.github.stardewmini.common.model.enums.SkillType;
+import io.github.stardewmini.common.model.items.Fertilize;
+import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.common.model.map.Farm;
+import io.github.stardewmini.common.model.map.GreenHouse;
+import io.github.stardewmini.common.model.map.Location;
+import io.github.stardewmini.common.model.map.Tile;
 
 public class PlantsController {
 

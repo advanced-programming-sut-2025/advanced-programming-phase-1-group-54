@@ -1,8 +1,8 @@
 package io.github.stardewmini.controller;
 
-import io.github.stardewmini.model.builders.FarmBuilder;
-import io.github.stardewmini.model.builders.GameBuilder;
-import io.github.stardewmini.model.*;
+import io.github.stardewmini.common.model.*;
+import io.github.stardewmini.common.model.builders.FarmBuilder;
+import io.github.stardewmini.common.model.builders.GameBuilder;
 
 import java.util.ArrayList;
 

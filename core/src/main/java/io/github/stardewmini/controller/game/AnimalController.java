@@ -1,25 +1,20 @@
 package io.github.stardewmini.controller.game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import io.github.stardewmini.Main;
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.Game;
-import io.github.stardewmini.model.GameAssetManager;
-import io.github.stardewmini.model.Result;
-import io.github.stardewmini.model.enums.SkillType;
-import io.github.stardewmini.model.enums.ToolType;
-import io.github.stardewmini.model.items.Item;
-import io.github.stardewmini.model.lives.Animal;
-import io.github.stardewmini.model.lives.Player;
-import io.github.stardewmini.model.map.AnimalHouse;
-import io.github.stardewmini.model.map.Farm;
-import io.github.stardewmini.model.map.Location;
-import io.github.stardewmini.model.map.Tile;
-import io.github.stardewmini.view.AnimalMenu;
+import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.enums.SkillType;
+import io.github.stardewmini.common.model.enums.ToolType;
+import io.github.stardewmini.common.model.items.Item;
+import io.github.stardewmini.common.model.lives.Animal;
+import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.common.model.map.AnimalHouse;
+import io.github.stardewmini.common.model.map.Farm;
+import io.github.stardewmini.common.model.map.Location;
+import io.github.stardewmini.common.model.map.Tile;
 
 public class AnimalController {
 

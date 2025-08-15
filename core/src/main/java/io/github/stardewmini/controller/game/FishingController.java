@@ -8,22 +8,25 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.model.*;
-import io.github.stardewmini.model.enums.FishingPoleType;
-import io.github.stardewmini.model.enums.ProduceQuality;
-import io.github.stardewmini.model.enums.SkillType;
-import io.github.stardewmini.model.items.Fish;
-import io.github.stardewmini.model.items.tools.FishingPole;
-import io.github.stardewmini.model.lives.Player;
-import io.github.stardewmini.model.lives.Skill;
-import io.github.stardewmini.model.map.Farm;
-import io.github.stardewmini.model.map.GenericWall;
-import io.github.stardewmini.view.FishingMenu;
-import io.github.stardewmini.view.GameScreen;
+import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.common.model.FishingGame;
+import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.enums.FishingPoleType;
+import io.github.stardewmini.common.model.enums.ProduceQuality;
+import io.github.stardewmini.common.model.enums.SkillType;
+import io.github.stardewmini.common.model.items.Fish;
+import io.github.stardewmini.common.model.items.tools.FishingPole;
+import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.common.model.lives.Skill;
+import io.github.stardewmini.common.model.map.Farm;
+import io.github.stardewmini.common.model.map.GenericWall;
+import io.github.stardewmini.client.view.FishingMenu;
+import io.github.stardewmini.client.view.GameScreen;
 
 public class FishingController {
 
-    public static Result fishing(String fishingPoleName,boolean perfect) {
+    public static Result fishing(String fishingPoleName, boolean perfect) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Farm farm = App.getCurrentGame().getWorld().getFarmAt(player.getCurrentLocation());
 

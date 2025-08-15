@@ -6,14 +6,13 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.MathUtils;
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.GameAssetManager;
-import io.github.stardewmini.model.items.tools.Tool;
-import io.github.stardewmini.model.lives.Player;
-import io.github.stardewmini.model.map.Location;
-import io.github.stardewmini.model.map.Tile;
-import io.github.stardewmini.model.map.World;
+import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.common.model.items.tools.Tool;
+import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.common.model.map.Location;
+import io.github.stardewmini.common.model.map.Tile;
+import io.github.stardewmini.common.model.map.World;
 
 public class PlayerController {
 

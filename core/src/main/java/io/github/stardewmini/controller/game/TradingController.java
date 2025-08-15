@@ -1,11 +1,11 @@
 package io.github.stardewmini.controller.game;
 
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.Result;
-import io.github.stardewmini.model.items.Item;
-import io.github.stardewmini.model.lives.Player;
-import io.github.stardewmini.model.relationships.Relationship;
-import io.github.stardewmini.model.relationships.Trade;
+import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.items.Item;
+import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.common.model.relationships.Relationship;
+import io.github.stardewmini.common.model.relationships.Trade;
 
 public class TradingController {
 

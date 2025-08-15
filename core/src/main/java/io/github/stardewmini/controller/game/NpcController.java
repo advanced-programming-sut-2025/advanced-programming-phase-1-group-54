@@ -1,31 +1,25 @@
 package io.github.stardewmini.controller.game;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.GameAssetManager;
-import io.github.stardewmini.model.Quest;
-import io.github.stardewmini.model.Result;
-import io.github.stardewmini.model.enums.Season;
-import io.github.stardewmini.model.enums.Weather;
-import io.github.stardewmini.model.items.Item;
-import io.github.stardewmini.model.items.recipes.Recipe;
-import io.github.stardewmini.model.lives.NPC;
-import io.github.stardewmini.model.lives.Player;
-import io.github.stardewmini.model.map.NPCHouse;
-import io.github.stardewmini.model.map.Tile;
-import io.github.stardewmini.model.relationships.NPCFriendship;
-import io.github.stardewmini.view.GameScreen;
-import io.github.stardewmini.view.NPCMenu;
+import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.common.model.Quest;
+import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.enums.Season;
+import io.github.stardewmini.common.model.enums.Weather;
+import io.github.stardewmini.common.model.items.Item;
+import io.github.stardewmini.common.model.items.recipes.Recipe;
+import io.github.stardewmini.common.model.lives.NPC;
+import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.common.model.map.NPCHouse;
+import io.github.stardewmini.common.model.map.Tile;
+import io.github.stardewmini.common.model.relationships.NPCFriendship;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class NpcController {
     private static Random rand = new Random();

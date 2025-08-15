@@ -1,10 +1,10 @@
 package io.github.stardewmini.controller;
 
-import io.github.stardewmini.model.builders.UserBuilder;
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.Result;
-import io.github.stardewmini.model.User;
-import io.github.stardewmini.model.enums.Gender;
+import io.github.stardewmini.common.model.builders.UserBuilder;
+import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.User;
+import io.github.stardewmini.common.model.enums.Gender;
 
 public class RegisterMenuController {
     public static Result register(String username, String password, String confirmPassword, String nickname,

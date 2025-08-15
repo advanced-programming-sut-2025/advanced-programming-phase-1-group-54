@@ -5,17 +5,16 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.model.App;
-import io.github.stardewmini.model.Game;
-import io.github.stardewmini.model.GameAssetManager;
-import io.github.stardewmini.model.Result;
-import io.github.stardewmini.model.enums.Feature;
-import io.github.stardewmini.model.enums.Symbol;
-import io.github.stardewmini.model.enums.Weather;
-import io.github.stardewmini.model.items.Item;
-import io.github.stardewmini.model.lives.Animal;
-import io.github.stardewmini.model.lives.Player;
-import io.github.stardewmini.model.map.*;
+import io.github.stardewmini.common.model.App;
+import io.github.stardewmini.common.model.Game;
+import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.enums.Feature;
+import io.github.stardewmini.common.model.enums.Weather;
+import io.github.stardewmini.common.model.items.Item;
+import io.github.stardewmini.common.model.lives.Animal;
+import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.common.model.map.*;
 
 public class CheatController {
     public static Result advanceTime(String string) {
