@@ -14,6 +14,7 @@ public class NPCHouse extends Building {
         Location location = getRandomLocation();
         this.getTileAt(location).setThingOnTile(npc);
         npc.setLocation(this.getLocation().add(location));
+        npc.setLocation2(location);
 
         this.getSprite().setRegion(GameAssetManager.getInstance().getBuilding(npc.getName() + "House"));
     }

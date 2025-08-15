@@ -41,7 +41,7 @@ public class App {
 
     private static void readUsers() {
 //        try{
-//            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","pass");
+//            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test");
 //            PreparedStatement stmt = conn.prepareStatement("SELECT json_data FROM users");
 //
 //            ResultSet rs = stmt.executeQuery();
@@ -107,25 +107,45 @@ public class App {
     }
 
     public static void saveUsers()  {
-//        try{
-//            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//            String json = gson.toJson(users);
-//
-//            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","pass");
-//            PreparedStatement stmt = conn.prepareStatement("INSERT INTO users(json_data) VALUES (?)");
-//            stmt.setString(1, json);
-//            stmt.executeUpdate();
-//            conn.close();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
+            String sql = """
+        CREATE TABLE IF NOT EXISTS UsersJson (
+            id INTEGER PRIMARY KEY,
+            data TEXT
+        );
+    """;
 
-        try (FileWriter writer = new FileWriter(usersFile)) {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            writer.write(gson.toJson(users));
-        } catch (IOException e) {
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:C:/Users/Asus/Desktop/database.db");
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+            System.out.println("جدول UsersJson ساخته شد!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try(Connection conn = DriverManager.getConnection("jdbc:sqlite:C:/Users/Asus/Desktop/database.db");){
+            Gson gson = new Gson();
+            String json = gson.toJson(users);
+
+            Statement st = conn.createStatement();
+
+            st.executeUpdate("DELETE FROM UsersJson");
+
+            String sqlInsert = "INSERT INTO UsersJson(id, data) VALUES(?, ?)";
+
+            PreparedStatement stmt = conn.prepareStatement(sqlInsert);
+            stmt.setInt(1, 1);
+            stmt.setString(2, json);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+//        try (FileWriter writer = new FileWriter(usersFile)) {
+//            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//            writer.write(gson.toJson(users));
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     public static Game getCurrentGame() {

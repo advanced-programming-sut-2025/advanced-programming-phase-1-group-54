@@ -146,6 +146,8 @@ public class WorldBuilder {
     public ArrayList<NPCHouse> buildNPCHouses() {
         ArrayList<NPCHouse> npcHouses = new ArrayList<>();
         NPC npc = new NPC("Artisan", "Sebastian");
+        npc.setLocation3(new Location(46, 50));
+        npc.setLocation4(new Location(94, 50));
 
         npc.getFavoriteItems().add("Wool");
         npc.getFavoriteItems().add("Pumpkin pie");
@@ -166,6 +168,8 @@ public class WorldBuilder {
         npcHouses.add(new NPCHouse(npc,npcHouseAreas[0]));
 
         NPC npc1 = new NPC("Miner", "Abigail");
+        npc1.setLocation2(new Location(40, 60));
+        npc1.setLocation3(new Location(80, 60));
 
         npc1.getFavoriteItems().add("Stone");
         npc1.getFavoriteItems().add("Iron Ore");
@@ -184,6 +188,8 @@ public class WorldBuilder {
 
 
         NPC npc2 = new NPC("Baker", "Harvey");
+        npc2.setLocation2(new Location(60, 50));
+        npc2.setLocation3(new Location(80, 50));
 
         npc2.getFavoriteItems().add("Coffee");
         npc2.getFavoriteItems().add("Pickle");
@@ -202,6 +208,9 @@ public class WorldBuilder {
 
 
         NPC npc3 = new NPC("Chef", "Leah");
+        npc3.setLocation2(new Location(39, 50));
+        npc3.setLocation3(new Location(63, 50));
+
 
         npc3.getFavoriteItems().add("Salad");
         npc3.getFavoriteItems().add("Coffee");
@@ -220,6 +229,8 @@ public class WorldBuilder {
 
 
         NPC npc4 = new NPC("Blacksmith", "Robin");
+        npc4.setLocation2(new Location(50, 50));
+        npc4.setLocation3(new Location(62, 71));
 
         npc4.getFavoriteItems().add("Spaghetti");
         npc4.getFavoriteItems().add("Wood");

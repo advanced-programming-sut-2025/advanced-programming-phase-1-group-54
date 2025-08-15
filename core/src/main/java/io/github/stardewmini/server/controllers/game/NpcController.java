@@ -1,5 +1,9 @@
 package io.github.stardewmini.server.controllers.game;
-
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.*;
+import java.net.http.HttpRequest.BodyPublishers;
+import java.net.http.HttpResponse.BodyHandlers;
 import io.github.stardewmini.common.model.Quest;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.Season;
@@ -52,7 +56,7 @@ public class NpcController {
             npcFriendship.increaseXP(20);
             npcFriendship.increaseDailyTalkTime();
         }
-        int randomNum = rand.nextInt(4);
+        int randomNum = rand.nextInt(5);
         switch (randomNum) {
             case 0:
                 return getDialogByDayHour();
@@ -62,6 +66,8 @@ public class NpcController {
                 return getDialogByWeather();
             case 3:
                 return getDialogByFriendShipLevel(npcFriendship);
+            case 4:
+                return getDialogByAi(npc);
         }
         return null;
     }
@@ -120,6 +126,38 @@ public class NpcController {
         } else {
             return new Result(true, "Nights are the best time to design. It's quiet... just me and the ideas.");
         }
+    }
+
+    private static Result getDialogByAi(NPC npc) {
+        String apiKey = "YOUR_API_KEY"; // جایگزین با کلید خودت
+        String json = """
+{
+    "model": "gpt-4o-mini",
+    "messages": [
+        {"role": "system", "content": "You are a strict and loyal guard in a medieval castle. Speak in short, commanding sentences."},
+        {"role": "user", "content": "The player tries to enter the castle without permission. Generate a dialogue for the guard."}
+    ]
+}
+""";
+
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create("https://api.openai.com/v1/chat/completions"))
+            .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer " + apiKey)
+            .POST(BodyPublishers.ofString(json))
+            .build();
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpResponse<String> response = null;
+        try {
+            response = client.send(request, BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            return new Result(false,"couldn't connect to the server");
+        }
+
+        System.out.println(response.body()); // خروجی JSON شامل دیالوگ NPC
+
+        return new Result(true, response.body());
     }
 
     public static NPC getNPCByName(String npcName) {
