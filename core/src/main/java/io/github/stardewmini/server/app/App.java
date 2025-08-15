@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameApp {
+public class App {
     private static final File savesDir = new File(System.getProperty("user.home") + "/Desktop/StardewValley/server/");
     private static final File usersFile = new File(savesDir, "users.json");
     private static final File gamesFile = new File(savesDir, "games.json");
@@ -88,7 +88,7 @@ public class GameApp {
     }
 
     public static void setCurrentGame(Game currentGame) {
-        GameApp.currentGame = currentGame;
+        App.currentGame = currentGame;
     }
 
     public static GameData getGameDataOf(User user) {

@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import io.github.stardewmini.controller.game.FishingController;
+import io.github.stardewmini.server.controllers.game.FishingController;
 import io.github.stardewmini.common.model.GameAssetManager;
 
 public class FishingMenu implements Screen {

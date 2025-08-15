@@ -1,13 +1,6 @@
-package io.github.stardewmini.controller.game;
+package io.github.stardewmini.server.controllers.game;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import io.github.stardewmini.Main;
 import io.github.stardewmini.common.model.App;
-import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.items.Food;
 import io.github.stardewmini.common.model.items.Item;
@@ -17,12 +10,10 @@ import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.map.Cabin;
 import io.github.stardewmini.common.model.map.Refrigerator;
 import io.github.stardewmini.common.model.map.Tile;
-import io.github.stardewmini.client.view.GameScreen;
-
-import java.util.ArrayList;
 
 public class FoodController {
 
+/*
     public static Result showFoodRecipes(Window window){
 
         Player player = App.getCurrentGame().getCurrentPlayer();
@@ -61,6 +52,7 @@ public class FoodController {
         }
         return new Result(1,"");
     }
+*/
 
     public static Result cooking(String foodName){
 

@@ -1,7 +1,7 @@
 package io.github.stardewmini.common.model.map;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import io.github.stardewmini.controller.game.PlantsController;
+import io.github.stardewmini.server.controllers.game.PlantsController;
 import io.github.stardewmini.common.model.DailyUpdate;
 import io.github.stardewmini.common.model.Placeable;
 import io.github.stardewmini.common.model.enums.Color;

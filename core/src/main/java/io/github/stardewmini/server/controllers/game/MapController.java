@@ -1,28 +1,11 @@
-package io.github.stardewmini.controller.game;
+package io.github.stardewmini.server.controllers.game;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import io.github.stardewmini.Main;
 import io.github.stardewmini.common.model.*;
 import io.github.stardewmini.common.model.map.*;
 import io.github.stardewmini.common.model.enums.Direction;
-import io.github.stardewmini.common.model.enums.Feature;
 import io.github.stardewmini.common.model.enums.Symbol;
 import io.github.stardewmini.common.model.items.Material;
-import io.github.stardewmini.common.model.lives.Animal;
-import io.github.stardewmini.common.model.lives.NPC;
 import io.github.stardewmini.common.model.lives.Player;
-import io.github.stardewmini.common.model.map.Shops.Shop;
-import io.github.stardewmini.client.view.AnimalMenu;
-import io.github.stardewmini.client.view.NPCMenu;
-import io.github.stardewmini.client.view.ShopMenu;
 
 import java.util.ArrayList;
 
@@ -194,6 +177,7 @@ public class MapController {
         return new Result(true, message.toString());
     }
 
+/*
     public static void draw(SpriteBatch batch, Stage stage, OrthographicCamera camera) {
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
@@ -294,4 +278,5 @@ public class MapController {
             sprite.draw(batch);
         }
     }
+*/
 }

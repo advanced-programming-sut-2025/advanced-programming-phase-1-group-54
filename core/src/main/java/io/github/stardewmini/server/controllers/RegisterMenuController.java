@@ -4,7 +4,7 @@ import io.github.stardewmini.common.model.builders.UserBuilder;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.User;
 import io.github.stardewmini.common.model.enums.Gender;
-import io.github.stardewmini.server.app.GameApp;
+import io.github.stardewmini.server.app.App;
 
 public class RegisterMenuController {
     public static Result register(String username, String password, String confirmPassword, String nickname,
@@ -37,7 +37,7 @@ public class RegisterMenuController {
     }
 
     static boolean isUsernameUnique(String username) {
-        return GameApp.getUserByUsername(username) == null;
+        return App.getUserByUsername(username) == null;
     }
 
     static boolean isUsernameValid(String username) {
@@ -159,7 +159,7 @@ public class RegisterMenuController {
 
         UserBuilder.getInstance().registerSecurityQuestionAnswer(number, answer);
         User user = UserBuilder.getInstance().getResult();
-        GameApp.addUser(user);
+        App.addUser(user);
         return new Result(true, "Successfully registered!");
     }
 }

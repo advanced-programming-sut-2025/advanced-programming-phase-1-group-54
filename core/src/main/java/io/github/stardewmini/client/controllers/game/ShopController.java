@@ -1,20 +1,16 @@
-package io.github.stardewmini.controller.game;
+package io.github.stardewmini.client.controllers.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import io.github.stardewmini.common.model.App;
 import io.github.stardewmini.common.model.GameAssetManager;
-import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.lives.Animal;
-import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.map.AnimalHousePrototype;
-import io.github.stardewmini.common.model.map.Location;
 
 public class ShopController {
-    public static void showItems(Table scrollTable, Table table, TextButton buyButton, TextField number,Label itemLabel
-    ,Label priceLabel,TextField nameField,TextField locationField) {
+    public static void showItems(Table scrollTable, Table table, TextButton buyButton, TextField number, Label itemLabel
+        , Label priceLabel, TextField nameField, TextField locationField) {
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
         int inRow = 0;
         int price;
@@ -104,36 +100,5 @@ public class ShopController {
                 inRow = 0;
             }
         }
-    }
-
-    public static Result buy(String itemName, String name, int price,String locationString) {
-        int x;
-        int y;
-        String[] locationParts = locationString.split(",");
-        try{
-            x = Integer.parseInt(locationParts[0]);
-            y = Integer.parseInt(locationParts[1]);
-        } catch (Exception e) {
-            return new Result(false, "only enter location in X,Y format");
-        }
-        Location location = new Location(x,y);
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        if(player.getMoney() < price){
-            return new Result(false, "You don't have " + price +"coin");
-        }
-
-        Result result;
-        if(Animal.getAnimal(itemName) != null){
-            Animal animal = Animal.getAnimal(itemName);
-            result = CheatController.addAnimal(animal,name,location);
-        }
-        else {
-            result = CheatController.addBuilding(itemName,location);
-        }
-
-        if(result.success()){
-            player.decreaseMoney(price);
-        }
-        return  result;
     }
 }

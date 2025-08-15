@@ -10,9 +10,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.controller.game.CommonGameController;
-import io.github.stardewmini.controller.game.MapController;
-import io.github.stardewmini.controller.game.NpcController;
+import io.github.stardewmini.client.controllers.game.CommonGameController;
+import io.github.stardewmini.client.controllers.game.MapController;
+import io.github.stardewmini.client.controllers.game.NpcController;
 import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.Tile;
 

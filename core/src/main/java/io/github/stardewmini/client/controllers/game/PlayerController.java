@@ -1,4 +1,4 @@
-package io.github.stardewmini.controller.game;
+package io.github.stardewmini.client.controllers.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;

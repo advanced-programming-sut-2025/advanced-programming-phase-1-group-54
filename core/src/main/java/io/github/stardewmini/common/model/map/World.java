@@ -5,7 +5,7 @@ package io.github.stardewmini.common.model.map;
  */
 
 import io.github.stardewmini.common.model.map.Shops.Shop;
-import io.github.stardewmini.controller.game.PlantsController;
+import io.github.stardewmini.server.controllers.game.PlantsController;
 import io.github.stardewmini.common.model.DailyUpdate;
 import io.github.stardewmini.common.model.enums.Direction;
 import io.github.stardewmini.common.model.enums.Season;

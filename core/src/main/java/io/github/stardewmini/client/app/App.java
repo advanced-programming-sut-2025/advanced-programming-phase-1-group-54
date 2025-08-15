@@ -6,7 +6,7 @@ import io.github.stardewmini.common.model.lives.Player;
 
 import java.io.File;
 
-public class GameApp { /* save local copies here */
+public class App { /* save local copies here */
     private static final File savesDir = new File(System.getProperty("user.home") + "/Desktop/StardewValley/client/");
 
     private static Game currentGame;
@@ -17,11 +17,11 @@ public class GameApp { /* save local copies here */
     }
 
     public static void setCurrentGame(Game currentGame) {
-        GameApp.currentGame = currentGame;
+        App.currentGame = currentGame;
     }
 
     public static Player getCurrentPlayer() {
-        return GameApp.getCurrentGame().getPlayerByUsername(loggedInUser.getUsername());
+        return App.getCurrentGame().getPlayerByUsername(loggedInUser.getUsername());
     }
 
     public static User getLoggedInUser() {
@@ -29,6 +29,6 @@ public class GameApp { /* save local copies here */
     }
 
     public static void setLoggedInUser(User loggedInUser) {
-        GameApp.loggedInUser = loggedInUser;
+        App.loggedInUser = loggedInUser;
     }
 }

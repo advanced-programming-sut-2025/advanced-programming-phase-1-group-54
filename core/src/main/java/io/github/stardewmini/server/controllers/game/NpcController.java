@@ -1,11 +1,6 @@
-package io.github.stardewmini.controller.game;
+package io.github.stardewmini.server.controllers.game;
 
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import io.github.stardewmini.common.model.App;
-import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Quest;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.Season;
@@ -14,8 +9,6 @@ import io.github.stardewmini.common.model.items.Item;
 import io.github.stardewmini.common.model.items.recipes.Recipe;
 import io.github.stardewmini.common.model.lives.NPC;
 import io.github.stardewmini.common.model.lives.Player;
-import io.github.stardewmini.common.model.map.NPCHouse;
-import io.github.stardewmini.common.model.map.Tile;
 import io.github.stardewmini.common.model.relationships.NPCFriendship;
 
 import java.util.ArrayList;
@@ -261,6 +254,7 @@ public class NpcController {
         return new Result(true,"quest finished");
     }
 
+/*
     public static void giftAnimation(NPC npc, float delta) {
         Animation<TextureRegion> animation = GameAssetManager.getInstance().getNPCsGifts(npc.getName());
         if(! animation.isAnimationFinished(npc.getAnimationTime())){
@@ -304,5 +298,6 @@ public class NpcController {
                 (npcHouses.get(i).getNpc().getLocation().row() + 1) * Tile.getSize());
         }
     }
+*/
 
 }

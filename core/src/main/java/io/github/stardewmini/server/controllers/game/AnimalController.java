@@ -1,10 +1,6 @@
-package io.github.stardewmini.controller.game;
+package io.github.stardewmini.server.controllers.game;
 
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import io.github.stardewmini.common.model.App;
-import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.SkillType;
 import io.github.stardewmini.common.model.enums.ToolType;
@@ -208,6 +204,7 @@ public class AnimalController {
         return new Result(1,"You sold " + animal.getName() + " for " + price + " money");
     }
 
+/*
     public static void eatAnimation(Animal animal,float delta){
         Animation<TextureRegion> animation = GameAssetManager.getInstance().getAnimalEat(animal.getAnimalName());
         animal.getSprite().setRegion(animation.getKeyFrame(animal.getEatTime()));
@@ -278,4 +275,5 @@ public class AnimalController {
             animal.getSprite().draw(batch);
         }
     }
+*/
 }

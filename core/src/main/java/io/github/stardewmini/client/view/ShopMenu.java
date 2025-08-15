@@ -11,7 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.controller.game.ShopController;
+import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.ClientGameController;
+import io.github.stardewmini.client.controllers.game.ShopController;
+import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 
@@ -82,8 +85,10 @@ public class ShopMenu implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 String priceString = itemPrice.getText().toString();
                 int price = Integer.parseInt(priceString.substring(0,priceString.length() - 5));
-                Result result = ShopController.buy(itemName.getText().toString(),nameField.getText(),
+                Message message = ClientGameController.createBuy(itemName.getText().toString(),nameField.getText(),
                     price,location.getText());
+
+                Result result = ClientApp.sendRequest(message);
                 window.remove();
                 Main.getInstance().getScreen().dispose();
                 Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));

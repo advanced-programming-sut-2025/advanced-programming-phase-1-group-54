@@ -1,14 +1,14 @@
 package io.github.stardewmini.server.controllers;
 
 import io.github.stardewmini.common.model.builders.UserBuilder;
-import io.github.stardewmini.server.app.GameApp;
+import io.github.stardewmini.server.app.App;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.User;
 
 public class LoginMenuController {
 
     public static Result login(String username, String password, boolean stayLoggedIn) {
-        User user = GameApp.getUserByUsername(username);
+        User user = App.getUserByUsername(username);
         if (user == null)
             return new Result(false, "User not found");
 
@@ -20,14 +20,14 @@ public class LoginMenuController {
     }
 
     public static Result getSecurityQuestion(String username) {
-        User user = GameApp.getUserByUsername(username);
+        User user = App.getUserByUsername(username);
         if (user != null)
             return new Result(true, user.getSecurityQuestion());
         return new Result(false, "User not found");
     }
 
     public static Result answer(String username, String answer) {
-        User user = GameApp.getUserByUsername(username);
+        User user = App.getUserByUsername(username);
         if (user == null)
             return new Result(false, "User not found");
 
@@ -38,7 +38,7 @@ public class LoginMenuController {
     }
 
     public static Result changePassword(String username, String password, String confirmPassword) {
-        User user = GameApp.getUserByUsername(username);
+        User user = App.getUserByUsername(username);
         if (user == null)
             return new Result(false, "User not found");
 
@@ -50,18 +50,18 @@ public class LoginMenuController {
             return checkPasswordResult;
 
         user.setPasswordHash(UserBuilder.sha256(password));
-        GameApp.saveUsers();
+        App.saveUsers();
         return new Result(true, "Password changed successfully");
     }
 
     public static Result changePasswordToRandom(String username) {
-        User user = GameApp.getUserByUsername(username);
+        User user = App.getUserByUsername(username);
         if (user == null)
             return new Result(false, "User not found");
 
         String password = RegisterMenuController.getRandomPassword();
         user.setPasswordHash(UserBuilder.sha256(password));
-        GameApp.saveUsers();
+        App.saveUsers();
         return new Result(true, "Password changed successfully. your new password is: " + password);
     }
 

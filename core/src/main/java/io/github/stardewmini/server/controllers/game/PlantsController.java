@@ -1,4 +1,4 @@
-package io.github.stardewmini.controller.game;
+package io.github.stardewmini.server.controllers.game;
 
 import io.github.stardewmini.common.model.*;
 import io.github.stardewmini.common.model.items.plants.*;

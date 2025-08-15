@@ -1,9 +1,5 @@
-package io.github.stardewmini.controller.game;
+package io.github.stardewmini.server.controllers.game;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import io.github.stardewmini.common.model.App;
 import io.github.stardewmini.common.model.Game;
 import io.github.stardewmini.common.model.GameAssetManager;
@@ -323,6 +319,7 @@ public class ToolsController {
         return new Result(false, "you gained " + number + " of " + item.getName() + ", but your backpack is full");
     }
 
+/*
     public static void mouseClick(int screenX, int screenY, OrthographicCamera camera) {
         Player player = App.getCurrentGame().getCurrentPlayer();
         Vector3 clickPos = new Vector3(screenX, screenY, 0);
@@ -354,4 +351,5 @@ public class ToolsController {
         else direction = Direction.UP_RIGHT;
         return direction;
     }
+*/
 }

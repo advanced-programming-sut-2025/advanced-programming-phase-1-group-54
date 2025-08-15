@@ -46,4 +46,8 @@ public class ClientApp {
             ClientApp.TIMEOUT_MILLIS);
         return ClientConnectionController.getResultFromResponse(response);
     }
+
+    public static void sendUpdate(Message message) {
+        serverConnectionThread.sendMessage(message);
+    }
 }

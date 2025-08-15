@@ -1,4 +1,4 @@
-package io.github.stardewmini.controller.game;
+package io.github.stardewmini.server.controllers.game;
 
 
 import com.google.gson.JsonArray;
@@ -7,7 +7,6 @@ import com.google.gson.JsonParser;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.file.Paths;
 import java.util.Objects;
 
 public class ResourceController {

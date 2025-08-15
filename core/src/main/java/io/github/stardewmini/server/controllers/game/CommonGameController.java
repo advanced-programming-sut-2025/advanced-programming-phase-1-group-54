@@ -1,4 +1,4 @@
-package io.github.stardewmini.controller.game;
+package io.github.stardewmini.server.controllers.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import io.github.stardewmini.Main;
+import io.github.stardewmini.client.controllers.game.PlayerController;
 import io.github.stardewmini.client.view.*;
 import io.github.stardewmini.common.model.*;
 import io.github.stardewmini.common.model.items.*;
@@ -695,6 +696,7 @@ public class CommonGameController {
         return false;
     }
 
+/*
     public static void draw(SpriteBatch batch, Stage stage, OrthographicCamera camera, Window[] windows) {
         MapController.draw(batch,stage,camera);
         PlayerController.draw(batch);
@@ -752,4 +754,5 @@ public class CommonGameController {
 
         return output.toString();
     }
+*/
 }

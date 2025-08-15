@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.controller.game.CraftingController;
+import io.github.stardewmini.client.controllers.game.CraftingController;
 import io.github.stardewmini.common.model.GameAssetManager;
 
 public class CraftingMenu implements Screen {

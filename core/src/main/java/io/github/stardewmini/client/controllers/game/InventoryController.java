@@ -1,4 +1,4 @@
-package io.github.stardewmini.controller.game;
+package io.github.stardewmini.client.controllers.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -17,6 +17,7 @@ import io.github.stardewmini.common.model.items.tools.Tool;
 import io.github.stardewmini.common.model.lives.Player;
 import io.github.stardewmini.common.model.lives.Skill;
 import io.github.stardewmini.client.view.GameScreen;
+import io.github.stardewmini.server.controllers.game.ToolsController;
 
 import java.util.Map;
 

@@ -2,9 +2,9 @@ package io.github.stardewmini;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import io.github.stardewmini.client.app.App;
 import io.github.stardewmini.client.view.MainMenu;
 import io.github.stardewmini.client.view.StartMenu;
-import io.github.stardewmini.common.model.App;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {

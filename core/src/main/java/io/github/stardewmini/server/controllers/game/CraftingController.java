@@ -1,14 +1,7 @@
-package io.github.stardewmini.controller.game;
+package io.github.stardewmini.server.controllers.game;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import io.github.stardewmini.Main;
 import io.github.stardewmini.common.model.App;
 import io.github.stardewmini.common.model.DateTime;
-import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.Direction;
 import io.github.stardewmini.common.model.enums.Feature;
@@ -24,12 +17,10 @@ import io.github.stardewmini.common.model.map.Cabin;
 import io.github.stardewmini.common.model.map.Farm;
 import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.Tile;
-import io.github.stardewmini.client.view.GameScreen;
-
-import java.util.ArrayList;
 
 public class CraftingController {
 
+/*
     public static Result showCraftingRecipe(Window window){
 
         Player player = App.getCurrentGame().getCurrentPlayer();
@@ -67,6 +58,7 @@ public class CraftingController {
         return new Result(1, "");
 
     }
+*/
 
     public static Result crafting(String artisanName){
 
