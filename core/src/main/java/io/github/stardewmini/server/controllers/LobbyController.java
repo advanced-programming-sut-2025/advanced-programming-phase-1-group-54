@@ -13,19 +13,29 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LobbyController {
-    public static Result createLobby(String requester, String name, String password, boolean invisible) {
+    public static Message createLobby(String requester, String name, String password, boolean invisible) {
         int id = (int) (10000000 + Math.random() * 90000000);
 
         Lobby lobby = new Lobby(name, id, password, !invisible);
         User user = App.getUserByUsername(requester);
         lobby.addUser(user);
         App.addLobby(lobby);
-        return new Result(true, "Lobby created!");
+        LobbyInfo lobbyInfo = lobby.getLobbyInfo();
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("success", true);
+        body.put("name", lobbyInfo.name());
+        body.put("id", lobbyInfo.id());
+        body.put("isPrivate", lobbyInfo.isPrivate());
+        return new Message(body, Message.Type.response);
     }
 
     public static Result joinLobby(String requester, int lobbyId, String password) {
         Lobby lobby = App.getLobbyById(lobbyId);
         User user = App.getUserByUsername(requester);
+
+        System.out.println(requester);
+        System.out.println(lobbyId);
+        System.out.println(password);
 
         if (!lobby.getPassword().equals(password)) {
             return new Result(false, "Wrong Password");

@@ -13,6 +13,7 @@ import io.github.stardewmini.server.model.Lobby;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ServerConnectionController {
     public static Message handleCommand(String username, String clientIp, int clientPort, Message message) {
@@ -148,11 +149,15 @@ public class ServerConnectionController {
 
     private static Message handleFindLobby(Message message) {
         HashMap<String, Object> body = new HashMap<>();
-        List<LobbyInfo> lobbyInfos = new ArrayList<>();
         Lobby foundLobby = App.getLobbyById(message.getIntFromBody("id"));
+        List<Map<String, Object>> lobbyInfos = new ArrayList<>();
 
-        if (foundLobby != null) {
-            lobbyInfos.add(foundLobby.getLobbyInfo());
+        if (foundLobby.isVisible()) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("name", foundLobby.getName());
+            map.put("id", foundLobby.getId());
+            map.put("isPrivate", foundLobby.isPrivate());
+            lobbyInfos.add(map);
         }
 
         body.put("lobbies", lobbyInfos);
@@ -162,10 +167,14 @@ public class ServerConnectionController {
     private static Message handleRefreshLobbyList() {
         List<Lobby> lobbies = App.getLobbies();
         HashMap<String, Object> body = new HashMap<>();
-        List<LobbyInfo> lobbyInfos = new ArrayList<>();
+        List<Map<String, Object>> lobbyInfos = new ArrayList<>();
         for (Lobby lobby : lobbies) {
             if (lobby.isVisible()) {
-                lobbyInfos.add(lobby.getLobbyInfo());
+                Map<String, Object> map = new HashMap<>();
+                map.put("name", lobby.getName());
+                map.put("id", lobby.getId());
+                map.put("isPrivate", lobby.isPrivate());
+                lobbyInfos.add(map);
             }
         }
         body.put("lobbies", lobbyInfos);
@@ -279,12 +288,11 @@ public class ServerConnectionController {
     }
 
     private static Message handleCreateLobby(String username, Message message) {
-        Result result = LobbyController.createLobby(
+        return LobbyController.createLobby(
             username,
             message.getFromBody("name"),
             message.getFromBody("password"),
             message.getBooleanFromBody("invisible"));
-        return makeResponseFrom(result);
     }
 
     private static Message handleJoinLobby(String username, Message message) {
@@ -517,14 +525,14 @@ public class ServerConnectionController {
         return makeResponseFrom(result);
     }
 
-    private static Message handleAdvanceDate(String username, Message message){
+    private static Message handleAdvanceDate(String username, Message message) {
         Result result = CheatController.advanceDate(
             message.getFromBody("string")
         );
         return makeResponseFrom(result);
     }
 
-    private static Message handleThunderStrike(String username, Message message){
+    private static Message handleThunderStrike(String username, Message message) {
         Result result = CheatController.thunderStrike(
             username,
             message.getFromBody("string")
@@ -532,7 +540,7 @@ public class ServerConnectionController {
         return makeResponseFrom(result);
     }
 
-    private static Message handleSetEnergy(String username, Message message){
+    private static Message handleSetEnergy(String username, Message message) {
         Result result = CheatController.setEnergy(
             username,
             message.getFromBody("string")
