@@ -1,5 +1,7 @@
 package io.github.stardewmini.server.app;
 
+import io.github.stardewmini.common.ConnectionThread;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,5 +68,16 @@ public class ServerApp {
 
     public static List<ClientConnectionThread> getConnections() {
         return List.copyOf(connections);
+    }
+
+    public static List<ClientConnectionThread> getConnectionsByLobbyId(int lobbyId) {
+        List<ClientConnectionThread> lobbyConnections = new ArrayList<>();
+        for (ClientConnectionThread connection : connections) {
+            if (connection.getLobbyId() == lobbyId) {
+                lobbyConnections.add(connection);
+            }
+        }
+
+        return lobbyConnections;
     }
 }

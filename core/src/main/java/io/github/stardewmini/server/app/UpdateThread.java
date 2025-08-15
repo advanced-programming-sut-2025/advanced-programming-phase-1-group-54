@@ -1,5 +1,6 @@
 package io.github.stardewmini.server.app;
 
+import io.github.stardewmini.common.ConnectionThread;
 import io.github.stardewmini.common.JSONUtils;
 import io.github.stardewmini.common.Message;
 import io.github.stardewmini.server.controllers.UpdateController;
@@ -10,16 +11,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class UpdateThread extends Thread {
     private int TICK_RATE = 100;
+    private int lobbyId;
     private Queue<Message> diffs;
     private AtomicBoolean end;
 
-    public UpdateThread() {
+    public UpdateThread(int lobbyId) {
+        this.lobbyId = lobbyId;
         this.end = new AtomicBoolean(false);
         this.diffs = new ConcurrentLinkedDeque<>();
     }
 
     private void sendDiff(Message diff) {
-        for (ClientConnectionThread connectionThread : ServerApp.getConnections()) {
+        for (ConnectionThread connectionThread : ServerApp.getConnectionsByLobbyId(lobbyId)) {
             connectionThread.sendMessage(diff);
         }
     }

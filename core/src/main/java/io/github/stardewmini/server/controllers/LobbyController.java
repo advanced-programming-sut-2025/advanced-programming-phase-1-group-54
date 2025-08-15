@@ -5,6 +5,7 @@ import io.github.stardewmini.common.model.LobbyInfo;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.User;
 import io.github.stardewmini.server.app.App;
+import io.github.stardewmini.server.app.ServerApp;
 import io.github.stardewmini.server.model.Lobby;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class LobbyController {
             return new Result(false, "Wrong Password");
         }
 
+        ServerApp.getConnectionByUsername(requester).setLobbyId(lobbyId);
         lobby.addUser(user);
         return new Result(true, "Joined Lobby");
     }
