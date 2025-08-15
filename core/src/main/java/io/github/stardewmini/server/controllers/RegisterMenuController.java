@@ -155,13 +155,19 @@ public class RegisterMenuController {
             return new Result(false, String.format("Number should be between 1 and %d",
                 User.getSecurityQuestions().length));
 
+        System.out.println("OK");
         if (!answer.equals(confirmAnswer))
             return new Result(false, "Answers do not match");
 
-        System.out.println("OK");
+        System.out.println("OK KIRI OK KIRI");
+        System.out.println(number);
+        System.out.println(answer);
+        System.out.println(confirmAnswer);
+
         UserBuilder.getInstance().registerSecurityQuestionAnswer(number, answer);
         System.out.println("OK");
         User user = UserBuilder.getInstance().getResult();
+        System.out.println("OK");
         App.addUser(user);
         return new Result(true, "Successfully registered!");
     }

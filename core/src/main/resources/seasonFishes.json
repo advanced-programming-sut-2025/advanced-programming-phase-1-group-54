@@ -1,0 +1,122 @@
+{
+  "WINTER": [
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Midnight Carp",
+      "isEdible": true,
+      "baseSellPrice": 150
+    },
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Squid",
+      "isEdible": true,
+      "baseSellPrice": 80
+    },
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Tuna",
+      "isEdible": true,
+      "baseSellPrice": 100
+    },
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Perch",
+      "isEdible": true,
+      "baseSellPrice": 55
+    }
+  ],
+  "FALL": [
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Salmon",
+      "isEdible": true,
+      "baseSellPrice": 75
+    },
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Sardine",
+      "isEdible": true,
+      "baseSellPrice": 40
+    },
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Shad",
+      "isEdible": true,
+      "baseSellPrice": 60
+    },
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Blue Discus",
+      "isEdible": true,
+      "baseSellPrice": 120
+    }
+  ],
+  "SPRING": [
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Flounder",
+      "isEdible": true,
+      "baseSellPrice": 100
+    },
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Lionfish",
+      "isEdible": true,
+      "baseSellPrice": 100
+    },
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Herring",
+      "isEdible": true,
+      "baseSellPrice": 30
+    },
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Ghostfish",
+      "isEdible": true,
+      "baseSellPrice": 45
+    }
+  ],
+  "SUMMER": [
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Tilapia",
+      "isEdible": true,
+      "baseSellPrice": 75
+    },
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Dorado",
+      "isEdible": true,
+      "baseSellPrice": 100
+    },
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Sunfish",
+      "isEdible": true,
+      "baseSellPrice": 30
+    },
+    {
+      "energy": 0,
+      "quality": "NORMAL",
+      "name": "Rainbow Trout",
+      "isEdible": true,
+      "baseSellPrice": 65
+    }
+  ]
+}

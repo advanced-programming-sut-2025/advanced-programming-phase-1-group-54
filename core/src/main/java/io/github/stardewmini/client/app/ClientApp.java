@@ -7,7 +7,7 @@ import io.github.stardewmini.common.model.Result;
 import java.net.Socket;
 
 public class ClientApp {
-    public static final int TIMEOUT_MILLIS = 500;
+    public static final int TIMEOUT_MILLIS = 10000;
 
     private static String ip;
     private static int port;
