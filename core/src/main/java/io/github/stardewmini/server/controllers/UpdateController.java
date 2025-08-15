@@ -6,8 +6,11 @@ import io.github.stardewmini.common.model.GameData;
 import io.github.stardewmini.server.app.ServerApp;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class UpdateController {
+    private static Random rand = new Random();
+
     public static void chooseMap(int lobbyId) {
         HashMap<String, Object> body = new HashMap<>();
         body.put("update", "choose_map");
