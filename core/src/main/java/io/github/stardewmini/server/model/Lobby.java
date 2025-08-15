@@ -34,6 +34,10 @@ public class Lobby {
         return visible;
     }
 
+    public boolean isPrivate() {
+        return password.isEmpty();
+    }
+
     public ArrayList<User> getUsers() {
         return users;
     }
@@ -44,5 +48,9 @@ public class Lobby {
 
     public void removeUser(User user) {
         users.remove(user);
+    }
+
+    public User getAdmin() {
+        return users.get(0);
     }
 }

@@ -2,14 +2,20 @@ package io.github.stardewmini.client.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
+import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.ClientConnectionController;
+import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.common.model.LobbyInfo;
+import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.SoundManager;
 
 
 public class HostLobbyScreen implements Screen {
@@ -22,16 +28,66 @@ public class HostLobbyScreen implements Screen {
 
         Skin skin = GameAssetManager.getInstance().getSkin();
 
-        Label titleLabel = new Label("Stardew Valley", skin, "Bold");
-        Label subtitleLabel = new Label("Waiting for Others ...", skin);
+        Label titleLabel = new Label("Host Lobby", skin, "Bold");
+        TextField nameField = new TextField("", skin);
+        nameField.setMessageText("Lobby Name");
+        TextField passwordField = new TextField("", skin);
+        passwordField.setMessageText("Lobby password");
+        passwordField.setDisabled(true);
+        CheckBox privateCheckBox = new CheckBox("Private", skin);
+        privateCheckBox.setChecked(false);
+        privateCheckBox.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                SoundManager.getInstance().playClick();
+                passwordField.setDisabled(!privateCheckBox.isChecked());
+                if (!privateCheckBox.isChecked())
+                    passwordField.setText("");
+            }
+        });
+
+        TextButton hostButton = new TextButton("Host", skin);
+        hostButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                SoundManager.getInstance().playClick();
+                Message message = ClientConnectionController.createHostLobby(
+                    nameField.getText(), passwordField.getText()
+                );
+
+                Message response = ClientApp.sendMessageAndGetResponse(message);
+                if (response.getBooleanFromBody("success")) {
+                    LobbyInfo lobbyInfo = response.getFromBody("lobbyInfo");
+                    Main.getInstance().getScreen().dispose();
+                    Main.getInstance().setScreen(new LobbyScreen(lobbyInfo));
+                }
+            }
+        });
+
+        TextButton backButton = new TextButton("Back", skin);
+        backButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                SoundManager.getInstance().playClick();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new MainMenu());
+            }
+        });
 
         Table root = new Table();
         root.setFillParent(true);
         root.center();
 
-        root.add(titleLabel);
+        root.add(titleLabel).colspan(2);
         root.row().pad(10, 0, 10, 0);
-        root.add(subtitleLabel);
+        root.add(nameField).width(500).colspan(2);
+        root.row().pad(10, 0, 10, 0);
+        root.add(passwordField).width(500).pad(10);
+        root.add(privateCheckBox);
+        root.row().pad(10, 0, 10, 0);
+        root.add(hostButton).width(300).height(90).colspan(2);
+        root.row().pad(10, 0, 10, 0);
+        root.add(backButton).width(300).height(90).colspan(2);
 
         stage.addActor(root);
     }
