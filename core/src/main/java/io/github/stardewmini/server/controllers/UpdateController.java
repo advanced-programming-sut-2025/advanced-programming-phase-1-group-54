@@ -183,4 +183,12 @@ public class UpdateController {
         return new Message(body, Message.Type.update);
     }
 
+    public static Message createTag(String requester, String username) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("update", "tag");
+        body.put("requester", requester);
+        body.put("username", username);
+        return new Message(body, Message.Type.update);
+    }
+
 }
