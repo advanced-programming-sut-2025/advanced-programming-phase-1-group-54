@@ -27,11 +27,15 @@ import java.util.HashMap;
 
 public class Player extends Live implements DailyUpdate, HourUpdate {
     private static final int MAXIMUM_ENERGY = 200;
+    public static final int emojiShowTime = 5;
 
     public static int getMaximumEnergy() {
         return MAXIMUM_ENERGY;
     }
 
+    private String emojiName;
+    private Sprite emojiSprite = new Sprite(GameAssetManager.getInstance().getEmojis("0"));
+    private float emojiTime = 5;
 
     private Sprite sprite = new Sprite(GameAssetManager.getInstance().getPlayerWalkRight().getKeyFrame(0));
     private float animationTime;
@@ -92,6 +96,19 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     private SkillType buffSkill;
     private int buffHours;
+
+    private final ArrayList<String> emojis = new ArrayList<>(){{
+        add("0");
+        add("1");
+        add("2");
+        add("3");
+        add("4");
+        add("5");
+        add("6");
+        add("7");
+        add("8");
+        add("9");
+    }};
 
     public Player(User controllingUser, Farm farm, ArrayList<NPCFriendship> npcFriendships) {
         super(controllingUser.getUsername());
@@ -206,6 +223,34 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     public float getAnimationTime() {
         return animationTime;
+    }
+
+    public ArrayList<String> getEmojis() {
+        return emojis;
+    }
+
+    public Sprite getEmojiSprite() {
+        return emojiSprite;
+    }
+
+    public float getEmojiTime() {
+        return emojiTime;
+    }
+
+    public String getEmojiName() {
+        return emojiName;
+    }
+
+    public void setEmojiName(String emojiName) {
+        this.emojiName = emojiName;
+    }
+
+    public void setEmojiSprite(Sprite emojiSprite) {
+        this.emojiSprite = emojiSprite;
+    }
+
+    public void setEmojiTime(float emojiTime) {
+        this.emojiTime = emojiTime;
     }
 
     public void setAnimationTime(float animationTime) {

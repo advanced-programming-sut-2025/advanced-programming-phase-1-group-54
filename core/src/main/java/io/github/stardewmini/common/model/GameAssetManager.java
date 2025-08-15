@@ -412,7 +412,7 @@ public class GameAssetManager {
         return buildings.get(name);
     }
 
-    private final HashMap<String,HashMap<String,Texture>> tools = new HashMap();
+    private final HashMap<String,HashMap<String,Texture>> tools = new HashMap<>();
     {
         HashMap<String,Texture> tool = new HashMap<>();
         ToolLevel[] toolLevels = ToolLevel.values();

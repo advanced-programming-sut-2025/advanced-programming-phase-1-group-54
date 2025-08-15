@@ -80,12 +80,21 @@ public class ServerConnectionController {
                 return handleSellAnimal(username, message);
 
 
-            case"game_usernames":
+            case "game_usernames":
                 return handleGameUsers(username, message);
-            case"talk":
+            case "talk":
                 return handleTalk(username, message);
-            case"talk_history":
+            case "talk_history":
                 return handleTalkHistory(username, message);
+
+            case "get_emojis":
+                return null;
+            case "add_emojis":
+                return null;
+            case "remove_emojis":
+                return null;
+            case "select_emojis":
+                return null;
 
 
             default:
@@ -380,6 +389,37 @@ public class ServerConnectionController {
         Result result = FriendShipController.showTalkHistory(
             username,
             message.getFromBody("username")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleGetEmojis(String username, Message message) {
+        Result result = EmojiController.getEmojis(
+            username
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleAddEmojis(String username, Message message) {
+        Result result = EmojiController.addEmojis(
+            username,
+            message.getFromBody("name")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleRemoveEmojis(String username, Message message) {
+        Result result = EmojiController.removeEmojis(
+            username,
+            message.getFromBody("name")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleSelectEmojis(String username, Message message) {
+        Result result = EmojiController.showEmojis(
+            username,
+            message.getFromBody("name")
         );
         return makeResponseFrom(result);
     }
