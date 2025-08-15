@@ -1,5 +1,6 @@
 package io.github.stardewmini.client.controllers;
 
+import io.github.stardewmini.client.app.ClientApp;
 import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.enums.Gender;
@@ -21,6 +22,14 @@ public class ClientConnectionController {
 
     public static void handleUpdate(Message message) {
         // TODO
+    }
+
+    public static Message status() {
+        HashMap<String, Object> messageBody = new HashMap<>();
+        messageBody.put("command", "status");
+        messageBody.put("ip", ClientApp.getIp());
+        messageBody.put("port", ClientApp.getPort());
+        return new Message(messageBody, Message.Type.response);
     }
 
     public static Message createLogin(String username, String password, boolean stayLoggedIn) {

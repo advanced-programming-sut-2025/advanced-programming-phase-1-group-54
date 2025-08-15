@@ -42,4 +42,13 @@ public class ServerApp {
 		if (clientConnectionThread != null && !connections.contains(clientConnectionThread))
 			connections.add(clientConnectionThread);
 	}
+
+    public static ClientConnectionThread getConnectionByIpPort(String ip, int port) {
+        for (ClientConnectionThread connection : connections) {
+            if (connection.getOtherSideIP().equals(ip) && connection.getOtherSidePort() == port) {
+                return connection;
+            }
+        }
+        return null;
+    }
 }

@@ -17,6 +17,7 @@ abstract public class ConnectionThread extends Thread {
     protected int otherSidePort;
     protected Socket socket;
 	protected AtomicBoolean end;
+    protected boolean initialized = false;
 
 	protected ConnectionThread(Socket socket) throws IOException {
 		this.socket = socket;
@@ -29,12 +30,18 @@ abstract public class ConnectionThread extends Thread {
 	public Message sendAndWaitForResponse(Message message, int timeoutMilli) {
 		sendMessage(message);
 		try {
-            return receivedMessagesQueue.poll(timeoutMilli, TimeUnit.MILLISECONDS);
-		} catch (Exception e) {
+            if (initialized) return receivedMessagesQueue.poll(timeoutMilli, TimeUnit.MILLISECONDS);
+            socket.setSoTimeout(timeoutMilli);
+            var result = JSONUtils.fromJson(dataInputStream.readUTF());
+            socket.setSoTimeout(0);
+            return result;
+        } catch (Exception e) {
 			System.err.println("Request Timed out.");
 			return null;
 		}
 	}
+
+    abstract public boolean initialHandshake();
 
 	abstract protected boolean handleMessage(Message message);
 
@@ -67,6 +74,14 @@ abstract public class ConnectionThread extends Thread {
     @Override
 	public void run() {
 		while (!end.get()) {
+            initialized = false;
+            if (!initialHandshake()) {
+                System.err.println("Inital HandShake failed with remote device.");
+                end();
+                return;
+            }
+
+            initialized = true;
 			try {
 				String receivedStr = dataInputStream.readUTF();
 				Message message = JSONUtils.fromJson(receivedStr);

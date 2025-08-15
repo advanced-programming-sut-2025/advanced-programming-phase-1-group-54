@@ -4,10 +4,11 @@ import io.github.stardewmini.common.model.builders.UserBuilder;
 import io.github.stardewmini.server.app.App;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.User;
+import io.github.stardewmini.server.app.ServerApp;
 
 public class LoginMenuController {
 
-    public static Result login(String username, String password, boolean stayLoggedIn) {
+    public static Result login(String clientIp, int clientPort, String username, String password, boolean stayLoggedIn) {
         User user = App.getUserByUsername(username);
         if (user == null)
             return new Result(false, "User not found");
@@ -15,7 +16,9 @@ public class LoginMenuController {
         if (!UserBuilder.sha256(password).equals(user.getPasswordHash()))
             return new Result(false, "Incorrect password");
 
+
         // TODO stay logged in
+        ServerApp.getConnectionByIpPort(clientIp, clientPort).setUsername(username);
         return new Result(true, "Successfully logged in");
     }
 

@@ -7,12 +7,29 @@ import io.github.stardewmini.common.Message;
 import java.io.IOException;
 import java.net.Socket;
 
+import static io.github.stardewmini.client.app.ClientApp.TIMEOUT_MILLIS;
+
 public class ServerConnectionThread extends ConnectionThread {
 
     protected ServerConnectionThread(Socket socket) throws IOException {
         super(socket);
     }
 
+    @Override
+    public boolean initialHandshake() {
+        try {
+            socket.setSoTimeout(TIMEOUT_MILLIS);
+
+            dataInputStream.readUTF();
+            Message message = ClientConnectionController.status();
+            sendMessage(message);
+
+            socket.setSoTimeout(0);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     @Override
     protected boolean handleMessage(Message message) {
