@@ -23,9 +23,9 @@ public class FriendShipController {
 
         StringBuilder messageBuilder = new StringBuilder();
         for (Relationship relationship : relationships) {
-            messageBuilder.append(relationship.getOtherPlayer(player).getName())
-                    .append("\nlevel: ").append(relationship.getLevel()).append("\nXP: ").append(relationship.getXP()).
-                    append("\n");
+            messageBuilder.append(relationship.getOtherPlayer(player).getName()).append(",");
+//                    .append("\nlevel: ").append(relationship.getLevel()).append("\nXP: ").append(relationship.getXP()).
+//                    append("\n");
         }
 
         return new Result(true, messageBuilder.toString());
@@ -44,8 +44,8 @@ public class FriendShipController {
             return new Result(false, "user not found");
         }
 
-        if (!MapController.isNear(player.getCurrentLocation(), otherPlayer))
-            return new Result(false, "you must be next to each other to talk to each other!");
+//        if (!MapController.isNear(player.getCurrentLocation(), otherPlayer))
+//            return new Result(false, "you must be next to each other to talk to each other!");
 
         Talk talk = new Talk(App.getCurrentGame().getPlayerByUsername(requester), message, new DateTime(App.getCurrentGame().getDateTime()));
         relationship.getTalkHistory().add(talk);

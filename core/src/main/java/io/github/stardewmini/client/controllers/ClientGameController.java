@@ -142,4 +142,26 @@ public class ClientGameController {
         body.put("name", name);
         return new Message(body, Message.Type.command);
     }
+
+
+    public static Message createGameUsernames(){
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "game_usernames");
+        return new Message(body, Message.Type.command);
+    }
+
+    public static Message createTalk(String username, String talkingMessage){
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "talk");
+        body.put("username", username);
+        body.put("talkingMessage", talkingMessage);
+        return new Message(body, Message.Type.command);
+    }
+
+    public static Message createTalkHistory(String username){
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "talk_history");
+        body.put("username", username);
+        return new Message(body, Message.Type.command);
+    }
 }

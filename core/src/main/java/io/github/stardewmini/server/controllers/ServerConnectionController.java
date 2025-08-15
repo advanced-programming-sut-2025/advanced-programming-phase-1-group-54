@@ -79,6 +79,15 @@ public class ServerConnectionController {
             case "sell_animal":
                 return handleSellAnimal(username, message);
 
+
+            case"game_usernames":
+                return handleGameUsers(username, message);
+            case"talk":
+                return handleTalk(username, message);
+            case"talk_history":
+                return handleTalkHistory(username, message);
+
+
             default:
                 return null;
 //                return GameCommandController.handleCommand(username, message);
@@ -344,6 +353,30 @@ public class ServerConnectionController {
         Result result = AnimalController.sellAnimal(
             username,
             message.getFromBody("name")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleGameUsers(String username, Message message){
+        Result result = FriendShipController.showFriendships(
+            username
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleTalk(String username, Message message) {
+        Result result = FriendShipController.talk(
+            username,
+            message.getFromBody("username"),
+            message.getFromBody("talkingMessage")
+        );
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleTalkHistory(String username, Message message) {
+        Result result = FriendShipController.showTalkHistory(
+            username,
+            message.getFromBody("username")
         );
         return makeResponseFrom(result);
     }

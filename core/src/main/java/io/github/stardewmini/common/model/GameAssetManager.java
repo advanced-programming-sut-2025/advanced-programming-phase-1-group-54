@@ -494,6 +494,17 @@ public class GameAssetManager {
         return thunderAnimation;
     }
 
+    private final HashMap<String,Texture> emojis = new HashMap<>();
+    {
+        for(int i = 0 ; i < 20;i++){
+            emojis.put(i + "",new Texture("Stardew_Valley_Images-main/Emoji/Emojis" + i +".png"));
+        }
+    }
+
+    public Texture getEmojis(String name) {
+        return emojis.get(name);
+    }
+
     public Texture getItem(String name){
         Texture texture;
 

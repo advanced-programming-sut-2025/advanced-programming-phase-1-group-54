@@ -8,6 +8,7 @@ import io.github.stardewmini.common.model.items.Item;
 import io.github.stardewmini.common.model.items.recipes.Recipe;
 import io.github.stardewmini.common.model.lives.NPC;
 import io.github.stardewmini.common.model.lives.Player;
+import io.github.stardewmini.common.model.map.NPCHouse;
 import io.github.stardewmini.common.model.relationships.NPCFriendship;
 import io.github.stardewmini.server.app.App;
 
@@ -17,7 +18,16 @@ import java.util.Random;
 public class NpcController {
     private static Random rand = new Random();
 
-    public static Result friendShipNpc(String requester, NPC npc) {
+    public static Result friendShipNpc(String requester, String npcName) {
+        NPC npc = null;
+        for(NPCHouse npcHouse : App.getCurrentGame().getWorld().getNpcHouses()){
+            if(npcHouse.getNpc().getName().equals(npcName)){
+                npc = npcHouse.getNpc();
+            }
+        }
+        if(npc == null) {
+            return new Result(false, "NPC not found");
+        }
         NPCFriendship friendship = getNPCFriendship(requester, npc.getName());
         return new Result(true,"friendship level : " + friendship.getLevel() + "friendship XP : " +
             friendship.getXP());
@@ -139,7 +149,16 @@ public class NpcController {
         return new Result(true, output.toString());
     }
 
-    public static Result giftNpc(String requester, NPC npc, String itemName) {
+    public static Result giftNpc(String requester, String npcName, String itemName) {
+        NPC npc = null;
+        for(NPCHouse npcHouse : App.getCurrentGame().getWorld().getNpcHouses()){
+            if(npcHouse.getNpc().getName().equals(npcName)){
+                npc = npcHouse.getNpc();
+            }
+        }
+        if(npc == null) {
+            return new Result(false, "NPC not found");
+        }
         if (npc == null) {
             return new Result(false, "NPC not found");
         }
@@ -167,7 +186,16 @@ public class NpcController {
         }
     }
 
-    public static Result questList(String requester, NPC npc) {
+    public static Result questList(String requester, String npcName) {
+        NPC npc = null;
+        for(NPCHouse npcHouse : App.getCurrentGame().getWorld().getNpcHouses()){
+            if(npcHouse.getNpc().getName().equals(npcName)){
+                npc = npcHouse.getNpc();
+            }
+        }
+        if(npc == null) {
+            return new Result(false, "NPC not found");
+        }
         ArrayList<String> list = new ArrayList<>();
         NPCFriendship npcFriendship = NpcController.getNPCFriendship(requester, npc.getName());
         list.add("Quest num  req: count  rew: count");
@@ -195,7 +223,16 @@ public class NpcController {
         return new Result(true, String.join("\n", list));
     }
 
-    public static Result questFinish(String requester, String number, NPC npc) {
+    public static Result questFinish(String requester, String number, String npcName) {
+        NPC npc = null;
+        for(NPCHouse npcHouse : App.getCurrentGame().getWorld().getNpcHouses()){
+            if(npcHouse.getNpc().getName().equals(npcName)){
+                npc = npcHouse.getNpc();
+            }
+        }
+        if(npc == null) {
+            return new Result(false, "NPC not found");
+        }
         int i;
         try {
             i = Integer.parseInt(number);
