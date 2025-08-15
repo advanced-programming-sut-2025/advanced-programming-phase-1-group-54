@@ -116,7 +116,7 @@ public class UpdateController {
         return new Message(body, Message.Type.update);
     }
 
-    public static Message createQuestFinish(String requester,String questNumber, String npcName,) {
+    public static Message createQuestFinish(String requester,String questNumber, String npcName) {
         HashMap<String, Object> body = new HashMap<>();
         body.put("update", "quest_finish");
         body.put("requester", requester);
