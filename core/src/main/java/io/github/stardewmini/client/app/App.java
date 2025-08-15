@@ -10,7 +10,7 @@ public class App { /* save local copies here */
     private static final File savesDir = new File(System.getProperty("user.home") + "/Desktop/StardewValley/client/");
 
     private static Game currentGame;
-    private static User loggedInUser;
+    private static String loggedInUsername;
 
     public static Game getCurrentGame() {
         return currentGame;
@@ -21,14 +21,14 @@ public class App { /* save local copies here */
     }
 
     public static Player getCurrentPlayer() {
-        return App.getCurrentGame().getPlayerByUsername(loggedInUser.getUsername());
+        return App.getCurrentGame().getPlayerByUsername(loggedInUsername);
     }
 
-    public static User getLoggedInUser() {
-        return loggedInUser;
+    public static String getLoggedInUsername() {
+        return loggedInUsername;
     }
 
-    public static void setLoggedInUser(User loggedInUser) {
-        App.loggedInUser = loggedInUser;
+    public static void setLoggedInUsername(String loggedInUsername) {
+        App.loggedInUsername = loggedInUsername;
     }
 }

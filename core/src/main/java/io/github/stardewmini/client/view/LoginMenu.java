@@ -9,10 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
+import io.github.stardewmini.client.app.App;
 import io.github.stardewmini.client.app.ClientApp;
 import io.github.stardewmini.client.controllers.ClientConnectionController;
 import io.github.stardewmini.common.Message;
-import io.github.stardewmini.server.controllers.LoginMenuController;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.SoundManager;
@@ -62,6 +62,7 @@ public class LoginMenu implements Screen {
 
                 resultLabel.setText(result.message());
                 if (result.success()) {
+                    App.setLoggedInUsername(usernameField.getText());
                     Main.getInstance().getScreen().dispose();
                     Main.getInstance().setScreen(new MainMenu());
                 }

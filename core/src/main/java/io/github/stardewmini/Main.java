@@ -31,7 +31,7 @@ public class Main extends Game {
 //                setScreen(new CheatMenu(GameAssetManager.getInstance().getSkin()));
 
 
-        if (App.getLoggedInUser() != null) {
+        if (App.getLoggedInUsername() != null) {
             setScreen(new MainMenu());
         }
         else {

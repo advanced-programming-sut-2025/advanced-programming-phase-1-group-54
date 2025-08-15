@@ -9,7 +9,7 @@ import io.github.stardewmini.server.controllers.game.*;
 import java.util.HashMap;
 
 public class ServerConnectionController {
-    public static Message handleCommand(String username, Message message) {
+    public static Message handleCommand(String username, String clientIp, int clientPort, Message message) {
         String command = message.getFromBody("command");
         switch (command) {
             case "register":
@@ -20,7 +20,7 @@ public class ServerConnectionController {
                 return handleResetUserBuilder();
 
             case "login":
-                return handleLogin(message);
+                return handleLogin(clientIp, clientPort, message);
             case "forgot_password":
                 return handleForgotPassword(message);
             case "answer":
@@ -131,8 +131,9 @@ public class ServerConnectionController {
         return makeResponseFrom(result);
     }
 
-    private static Message handleLogin(Message message) {
+    private static Message handleLogin(String clientIp, int clientPort, Message message) {
         Result result = LoginMenuController.login(
+            clientIp, clientPort,
             message.getFromBody("username"),
             message.getFromBody("password"),
             message.getBooleanFromBody("stayLoggedIn")

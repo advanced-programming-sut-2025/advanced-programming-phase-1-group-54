@@ -9,6 +9,8 @@ import java.net.Socket;
 public class ClientApp {
     public static final int TIMEOUT_MILLIS = 500;
 
+    private static String ip;
+    private static int port;
     private static ServerConnectionThread serverConnectionThread;
 
     private static boolean exitFlag = false;
@@ -21,9 +23,20 @@ public class ClientApp {
         String[] selfAddress = args[0].split(":");
         String[] serverAddress = args[1].split(":");
 
+        ip = selfAddress[0];
+        port = Integer.parseInt(selfAddress[1]);
+
         serverConnectionThread = new ServerConnectionThread(
                 new Socket(serverAddress[0], Integer.parseInt(serverAddress[1]))
         );
+    }
+
+    public static String getIp() {
+        return ip;
+    }
+
+    public static int getPort() {
+        return port;
     }
 
     public static void endAll() {
