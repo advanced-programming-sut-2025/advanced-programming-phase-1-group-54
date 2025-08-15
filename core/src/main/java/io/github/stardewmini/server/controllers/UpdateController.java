@@ -6,11 +6,13 @@ import java.util.HashMap;
 
 public class UpdateController {
     public static void chooseMap(int lobbyId) {
-        // todo
+
     }
 
-    public static Message createAdvanceTime(int number) {
+    public static Message createAdvanceTime(int amount) {
         HashMap<String, Object> body = new HashMap<>();
+        body.put("update", "advance_time");
+        body.put("amount", amount);
         body.put("advance_time", number);
         return new Message(body, Message.Type.update);
     }
