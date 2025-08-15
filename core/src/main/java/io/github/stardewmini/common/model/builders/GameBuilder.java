@@ -116,6 +116,7 @@ public class GameBuilder {
 
             cabin.getTileAt(locationInCabin).setThingOnTile(players[i]);
             players[i].setCurrentLocation(location);
+            players[i].setCabinLocation(location);
         }
 
         Game game = new Game(dateTime, seed, rng, world, players);
