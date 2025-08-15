@@ -265,7 +265,7 @@ public class PlantsController {
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
                 Tile tile = farm.getTileAt(new Location(i, j));
-                if (Math.random() <= 0.01 && tile.getThingOnTile() == null && tile.getFeatures().contains(Feature.PLOWED)) {
+                if (rand.nextDouble() <= 0.01 && tile.getThingOnTile() == null && tile.getFeatures().contains(Feature.PLOWED)) {
                     Crop crop = Crop.getCrop(Seed.getForagingSeed(rand, season).getPlant());
                     if (!cropCanBeGiant(crop, tile.getLocation())) {
                         tile.setThingOnTile(crop);

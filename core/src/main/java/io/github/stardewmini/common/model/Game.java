@@ -110,7 +110,7 @@ public class Game implements DailyUpdate {
 
     @Override
     public void nextDayUpdate() {
-        world.setTomorrowWeather(Weather.getRandom(dateTime.getSeason()));
+        world.setTomorrowWeather(Weather.getRandom(rng, dateTime.getSeason()));
         world.foraging(rng, dateTime.getSeason());
 
         for (Player player : players) {

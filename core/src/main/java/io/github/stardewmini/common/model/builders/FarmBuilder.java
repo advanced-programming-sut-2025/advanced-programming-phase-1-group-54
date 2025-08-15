@@ -168,7 +168,7 @@ public class FarmBuilder {
     public void placeRandomStuff(Farm farm) {
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
-                if ((int) (Math.random() * 100) < 5) {
+                if ((int) (rng.nextInt(100)) < 5) {
                     if (tiles[i][j].getThingOnTile() == null)
                         tiles[i][j].setThingOnTile(Material.getMaterial("Wood"));
                 }
@@ -176,7 +176,7 @@ public class FarmBuilder {
         }
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
-                if ((int) (Math.random() * 100) < 5) {
+                if ((int) (rng.nextInt(100)) < 5) {
                     if (tiles[i][j].getThingOnTile() == null)
                         tiles[i][j].setThingOnTile(Material.getMaterial("Stone"));
                 }

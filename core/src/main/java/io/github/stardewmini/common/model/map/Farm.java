@@ -93,7 +93,7 @@ public class Farm implements DailyUpdate {
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
                 Tile tile = getTileAt(new Location(i, j));
-                if (Math.random() <= 0.01 && tile.getThingOnTile() == null) {
+                if (rand.nextDouble() <= 0.01 && tile.getThingOnTile() == null) {
                     tile.setThingOnTile(Fruit.getForagingCrop(rand, season));
                 }
             }

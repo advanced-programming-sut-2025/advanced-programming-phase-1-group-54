@@ -18,7 +18,6 @@ public class ServerConnectionThread extends ConnectionThread {
     @Override
     public boolean initialHandshake() {
         try {
-            System.out.println("sending initial handshake");
             socket.setSoTimeout(TIMEOUT_MILLIS);
 
             dataInputStream.readUTF();
