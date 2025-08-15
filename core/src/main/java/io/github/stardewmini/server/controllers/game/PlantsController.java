@@ -14,6 +14,8 @@ import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.Tile;
 import io.github.stardewmini.server.app.App;
 
+import java.util.Random;
+
 public class PlantsController {
 
 /*
@@ -55,7 +57,7 @@ public class PlantsController {
 
         Seed seed;
         if (seedName.equals("Mixed Seeds")) {
-            Result result = plantingSeeds(requester, Seed.getMixedSeed(App.getCurrentGame().getDateTime().getSeason()), direction);
+            Result result = plantingSeeds(requester, Seed.getMixedSeed(App.getCurrentGame().getRng(), App.getCurrentGame().getDateTime().getSeason()), direction);
             if (result.success()) {
                 if (!App.getCurrentGame().getPlayerByUsername(requester).getBackpack().
                         removeItem(Seed.getSeed("Mixed Seeds"), 1)) {
@@ -259,12 +261,12 @@ public class PlantsController {
         return new Result(1, "Tile fertilized successfully");
     }
 
-    public static void foragingSeed(Farm farm, Season season) {
+    public static void foragingSeed(Random rand, Farm farm, Season season) {
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
                 Tile tile = farm.getTileAt(new Location(i, j));
-                if (Math.random() <= 0.01 && tile.getThingOnTile() == null && tile.getFeatures().contains(Feature.PLOWED)) {
-                    Crop crop = Crop.getCrop(Seed.getForagingSeed(season).getPlant());
+                if (rand.nextDouble() <= 0.01 && tile.getThingOnTile() == null && tile.getFeatures().contains(Feature.PLOWED)) {
+                    Crop crop = Crop.getCrop(Seed.getForagingSeed(rand, season).getPlant());
                     if (!cropCanBeGiant(crop, tile.getLocation())) {
                         tile.setThingOnTile(crop);
                     }

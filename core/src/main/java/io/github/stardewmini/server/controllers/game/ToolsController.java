@@ -285,7 +285,7 @@ public class ToolsController {
             result = addToBackPack(player.getBackpack(), rock, 1);
 
             if (player.getSkill(SkillType.MINING).getLevel() >= 2) {
-                Material material = Material.getForagingMaterial();
+                Material material = Material.getForagingMaterial(App.getCurrentGame().getRng());
                 Result materialAddedResult = addToBackPack(backpack, material, 1);
                 result = new Result(true, result.message() + "\n" + materialAddedResult.message());
             }

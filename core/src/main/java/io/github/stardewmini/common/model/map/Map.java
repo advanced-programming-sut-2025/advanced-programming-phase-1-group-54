@@ -140,6 +140,8 @@ public class Map {
     }
 
     public Location getRandomLocation() {
-        return new Location((int) (Math.random() * getNumberOfRows()), (int) (Math.random() * getNumberOfColumns()));
+//        return new Location((int) (Math.random() * getNumberOfRows()), (int) (Math.random() * getNumberOfColumns()));
+
+        return new Location(numberOfRows / 2, numberOfColumns / 2);
     }
 }

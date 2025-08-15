@@ -77,22 +77,21 @@ public class Seed extends Item implements Placeable, Cloneable{
         return new HashSet<>(seeds.keySet());
     }
 
-    public static Seed getForagingSeed(Season season){
+    public static Seed getForagingSeed(Random rand, Season season){
         ArrayList<String> foragingSeed = foragingSeeds.get(season);
-        Random rand = new Random();
         String foragingSeedName = foragingSeed.get(rand.nextInt(foragingSeed.size()));
         return getSeed(foragingSeedName);
     }
 
-    public static Seed getMixedSeed(Season season){
+    public static Seed getMixedSeed(Random rand, Season season){
         ArrayList<String> mixedSeed = mixedSeeds.get(season);
-        Random rand = new Random();
+
         String mixedSeedName = mixedSeed.get(rand.nextInt(mixedSeed.size()));
         return getSeed(mixedSeedName);
     }
 
-    public static Seed getForagingTree(){
-        Random rand = new Random();
+    public static Seed getForagingTree(Random rand){
+
         String foragingTreeName = foragingTrees.get(rand.nextInt(foragingTrees.size()));
         return getSeed(foragingTreeName);
     }

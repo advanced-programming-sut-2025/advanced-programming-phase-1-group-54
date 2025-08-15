@@ -1,5 +1,7 @@
 package io.github.stardewmini.common.model.enums;
 
+import java.util.Random;
+
 public enum Weather {
     SUNNY(1.5),
     RAIN(1.2),
@@ -18,12 +20,12 @@ public enum Weather {
         return fishingFactor;
     }
 
-    public static Weather getRandom(Season season) {
+    public static Weather getRandom(Random rand, Season season) {
         switch (season) {
             case SPRING, SUMMER, FALL:
-                return Weather.values()[(int) (Math.random() * 3)];
+                return Weather.values()[(int) (rand.nextInt(3))];
             case WINTER:
-                return Weather.values()[((int) (Math.random() * 2)) * 3];
+                return Weather.values()[((int) (rand.nextInt(2))) * 3];
             default:
                 return null;
         }

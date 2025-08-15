@@ -89,12 +89,12 @@ public class Farm implements DailyUpdate {
         tile.setThingOnTile(null);
     }
 
-    public void foragingCrop(Season season) {
+    public void foragingCrop(Random rand, Season season) {
         for (int i = 0; i < Farm.getNumberOfRows(); i++) {
             for (int j = 0; j < Farm.getNumberOfColumns(); j++) {
                 Tile tile = getTileAt(new Location(i, j));
-                if (Math.random() <= 0.01 && tile.getThingOnTile() == null) {
-                    tile.setThingOnTile(Fruit.getForagingCrop(season));
+                if (rand.nextDouble() <= 0.01 && tile.getThingOnTile() == null) {
+                    tile.setThingOnTile(Fruit.getForagingCrop(rand, season));
                 }
             }
         }
@@ -113,10 +113,10 @@ public class Farm implements DailyUpdate {
         return plants;
     }
 
-    public void crowAttack() {
+    public void crowAttack(Random rand) {
         HashMap<Plant, Tile> plants = getPlants();
 
-        Random rand = new Random();
+
         int numberOfCrows = plants.size() / 16;
 
         for (int i = 0; i < numberOfCrows; i++) {
@@ -152,6 +152,6 @@ public class Farm implements DailyUpdate {
 
     @Override
     public void nextDayUpdate() {
-        crowAttack();
+//        crowAttack();
     }
 }

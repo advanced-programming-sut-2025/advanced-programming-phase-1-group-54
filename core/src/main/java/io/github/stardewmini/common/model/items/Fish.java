@@ -71,14 +71,14 @@ public class Fish extends Item implements Cloneable {
         return new HashSet<>(fishes.keySet());
     }
 
-    public static Fish getSeasonFish(Season season, boolean addLegendary) {
+    public static Fish getSeasonFish(Random rand, Season season, boolean addLegendary) {
         ArrayList<Fish> fishes = seasonFishes.get(season);
 
         if (addLegendary) {
             fishes.addAll(seasonLegendaryFishes.get(season));
         }
 
-        Random rand = new Random();
+
         return fishes.get(rand.nextInt(fishes.size()));
     }
 

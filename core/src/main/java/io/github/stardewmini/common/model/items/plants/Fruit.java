@@ -67,8 +67,7 @@ public class Fruit extends Item implements Cloneable, Placeable {
         return new HashSet<>(fruits.keySet());
     }
 
-    public static Fruit getForagingCrop(Season season) {
-        Random rand = new Random();
+    public static Fruit getForagingCrop(Random rand, Season season) {
         String foragingCropName = foragingCrops.get(season).get(rand.nextInt(foragingCrops.size()));
         return Fruit.getFruit(foragingCropName);
     }

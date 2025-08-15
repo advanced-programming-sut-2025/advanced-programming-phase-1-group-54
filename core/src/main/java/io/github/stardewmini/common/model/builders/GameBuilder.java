@@ -11,6 +11,7 @@ import io.github.stardewmini.common.model.relationships.NPCFriendship;
 import io.github.stardewmini.server.app.App;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameBuilder {
     private static GameBuilder instance;
@@ -26,10 +27,14 @@ public class GameBuilder {
 
     private User[] users;
     private int[] playerFarmNumbers;
+    private int seed;
+    private Random rng;
 
     public void reset() {
         users = null;
         playerFarmNumbers = null;
+        seed = 0;
+        rng = null;
     }
 
     public void setUsers(User[] users) {
@@ -48,6 +53,10 @@ public class GameBuilder {
         return true;
     }
 
+    public void setSeed(int seed) {
+        this.seed = seed;
+    }
+
     public String getNextPlayerName() {
         for (int i = 0; i < users.length; i++) {
             if (playerFarmNumbers[i] == 0) {
@@ -57,9 +66,9 @@ public class GameBuilder {
         return null;
     }
 
-
     public Game getResult() {
         DateTime dateTime = new DateTime();
+        Random rng = new Random(seed);
 
         Farm[] playerFarms = new Farm[users.length];
 
@@ -68,12 +77,14 @@ public class GameBuilder {
             FarmBuilder.getInstance().setLocation(WorldBuilder.getFarmLocation(i));
             FarmBuilder.getInstance().setFarmNumber(playerFarmNumbers[i]);
             FarmBuilder.getInstance().setDateTime(dateTime);
+            FarmBuilder.getInstance().setRng(rng);
             playerFarms[i] = FarmBuilder.getInstance().getResult();
         }
 
         WorldBuilder.getInstance().reset();
         WorldBuilder.getInstance().setPlayerFarms(playerFarms);
         WorldBuilder.getInstance().setDateTime(dateTime);
+        WorldBuilder.getInstance().setRng(rng);
         World world = WorldBuilder.getInstance().getResult();
 
         Player[] players = new Player[users.length];
@@ -107,7 +118,7 @@ public class GameBuilder {
             players[i].setCurrentLocation(location);
         }
 
-        Game game = new Game(dateTime, world, players);
+        Game game = new Game(dateTime, seed, rng, world, players);
         dateTime.addDailyUpdateListener(game);
 
         this.reset();
@@ -123,7 +134,7 @@ public class GameBuilder {
         int[] playerFarms = new int[playerFarmNumbers.length];
         System.arraycopy(playerFarmNumbers, 0, playerFarms, 0, playerFarmNumbers.length);
 
-        return new GameData(playerNames, playerFarms);
+        return new GameData(playerNames, playerFarms, seed);
     }
 
     public void setGameData(GameData gameData) {

@@ -115,6 +115,7 @@ public class ServerConnectionController {
     }
 
     private static Message handleRegister(Message message) {
+        System.out.println("OK REGISTER");
         Result result = RegisterMenuController.register(
             message.getFromBody("username"),
             message.getFromBody("password"),
@@ -123,6 +124,7 @@ public class ServerConnectionController {
             message.getFromBody("email"),
             message.getFromBody("gender")
         );
+
         return makeResponseFrom(result);
     }
 

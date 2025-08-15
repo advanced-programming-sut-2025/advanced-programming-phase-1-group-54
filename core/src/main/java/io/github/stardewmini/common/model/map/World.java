@@ -15,6 +15,7 @@ import io.github.stardewmini.common.model.lives.Player;
 //import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class World implements DailyUpdate {
     /* TODO
@@ -128,10 +129,12 @@ public class World implements DailyUpdate {
         return -1;
     }
 
-    public void foraging(Season season) {
+    public void foraging(Random rand, Season season) {
         for (Farm farm : playerFarms) {
-            farm.foragingCrop(season);
-            PlantsController.foragingSeed(farm, season);
+            farm.foragingCrop(rand, season);
+            PlantsController.foragingSeed(rand, farm, season);
+            farm.getQuarry().foragingMaterial(rand);
+            farm.crowAttack(rand);
         }
     }
 

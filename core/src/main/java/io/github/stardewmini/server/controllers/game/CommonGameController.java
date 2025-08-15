@@ -34,6 +34,7 @@ public class CommonGameController {
         return new Result(true, "exited game");
     }
 
+/*
     public static Result deleteGameVote(boolean vote) {
         Game game = App.getCurrentGame();
         game.increaseVotes();
@@ -61,6 +62,7 @@ public class CommonGameController {
 
         return new Result((success ? 2 : 1), message);
     }
+*/
 
 
     static Result passOut(String requester) {
