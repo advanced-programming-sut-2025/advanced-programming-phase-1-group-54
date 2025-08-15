@@ -58,8 +58,8 @@ public class ClientConnectionController {
         HashMap<String, Object> body = new HashMap<>();
         body.put("command", "pick_question");
         body.put("number", number);
-        body.put("password", answer);
-        body.put("confirmPassword", confirmAnswer);
+        body.put("answer", answer);
+        body.put("confirmAnswer", confirmAnswer);
         return new Message(body, Message.Type.command);
     }
 

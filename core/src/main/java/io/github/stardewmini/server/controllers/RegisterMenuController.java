@@ -8,7 +8,7 @@ import io.github.stardewmini.server.app.App;
 
 public class RegisterMenuController {
     public static Result register(String username, String password, String confirmPassword, String nickname,
-                                  String email, String gender) {
+                                  String email, Gender gender) {
         if (!isUsernameUnique(username)) {
             return new Result(false,
                 String.format("Username is taken, recommended username: %s", getNewUsername(username)));
@@ -27,7 +27,8 @@ public class RegisterMenuController {
             return checkEmailResult;
 
         UserBuilder.getInstance().reset();
-        UserBuilder.getInstance().registerBasicData(username, password, nickname, email, Gender.valueOf(gender));
+        UserBuilder.getInstance().registerBasicData(username, password, nickname, email, gender);
+
         return new Result(true, "Successfully registered data!");
     }
 
@@ -157,7 +158,9 @@ public class RegisterMenuController {
         if (!answer.equals(confirmAnswer))
             return new Result(false, "Answers do not match");
 
+        System.out.println("OK");
         UserBuilder.getInstance().registerSecurityQuestionAnswer(number, answer);
+        System.out.println("OK");
         User user = UserBuilder.getInstance().getResult();
         App.addUser(user);
         return new Result(true, "Successfully registered!");
