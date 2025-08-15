@@ -129,7 +129,7 @@ public class NpcController {
     }
 
     private static Result getDialogByAi(NPC npc) {
-        String apiKey = "YOUR_API_KEY"; // جایگزین با کلید خودت
+        String apiKey = "tpsg-YSjFYFdkkrJcfDZclhU5mXVsGSn7y2l"; // جایگزین با کلید خودت
         String json = """
 {
     "model": "gpt-4o-mini",
