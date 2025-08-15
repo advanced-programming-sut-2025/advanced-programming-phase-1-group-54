@@ -48,7 +48,7 @@ public class LobbyScreen implements Screen {
         Label titleLabel = new Label("Lobby", skin, "Bold");
         Label subtitleLabel = new Label(lobbyInfo.name(), skin);
         lobbyMembersTable = new Table();
-        lobbyMembersTable.left();
+        lobbyMembersTable.center();
         ScrollPane scrollPane = new ScrollPane(lobbyMembersTable, skin);
 
         TextButton startGameButton = new TextButton("Start Game", skin);
@@ -87,7 +87,7 @@ public class LobbyScreen implements Screen {
         root.row().pad(10, 0, 10, 0);
         root.add(subtitleLabel);
         root.row().pad(10, 0, 10, 0);
-        root.add(scrollPane).width(1200).height(900);
+        root.add(scrollPane).width(300).height(400);
         root.row().pad(10, 0, 10, 0);
         root.add(startGameButton).width(300).height(90);
         root.row().pad(10, 0, 10, 0);

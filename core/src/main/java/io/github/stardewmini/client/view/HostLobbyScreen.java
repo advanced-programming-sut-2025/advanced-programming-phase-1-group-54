@@ -60,7 +60,10 @@ public class HostLobbyScreen implements Screen {
 
                 Message response = ClientApp.sendMessageAndGetResponse(message);
                 if (response.getBooleanFromBody("success")) {
-                    LobbyInfo lobbyInfo = response.getFromBody("lobbyInfo");
+                    LobbyInfo lobbyInfo = new LobbyInfo(
+                        response.getFromBody("name"),
+                        response.getIntFromBody("id"),
+                        response.getBooleanFromBody("isPrivate"));
                     Main.getInstance().getScreen().dispose();
                     Main.getInstance().setScreen(new LobbyScreen(lobbyInfo));
                 }

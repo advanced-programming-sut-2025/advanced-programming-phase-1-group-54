@@ -17,13 +17,15 @@ import io.github.stardewmini.common.model.LobbyInfo;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.SoundManager;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class JoinLobbyScreen implements Screen {
     private Stage stage;
 
     private Table lobbyListTable;
-    private List<LobbyInfo> lobbyList;
+    private List<LobbyInfo> lobbyList = new ArrayList<>();
     private Label resultLabel;
 
     private void showLobbyList(Skin skin) {
@@ -50,7 +52,7 @@ public class JoinLobbyScreen implements Screen {
             });
 
             lobbyListTable.add(rowLabel).pad(10);
-            if (lobbyInfo.isPrivate()) lobbyListTable.add(passwordField).width(150).pad(10);
+            if (lobbyInfo.isPrivate()) lobbyListTable.add(passwordField).width(300).pad(10);
             lobbyListTable.add(joinButton).pad(10);
             lobbyListTable.row().pad(1);
         }
@@ -65,7 +67,7 @@ public class JoinLobbyScreen implements Screen {
 
         Label titleLabel = new Label("Join Lobby", skin, "Bold");
         lobbyListTable = new Table();
-        lobbyListTable.left();
+        lobbyListTable.center();
 
         TextField findLobbyField = new TextField("", skin);
         findLobbyField.setMessageText("Lobby ID");
@@ -76,8 +78,14 @@ public class JoinLobbyScreen implements Screen {
                 SoundManager.getInstance().playClick();
                 Message message = ClientConnectionController.createFindLobby(findLobbyField.getText());
                 Message response = ClientApp.sendMessageAndGetResponse(message);
-                lobbyList = response.getFromBody("lobbies");
-
+                lobbyList.clear();
+                for (Map<String, Object> lobbyEntry : (List<Map<String, Object>>) response.getFromBody("lobbies")) {
+                    lobbyList.add(new LobbyInfo(
+                        (String) lobbyEntry.get("name"),
+                        (int) ((double) ((Double) lobbyEntry.get("id"))),
+                        (Boolean) lobbyEntry.get("isPrivate")
+                    ));
+                }
                 showLobbyList(skin);
             }
         });
@@ -92,8 +100,14 @@ public class JoinLobbyScreen implements Screen {
                 SoundManager.getInstance().playClick();
                 Message message = ClientConnectionController.createRefreshLobbyList();
                 Message response = ClientApp.sendMessageAndGetResponse(message);
-                lobbyList = response.getFromBody("lobbies");
-
+                lobbyList.clear();
+                for (Map<String, Object> lobbyEntry : (List<Map<String, Object>>) response.getFromBody("lobbies")) {
+                    lobbyList.add(new LobbyInfo(
+                        (String) lobbyEntry.get("name"),
+                        (int) ((double) ((Double) lobbyEntry.get("id"))),
+                        (Boolean) lobbyEntry.get("isPrivate")
+                    ));
+                }
                 showLobbyList(skin);
             }
         });
@@ -114,7 +128,7 @@ public class JoinLobbyScreen implements Screen {
 
         root.add(titleLabel).colspan(2);
         root.row().pad(10, 0, 10, 0);
-        root.add(scrollPane).width(1200).height(700).colspan(2);
+        root.add(scrollPane).width(600).height(500).colspan(2);
         root.row().pad(10, 0, 10, 0);
         root.add(refreshButton).width(300).height(90);
         root.row().pad(10, 0, 10, 0);
