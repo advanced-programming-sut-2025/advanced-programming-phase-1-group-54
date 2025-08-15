@@ -16,7 +16,6 @@ import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.LobbyInfo;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.SoundManager;
-import io.github.stardewmini.server.model.Lobby;
 
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class JoinLobbyScreen implements Screen {
     private void showLobbyList(Skin skin) {
         lobbyListTable.clearChildren();
         for (LobbyInfo lobbyInfo : lobbyList) {
-            lobbyListTable.add(new Label(lobbyInfo.name() + " id:" + lobbyInfo.id(), skin)).pad(10);
+            Label rowLabel = new Label(lobbyInfo.name() + " id:" + lobbyInfo.id(), skin);
             TextField passwordField = new TextField("", skin);
             passwordField.setMessageText("Password");
             TextButton joinButton = new TextButton("Join", skin);
@@ -49,6 +48,11 @@ public class JoinLobbyScreen implements Screen {
                     }
                 }
             });
+
+            lobbyListTable.add(rowLabel).pad(10);
+            if (lobbyInfo.isPrivate()) lobbyListTable.add(passwordField).width(150).pad(10);
+            lobbyListTable.add(joinButton).pad(10);
+            lobbyListTable.row().pad(1);
         }
     }
 
@@ -61,7 +65,23 @@ public class JoinLobbyScreen implements Screen {
 
         Label titleLabel = new Label("Join Lobby", skin, "Bold");
         lobbyListTable = new Table();
-        lobbyListTable.center();
+        lobbyListTable.left();
+
+        TextField findLobbyField = new TextField("", skin);
+        findLobbyField.setMessageText("Lobby ID");
+        TextButton findLobbyButton = new TextButton("Find Lobby", skin);
+        findLobbyButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                SoundManager.getInstance().playClick();
+                Message message = ClientConnectionController.createFindLobby(findLobbyField.getText());
+                Message response = ClientApp.sendMessageAndGetResponse(message);
+                lobbyList = response.getFromBody("lobbies");
+
+                showLobbyList(skin);
+            }
+        });
+
         ScrollPane scrollPane = new ScrollPane(lobbyListTable, skin);
         TextButton refreshButton = new TextButton("Refresh", skin);
         resultLabel = new Label("", skin);
@@ -84,7 +104,7 @@ public class JoinLobbyScreen implements Screen {
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new MainMenu());
+                Main.getInstance().setScreen(new PreGameMenu());
             }
         });
 
@@ -92,13 +112,16 @@ public class JoinLobbyScreen implements Screen {
         root.setFillParent(true);
         root.center();
 
-        root.add(titleLabel);
+        root.add(titleLabel).colspan(2);
         root.row().pad(10, 0, 10, 0);
-        root.add(scrollPane).width(1200).height(700);
-        root.row().pad(10, 0, 10, 0);
-        root.add(resultLabel);
+        root.add(scrollPane).width(1200).height(700).colspan(2);
         root.row().pad(10, 0, 10, 0);
         root.add(refreshButton).width(300).height(90);
+        root.row().pad(10, 0, 10, 0);
+        root.add(findLobbyField).pad(10);
+        root.add(findLobbyButton).width(300).height(90);
+        root.row().pad(10, 0, 10, 0);
+        root.add(resultLabel).colspan(2);
         root.row().pad(10, 0, 10, 0);
         root.add(backButton).width(300).height(90);
 

@@ -46,13 +46,16 @@ public class HostLobbyScreen implements Screen {
             }
         });
 
+        CheckBox invisibleCheckBox = new CheckBox("Invisible", skin);
+        privateCheckBox.setChecked(false);
+
         TextButton hostButton = new TextButton("Host", skin);
         hostButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
                 Message message = ClientConnectionController.createHostLobby(
-                    nameField.getText(), passwordField.getText()
+                    nameField.getText(), passwordField.getText(), invisibleCheckBox.isChecked()
                 );
 
                 Message response = ClientApp.sendMessageAndGetResponse(message);
@@ -70,7 +73,7 @@ public class HostLobbyScreen implements Screen {
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 SoundManager.getInstance().playClick();
                 Main.getInstance().getScreen().dispose();
-                Main.getInstance().setScreen(new MainMenu());
+                Main.getInstance().setScreen(new PreGameMenu());
             }
         });
 

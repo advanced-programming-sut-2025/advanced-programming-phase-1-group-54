@@ -40,6 +40,17 @@ public class ServerConnectionController {
             case "user_info":
                 return handleUserInfo(username, message);
 
+            case "host_lobby":
+                return handleCreateLobby(username, message);
+            case "join_lobby":
+                return handleJoinLobby(username, message);
+            case "leave_lobby":
+                return handleLeaveLobby(username, message);
+            case "refresh_lobby_list":
+                return handleRefreshLobbyList(username, message);
+            case "find_lobby":
+                return handleFindLobby(username, message);
+
 
             case "use_tool":
                 return handleUseTool(username, message);
@@ -224,7 +235,29 @@ public class ServerConnectionController {
         return makeResponseFrom(result);
     }
 
+    private static Message handleCreateLobby(String username, Message message) {
+        Result result = LobbyController.createLobby(
+            username,
+            message.getFromBody("name"),
+            message.getFromBody("password"),
+            message.getBooleanFromBody("invisible"));
+        return makeResponseFrom(result);
+    }
 
+    private static Message handleJoinLobby(String username, Message message) {
+        Result result = LobbyController.joinLobby(
+            username,
+            message.getFromBody("id"),
+            message.getFromBody("password"));
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleLeaveLobby(String username, Message message) {
+        Result result = LobbyController.leaveLobby(
+            username,
+            message.getFromBody("id"));
+        return makeResponseFrom(result);
+    }
 
     private static Message handleUseTool(String username, Message message) {
         Result result = ToolsController.useTool(
@@ -379,7 +412,7 @@ public class ServerConnectionController {
         return makeResponseFrom(result);
     }
 
-    private static Message handleGameUsers(String username, Message message){
+    private static Message handleGameUsers(String username, Message message) {
         Result result = FriendShipController.showFriendships(
             username
         );
