@@ -5,7 +5,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import io.github.stardewmini.client.app.App;
+import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.ClientGameController;
+import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.lives.NPC;
 import io.github.stardewmini.common.model.map.NPCHouse;
 import io.github.stardewmini.common.model.map.Tile;
@@ -57,4 +61,24 @@ public class NpcController {
         }
     }
 
+
+    public static Result questList(NPC npc){
+        Message message = ClientGameController.createQuestList(npc.getName());
+        return ClientApp.sendRequest(message);
+    }
+
+    public static Result friendShipNpc(NPC npc){
+        Message message = ClientGameController.createFriendShipNpc(npc.getName());
+        return ClientApp.sendRequest(message);
+    }
+
+    public static Result giftNpc(NPC npc, String giftItem){
+        Message message = ClientGameController.createGiftNpc(npc.getName(),giftItem);
+        return ClientApp.sendRequest(message);
+    }
+
+    public static Result questFinish(String questNumber, NPC npc){
+        Message message = ClientGameController.createQuestFinish(questNumber,npc.getName());
+        return ClientApp.sendRequest(message);
+    }
 }

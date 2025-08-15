@@ -4,7 +4,11 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import io.github.stardewmini.client.app.App;
+import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.ClientGameController;
+import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.GameAssetManager;
+import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.lives.Animal;
 import io.github.stardewmini.common.model.map.Location;
 import io.github.stardewmini.common.model.map.Tile;
@@ -81,4 +85,35 @@ public class AnimalController {
             animal.getSprite().draw(batch);
         }
     }
+
+    public static Result showAnimal(Animal animal){
+        Message message = ClientGameController.createShowAnimal(animal.getName());
+        return ClientApp.sendRequest(message);
+    }
+
+    public static Result feedAnimal(Animal animal){
+        Message message = ClientGameController.createFeedAnimal(animal.getName());
+        return ClientApp.sendRequest(message);
+    }
+
+    public static Result pet(Animal animal){
+        Message message = ClientGameController.createPet(animal.getName());
+        return ClientApp.sendRequest(message);
+    }
+
+    public static Result moveAnimal(Animal animal,Location location){
+        Message message = ClientGameController.createMoveAnimal(animal.getName(),location);
+        return ClientApp.sendRequest(message);
+    }
+
+    public static Result getAnimalProduce(Animal animal){
+        Message message = ClientGameController.createGetAnimalProduce(animal.getName());
+        return ClientApp.sendRequest(message);
+    }
+
+    public static Result sellAnimal(Animal animal){
+        Message message = ClientGameController.createSellAnimal(animal.getName());
+        return ClientApp.sendRequest(message);
+    }
+
 }

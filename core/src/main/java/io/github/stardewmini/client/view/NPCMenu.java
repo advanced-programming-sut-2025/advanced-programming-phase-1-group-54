@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
-import io.github.stardewmini.server.controllers.game.NpcController;
+import io.github.stardewmini.client.controllers.game.NpcController;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.lives.NPC;
@@ -90,7 +90,7 @@ public class NPCMenu implements Screen {
 
         friendshipButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
-                friendshipLabel.setText(NpcController.friendShipNpc(npc));
+                friendshipLabel.setText(NpcController.friendShipNpc(npc).message());
                 table.clear();
                 table.add(friendshipLabel).expand().pad(10);
             }

@@ -37,6 +37,46 @@ public class ServerConnectionController {
             case "user_info":
                 return handleUserInfo(username, message);
 
+
+            case "use_tool":
+                return null;
+            case "cooking":
+                return null;
+            case "crafting":
+                return null;
+            case "buy":
+                return null;
+            case "planting":
+                return null;
+            case "equip_tool":
+                return null;
+            case "trash_can":
+                return null;
+
+            case "meets_npc":
+                return null;
+            case "quest_list":
+                return null;
+            case "friendship_npc":
+                return null;
+            case "gift_npc":
+                return null;
+            case "quest_finish":
+                return null;
+
+            case "show_animal":
+                return null;
+            case "feed_animal":
+                return null;
+            case "pet":
+                return null;
+            case "move_animal":
+                return null;
+            case "get_animal_produce":
+                return null;
+            case "sell_animal":
+                return null;
+
             default:
                 return null;
 //                return GameCommandController.handleCommand(username, message);
