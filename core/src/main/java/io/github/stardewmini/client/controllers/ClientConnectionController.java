@@ -3,6 +3,7 @@ package io.github.stardewmini.client.controllers;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.client.app.App;
 import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.view.ChooseMapScreen;
 import io.github.stardewmini.client.view.GameScreen;
 import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.Game;
@@ -27,6 +28,23 @@ public class ClientConnectionController {
         return null;
     }
 
+
+
+
+    public static void handleUpdate(Message message) {
+        String update = message.getFromBody("update");
+        switch (update) {
+            case "choose_map":
+                handleChooseMap();
+                return;
+            case "start_game":
+                handleCreateGame(message);
+                return;
+
+                // TODO
+        }
+    }
+
     public static void handleCreateGame(Message message) {
         GameData gameData = message.getFromBody("gameData");
         GameBuilder.getInstance().reset();
@@ -38,13 +56,10 @@ public class ClientConnectionController {
         Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(), ""));
     }
 
-    public static void handleUpdate(Message message) {
-        String command = message.getFromBody("command");
-        switch (command) {
-            case "create_game":
-                handleCreateGame(message);
-                // TODO
-        }
+
+    private static void handleChooseMap() {
+        Main.getInstance().getScreen().dispose();
+        Main.getInstance().setScreen(new ChooseMapScreen());
     }
 
     public static Message status() {
