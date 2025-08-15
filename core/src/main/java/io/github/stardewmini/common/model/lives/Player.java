@@ -43,6 +43,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     private float moveSpeed = 4f;
     private float x, y;
     private float targetX, targetY;
+    private Location cabinLocation;
 
     private int money;
     private int nextDayMoney = 0;
@@ -265,6 +266,10 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         nextDayMoney += count;
     }
 
+    public void setCabinLocation(Location cabinLocation) {
+        this.cabinLocation = cabinLocation;
+    }
+
     public void setEnergy(int energy) {
         if (!unlimitedEnergy) {
             if (energy <= MAXIMUM_ENERGY)
@@ -367,6 +372,16 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     @Override
     public void nextDayUpdate() {
+
+        Location location = new Location((int) targetY/60,(int) targetX/60);
+        if(location.distance(cabinLocation) > energy) {
+            targetX = cabinLocation.column() * 60;
+            targetY = cabinLocation.row() * 60;
+        }
+        else {
+            this.energy = 0;
+        }
+
         if (this.isFallen()) {
             energy = 75 * MAXIMUM_ENERGY / 100;
         } else {
@@ -380,6 +395,9 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
         this.increaseMoney(nextDayMoney);
         nextDayMoney = 0;
+
+
+
     }
 
 
