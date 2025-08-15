@@ -43,7 +43,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
     private int money;
     private int nextDayMoney = 0;
 
-    private final User controllingUser;
+    private final Gender gender;
     private final Farm farm;
 
     private int energy;
@@ -95,7 +95,7 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
 
     public Player(User controllingUser, Farm farm, ArrayList<NPCFriendship> npcFriendships) {
         super(controllingUser.getUsername());
-        this.controllingUser = controllingUser;
+        this.gender = controllingUser.getGender();
         this.farm = farm;
         this.npcFriendships = npcFriendships;
         this.money = 0;
@@ -119,12 +119,8 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         this.sprite.setSize(Tile.getSize(), (int) Math.floor(Tile.getSize() * 1.7));
     }
 
-    public User getControllingUser() {
-        return controllingUser;
-    }
-
     public Gender getGender() {
-        return controllingUser.getGender();
+        return gender;
     }
 
     public Farm getFarm() {

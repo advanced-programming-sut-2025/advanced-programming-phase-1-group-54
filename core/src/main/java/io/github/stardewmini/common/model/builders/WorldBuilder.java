@@ -12,6 +12,7 @@ import io.github.stardewmini.common.model.lives.NPC;
 //import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class WorldBuilder {
     /* TODO
@@ -40,6 +41,7 @@ public class WorldBuilder {
     private Farm[] playerFarms;
     private Tile[][] tiles;
     private DateTime dateTime;
+    private Random rng;
 
     static Location getFarmLocation(int i) {
         return farmLocation[i];
@@ -49,6 +51,7 @@ public class WorldBuilder {
         playerFarms = new Farm[4];
         tiles = null;
         dateTime = null;
+        rng = null;
     }
 
     public void setPlayerFarms(Farm[] playerFarms) {
@@ -58,6 +61,10 @@ public class WorldBuilder {
 
     public void setDateTime(DateTime dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public void setRng(Random rng) {
+        this.rng = rng;
     }
 
     public World getResult() {

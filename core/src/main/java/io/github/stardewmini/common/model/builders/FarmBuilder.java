@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Random;
 
 public class FarmBuilder {
     private static FarmBuilder instance;
@@ -36,6 +37,7 @@ public class FarmBuilder {
     private Area[] lakeAreas;
     private Area quarryArea;
     private DateTime dateTime;
+    private Random rng;
 
     private Tile[][] tiles = new Tile[Farm.getNumberOfRows()][Farm.getNumberOfColumns()];
 
@@ -47,6 +49,7 @@ public class FarmBuilder {
         quarryArea = null;
         dateTime = null;
         tiles = new Tile[Farm.getNumberOfRows()][Farm.getNumberOfColumns()];
+        rng = null;
     }
 
     public void setLocation(Location location) {
@@ -69,7 +72,6 @@ public class FarmBuilder {
         this.quarryArea = quarryArea;
     }
 
-
     public void setFarmNumber(int number) {
         try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("farms.json"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -87,6 +89,10 @@ public class FarmBuilder {
 
     public void setDateTime(DateTime dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public void setRng(Random rng) {
+        this.rng = rng;
     }
 
     public int getNumberOfFarms() {
@@ -152,7 +158,7 @@ public class FarmBuilder {
         }
 
         for (int i = 1; i <= NUMBER_OF_FORAGING_MATERIAL; i++) {
-            quarry.foragingMaterial();
+            quarry.foragingMaterial(rng);
         }
 
         dateTime.addDailyUpdateListener(quarry);
@@ -198,5 +204,4 @@ public class FarmBuilder {
         this.reset();
         return farm;
     }
-
 }

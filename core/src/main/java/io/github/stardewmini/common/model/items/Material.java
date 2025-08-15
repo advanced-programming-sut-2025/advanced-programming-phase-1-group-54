@@ -62,8 +62,7 @@ public class Material extends Item implements Placeable,Cloneable {
         return new HashSet<>(materials.keySet());
     }
 
-    public static Material getForagingMaterial() {
-        Random rand = new Random();
+    public static Material getForagingMaterial(Random rand) {
         String foragingMaterialName = foragingMaterials.get(rand.nextInt(foragingMaterials.size()));
         return getMaterial(foragingMaterialName);
     }

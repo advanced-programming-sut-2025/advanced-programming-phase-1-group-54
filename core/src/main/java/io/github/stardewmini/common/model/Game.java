@@ -8,12 +8,15 @@ import io.github.stardewmini.common.model.relationships.Relationship;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Game implements DailyUpdate {
     private final World world;
     private final Player[] players;
 
     private final DateTime dateTime;
+    private final int seed;
+    private final Random rng;
 
     private int votes;
     private int deleteVotes;
@@ -22,8 +25,10 @@ public class Game implements DailyUpdate {
 
     private final HashMap<Player,FishingGame> fishingGames;
 
-    public Game(DateTime dateTime, World world, Player[] players) {
+    public Game(DateTime dateTime, int seed, Random rng, World world, Player[] players) {
         this.dateTime = dateTime;
+        this.seed = seed;
+        this.rng = rng;
         this.world = world;
         this.players = players;
         this.relationships = new ArrayList<>();
@@ -106,7 +111,7 @@ public class Game implements DailyUpdate {
     @Override
     public void nextDayUpdate() {
         world.setTomorrowWeather(Weather.getRandom(dateTime.getSeason()));
-        world.foraging(dateTime.getSeason());
+        world.foraging(rng, dateTime.getSeason());
 
         for (Player player : players) {
             for (Plant plant : player.getFarm().getPlants().keySet()) {
@@ -133,5 +138,9 @@ public class Game implements DailyUpdate {
             }
         }
         return null;
+    }
+
+    public Random getRng() {
+        return rng;
     }
 }

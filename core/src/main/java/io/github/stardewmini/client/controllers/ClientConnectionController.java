@@ -50,7 +50,7 @@ public class ClientConnectionController {
         body.put("confirmPassword", confirmPassword);
         body.put("nickname", nickname);
         body.put("email", email);
-        body.put("gender", gender);
+        body.put("gender", gender.toString());
         return new Message(body, Message.Type.command);
     }
 

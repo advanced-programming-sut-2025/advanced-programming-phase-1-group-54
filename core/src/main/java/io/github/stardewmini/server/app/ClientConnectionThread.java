@@ -49,6 +49,7 @@ public class ClientConnectionThread extends ConnectionThread {
 
     @Override
     protected boolean handleMessage(Message message) {
+        System.out.println("OK RECEIVED MESSAGE");
         if (message.getType() == Message.Type.command) {
             sendMessage(ServerConnectionController.handleCommand(username, getOtherSideIP(), getOtherSidePort(), message));
             return true;

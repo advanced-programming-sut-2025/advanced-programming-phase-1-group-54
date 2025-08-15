@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class NPC extends Live implements DailyUpdate {
-    private static final Random rand = new Random();
     public static final int dialogTiming = 2 * 60;
 
     private Sprite sprite;
@@ -30,7 +29,7 @@ public class NPC extends Live implements DailyUpdate {
     public NPC(String job, String name) {
         super(name);
         this.job = job;
-        newQuestCounter = rand.nextInt(30) + 30;
+        newQuestCounter = 30;
         this.sprite = new Sprite();
         TextureRegion[][] textureRegion = GameAssetManager.getInstance().getNPCsFrames(name);
         if(textureRegion == null) {

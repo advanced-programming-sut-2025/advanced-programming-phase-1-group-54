@@ -4,6 +4,8 @@ import io.github.stardewmini.common.model.DailyUpdate;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.items.Material;
 
+import java.util.Random;
+
 public class Quarry extends Building implements DailyUpdate {
     private static final int NUMBER_OF_FORAGING_MATERIALS = 3;
 
@@ -14,17 +16,17 @@ public class Quarry extends Building implements DailyUpdate {
     }
 
 
-    public void foragingMaterial() {
+    public void foragingMaterial(Random rand) {
         for (int i = 0; i < NUMBER_OF_FORAGING_MATERIALS; i++) {
             Tile tile = getTileAt(getRandomLocation());
             if (tile.getThingOnTile() == null) {
-                tile.setThingOnTile(Material.getForagingMaterial());
+                tile.setThingOnTile(Material.getForagingMaterial(rand));
             }
         }
     }
 
     @Override
     public void nextDayUpdate() {
-        foragingMaterial();
+//        foragingMaterial();
     }
 }
