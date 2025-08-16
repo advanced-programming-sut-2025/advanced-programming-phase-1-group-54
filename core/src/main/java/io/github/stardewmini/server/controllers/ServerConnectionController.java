@@ -126,7 +126,8 @@ public class ServerConnectionController {
                 return handleThunderStrike(username, message);
             case "set_energy":
                 return handleSetEnergy(username, message);
-
+            case "move_player":
+                return handleMovePlayer(username, message);
 
             default:
                 return null;
@@ -593,6 +594,16 @@ public class ServerConnectionController {
         );
         ServerApp.addDiff(UpdateController.createSetEnergy(username,
             message.getFromBody("string")));
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleMovePlayer(String username, Message message) {
+        Result result = PlayerController.walk(username,
+            message.getFromBody("dy"),
+            message.getFromBody("dx"));
+        ServerApp.addDiff(UpdateController.createMovePlayer(username,
+            message.getFromBody("dy"),
+            message.getFromBody("dx")));
         return makeResponseFrom(result);
     }
 }

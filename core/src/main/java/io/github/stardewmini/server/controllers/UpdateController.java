@@ -215,4 +215,13 @@ public class UpdateController {
         return new Message(body, Message.Type.update);
     }
 
+    public static Message createMovePlayer(String requester, String dy,String dx) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("update", "move_player");
+        body.put("requester", requester);
+        body.put("dy", dy);
+        body.put("dx", dx);
+        return new Message(body, Message.Type.update);
+    }
+
 }

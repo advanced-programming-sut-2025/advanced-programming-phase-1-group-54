@@ -72,6 +72,9 @@ public class UpdateClient {
             case "tag":
                 handleTag(message);
                 break;
+            case "move_player":
+                handleMovePlayer(message);
+                break;
 
         }
 
@@ -234,6 +237,14 @@ public class UpdateClient {
 
     private static void handleTag(Message message) {
 
+    }
+
+    private static void handleMovePlayer(Message message) {
+        UpdateController.walk(
+            message.getFromBody("requester"),
+            message.getFromBody("dy"),
+            message.getFromBody("dx")
+        );
     }
 
 }
