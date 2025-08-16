@@ -6,7 +6,13 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import io.github.stardewmini.Main;
 import io.github.stardewmini.client.app.App;
+import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.ClientGameController;
+import io.github.stardewmini.client.view.GameScreen;
+import io.github.stardewmini.client.view.TalkMenu;
+import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.items.tools.Tool;
 import io.github.stardewmini.common.model.lives.Player;
@@ -80,9 +86,23 @@ public class PlayerController {
         animation.setPlayMode(Animation.PlayMode.LOOP);
     }
 
+    public static void walk(int dy,int dx){
+//        Player player = App.getCurrentPlayer();
+//        World world = App.getCurrentGame().getWorld();
+//        Tile currentTile = world.getTileAt(player.getCurrentLocation());
+//        Tile targetTile = world.getTileAt(player.getCurrentLocation().add(new Location(dy, dx)));
+//        if (targetTile != null && targetTile.isWalkable()) {
+//            if (player.tryMove(dx, dy)) {
+//                currentTile.getTop().setThingOnTile(null);
+//                targetTile.getTop().setThingOnTile(player);
+//            }
+//        }
+        Message message = ClientGameController.createMovePlayer(dy + "",dx + "");
+        ClientApp.sendRequest(message);
+    }
+
     public static void update(float delta, OrthographicCamera camera) {
         Player player = App.getCurrentPlayer();
-        World world = App.getCurrentGame().getWorld();
 
         int dx = 0, dy = 0;
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
@@ -114,14 +134,15 @@ public class PlayerController {
             dieAnimation(player,delta);
         }
 
-        Tile currentTile = world.getTileAt(player.getCurrentLocation());
-        Tile targetTile = world.getTileAt(player.getCurrentLocation().add(new Location(dy, dx)));
-        if (targetTile != null && targetTile.isWalkable()) {
-            if (player.tryMove(dx, dy)) {
-                currentTile.getTop().setThingOnTile(null);
-                targetTile.getTop().setThingOnTile(player);
-            }
+        if(player.isTaged()){
+            player.setTaged(false);
+            TalkMenu talkMenu = new TalkMenu(GameAssetManager.getInstance().getSkin());
+            talkMenu.tag(player.getTagedUsername());
+            Main.getInstance().dispose();
+            Main.getInstance().setScreen(talkMenu);
         }
+
+        walk(dy,dx);
 
         player.update(delta);
 
@@ -142,3 +163,5 @@ public class PlayerController {
         }
     }
 }
+
+

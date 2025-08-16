@@ -49,11 +49,23 @@ public class FriendShipController {
 
         Talk talk = new Talk(App.getCurrentGame().getPlayerByUsername(requester), message, new DateTime(App.getCurrentGame().getDateTime()));
         relationship.getTalkHistory().add(talk);
+        boolean tag = false;
+        for(String usernam : App.getCurrentGame().getUsernames()){
+            if(username.equals(message)){
+                tag = true;
+            }
+        }
         if (relationship.getTalkDailyCount() == 0) {
             relationship.increaseXP(20);
         }
         relationship.increaseTalkDailyCount();
-        return new Result(true, "message sent");
+        if(tag){
+            return new Result(5, "message sent");
+        }
+        else {
+            return new Result(1, "message sent");
+        }
+
     }
 
     public static Result showTalkHistory(String requester, String username) {

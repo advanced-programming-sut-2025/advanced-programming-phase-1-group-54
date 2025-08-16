@@ -220,6 +220,13 @@ public class ClientGameController {
         return new Message(body, Message.Type.command);
     }
 
+    public static Message createMovePlayer(String dy,String dx){
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "move_player");
+        body.put("dy", dy);
+        body.put("dx", dx);
+        return new Message(body, Message.Type.command);
+    }
 
     public static Message createChooseMap(int number, int lobbyId) {
         HashMap<String, Object> body = new HashMap<>();

@@ -43,6 +43,16 @@ public class Game implements DailyUpdate {
         }
     }
 
+    public ArrayList<String> getUsernames() {
+        ArrayList<String> usernames = new ArrayList<>();
+        for (Player player : players) {
+            if(player != null){
+                usernames.add(player.getName());
+            }
+        }
+        return usernames;
+    }
+
     public int getDeleteVotes() {
         return deleteVotes;
     }

@@ -1265,4 +1265,37 @@ public class UpdateController {
 
     }
 
+    public static Result walk(String requester, String dyString,String dxString){
+        Player player = App.getCurrentGame().getPlayerByUsername(requester);
+        World world = App.getCurrentGame().getWorld();
+        int dx,dy;
+        try{
+            dx = Integer.parseInt(dxString);
+            dy = Integer.parseInt(dyString);
+        }catch(NumberFormatException e){
+            return new Result(-1,"Invalid dx/dx");
+        }
+
+        Tile currentTile = world.getTileAt(player.getCurrentLocation());
+        Tile targetTile = world.getTileAt(player.getCurrentLocation().add(new Location(dy, dx)));
+        if (targetTile != null && targetTile.isWalkable()) {
+            if (player.tryMove(dx, dy)) {
+                currentTile.getTop().setThingOnTile(null);
+                targetTile.getTop().setThingOnTile(player);
+            }
+        }
+        return new Result(1," walks successfully");
+    }
+
+    public static Result tag(String requester, String receiver){
+        Player player = App.getCurrentPlayer();
+
+        if(player.getName().equals(receiver)){
+            player.setTagedUsername(requester);
+            player.setTaged(true);
+            return new Result(1,receiver + " taged");
+        }
+        return new Result(-1,"You do not have any tags");
+    }
+
 }

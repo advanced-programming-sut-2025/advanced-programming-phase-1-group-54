@@ -6,8 +6,8 @@ import io.github.stardewmini.common.model.*;
 import io.github.stardewmini.common.model.builders.GameBuilder;
 import io.github.stardewmini.common.model.enums.Gender;
 import io.github.stardewmini.server.app.App;
-import io.github.stardewmini.server.app.ServerApp;
 import io.github.stardewmini.server.app.UpdateThread;
+import io.github.stardewmini.server.app.ServerApp;
 import io.github.stardewmini.server.controllers.game.*;
 import io.github.stardewmini.server.model.Lobby;
 
@@ -129,7 +129,8 @@ public class ServerConnectionController {
                 return handleThunderStrike(username, message);
             case "set_energy":
                 return handleSetEnergy(username, message);
-
+            case "move_player":
+                return handleMovePlayer(username, message);
 
             default:
                 return null;
@@ -358,6 +359,7 @@ public class ServerConnectionController {
             username,
             message.getFromBody("direction")
         );
+        ServerApp.addDiff(UpdateController.createUseTool(username, message.getFromBody("direction")));
         return makeResponseFrom(result);
     }
 
@@ -366,6 +368,7 @@ public class ServerConnectionController {
             username,
             message.getFromBody("name")
         );
+        ServerApp.addDiff(UpdateController.createCooking(username, message.getFromBody("name")));
         return makeResponseFrom(result);
     }
 
@@ -374,6 +377,7 @@ public class ServerConnectionController {
             username,
             message.getFromBody("name")
         );
+        ServerApp.addDiff(UpdateController.createCrafting(username, message.getFromBody("name")));
         return makeResponseFrom(result);
     }
 
@@ -385,6 +389,12 @@ public class ServerConnectionController {
             message.getFromBody("price"),
             message.getFromBody("locationString")
         );
+        ServerApp.addDiff(UpdateController.createBuy(
+            username,
+            message.getFromBody("itemName"),
+            message.getFromBody("name"),
+            message.getFromBody("price"),
+            message.getFromBody("locationString")));
         return makeResponseFrom(result);
     }
 
@@ -394,6 +404,9 @@ public class ServerConnectionController {
             message.getFromBody("itemName"),
             message.getFromBody("direction")
         );
+        ServerApp.addDiff(UpdateController.createPlanting(username,
+            message.getFromBody("itemName"),
+            message.getFromBody("direction")));
         return makeResponseFrom(result);
     }
 
@@ -402,6 +415,8 @@ public class ServerConnectionController {
             username,
             message.getFromBody("toolName")
         );
+        ServerApp.addDiff(UpdateController.createEquipTool(username,
+            message.getFromBody("toolName")));
         return makeResponseFrom(result);
     }
 
@@ -411,6 +426,9 @@ public class ServerConnectionController {
             message.getFromBody("trashItem"),
             message.getFromBody("trashNumber")
         );
+        ServerApp.addDiff(UpdateController.createTrashCan(username,
+            message.getFromBody("trashItem"),
+            message.getFromBody("trashNumber")));
         return makeResponseFrom(result);
     }
 
@@ -420,6 +438,8 @@ public class ServerConnectionController {
             message.getFromBody("NPCname")
 
         );
+        ServerApp.addDiff(UpdateController.createMeetsNPC(username,
+            message.getFromBody("NPCname")));
         return makeResponseFrom(result);
     }
 
@@ -445,6 +465,9 @@ public class ServerConnectionController {
             message.getFromBody("npcName"),
             message.getFromBody("itemName")
         );
+        ServerApp.addDiff(UpdateController.createGiftNpc(username,
+            message.getFromBody("npcName"),
+            message.getFromBody("itemName")));
         return makeResponseFrom(result);
     }
 
@@ -454,6 +477,9 @@ public class ServerConnectionController {
             message.getFromBody("questNumber"),
             message.getFromBody("npcName")
         );
+        ServerApp.addDiff(UpdateController.createQuestFinish(username,
+            message.getFromBody("questNumber"),
+            message.getFromBody("npcName")));
         return makeResponseFrom(result);
     }
 
@@ -470,6 +496,8 @@ public class ServerConnectionController {
             username,
             message.getFromBody("name")
         );
+        ServerApp.addDiff(UpdateController.createFeedAnimal(username,
+            message.getFromBody("name")));
         return makeResponseFrom(result);
     }
 
@@ -478,6 +506,8 @@ public class ServerConnectionController {
             username,
             message.getFromBody("name")
         );
+        ServerApp.addDiff(UpdateController.createPet(username,
+            message.getFromBody("name")));
         return makeResponseFrom(result);
     }
 
@@ -487,6 +517,9 @@ public class ServerConnectionController {
             message.getFromBody("name"),
             message.getFromBody("location")
         );
+        ServerApp.addDiff(UpdateController.createMoveAnimal(username,
+            message.getFromBody("name"),
+            message.getFromBody("location")));
         return makeResponseFrom(result);
     }
 
@@ -495,6 +528,8 @@ public class ServerConnectionController {
             username,
             message.getFromBody("name")
         );
+        ServerApp.addDiff(UpdateController.createGetAnimalProduce(username,
+            message.getFromBody("name")));
         return makeResponseFrom(result);
     }
 
@@ -503,6 +538,8 @@ public class ServerConnectionController {
             username,
             message.getFromBody("name")
         );
+        ServerApp.addDiff(UpdateController.createSellAnimal(username,
+            message.getFromBody("name")));
         return makeResponseFrom(result);
     }
 
@@ -519,6 +556,13 @@ public class ServerConnectionController {
             message.getFromBody("username"),
             message.getFromBody("talkingMessage")
         );
+        ServerApp.addDiff(UpdateController.createTalk(username,
+            message.getFromBody("username"),
+            message.getFromBody("talkingMessage")));
+        if(result.code() == 5){
+            ServerApp.addDiff(UpdateController.createTag(username,
+                message.getFromBody("talkingMessage")));
+        }
         return makeResponseFrom(result);
     }
 
@@ -558,6 +602,8 @@ public class ServerConnectionController {
             username,
             message.getFromBody("name")
         );
+        ServerApp.addDiff(UpdateController.createSelectEmojis(username,
+            message.getFromBody("name")));
         return makeResponseFrom(result);
     }
 
@@ -565,6 +611,7 @@ public class ServerConnectionController {
         Result result = CheatController.advanceTime(
             message.getFromBody("string")
         );
+        ServerApp.addDiff(UpdateController.createAdvanceTime(message.getFromBody("string")));
         return makeResponseFrom(result);
     }
 
@@ -572,6 +619,7 @@ public class ServerConnectionController {
         Result result = CheatController.advanceDate(
             message.getFromBody("string")
         );
+        ServerApp.addDiff(UpdateController.createAdvanceDate(message.getFromBody("string")));
         return makeResponseFrom(result);
     }
 
@@ -580,6 +628,8 @@ public class ServerConnectionController {
             username,
             message.getFromBody("string")
         );
+        ServerApp.addDiff(UpdateController.createThunderStrike(username,
+            message.getFromBody("string")));
         return makeResponseFrom(result);
     }
 
@@ -588,6 +638,18 @@ public class ServerConnectionController {
             username,
             message.getFromBody("string")
         );
+        ServerApp.addDiff(UpdateController.createSetEnergy(username,
+            message.getFromBody("string")));
+        return makeResponseFrom(result);
+    }
+
+    private static Message handleMovePlayer(String username, Message message) {
+        Result result = PlayerController.walk(username,
+            message.getFromBody("dy"),
+            message.getFromBody("dx"));
+        ServerApp.addDiff(UpdateController.createMovePlayer(username,
+            message.getFromBody("dy"),
+            message.getFromBody("dx")));
         return makeResponseFrom(result);
     }
 }

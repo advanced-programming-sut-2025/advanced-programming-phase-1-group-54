@@ -37,7 +37,7 @@ public class UpdateThread extends Thread {
         while (!end.get()) {
             if (timer >= 60_000) {
                 App.getCurrentGame().getDateTime().increaseHour(1);
-                diffs.add(UpdateController.createAdvanceTime("1"));
+                diffs.add(UpdateController.createAdvanceTime(1 + ""));
                 timer = 0;
             }
 
