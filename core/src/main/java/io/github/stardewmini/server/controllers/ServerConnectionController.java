@@ -190,7 +190,7 @@ public class ServerConnectionController {
         Lobby foundLobby = App.getLobbyById(message.getIntFromBody("id"));
         List<Map<String, Object>> lobbyInfos = new ArrayList<>();
 
-        if (foundLobby.isVisible()) {
+        if (foundLobby != null) {
             Map<String, Object> map = new HashMap<>();
             map.put("name", foundLobby.getName());
             map.put("id", foundLobby.getId());
@@ -553,7 +553,7 @@ public class ServerConnectionController {
         ServerApp.addDiff(UpdateController.createTalk(username,
             message.getFromBody("username"),
             message.getFromBody("talkingMessage")));
-        if(result.code() == 5){
+        if (result.code() == 5) {
             ServerApp.addDiff(UpdateController.createTag(username,
                 message.getFromBody("talkingMessage")));
         }

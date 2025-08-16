@@ -75,7 +75,6 @@ public class ClientConnectionController {
         App.setCurrentGame(game);
 
 
-
 //        Main.getInstance().getScreen().dispose();
 //        Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(), ""));
         App.setNextScreenReady(true);

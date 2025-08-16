@@ -20,7 +20,7 @@ public class LobbyCheckThread extends Thread {
     public void run() {
         while (!end.get()) {
             for (Lobby lobby : App.getLobbies()) {
-                if (System.currentTimeMillis() - lobby.getLastJoinedTime() >= 2*60_000) {
+                if (System.currentTimeMillis() - lobby.getLastJoinedTime() >= 30_000) {
                     App.removeLobby(lobby);
                 }
             }
