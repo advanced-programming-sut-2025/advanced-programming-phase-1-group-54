@@ -1287,4 +1287,15 @@ public class UpdateController {
         return new Result(1," walks successfully");
     }
 
+    public static Result tag(String requester, String receiver){
+        Player player = App.getCurrentPlayer();
+
+        if(player.getName().equals(receiver)){
+            player.setTagedUsername(requester);
+            player.setTaged(true);
+            return new Result(1,receiver + " taged");
+        }
+        return new Result(-1,"You do not have any tags");
+    }
+
 }

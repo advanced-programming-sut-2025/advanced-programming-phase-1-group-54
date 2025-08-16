@@ -53,9 +53,11 @@ public class TalkMenu implements Screen {
 
         talkButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
+
                 talkingUsername.setText(usernameField.getText());
                 Result result = TalkController.talkingHistory(talkingUsername.getText().toString());
                 if(result.success()){
+                    talkingHistory.setText(result.message());
                     table.clear();
                     table.add(talkingUsername).expand().pad(10).row();
                     table.add(talkingHistory).expand().pad(10).row();
@@ -72,6 +74,9 @@ public class TalkMenu implements Screen {
         sendButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 TalkController.talk(talkingUsername.getText().toString(),messageField.getText());
+                window.remove();
+                Main.getInstance().getScreen().dispose();
+                Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin()));
             }
         });
 
@@ -89,7 +94,7 @@ public class TalkMenu implements Screen {
 
     @Override
     public void render(float v) {
-        talkingHistory.setText(TalkController.talkingHistory(talkingUsername.getText().toString()).message());
+
         ScreenUtils.clear(0, 0, 0, 1);
 
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
@@ -121,6 +126,25 @@ public class TalkMenu implements Screen {
 
     @Override
     public void dispose() {
+
+    }
+
+    public void tag(String username){
+
+        talkingUsername.setText(username);
+        Result result = TalkController.talkingHistory(username);
+        if(result.success()){
+            talkingHistory.setText(result.message());
+            table.clear();
+            table.add(talkingUsername).expand().pad(10).row();
+            table.add(talkingHistory).expand().pad(10).row();
+            table.add(sendButton).expand().pad(10);
+        }
+        else{
+            window.remove();
+            Main.getInstance().getScreen().dispose();
+            Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(),result.message()));
+        }
 
     }
 }

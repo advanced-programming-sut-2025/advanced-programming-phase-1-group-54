@@ -33,6 +33,25 @@ public class Player extends Live implements DailyUpdate, HourUpdate {
         return MAXIMUM_ENERGY;
     }
 
+    private String tagedUsername;
+    private boolean taged = false;
+
+    public String getTagedUsername() {
+        return tagedUsername;
+    }
+
+    public boolean isTaged() {
+        return taged;
+    }
+
+    public void setTagedUsername(String tagedUsername) {
+        this.tagedUsername = tagedUsername;
+    }
+
+    public void setTaged(boolean taged) {
+        this.taged = taged;
+    }
+
     private String emojiName;
     private Sprite emojiSprite = new Sprite(GameAssetManager.getInstance().getEmojis("0"));
     private float emojiTime = 5;

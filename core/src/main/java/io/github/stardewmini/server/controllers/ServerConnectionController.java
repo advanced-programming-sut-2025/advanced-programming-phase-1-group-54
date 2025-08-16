@@ -517,6 +517,10 @@ public class ServerConnectionController {
         ServerApp.addDiff(UpdateController.createTalk(username,
             message.getFromBody("username"),
             message.getFromBody("talkingMessage")));
+        if(result.code() == 5){
+            ServerApp.addDiff(UpdateController.createTag(username,
+                message.getFromBody("talkingMessage")));
+        }
         return makeResponseFrom(result);
     }
 

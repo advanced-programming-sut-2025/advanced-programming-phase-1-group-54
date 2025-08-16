@@ -236,7 +236,9 @@ public class UpdateClient {
     }
 
     private static void handleTag(Message message) {
-
+        UpdateController.tag(
+            message.getFromBody("requester"),
+            message.getFromBody("receiver"));
     }
 
     private static void handleMovePlayer(Message message) {

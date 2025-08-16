@@ -6,9 +6,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import io.github.stardewmini.Main;
 import io.github.stardewmini.client.app.App;
 import io.github.stardewmini.client.app.ClientApp;
 import io.github.stardewmini.client.controllers.ClientGameController;
+import io.github.stardewmini.client.view.GameScreen;
+import io.github.stardewmini.client.view.TalkMenu;
 import io.github.stardewmini.common.Message;
 import io.github.stardewmini.common.model.GameAssetManager;
 import io.github.stardewmini.common.model.items.tools.Tool;
@@ -129,6 +132,14 @@ public class PlayerController {
 
         if(player.getEnergy() <= 0){
             dieAnimation(player,delta);
+        }
+
+        if(player.isTaged()){
+            player.setTaged(false);
+            TalkMenu talkMenu = new TalkMenu(GameAssetManager.getInstance().getSkin());
+            talkMenu.tag(player.getTagedUsername());
+            Main.getInstance().dispose();
+            Main.getInstance().setScreen(talkMenu);
         }
 
         walk(dy,dx);

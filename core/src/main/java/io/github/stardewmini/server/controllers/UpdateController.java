@@ -211,7 +211,7 @@ public class UpdateController {
         HashMap<String, Object> body = new HashMap<>();
         body.put("update", "tag");
         body.put("requester", requester);
-        body.put("username", username);
+        body.put("receiver", username);
         return new Message(body, Message.Type.update);
     }
 
