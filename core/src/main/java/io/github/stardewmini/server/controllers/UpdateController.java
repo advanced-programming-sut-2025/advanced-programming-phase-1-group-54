@@ -24,7 +24,9 @@ public class UpdateController {
     public static void startGame(int lobbyId, GameData gameData) {
         HashMap<String, Object> body = new HashMap<>();
         body.put("update", "start_game");
-        body.put("gameData", gameData);
+        body.put("playerNames", gameData.playerNames());
+        body.put("playerFarms", gameData.playerFarms());
+        body.put("seed", gameData.seed());
         Message message = new Message(body, Message.Type.update);
 
         for (ConnectionThread connectionThread : ServerApp.getConnectionsByLobbyId(lobbyId)) {

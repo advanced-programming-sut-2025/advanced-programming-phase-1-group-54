@@ -5,17 +5,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import io.github.stardewmini.client.app.App;
 import io.github.stardewmini.client.view.MainMenu;
 import io.github.stardewmini.client.view.StartMenu;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+/**
+ * {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms.
+ */
 public class Main extends Game {
     private static Main instance;
     private static SpriteBatch batch;
@@ -42,11 +46,9 @@ public class Main extends Game {
 
         if (App.getLoggedInUsername() != null) {
             setScreen(new MainMenu());
-        }
-        else {
+        } else {
             setScreen(new StartMenu());
         }
-
 
 
 //        String url = "jdbc:sqlite:C:/Users/Asus/Desktop/mydatabase.db"; // نام فایل دیتابیس
@@ -59,8 +61,6 @@ public class Main extends Game {
 //                } catch (SQLException e) {
 //                    System.out.println(e.getMessage());
 //                }
-
-
 
 
 //        String url = "jdbc:sqlite:C:/Users/Asus/Desktop/mydatabase.db";
@@ -81,8 +81,6 @@ public class Main extends Game {
 //                }
 
     }
-
-
 
 
     @Override

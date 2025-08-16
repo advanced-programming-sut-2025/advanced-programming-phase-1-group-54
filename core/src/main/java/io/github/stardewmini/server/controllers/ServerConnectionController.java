@@ -1,12 +1,13 @@
 package io.github.stardewmini.server.controllers;
 
 
-import io.github.stardewmini.Main;
 import io.github.stardewmini.common.Message;
-import io.github.stardewmini.common.model.LobbyInfo;
-import io.github.stardewmini.common.model.Result;
+import io.github.stardewmini.common.model.*;
+import io.github.stardewmini.common.model.builders.GameBuilder;
 import io.github.stardewmini.common.model.enums.Gender;
 import io.github.stardewmini.server.app.App;
+import io.github.stardewmini.server.app.ServerApp;
+import io.github.stardewmini.server.app.UpdateThread;
 import io.github.stardewmini.server.controllers.game.*;
 import io.github.stardewmini.server.model.Lobby;
 
@@ -56,9 +57,12 @@ public class ServerConnectionController {
                 return handleRefreshLobbyList();
             case "find_lobby":
                 return handleFindLobby(message);
+            case "refresh_lobby_members":
+                return handleRefreshLobbyMembers(message);
             case "start_game":
                 return handleStartGame(username, message);
-
+            case "choose_map":
+                return handleChooseMap(username, message);
 
             case "use_tool":
                 return handleUseTool(username, message);
@@ -133,12 +137,51 @@ public class ServerConnectionController {
         }
     }
 
+    private static Message handleRefreshLobbyMembers(Message message) {
+        Lobby lobby = App.getLobbyById(message.getIntFromBody("id"));
+        HashMap<String, Object> body = new HashMap<>();
+        List<String> members = new ArrayList<>();
+        for (User user : lobby.getUsers()) {
+            members.add(user.getUsername());
+        }
+        body.put("members", members);
+        return new Message(body, Message.Type.response);
+    }
+
+    private static Message handleChooseMap(String username, Message message) {
+        System.out.println("OK KIR2");
+        User user = App.getUserByUsername(username);
+        int number = message.getIntFromBody("number");
+        int lobbyId = message.getIntFromBody("id");
+        System.out.println("OK KIR3");
+
+        GameBuilder.getInstance().addUserFarm(user, number);
+        System.out.println("OK KIR3/1");
+        if (GameBuilder.getInstance().getNumberOfSubmits() == App.getLobbyById(lobbyId).getNumberOfUsers()) {
+            System.out.println("OK KIR3/2 ");
+            GameBuilder.getInstance().setSeed(System.nanoTime());
+            System.out.println("OK KIR4 ");
+            Game game = GameBuilder.getInstance().getResult();
+            GameData gameData = GameBuilder.getInstance().getGameData();
+
+            System.out.println("OK KIR4");
+
+            App.setCurrentGame(game);
+
+            ServerApp.setUpdateThread(new UpdateThread(lobbyId));
+            ServerApp.startUpdateThread();
+            UpdateController.startGame(lobbyId, gameData);
+        }
+        return makeResponseFrom(new Result(true, "thanks for map :)"));
+    }
+
     private static Message handleStartGame(String username, Message message) {
         int lobbyId = message.getIntFromBody("id");
         if (!App.getLobbyById(lobbyId).getAdmin().getUsername().equals(username)) {
             return makeResponseFrom(new Result(false, "Only admin can start game."));
         }
 
+        GameBuilder.getInstance().reset();
         UpdateController.chooseMap(lobbyId);
         return makeResponseFrom(new Result(true, "Starting Game ..."));
     }
@@ -298,7 +341,7 @@ public class ServerConnectionController {
     private static Message handleJoinLobby(String username, Message message) {
         Result result = LobbyController.joinLobby(
             username,
-            message.getFromBody("id"),
+            message.getIntFromBody("id"),
             message.getFromBody("password"));
         return makeResponseFrom(result);
     }
@@ -306,7 +349,7 @@ public class ServerConnectionController {
     private static Message handleLeaveLobby(String username, Message message) {
         Result result = LobbyController.leaveLobby(
             username,
-            message.getFromBody("id"));
+            message.getIntFromBody("id"));
         return makeResponseFrom(result);
     }
 

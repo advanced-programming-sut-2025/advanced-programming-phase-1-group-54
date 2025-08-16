@@ -17,6 +17,7 @@ public abstract class Building implements Placeable {
         this.sprite.setSize(map.getNumberOfColumns() * Tile.getSize(), map.getNumberOfRows() * Tile.getSize());
 
         GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+
         for(int x = 0; x < map.getNumberOfRows(); x++) {
             for(int y = 0; y < map.getNumberOfColumns(); y++) {
                 map.getTileAt(new Location(x,y)).getSprite().setRegion(gameAssetManager.getBuilding("floor"));

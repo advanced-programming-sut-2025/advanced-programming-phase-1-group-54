@@ -15,7 +15,7 @@ public class Game implements DailyUpdate {
     private final Player[] players;
 
     private final DateTime dateTime;
-    private final int seed;
+    private final long seed;
     private final Random rng;
 
     private int votes;
@@ -25,7 +25,7 @@ public class Game implements DailyUpdate {
 
     private final HashMap<Player,FishingGame> fishingGames;
 
-    public Game(DateTime dateTime, int seed, Random rng, World world, Player[] players) {
+    public Game(DateTime dateTime, long seed, Random rng, World world, Player[] players) {
         this.dateTime = dateTime;
         this.seed = seed;
         this.rng = rng;

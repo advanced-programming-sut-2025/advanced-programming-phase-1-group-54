@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class App {
-    private static final File savesDir = new File(System.getProperty("user.home") + "/Desktop/StardewValley/server/");
+    private static final File savesDir = new File(System.getProperty("user.home") + "/Desktop/StardewValley/");
     private static final File usersFile = new File(savesDir, "users.json");
     private static final File gamesFile = new File(savesDir, "games.json");
 

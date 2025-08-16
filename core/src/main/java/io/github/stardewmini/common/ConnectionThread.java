@@ -73,15 +73,16 @@ abstract public class ConnectionThread extends Thread {
 
     @Override
 	public void run() {
-		while (!end.get()) {
-            initialized = false;
-            if (!initialHandshake()) {
-                System.err.println("Inital HandShake failed with remote device.");
-                end();
-                return;
-            }
+        initialized = false;
+        if (!initialHandshake()) {
+            System.err.println("Inital HandShake failed with remote device.");
+            end();
+            return;
+        }
+        System.out.println("Inital HandShake done");
 
-            initialized = true;
+        initialized = true;
+		while (!end.get()) {
 			try {
 				String receivedStr = dataInputStream.readUTF();
 				Message message = JSONUtils.fromJson(receivedStr);

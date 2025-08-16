@@ -20,6 +20,8 @@ public class LobbyController {
         User user = App.getUserByUsername(requester);
         lobby.addUser(user);
         App.addLobby(lobby);
+        ServerApp.getConnectionByUsername(requester).setLobbyId(id);
+
         LobbyInfo lobbyInfo = lobby.getLobbyInfo();
         HashMap<String, Object> body = new HashMap<>();
         body.put("success", true);
@@ -43,6 +45,7 @@ public class LobbyController {
 
         ServerApp.getConnectionByUsername(requester).setLobbyId(lobbyId);
         lobby.addUser(user);
+        lobby.setLastJoinedTime(System.currentTimeMillis());
         return new Result(true, "Joined Lobby");
     }
 
@@ -51,6 +54,9 @@ public class LobbyController {
         User user = App.getUserByUsername(requester);
 
         lobby.removeUser(user);
+        if (lobby.isEmpty()) {
+            App.removeLobby(lobby);
+        }
         return new Result(true, "Joined Lobby");
     }
 }

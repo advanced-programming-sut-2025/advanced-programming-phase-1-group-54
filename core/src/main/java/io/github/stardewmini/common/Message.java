@@ -36,7 +36,11 @@ public class Message {
         return (float) ((double) ((Double) body.get(fieldName)));
     }
 
-	public enum Type {
+    public long getLongFromBody(String fieldName) {
+        return (long) ((double) ((Double) body.get(fieldName)));
+    }
+
+    public enum Type {
 		command,
 		response,
         update

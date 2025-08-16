@@ -3,9 +3,9 @@ package io.github.stardewmini.client.controllers.game;
 import io.github.stardewmini.common.Message;
 
 public class UpdateClient {
-    public static void handleCommand(Message message) {
-        String command = message.getFromBody("command");
-        switch (command) {
+    public static void handleUpdate(Message message) {
+        String update = message.getFromBody("update");
+        switch (update) {
             case "advance_time":
                 handleAdvanceTime(message);
                 break;

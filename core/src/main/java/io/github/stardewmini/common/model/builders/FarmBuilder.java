@@ -104,8 +104,10 @@ public class FarmBuilder {
     }
 
     public Cabin buildCabin() {
-        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+//        GameAssetManager gameAssetManager = GameAssetManager.getInstance();
+        System.out.println("OK KIR 123890");
         Cabin cabin = new Cabin(cabinLocation);
+        System.out.println("OK KIR 123890");
         for (int x = 0; x < cabin.getNumberOfRows(); x++) {
             for (int y = 0; y < cabin.getNumberOfColumns(); y++) {
                 Location location = cabinLocation.add(new Location(x, y));
@@ -191,15 +193,22 @@ public class FarmBuilder {
                 dateTime.addDailyUpdateListener(tiles[i][j]);
             }
         }
-
+        System.out.println("OK KIR 1");
         Cabin cabin = buildCabin();
+        System.out.println("OK KIR 2");
         GreenHouse greenHouse = buildGreenHouse();
+        System.out.println("OK KIR 3");
         GenericWall[] lakes = buildLakes();
+        System.out.println("OK KIR 1.3");
         Quarry quarry = buildQuarry();
+
+        System.out.println("OK KIR 2");
+
 
         Farm farm = new Farm(location, greenHouse, cabin, quarry, lakes, new Map(Farm.getNumberOfRows(), Farm.getNumberOfColumns(), tiles));
         placeRandomStuff(farm);
         dateTime.addDailyUpdateListener(farm);
+        System.out.println("OK KIR 3");
 
         this.reset();
         return farm;

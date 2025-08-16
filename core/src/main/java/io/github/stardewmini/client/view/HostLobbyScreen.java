@@ -88,8 +88,10 @@ public class HostLobbyScreen implements Screen {
         root.row().pad(10, 0, 10, 0);
         root.add(nameField).width(500).colspan(2);
         root.row().pad(10, 0, 10, 0);
-        root.add(passwordField).width(500).pad(10);
+        root.add(passwordField).width(500).pad(20);
         root.add(privateCheckBox);
+        root.row().pad(10, 0, 10, 0);
+        root.add(invisibleCheckBox).colspan(2);
         root.row().pad(10, 0, 10, 0);
         root.add(hostButton).width(300).height(90).colspan(2);
         root.row().pad(10, 0, 10, 0);

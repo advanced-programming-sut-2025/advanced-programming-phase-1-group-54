@@ -28,7 +28,7 @@ public class ToolsController {
         Direction direction = getDirection(dy, dx);
 
         Message message = ClientGameController.createUseTool(direction);
-        ClientApp.sendUpdate(message);
+        ClientApp.sendRequest(message);
     }
 
     private static Direction getDirection(float dy, float dx) {

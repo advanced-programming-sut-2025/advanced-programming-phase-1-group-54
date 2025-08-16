@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import io.github.stardewmini.Main;
+import io.github.stardewmini.client.app.App;
 import io.github.stardewmini.client.app.ClientApp;
 import io.github.stardewmini.client.controllers.ClientConnectionController;
 import io.github.stardewmini.common.Message;
@@ -17,19 +18,22 @@ import io.github.stardewmini.common.model.LobbyInfo;
 import io.github.stardewmini.common.model.Result;
 import io.github.stardewmini.common.model.SoundManager;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LobbyScreen implements Screen {
     private Stage stage;
 
     private final LobbyInfo lobbyInfo;
-    private List<String> lobbyMembers;
+    private List<String> lobbyMembers = new ArrayList<>();
     private Table lobbyMembersTable;
 
     private void showMembers(Skin skin) {
         lobbyMembersTable.clearChildren();
+        int n = 0;
         for (String member : lobbyMembers) {
-            lobbyMembersTable.add(new Label(lobbyInfo.name() + " id:" + lobbyInfo.id(), skin));
+            lobbyMembersTable.add(new Label(++n +". " + member, skin));
             lobbyMembersTable.row().pad(1);
         }
     }
@@ -46,11 +50,29 @@ public class LobbyScreen implements Screen {
         Skin skin = GameAssetManager.getInstance().getSkin();
 
         Label titleLabel = new Label("Lobby", skin, "Bold");
-        Label subtitleLabel = new Label(lobbyInfo.name(), skin);
+        Label subtitleLabel = new Label(lobbyInfo.name() + " id:" + lobbyInfo.id(), skin);
         lobbyMembersTable = new Table();
         lobbyMembersTable.center();
         ScrollPane scrollPane = new ScrollPane(lobbyMembersTable, skin);
 
+        TextButton refreshButton = new TextButton("Refresh", skin);
+        refreshButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent changeEvent, Actor actor) {
+                SoundManager.getInstance().playClick();
+                Message message = ClientConnectionController.createRefreshLobbyMembers(lobbyInfo.id());
+                Message response = ClientApp.sendMessageAndGetResponse(message);
+                lobbyMembers.clear();
+                lobbyMembers = response.getFromBody("members");
+                showMembers(skin);
+
+                if (App.isNextScreenReady()) {
+                    App.setNextScreenReady(false);
+                    Main.getInstance().getScreen().dispose();
+                    Main.getInstance().setScreen(new ChooseMapScreen(lobbyInfo.id()));
+                }
+            }
+        });
         TextButton startGameButton = new TextButton("Start Game", skin);
         TextButton leaveButton = new TextButton("Leave", skin);
         Label resultLabel = new Label("", skin);
@@ -88,6 +110,8 @@ public class LobbyScreen implements Screen {
         root.add(subtitleLabel);
         root.row().pad(10, 0, 10, 0);
         root.add(scrollPane).width(300).height(400);
+        root.row().pad(10, 0, 10, 0);
+        root.add(refreshButton).width(300).height(90);
         root.row().pad(10, 0, 10, 0);
         root.add(startGameButton).width(300).height(90);
         root.row().pad(10, 0, 10, 0);

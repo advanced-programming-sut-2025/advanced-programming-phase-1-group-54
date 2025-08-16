@@ -3,6 +3,7 @@ package io.github.stardewmini.client.controllers;
 import io.github.stardewmini.Main;
 import io.github.stardewmini.client.app.App;
 import io.github.stardewmini.client.app.ClientApp;
+import io.github.stardewmini.client.controllers.game.UpdateClient;
 import io.github.stardewmini.client.view.ChooseMapScreen;
 import io.github.stardewmini.client.view.GameScreen;
 import io.github.stardewmini.common.Message;
@@ -14,6 +15,7 @@ import io.github.stardewmini.common.model.builders.GameBuilder;
 import io.github.stardewmini.common.model.enums.Gender;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class ClientConnectionController {
     public static Result getResultFromResponse(Message message) {
@@ -28,9 +30,6 @@ public class ClientConnectionController {
         return null;
     }
 
-
-
-
     public static void handleUpdate(Message message) {
         String update = message.getFromBody("update");
         switch (update) {
@@ -41,25 +40,49 @@ public class ClientConnectionController {
                 handleCreateGame(message);
                 return;
 
-                // TODO
+            default:
+                UpdateClient.handleUpdate(message);
         }
     }
 
     public static void handleCreateGame(Message message) {
-        GameData gameData = message.getFromBody("gameData");
+        List<String> playerNames = message.getFromBody("playerNames");
+        List<Integer> playerFarms = message.getFromBody("playerFarms");
+        long seed = message.getLongFromBody("seed");
+
+        String[] okPlayerNames = new String[playerNames.size()];
+        for (int i = 0; i < playerNames.size(); i++) {
+            System.out.println(okPlayerNames[i]);
+            okPlayerNames[i] = playerNames.get(i);
+        }
+        int[] okPlayerFarms = new int[playerFarms.size()];
+        for (int i = 0; i < playerFarms.size(); i++) {
+            System.out.println(okPlayerFarms[i]);
+            okPlayerFarms[i] = playerFarms.get(i);
+        }
+
+        GameData gameData = new GameData(okPlayerNames, okPlayerFarms, seed);
         GameBuilder.getInstance().reset();
         GameBuilder.getInstance().setGameData(gameData);
         Game game = GameBuilder.getInstance().getResult();
         App.setCurrentGame(game);
 
-        Main.getInstance().getScreen().dispose();
-        Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(), ""));
+
+
+//        Main.getInstance().getScreen().dispose();
+//        Main.getInstance().setScreen(new GameScreen(GameAssetManager.getInstance().getSkin(), ""));
+        App.setNextScreenReady(true);
+
     }
 
 
     private static void handleChooseMap() {
-        Main.getInstance().getScreen().dispose();
-        Main.getInstance().setScreen(new ChooseMapScreen());
+
+//        Main.getInstance().getScreen().dispose();
+//        Main.getInstance().setScreen(new ChooseMapScreen());
+
+        App.setNextScreenReady(true);
+
     }
 
     public static Message status() {
@@ -206,6 +229,13 @@ public class ClientConnectionController {
     public static Message createStartGame(int id) {
         HashMap<String, Object> body = new HashMap<>();
         body.put("command", "start_game");
+        body.put("id", id);
+        return new Message(body, Message.Type.command);
+    }
+
+    public static Message createRefreshLobbyMembers(int id) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "refresh_lobby_members");
         body.put("id", id);
         return new Message(body, Message.Type.command);
     }

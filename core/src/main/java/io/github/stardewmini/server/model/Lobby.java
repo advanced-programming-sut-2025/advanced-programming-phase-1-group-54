@@ -4,6 +4,7 @@ import io.github.stardewmini.common.model.LobbyInfo;
 import io.github.stardewmini.common.model.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Lobby {
     private final String name;
@@ -11,12 +12,15 @@ public class Lobby {
     private final String password;
     private final boolean visible;
     private final ArrayList<User> users = new ArrayList<>();
+    private long lastJoinedTime;
+    private boolean activeGame;
 
     public Lobby(String name, int id, String password, boolean visible) {
         this.name = name;
         this.id = id;
         this.password = password;
         this.visible = visible;
+        this.lastJoinedTime = System.currentTimeMillis();
     }
 
     public String getName() {
@@ -36,11 +40,11 @@ public class Lobby {
     }
 
     public boolean isPrivate() {
-        return password.isEmpty();
+        return !password.isEmpty();
     }
 
-    public ArrayList<User> getUsers() {
-        return users;
+    public List<User> getUsers() {
+        return List.copyOf(users);
     }
 
     public void addUser(User user) {
@@ -57,5 +61,21 @@ public class Lobby {
 
     public LobbyInfo getLobbyInfo() {
         return new LobbyInfo(name, id, isPrivate());
+    }
+
+    public int getNumberOfUsers() {
+        return users.size();
+    }
+
+    public boolean isEmpty() {
+        return users.isEmpty();
+    }
+
+    public void setLastJoinedTime(long lastJoinedTime) {
+        this.lastJoinedTime = lastJoinedTime;
+    }
+
+    public long getLastJoinedTime() {
+        return lastJoinedTime;
     }
 }

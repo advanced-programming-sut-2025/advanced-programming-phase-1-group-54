@@ -128,7 +128,7 @@ public class JoinLobbyScreen implements Screen {
 
         root.add(titleLabel).colspan(2);
         root.row().pad(10, 0, 10, 0);
-        root.add(scrollPane).width(600).height(500).colspan(2);
+        root.add(scrollPane).width(1100).height(500).colspan(2);
         root.row().pad(10, 0, 10, 0);
         root.add(refreshButton).width(300).height(90);
         root.row().pad(10, 0, 10, 0);

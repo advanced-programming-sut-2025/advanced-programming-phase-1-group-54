@@ -1,23 +1,21 @@
 package io.github.stardewmini.server;
 
-import io.github.stardewmini.server.app.ListenerThread;
-import io.github.stardewmini.server.app.ServerApp;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import io.github.stardewmini.Main;
+import io.github.stardewmini.client.view.FirstScreen;
 
-public class ServerMain {
 
-	public static void main(String[] args) {
-		if (args.length < 1) {
-			System.err.println("Usage: java ServerMain <port>");
-			return;
-		}
+public class ServerMain extends Game {
+    @Override
+    public void create() {
+        setScreen(new FirstScreen());
+    }
 
-		try {
-			int port = Integer.parseInt(args[0]);
-			ServerApp.setListenerThread(new ListenerThread(port));
-			ServerApp.startListening();
-            System.out.println("Server is Running ...");
-		} catch (Exception e) {
-			System.err.println("Error starting server: " + e.getMessage());
-		}
-	}
+
+    @Override
+    public void render() {
+        super.render();
+
+    }
 }

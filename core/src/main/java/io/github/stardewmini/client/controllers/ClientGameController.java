@@ -11,7 +11,7 @@ public class ClientGameController {
         HashMap<String, Object> body = new HashMap<>();
         body.put("command", "use_tool");
         body.put("direction", direction);
-        return new Message(body, Message.Type.update);
+        return new Message(body, Message.Type.command);
     }
 
     public static Message createCooking(String name) {
@@ -221,4 +221,11 @@ public class ClientGameController {
     }
 
 
+    public static Message createChooseMap(int number, int lobbyId) {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("command", "choose_map");
+        body.put("number", number);
+        body.put("id", lobbyId);
+        return new Message(body, Message.Type.command);
+    }
 }

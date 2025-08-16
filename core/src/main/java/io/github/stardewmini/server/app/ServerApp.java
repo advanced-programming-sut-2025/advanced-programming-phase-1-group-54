@@ -9,11 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 public class ServerApp {
-	public static final int TIMEOUT_MILLIS = 10000;
+	public static final int TIMEOUT_MILLIS = 20000;
 	private static final ArrayList<ClientConnectionThread> connections = new ArrayList<>();
 	private static boolean exitFlag = false;
 	private static ListenerThread listenerThread;
     private static UpdateThread updateThread;
+    private static LobbyCheckThread lobbyCheckThread;
 
 	public static boolean isEnded() {
 		return exitFlag;
@@ -97,5 +98,17 @@ public class ServerApp {
 
     public static void addDiff(Message message) {
         ServerApp.updateThread.addDiff(message);
+    }
+
+    public static void setLobbyCheckThread(LobbyCheckThread lobbyCheckThread) {
+        ServerApp.lobbyCheckThread = lobbyCheckThread;
+    }
+
+    public static LobbyCheckThread lobbyCheckThread() {
+        return lobbyCheckThread;
+    }
+
+    public static void startLobbyCheckThread() {
+        lobbyCheckThread.start();
     }
 }
