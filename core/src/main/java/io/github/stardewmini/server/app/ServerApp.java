@@ -1,6 +1,7 @@
 package io.github.stardewmini.server.app;
 
 import io.github.stardewmini.common.ConnectionThread;
+import io.github.stardewmini.common.Message;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ public class ServerApp {
 	private static final ArrayList<ClientConnectionThread> connections = new ArrayList<>();
 	private static boolean exitFlag = false;
 	private static ListenerThread listenerThread;
+    private static UpdateThread updateThread;
 
 	public static boolean isEnded() {
 		return exitFlag;
@@ -79,5 +81,21 @@ public class ServerApp {
         }
 
         return lobbyConnections;
+    }
+
+    public static void setUpdateThread(UpdateThread updateThread) {
+        ServerApp.updateThread = updateThread;
+    }
+
+    public static UpdateThread getUpdateThread() {
+        return updateThread;
+    }
+
+    public static void startUpdateThread() {
+        updateThread.start();
+    }
+
+    public static void addDiff(Message message) {
+        ServerApp.updateThread.addDiff(message);
     }
 }
