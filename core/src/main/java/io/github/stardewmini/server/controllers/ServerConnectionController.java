@@ -150,22 +150,16 @@ public class ServerConnectionController {
     }
 
     private static Message handleChooseMap(String username, Message message) {
-        System.out.println("OK KIR2");
         User user = App.getUserByUsername(username);
         int number = message.getIntFromBody("number");
         int lobbyId = message.getIntFromBody("id");
-        System.out.println("OK KIR3");
 
         GameBuilder.getInstance().addUserFarm(user, number);
-        System.out.println("OK KIR3/1");
         if (GameBuilder.getInstance().getNumberOfSubmits() == App.getLobbyById(lobbyId).getNumberOfUsers()) {
-            System.out.println("OK KIR3/2 ");
             GameBuilder.getInstance().setSeed(System.nanoTime());
-            System.out.println("OK KIR4 ");
-            Game game = GameBuilder.getInstance().getResult();
             GameData gameData = GameBuilder.getInstance().getGameData();
+            Game game = GameBuilder.getInstance().getResult();
 
-            System.out.println("OK KIR4");
 
             App.setCurrentGame(game);
 

@@ -45,32 +45,29 @@ public class GameBuilder {
     }
 
     public Game getResult() {
-        System.out.println("OK KIR 11");
+
         DateTime dateTime = new DateTime();
-        System.out.println("OK KIR 12");
+
         Random rng = new Random(seed);
-        System.out.println("OK KIR 13");
+
 
         Farm[] playerFarms = new Farm[users.size()];
-        System.out.println("OK KIR 14");
 
 
         for (int i = 0; i < users.size(); i++) {
             FarmBuilder.getInstance().reset();
-            System.out.println("OK KIR 15");
-            FarmBuilder.getInstance().setLocation(WorldBuilder.getFarmLocation(i));
-            System.out.println("OK KIR 16");
-            FarmBuilder.getInstance().setFarmNumber(playerFarmNumbers.get(i));
-            System.out.println("OK KIR 17");
-            FarmBuilder.getInstance().setDateTime(dateTime);
-            System.out.println("OK KIR 18");
-            FarmBuilder.getInstance().setRng(rng);
-            System.out.println("OK KIR 19");
-            playerFarms[i] = FarmBuilder.getInstance().getResult();
-            System.out.println("OK KIR AKHAR");
-        }
 
-        System.out.println("OK KIR 100");
+            FarmBuilder.getInstance().setLocation(WorldBuilder.getFarmLocation(i));
+
+            FarmBuilder.getInstance().setFarmNumber(playerFarmNumbers.get(i));
+
+            FarmBuilder.getInstance().setDateTime(dateTime);
+
+            FarmBuilder.getInstance().setRng(rng);
+
+            playerFarms[i] = FarmBuilder.getInstance().getResult();
+
+        }
 
 
         WorldBuilder.getInstance().reset();
@@ -79,7 +76,7 @@ public class GameBuilder {
         WorldBuilder.getInstance().setRng(rng);
         World world = WorldBuilder.getInstance().getResult();
 
-        System.out.println("OK KIR 102");
+        System.out.println(users.size());
 
 
         Player[] players = new Player[users.size()];
@@ -93,13 +90,12 @@ public class GameBuilder {
 
             players[i] = new Player(users.get(i), playerFarms[i], npcFriendships);
 
-            System.out.println("OK KIR 103");
 
             dateTime.addDailyUpdateListener(players[i]);
             dateTime.addHourUpdateListener(players[i]);
-            System.out.println("OK KIR 103/1");
+
             Cabin cabin = playerFarms[i].getCabin();
-            System.out.println("OK KIR 103/12");
+
 
             Location locationInCabin = new Location(0, 0);
 /*            do {
@@ -108,14 +104,12 @@ public class GameBuilder {
                 System.out.println(locationInCabin.column());
             } while (cabin.getTileAt(locationInCabin).getThingOnTile() == null);*/
 
-            System.out.println("OK KIR 103/2");
 
             Location location = new Location(
-                    playerFarms[i].getLocation().row() + cabin.getLocation().row() + locationInCabin.row(),
-                    playerFarms[i].getLocation().column() + cabin.getLocation().column() + locationInCabin.column()
+                playerFarms[i].getLocation().row() + cabin.getLocation().row() + locationInCabin.row(),
+                playerFarms[i].getLocation().column() + cabin.getLocation().column() + locationInCabin.column()
             );
 
-            System.out.println("OK KIR 104");
 
             cabin.getTileAt(locationInCabin).setThingOnTile(players[i]);
             players[i].setCurrentLocation(location);

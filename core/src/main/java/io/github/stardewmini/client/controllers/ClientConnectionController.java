@@ -52,14 +52,21 @@ public class ClientConnectionController {
 
         String[] okPlayerNames = new String[playerNames.size()];
         for (int i = 0; i < playerNames.size(); i++) {
-            System.out.println(okPlayerNames[i]);
             okPlayerNames[i] = playerNames.get(i);
         }
         int[] okPlayerFarms = new int[playerFarms.size()];
         for (int i = 0; i < playerFarms.size(); i++) {
-            System.out.println(okPlayerFarms[i]);
             okPlayerFarms[i] = playerFarms.get(i);
         }
+
+        for (String string : playerNames) {
+            System.out.println(string);
+        }
+        for (int number : playerFarms) {
+            System.out.println(number);
+        }
+        System.out.println(seed);
+
 
         GameData gameData = new GameData(okPlayerNames, okPlayerFarms, seed);
         GameBuilder.getInstance().reset();

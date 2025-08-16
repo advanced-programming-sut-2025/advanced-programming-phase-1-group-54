@@ -22,6 +22,14 @@ public class UpdateController {
     }
 
     public static void startGame(int lobbyId, GameData gameData) {
+        for (String string : gameData.playerNames()) {
+            System.out.println(string);
+        }
+        for (int number : gameData.playerFarms()) {
+            System.out.println(number);
+        }
+        System.out.println(gameData.seed());
+
         HashMap<String, Object> body = new HashMap<>();
         body.put("update", "start_game");
         body.put("playerNames", gameData.playerNames());
