@@ -1124,7 +1124,7 @@ public class UpdateController {
 
     }
 
-    public static Result buy(String requester, String itemName, String name, int price,String locationString) {
+    public static Result buy(String requester, String itemName, String name, String priceString,String locationString) {
         int x;
         int y;
         String[] locationParts = locationString.split(",");
@@ -1133,6 +1133,12 @@ public class UpdateController {
             y = Integer.parseInt(locationParts[1]);
         } catch (Exception e) {
             return new Result(false, "only enter location in X,Y format");
+        }
+        int price;
+        try{
+            price = Integer.parseInt(priceString);
+        }catch (Exception e) {
+            return new Result(false, "only enter correct price");
         }
         Location location = new Location(x,y);
         Player player = App.getCurrentGame().getPlayerByUsername(requester);

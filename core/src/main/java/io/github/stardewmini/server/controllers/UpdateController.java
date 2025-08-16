@@ -32,21 +32,21 @@ public class UpdateController {
         }
     }
 
-    public static Message createAdvanceTime(int amount) {
+    public static Message createAdvanceTime(String amount) {
         HashMap<String, Object> body = new HashMap<>();
         body.put("update", "advance_time");
         body.put("amount", amount);
         return new Message(body, Message.Type.update);
     }
 
-    public static Message createAdvanceDate(int amount) {
+    public static Message createAdvanceDate(String amount) {
         HashMap<String, Object> body = new HashMap<>();
         body.put("update", "advance_date");
         body.put("amount", amount);
         return new Message(body, Message.Type.update);
     }
 
-    public static Message createSetEnergy(String requester,int amount) {
+    public static Message createSetEnergy(String requester,String amount) {
         HashMap<String, Object> body = new HashMap<>();
         body.put("update", "set_energy");
         body.put("amount", amount);
@@ -54,9 +54,10 @@ public class UpdateController {
         return new Message(body, Message.Type.update);
     }
 
-    public static Message createThunderStrike(String location) {
+    public static Message createThunderStrike(String requester,String location) {
         HashMap<String, Object> body = new HashMap<>();
         body.put("update", "thunder_strike");
+        body.put("requester", requester);
         body.put("location", location);
         return new Message(body, Message.Type.update);
     }
